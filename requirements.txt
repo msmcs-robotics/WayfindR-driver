@@ -4,3 +4,5 @@ matplotlib
 flask
 pyserial
 rplidar-roboticia
+pyqtgraph
+PyQt5

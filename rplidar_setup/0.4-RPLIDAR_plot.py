@@ -3,12 +3,13 @@ import math
 import numpy as np
 import matplotlib.pyplot as plt
 from adafruit_rplidar import RPLidar, RPLidarException
+import time
 
 # Configuration
 BAUDRATE = 115200
-TIMEOUT = 3  # Increased timeout
-MAX_DISTANCE = 4000  # mm (4 meters)
-PLOT_REFRESH_RATE = 5  # Update plot every N scans
+TIMEOUT = 3
+MAX_DISTANCE = 4000  # mm
+PLOT_REFRESH_INTERVAL = 0.25  # seconds between updates
 
 # Device paths
 DEVICE_PATHS = {
@@ -18,99 +19,85 @@ DEVICE_PATHS = {
 }
 
 def setup_plot():
-    """Initialize the polar plot."""
+    """Initialize polar plot and return figure, axis, and scatter object."""
     fig, ax = plt.subplots(subplot_kw={'projection': 'polar'})
     ax.set_theta_zero_location('N')
     ax.set_theta_direction(-1)
     ax.set_ylim(0, MAX_DISTANCE)
     ax.set_title('LiDAR Scan - Blue Dots Visualization', pad=20)
+    scatter = ax.scatter([], [], s=5, c='blue')  # Empty data initially
     plt.tight_layout()
-    return fig, ax
+    plt.show(block=False)
+    return fig, ax, scatter
 
-def update_plot(ax, angles, distances):
-    """Update the plot with new scan data."""
-    ax.clear()
-    if angles and distances:
-        ax.scatter(np.deg2rad(angles), distances, s=5, c='blue')
-    ax.set_theta_zero_location('N')
-    ax.set_theta_direction(-1)
-    ax.set_ylim(0, MAX_DISTANCE)
-    ax.set_title('LiDAR Scan - Blue Dots Visualization', pad=20)
-    plt.draw()
+def update_plot(scatter, angles, distances):
+    """Update scatter data instead of redrawing everything."""
+    if len(angles) == 0:
+        scatter.set_offsets([])
+    else:
+        theta = np.deg2rad(angles)
+        r = distances
+        points = np.column_stack((theta, r))
+        scatter.set_offsets(points)
     plt.pause(0.001)
 
 def get_device_path():
-    """Get the correct serial port path for the current OS."""
-    system = platform.system()
-    return DEVICE_PATHS.get(system, '')
+    """Get platform-specific device path."""
+    return DEVICE_PATHS.get(platform.system(), '')
 
 def process_scan(scan):
-    """Extract angles and distances from a scan."""
+    """Efficiently process scan to NumPy arrays."""
     angles = []
     distances = []
     for _, angle, distance in scan:
-        if distance > 0:  # Filter invalid measurements
-            angles.append(min(359, math.floor(angle)))
-            distances.append(min(MAX_DISTANCE, distance))
-    return angles, distances
+        if distance > 0:
+            angles.append(angle)
+            distances.append(min(distance, MAX_DISTANCE))
+    return np.array(angles), np.array(distances)
 
 def main():
-    # Initialize plot
-    fig, ax = setup_plot()
-    plt.show(block=False)
-    
-    # Initialize LiDAR
+    fig, ax, scatter = setup_plot()
     device_path = get_device_path()
     if not device_path:
-        print("Error: Unsupported operating system")
+        print("Unsupported OS.")
         return
-    
+
     lidar = None
     try:
         print(f"Connecting to LiDAR on {device_path}...")
         lidar = RPLidar(None, device_path, baudrate=BAUDRATE, timeout=TIMEOUT)
         
-        # Check device health
-        health, error_code = lidar.health
-        print(f"LiDAR Health: {health} (Error Code: {error_code})")
-        if health != "Good":
-            print("Warning: LiDAR health status is not optimal")
-        
-        # Get device info
-        info = lidar.info
-        print("\nLiDAR Information:")
-        for key, value in info.items():
-            print(f"{key:>15}: {value}")
-        
-        print("\nStarting LiDAR scan... Press Ctrl+C to stop.")
-        scan_count = 0
-        
-        for scan in lidar.iter_scans(max_buf_meas=1000):  # Increased buffer size
+        print(f"LiDAR Health: {lidar.health[0]} (Error Code: {lidar.health[1]})")
+        print("\nLiDAR Info:")
+        for k, v in lidar.info.items():
+            print(f"{k:>15}: {v}")
+
+        print("\nStarting scan... Press Ctrl+C to stop.")
+        last_plot_time = time.time()
+
+        for scan in lidar.iter_scans(max_buf_meas=1000):
             try:
                 angles, distances = process_scan(scan)
-                
-                # Update plot periodically
-                scan_count += 1
-                if scan_count % PLOT_REFRESH_RATE == 0:
-                    update_plot(ax, angles, distances)
-                    scan_count = 0
-                    
+                now = time.time()
+
+                if now - last_plot_time >= PLOT_REFRESH_INTERVAL:
+                    update_plot(scatter, angles, distances)
+                    last_plot_time = now
+
             except RPLidarException as e:
-                print(f"Scan processing error: {e}")
+                print(f"Scan error: {e}")
                 continue
-                
+
     except KeyboardInterrupt:
-        print("\nStopping LiDAR scan...")
+        print("\nScan interrupted by user.")
     except RPLidarException as e:
-        print(f"\nLiDAR Error: {e}")
-    except Exception as e:
-        print(f"\nUnexpected error: {e}")
+        print(f"LiDAR error: {e}")
     finally:
         if lidar:
             lidar.stop()
             lidar.disconnect()
             print("LiDAR disconnected.")
-        plt.show(block=True)  # Keep plot open after scanning
+        plt.show(block=True)
 
 if __name__ == "__main__":
     main()
