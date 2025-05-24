@@ -1,5 +1,8 @@
 https://github.com/AdroitAnandAI/SLAM-on-Raspberry-Pi
 
+[RPLidar SDK](https://www.robotshop.com/products/rplidar-a1m8-360-degree-laser-scanner-development-kit)
+
+[Adafruit RPLidar Python Test](https://docs.circuitpython.org/projects/rplidar/en/latest/examples.html)
 
 **✅ To continue building an accurate map while moving:**
 You need to track the motion of the LiDAR platform. There are two main approaches:

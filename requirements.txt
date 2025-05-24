@@ -1,5 +1,6 @@
 numpy 
-adafruit-circuitpython-rplidar 
+Adafruit_CircuitPython_RPLIDAR
 matplotlib
 flask
-rplidar
+pyserial
+rplidar-roboticia
