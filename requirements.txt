@@ -1,0 +1,5 @@
+numpy 
+adafruit-circuitpython-rplidar 
+matplotlib
+flask
+rplidar
