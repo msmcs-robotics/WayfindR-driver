@@ -55,7 +55,7 @@ Breadth-First Search
 ---
 
 
-I want a comprehensive system to create a map of the inside of a building using RPlidar A1m8 and a raspberry pi 4. then I want to be able to add waypoints to that map in Rviz and save it for later. i then want to be able to use that map in a program where I can send commands via post request to a flask app on the raspberry pi to then have it navigate and pathfind to those waypoints. I want to have 3 stages, mapping, map editing, and navigating.
+I want a comprehensive system to create a map of the inside of a building using slamtech C1M1 and a raspberry pi 4. then I want to be able to add waypoints to that map in Rviz and save it for later. i then want to be able to use that map in a program where I can send commands via post request to a flask app on the raspberry pi to then have it navigate and pathfind to those waypoints. I want to have 3 stages, mapping, map editing, and navigating.
 
 mapping I want to have a robot that simply makes the map of the building, searching and moving and discovering all possible routes to move in the building and rooms and such so that I can let it go autonomously and it will make a comprehensive map streamed back to a desktop over wifi. i want to account for moving across multiple access points in commercial wifi, the wifi credentials will still work its just that the IP address might change or I don't know.
 
