@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Bakery Config Generator</title>
+</head>
+<body>
+  <h1>Bakery Config Generator</h1>
+  <form id="configForm">
+    <label>Operating System:</label><br>
+    <input type="radio" name="os" value="raspios" checked> Raspberry Pi OS<br>
+    <input type="radio" name="os" value="ubuntu"> Ubuntu<br><br>
+
+    <label>Enable SSH?</label>
+    <input type="checkbox" name="ssh"><br><br>
+
+    <label>Enable ZeroTier?</label>
+    <input type="checkbox" id="zerotier" name="zerotier" onchange="toggleZT()"><br>
+    <div id="ztConfig" style="display:none;">
+      <label>ZeroTier Network ID:</label>
+      <input type="text" name="zerotier_network"><br><br>
+    </div>
+
+    <label>Custom Hostname (optional):</label>
+    <input type="text" name="hostname"><br><br>
+
+    <h2>Custom Scripts</h2>
+    <p>Select a directory containing scripts you want copied to the Bakery folder.</p>
+    <input type="file" id="customScripts" webkitdirectory directory multiple><br><br>
+
+    <button type="button" onclick="generateConfig()">Generate</button>
+  </form>
+
+  <pre id="output"></pre>
+
+  <script>
+    let customScripts = [];
+
+    function toggleZT() {
+      document.getElementById('ztConfig').style.display =
+        document.getElementById('zerotier').checked ? 'block' : 'none';
+    }
+
+    // Capture script paths
+    document.getElementById('customScripts').addEventListener('change', (evt) => {
+      customScripts = [];
+      for (const file of evt.target.files) {
+        // Save relative path if available, else filename
+        customScripts.push(file.webkitRelativePath || file.name);
+      }
+    });
+
+    function generateConfig() {
+      const form = document.getElementById('configForm');
+      const data = new FormData(form);
+      const config = {};
+
+      data.forEach((v, k) => {
+        // for checkboxes, formdata only includes if checked
+        if (config[k] !== undefined) {
+          if (!Array.isArray(config[k])) config[k] = [config[k]];
+          config[k].push(v);
+        } else {
+          config[k] = v || true;
+        }
+      });
+
+      // Add custom scripts
+      config["custom_scripts"] = customScripts;
+
+      document.getElementById('output').textContent =
+        JSON.stringify(config, null, 2);
+    }
+  </script>
+</body>
+</html>
