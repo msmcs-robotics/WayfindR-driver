@@ -2,3 +2,4 @@
 **.csv
 *.img
 *.xz
+**/__pycache__/
