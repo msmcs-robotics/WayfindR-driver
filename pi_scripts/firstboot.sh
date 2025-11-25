@@ -1,221 +1,194 @@
 #!/bin/bash
-# firstboot.sh - Raspberry Pi Baker First Boot Script
-# This script runs automatically before any user scripts
+# firstboot.sh - Simple First Boot Orchestrator
+# Just runs your scripts in order and tracks success
 
 set -e
 
 LOG_FILE="/opt/bakery/firstboot.log"
 CONFIG_FILE="/opt/bakery/baker-config.json"
 STATE_FILE="/opt/bakery/firstboot.state"
-MAX_RETRIES=5
-RETRY_DELAY=60
+RUNLIST="/opt/bakery/runlist.txt"
 
-# Function to log with timestamp
+# Log with timestamp
 log() {
     echo "[$(date '+%Y-%m-%d %H:%M:%S')] $1" | tee -a "$LOG_FILE"
 }
 
-# Function to check network connectivity
-check_network() {
-    log "Checking network connectivity..."
-    
-    # Try multiple methods to check connectivity
-    if ping -c 1 -W 5 8.8.8.8 >/dev/null 2>&1; then
-        log "✓ Network connectivity confirmed via ping"
-        return 0
-    fi
-    
-    if curl -s --connect-timeout 5 http://www.google.com >/dev/null 2>&1; then
-        log "✓ Network connectivity confirmed via HTTP"
-        return 0
-    fi
-    
-    log "✗ No network connectivity detected"
-    return 1
+# Check if script already ran successfully
+script_completed() {
+    local script=$1
+    grep -q "^SUCCESS:$script$" "$STATE_FILE" 2>/dev/null
 }
 
-# Function to wait for network with retries
-wait_for_network() {
-    local retries=0
+# Mark script as complete
+mark_script_complete() {
+    local script=$1
+    echo "SUCCESS:$script" >> "$STATE_FILE"
+}
+
+# Check if all scripts completed
+all_scripts_complete() {
+    [ -f "$RUNLIST" ] || return 1
     
-    while [ $retries -lt $MAX_RETRIES ]; do
-        if check_network; then
-            return 0
+    while IFS= read -r script; do
+        if ! script_completed "$script"; then
+            return 1
         fi
-        
-        log "Waiting for network... (attempt $((retries + 1))/$MAX_RETRIES)"
-        sleep $RETRY_DELAY
-        ((retries++))
-    done
+    done < "$RUNLIST"
     
-    log "❌ Failed to establish network connection after $MAX_RETRIES attempts"
-    return 1
+    return 0
 }
 
-# Function to setup retry mechanism
-setup_retry_mechanism() {
-    log "Setting up retry mechanism for next boot..."
+# Create user if configured
+setup_user() {
+    if [ ! -f "$CONFIG_FILE" ]; then
+        log "No config file found, skipping user setup"
+        return
+    fi
     
-    # Create a systemd service that will retry on next boot
-    cat > /etc/systemd/system/firstboot-retry.service << 'EOF'
-[Unit]
-Description=Retry First Boot Setup
-After=network-online.target
-Wants=network-online.target
-
-[Service]
-Type=oneshot
-ExecStart=/opt/bakery/firstboot.sh
-RemainAfterExit=yes
-StandardOutput=journal
-StandardError=journal
-
-[Install]
-WantedBy=multi-user.target
-EOF
-
-    systemctl enable firstboot-retry.service
-    log "✓ Retry service configured for next boot"
+    # Check if jq is available, if not skip
+    if ! command -v jq &> /dev/null; then
+        log "jq not installed, skipping config parsing"
+        return
+    fi
+    
+    local username=$(jq -r '.username // "pi"' "$CONFIG_FILE")
+    
+    if [ "$username" != "pi" ]; then
+        if ! id "$username" &>/dev/null; then
+            log "Creating user: $username"
+            useradd -m -G sudo,adm,dialout,cdrom,audio,video,plugdev,games,users,input,netdev,gpio,i2c,spi \
+                    -s /bin/bash "$username"
+            echo "$username:raspberry" | chpasswd
+            log "✓ User created (password: raspberry)"
+        else
+            log "✓ User $username exists"
+        fi
+    fi
 }
 
-# Function to cleanup and disable services
-cleanup_services() {
-    log "Cleaning up first-boot services..."
-    systemctl disable firstboot.service 2>/dev/null || true
-    systemctl disable firstboot-retry.service 2>/dev/null || true
-    rm -f /etc/systemd/system/firstboot.service
-    rm -f /etc/systemd/system/firstboot-retry.service
-    systemctl daemon-reload
-    log "✓ First-boot services cleaned up"
-}
-
-# Function to mark completion
-mark_complete() {
-    echo "COMPLETED $(date)" > "$STATE_FILE"
-    log "✓ First-boot setup marked as completed"
-    cleanup_services
-}
-
-# Function to mark failure
-mark_failure() {
-    echo "FAILED $(date)" >> "$STATE_FILE"
-    log "⚠ First-boot setup failed - will retry on next boot"
-}
-
-# Function to execute user scripts
-execute_user_scripts() {
-    if [ -f "/opt/bakery/runlist.txt" ]; then
-        SCRIPT_NUM=1
-        while IFS= read -r script; do
-            if [ -f "/opt/bakery/custom/$script" ]; then
-                log ""
-                log ">>> [User Script $SCRIPT_NUM] Running: $script"
-                log "---"
-                
-                # Make script executable
-                chmod +x "/opt/bakery/custom/$script"
-                
-                if bash "/opt/bakery/custom/$script" >> "$LOG_FILE" 2>&1; then
-                    log "✓ $script completed successfully"
-                else
-                    log "✗ $script failed with exit code $?"
-                    # Continue with other scripts even if one fails
-                fi
-                ((SCRIPT_NUM++))
-            else
-                log "✗ Script not found: $script"
-            fi
-        done < "/opt/bakery/runlist.txt"
+# Run a single script with proper error handling
+run_script() {
+    local script=$1
+    local script_path="/opt/bakery/custom/$script"
+    
+    if [ ! -f "$script_path" ]; then
+        log "❌ Script not found: $script"
+        return 1
+    fi
+    
+    # Make executable
+    chmod +x "$script_path"
+    
+    log ""
+    log ">>> Running: $script"
+    log "---"
+    
+    # Determine how to run the script
+    if [[ "$script" == *.py ]]; then
+        if python3 "$script_path" >> "$LOG_FILE" 2>&1; then
+            log "✓ $script completed"
+            return 0
+        else
+            local exit_code=$?
+            log "❌ $script failed (exit code: $exit_code)"
+            return 1
+        fi
     else
-        log "No user scripts to run"
+        if bash "$script_path" >> "$LOG_FILE" 2>&1; then
+            log "✓ $script completed"
+            return 0
+        else
+            local exit_code=$?
+            log "❌ $script failed (exit code: $exit_code)"
+            return 1
+        fi
     fi
 }
 
 # Main execution
 main() {
     log "========================================"
-    log "RPi First Boot Setup - Starting"
+    log "First Boot Setup - Starting"
     log "========================================"
     
-    # Check if already completed
-    if [ -f "$STATE_FILE" ] && grep -q "COMPLETED" "$STATE_FILE"; then
-        log "First-boot setup already completed - skipping"
-        cleanup_services
+    # Initialize state file
+    [ -f "$STATE_FILE" ] || touch "$STATE_FILE"
+    
+    # Check if already complete
+    if all_scripts_complete; then
+        log "All scripts already completed successfully"
+        log "Disabling first-boot service..."
+        systemctl disable firstboot.service 2>/dev/null || true
         exit 0
     fi
     
-    # Wait for network connectivity
-    if ! wait_for_network; then
-        log "Network not available - setting up retry mechanism"
-        setup_retry_mechanism
-        mark_failure
-        exit 1
+    # Setup user if needed
+    setup_user
+    
+    # Make config available to scripts
+    if [ -f "$CONFIG_FILE" ]; then
+        cp "$CONFIG_FILE" "/tmp/baker-config.json" 2>/dev/null || true
+        chmod 644 "/tmp/baker-config.json" 2>/dev/null || true
     fi
     
-    log "✓ Network connectivity established"
-    
-    # Load configuration
-    if [ ! -f "$CONFIG_FILE" ]; then
-        log "❌ Configuration file not found: $CONFIG_FILE"
-        mark_failure
-        exit 1
+    # Run scripts in order
+    if [ ! -f "$RUNLIST" ]; then
+        log "No scripts to run (runlist.txt not found)"
+        exit 0
     fi
-    
-    USERNAME=$(jq -r '.username' "$CONFIG_FILE")
-    ENABLE_SUDO_NOPASSWD=$(jq -r '.enable_sudo_nopasswd' "$CONFIG_FILE")
-    
-    log "Configuration:"
-    log "  Username: $USERNAME"
-    log "  Passwordless sudo: $ENABLE_SUDO_NOPASSWD"
-    
-    # Make config available to all scripts
-    cp "$CONFIG_FILE" "/tmp/baker-config.json"
-    chmod 644 "/tmp/baker-config.json"
-    
-    # User configuration
-    if [ -n "$USERNAME" ]; then
-        log ""
-        log ">>> Configuring user: $USERNAME"
-        
-        if ! id "$USERNAME" &>/dev/null; then
-            log "Creating user: $USERNAME"
-            useradd -m -G sudo,adm,dialout,cdrom,audio,video,plugdev,games,users,input,netdev,gpio,i2c,spi -s /bin/bash "$USERNAME"
-            echo "$USERNAME:raspberry" | chpasswd
-            log "✓ User created with default password 'raspberry'"
-        else
-            log "User $USERNAME already exists"
-        fi
-    fi
-    
-    # Passwordless sudo configuration
-    if [ "$ENABLE_SUDO_NOPASSWD" = "true" ]; then
-        log ""
-        log ">>> Configuring passwordless sudo"
-        
-        SUDOERS_FILE="/etc/sudoers.d/010_$USERNAME-nopasswd"
-        if [ ! -f "$SUDOERS_FILE" ]; then
-            log "Configuring passwordless sudo for $USERNAME"
-            echo "# Allow $USERNAME to run sudo without password" > "$SUDOERS_FILE"
-            echo "$USERNAME ALL=(ALL) NOPASSWD:ALL" >> "$SUDOERS_FILE"
-            chmod 0440 "$SUDOERS_FILE"
-            log "✓ Passwordless sudo configured for $USERNAME"
-        else
-            log "✓ Passwordless sudo already configured for $USERNAME"
-        fi
-    fi
-    
-    # Execute user scripts
-    log ""
-    log ">>> Executing user scripts"
-    execute_user_scripts
     
     log ""
-    log "========================================"
-    log "First Boot Setup completed successfully!"
-    log "========================================"
+    log ">>> Executing Scripts"
     
-    mark_complete
+    local script_num=1
+    local failed_count=0
+    local success_count=0
+    
+    while IFS= read -r script; do
+        # Skip if already completed
+        if script_completed "$script"; then
+            log "[$script_num] $script - already completed, skipping"
+            ((script_num++))
+            ((success_count++))
+            continue
+        fi
+        
+        log ""
+        log "[$script_num] Starting: $script"
+        
+        if run_script "$script"; then
+            mark_script_complete "$script"
+            ((success_count++))
+        else
+            ((failed_count++))
+            log "⚠ Script will be retried on next boot"
+        fi
+        
+        ((script_num++))
+    done < "$RUNLIST"
+    
+    # Summary
+    log ""
+    log "========================================"
+    log "First Boot Summary"
+    log "========================================"
+    log "✓ Successful: $success_count"
+    log "❌ Failed: $failed_count"
+    
+    if [ $failed_count -eq 0 ]; then
+        log ""
+        log "✅ All scripts completed successfully!"
+        log "Disabling first-boot service..."
+        systemctl disable firstboot.service 2>/dev/null || true
+    else
+        log ""
+        log "⚠ Some scripts failed - will retry on next boot"
+        log "Service remains enabled for retry"
+    fi
+    
+    log "========================================"
 }
 
-# Run main function and capture all output
+# Run main
 main "$@"
