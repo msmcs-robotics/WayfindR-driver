@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pi Fleet Manager</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-brand">🥧 Pi Fleet Manager</div>
+        <ul class="nav-menu">
+            <li><a href="/" class="active">Dashboard</a></li>
+            <li><a href="/static/pages/hosts.html">Hosts</a></li>
+            <li><a href="/static/pages/users.html">Users</a></li>
+            <li><a href="/static/pages/keys.html">SSH Keys</a></li>
+            <li><a href="/static/pages/files.html">Files</a></li>
+            <li><a href="/static/pages/commands.html">Commands</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <h1>Fleet Dashboard</h1>
+        
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-number" id="total-hosts">0</div>
+                <div class="stat-label">Total Hosts</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="total-users">0</div>
+                <div class="stat-label">Users</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="total-keys">0</div>
+                <div class="stat-label">SSH Keys</div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Quick Actions</h2>
+            <div class="button-group">
+                <a href="/static/pages/hosts.html" class="btn btn-primary">Add Host</a>
+                <a href="/static/pages/users.html" class="btn btn-primary">Add User</a>
+                <a href="/static/pages/keys.html" class="btn btn-primary">Generate SSH Key</a>
+                <a href="/static/pages/commands.html" class="btn btn-success">Execute Commands</a>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Recent Hosts</h2>
+            <div id="hosts-list" class="list-container">
+                <p class="loading">Loading...</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="/static/js/dashboard.js"></script>
+</body>
+</html>
