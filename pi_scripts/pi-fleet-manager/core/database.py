@@ -2,8 +2,11 @@ import json
 from pathlib import Path
 from typing import Dict, List, Any
 import threading
+import os
 
-DATA_DIR = Path.home() / ".pi_fleet"
+
+DATA_DIR = Path.cwd() / "pi_fleet_data"
+
 DB_FILE = DATA_DIR / "fleet_data.json"
 
 # Thread lock for database access

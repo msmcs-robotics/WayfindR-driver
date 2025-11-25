@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Transfer - Pi Fleet Manager</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-brand">🥧 Pi Fleet Manager</div>
+        <ul class="nav-menu">
+            <li><a href="/">Dashboard</a></li>
+            <li><a href="/static/pages/hosts.html">Hosts</a></li>
+            <li><a href="/static/pages/users.html">Users</a></li>
+            <li><a href="/static/pages/keys.html">SSH Keys</a></li>
+            <li><a href="/static/pages/files.html" class="active">Files</a></li>
+            <li><a href="/static/pages/commands.html">Commands</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <h1>File Transfer</h1>
+        
+        <div class="section">
+            <h2>Setup /opt/bakery</h2>
+            <div class="form-group">
+                <label for="setupHosts">Select Hosts</label>
+                <div id="setupHosts" class="checkbox-group"></div>
+            </div>
+            <div class="form-group">
+                <label for="setupUsername">Username</label>
+                <input type="text" id="setupUsername" value="pi">
+            </div>
+            <div class="form-group">
+                <label for="setupKey">SSH Key</label>
+                <select id="setupKey"></select>
+            </div>
+            <button class="btn btn-primary" onclick="setupBakery()">Setup /opt/bakery</button>
+        </div>
+
+        <div class="section">
+            <h2>Upload & Transfer</h2>
+            <form id="uploadForm" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label for="transferHosts">Select Hosts</label>
+                    <div id="transferHosts" class="checkbox-group"></div>
+                </div>
+                <div class="form-group">
+                    <label for="transferUsername">Username</label>
+                    <input type="text" id="transferUsername" value="pi">
+                </div>
+                <div class="form-group">
+                    <label for="transferKey">SSH Key</label>
+                    <select id="transferKey"></select>
+                </div>
+                <div class="form-group">
+                    <label for="fileUpload">Select File</label>
+                    <input type="file" id="fileUpload">
+                </div>
+                <div class="form-group">
+                    <label for="remotePath">Remote Path</label>
+                    <input type="text" id="remotePath" value="/opt/bakery">
+                </div>
+                <button type="button" class="btn btn-primary" onclick="uploadAndTransfer()">Upload & Transfer</button>
+            </form>
+        </div>
+
+        <div class="section">
+            <h2>Transfer Results</h2>
+            <div id="transfer-results"></div>
+        </div>
+    </div>
+
+    <script src="/static/js/files.js"></script>
+</body>
+</html>

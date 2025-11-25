@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Commands - Pi Fleet Manager</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-brand">🥧 Pi Fleet Manager</div>
+        <ul class="nav-menu">
+            <li><a href="/">Dashboard</a></li>
+            <li><a href="/static/pages/hosts.html">Hosts</a></li>
+            <li><a href="/static/pages/users.html">Users</a></li>
+            <li><a href="/static/pages/keys.html">SSH Keys</a></li>
+            <li><a href="/static/pages/files.html">Files</a></li>
+            <li><a href="/static/pages/commands.html" class="active">Commands</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <h1>Command Execution</h1>
+        
+        <div class="section">
+            <div class="form-group">
+                <label for="commandHosts">Select Hosts</label>
+                <div id="commandHosts" class="checkbox-group"></div>
+            </div>
+            <div class="form-group">
+                <label for="commandUsername">Username</label>
+                <input type="text" id="commandUsername" value="pi">
+            </div>
+            <div class="form-group">
+                <label for="commandKey">SSH Key</label>
+                <select id="commandKey"></select>
+            </div>
+            <div class="form-group">
+                <label for="commandInput">Command</label>
+                <input type="text" id="commandInput" placeholder="Enter command to execute..." value="ls -la /opt/bakery">
+            </div>
+            <div class="button-group">
+                <button class="btn btn-primary" onclick="executeCommand()">Execute Command</button>
+                <button class="btn btn-success" onclick="executeCommandStream()">Execute with Live Output</button>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Command Results</h2>
+            <div id="command-results" class="output-grid"></div>
+        </div>
+    </div>
+
+    <script src="/static/js/commands.js"></script>
+</body>
+</html>

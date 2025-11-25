@@ -5,7 +5,14 @@ from fastapi.middleware.cors import CORSMiddleware
 import uvicorn
 from pathlib import Path
 
-from api import hosts, users, ssh_keys, commands, files, terminal
+# Import API routers
+from api.hosts import router as hosts_router
+from api.users import router as users_router
+from api.ssh_keys import router as ssh_keys_router
+from api.commands import router as commands_router
+from api.files import router as files_router
+from api.terminal import router as terminal_router
+
 from core.database import init_db
 
 app = FastAPI(title="Pi Fleet Manager", version="1.0.0")
@@ -23,12 +30,12 @@ app.add_middleware(
 init_db()
 
 # Include API routers
-app.include_router(hosts.router, prefix="/api/hosts", tags=["hosts"])
-app.include_router(users.router, prefix="/api/users", tags=["users"])
-app.include_router(ssh_keys.router, prefix="/api/keys", tags=["ssh_keys"])
-app.include_router(commands.router, prefix="/api/commands", tags=["commands"])
-app.include_router(files.router, prefix="/api/files", tags=["files"])
-app.include_router(terminal.router, prefix="/api/terminal", tags=["terminal"])
+app.include_router(hosts_router, prefix="/api/hosts", tags=["hosts"])
+app.include_router(users_router, prefix="/api/users", tags=["users"])
+app.include_router(ssh_keys_router, prefix="/api/keys", tags=["ssh_keys"])
+app.include_router(commands_router, prefix="/api/commands", tags=["commands"])
+app.include_router(files_router, prefix="/api/files", tags=["files"])
+app.include_router(terminal_router, prefix="/api/terminal", tags=["terminal"])
 
 # Serve static files
 static_path = Path(__file__).parent / "frontend"

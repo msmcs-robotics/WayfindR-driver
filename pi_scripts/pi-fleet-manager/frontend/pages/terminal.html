@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terminal - Pi Fleet Manager</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/xterm/css/xterm.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-brand">🥧 Pi Fleet Manager - Terminal</div>
+        <ul class="nav-menu">
+            <li><a href="/">Dashboard</a></li>
+            <li><a href="/static/pages/commands.html">Commands</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <div class="section">
+            <h2>SSH Terminal</h2>
+            <div class="form-group">
+                <label for="terminalHost">Host</label>
+                <select id="terminalHost"></select>
+            </div>
+            <div class="form-group">
+                <label for="terminalUsername">Username</label>
+                <input type="text" id="terminalUsername" value="pi">
+            </div>
+            <div class="form-group">
+                <label for="terminalKey">SSH Key</label>
+                <select id="terminalKey"></select>
+            </div>
+            <button class="btn btn-primary" onclick="connectTerminal()">Connect</button>
+            <button class="btn btn-danger" onclick="disconnectTerminal()">Disconnect</button>
+        </div>
+
+        <div class="section">
+            <div id="terminal-container"></div>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/xterm/lib/xterm.js"></script>
+    <script src="https://unpkg.com/xterm-addon-fit/lib/xterm-addon-fit.js"></script>
+    <script src="/static/js/terminal.js"></script>
+</body>
+</html>

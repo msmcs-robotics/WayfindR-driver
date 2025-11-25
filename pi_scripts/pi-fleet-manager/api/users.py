@@ -1,9 +1,8 @@
 from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel
-from typing import List
+from typing import Optional, List
 import uuid
 from core.database import get_collection, add_item, update_item, delete_item, get_item, load_db, save_db
-
 router = APIRouter()
 
 class User(BaseModel):
