@@ -1,47 +1,52 @@
 #!/usr/bin/env bash
-# install_slam_nav_packages.sh
-# Complete ROS2 Humble package installation for autonomous mapping, waypoint navigation
-# For Slamtec C1M1 Lidar on Ubuntu 22.04
-# Usage: bash install_slam_nav_packages.sh
+# install_ros2_humble_full.sh
+# ROS2 Humble SLAM + Nav2 + Exploration installer
+# Ubuntu 22.04 (Jammy) with Python 3.12
 
-set -e  # exit on error
-# NOTE: Not using 'set -u' because ROS2 setup scripts use unbound variables
+set -e
+set -o pipefail
 
+echo ""
 echo "======================================================================"
-echo "  ROS2 HUMBLE: SLAM + NAVIGATION + EXPLORATION PACKAGE INSTALLER"
+echo "  ROS2 HUMBLE: SLAM + NAVIGATION + EXPLORATION INSTALLER"
 echo "======================================================================"
 echo ""
-echo "This script will install:"
-echo "  - SLAM Toolbox (mapping)"
-echo "  - Nav2 Stack (navigation & localization with AMCL)"
-echo "  - Explore Lite (autonomous exploration)"
-echo "  - TF, Robot State Publisher, Joint State Publisher"
-echo "  - Gazebo simulation"
-echo "  - Python dependencies for Flask integration"
-echo ""
-read -p "Press ENTER to continue or CTRL+C to cancel..."
-echo ""
 
-# Ensure ROS2 Humble is sourced (disable -u temporarily)
+read -p "Press ENTER to begin (CTRL+C to cancel)..."
+
+# ------------------------------------------------------------------------------
+# WAIT FOR APT LOCK (unattended-upgrades)
+# ------------------------------------------------------------------------------
+echo ""
+echo "--- Checking for APT locks ---"
+while sudo fuser /var/lib/dpkg/lock-frontend >/dev/null 2>&1; do
+    echo "  ⏳ Waiting for unattended upgrades..."
+    sleep 3
+done
+echo "  ✓ APT lock free"
+
+# ------------------------------------------------------------------------------
+# SOURCE ROS 2
+# ------------------------------------------------------------------------------
+echo ""
 if [ -f "/opt/ros/humble/setup.bash" ]; then
-    set +u  # Temporarily disable unbound variable checking
     source /opt/ros/humble/setup.bash
-    set -u  # Re-enable it
     echo "✓ ROS2 Humble environment sourced"
 else
     echo "✗ ERROR: ROS2 Humble not found at /opt/ros/humble"
-    echo "  Please run install_ros2_humble.sh first!"
     exit 1
 fi
 
-# Update package lists
+# ------------------------------------------------------------------------------
+# UPDATE SYSTEM
+# ------------------------------------------------------------------------------
 echo ""
 echo "--- Updating package lists ---"
 sudo apt update
 
-# ==============================================================================
-# CORE ROS2 PACKAGES
-# ==============================================================================
+# ------------------------------------------------------------------------------
+# INSTALL CORE ROS2 PACKAGES
+# ------------------------------------------------------------------------------
 echo ""
 echo "--- Installing Core ROS2 Packages ---"
 sudo apt install -y \
@@ -49,287 +54,160 @@ sudo apt install -y \
     ros-humble-joint-state-publisher \
     ros-humble-joint-state-publisher-gui \
     ros-humble-xacro \
-    ros-humble-tf2-tools \
-    ros-humble-tf2-ros \
-    ros-humble-tf-transformations
+    ros-humble-tf2-tools
 
-echo "  ✓ Core ROS2 packages installed"
-
-# ==============================================================================
-# SLAM PACKAGES
-# ==============================================================================
+# ------------------------------------------------------------------------------
+# INSTALL SLAM
+# ------------------------------------------------------------------------------
 echo ""
 echo "--- Installing SLAM Packages ---"
-
-# SLAM Toolbox (Recommended - easier than Cartographer)
 sudo apt install -y ros-humble-slam-toolbox
 
-# Google Cartographer (Alternative - more complex but powerful)
-sudo apt install -y \
-    ros-humble-cartographer \
-    ros-humble-cartographer-ros
-
-echo "  ✓ SLAM Toolbox installed"
-echo "  ✓ Google Cartographer installed (alternative)"
-
-# ==============================================================================
-# NAVIGATION STACK (NAV2) - INCLUDES AMCL
-# ==============================================================================
+# ------------------------------------------------------------------------------
+# INSTALL NAVIGATION (NAV2)
+# ------------------------------------------------------------------------------
 echo ""
-echo "--- Installing Navigation2 Stack (includes AMCL localization) ---"
-
-# Nav2 bringup includes AMCL and all core navigation components
+echo "--- Installing Navigation2 ---"
 sudo apt install -y \
     ros-humble-navigation2 \
-    ros-humble-nav2-bringup
-
-echo "  ✓ Nav2 complete stack installed (includes AMCL)"
-
-# Additional Nav2 components (most are dependencies, but explicit install helps)
-echo "--- Installing additional Nav2 components ---"
-sudo apt install -y \
+    ros-humble-nav2-bringup \
     ros-humble-nav2-map-server \
     ros-humble-nav2-simple-commander \
     ros-humble-robot-localization
 
-echo "  ✓ Map Server installed"
-echo "  ✓ Nav2 Simple Commander (Python API) installed"
-echo "  ✓ Robot Localization (sensor fusion) installed"
-
-# ==============================================================================
-# AUTONOMOUS EXPLORATION
-# ==============================================================================
+# ------------------------------------------------------------------------------
+# INSTALL VISUALIZATION
+# ------------------------------------------------------------------------------
 echo ""
-echo "--- Installing Autonomous Exploration ---"
-
-# Create workspace if it doesn't exist
-if [ ! -d "$HOME/ros2_ws/src" ]; then
-    echo "Creating ROS2 workspace..."
-    mkdir -p $HOME/ros2_ws/src
-fi
-
-# explore_lite needs to be built from source for ROS2 Humble
-EXPLORE_INSTALLED=false
-
-if [ -d "$HOME/ros2_ws/src/m-explore" ]; then
-    echo "  m-explore already exists in workspace"
-    EXPLORE_INSTALLED=true
-else
-    echo "  Installing explore_lite from source..."
-    cd $HOME/ros2_ws/src
-    
-    # Clone m-explore (contains explore_lite)
-    if git clone -b humble https://github.com/robo-friends/m-explore.git; then
-        echo "  ✓ m-explore cloned successfully"
-        EXPLORE_INSTALLED=true
-    else
-        echo "  ✗ Warning: Failed to clone m-explore"
-        echo "    You may need to install it manually later"
-        echo "    Try: cd ~/ros2_ws/src && git clone -b humble https://github.com/robo-friends/m-explore.git"
-    fi
-fi
-
-# ==============================================================================
-# VISUALIZATION
-# ==============================================================================
-echo ""
-echo "--- Installing Visualization Tools ---"
-
+echo "--- Installing RViz & RQt ---"
 sudo apt install -y \
     ros-humble-rviz2 \
-    ros-humble-rviz-common \
     ros-humble-rviz-default-plugins \
     ros-humble-rqt \
-    ros-humble-rqt-common-plugins \
-    ros-humble-rqt-robot-steering
+    ros-humble-rqt-common-plugins
 
-echo "  ✓ RViz2 and RQt tools installed"
-
-# ==============================================================================
-# SIMULATION (OPTIONAL)
-# ==============================================================================
+# ------------------------------------------------------------------------------
+# INSTALL SIMULATION (Gazebo)
+# ------------------------------------------------------------------------------
 echo ""
-echo "--- Installing Gazebo Simulation ---"
+echo "--- Installing Gazebo ---"
 sudo apt install -y \
+    gazebo \
     ros-humble-gazebo-ros-pkgs \
-    ros-humble-gazebo-ros2-control \
-    gazebo
-echo "  ✓ Gazebo installed"
+    ros-humble-gazebo-ros2-control
 
-# ==============================================================================
-# HARDWARE INTERFACE PACKAGES
-# ==============================================================================
+# ------------------------------------------------------------------------------
+# HARDWARE & PYTHON DEPENDENCIES
+# ------------------------------------------------------------------------------
 echo ""
-echo "--- Installing Hardware Interface Packages ---"
-
-# For motor control and sensors
+echo "--- Installing Hardware Interfaces ---"
 sudo apt install -y \
     ros-humble-ros2-control \
     ros-humble-ros2-controllers \
-    ros-humble-hardware-interface \
-    ros-humble-controller-manager
-
-# Serial communication for Arduino/motor controllers
-sudo apt install -y \
     python3-serial \
     python3-pip
 
-echo "  ✓ Hardware interface packages installed"
-
-# ==============================================================================
-# PYTHON DEPENDENCIES
-# ==============================================================================
 echo ""
-echo "--- Installing Python Dependencies ---"
-
-# Flask for REST API
-pip3 install --user flask flask-cors
-
-# ROS2 Python utilities
+echo "--- Installing Python libraries ---"
 pip3 install --user \
-    pyserial \
-    pyyaml \
-    numpy \
-    scipy \
-    matplotlib
+    flask flask-cors \
+    pyserial pyyaml numpy scipy matplotlib transforms3d
 
-# Transforms3d for coordinate transformations
-pip3 install --user transforms3d
-
-echo "  ✓ Python dependencies installed"
-
-# ==============================================================================
-# SENSOR DRIVERS
-# ==============================================================================
+# ------------------------------------------------------------------------------
+# IMU / SENSOR TOOLS
+# ------------------------------------------------------------------------------
 echo ""
-echo "--- Installing Sensor Drivers ---"
-
-# IMU drivers
+echo "--- Installing IMU Tools ---"
 sudo apt install -y \
     ros-humble-imu-tools \
     ros-humble-imu-filter-madgwick
 
-echo "  ✓ IMU and sensor drivers installed"
-
-# ==============================================================================
-# BUILD WORKSPACE
-# ==============================================================================
+# ------------------------------------------------------------------------------
+# ROSDEP INIT & UPDATE (only if needed)
+# ------------------------------------------------------------------------------
 echo ""
-echo "--- Building ROS2 Workspace ---"
+echo "--- Checking rosdep initialization ---"
 
-if [ "$EXPLORE_INSTALLED" = true ]; then
-    cd $HOME/ros2_ws
-    
-    echo "  Installing dependencies..."
-    set +e  # Don't exit on rosdep errors
+if [ ! -f "/etc/ros/rosdep/sources.list.d/20-default.list" ]; then
+    echo "🧰 rosdep not initialized — running 'sudo rosdep init'"
+    sudo rosdep init
     rosdep update
-    rosdep install --from-paths src --ignore-src -r -y
-    set -e
-    
-    echo "  Building workspace (this may take a few minutes)..."
-    colcon build --symlink-install --cmake-args -DCMAKE_BUILD_TYPE=Release
-    
-    if [ $? -eq 0 ]; then
-        echo "  ✓ Workspace built successfully"
-    else
-        echo "  ✗ Workspace build had errors, but continuing..."
-    fi
 else
-    echo "  ⚠ Skipping workspace build (explore_lite not installed)"
+    echo "🧰 rosdep already initialized"
+    echo "→ Updating rosdep database"
+    rosdep update
 fi
 
-# ==============================================================================
+# ------------------------------------------------------------------------------
+# CREATE WORKSPACE
+# ------------------------------------------------------------------------------
+echo ""
+echo "--- Setting up ROS2 workspace ---"
+WS="$HOME/ros2_ws"
+SRC="$WS/src"
+mkdir -p "$SRC"
+cd "$SRC"
+
+# ------------------------------------------------------------------------------
+# CLONE EXPLORATION PACKAGE (frontier exploration for ROS2 Humble)
+# ------------------------------------------------------------------------------
+echo ""
+echo "--- Cloning exploration package ---"
+if [ ! -d "AutoFrontierSearch_ros2-humble" ]; then
+    git clone https://github.com/Nyanziba/AutoFrontierSearch_ros2-humble.git
+else
+    echo "→ Exploration package already cloned"
+fi
+
+# ------------------------------------------------------------------------------
+# INSTALL ROS DEPENDENCIES for workspace
+# ------------------------------------------------------------------------------
+echo ""
+echo "--- Installing rosdep dependencies for workspace ---"
+cd "$WS"
+rosdep install --from-paths src --ignore-src -r -y || true
+
+# ------------------------------------------------------------------------------
+# BUILD WORKSPACE
+# ------------------------------------------------------------------------------
+echo ""
+echo "--- Building ROS2 workspace ---"
+colcon build --symlink-install --cmake-args -DCMAKE_BUILD_TYPE=Release
+
+# ------------------------------------------------------------------------------
 # USER PERMISSIONS
-# ==============================================================================
+# ------------------------------------------------------------------------------
 echo ""
-echo "--- Setting Up User Permissions ---"
-
-# Add user to dialout group for serial devices (lidar, Arduino, etc.)
-if groups $USER | grep -q '\bdialout\b'; then
-    echo "  ✓ User already in dialout group"
+echo "--- Setting up user permissions ---"
+if ! groups "$USER" | grep -q "\bdialout\b"; then
+    sudo usermod -a -G dialout "$USER"
+    echo "➕ Added $USER to dialout group (serial access)"
+    echo "⚠ Please LOG OUT & LOG BACK IN before using serial devices"
 else
-    sudo usermod -a -G dialout $USER
-    echo "  ✓ Added $USER to dialout group"
-    echo "  ⚠ You must LOG OUT and LOG BACK IN for this to take effect!"
+    echo "→ dialout group already present"
 fi
 
-# ==============================================================================
-# VERIFY INSTALLATIONS
-# ==============================================================================
-echo ""
-echo "--- Verifying Installations ---"
-echo ""
-
-set +u
-source /opt/ros/humble/setup.bash
-[ -f "$HOME/ros2_ws/install/setup.bash" ] && source $HOME/ros2_ws/install/setup.bash
-set -u
-
-echo "Checking installed packages..."
-echo ""
-
-check_package() {
-    if ros2 pkg list | grep -q "^$1$"; then
-        echo "  ✓ $1"
-        return 0
-    else
-        echo "  ✗ $1 NOT FOUND"
-        return 1
-    fi
-}
-
-check_package "slam_toolbox"
-check_package "nav2_bringup"
-check_package "nav2_simple_commander"
-check_package "nav2_map_server"
-check_package "robot_localization"
-
-# Check for lidar package if it exists
-check_package "sllidar_ros2" || echo "  ℹ sllidar_ros2 not found (install separately if needed)"
-
-if [ "$EXPLORE_INSTALLED" = true ]; then
-    check_package "explore_lite" || echo "  ⚠ explore_lite may need manual build"
-fi
-
-# ==============================================================================
+# ------------------------------------------------------------------------------
 # SUMMARY
-# ==============================================================================
+# ------------------------------------------------------------------------------
 echo ""
 echo "======================================================================"
-echo "  INSTALLATION COMPLETE!"
+echo "  INSTALLATION COMPLETE"
 echo "======================================================================"
-echo ""
-echo "Installed packages:"
-echo "  ✓ SLAM Toolbox (mapping)"
-echo "  ✓ Google Cartographer (alternative SLAM)"
-echo "  ✓ Nav2 Stack (navigation)"
-echo "  ✓ AMCL (localization - included in Nav2)"
-echo "  ✓ Map Server (save/load maps)"
-echo "  ✓ Robot Localization (sensor fusion)"
-echo "  ✓ RViz2 (visualization)"
-echo "  ✓ Hardware interfaces"
-echo "  ✓ Python dependencies (Flask, etc.)"
-
-if [ "$EXPLORE_INSTALLED" = true ]; then
-    echo "  ✓ Explore Lite (autonomous exploration)"
-fi
-
-echo ""
-echo "⚠ IMPORTANT: If you were added to dialout group,"
-echo "   LOG OUT and LOG BACK IN before using serial devices!"
 echo ""
 echo "Next steps:"
-echo "  1. Open a new terminal (or source ~/.bashrc)"
-echo "  2. Test your lidar (if installed):"
-echo "     ros2 launch sllidar_ros2 sllidar_c1_launch.py"
+echo " 1) Open a NEW terminal or source your setup files:"
+echo "    source /opt/ros/humble/setup.bash"
+echo "    source ~/ros2_ws/install/setup.bash"
 echo ""
-echo "  3. Start mapping phase:"
-echo "     ros2 launch slam_toolbox online_async_launch.py"
+echo " 2) Run SLAM Toolbox:"
+echo "    ros2 launch slam_toolbox online_async_launch.py"
 echo ""
-echo "  4. Visualize in RViz2:"
-echo "     rviz2"
+echo " 3) Run navigation:"
+echo "    ros2 launch nav2_bringup navigation_launch.py"
 echo ""
-echo "  5. Check the README.md for full workflow"
+echo " 4) Run frontier exploration:"
+echo "    ros2 run frontier_exploration exploration_node"
 echo ""
 echo "======================================================================"
 
