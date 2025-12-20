@@ -3,4 +3,5 @@
 *.img
 *.xz
 **/__pycache__/
-**data/
+**/data/
+**/.claude/
