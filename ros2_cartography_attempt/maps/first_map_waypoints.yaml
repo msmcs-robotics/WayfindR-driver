@@ -1,0 +1,80 @@
+metadata:
+  created_by: waypoint_manager.py
+  map_yaml: maps/first_map.yaml
+  frame_id: map
+waypoints:
+- name: map_center
+  description: Center of map (auto-generated)
+  position:
+    x: 0.42
+    y: -0.49
+    z: 0.0
+  orientation:
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  yaw_degrees: 0.0
+  tolerance:
+    position: 0.3
+    orientation: 0.2
+- name: corner_bottom_left
+  description: Bottom-left corner
+  position:
+    x: -4.38
+    y: -3.59
+    z: 0.0
+  orientation:
+    x: 0.0
+    y: 0.0
+    z: 0.382683
+    w: 0.92388
+  yaw_degrees: 45
+  tolerance:
+    position: 0.3
+    orientation: 0.2
+- name: corner_bottom_right
+  description: Bottom-right corner
+  position:
+    x: 5.22
+    y: -3.59
+    z: 0.0
+  orientation:
+    x: 0.0
+    y: 0.0
+    z: 0.92388
+    w: 0.382683
+  yaw_degrees: 135
+  tolerance:
+    position: 0.3
+    orientation: 0.2
+- name: corner_top_right
+  description: Top-right corner
+  position:
+    x: 5.22
+    y: 2.61
+    z: 0.0
+  orientation:
+    x: 0.0
+    y: 0.0
+    z: 0.92388
+    w: -0.382683
+  yaw_degrees: 225
+  tolerance:
+    position: 0.3
+    orientation: 0.2
+- name: corner_top_left
+  description: Top-left corner
+  position:
+    x: -4.38
+    y: 2.61
+    z: 0.0
+  orientation:
+    x: 0.0
+    y: 0.0
+    z: 0.382683
+    w: -0.92388
+  yaw_degrees: 315
+  tolerance:
+    position: 0.3
+    orientation: 0.2
