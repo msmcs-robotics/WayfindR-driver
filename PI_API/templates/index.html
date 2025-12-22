@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>WayfindR Control Dashboard</h1>
+            <div class="status-bar">
+                <span id="connection-status" class="status disconnected">Disconnected</span>
+                <span id="robot-mode" class="mode">IDLE</span>
+                <span id="battery-status">Battery: ---%</span>
+            </div>
+        </header>
+
+        <main>
+            <div class="dashboard-grid">
+                <!-- Control Panel -->
+                <section class="panel control-panel">
+                    <h2>Movement Control</h2>
+                    <div class="control-area">
+                        <div class="direction-pad">
+                            <button class="dir-btn" id="btn-forward-left" data-throttle="1" data-steering="-0.5">&#8598;</button>
+                            <button class="dir-btn" id="btn-forward" data-throttle="1" data-steering="0">&#8593;</button>
+                            <button class="dir-btn" id="btn-forward-right" data-throttle="1" data-steering="0.5">&#8599;</button>
+
+                            <button class="dir-btn" id="btn-rotate-left" data-rotate="-1">&#8630;</button>
+                            <button class="dir-btn stop-btn" id="btn-stop">STOP</button>
+                            <button class="dir-btn" id="btn-rotate-right" data-rotate="1">&#8631;</button>
+
+                            <button class="dir-btn" id="btn-backward-left" data-throttle="-1" data-steering="-0.5">&#8601;</button>
+                            <button class="dir-btn" id="btn-backward" data-throttle="-1" data-steering="0">&#8595;</button>
+                            <button class="dir-btn" id="btn-backward-right" data-throttle="-1" data-steering="0.5">&#8600;</button>
+                        </div>
+
+                        <div class="speed-control">
+                            <label for="speed-slider">Speed: <span id="speed-value">50</span>%</label>
+                            <input type="range" id="speed-slider" min="10" max="100" value="50">
+                        </div>
+                    </div>
+
+                    <div class="keyboard-hint">
+                        <p><strong>Keyboard Controls:</strong></p>
+                        <p>W/&#8593; Forward | S/&#8595; Backward</p>
+                        <p>A/&#8592; Left | D/&#8594; Right</p>
+                        <p>Q Rotate Left | E Rotate Right</p>
+                        <p>Space: Emergency Stop</p>
+                        <p><em>Combine keys for curves!</em></p>
+                    </div>
+                </section>
+
+                <!-- Telemetry Panel -->
+                <section class="panel telemetry-panel">
+                    <h2>Telemetry</h2>
+                    <div class="telemetry-grid">
+                        <div class="telemetry-item">
+                            <label>Position</label>
+                            <span id="position-display">(0.00, 0.00)</span>
+                        </div>
+                        <div class="telemetry-item">
+                            <label>Heading</label>
+                            <span id="heading-display">0.0°</span>
+                        </div>
+                        <div class="telemetry-item">
+                            <label>Speed</label>
+                            <span id="speed-display">0.00 m/s</span>
+                        </div>
+                        <div class="telemetry-item">
+                            <label>Throttle</label>
+                            <span id="throttle-display">0%</span>
+                        </div>
+                        <div class="telemetry-item">
+                            <label>Steering</label>
+                            <span id="steering-display">0%</span>
+                        </div>
+                        <div class="telemetry-item">
+                            <label>Uptime</label>
+                            <span id="uptime-display">0s</span>
+                        </div>
+                    </div>
+
+                    <div class="motor-status">
+                        <h3>Motors</h3>
+                        <div class="motor-grid">
+                            <div class="motor" id="motor-lf">
+                                <span class="motor-label">LF</span>
+                                <div class="motor-bar"><div class="motor-fill"></div></div>
+                            </div>
+                            <div class="motor" id="motor-rf">
+                                <span class="motor-label">RF</span>
+                                <div class="motor-bar"><div class="motor-fill"></div></div>
+                            </div>
+                            <div class="motor" id="motor-lr">
+                                <span class="motor-label">LR</span>
+                                <div class="motor-bar"><div class="motor-fill"></div></div>
+                            </div>
+                            <div class="motor" id="motor-rr">
+                                <span class="motor-label">RR</span>
+                                <div class="motor-bar"><div class="motor-fill"></div></div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Patterns Panel -->
+                <section class="panel patterns-panel">
+                    <h2>Movement Patterns</h2>
+                    <div class="pattern-buttons">
+                        <button class="pattern-btn" data-pattern="circle">Circle</button>
+                        <button class="pattern-btn" data-pattern="square">Square</button>
+                        <button class="pattern-btn" data-pattern="figure_eight">Figure 8</button>
+                        <button class="pattern-btn" data-pattern="zigzag">Zigzag</button>
+                        <button class="pattern-btn" data-pattern="spiral">Spiral</button>
+                        <button class="pattern-btn" data-pattern="scan">Scan</button>
+                    </div>
+                    <div class="pattern-options">
+                        <label>Size: <input type="number" id="pattern-size" value="1.0" min="0.5" max="5" step="0.5"> m</label>
+                        <button id="stop-pattern" class="danger-btn">Stop Pattern</button>
+                    </div>
+                </section>
+
+                <!-- Navigation Panel -->
+                <section class="panel navigation-panel">
+                    <h2>Navigation</h2>
+                    <div class="waypoint-list" id="waypoint-list">
+                        <p class="empty-message">No waypoints defined</p>
+                    </div>
+                    <div class="nav-controls">
+                        <button id="save-waypoint" class="action-btn">Save Current Position</button>
+                        <button id="cancel-nav" class="danger-btn">Cancel Navigation</button>
+                    </div>
+                </section>
+            </div>
+        </main>
+
+        <footer>
+            <div class="emergency-stop">
+                <button id="emergency-stop" class="emergency-btn">EMERGENCY STOP</button>
+            </div>
+            <p class="footer-text">WayfindR Robot Control System</p>
+        </footer>
+    </div>
+
+    <script src="/static/js/main.js"></script>
+</body>
+</html>

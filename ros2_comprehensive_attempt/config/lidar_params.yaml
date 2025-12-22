@@ -1,0 +1,74 @@
+# LiDAR Configuration
+# For RPLidar/Slamtec devices on ROS2 Humble
+
+rplidar_node:
+  ros__parameters:
+    # ==========================================
+    # Serial Port Settings
+    # ==========================================
+
+    # Device path (use /dev/rplidar if udev rules set up)
+    serial_port: /dev/ttyUSB0
+
+    # Baud rate (460800 for C1, A2, A3; 115200 for A1)
+    serial_baudrate: 460800
+
+    # ==========================================
+    # Frame Configuration
+    # ==========================================
+
+    # TF frame for laser scans
+    frame_id: laser
+
+    # ==========================================
+    # Scan Settings
+    # ==========================================
+
+    # Scan mode (model dependent)
+    # Slamtec C1: Standard, DenseBoost, Sensitivity
+    # Slamtec A1: Standard
+    # Slamtec A2/A3: Standard, Express, Boost, Sensitivity
+    scan_mode: DenseBoost
+
+    # Target scan frequency (Hz)
+    # Most RPLidars: 5-10 Hz
+    scan_frequency: 10.0
+
+    # Invert scan direction
+    inverted: false
+
+    # Compensate for motor speed variations
+    angle_compensate: true
+
+    # ==========================================
+    # Quality Settings
+    # ==========================================
+
+    # Minimum/maximum valid angles (radians)
+    # Full 360°: min=-3.14159, max=3.14159
+    # Front 180°: min=-1.5708, max=1.5708
+    angle_min: -3.14159265359
+    angle_max: 3.14159265359
+
+
+# ==========================================
+# Common LiDAR Models Reference
+# ==========================================
+#
+# Slamtec RPLidar C1 (C1M1RP):
+#   - Baud: 460800
+#   - Range: 0.1-12m (indoor), 0.1-40m (Sensitivity mode)
+#   - Modes: Standard, DenseBoost, Sensitivity
+#   - Recommended: DenseBoost for indoor
+#
+# Slamtec RPLidar A1:
+#   - Baud: 115200
+#   - Range: 0.15-12m
+#   - Modes: Standard only
+#
+# Slamtec RPLidar A2/A3:
+#   - Baud: 256000 or 460800
+#   - Range: 0.15-12m (A2), 0.15-25m (A3)
+#   - Modes: Standard, Express, Boost, Sensitivity
+#
+# ==========================================

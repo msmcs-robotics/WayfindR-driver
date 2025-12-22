@@ -117,5 +117,63 @@ RViz needs a display. Either:
 
 ---
 
+## Waypoint Navigation
+
+The system includes waypoint management and A* pathfinding.
+
+### Adding Waypoints
+
+```bash
+# Add office waypoints to the map
+cd ~/Desktop/WayfindR-driver/ros2_localization_attempt/scripts
+python3 add_office_waypoints.py
+```
+
+This creates `~/ros2_ws/maps/first_map_offices.yaml` with:
+- **office1**: Left side of map (-1.58, -0.49)
+- **office2**: Center of map (0.42, 0.51)
+- **office3**: Right side of map (2.42, -0.49)
+
+Plus routes:
+- `office_tour`: office1 → office2 → office3
+- `office_tour_reverse`: office3 → office2 → office1
+- `office_patrol`: office1 → office2 → office3 → office2
+
+### Pathfinding
+
+```bash
+source /opt/ros/humble/setup.bash
+cd ~/Desktop/WayfindR-driver/ros2_localization_attempt/scripts
+
+# Plan path to a specific office
+python3 navigate_to_office.py office2 --dry-run
+
+# Plan full route (shows all paths)
+python3 navigate_to_office.py --route office_tour --dry-run
+
+# List all waypoints and routes
+python3 navigate_to_office.py --list
+```
+
+### Monitor Position Relative to Waypoints
+
+```bash
+# Terminal 1: Start localization
+~/start_localization.sh
+
+# Terminal 2: Monitor position with waypoint awareness
+source /opt/ros/humble/setup.bash
+python3 ~/Desktop/WayfindR-driver/ros2_localization_attempt/scripts/localization_with_waypoints.py
+```
+
+This shows:
+- Current robot position from AMCL
+- Distance and bearing to each waypoint
+- Direction arrows (→ ↗ ↑ etc.)
+- Path to nearest waypoint
+- Localization quality indicator
+
+---
+
 **Created:** 2025-12-21
-**Tested:** 2025-12-21 - LiDAR + AMCL + Map Server working
+**Tested:** 2025-12-21 - LiDAR + AMCL + Map Server + Pathfinding working

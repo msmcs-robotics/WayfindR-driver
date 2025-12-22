@@ -1,0 +1,31 @@
+# WayfindR Robot Control API - Requirements
+# Python 3.8+
+
+# Web Framework
+fastapi>=0.104.0
+uvicorn[standard]>=0.24.0
+
+# Templates
+jinja2>=3.1.2
+
+# Validation
+pydantic>=2.5.0
+
+# WebSocket support (included with uvicorn[standard])
+websockets>=12.0
+
+# Async support
+asyncio>=3.4.3
+
+# Optional: GPIO for Raspberry Pi
+# Uncomment when running on Pi
+# RPi.GPIO>=0.7.1
+
+# Optional: ROS2 integration
+# Requires ROS2 Humble to be installed separately
+
+# Development
+python-multipart>=0.0.6
+
+# YAML support (for waypoints)
+pyyaml>=6.0.1

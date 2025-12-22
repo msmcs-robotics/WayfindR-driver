@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <div class="container status-page">
+        <header>
+            <h1>Robot Status</h1>
+            <a href="/" class="back-link">← Back to Dashboard</a>
+        </header>
+
+        <main>
+            <div class="status-grid">
+                <!-- System Status -->
+                <section class="panel">
+                    <h2>System</h2>
+                    <table class="status-table">
+                        <tr>
+                            <td>Connection</td>
+                            <td id="sys-connection">{{ robot_state.get('connected', 'Unknown') }}</td>
+                        </tr>
+                        <tr>
+                            <td>Mode</td>
+                            <td id="sys-mode">{{ robot_state.get('mode', 'Unknown') }}</td>
+                        </tr>
+                        <tr>
+                            <td>Movement</td>
+                            <td id="sys-movement">{{ robot_state.get('movement_state', 'Unknown') }}</td>
+                        </tr>
+                        <tr>
+                            <td>Uptime</td>
+                            <td id="sys-uptime">--</td>
+                        </tr>
+                    </table>
+                </section>
+
+                <!-- Position -->
+                <section class="panel">
+                    <h2>Position</h2>
+                    <table class="status-table">
+                        <tr>
+                            <td>X</td>
+                            <td id="pos-x">0.000 m</td>
+                        </tr>
+                        <tr>
+                            <td>Y</td>
+                            <td id="pos-y">0.000 m</td>
+                        </tr>
+                        <tr>
+                            <td>Z</td>
+                            <td id="pos-z">0.000 m</td>
+                        </tr>
+                        <tr>
+                            <td>Yaw</td>
+                            <td id="pos-yaw">0.0°</td>
+                        </tr>
+                        <tr>
+                            <td>Pitch</td>
+                            <td id="pos-pitch">0.0°</td>
+                        </tr>
+                        <tr>
+                            <td>Roll</td>
+                            <td id="pos-roll">0.0°</td>
+                        </tr>
+                    </table>
+                </section>
+
+                <!-- Velocity -->
+                <section class="panel">
+                    <h2>Velocity</h2>
+                    <table class="status-table">
+                        <tr>
+                            <td>Linear X</td>
+                            <td id="vel-linear-x">0.000 m/s</td>
+                        </tr>
+                        <tr>
+                            <td>Linear Y</td>
+                            <td id="vel-linear-y">0.000 m/s</td>
+                        </tr>
+                        <tr>
+                            <td>Angular Z</td>
+                            <td id="vel-angular-z">0.000 rad/s</td>
+                        </tr>
+                    </table>
+                </section>
+
+                <!-- Drive -->
+                <section class="panel">
+                    <h2>Drive</h2>
+                    <table class="status-table">
+                        <tr>
+                            <td>Throttle</td>
+                            <td id="drive-throttle">0%</td>
+                        </tr>
+                        <tr>
+                            <td>Steering</td>
+                            <td id="drive-steering">0%</td>
+                        </tr>
+                    </table>
+
+                    <h3>Motor Speeds</h3>
+                    <table class="status-table">
+                        <tr>
+                            <td>Left Front</td>
+                            <td id="motor-lf-speed">0%</td>
+                        </tr>
+                        <tr>
+                            <td>Left Rear</td>
+                            <td id="motor-lr-speed">0%</td>
+                        </tr>
+                        <tr>
+                            <td>Right Front</td>
+                            <td id="motor-rf-speed">0%</td>
+                        </tr>
+                        <tr>
+                            <td>Right Rear</td>
+                            <td id="motor-rr-speed">0%</td>
+                        </tr>
+                    </table>
+                </section>
+
+                <!-- Sensors -->
+                <section class="panel">
+                    <h2>Sensors</h2>
+                    <table class="status-table">
+                        <tr>
+                            <td>Battery Voltage</td>
+                            <td id="sensor-battery-v">0.0 V</td>
+                        </tr>
+                        <tr>
+                            <td>Battery Level</td>
+                            <td id="sensor-battery-pct">0%</td>
+                        </tr>
+                        <tr>
+                            <td>Temperature</td>
+                            <td id="sensor-temp">0.0°C</td>
+                        </tr>
+                    </table>
+
+                    <h3>IMU</h3>
+                    <table class="status-table">
+                        <tr>
+                            <td>Accelerometer</td>
+                            <td id="imu-accel">(0, 0, 0)</td>
+                        </tr>
+                        <tr>
+                            <td>Gyroscope</td>
+                            <td id="imu-gyro">(0, 0, 0)</td>
+                        </tr>
+                        <tr>
+                            <td>Magnetometer</td>
+                            <td id="imu-mag">(0, 0, 0)</td>
+                        </tr>
+                    </table>
+                </section>
+
+                <!-- Navigation -->
+                <section class="panel">
+                    <h2>Navigation</h2>
+                    <table class="status-table">
+                        <tr>
+                            <td>Navigating</td>
+                            <td id="nav-active">No</td>
+                        </tr>
+                        <tr>
+                            <td>Current Goal</td>
+                            <td id="nav-goal">None</td>
+                        </tr>
+                        <tr>
+                            <td>Distance to Goal</td>
+                            <td id="nav-distance">-- m</td>
+                        </tr>
+                    </table>
+                </section>
+            </div>
+        </main>
+
+        <footer>
+            <p>Last Updated: <span id="last-update">--</span></p>
+        </footer>
+    </div>
+
+    <script>
+        // WebSocket connection for live updates
+        const ws = new WebSocket(`ws://${window.location.host}/ws`);
+
+        ws.onmessage = function(event) {
+            const msg = JSON.parse(event.data);
+            if (msg.type === 'telemetry') {
+                updateStatus(msg.data);
+            }
+        };
+
+        function updateStatus(data) {
+            // System
+            document.getElementById('sys-mode').textContent = data.mode || '--';
+            document.getElementById('sys-movement').textContent = data.movement_state || '--';
+
+            // Position
+            if (data.position) {
+                document.getElementById('pos-x').textContent = `${data.position.x.toFixed(3)} m`;
+                document.getElementById('pos-y').textContent = `${data.position.y.toFixed(3)} m`;
+                document.getElementById('pos-z').textContent = `${data.position.z.toFixed(3)} m`;
+                document.getElementById('pos-yaw').textContent = `${data.position.yaw.toFixed(1)}°`;
+                document.getElementById('pos-pitch').textContent = `${data.position.pitch.toFixed(1)}°`;
+                document.getElementById('pos-roll').textContent = `${data.position.roll.toFixed(1)}°`;
+            }
+
+            // Velocity
+            if (data.velocity) {
+                document.getElementById('vel-linear-x').textContent = `${data.velocity.linear_x.toFixed(3)} m/s`;
+                document.getElementById('vel-linear-y').textContent = `${data.velocity.linear_y.toFixed(3)} m/s`;
+                document.getElementById('vel-angular-z').textContent = `${data.velocity.angular_z.toFixed(3)} rad/s`;
+            }
+
+            // Drive
+            if (data.drive) {
+                document.getElementById('drive-throttle').textContent = `${(data.drive.throttle * 100).toFixed(0)}%`;
+                document.getElementById('drive-steering').textContent = `${(data.drive.steering * 100).toFixed(0)}%`;
+
+                document.getElementById('motor-lf-speed').textContent = `${(data.drive.left_front.speed * 100).toFixed(0)}%`;
+                document.getElementById('motor-lr-speed').textContent = `${(data.drive.left_rear.speed * 100).toFixed(0)}%`;
+                document.getElementById('motor-rf-speed').textContent = `${(data.drive.right_front.speed * 100).toFixed(0)}%`;
+                document.getElementById('motor-rr-speed').textContent = `${(data.drive.right_rear.speed * 100).toFixed(0)}%`;
+            }
+
+            // Sensors
+            if (data.sensors) {
+                document.getElementById('sensor-battery-v').textContent = `${data.sensors.battery_voltage.toFixed(1)} V`;
+                document.getElementById('sensor-battery-pct').textContent = `${data.sensors.battery_percentage.toFixed(0)}%`;
+                document.getElementById('sensor-temp').textContent = `${data.sensors.temperature.toFixed(1)}°C`;
+
+                if (data.sensors.imu_accel) {
+                    document.getElementById('imu-accel').textContent =
+                        `(${data.sensors.imu_accel[0].toFixed(2)}, ${data.sensors.imu_accel[1].toFixed(2)}, ${data.sensors.imu_accel[2].toFixed(2)})`;
+                }
+                if (data.sensors.imu_gyro) {
+                    document.getElementById('imu-gyro').textContent =
+                        `(${data.sensors.imu_gyro[0].toFixed(2)}, ${data.sensors.imu_gyro[1].toFixed(2)}, ${data.sensors.imu_gyro[2].toFixed(2)})`;
+                }
+            }
+
+            // Navigation
+            if (data.navigation) {
+                document.getElementById('nav-active').textContent = data.navigation.is_navigating ? 'Yes' : 'No';
+                document.getElementById('nav-goal').textContent = data.navigation.current_goal || 'None';
+                document.getElementById('nav-distance').textContent =
+                    data.navigation.distance_to_goal ? `${data.navigation.distance_to_goal.toFixed(2)} m` : '-- m';
+            }
+
+            // Timestamp
+            document.getElementById('last-update').textContent = new Date().toLocaleTimeString();
+        }
+
+        // Request state periodically
+        setInterval(() => {
+            if (ws.readyState === WebSocket.OPEN) {
+                ws.send(JSON.stringify({type: 'get_state'}));
+            }
+        }, 500);
+    </script>
+</body>
+</html>

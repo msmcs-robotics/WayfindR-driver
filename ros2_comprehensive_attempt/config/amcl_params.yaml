@@ -1,0 +1,149 @@
+# AMCL (Adaptive Monte Carlo Localization) Configuration
+# For ROS2 Humble with 2D LiDAR
+#
+# AMCL uses a particle filter to estimate robot pose on a known map.
+
+amcl:
+  ros__parameters:
+    # ==========================================
+    # Simulation Time (set false for real robot)
+    # ==========================================
+    use_sim_time: false
+
+    # ==========================================
+    # Frame Configuration
+    # ==========================================
+
+    # World frame (from map)
+    global_frame_id: map
+
+    # Odometry frame
+    odom_frame_id: odom
+
+    # Robot base frame
+    base_frame_id: base_link
+
+    # LiDAR topic
+    scan_topic: /scan
+
+    # ==========================================
+    # Particle Filter Settings
+    # ==========================================
+
+    # Number of particles (more = accurate but slower)
+    min_particles: 500
+    max_particles: 2000
+
+    # Resample when effective particle count drops below this
+    pf_err: 0.05
+    pf_z: 0.99
+
+    # ==========================================
+    # Motion Model
+    # ==========================================
+
+    # Robot type: "diff" (differential drive) or "omni" (omnidirectional)
+    robot_model_type: nav2_amcl::DifferentialMotionModel
+
+    # Odometry noise (diff-corrected)
+    alpha1: 0.2  # Rotation from rotation
+    alpha2: 0.2  # Rotation from translation
+    alpha3: 0.2  # Translation from translation
+    alpha4: 0.2  # Translation from rotation
+    alpha5: 0.2  # Translation (omnidirectional)
+
+    # ==========================================
+    # Laser Model
+    # ==========================================
+
+    # Model type: "likelihood_field" (fast) or "beam" (accurate)
+    laser_model_type: likelihood_field
+
+    # LiDAR range limits
+    laser_min_range: 0.1   # meters
+    laser_max_range: 12.0  # Match your LiDAR
+
+    # Max beams to use (performance tuning)
+    max_beams: 60
+
+    # Likelihood field parameters
+    z_hit: 0.95            # Probability of hitting expected obstacle
+    z_short: 0.1           # Probability of short reading
+    z_max: 0.05            # Probability of max range reading
+    z_rand: 0.05           # Probability of random reading
+    sigma_hit: 0.2         # Standard deviation for hit model
+    lambda_short: 0.1      # Exponential decay for short model
+
+    # ==========================================
+    # Update Rates
+    # ==========================================
+
+    # Minimum movement before update
+    update_min_d: 0.1      # meters
+    update_min_a: 0.2      # radians
+
+    # Resample interval
+    resample_interval: 1
+
+    # TF tolerance
+    transform_tolerance: 1.0
+
+    # ==========================================
+    # Recovery
+    # ==========================================
+
+    # Add random particles when localization is poor
+    recovery_alpha_slow: 0.001
+    recovery_alpha_fast: 0.1
+
+    # ==========================================
+    # Initial Pose (optional)
+    # ==========================================
+
+    # Set these to start at a known position
+    # Otherwise, use RViz "2D Pose Estimate" tool
+    set_initial_pose: false
+    initial_pose:
+      x: 0.0
+      y: 0.0
+      z: 0.0
+      yaw: 0.0
+
+    # ==========================================
+    # First Map Only Mode
+    # ==========================================
+
+    # Only use first map received (performance)
+    first_map_only: false
+
+    # ==========================================
+    # TF Broadcasting
+    # ==========================================
+
+    # Broadcast map->odom transform
+    tf_broadcast: true
+
+
+# ==========================================
+# Map Server Configuration
+# ==========================================
+
+map_server:
+  ros__parameters:
+    use_sim_time: false
+    yaml_filename: ""  # Set via launch argument
+
+
+# ==========================================
+# Lifecycle Manager Configuration
+# ==========================================
+
+lifecycle_manager:
+  ros__parameters:
+    use_sim_time: false
+    autostart: true
+    node_names:
+      - map_server
+      - amcl
+    bond_timeout: 4.0
+    attempt_respawn_reconnection: true
