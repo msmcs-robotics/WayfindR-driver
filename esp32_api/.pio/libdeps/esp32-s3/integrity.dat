@@ -1,0 +1,4 @@
+me-no-dev/ESPAsyncWebServer@^1.2.3
+bblanchon/ArduinoJson@^7.0.0
+me-no-dev/AsyncTCP@^1.1.1
+madhephaestus/ESP32Servo@^1.1.1
