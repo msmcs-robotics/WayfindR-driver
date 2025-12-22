@@ -1,0 +1,84 @@
+amcl:
+  ros__parameters:
+    use_sim_time: false
+
+    # Transform settings
+    global_frame_id: map
+    odom_frame_id: odom
+    base_frame_id: base_link
+    scan_topic: /scan
+
+    # Transform tolerances
+    transform_tolerance: 1.0
+
+    # Particle filter settings
+    # More particles = more accurate but slower
+    min_particles: 500
+    max_particles: 2000
+
+    # Particle filter update thresholds
+    # Update when robot moves this much
+    update_min_d: 0.1          # meters of translation
+    update_min_a: 0.2          # radians of rotation
+
+    # Resampling
+    resample_interval: 1
+
+    # Recovery behavior
+    recovery_alpha_slow: 0.001
+    recovery_alpha_fast: 0.1
+
+    # Initial pose (can be overridden by RViz or topic)
+    # Set these to the center of your map or expected starting location
+    set_initial_pose: true
+    initial_pose:
+      x: 0.0
+      y: 0.0
+      z: 0.0
+      yaw: 0.0
+
+    # Initial pose covariance (uncertainty)
+    # Larger values = more uncertainty = wider particle spread
+    initial_cov_xx: 0.25       # x variance (meters^2)
+    initial_cov_yy: 0.25       # y variance (meters^2)
+    initial_cov_aa: 0.0685     # yaw variance (radians^2, ~15 degrees)
+
+    # Laser model parameters
+    laser_model_type: likelihood_field
+    laser_likelihood_max_dist: 2.0
+    laser_max_range: 12.0      # Match your LiDAR (C1 = 12m reliable)
+    laser_min_range: 0.15      # Match your LiDAR minimum
+    max_beams: 60              # Number of beams to use (reduce for speed)
+
+    # Motion model parameters (differential drive)
+    robot_model_type: nav2_amcl::DifferentialMotionModel
+    alpha1: 0.2    # Rotation noise from rotation
+    alpha2: 0.2    # Rotation noise from translation
+    alpha3: 0.2    # Translation noise from translation
+    alpha4: 0.2    # Translation noise from rotation
+    alpha5: 0.1    # Translation noise (omnidirectional)
+
+    # Likelihood field sensor model
+    z_hit: 0.5
+    z_short: 0.05
+    z_max: 0.05
+    z_rand: 0.5
+    sigma_hit: 0.2
+
+    # TF broadcast
+    tf_broadcast: true
+
+# Map server configuration
+map_server:
+  ros__parameters:
+    use_sim_time: false
+    yaml_filename: ""  # Set via launch file
+
+# Lifecycle manager for localization nodes
+lifecycle_manager:
+  ros__parameters:
+    use_sim_time: false
+    autostart: true
+    node_names:
+      - map_server
+      - amcl

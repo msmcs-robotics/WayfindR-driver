@@ -1,0 +1,111 @@
+Panels:
+  - Class: rviz_common/Displays
+    Name: Displays
+  - Class: rviz_common/Views
+    Name: Views
+
+Visualization Manager:
+  Class: ""
+  Displays:
+    - Class: rviz_default_plugins/Grid
+      Name: Grid
+      Enabled: true
+      Value: true
+
+    - Class: rviz_default_plugins/Map
+      Name: Map
+      Enabled: true
+      Topic:
+        Value: /map
+        Depth: 5
+      Alpha: 0.7
+      Color Scheme: map
+      Draw Behind: true
+      Value: true
+
+    - Class: rviz_default_plugins/LaserScan
+      Name: LaserScan
+      Enabled: true
+      Topic:
+        Value: /scan
+        Depth: 5
+      Color Transformer: FlatColor
+      Color: 255; 0; 0
+      Size (m): 0.03
+      Style: Flat Squares
+      Value: true
+
+    - Class: rviz_default_plugins/TF
+      Name: TF
+      Enabled: true
+      Frame Timeout: 15
+      Frames:
+        All Enabled: true
+      Marker Scale: 0.5
+      Show Arrows: true
+      Show Axes: true
+      Show Names: true
+      Value: true
+
+    - Class: rviz_default_plugins/PoseArray
+      Name: ParticleCloud
+      Enabled: true
+      Topic:
+        Value: /particlecloud
+        Depth: 5
+      Color: 0; 180; 0
+      Arrow Length: 0.05
+      Value: true
+
+    - Class: rviz_default_plugins/PoseWithCovariance
+      Name: AMCL Pose
+      Enabled: true
+      Topic:
+        Value: /amcl_pose
+        Depth: 5
+      Color: 255; 255; 0
+      Alpha: 1.0
+      Shaft Length: 0.3
+      Shaft Radius: 0.03
+      Head Length: 0.1
+      Head Radius: 0.05
+      Covariance:
+        Orientation:
+          Alpha: 0.5
+          Color: 255; 255; 127
+        Position:
+          Alpha: 0.5
+          Color: 204; 51; 204
+      Value: true
+
+    - Class: rviz_default_plugins/RobotModel
+      Name: RobotModel
+      Enabled: false
+      Description Topic:
+        Value: /robot_description
+      Value: false
+
+  Global Options:
+    Background Color: 48; 48; 48
+    Fixed Frame: map
+    Frame Rate: 30
+
+  Tools:
+    - Class: rviz_default_plugins/Interact
+    - Class: rviz_default_plugins/MoveCamera
+    - Class: rviz_default_plugins/Select
+    - Class: rviz_default_plugins/SetInitialPose
+      Topic: /initialpose
+    - Class: rviz_default_plugins/SetGoal
+      Topic: /goal_pose
+    - Class: rviz_default_plugins/Measure
+
+  Views:
+    Current:
+      Class: rviz_default_plugins/TopDownOrtho
+      Name: TopDownOrtho
+      Near Clip Distance: 0.01
+      Scale: 50
+      Target Frame: map
+      X: 0
+      Y: 0
