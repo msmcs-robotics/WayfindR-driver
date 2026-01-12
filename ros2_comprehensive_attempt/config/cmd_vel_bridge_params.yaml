@@ -1,0 +1,95 @@
+# ROS2 cmd_vel Bridge Parameters
+# Configuration file for WayfindR cmd_vel bridge node
+#
+# Usage:
+#   ros2 run cmd_vel_bridge cmd_vel_bridge --ros-args \
+#     --params-file config/cmd_vel_bridge_params.yaml
+
+cmd_vel_bridge:
+  ros__parameters:
+    # ============================================================
+    # Network Configuration
+    # ============================================================
+
+    # PI_API endpoint URL
+    # Change this if PI_API is running on a different host/port
+    api_url: "http://localhost:8000"
+
+    # HTTP request timeout (seconds)
+    # Lower values = faster failure detection
+    # Higher values = more tolerance for slow networks
+    api_timeout: 0.1
+
+    # ============================================================
+    # Robot Physical Parameters
+    # ============================================================
+
+    # Distance between left and right wheels (meters)
+    # Measure from center of left wheels to center of right wheels
+    # Critical for accurate turning - calibrate carefully!
+    wheelbase: 0.30
+
+    # Radius of drive wheels (meters)
+    # Used for velocity calculations
+    wheel_radius: 0.065
+
+    # ============================================================
+    # Velocity Limits
+    # ============================================================
+
+    # Maximum linear velocity (m/s)
+    # Robot will not exceed this speed forward/backward
+    # Adjust based on robot capabilities and safety requirements
+    max_linear_velocity: 0.5
+
+    # Maximum angular velocity (rad/s)
+    # Robot will not exceed this rotation speed
+    # 1.0 rad/s ≈ 57.3 degrees/second
+    max_angular_velocity: 1.0
+
+    # ============================================================
+    # Control Parameters
+    # ============================================================
+
+    # Command timeout (seconds)
+    # If no cmd_vel received within this time, robot stops
+    # Safety feature to prevent runaway if Nav2 crashes
+    # Nav2 publishes at ~20 Hz, so 0.5s = ~10 missed messages
+    cmd_vel_timeout: 0.5
+
+    # ============================================================
+    # Odometry Parameters
+    # ============================================================
+
+    # Odometry publishing frequency (Hz)
+    # Nav2 expects 20-50 Hz
+    # Higher rates = better localization but more CPU usage
+    odom_frequency: 50
+
+    # Whether to publish TF transforms
+    # Set to false if another node publishes odom->base_link
+    publish_tf: true
+
+    # Coordinate frame names
+    # Must match your robot's URDF and TF tree
+    odom_frame: "odom"
+    base_frame: "base_link"
+
+    # ============================================================
+    # Odometry Covariance (Uncertainty Estimates)
+    # ============================================================
+
+    # These values represent uncertainty in dead reckoning
+    # Higher values = less trust in odometry
+    # Nav2 uses these to weight odometry vs. sensor data
+
+    # Position uncertainty (meters²)
+    # Dead reckoning accumulates error over time
+    pose_covariance_x: 0.1    # X-axis (forward)
+    pose_covariance_y: 0.1    # Y-axis (sideways)
+    pose_covariance_yaw: 0.5  # Heading angle (radians²)
+
+    # Velocity uncertainty ((m/s)² and (rad/s)²)
+    # How much commanded velocity differs from actual
+    twist_covariance_vx: 0.05    # Linear velocity
+    twist_covariance_vyaw: 0.1   # Angular velocity

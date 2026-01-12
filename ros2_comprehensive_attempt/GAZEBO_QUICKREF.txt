@@ -1,0 +1,198 @@
+================================================================================
+WAYFINDER GAZEBO SIMULATION - QUICK REFERENCE CARD
+================================================================================
+
+INSTALLATION
+------------
+cd ~/WayfindR-driver/ros2_comprehensive_attempt/scripts
+./install_gazebo.sh
+
+VERIFY INSTALLATION
+-------------------
+./test_simulation.sh
+
+BASIC LAUNCH COMMANDS
+---------------------
+# Empty world
+ros2 launch ros2_comprehensive_attempt gazebo_sim.launch.py
+
+# Test room (simple)
+ros2 launch ros2_comprehensive_attempt gazebo_sim.launch.py world:=test_room
+
+# Obstacle course (complex)
+ros2 launch ros2_comprehensive_attempt gazebo_sim.launch.py world:=obstacle_course
+
+# Headless (no GUI - faster)
+ros2 launch ros2_comprehensive_attempt gazebo_sim.launch.py use_gui:=false
+
+# Without RViz
+ros2 launch ros2_comprehensive_attempt gazebo_sim.launch.py use_rviz:=false
+
+SLAM MAPPING WORKFLOW
+---------------------
+Terminal 1:
+  ros2 launch ros2_comprehensive_attempt gazebo_sim.launch.py world:=obstacle_course
+
+Terminal 2:
+  ros2 launch ros2_comprehensive_attempt bringup.launch.py mode:=slam use_sim_time:=true
+
+Terminal 3:
+  ros2 run teleop_twist_keyboard teleop_twist_keyboard
+
+Terminal 4 (save map):
+  ros2 run nav2_map_server map_saver_cli -f ~/maps/sim_map
+
+AUTONOMOUS NAVIGATION WORKFLOW
+-------------------------------
+Terminal 1:
+  ros2 launch ros2_comprehensive_attempt gazebo_sim.launch.py world:=obstacle_course
+
+Terminal 2:
+  ros2 launch ros2_comprehensive_attempt bringup.launch.py \
+    mode:=navigation \
+    map:=~/maps/sim_map.yaml \
+    use_sim_time:=true
+
+In RViz:
+  1. Click "2D Pose Estimate" - set robot initial position
+  2. Click "2D Nav Goal" - set destination
+
+MANUAL CONTROL
+--------------
+# Move forward
+ros2 topic pub /cmd_vel geometry_msgs/msg/Twist \
+  "{linear: {x: 0.2}, angular: {z: 0.0}}" --rate 10
+
+# Rotate in place
+ros2 topic pub /cmd_vel geometry_msgs/msg/Twist \
+  "{linear: {x: 0.0}, angular: {z: 0.5}}" --rate 10
+
+# Stop
+ros2 topic pub /cmd_vel geometry_msgs/msg/Twist \
+  "{linear: {x: 0.0}, angular: {z: 0.0}}" --once
+
+MONITORING
+----------
+# List all topics
+ros2 topic list
+
+# Check LIDAR data
+ros2 topic echo /scan
+
+# Check odometry
+ros2 topic echo /odom
+
+# Check topic rates
+ros2 topic hz /scan
+ros2 topic hz /odom
+
+# View TF tree
+ros2 run tf2_tools view_frames
+
+DEBUG COMMANDS
+--------------
+# Gazebo version
+gz sim --version
+
+# List Gazebo topics
+gz topic -l
+
+# Echo Gazebo topic
+gz topic -e -t /scan
+
+# List models
+gz model -l
+
+# Check use_sim_time parameter
+ros2 param get /robot_state_publisher use_sim_time
+
+IMPORTANT TOPICS
+----------------
+/scan           - LIDAR data (sensor_msgs/LaserScan)
+/odom           - Odometry (nav_msgs/Odometry)
+/cmd_vel        - Velocity commands (geometry_msgs/Twist)
+/tf             - Transforms (tf2_msgs/TFMessage)
+/clock          - Simulation time (rosgraph_msgs/Clock)
+/joint_states   - Joint states (sensor_msgs/JointState)
+
+KEY FILES
+---------
+Launch:   launch/gazebo_sim.launch.py
+Worlds:   worlds/test_room.sdf, worlds/obstacle_course.sdf
+URDF:     urdf/wayfinder_robot.urdf.xacro
+Config:   config/gazebo_sim.rviz
+Guide:    findings/gazebo-simulation-guide.md
+Scripts:  scripts/install_gazebo.sh, scripts/test_simulation.sh
+
+TROUBLESHOOTING
+---------------
+# Gazebo won't start
+gz sim --version
+sudo apt install --reinstall ignition-fortress
+
+# Robot doesn't spawn
+ros2 topic echo /robot_description --once
+
+# No sensor data
+ros2 topic list | grep -E '(scan|odom)'
+ros2 topic hz /scan
+
+# Clean restart
+killall -9 gz ruby
+rm -rf ~/.gz/sim/log/*
+
+# Performance issues
+Launch with: use_gui:=false use_rviz:=false
+
+USEFUL COMBOS
+-------------
+# Record simulation data
+ros2 bag record /scan /odom /tf /cmd_vel /clock
+
+# Replay simulation data
+ros2 bag play <bagfile>
+
+# Keyboard teleop
+ros2 run teleop_twist_keyboard teleop_twist_keyboard
+
+# Check system performance
+gz topic -e -t /stats
+
+GAZEBO VS HARDWARE
+------------------
+                    Hardware        Simulation
+Setup:              RPLidar+GPIO    Launch file
+Time:               Real-time       use_sim_time:=true
+Repeatability:      Difficult       Perfect
+Safety:             Physical risk   Safe
+Speed:              1x only         Variable
+
+WHEN TO USE SIMULATION
+----------------------
+✓ Algorithm development
+✓ Parameter tuning
+✓ Pre-deployment testing
+✓ Edge case scenarios
+✓ Learning & demos
+✗ Final validation (use hardware)
+
+RECOMMENDED WORKFLOW
+--------------------
+1. Develop algorithm in Gazebo (fast iteration)
+2. Test in obstacle course world (validation)
+3. Test with rosbag data (real sensor data)
+4. Deploy to hardware (final validation)
+5. Record problem scenarios
+6. Iterate back to simulation
+
+GETTING HELP
+------------
+Full guide:      findings/gazebo-simulation-guide.md
+Quick readme:    SIMULATION_README.md
+Test script:     scripts/test_simulation.sh
+ROS2 docs:       https://docs.ros.org/en/humble/
+Gazebo docs:     https://gazebosim.org/docs/fortress
+
+================================================================================
+VERSION: 1.0 | DATE: 2026-01-11 | AUTHOR: WayfindR Development Team
+================================================================================

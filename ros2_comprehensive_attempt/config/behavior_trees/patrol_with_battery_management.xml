@@ -1,0 +1,189 @@
+<!--
+  Battery-Aware Patrol Behavior Tree for WayfindR Robot
+
+  Description:
+    Advanced patrol behavior that monitors battery level and automatically
+    returns to charging dock when battery becomes low. After charging completes,
+    the robot can optionally resume the patrol mission.
+
+  Features:
+    - Continuous battery level monitoring
+    - Automatic return-to-dock on low battery
+    - Patrol mission preemption
+    - Multi-waypoint sequential navigation
+    - Comprehensive recovery behaviors
+    - Safety-first design
+
+  Blackboard Variables:
+    - goals: Vector of patrol waypoint poses
+    - dock_pose: Location of charging dock
+    - battery_threshold: Low battery percentage (default: 20.0)
+    - resume_after_charge: Whether to resume patrol after charging
+
+  Usage:
+    Configure battery_topic to match your battery state publisher.
+    Set dock_pose to the location of your charging station.
+    Adjust battery_threshold based on mission duration and dock distance.
+
+  Author: WayfindR Team
+  Date: 2026-01-11
+  Version: 1.0
+-->
+
+<root BTCPP_format="4" main_tree_to_execute="PatrolWithBatteryManagement">
+
+  <!-- Main tree: Battery-aware patrol -->
+  <BehaviorTree ID="PatrolWithBatteryManagement">
+
+    <!-- Top-level safety check: Battery monitoring -->
+    <ReactiveFallback name="BatteryMonitor">
+
+      <!-- Check if battery is critically low -->
+      <Inverter>
+        <IsBatteryLow battery_topic="/battery_status"
+                      min_battery="15.0"
+                      is_voltage="false"/>
+      </Inverter>
+
+      <!-- Battery is low: Navigate to dock and charge -->
+      <SubTree ID="ReturnToDockAndCharge"/>
+
+    </ReactiveFallback>
+
+  </BehaviorTree>
+
+  <!-- Subtree: Return to dock and charge -->
+  <BehaviorTree ID="ReturnToDockAndCharge">
+    <Sequence name="DockingSequence">
+
+      <!-- Cancel current patrol mission -->
+      <ClearEntirely name="ClearPatrolGoals">
+        <ClearEntirely targets="{goals}"/>
+      </ClearEntirely>
+
+      <!-- Navigate to charging dock -->
+      <SubTree ID="NavigateToDock" target="dock_pose"/>
+
+      <!-- Wait until battery is sufficiently charged -->
+      <RetryUntilSuccessful num_attempts="-1">
+        <Sequence name="ChargingCheck">
+          <Wait wait_duration="30.0"/>  <!-- Check every 30 seconds -->
+          <Inverter>
+            <IsBatteryLow battery_topic="/battery_status"
+                          min_battery="80.0"
+                          is_voltage="false"/>
+          </Inverter>
+        </Sequence>
+      </RetryUntilSuccessful>
+
+      <!-- Optional: Resume patrol after charging -->
+      <!-- Uncomment to enable mission resumption -->
+      <!-- <SubTree ID="ResumePatrol"/> -->
+
+    </Sequence>
+  </BehaviorTree>
+
+  <!-- Subtree: Navigate to dock -->
+  <BehaviorTree ID="NavigateToDock">
+    <RecoveryNode number_of_retries="10" name="DockNavigationWithRetry">
+
+      <!-- Primary docking navigation -->
+      <PipelineSequence name="NavigateToDockSequence">
+
+        <!-- Plan path to dock -->
+        <RateController hz="0.5" name="DockPlanning">
+          <RecoveryNode number_of_retries="1">
+            <ComputePathToPose goal="{dock_pose}" path="{dock_path}" planner_id="GridBased"/>
+            <ClearEntireCostmap service_name="global_costmap/clear_entirely_global_costmap"/>
+          </RecoveryNode>
+        </RateController>
+
+        <!-- Follow path to dock -->
+        <RecoveryNode number_of_retries="1">
+          <FollowPath path="{dock_path}" controller_id="FollowPath"/>
+          <ClearEntireCostmap service_name="local_costmap/clear_entirely_local_costmap"/>
+        </RecoveryNode>
+
+      </PipelineSequence>
+
+      <!-- Enhanced recovery for critical docking mission -->
+      <Sequence name="DockingRecovery">
+        <RoundRobin>
+          <Sequence name="ClearAndSpin">
+            <ClearEntireCostmap service_name="local_costmap/clear_entirely_local_costmap"/>
+            <ClearEntireCostmap service_name="global_costmap/clear_entirely_global_costmap"/>
+            <Spin spin_dist="1.57"/>
+          </Sequence>
+          <Wait wait_duration="10.0"/>
+          <BackUp backup_dist="0.5" backup_speed="0.1"/>
+        </RoundRobin>
+      </Sequence>
+
+    </RecoveryNode>
+  </BehaviorTree>
+
+  <!-- Subtree: Standard patrol navigation -->
+  <BehaviorTree ID="PatrolNavigation">
+    <RecoveryNode number_of_retries="6" name="PatrolWithRecovery">
+
+      <!-- Normal patrol sequence -->
+      <PipelineSequence name="PatrolSequence">
+
+        <!-- Configure navigation -->
+        <Sequence name="SetupNavigation">
+          <ProgressCheckerSelector selected_progress_checker="progress_checker">
+            <SelectedController/>
+          </ProgressCheckerSelector>
+          <GoalCheckerSelector selected_goal_checker="general_goal_checker">
+            <SelectedController/>
+          </GoalCheckerSelector>
+        </Sequence>
+
+        <!-- Plan through waypoints -->
+        <RateController hz="0.333">
+          <RecoveryNode number_of_retries="1">
+            <ComputePathThroughPoses goals="{goals}" path="{path}" planner_id="GridBased">
+              <RemovePassedGoals
+                input_goals="{goals}"
+                output_goals="{goals}"
+                radius="0.5"/>
+            </ComputePathThroughPoses>
+            <Sequence name="PlannerRecovery">
+              <WouldAPlannerRecoveryHelp error_code="{compute_path_error_code}"/>
+              <ClearEntireCostmap service_name="global_costmap/clear_entirely_global_costmap"/>
+            </Sequence>
+          </RecoveryNode>
+        </RateController>
+
+        <!-- Follow path -->
+        <RecoveryNode number_of_retries="1">
+          <FollowPath path="{path}" controller_id="FollowPath"/>
+          <Sequence name="ControllerRecovery">
+            <WouldAControllerRecoveryHelp error_code="{follow_path_error_code}"/>
+            <ClearEntireCostmap service_name="local_costmap/clear_entirely_local_costmap"/>
+          </Sequence>
+        </RecoveryNode>
+
+        <!-- Pause at each waypoint -->
+        <Wait wait_duration="3.0"/>
+
+      </PipelineSequence>
+
+      <!-- Standard recovery -->
+      <ReactiveFallback name="StandardRecovery">
+        <GoalUpdated/>
+        <RoundRobin name="RecoveryActions">
+          <Sequence name="ClearCostmaps">
+            <ClearEntireCostmap service_name="local_costmap/clear_entirely_local_costmap"/>
+            <ClearEntireCostmap service_name="global_costmap/clear_entirely_global_costmap"/>
+          </Sequence>
+          <Spin spin_dist="1.57"/>
+          <Wait wait_duration="5.0"/>
+          <BackUp backup_dist="0.30" backup_speed="0.15"/>
+        </RoundRobin>
+      </ReactiveFallback>
+
+    </RecoveryNode>
+  </BehaviorTree>
+
+</root>

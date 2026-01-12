@@ -1,0 +1,88 @@
+ROSBAG SLAM TESTING INFRASTRUCTURE - FLOW DIAGRAM
+================================================
+
+                    START
+                      |
+                      v
+        +-----------------------------+
+        | 1. Generate Synthetic Data  |
+        |    - Run publisher script   |
+        |    - Record to rosbag       | [✓ SUCCESS]
+        +-----------------------------+
+                      |
+                      v
+        +-----------------------------+
+        | Storage Format Fix Applied  |
+        |   mcap → sqlite3            | [✓ FIXED]
+        +-----------------------------+
+                      |
+                      v
+        +-----------------------------+
+        | 2. Verify Rosbag           |
+        |    - ros2 bag info         | [✓ SUCCESS]
+        |    - Check topics          |
+        +-----------------------------+
+                      |
+                      v
+        +-----------------------------+
+        | 3. SLAM Test Execution     |
+        +-----------------------------+
+                      |
+        +-------------+-------------+
+        |                           |
+        v                           v
++------------------+      +------------------+
+| Launch SLAM      |      | Record Output    |
+| Toolbox          |      | Bag              |
+| [✓ SUCCESS]      |      | [✗ FAILED]       |
++------------------+      +------------------+
+        |
+        v
++------------------+
+| Play Input Bag   |
+| [✓ SUCCESS]      |
++------------------+
+        |
+        v
++------------------+
+| Process Scans    |
+| [✓ PARTIAL]      |
+| - Some drops     |
++------------------+
+        |
+        v
++------------------+
+| Save Map         |
+| [✗ FAILED]       |
+| - Subscription   |
+|   timeout        |
++------------------+
+        |
+        v
++------------------+
+| 4. Analyze Map   |
+| [✗ SKIPPED]      |
+| - No map files   |
++------------------+
+        |
+        v
+      END
+
+
+LEGEND:
+[✓] Success
+[~] Partial Success
+[✗] Failed
+
+CRITICAL PATH BLOCKED AT:
+→ Map Saving (Step 3)
+  Prevents quality analysis from running
+
+DATA FLOW:
+Synthetic → Rosbag → SLAM → [BREAK] → Map → Analysis
+Publisher    (14MB)   Toolbox          Files   Metrics
+
+ROOT CAUSE:
+Map saver cannot subscribe to /map topic
+→ Timing issue with SLAM node lifecycle
+→ SLAM may terminate before subscription established

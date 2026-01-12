@@ -1,0 +1,26 @@
+synthetic_bag_info:
+  generation_date: 2026-01-11T15:56:58-05:00
+  duration_seconds: 30
+  motion_pattern: circular
+  linear_velocity: 0.2
+  angular_velocity: 0.1
+
+  topics:
+    - /scan
+    - /odom
+    - /tf
+    - /tf_static
+
+  environment:
+    walls: [-5.0, 5.0, -5.0, 5.0]  # [xmin, xmax, ymin, ymax]
+    obstacles:
+      - {x: 2.0, y: 0.0, radius: 0.3}
+      - {x: -1.5, y: 1.5, radius: 0.4}
+      - {x: 1.0, y: -2.0, radius: 0.5}
+      - {x: -2.0, y: -1.0, radius: 0.3}
+      - {x: 3.0, y: 2.0, radius: 0.4}
+
+  notes: |
+    Synthetic rosbag generated for testing Nav2 without hardware.
+    Robot motion follows circular pattern.
+    Obstacles and walls are simulated in the scan data.

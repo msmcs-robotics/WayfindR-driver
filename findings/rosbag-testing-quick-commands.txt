@@ -1,0 +1,110 @@
+ROSBAG TESTING - QUICK COMMAND REFERENCE
+=========================================
+
+SYNTHETIC DATA GENERATION:
+--------------------------
+cd /home/devel/Desktop/WayfindR-driver/ros2_comprehensive_attempt/scripts/testing
+
+# Generate 30-second circular motion bag
+./generate_test_bag.sh test_run 30 circular
+
+# Generate straight motion
+./generate_test_bag.sh corridor_test 60 straight
+
+# Generate square pattern
+./generate_test_bag.sh square_test 45 square
+
+
+VERIFY ROSBAG:
+--------------
+# Get bag info
+ros2 bag info test_run
+
+# List topics
+ros2 topic list
+
+# Play bag (for manual testing)
+ros2 bag play test_run --clock
+
+
+RUN SLAM TEST:
+--------------
+# Test SLAM with generated bag
+./test_slam_with_bag.sh test_run
+
+# With custom config
+./test_slam_with_bag.sh test_run my_slam_config.yaml
+
+
+ANALYZE MAP (when working):
+----------------------------
+# Analyze saved map
+python3 analyze_slam_quality.py slam_test_*/final_map.yaml
+
+# Analyze with report output
+python3 analyze_slam_quality.py slam_test_*/final_map.yaml --output report.yaml
+
+# Analyze live map (while SLAM running)
+python3 analyze_slam_quality.py --live
+
+
+VIEW RESULTS:
+-------------
+# View map image (when generated)
+eog slam_test_*/final_map.pgm
+
+# Check SLAM logs
+less slam_test_*/slam_toolbox.log
+
+# View test report
+cat slam_test_*/test_report.txt
+
+
+DEBUGGING:
+----------
+# Check if SLAM is publishing /map
+ros2 topic list | grep /map
+
+# Monitor /map topic
+ros2 topic echo /map --once
+
+# Check SLAM node status
+ros2 node list
+ros2 node info /slam_toolbox
+
+# Check transforms
+ros2 run tf2_tools view_frames
+
+
+CLEANUP:
+--------
+# Remove test data
+rm -rf test_run* slam_test_*
+
+# Kill stuck processes
+pkill -f slam_toolbox
+pkill -f synthetic_nav_data_publisher
+
+
+KNOWN ISSUES (as of 2026-01-11):
+---------------------------------
+1. Map saving fails - timing issue with SLAM lifecycle
+   Workaround: None yet - needs script fix
+
+2. SLAM output recording empty
+   Workaround: Use ros2 bag record manually
+
+3. Duration parameter not respected
+   Workaround: Kill publisher manually after desired time
+
+
+FILES MODIFIED:
+---------------
+generate_test_bag.sh - Line 98: mcap → sqlite3
+
+
+NEXT DEVELOPMENT PRIORITIES:
+-----------------------------
+1. Fix map saving in test_slam_with_bag.sh
+2. Debug SLAM output recording
+3. Add automated validation checks

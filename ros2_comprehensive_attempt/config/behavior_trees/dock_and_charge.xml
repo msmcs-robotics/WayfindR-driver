@@ -1,0 +1,342 @@
+<!--
+  Docking and Charging Behavior Tree for WayfindR Robot
+
+  Description:
+    This behavior tree implements autonomous docking with a charging station.
+    The robot navigates to the dock area, performs precision alignment, and
+    monitors charging status. Can be used standalone or as a subtree in other
+    behaviors (like patrol with battery management).
+
+  Features:
+    - Multi-stage docking approach (coarse + fine alignment)
+    - Vision or sensor-based dock detection
+    - Precision alignment with dock
+    - Charging status monitoring
+    - Retry logic for failed docking attempts
+    - Undocking capability
+
+  Docking Stages:
+    1. Navigate to dock vicinity (coarse navigation)
+    2. Detect dock using sensors (visual markers, IR, etc.)
+    3. Perform precision alignment
+    4. Final docking approach
+    5. Verify electrical connection
+    6. Monitor charging until complete
+
+  Blackboard Variables:
+    - dock_pose: Approximate location of dock (PoseStamped)
+    - dock_approach_pose: Position for final approach (PoseStamped)
+    - dock_detected: Whether dock is currently detected (bool)
+    - charging_complete: Whether charging finished (bool)
+    - target_battery_level: Battery % to charge to (default: 80.0)
+
+  Requirements:
+    - Dock detection sensor (camera with AprilTag, IR sensors, etc.)
+    - Battery state publisher (/battery_status)
+    - Custom dock detection node (see comments)
+
+  Author: WayfindR Team
+  Date: 2026-01-11
+  Version: 1.0
+-->
+
+<root BTCPP_format="4" main_tree_to_execute="DockAndCharge">
+
+  <!-- Main docking and charging behavior -->
+  <BehaviorTree ID="DockAndCharge">
+
+    <Sequence name="DockingSequence">
+
+      <!-- Stage 1: Navigate to dock vicinity -->
+      <SubTree ID="NavigateToDockVicinity"/>
+
+      <!-- Stage 2: Precision docking -->
+      <SubTree ID="PrecisionDocking"/>
+
+      <!-- Stage 3: Verify connection and charge -->
+      <SubTree ID="MonitorCharging"/>
+
+      <!-- Optional: Undock after charging -->
+      <!-- Uncomment to automatically undock -->
+      <!-- <SubTree ID="UndockFromCharger"/> -->
+
+    </Sequence>
+
+  </BehaviorTree>
+
+  <!-- Subtree: Navigate to dock vicinity -->
+  <BehaviorTree ID="NavigateToDockVicinity">
+
+    <RecoveryNode number_of_retries="5" name="NavigateToDockWithRetry">
+
+      <!-- Coarse navigation to dock area -->
+      <PipelineSequence name="CoarseNavigation">
+
+        <RateController hz="0.5">
+          <RecoveryNode number_of_retries="1">
+            <ComputePathToPose goal="{dock_pose}"
+                              path="{dock_path}"
+                              planner_id="GridBased"/>
+            <ClearEntireCostmap service_name="global_costmap/clear_entirely_global_costmap"/>
+          </RecoveryNode>
+        </RateController>
+
+        <RecoveryNode number_of_retries="1">
+          <!-- Use standard speed for approach -->
+          <FollowPath path="{dock_path}" controller_id="FollowPath"/>
+          <ClearEntireCostmap service_name="local_costmap/clear_entirely_local_costmap"/>
+        </RecoveryNode>
+
+      </PipelineSequence>
+
+      <!-- Recovery for approach navigation -->
+      <ReactiveFallback name="ApproachRecovery">
+        <GoalUpdated/>
+        <RoundRobin>
+          <Sequence>
+            <ClearEntireCostmap service_name="local_costmap/clear_entirely_local_costmap"/>
+            <ClearEntireCostmap service_name="global_costmap/clear_entirely_global_costmap"/>
+          </Sequence>
+          <Spin spin_dist="1.57"/>
+          <Wait wait_duration="5.0"/>
+          <BackUp backup_dist="0.30" backup_speed="0.15"/>
+        </RoundRobin>
+      </ReactiveFallback>
+
+    </RecoveryNode>
+
+  </BehaviorTree>
+
+  <!-- Subtree: Precision docking with sensor feedback -->
+  <BehaviorTree ID="PrecisionDocking">
+
+    <RecoveryNode number_of_retries="3" name="PrecisionDockWithRetry">
+
+      <!-- Precision docking sequence -->
+      <Sequence name="FinalApproach">
+
+        <!-- Scan for dock -->
+        <Sequence name="FindDock">
+          <!-- Rotate slowly to find dock markers -->
+          <Spin spin_dist="6.28" name="SearchForDock"/>
+
+          <!-- Verify dock detected -->
+          <CheckDockDetected dock_detected="{dock_detected}"/>
+        </Sequence>
+
+        <!-- Align with dock -->
+        <Sequence name="AlignWithDock">
+
+          <!-- Get precise dock pose from sensors -->
+          <GetDockPose dock_pose="{precise_dock_pose}"/>
+
+          <!-- Compute approach pose (offset from dock)-->
+          <ComputeApproachPose dock_pose="{precise_dock_pose}"
+                              approach_pose="{dock_approach_pose}"
+                              offset_distance="0.5"/>
+
+          <!-- Navigate to approach position -->
+          <RecoveryNode number_of_retries="2">
+            <PipelineSequence name="ApproachPosition">
+              <ComputePathToPose goal="{dock_approach_pose}"
+                                path="{approach_path}"
+                                planner_id="GridBased"/>
+              <FollowPath path="{approach_path}"
+                         controller_id="FollowPath"
+                         max_vel_x="0.1"/>
+            </PipelineSequence>
+            <Sequence>
+              <Wait wait_duration="2.0"/>
+              <ClearEntireCostmap service_name="local_costmap/clear_entirely_local_costmap"/>
+            </Sequence>
+          </RecoveryNode>
+
+        </Sequence>
+
+        <!-- Final docking approach -->
+        <Sequence name="FinalDock">
+
+          <!-- Very slow approach to dock -->
+          <DriveOnHeading dist_to_travel="0.5"
+                         speed="0.05"
+                         time_allowance="20.0"/>
+
+          <!-- Verify electrical connection -->
+          <CheckChargingStatus is_charging="{is_charging}"/>
+
+          <!-- Small adjustment if needed -->
+          <ForceSuccess>
+            <Sequence name="FineAdjustment">
+              <Inverter>
+                <CheckChargingStatus is_charging="{is_charging}"/>
+              </Inverter>
+              <DriveOnHeading dist_to_travel="0.05" speed="0.02"/>
+            </Sequence>
+          </ForceSuccess>
+
+        </Sequence>
+
+      </Sequence>
+
+      <!-- Recovery: Back up and retry docking -->
+      <Sequence name="DockingRecovery">
+        <BackUp backup_dist="0.5" backup_speed="0.1"/>
+        <Wait wait_duration="3.0"/>
+        <!-- Clear dock detection to force re-search -->
+        <SetBlackboard output_key="dock_detected" value="false"/>
+      </Sequence>
+
+    </RecoveryNode>
+
+  </BehaviorTree>
+
+  <!-- Subtree: Monitor charging until complete -->
+  <BehaviorTree ID="MonitorCharging">
+
+    <Sequence name="ChargingMonitor">
+
+      <!-- Verify charging started -->
+      <CheckChargingStatus is_charging="{is_charging}"/>
+
+      <!-- Wait until battery reaches target level -->
+      <RetryUntilSuccessful num_attempts="-1" name="WaitForChargingComplete">
+        <Sequence name="BatteryCheck">
+
+          <!-- Wait between checks (every 30 seconds) -->
+          <Wait wait_duration="30.0"/>
+
+          <!-- Check if battery reached target level -->
+          <Inverter>
+            <IsBatteryLow battery_topic="/battery_status"
+                          min_battery="{target_battery_level}"
+                          is_voltage="false"/>
+          </Inverter>
+
+        </Sequence>
+      </RetryUntilSuccessful>
+
+      <!-- Set charging complete flag -->
+      <SetBlackboard output_key="charging_complete" value="true"/>
+
+    </Sequence>
+
+  </BehaviorTree>
+
+  <!-- Subtree: Undock from charger -->
+  <BehaviorTree ID="UndockFromCharger">
+
+    <Sequence name="UndockSequence">
+
+      <!-- Back away from dock -->
+      <BackUp backup_dist="0.5" backup_speed="0.1" name="ExitDock"/>
+
+      <!-- Rotate to clear dock area -->
+      <Spin spin_dist="1.57" name="TurnAway"/>
+
+      <!-- Clear undocking area -->
+      <BackUp backup_dist="0.3" backup_speed="0.15" name="ClearDock"/>
+
+      <!-- Set undocked flag -->
+      <SetBlackboard output_key="is_docked" value="false"/>
+
+    </Sequence>
+
+  </BehaviorTree>
+
+  <!--
+    CUSTOM NODES REQUIRED:
+
+    The following custom nodes need to be implemented for full docking functionality:
+
+    1. CheckDockDetected - Condition node
+       - Subscribes to dock detection topic (from AprilTag, IR sensor, etc.)
+       - Returns SUCCESS if dock is detected in field of view
+       - Returns FAILURE if dock not detected
+
+    2. GetDockPose - Action node
+       - Gets precise 3D pose of dock from sensor data
+       - Transforms pose to map frame
+       - Outputs dock_pose to blackboard
+
+    3. ComputeApproachPose - Action node
+       - Calculates approach pose given dock pose and offset distance
+       - Ensures approach angle aligns with dock orientation
+       - Outputs approach_pose to blackboard
+
+    4. CheckChargingStatus - Condition node
+       - Subscribes to /battery_status
+       - Checks power_supply_status field
+       - Returns SUCCESS if status == CHARGING
+
+    5. SetBlackboard - Action node (may be built-in to BT.CPP 4.x)
+       - Sets a blackboard variable to a specified value
+
+    Example implementation structure for CheckDockDetected:
+
+    class CheckDockDetectedCondition : public BT::ConditionNode {
+    public:
+      CheckDockDetectedCondition(const std::string& name, const BT::NodeConfiguration& config)
+        : BT::ConditionNode(name, config) {
+
+        node_ = config.blackboard->get<rclcpp::Node::SharedPtr>("node");
+
+        dock_sub_ = node_->create_subscription<geometry_msgs::msg::PoseStamped>(
+          "/dock_detection/pose", 10,
+          [this](geometry_msgs::msg::PoseStamped::SharedPtr msg) {
+            last_dock_pose_ = msg;
+            dock_detected_time_ = node_->now();
+          });
+      }
+
+      BT::NodeStatus tick() override {
+        // Check if we've received a recent dock detection
+        if (last_dock_pose_ &&
+            (node_->now() - dock_detected_time_).seconds() < 1.0) {
+          setOutput("dock_detected", true);
+          return BT::NodeStatus::SUCCESS;
+        }
+
+        setOutput("dock_detected", false);
+        return BT::NodeStatus::FAILURE;
+      }
+
+      static BT::PortsList providedPorts() {
+        return {
+          BT::OutputPort<bool>("dock_detected")
+        };
+      }
+
+    private:
+      rclcpp::Node::SharedPtr node_;
+      rclcpp::Subscription<geometry_msgs::msg::PoseStamped>::SharedPtr dock_sub_;
+      geometry_msgs::msg::PoseStamped::SharedPtr last_dock_pose_;
+      rclcpp::Time dock_detected_time_;
+    };
+
+    INTEGRATION NOTES:
+
+    1. Dock Detection System:
+       - Use AprilTag detection for visual docking
+       - Alternative: IR reflector sensors on dock
+       - Alternative: AR markers or fiducials
+       - Publish detected dock pose to /dock_detection/pose
+
+    2. Battery Integration:
+       - Ensure robot publishes sensor_msgs/BatteryState
+       - Include power_supply_status field (0=Unknown, 1=Charging, 2=Discharging, etc.)
+       - Monitor both voltage and percentage
+
+    3. Safety Considerations:
+       - Implement timeout for docking attempts
+       - Add emergency stop if dock collision detected
+       - Monitor charging current for anomalies
+       - Include thermal monitoring if applicable
+
+    4. Testing:
+       - Test docking from multiple approach angles
+       - Verify recovery from misalignment
+       - Test undocking and re-docking cycles
+       - Validate electrical connection verification
+  -->
+
+</root>

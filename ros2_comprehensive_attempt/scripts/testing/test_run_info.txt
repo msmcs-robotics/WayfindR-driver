@@ -1,0 +1,16 @@
+
+Files:             test_run_0.db3
+                   test_run_1.db3
+                   test_run_2.db3
+                   test_run_3.db3
+Bag size:          14.0 MiB
+Storage id:        sqlite3
+Duration:          115.601584789s
+Start:             Jan 11 2026 15:55:01.400715148 (1768164901.400715148)
+End:               Jan 11 2026 15:56:57.002299937 (1768165017.002299937)
+Messages:          16982
+Topic information: Topic: /tf_static | Type: tf2_msgs/msg/TFMessage | Count: 1 | Serialization Format: cdr
+                   Topic: /odom | Type: nav_msgs/msg/Odometry | Count: 4625 | Serialization Format: cdr
+                   Topic: /scan | Type: sensor_msgs/msg/LaserScan | Count: 2313 | Serialization Format: cdr
+                   Topic: /tf | Type: tf2_msgs/msg/TFMessage | Count: 10043 | Serialization Format: cdr
+

@@ -1,0 +1,124 @@
+<!--
+  Multi-Waypoint Patrol Behavior Tree for WayfindR Robot
+
+  Description:
+    This behavior tree implements a patrol route that continuously loops through
+    a set of predefined waypoints. The robot will navigate to each waypoint in
+    sequence, with optional pauses at each location. The tree includes robust
+    recovery behaviors and can be preempted by new goals.
+
+  Features:
+    - Sequential waypoint navigation
+    - Continuous replanning during transit
+    - Comprehensive recovery behaviors
+    - Optional wait at each waypoint
+    - Emergency abort on goal update
+
+  Usage:
+    Set the 'goals' blackboard variable to a vector of PoseStamped messages
+    representing the patrol waypoints.
+
+  Author: WayfindR Team
+  Date: 2026-01-11
+  Version: 1.0
+-->
+
+<root BTCPP_format="4" main_tree_to_execute="MultiWaypointPatrol">
+
+  <!-- Main patrol behavior tree -->
+  <BehaviorTree ID="MultiWaypointPatrol">
+    <RecoveryNode number_of_retries="6" name="PatrolWithRecovery">
+
+      <!-- Primary navigation sequence with replanning -->
+      <PipelineSequence name="PatrolSequence">
+
+        <!-- Configure navigation parameters -->
+        <Sequence name="NavigationSetup">
+          <ProgressCheckerSelector selected_progress_checker="progress_checker">
+            <SelectedController/>
+          </ProgressCheckerSelector>
+          <GoalCheckerSelector selected_goal_checker="general_goal_checker">
+            <SelectedController/>
+          </GoalCheckerSelector>
+        </Sequence>
+
+        <!-- Continuous path planning through waypoints -->
+        <RateController hz="0.333" name="ReplanningController">
+          <RecoveryNode number_of_retries="1" name="PlanningWithRecovery">
+
+            <!-- Compute path through remaining waypoints -->
+            <ComputePathThroughPoses goals="{goals}" path="{path}" planner_id="GridBased">
+              <!-- Remove waypoints that have been passed -->
+              <RemovePassedGoals
+                input_goals="{goals}"
+                output_goals="{goals}"
+                radius="0.5"
+                input_waypoint_statuses="{waypoint_statuses}"
+                output_waypoint_statuses="{waypoint_statuses}"/>
+            </ComputePathThroughPoses>
+
+            <!-- Recovery: Clear global costmap if planning fails -->
+            <Sequence name="PlannerRecovery">
+              <WouldAPlannerRecoveryHelp error_code="{compute_path_error_code}"/>
+              <ClearEntireCostmap name="ClearGlobalCostmap"
+                                  service_name="global_costmap/clear_entirely_global_costmap"/>
+            </Sequence>
+
+          </RecoveryNode>
+        </RateController>
+
+        <!-- Path following with local recovery -->
+        <RecoveryNode number_of_retries="1" name="ControlWithRecovery">
+
+          <!-- Follow computed path -->
+          <FollowPath path="{path}" controller_id="FollowPath"/>
+
+          <!-- Recovery: Clear local costmap if control fails -->
+          <Sequence name="ControllerRecovery">
+            <WouldAControllerRecoveryHelp error_code="{follow_path_error_code}"/>
+            <ClearEntireCostmap name="ClearLocalCostmap"
+                                service_name="local_costmap/clear_entirely_local_costmap"/>
+          </Sequence>
+
+        </RecoveryNode>
+
+        <!-- Optional: Wait at each waypoint before continuing -->
+        <!-- Uncomment to enable pausing at waypoints -->
+        <!-- <Wait wait_duration="5"/> -->
+
+      </PipelineSequence>
+
+      <!-- System-level recovery behaviors -->
+      <ReactiveFallback name="SystemRecovery">
+
+        <!-- Abort recovery if new goal received -->
+        <GoalUpdated/>
+
+        <!-- Cycle through recovery actions -->
+        <RoundRobin name="RecoveryActions">
+
+          <!-- 1. Clear both costmaps -->
+          <Sequence name="ClearCostmaps">
+            <ClearEntireCostmap name="ClearLocalCostmap"
+                                service_name="local_costmap/clear_entirely_local_costmap"/>
+            <ClearEntireCostmap name="ClearGlobalCostmap"
+                                service_name="global_costmap/clear_entirely_global_costmap"/>
+          </Sequence>
+
+          <!-- 2. Spin in place to scan surroundings -->
+          <Spin spin_dist="1.57" name="SpinRecovery"/>
+
+          <!-- 3. Wait for dynamic obstacles to clear -->
+          <Wait wait_duration="5.0" name="WaitRecovery"/>
+
+          <!-- 4. Back up and try again -->
+          <BackUp backup_dist="0.30" backup_speed="0.15" name="BackupRecovery"/>
+
+        </RoundRobin>
+
+      </ReactiveFallback>
+
+    </RecoveryNode>
+  </BehaviorTree>
+
+</root>

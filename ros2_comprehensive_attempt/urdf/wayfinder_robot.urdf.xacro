@@ -1,0 +1,337 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="wayfinder">
+
+  <!-- PROPERTY DEFINITIONS -->
+  <!-- All measurements in meters unless otherwise specified -->
+
+  <!-- Robot base properties -->
+  <xacro:property name="base_radius" value="0.1" />  <!-- 200mm diameter = 0.1m radius -->
+  <xacro:property name="base_height" value="0.05" />  <!-- 50mm height -->
+  <xacro:property name="base_mass" value="2.0" />  <!-- 2kg base mass -->
+
+  <!-- Wheel properties -->
+  <xacro:property name="wheel_radius" value="0.0325" />  <!-- 65mm diameter = 0.0325m radius -->
+  <xacro:property name="wheel_width" value="0.025" />  <!-- 25mm width -->
+  <xacro:property name="wheel_mass" value="0.1" />  <!-- 100g per wheel -->
+  <xacro:property name="wheel_separation" value="0.15" />  <!-- 150mm between wheels -->
+  <xacro:property name="wheel_offset_z" value="0.0" />  <!-- Wheels at same height as base center -->
+
+  <!-- Caster wheel properties -->
+  <xacro:property name="caster_radius" value="0.015" />  <!-- 30mm diameter = 0.015m radius -->
+  <xacro:property name="caster_mass" value="0.05" />  <!-- 50g caster -->
+  <xacro:property name="caster_offset_x" value="-0.07" />  <!-- 70mm behind center -->
+
+  <!-- LiDAR properties -->
+  <xacro:property name="lidar_size" value="0.04" />  <!-- 40mm x 40mm x 40mm cube approximation -->
+  <xacro:property name="lidar_mass" value="0.2" />  <!-- 200g LiDAR -->
+  <xacro:property name="lidar_offset_z" value="0.1" />  <!-- 100mm above base -->
+
+  <!-- Material colors for visualization -->
+  <material name="blue">
+    <color rgba="0 0 0.8 1"/>
+  </material>
+
+  <material name="black">
+    <color rgba="0 0 0 1"/>
+  </material>
+
+  <material name="white">
+    <color rgba="1 1 1 1"/>
+  </material>
+
+  <material name="red">
+    <color rgba="0.8 0 0 1"/>
+  </material>
+
+  <!-- INERTIA MACROS -->
+  <!-- These macros calculate inertial properties for common shapes -->
+
+  <!-- Inertia for a solid cylinder -->
+  <xacro:macro name="cylinder_inertia" params="mass radius height">
+    <inertia
+      ixx="${mass * (3 * radius * radius + height * height) / 12}"
+      ixy="0.0"
+      ixz="0.0"
+      iyy="${mass * (3 * radius * radius + height * height) / 12}"
+      iyz="0.0"
+      izz="${mass * radius * radius / 2}"
+    />
+  </xacro:macro>
+
+  <!-- Inertia for a sphere -->
+  <xacro:macro name="sphere_inertia" params="mass radius">
+    <inertia
+      ixx="${2 * mass * radius * radius / 5}"
+      ixy="0.0"
+      ixz="0.0"
+      iyy="${2 * mass * radius * radius / 5}"
+      iyz="0.0"
+      izz="${2 * mass * radius * radius / 5}"
+    />
+  </xacro:macro>
+
+  <!-- Inertia for a box -->
+  <xacro:macro name="box_inertia" params="mass x y z">
+    <inertia
+      ixx="${mass * (y*y + z*z) / 12}"
+      ixy="0.0"
+      ixz="0.0"
+      iyy="${mass * (x*x + z*z) / 12}"
+      iyz="0.0"
+      izz="${mass * (x*x + y*y) / 12}"
+    />
+  </xacro:macro>
+
+  <!-- WHEEL MACRO -->
+  <!-- Creates a wheel link and joint -->
+  <xacro:macro name="wheel" params="prefix reflect">
+
+    <!-- Wheel link -->
+    <link name="${prefix}_wheel">
+      <visual>
+        <origin xyz="0 0 0" rpy="${pi/2} 0 0"/>
+        <geometry>
+          <cylinder radius="${wheel_radius}" length="${wheel_width}"/>
+        </geometry>
+        <material name="black"/>
+      </visual>
+
+      <collision>
+        <origin xyz="0 0 0" rpy="${pi/2} 0 0"/>
+        <geometry>
+          <cylinder radius="${wheel_radius}" length="${wheel_width}"/>
+        </geometry>
+      </collision>
+
+      <inertial>
+        <origin xyz="0 0 0" rpy="${pi/2} 0 0"/>
+        <mass value="${wheel_mass}"/>
+        <!-- Inertia for a cylinder rotating around its axis -->
+        <xacro:cylinder_inertia mass="${wheel_mass}" radius="${wheel_radius}" height="${wheel_width}"/>
+      </inertial>
+    </link>
+
+    <!-- Wheel joint (continuous rotation) -->
+    <joint name="${prefix}_wheel_joint" type="continuous">
+      <parent link="base_link"/>
+      <child link="${prefix}_wheel"/>
+      <!-- Position wheel on left or right side -->
+      <origin xyz="0 ${reflect * wheel_separation / 2} ${wheel_offset_z}" rpy="0 0 0"/>
+      <axis xyz="0 1 0"/>  <!-- Rotation around Y axis -->
+      <limit effort="10" velocity="10"/>  <!-- 10 Nm torque, 10 rad/s max speed -->
+      <dynamics damping="0.1" friction="0.1"/>
+    </joint>
+
+    <!-- Gazebo-specific wheel properties (for simulation) -->
+    <gazebo reference="${prefix}_wheel">
+      <mu1>1.0</mu1>  <!-- Friction coefficient -->
+      <mu2>1.0</mu2>
+      <kp>1000000.0</kp>  <!-- Contact stiffness -->
+      <kd>100.0</kd>  <!-- Contact damping -->
+      <material>Gazebo/Black</material>
+    </gazebo>
+
+  </xacro:macro>
+
+  <!-- BASE LINK (ROBOT CHASSIS) -->
+  <!-- This is the main reference frame for the robot -->
+  <link name="base_link">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <cylinder radius="${base_radius}" length="${base_height}"/>
+      </geometry>
+      <material name="blue"/>
+    </visual>
+
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <cylinder radius="${base_radius}" length="${base_height}"/>
+      </geometry>
+    </collision>
+
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <mass value="${base_mass}"/>
+      <xacro:cylinder_inertia mass="${base_mass}" radius="${base_radius}" height="${base_height}"/>
+    </inertial>
+  </link>
+
+  <gazebo reference="base_link">
+    <material>Gazebo/Blue</material>
+  </gazebo>
+
+  <!-- FOOTPRINT LINK -->
+  <!-- A virtual link at ground level for navigation stack -->
+  <link name="base_footprint"/>
+
+  <joint name="base_footprint_joint" type="fixed">
+    <parent link="base_footprint"/>
+    <child link="base_link"/>
+    <!-- Raise base_link so wheels touch the ground -->
+    <origin xyz="0 0 ${wheel_radius}" rpy="0 0 0"/>
+  </joint>
+
+  <!-- LEFT WHEEL -->
+  <xacro:wheel prefix="left" reflect="1"/>
+
+  <!-- RIGHT WHEEL -->
+  <xacro:wheel prefix="right" reflect="-1"/>
+
+  <!-- CASTER WHEEL -->
+  <!-- Passive rear caster for stability -->
+  <link name="caster_wheel">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <sphere radius="${caster_radius}"/>
+      </geometry>
+      <material name="white"/>
+    </visual>
+
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <sphere radius="${caster_radius}"/>
+      </geometry>
+    </collision>
+
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <mass value="${caster_mass}"/>
+      <xacro:sphere_inertia mass="${caster_mass}" radius="${caster_radius}"/>
+    </inertial>
+  </link>
+
+  <!-- Caster joint (fixed to base, rolls freely due to low friction) -->
+  <joint name="caster_wheel_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="caster_wheel"/>
+    <!-- Position behind and below the base -->
+    <origin xyz="${caster_offset_x} 0 ${-base_height/2 - caster_radius}" rpy="0 0 0"/>
+  </joint>
+
+  <gazebo reference="caster_wheel">
+    <mu1>0.0</mu1>  <!-- Zero friction - free rolling -->
+    <mu2>0.0</mu2>
+    <kp>1000000.0</kp>
+    <kd>100.0</kd>
+    <material>Gazebo/White</material>
+  </gazebo>
+
+  <!-- LIDAR LINK -->
+  <!-- RP LIDAR C1M1 sensor -->
+  <link name="laser">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <cylinder radius="${lidar_size/2}" length="${lidar_size}"/>
+      </geometry>
+      <material name="red"/>
+    </visual>
+
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <cylinder radius="${lidar_size/2}" length="${lidar_size}"/>
+      </geometry>
+    </collision>
+
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <mass value="${lidar_mass}"/>
+      <xacro:cylinder_inertia mass="${lidar_mass}" radius="${lidar_size/2}" height="${lidar_size}"/>
+    </inertial>
+  </link>
+
+  <!-- LiDAR joint (fixed to base) -->
+  <joint name="laser_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="laser"/>
+    <!-- Position at center of robot, elevated above base -->
+    <origin xyz="0 0 ${base_height/2 + lidar_offset_z}" rpy="0 0 0"/>
+  </joint>
+
+  <gazebo reference="laser">
+    <material>Gazebo/Red</material>
+    <sensor type="ray" name="rplidar_sensor">
+      <pose>0 0 0 0 0 0</pose>
+      <visualize>true</visualize>
+      <update_rate>10</update_rate>  <!-- 10 Hz scan rate -->
+      <ray>
+        <scan>
+          <horizontal>
+            <samples>360</samples>  <!-- 360 degree scan -->
+            <resolution>1</resolution>
+            <min_angle>0.0</min_angle>
+            <max_angle>6.28319</max_angle>  <!-- 2*pi radians -->
+          </horizontal>
+        </scan>
+        <range>
+          <min>0.15</min>  <!-- 15cm minimum range -->
+          <max>12.0</max>  <!-- 12m maximum range -->
+          <resolution>0.01</resolution>
+        </range>
+        <noise>
+          <type>gaussian</type>
+          <mean>0.0</mean>
+          <stddev>0.01</stddev>  <!-- 1cm standard deviation -->
+        </noise>
+      </ray>
+      <plugin name="gazebo_ros_head_hokuyo_controller" filename="libgazebo_ros_ray_sensor.so">
+        <topicName>/scan</topicName>
+        <frameName>laser</frameName>
+      </plugin>
+    </sensor>
+  </gazebo>
+
+  <!-- DIFFERENTIAL DRIVE CONTROLLER PLUGIN (for Gazebo simulation) -->
+  <gazebo>
+    <plugin name="differential_drive_controller" filename="libgazebo_ros_diff_drive.so">
+
+      <!-- Update rate in Hz -->
+      <updateRate>50</updateRate>
+
+      <!-- Wheel joints -->
+      <leftJoint>left_wheel_joint</leftJoint>
+      <rightJoint>right_wheel_joint</rightJoint>
+
+      <!-- Kinematics -->
+      <wheelSeparation>${wheel_separation}</wheelSeparation>
+      <wheelDiameter>${2 * wheel_radius}</wheelDiameter>
+
+      <!-- Limits -->
+      <wheelAcceleration>1.0</wheelAcceleration>
+      <wheelTorque>10</wheelTorque>
+
+      <!-- Input/Output -->
+      <commandTopic>/cmd_vel</commandTopic>
+      <odometryTopic>/odom</odometryTopic>
+      <odometryFrame>odom</odometryFrame>
+      <robotBaseFrame>base_footprint</robotBaseFrame>
+
+      <!-- Odometry source -->
+      <odometrySource>world</odometrySource>  <!-- Use 'encoder' for realistic odometry -->
+
+      <!-- Publishing -->
+      <publishWheelTF>true</publishWheelTF>
+      <publishOdomTF>true</publishOdomTF>
+      <publishWheelJointState>true</publishWheelJointState>
+      <publishTf>true</publishTf>
+
+      <!-- Covariance -->
+      <rosDebugLevel>na</rosDebugLevel>
+
+    </plugin>
+  </gazebo>
+
+  <!-- JOINT STATE PUBLISHER PLUGIN (for Gazebo simulation) -->
+  <gazebo>
+    <plugin name="joint_state_publisher" filename="libgazebo_ros_joint_state_publisher.so">
+      <jointName>left_wheel_joint, right_wheel_joint</jointName>
+      <updateRate>50</updateRate>
+    </plugin>
+  </gazebo>
+
+</robot>

@@ -8,3 +8,14 @@
 **/.pio/
 **.log
 **/known_faces/
+
+# Test artifacts and outputs
+tests/
+**/frames_*.pdf
+**/frames_*.gv
+*.pgm
+*.db3
+*.mcap
+**/test_run/
+**/slam_test_*/
+**/.claude/

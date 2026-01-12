@@ -1,0 +1,241 @@
+<!--
+  Autonomous Exploration Behavior Tree for WayfindR Robot
+
+  Description:
+    This behavior tree implements frontier-based exploration for autonomous
+    mapping of unknown environments. The robot identifies unexplored areas
+    (frontiers), navigates to them, and builds a map progressively.
+
+  Features:
+    - Frontier-based exploration strategy
+    - Safety distance from obstacles
+    - Periodic map updates
+    - Coverage optimization
+    - Return home when exploration complete
+    - Battery awareness (optional integration)
+
+  Exploration Strategy:
+    1. Identify exploration frontiers (boundaries between known/unknown)
+    2. Select best frontier based on distance and information gain
+    3. Navigate to frontier
+    4. Update map with new sensor data
+    5. Repeat until no more frontiers or mission complete
+
+  Blackboard Variables:
+    - explore_start_pose: Starting position to return to
+    - max_exploration_time: Maximum time for exploration (seconds)
+    - min_frontier_distance: Minimum distance to consider a frontier
+    - exploration_complete: Flag set when exploration finishes
+
+  Requirements:
+    - explore_lite or similar frontier detection node
+    - SLAM for continuous mapping (slam_toolbox)
+    - Battery monitoring (for safety)
+
+  Author: WayfindR Team
+  Date: 2026-01-11
+  Version: 1.0
+-->
+
+<root BTCPP_format="4" main_tree_to_execute="AutonomousExploration">
+
+  <!-- Main exploration behavior tree -->
+  <BehaviorTree ID="AutonomousExploration">
+
+    <Sequence name="ExplorationMission">
+
+      <!-- 1. Store starting position for return home -->
+      <GetPoseFromOdom pose="{explore_start_pose}" frame_id="map"/>
+
+      <!-- 2. Main exploration loop with safety monitoring -->
+      <ReactiveFallback name="ExplorationWithSafety">
+
+        <!-- Safety check: Battery level -->
+        <Inverter>
+          <IsBatteryLow battery_topic="/battery_status"
+                        min_battery="25.0"
+                        is_voltage="false"/>
+        </Inverter>
+
+        <!-- Execute exploration until complete -->
+        <SubTree ID="ExplorationLoop"/>
+
+      </ReactiveFallback>
+
+      <!-- 3. Return to starting position -->
+      <SubTree ID="ReturnToStart"/>
+
+      <!-- 4. Final actions -->
+      <Sequence name="ExplorationComplete">
+        <!-- Save map -->
+        <CallService service_name="/slam_toolbox/save_map"
+                     request="{save_map_request}"/>
+
+        <!-- Set completion flag -->
+        <SetBlackboard output_key="exploration_complete" value="true"/>
+      </Sequence>
+
+    </Sequence>
+
+  </BehaviorTree>
+
+  <!-- Subtree: Main exploration loop -->
+  <BehaviorTree ID="ExplorationLoop">
+
+    <RecoveryNode number_of_retries="3" name="ExploreWithRecovery">
+
+      <!-- Primary exploration sequence -->
+      <Sequence name="ExploreFrontier">
+
+        <!-- Get next exploration goal (frontier) -->
+        <GetNextExplorationGoal goal="{exploration_goal}"
+                               min_distance="0.5"
+                               max_distance="5.0"
+                               goal_frame="map"/>
+
+        <!-- Navigate to exploration frontier -->
+        <SubTree ID="NavigateToExplorationGoal" target="exploration_goal"/>
+
+        <!-- Perform detailed scan at frontier -->
+        <Sequence name="ScanArea">
+          <!-- Rotate to scan surroundings -->
+          <Spin spin_dist="6.28" name="FullRotationScan"/>
+
+          <!-- Wait for map update -->
+          <Wait wait_duration="2.0"/>
+        </Sequence>
+
+      </Sequence>
+
+      <!-- Recovery: Try alternative frontier -->
+      <Sequence name="ExplorationRecovery">
+        <!-- Clear costmaps -->
+        <ClearEntireCostmap service_name="local_costmap/clear_entirely_local_costmap"/>
+        <ClearEntireCostmap service_name="global_costmap/clear_entirely_global_costmap"/>
+
+        <!-- Short wait and retry -->
+        <Wait wait_duration="3.0"/>
+      </Sequence>
+
+    </RecoveryNode>
+
+  </BehaviorTree>
+
+  <!-- Subtree: Navigate to exploration goal -->
+  <BehaviorTree ID="NavigateToExplorationGoal">
+
+    <RecoveryNode number_of_retries="4" name="NavigateToFrontier">
+
+      <!-- Navigation with conservative replanning -->
+      <PipelineSequence name="ExplorationNavigation">
+
+        <!-- Plan path to frontier -->
+        <RateController hz="0.5" name="ConservativePlanning">
+          <RecoveryNode number_of_retries="1">
+            <ComputePathToPose goal="{exploration_goal}"
+                              path="{exploration_path}"
+                              planner_id="GridBased"/>
+            <ClearEntireCostmap service_name="global_costmap/clear_entirely_global_costmap"/>
+          </RecoveryNode>
+        </RateController>
+
+        <!-- Follow path cautiously -->
+        <RecoveryNode number_of_retries="1">
+          <!-- Use slower speed for exploration safety -->
+          <FollowPath path="{exploration_path}"
+                     controller_id="FollowPath"
+                     max_vel_x="0.15"/>
+          <ClearEntireCostmap service_name="local_costmap/clear_entirely_local_costmap"/>
+        </RecoveryNode>
+
+      </PipelineSequence>
+
+      <!-- Enhanced recovery for unknown terrain -->
+      <ReactiveFallback name="ExplorationRecovery">
+        <GoalUpdated/>
+        <RoundRobin name="SafetyRecoveryActions">
+          <!-- 1. Clear costmaps and short spin -->
+          <Sequence name="ClearAndLook">
+            <ClearEntireCostmap service_name="local_costmap/clear_entirely_local_costmap"/>
+            <ClearEntireCostmap service_name="global_costmap/clear_entirely_global_costmap"/>
+            <Spin spin_dist="3.14"/>
+          </Sequence>
+
+          <!-- 2. Wait longer for dynamic obstacles -->
+          <Wait wait_duration="10.0"/>
+
+          <!-- 3. Back up more conservatively -->
+          <BackUp backup_dist="0.5" backup_speed="0.1"/>
+
+          <!-- 4. Try different angle -->
+          <Sequence name="AlternateApproach">
+            <Spin spin_dist="0.785"/>  <!-- 45 degrees -->
+            <Wait wait_duration="2.0"/>
+          </Sequence>
+        </RoundRobin>
+      </ReactiveFallback>
+
+    </RecoveryNode>
+
+  </BehaviorTree>
+
+  <!-- Subtree: Return to starting position -->
+  <BehaviorTree ID="ReturnToStart">
+
+    <RecoveryNode number_of_retries="8" name="ReturnHomeWithRetry">
+
+      <!-- Navigate back to start -->
+      <PipelineSequence name="ReturnNavigation">
+
+        <RateController hz="0.5">
+          <RecoveryNode number_of_retries="1">
+            <ComputePathToPose goal="{explore_start_pose}"
+                              path="{return_path}"
+                              planner_id="GridBased"/>
+            <ClearEntireCostmap service_name="global_costmap/clear_entirely_global_costmap"/>
+          </RecoveryNode>
+        </RateController>
+
+        <RecoveryNode number_of_retries="1">
+          <FollowPath path="{return_path}" controller_id="FollowPath"/>
+          <ClearEntireCostmap service_name="local_costmap/clear_entirely_local_costmap"/>
+        </RecoveryNode>
+
+      </PipelineSequence>
+
+      <!-- Standard recovery for return journey -->
+      <ReactiveFallback name="ReturnRecovery">
+        <GoalUpdated/>
+        <RoundRobin>
+          <Sequence>
+            <ClearEntireCostmap service_name="local_costmap/clear_entirely_local_costmap"/>
+            <ClearEntireCostmap service_name="global_costmap/clear_entirely_global_costmap"/>
+          </Sequence>
+          <Spin spin_dist="1.57"/>
+          <Wait wait_duration="5.0"/>
+          <BackUp backup_dist="0.30" backup_speed="0.15"/>
+        </RoundRobin>
+      </ReactiveFallback>
+
+    </RecoveryNode>
+
+  </BehaviorTree>
+
+  <!--
+    Note: GetNextExplorationGoal is a custom node that would need to be implemented.
+    It interfaces with a frontier exploration package (like explore_lite) to get
+    the next best exploration target.
+
+    Alternative: Use a separate exploration node that publishes goals on a topic,
+    and create a custom BT node that subscribes to that topic.
+
+    Implementation example:
+
+    class GetNextExplorationGoalAction : public BT::SyncActionNode {
+      // Subscribe to /explore/goal from explore_lite
+      // Output the goal to blackboard
+      // Return SUCCESS if goal available, FAILURE if exploration complete
+    };
+  -->
+
+</root>

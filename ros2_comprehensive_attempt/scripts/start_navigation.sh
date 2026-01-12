@@ -1,20 +1,20 @@
 #!/bin/bash
 ################################################################################
-# WayfindR Localization Only Script
+# WayfindR Full Navigation Script
 ################################################################################
 #
-# This script launches the WayfindR navigation system in localization-only mode.
-# Use this when you only need to know the robot's position without navigation.
+# This script launches the WayfindR navigation system in full navigation mode.
+# Use this for autonomous navigation with localization, planning, and control.
 #
-# Localization Only Mode:
+# Full Navigation Mode:
 #   - Requires an existing map file
 #   - Uses AMCL for localization on the map
-#   - Does NOT include Nav2 planning or control
-#   - Useful for testing localization accuracy
-#   - Lower resource usage than full navigation
+#   - Includes Nav2 planning and control for autonomous navigation
+#   - Supports waypoint following
+#   - Optional PI_API integration via cmd_vel bridge
 #
 # Usage:
-#   ./start_localization.sh --map /path/to/map.yaml [OPTIONS]
+#   ./start_navigation.sh --map /path/to/map.yaml [OPTIONS]
 #
 # Required:
 #   --map PATH             Path to map YAML file
@@ -22,16 +22,19 @@
 # Options:
 #   --no-rviz              Don't launch RViz visualization
 #   --serial-port PORT     LiDAR serial port (default: /dev/ttyUSB0)
+#   --with-bridge          Enable cmd_vel bridge for PI_API
+#   --pi-api-url URL       PI_API endpoint URL (default: http://localhost:8000)
 #   --help                 Show this help message
 #
 # Examples:
-#   ./start_localization.sh --map ~/maps/office.yaml
-#   ./start_localization.sh --map ~/maps/office.yaml --no-rviz
+#   ./start_navigation.sh --map ~/maps/office.yaml
+#   ./start_navigation.sh --map ~/maps/office.yaml --no-rviz
+#   ./start_navigation.sh --map ~/maps/office.yaml --with-bridge --pi-api-url http://192.168.1.100:8000
 #
 # After Starting:
 #   - Set initial pose in RViz using "2D Pose Estimate"
-#   - Watch the particle filter converge
-#   - Monitor localization quality
+#   - Send navigation goals using "2D Nav Goal" in RViz
+#   - Or use waypoint_manager.py for mission planning
 #
 ################################################################################
 
@@ -47,6 +50,8 @@ NC='\033[0m' # No Color
 # Default values
 USE_RVIZ="true"
 SERIAL_PORT="/dev/ttyUSB0"
+USE_BRIDGE="false"
+PI_API_URL="http://localhost:8000"
 MAP_FILE=""
 
 # Parse command line arguments
@@ -62,6 +67,14 @@ while [[ $# -gt 0 ]]; do
             ;;
         --serial-port)
             SERIAL_PORT="$2"
+            shift 2
+            ;;
+        --with-bridge)
+            USE_BRIDGE="true"
+            shift
+            ;;
+        --pi-api-url)
+            PI_API_URL="$2"
             shift 2
             ;;
         --help|-h)
@@ -82,7 +95,7 @@ PKG_DIR="$(dirname "$SCRIPT_DIR")"
 
 # Print header
 echo -e "${BLUE}╔════════════════════════════════════════════════════════════════════╗${NC}"
-echo -e "${BLUE}║${NC}         ${GREEN}WayfindR Navigation System - Localization Only${NC}          ${BLUE}║${NC}"
+echo -e "${BLUE}║${NC}        ${GREEN}WayfindR Navigation System - Full Navigation Mode${NC}        ${BLUE}║${NC}"
 echo -e "${BLUE}╚════════════════════════════════════════════════════════════════════╝${NC}"
 echo ""
 
@@ -119,19 +132,23 @@ fi
 
 # Print configuration
 echo -e "${GREEN}Configuration:${NC}"
-echo -e "  Mode:         ${YELLOW}Localization Only${NC}"
+echo -e "  Mode:         ${YELLOW}Full Navigation${NC}"
 echo -e "  Map:          ${YELLOW}$MAP_FILE${NC}"
 echo -e "  RViz:         ${YELLOW}$USE_RVIZ${NC}"
 echo -e "  Serial Port:  ${YELLOW}$SERIAL_PORT${NC}"
+echo -e "  cmd_vel Bridge: ${YELLOW}$USE_BRIDGE${NC}"
+if [ "$USE_BRIDGE" = "true" ]; then
+    echo -e "  PI_API URL:   ${YELLOW}$PI_API_URL${NC}"
+fi
 echo ""
 
 # Print instructions
 echo -e "${GREEN}Instructions:${NC}"
 echo -e "  1. Wait for all nodes to start (check terminal output)"
 echo -e "  2. In RViz, set initial pose using '2D Pose Estimate'"
-echo -e "  3. Click on the map where the robot is located"
-echo -e "  4. Drag to set the robot's orientation"
-echo -e "  5. Watch the particle filter converge"
+echo -e "  3. Send navigation goals using '2D Nav Goal'"
+echo -e "  4. Or use waypoint_manager.py for mission planning"
+echo -e "  5. Monitor robot status in RViz and terminal"
 echo ""
 
 # Countdown
@@ -149,16 +166,18 @@ if [ -f "/opt/ros/humble/setup.bash" ]; then
 fi
 
 # Launch command
-echo -e "${GREEN}Launching Localization Only Mode...${NC}"
+echo -e "${GREEN}Launching Full Navigation...${NC}"
 echo ""
 
 ros2 launch "$PKG_DIR/launch/bringup.launch.py" \
-    mode:=localization \
+    mode:=navigation \
     map:="$MAP_FILE" \
     use_rviz:=$USE_RVIZ \
-    serial_port:=$SERIAL_PORT
+    serial_port:=$SERIAL_PORT \
+    use_cmd_vel_bridge:=$USE_BRIDGE \
+    pi_api_url:=$PI_API_URL
 
 # If we get here, the launch file exited
 echo ""
-echo -e "${YELLOW}Localization session ended${NC}"
+echo -e "${YELLOW}Navigation session ended${NC}"
 echo ""

@@ -1,0 +1,192 @@
+╔═══════════════════════════════════════════════════════════════════════════╗
+║                 WayfindR Navigation System - Quick Reference             ║
+╚═══════════════════════════════════════════════════════════════════════════╝
+
+┌─────────────────────────────────────────────────────────────────────────┐
+│ BASIC OPERATIONS                                                        │
+└─────────────────────────────────────────────────────────────────────────┘
+
+1. CREATE A MAP (First Time Setup)
+   cd /path/to/ros2_comprehensive_attempt
+   ./scripts/start_mapping.sh
+   # Drive robot around, then:
+   ros2 run nav2_map_server map_saver_cli -f ~/maps/my_map
+
+2. TEST LOCALIZATION
+   ./scripts/start_localization.sh --map ~/maps/my_map.yaml
+   # In RViz: Set initial pose with "2D Pose Estimate"
+
+3. RUN NAVIGATION
+   ./scripts/start_navigation.sh --map ~/maps/my_map.yaml
+   # In RViz: Set pose, then send goals with "2D Nav Goal"
+
+┌─────────────────────────────────────────────────────────────────────────┐
+│ HELPER SCRIPTS                                                          │
+└─────────────────────────────────────────────────────────────────────────┘
+
+SLAM Mapping:
+  ./scripts/start_mapping.sh
+  ./scripts/start_mapping.sh --no-rviz
+  ./scripts/start_mapping.sh --serial-port /dev/rplidar
+
+Localization:
+  ./scripts/start_localization.sh --map /path/to/map.yaml
+  ./scripts/start_localization.sh --map /path/to/map.yaml --no-rviz
+
+Navigation:
+  ./scripts/start_navigation.sh --map /path/to/map.yaml
+  ./scripts/start_navigation.sh --map /path/to/map.yaml --with-bridge
+  ./scripts/start_navigation.sh --map /path/to/map.yaml --no-rviz
+
+Simulation:
+  ./scripts/start_simulation.sh --mode navigation --map /path/to/map.yaml
+  # Then: ros2 bag play data.bag --clock
+
+Help:
+  ./scripts/start_*.sh --help
+
+┌─────────────────────────────────────────────────────────────────────────┐
+│ DIRECT LAUNCH COMMANDS                                                  │
+└─────────────────────────────────────────────────────────────────────────┘
+
+SLAM:
+  ros2 launch ros2_comprehensive_attempt bringup.launch.py mode:=slam
+
+Localization:
+  ros2 launch ros2_comprehensive_attempt bringup.launch.py \
+      mode:=localization map:=/path/to/map.yaml
+
+Navigation:
+  ros2 launch ros2_comprehensive_attempt bringup.launch.py \
+      mode:=navigation map:=/path/to/map.yaml
+
+Navigation + Hardware:
+  ros2 launch ros2_comprehensive_attempt bringup.launch.py \
+      mode:=navigation map:=/path/to/map.yaml \
+      use_cmd_vel_bridge:=true pi_api_url:=http://192.168.1.100:8000
+
+Simulation:
+  ros2 launch ros2_comprehensive_attempt bringup.launch.py \
+      mode:=navigation map:=/path/to/map.yaml use_sim_time:=true
+
+┌─────────────────────────────────────────────────────────────────────────┐
+│ LAUNCH ARGUMENTS                                                        │
+└─────────────────────────────────────────────────────────────────────────┘
+
+mode:=slam|localization|navigation    Mode selection (default: navigation)
+map:=/path/to/map.yaml                Map file (required for loc/nav)
+use_sim_time:=true|false              Simulation mode (default: false)
+use_rviz:=true|false                  Launch RViz (default: true)
+use_cmd_vel_bridge:=true|false        PI_API bridge (default: false)
+serial_port:=/dev/ttyUSB0             LiDAR port (default: /dev/ttyUSB0)
+pi_api_url:=http://host:port          PI_API URL (default: localhost:8000)
+
+┌─────────────────────────────────────────────────────────────────────────┐
+│ USEFUL ROS2 COMMANDS                                                    │
+└─────────────────────────────────────────────────────────────────────────┘
+
+Check running nodes:        ros2 node list
+List topics:                ros2 topic list
+Echo scan data:             ros2 topic echo /scan
+Echo velocity commands:     ros2 topic echo /cmd_vel
+Check transforms:           ros2 run tf2_tools view_frames
+Monitor navigation:         ros2 topic echo /amcl_pose
+
+Send navigation goal:
+  ros2 action send_goal /navigate_to_pose nav2_msgs/action/NavigateToPose \
+  "{pose: {header: {frame_id: 'map'}, \
+   pose: {position: {x: 1.0, y: 2.0, z: 0.0}, orientation: {w: 1.0}}}}"
+
+┌─────────────────────────────────────────────────────────────────────────┐
+│ TROUBLESHOOTING                                                         │
+└─────────────────────────────────────────────────────────────────────────┘
+
+LiDAR not found:
+  ls -l /dev/ttyUSB*
+  sudo chmod 666 /dev/ttyUSB0
+  sudo usermod -a -G dialout $USER  # Then logout/login
+
+Map not found:
+  Use absolute paths: /home/user/maps/map.yaml
+  Check: ls ~/maps/
+
+Robot not moving:
+  - Check: ros2 topic echo /cmd_vel
+  - Set initial pose in RViz (2D Pose Estimate)
+  - Verify PI_API running (if using --with-bridge)
+  - Check for obstacles in costmap
+
+Localization not working:
+  - Set initial pose in RViz
+  - Make sure you're in correct area of map
+  - Move robot slightly to help convergence
+
+High CPU usage:
+  - Use --no-rviz flag
+  - Use localization mode instead of navigation
+
+┌─────────────────────────────────────────────────────────────────────────┐
+│ FILE LOCATIONS                                                          │
+└─────────────────────────────────────────────────────────────────────────┘
+
+Main Launch:       launch/bringup.launch.py
+Helper Scripts:    scripts/start_*.sh
+Documentation:     findings/unified_launch_system.md
+Quick Start:       findings/quick_start_guide.md
+Nav2 Config:       config/nav2_params.yaml
+SLAM Config:       config/slam_params.yaml
+AMCL Config:       config/amcl_params.yaml
+Robot URDF:        urdf/wayfinder_robot.urdf.xacro
+Maps:              maps/
+
+┌─────────────────────────────────────────────────────────────────────────┐
+│ MODES COMPARISON                                                        │
+└─────────────────────────────────────────────────────────────────────────┘
+
+             SLAM    Localization    Navigation
+Robot State    ✓          ✓              ✓
+RPLidar        ✓          ✓              ✓
+SLAM Toolbox   ✓          ✗              ✗
+Map Server     ✗          ✓              ✓
+AMCL           ✗          ✓              ✓
+Nav2 Stack     ✗          ✗              ✓
+Needs Map      ✗          ✓              ✓
+
+┌─────────────────────────────────────────────────────────────────────────┐
+│ WORKFLOW EXAMPLES                                                       │
+└─────────────────────────────────────────────────────────────────────────┘
+
+First-Time Setup:
+  1. ./scripts/start_mapping.sh
+  2. Drive around to build map
+  3. ros2 run nav2_map_server map_saver_cli -f ~/maps/office
+  4. ./scripts/start_localization.sh --map ~/maps/office.yaml
+  5. Verify localization works
+  6. ./scripts/start_navigation.sh --map ~/maps/office.yaml
+
+Daily Operation:
+  1. ./scripts/start_navigation.sh --map ~/maps/office.yaml --with-bridge
+  2. Set initial pose in RViz
+  3. Send navigation goals or run waypoint missions
+
+Testing/Development:
+  1. ./scripts/start_simulation.sh --mode navigation --map ~/maps/office.yaml
+  2. ros2 bag play test_data.bag --clock
+  3. Test algorithms without hardware
+
+┌─────────────────────────────────────────────────────────────────────────┐
+│ SUPPORT & DOCUMENTATION                                                 │
+└─────────────────────────────────────────────────────────────────────────┘
+
+Full Documentation:  findings/unified_launch_system.md
+Quick Start Guide:   findings/quick_start_guide.md
+System Summary:      findings/UNIFIED_LAUNCH_SYSTEM_SUMMARY.md
+Launch README:       launch/README.md
+
+Script Help:         ./scripts/start_*.sh --help
+
+Version: 1.0
+Date: 2026-01-11
+Author: WayfindR Development Team
+
+╚═══════════════════════════════════════════════════════════════════════════╝
