@@ -1,0 +1,161 @@
+# =============================================================================
+# Ambot RAG System - Docker Compose (Jetson Orin Nano Optimized)
+# =============================================================================
+# Optimized for 8GB RAM Jetson Orin Nano
+# Uses single Docker network (no port chaos)
+# Supports Ollama or HuggingFace backends
+# =============================================================================
+
+services:
+  # ---------------------------------------------------------------------------
+  # PostgreSQL with pgvector extension
+  # ---------------------------------------------------------------------------
+  postgres:
+    image: pgvector/pgvector:pg16
+    container_name: ambot-rag-postgres
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-ambot_rag}
+      POSTGRES_USER: ${POSTGRES_USER:-ambot}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-ambot_secure_pass}
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    # Resource constraints for Jetson (8GB total)
+    deploy:
+      resources:
+        limits:
+          memory: 512M
+    # Optimize PostgreSQL for low memory
+    command:
+      - "postgres"
+      - "-c"
+      - "shared_buffers=128MB"
+      - "-c"
+      - "work_mem=4MB"
+      - "-c"
+      - "maintenance_work_mem=64MB"
+      - "-c"
+      - "effective_cache_size=256MB"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-ambot} -d ${POSTGRES_DB:-ambot_rag}"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    networks:
+      - ambot-net
+    restart: unless-stopped
+
+  # ---------------------------------------------------------------------------
+  # Redis for embedding cache
+  # ---------------------------------------------------------------------------
+  redis:
+    image: redis:7-alpine
+    container_name: ambot-rag-redis
+    # Limit Redis memory on Jetson
+    command: ["redis-server", "--maxmemory", "256mb", "--maxmemory-policy", "allkeys-lru"]
+    volumes:
+      - redisdata:/data
+    deploy:
+      resources:
+        limits:
+          memory: 300M
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    networks:
+      - ambot-net
+    restart: unless-stopped
+
+  # ---------------------------------------------------------------------------
+  # FastAPI RAG API
+  # ---------------------------------------------------------------------------
+  api:
+    build:
+      context: ./app
+      dockerfile: Dockerfile
+    container_name: ambot-rag-api
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    environment:
+      # Database
+      POSTGRES_HOST: postgres
+      POSTGRES_PORT: 5432
+      POSTGRES_DB: ${POSTGRES_DB:-ambot_rag}
+      POSTGRES_USER: ${POSTGRES_USER:-ambot}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-ambot_secure_pass}
+
+      # Redis
+      REDIS_URL: redis://redis:6379/0
+
+      # Embedding (sentence-transformers runs in this container)
+      EMBEDDING_MODEL: ${EMBEDDING_MODEL:-all-MiniLM-L6-v2}
+      EMBEDDING_DIMENSION: ${EMBEDDING_DIMENSION:-384}
+      EMBEDDING_BACKEND: ${EMBEDDING_BACKEND:-sentence-transformers}
+
+      # Chunking (smaller chunks for resource efficiency)
+      CHUNK_SIZE: ${CHUNK_SIZE:-512}
+      CHUNK_OVERLAP: ${CHUNK_OVERLAP:-50}
+
+      # LLM Backend: "ollama" or "huggingface"
+      LLM_BACKEND: ${LLM_BACKEND:-ollama}
+
+      # Ollama settings (if using Ollama)
+      OLLAMA_BASE_URL: ${OLLAMA_BASE_URL:-http://host.docker.internal:11434}
+      LLM_MODEL: ${LLM_MODEL:-tinyllama}
+      LLM_TEMPERATURE: ${LLM_TEMPERATURE:-0.3}
+      LLM_TIMEOUT: ${LLM_TIMEOUT:-300}
+
+      # HuggingFace settings (if using HuggingFace)
+      HF_MODEL: ${HF_MODEL:-TinyLlama/TinyLlama-1.1B-Chat-v1.0}
+      HF_DEVICE: ${HF_DEVICE:-cuda}
+      HF_TORCH_DTYPE: ${HF_TORCH_DTYPE:-float16}
+
+      # RAG retrieval
+      RAG_TOP_K: ${RAG_TOP_K:-3}
+      RAG_MIN_SIMILARITY: ${RAG_MIN_SIMILARITY:-0.75}
+
+      # Project
+      PROJECT_NAME: ${PROJECT_NAME:-ambot-eecs}
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    volumes:
+      # Mount knowledge base (EECS documentation)
+      - ${KNOWLEDGE_DIR:-./knowledge}:/data/knowledge:ro
+      # Mount HuggingFace cache if using HF backend
+      - ${HF_CACHE:-~/.cache/huggingface}:/root/.cache/huggingface
+    ports:
+      # Expose API directly (no frontend needed)
+      - "${API_PORT:-8000}:8000"
+    deploy:
+      resources:
+        limits:
+          memory: 2G
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+    networks:
+      - ambot-net
+    restart: unless-stopped
+
+# =============================================================================
+# Volumes
+# =============================================================================
+volumes:
+  pgdata:
+    name: ambot-rag-pgdata
+  redisdata:
+    name: ambot-rag-redisdata
+
+# =============================================================================
+# Network
+# =============================================================================
+networks:
+  ambot-net:
+    name: ${NETWORK_NAME:-ambot-rag}
+    driver: bridge

@@ -1,0 +1,11 @@
+# Pathfinder LiDAR - Python Dependencies
+# Install with: pip install -r requirements.txt
+
+# Required
+pyserial>=3.5
+
+# Required for obstacle detection
+numpy>=1.20.0
+
+# Optional - for visualization (test_lidar.py --visualize)
+matplotlib>=3.5.0

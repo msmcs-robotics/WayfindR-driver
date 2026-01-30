@@ -1,0 +1,48 @@
+# =============================================================================
+# Ambot RAG System - Python Dependencies
+# =============================================================================
+# Core dependencies for RAG system
+# HuggingFace dependencies are optional (for local LLM inference)
+# =============================================================================
+
+# FastAPI & Web
+fastapi[standard]
+uvicorn[standard]
+httpx
+python-multipart
+
+# Database
+sqlalchemy[asyncio]
+asyncpg
+pgvector
+
+# Cache
+redis[hiredis]
+
+# Embeddings (sentence-transformers always needed)
+sentence-transformers
+
+# Document Processing
+pymupdf
+
+# Configuration
+pydantic-settings
+pyyaml
+
+# MCP (Model Context Protocol)
+fastmcp
+
+# =============================================================================
+# HuggingFace LLM Backend (Optional)
+# =============================================================================
+# Uncomment these if using LLM_BACKEND=huggingface
+# Note: For Jetson, install torch from NVIDIA wheels instead of pip
+# transformers
+# accelerate
+#
+# For Jetson Orin Nano:
+# 1. PyTorch should be installed from NVIDIA wheels
+# 2. See: https://developer.nvidia.com/embedded/jetpack
+# 3. For production, consider nanoLLM:
+#    https://www.jetson-ai-lab.com/archive/tutorial_nano-llm.html
+# =============================================================================

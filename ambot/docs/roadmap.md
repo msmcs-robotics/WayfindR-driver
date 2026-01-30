@@ -1,6 +1,6 @@
 # Ambot - Roadmap
 
-> Last updated: 2026-01-27
+> Last updated: 2026-01-29
 
 ## Overview
 
@@ -8,9 +8,18 @@ This roadmap tracks project-level features and milestones. For immediate tasks, 
 
 **Note**: No time estimates. Focus on WHAT needs to be done, not WHEN.
 
+**Project Components:**
+| Component | Folder | Purpose |
+|-----------|--------|---------|
+| **bootylicious** | `ambot/bootylicious/` | LLM + RAG system (conversation brain) |
+| **locomotion** | `ambot/locomotion/` | Motor control (differential drive) |
+| **pathfinder** | `ambot/pathfinder/` | LiDAR wandering & obstacle avoidance (NO SLAM) |
+
+*Each component can be deployed to Jetson or Raspberry Pi as needed.*
+
 **Goal Horizons:**
 - **Short-term**: System inventory and basic subsystem setup
-- **Mid-term (First Stable Release)**: Both subsystems independently functional and testable
+- **Mid-term (First Stable Release)**: All three components independently functional and testable
 - **Long-term**: Integrated robot with conversation + navigation working together
 
 ---
@@ -76,30 +85,33 @@ This roadmap tracks project-level features and milestones. For immediate tasks, 
 
 ---
 
-## Milestone 3: Raspberry Pi - LiDAR & Movement Subsystem
+## Milestone 3: Locomotion & Pathfinder Components
 
-### LiDAR Integration (Python)
-- [ ] Port relevant LiDAR code from WayfindR-driver (without ROS2 dependencies)
-  - Reference: `WayfindR-driver/ros_tank_xiaor/lidar_youyeetoo_visual_plotter.py`
-  - Reference: `WayfindR-driver/PI_API/` for motor control patterns
-- [ ] Implement raw LiDAR data reading via serial
-- [ ] Implement basic obstacle detection from scan data
-- [ ] Create real-time visualization tool for debugging
-- [ ] Test with actual LiDAR sensor
+### Locomotion (`ambot/locomotion/`)
+- [x] Create motor control module for YAHBOOM G1 (TB6612FNG) -- Completed 2026-01-29
+- [x] Implement Motor and DifferentialDrive classes -- Completed 2026-01-29
+- [x] Create deploy.sh with diagnostics -- Completed 2026-01-29
+- [x] Platform auto-detection (Jetson.GPIO vs RPi.GPIO) -- Completed 2026-01-29
+- [ ] Test on actual Jetson hardware with motors connected
+- [ ] Test on Raspberry Pi hardware
+- [ ] Implement PID speed control (future enhancement)
 
-### Object Avoidance
-- [ ] Implement simple obstacle avoidance algorithm (no ML)
-  - Approach: sector-based closest-obstacle detection
-- [ ] Define safety zones (stop distance, slow distance)
-- [ ] Test avoidance with static obstacles
-- [ ] Test avoidance with dynamic obstacles
+### Pathfinder (`ambot/pathfinder/`)
+> **Note**: Pathfinder is for simple demo wandering, NOT SLAM. The robot should wander around a room avoiding obstacles using reactive algorithms.
 
-### Basic Movement
-- [ ] Implement motor control interface (reference PI_API motor_driver.py)
-- [ ] Implement basic movement commands (forward, backward, turn)
-- [ ] Implement algorithmic movement patterns
-- [ ] Integrate obstacle avoidance with movement
-- [ ] Test movement reliability
+- [x] Create LiDAR module for RPLidar C1M1 -- Completed 2026-01-29
+- [x] Implement sector-based obstacle detection -- Completed 2026-01-29
+- [x] Create deploy.sh with diagnostics -- Completed 2026-01-29
+- [x] Create udev rules setup script -- Completed 2026-01-29
+- [x] Implement wandering behaviors (MaxClearance, WallFollower, RandomWander, AvoidAndGo) -- Completed 2026-01-29
+- [x] Create BehaviorRunner for behavior loop execution -- Completed 2026-01-29
+- [x] Add dynamic obstacle detection (DynamicObstacleMonitor, SafetyWrapper) -- Completed 2026-01-29
+- [x] Add create_safe_wanderer() for safe operation around people -- Completed 2026-01-29
+- [ ] Test with actual RPLidar C1M1 sensor
+- [ ] Tune safety zone distances for robot size
+- [ ] Test wandering behaviors in real environment
+- [ ] Create visualization tool for debugging
+- [ ] Integrate with locomotion for full wandering demo
 
 ---
 
@@ -137,17 +149,41 @@ This roadmap tracks project-level features and milestones. For immediate tasks, 
 ### Project Setup
 - [x] Create ambot project structure -- Completed 2026-01-27
 - [x] Draft scope, roadmap, and documentation -- Completed 2026-01-27
+- [x] Reorganize into three components (bootylicious, locomotion, pathfinder) -- Completed 2026-01-29
+
+### Bootylicious (LLM/RAG)
+- [x] Create Docker Compose for RAG system (PostgreSQL + pgvector + Redis + FastAPI) -- Completed 2026-01-29
+- [x] Add dual LLM backend support (Ollama + HuggingFace) -- Completed 2026-01-29
+- [x] Create deploy.sh with diagnostics -- Completed 2026-01-29
+- [x] Create rsync-to-jetson.sh for deployment -- Completed 2026-01-29
+- [x] Create system tests (test-system.sh) -- Completed 2026-01-29
+
+### Locomotion (Motor Control)
+- [x] Create YAHBOOM G1 motor driver module -- Completed 2026-01-29
+- [x] Implement Motor and DifferentialDrive classes -- Completed 2026-01-29
+- [x] Create deploy.sh with GPIO diagnostics -- Completed 2026-01-29
+
+### Pathfinder (LiDAR Wandering)
+- [x] Create RPLidar C1M1 module -- Completed 2026-01-29
+- [x] Implement sector-based obstacle detection -- Completed 2026-01-29
+- [x] Create deploy.sh with device diagnostics -- Completed 2026-01-29
+- [x] Implement wandering behaviors (MaxClearance, WallFollower, RandomWander, AvoidAndGo) -- Completed 2026-01-29
+- [x] Create BehaviorRunner for autonomous behavior execution -- Completed 2026-01-29
+- [x] Research and document wandering algorithms -- Completed 2026-01-29
+- [x] Add dynamic obstacle detection for people walking by (DynamicObstacleMonitor) -- Completed 2026-01-29
+- [x] Add SafetyWrapper and create_safe_wanderer() for safe demos -- Completed 2026-01-29
 
 ---
 
 ## Notes
 
-- The Jetson is the "brain" (LLM + RAG + vision), the Pi is the "body" (movement + sensing)
-- Two developer teams should be able to work independently on their subsystem
-- Python-first approach on Pi; C port is a future optimization milestone
+- **Platform-agnostic**: Each component can run on Jetson or Raspberry Pi as needed
+- **Three independent components**: bootylicious (brain), locomotion (motors), pathfinder (sensing)
+- Developer teams can work independently on their respective components
+- Python-first approach; C port is a future optimization milestone
 - **Development philosophy: get basic system working first, then iterate** (no ROS2 initially, add it later for SLAM)
 - External projects will feed into Ambot: LLM optimization project, audio/voice project
-- First stable release = both subsystems working independently (not necessarily integrated)
+- First stable release = all three components working independently (not necessarily integrated)
 - ROS2 is a planned upgrade path, not excluded - just not a dependency for the initial working system
 
 ---

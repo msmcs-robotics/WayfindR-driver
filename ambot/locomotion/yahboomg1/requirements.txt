@@ -1,0 +1,12 @@
+# YAHBOOM G1 Motor Driver Requirements
+#
+# Platform-specific GPIO library:
+#   Jetson: Jetson.GPIO is usually pre-installed
+#   RPi:    RPi.GPIO is usually pre-installed
+#
+# Install manually if needed:
+#   sudo pip3 install Jetson.GPIO  # Jetson
+#   sudo pip3 install RPi.GPIO     # Raspberry Pi
+
+# No additional dependencies required for basic motor control
+# The GPIO libraries are platform-specific and typically pre-installed

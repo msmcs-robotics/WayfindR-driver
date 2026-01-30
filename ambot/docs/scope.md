@@ -1,13 +1,19 @@
 # Ambot - Scope
 
-> Last updated: 2026-01-27
+> Last updated: 2026-01-29
 > Status: Draft
 
 ---
 
 ## Overview
 
-Ambot is an autonomous conversational robot platform split across two embedded Linux systems: a Jetson Orin Nano handling LLM inference, RAG knowledge retrieval, and visual person detection, and a Raspberry Pi handling LiDAR-based object avoidance and algorithmic movement. The project enables two developer teams to work independently on their respective subsystems while targeting a unified robot.
+Ambot is an autonomous conversational robot platform with three independent components that can be deployed to Jetson Orin Nano or Raspberry Pi as needed:
+
+- **bootylicious** - LLM inference, RAG knowledge retrieval, visual person detection
+- **locomotion** - Motor control for differential drive robots (YAHBOOM G1 / TB6612FNG)
+- **pathfinder** - LiDAR-based wandering and obstacle avoidance (RPLidar C1M1) - NO SLAM, just demo wandering
+
+The project enables multiple developer teams to work independently on their respective subsystems while targeting a unified robot. Each component has its own deployment scripts and can run on either platform.
 
 ## Objectives
 
@@ -76,13 +82,13 @@ Ambot is an autonomous conversational robot platform split across two embedded L
 ## Boundaries
 
 ### In Scope
-- LLM inference using nanoLLM on Jetson (loading and prompting small models)
-- RAG system deployment (based on rag-bootstrap: PostgreSQL + pgvector + Redis + FastAPI)
-- USB camera person/face detection on Jetson
+- **bootylicious**: LLM inference (nanoLLM or HuggingFace), RAG system (pgvector + Redis + FastAPI), person detection
+- **locomotion**: Motor control for YAHBOOM G1 (TB6612FNG driver), differential drive support
+- **pathfinder**: LiDAR wandering behaviors (MaxClearance, WallFollower, RandomWander), sector-based obstacle detection, safety zones - simple demo wandering WITHOUT SLAM
+- USB camera person/face detection
 - Text display output for conversation responses
-- LiDAR object avoidance on Raspberry Pi (Python, no ROS2 initially)
-- Basic algorithmic movement on Raspberry Pi (no ML)
 - SSH-based development and deployment tooling
+- Platform-agnostic components (deploy to Jetson or Pi as needed)
 - System capability research and documentation
 - Future ROS2 integration path for SLAM and advanced navigation
 
@@ -94,7 +100,7 @@ Ambot is an autonomous conversational robot platform split across two embedded L
 - C/C++ port of LiDAR system (future, after Python is working)
 - Multi-robot fleet management
 - Cloud-based LLM inference
-- SLAM mapping (unnecessary for basic object avoidance)
+- SLAM mapping (future work - current focus is simple wandering algorithms)
 
 ## Technical Decisions
 
@@ -106,6 +112,7 @@ Ambot is an autonomous conversational robot platform split across two embedded L
 | Embedding Model | all-MiniLM-L6-v2 (384-dim) | Lightweight (~80MB), good quality | 2026-01-27 |
 | LiDAR Approach (initial) | Custom Python (no ROS2) | Start simple, get basic system working first | 2026-01-27 |
 | LiDAR Approach (future) | ROS2 for SLAM/advanced nav | Leverage WayfindR-driver ROS2 stack when ready to iterate | 2026-01-27 |
+| Wandering Algorithms | MaxClearance, WallFollower, RandomWander | Simple demo behaviors without SLAM | 2026-01-29 |
 | Output Method | Text display (no speaker) | Simplest first iteration | 2026-01-27 |
 
 ## Integration Points
@@ -143,6 +150,7 @@ Ambot is an autonomous conversational robot platform split across two embedded L
 | Date | Changes | By |
 |------|---------|-----|
 | 2026-01-27 | Initial draft from project kickoff context | LLM |
+| 2026-01-29 | Reorganized into three components: bootylicious, locomotion, pathfinder | LLM |
 
 ---
 
