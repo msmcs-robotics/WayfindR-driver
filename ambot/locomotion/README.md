@@ -15,12 +15,20 @@ The locomotion module provides differential drive control for wheeled robots usi
 | Jetson Orin Nano | Jetson.GPIO | Fully supported |
 | Raspberry Pi 3/4/5 | RPi.GPIO | Fully supported |
 
+### Supported Motor Drivers
+
+| Driver | Voltage | Current | Recommended For |
+|--------|---------|---------|-----------------|
+| **TB6612FNG** | 4.5-13.5V | 1.2A cont | Raspberry Pi + FAGM25-370 |
+| L298N | 5-35V | 2A cont | Budget projects |
+| DRV8833 | 2.7-10.8V | 1.2A cont | Low voltage (6-9V) only |
+
 ### Hardware
 
-- **Motor Driver**: TB6612FNG (dual H-bridge)
-- **Motors**: 370 DC Motors x 2
+- **Motor Driver**: TB6612FNG (dual H-bridge) - SparkFun or similar
+- **Motors**: FAGM25-370 / 370 DC Gearmotors x 2
 - **Drive Type**: Differential (tank-style)
-- **Kit**: YAHBOOM G1 Smart Robot Kit
+- **Kit**: YAHBOOM G1 Smart Robot Kit (Jetson) or custom Raspberry Pi build
 
 ## Directory Structure
 
@@ -29,7 +37,18 @@ locomotion/
 ├── deploy.sh           # Deployment and diagnostic script
 ├── README.md           # This file
 ├── logs/               # Log files (auto-created)
-└── yahboomg1/          # YAHBOOM G1 motor driver
+├── docs/               # Hardware documentation
+│   ├── fagm25-370-motors.md    # Motor specifications
+│   ├── tb6612fng-driver.md     # TB6612FNG wiring guide
+│   └── motor-drivers-comparison.md  # Driver comparison
+├── rpi_motors/         # Modular Raspberry Pi motor control
+│   ├── __init__.py     # Module exports
+│   ├── config.py       # Pin configurations for multiple drivers
+│   ├── drivers.py      # Driver implementations (TB6612FNG, L298N, DRV8833)
+│   ├── motor.py        # Motor and DifferentialDrive classes
+│   ├── factory.py      # Factory functions for easy setup
+│   └── test_motors.py  # Test script
+└── yahboomg1/          # YAHBOOM G1 motor driver (Jetson-focused)
     ├── __init__.py     # Module exports
     ├── config.py       # Pin configuration
     ├── motor.py        # Motor and DifferentialDrive classes
@@ -85,7 +104,30 @@ To change pin assignments, edit `yahboomg1/config.py`.
 
 ## Usage
 
-### Python API
+### Raspberry Pi with Modular Drivers (rpi_motors)
+
+```python
+from locomotion.rpi_motors import create_robot, DriverType
+
+# Create robot with TB6612FNG (default, recommended)
+robot = create_robot()
+
+# Or specify driver type
+robot = create_robot(driver_type=DriverType.TB6612FNG)
+robot = create_robot(driver_type=DriverType.L298N)
+
+# Control
+robot.forward(50)
+robot.turn_left(50)
+robot.stop()
+robot.cleanup()
+```
+
+Test with: `python3 -m locomotion.rpi_motors.test_motors --basic`
+
+See [rpi_motors/README.md](rpi_motors/README.md) for full documentation.
+
+### Jetson/YAHBOOM G1 (yahboomg1)
 
 ```python
 from locomotion.yahboomg1 import create_robot

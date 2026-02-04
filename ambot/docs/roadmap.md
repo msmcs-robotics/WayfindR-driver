@@ -125,20 +125,50 @@ This roadmap tracks project-level features and milestones. For immediate tasks, 
 
 ---
 
-## Nice to Have (Lower Priority / Future Roadmap)
+## Milestone 5: Future Vision (Long-Term)
 
-- [ ] ROS2 integration for SLAM and advanced navigation
-  - Description: Once basic Python LiDAR/movement is working, introduce ROS2 for SLAM mapping, localization (AMCL), and path planning
-  - Dependencies: Basic Python LiDAR system working first
-  - Reference: WayfindR-driver `ros2_comprehensive_attempt/` has a complete ROS2 Humble stack ready to adapt
+> These are aspirational goals for the full robot system. Not blockers for initial release.
+
+### Advanced LLM Capabilities
+- [ ] Scale to 8-12B parameter LLM on Jetson Orin Nano
+  - Research indicates 8-12B models can run on Jetson with optimizations
+  - Larger models provide better conversation quality and fewer hallucinations
+  - Target: Run entirely on-device (no cloud dependency)
+- [ ] Implement MCP server (Python FastMCP) for LLM-to-locomotion control
+  - Enable LLM to control robot movements through MCP tools
+  - Example: "move forward", "turn left", "stop" as MCP functions
+  - Rudimentary control without ROS2 complexity
+- [ ] LLM-driven behavior selection
+  - LLM can choose between different pathfinder behaviors
+  - Context-aware movement (e.g., "follow the person", "go to charging station")
+
+### Sensor Fusion
+- [ ] Integrate MPU6050 IMU for orientation/tilt sensing
+  - Graceful degradation: system works without IMU, IMU enhances when present
+- [ ] Camera-based facial detection events triggering LLM
+  - Detect specific faces → personalized greetings
+  - Detect crowd → different behavior than single person
+- [ ] Combined LiDAR + camera + IMU for robust navigation
+  - Still NO SLAM - just better reactive navigation
+
+### Voice Interaction
 - [ ] Speech-to-text input (possibly via Android device)
 - [ ] Text-to-speech output (possibly via Android device)
 - [ ] Continuous microphone listening for voice commands
+- [ ] Wake word detection ("Hey Ambot")
+
+### ROS2 Migration (When Ready for SLAM)
+- [ ] ROS2 integration for SLAM and advanced navigation
+  - Description: Once basic Python system is proven, introduce ROS2 for SLAM mapping
+  - Dependencies: Basic Python LiDAR system working first
+  - Reference: WayfindR-driver `ros2_comprehensive_attempt/` has ROS2 Humble stack
+
+### Other Enhancements
 - [ ] Port LiDAR/movement system from Python to C
 - [ ] Multiple display modes (conversation, status, map)
 - [ ] Leverage optimized LLMs from external project
 - [ ] Multi-person conversation handling
-- [ ] Persistent conversation memory
+- [ ] Persistent conversation memory across sessions
 
 ---
 

@@ -1,10 +1,28 @@
 """
 Pathfinder LiDAR Configuration
 
-Configuration settings for the RPLidar C1M1 and obstacle detection.
+Configuration settings for LiDAR sensors (LD19 and RPLidar C1M1).
 """
 
 import os
+from enum import Enum
+
+
+class LidarType(Enum):
+    """Supported LiDAR types."""
+    LD19 = "ld19"           # YOUYEETOO LD19 / LDRobot LD19
+    RPLIDAR_C1M1 = "c1m1"   # SLAMTEC RPLidar C1M1
+    RPLIDAR_A1 = "a1"       # SLAMTEC RPLidar A1
+    AUTO = "auto"           # Auto-detect
+
+
+# =============================================================================
+# LiDAR Type Selection
+# =============================================================================
+
+# Current LiDAR type: Set via environment or default to LD19
+# Options: "ld19", "c1m1", "a1", "auto"
+LIDAR_TYPE = LidarType(os.environ.get("LIDAR_TYPE", "ld19").lower())
 
 # =============================================================================
 # Serial Port Settings
@@ -16,8 +34,16 @@ SERIAL_PORT = os.environ.get("LIDAR_PORT", "/dev/rplidar")
 # Fallback device path if primary not found
 SERIAL_PORT_FALLBACK = "/dev/ttyUSB0"
 
-# Baud rate for RPLidar C1M1 (460800 for C1, A2, A3; 115200 for A1)
-BAUD_RATE = 460800
+# Baud rates per LiDAR type
+BAUD_RATES = {
+    LidarType.LD19: 230400,         # LD19 uses 230400
+    LidarType.RPLIDAR_C1M1: 460800, # C1M1 uses 460800
+    LidarType.RPLIDAR_A1: 115200,   # A1 uses 115200
+    LidarType.AUTO: 230400,         # Default to LD19 for auto
+}
+
+# Get baud rate for current type
+BAUD_RATE = BAUD_RATES.get(LIDAR_TYPE, 230400)
 
 # Serial timeout in seconds
 SERIAL_TIMEOUT = 3.0

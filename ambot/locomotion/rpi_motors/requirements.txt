@@ -1,0 +1,9 @@
+# Motor control requirements for Raspberry Pi
+# Install with: pip3 install -r requirements.txt
+
+# GPIO library (choose one based on platform)
+# Raspberry Pi:
+RPi.GPIO>=0.7.0
+
+# Jetson Orin Nano (uncomment if using Jetson):
+# Jetson.GPIO>=2.0.0
