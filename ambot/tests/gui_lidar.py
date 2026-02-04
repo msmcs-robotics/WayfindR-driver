@@ -166,22 +166,73 @@ def detect_display():
     return False
 
 
+def find_nearest_furthest(scan_points, min_distance=50):
+    """Find the nearest and furthest points from scan data.
+
+    Args:
+        scan_points: List of (angle, distance, quality) tuples
+        min_distance: Minimum distance to consider (filters noise)
+
+    Returns:
+        (nearest_point, furthest_point) as (angle, distance, quality) or None
+    """
+    if not scan_points:
+        return None, None
+
+    # Filter valid points (above noise threshold)
+    valid_points = [p for p in scan_points if p[1] > min_distance]
+    if not valid_points:
+        return None, None
+
+    nearest = min(valid_points, key=lambda p: p[1])
+    furthest = max(valid_points, key=lambda p: p[1])
+
+    return nearest, furthest
+
+
 def create_polar_plot(scan_points, max_distance=6000, title="LiDAR Scan"):
-    """Create a polar plot from scan points."""
+    """Create a polar plot from scan points with nearest/furthest highlighting."""
     import numpy as np
     import matplotlib.pyplot as plt
 
     fig = plt.figure(figsize=(10, 10))
     ax = fig.add_subplot(111, projection='polar')
 
+    nearest_point = None
+    furthest_point = None
+
     if scan_points:
         angles = [math.radians(p[0]) for p in scan_points]
         distances = [p[1] for p in scan_points]
         qualities = [p[2] for p in scan_points]
 
-        # Color by quality
+        # Color by quality (default points)
         colors = ['green' if q > 50 else 'yellow' if q > 20 else 'red' for q in qualities]
         ax.scatter(angles, distances, c=colors, s=2, alpha=0.7)
+
+        # Find and highlight nearest and furthest points
+        nearest_point, furthest_point = find_nearest_furthest(scan_points)
+
+        if nearest_point:
+            nearest_angle = math.radians(nearest_point[0])
+            nearest_dist = nearest_point[1]
+            # Red marker for nearest (danger/closest)
+            ax.scatter([nearest_angle], [nearest_dist], c='red', s=200, marker='o',
+                       edgecolors='white', linewidths=2, zorder=10, label=f'Nearest: {nearest_dist:.0f}mm @ {nearest_point[0]:.0f}°')
+            # Add connecting line from center
+            ax.plot([nearest_angle, nearest_angle], [0, nearest_dist], 'r--', linewidth=1, alpha=0.7)
+
+        if furthest_point:
+            furthest_angle = math.radians(furthest_point[0])
+            furthest_dist = furthest_point[1]
+            # Blue marker for furthest (clear/open space)
+            ax.scatter([furthest_angle], [furthest_dist], c='blue', s=200, marker='s',
+                       edgecolors='white', linewidths=2, zorder=10, label=f'Furthest: {furthest_dist:.0f}mm @ {furthest_point[0]:.0f}°')
+            # Add connecting line from center
+            ax.plot([furthest_angle, furthest_angle], [0, furthest_dist], 'b--', linewidth=1, alpha=0.7)
+
+        # Add legend
+        ax.legend(loc='upper right', fontsize=8)
 
     ax.set_rmax(max_distance)
     ax.set_title(title)
@@ -305,6 +356,16 @@ def run_lidar_gui(port="/dev/ttyUSB0", baudrate=230400, headless=False, raw_mode
         fig = plt.figure(figsize=(10, 10))
         ax = fig.add_subplot(111, projection='polar')
         scatter = ax.scatter([], [], s=2, c='green', alpha=0.7)
+
+        # Create markers for nearest and furthest points
+        nearest_marker = ax.scatter([], [], s=200, c='red', marker='o',
+                                    edgecolors='white', linewidths=2, zorder=10)
+        furthest_marker = ax.scatter([], [], s=200, c='blue', marker='s',
+                                     edgecolors='white', linewidths=2, zorder=10)
+        # Lines from center to nearest/furthest
+        nearest_line, = ax.plot([], [], 'r--', linewidth=1, alpha=0.7)
+        furthest_line, = ax.plot([], [], 'b--', linewidth=1, alpha=0.7)
+
         ax.set_rmax(6000)
         ax.set_title("LiDAR Live View")
         ax.grid(True)
@@ -314,14 +375,22 @@ def run_lidar_gui(port="/dev/ttyUSB0", baudrate=230400, headless=False, raw_mode
                              verticalalignment='top', fontsize=9,
                              bbox=dict(boxstyle='round', facecolor='wheat', alpha=0.5))
 
+        # Edge info text (right side)
+        edge_text = ax.text(0.98, 0.98, '', transform=ax.transAxes,
+                            verticalalignment='top', horizontalalignment='right', fontsize=9,
+                            bbox=dict(boxstyle='round', facecolor='lightblue', alpha=0.7))
+
         paused = [False]  # Use list to allow modification in nested function
         start_time = [time.time()]
 
         def update(frame):
             if paused[0]:
-                return scatter, stats_text
+                return scatter, stats_text, nearest_marker, furthest_marker, edge_text
 
             points = collector.get_scan_points()
+
+            nearest_info = "N/A"
+            furthest_info = "N/A"
 
             if points:
                 angles = np.array([math.radians(p[0]) for p in points])
@@ -334,6 +403,27 @@ def run_lidar_gui(port="/dev/ttyUSB0", baudrate=230400, headless=False, raw_mode
                 colors = ['green' if q > 50 else 'yellow' if q > 20 else 'red' for q in qualities]
                 scatter.set_color(colors)
 
+                # Find and highlight nearest/furthest
+                nearest, furthest = find_nearest_furthest(points)
+
+                if nearest:
+                    nearest_ang = math.radians(nearest[0])
+                    nearest_marker.set_offsets([[nearest_ang, nearest[1]]])
+                    nearest_line.set_data([nearest_ang, nearest_ang], [0, nearest[1]])
+                    nearest_info = f"{nearest[1]:.0f}mm @ {nearest[0]:.0f}°"
+                else:
+                    nearest_marker.set_offsets([])
+                    nearest_line.set_data([], [])
+
+                if furthest:
+                    furthest_ang = math.radians(furthest[0])
+                    furthest_marker.set_offsets([[furthest_ang, furthest[1]]])
+                    furthest_line.set_data([furthest_ang, furthest_ang], [0, furthest[1]])
+                    furthest_info = f"{furthest[1]:.0f}mm @ {furthest[0]:.0f}°"
+                else:
+                    furthest_marker.set_offsets([])
+                    furthest_line.set_data([], [])
+
             # Update stats
             elapsed = time.time() - start_time[0]
             data_rate = collector.get_raw_data_rate() / max(elapsed, 0.1)
@@ -344,7 +434,14 @@ def run_lidar_gui(port="/dev/ttyUSB0", baudrate=230400, headless=False, raw_mode
                 f'[P]ause | [R]eset | [S]ave | [Q]uit'
             )
 
-            return scatter, stats_text
+            # Update edge info
+            edge_text.set_text(
+                f'EDGES\n'
+                f'Nearest (red): {nearest_info}\n'
+                f'Furthest (blue): {furthest_info}'
+            )
+
+            return scatter, stats_text, nearest_marker, furthest_marker, edge_text
 
         def on_key(event):
             if event.key == 'q':

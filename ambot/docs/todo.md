@@ -59,6 +59,7 @@
 _Tasks actively being worked on_
 
 - [ ] Wire L298N motor driver to RPi GPIO
+- [ ] Create `wandering_demo_llm.py` - LLM-integrated wandering with conversation
 
 ## Blocked
 
@@ -108,6 +109,21 @@ _Lower priority, do when time permits_
 - [ ] Voice interaction (STT/TTS via Android device)
 
 ## Recently Completed
+
+_Session 4 - 2026-02-04 (ongoing)_
+
+- [x] **Live Monitor** - `live_monitor.py` terminal-based sensor monitoring (no GUI needed)
+  - LiDAR status: connection, scan rate, nearest/furthest points, sectors
+  - Camera status: connection, frame rate, face detection with centers
+  - System status: CPU usage, RAM usage, GPU usage (Jetson), network status
+  - Supports `--json` for programmatic output, `--log` for event logging
+- [x] **GUI Camera with face centers** - Added center point crosshairs on detected faces
+- [x] **GUI LiDAR with edge highlighting** - Red marker for nearest, blue for furthest
+- [x] **Two wandering demo architecture planned** (see Design Decisions below)
+- [x] **Comprehensive syntax verification** - `tests/verify_all_imports.py` checks all modules
+  - 36 Python files: all syntax valid
+  - Fixed missing `cleanup_gpio` export in rpi_motors
+  - Graceful handling of GPIO-dependent modules on dev machines
 
 _Session 3 - 2026-02-04_
 
@@ -176,23 +192,26 @@ ambot/
 │   ├── rpi-bootstrap-system.sh   # System packages + Docker
 │   └── rpi-bootstrap-python.sh   # Python libraries
 ├── deploy.sh              # Master deployment script
-├── install.sh             # Comprehensive install script (NEW - sudo, idempotent)
-├── wandering_demo.py      # Pathfinder + Locomotion integration demo (NEW)
+├── install.sh             # Comprehensive install script (sudo, idempotent)
+├── live_monitor.py        # Terminal-based sensor + system monitoring (NEW!)
+├── wandering_demo.py      # Basic wandering: Camera + LiDAR + Locomotion
 ├── tests/                 # Hardware test & diagnostic scripts
 │   ├── run_all_tests.sh   # Run all tests
 │   ├── test_gpio.py       # GPIO tests
 │   ├── test_usb_camera.py # Camera tests
 │   ├── test_ld19_lidar.py # LD19 LiDAR tests (all passing!)
-│   ├── test_wandering_integration.py  # Pathfinder+Locomotion test (NEW)
-│   ├── gui_camera.py      # Camera GUI with face detection (--captures option)
-│   ├── gui_lidar.py       # LiDAR polar visualization (--scans option)
+│   ├── test_wandering_integration.py  # Pathfinder+Locomotion test
+│   ├── gui_camera.py      # Camera GUI: face detection + center points
+│   ├── gui_lidar.py       # LiDAR GUI: polar plot + nearest/furthest edges
+│   ├── verify_all_imports.py  # Comprehensive syntax/import verification (NEW)
 │   └── results/           # Test output (JSON, PNG, JPG)
 └── docs/                  # Project documentation
     ├── todo.md            # This file
     ├── roadmap.md         # Project roadmap & milestones
     ├── scope.md           # Project scope
     ├── findings/          # Research findings
-    │   ├── ld19-lidar-protocol.md   # LD19 protocol (NEW)
+    │   ├── ld19-lidar-protocol.md
+    │   ├── live-monitoring-architecture.md  # Live monitor design doc
     │   └── jetson-llm-deployment-research.md
     └── archive/           # Session summaries
 ```
@@ -228,13 +247,24 @@ sudo ./install.sh                   # Full install (pathfinder + locomotion)
 sudo ./install.sh --check           # Check what's installed
 sudo ./install.sh --gui             # Include GUI packages
 
+# Verify all imports/syntax before running tests
+python3 tests/verify_all_imports.py          # Quick check
+python3 tests/verify_all_imports.py --verbose # Detailed output
+python3 tests/verify_all_imports.py --json   # JSON for automation
+
+# Live monitoring (terminal-based, works over SSH!)
+python3 live_monitor.py             # Monitor all sensors + system
+python3 live_monitor.py --lidar-only
+python3 live_monitor.py --camera-only
+python3 live_monitor.py --json      # JSON output for scripts
+
 # Run wandering demo (simulation mode - no motors needed)
 python3 wandering_demo.py --simulate
 python3 wandering_demo.py --simulate --behavior wall_follower_right
 
 # GUI diagnostics (run ON RPi with display)
-python3 tests/gui_camera.py         # Live camera + face detection
-python3 tests/gui_lidar.py          # Live LiDAR polar plot
+python3 tests/gui_camera.py         # Live camera + face detection + center points
+python3 tests/gui_lidar.py          # Live LiDAR polar plot + nearest/furthest
 
 # Headless testing (via SSH)
 python3 tests/gui_camera.py --headless --captures 3
@@ -243,6 +273,40 @@ python3 tests/gui_lidar.py --headless --scans 3
 # SSH to RPi
 ssh pi@10.33.224.1
 ```
+
+## Design Decisions
+
+### Two Wandering Demo Versions
+
+The system will have two wandering demo variants for different development stages:
+
+| Demo | File | Components | Purpose |
+|------|------|------------|---------|
+| **Basic** | `wandering_demo.py` | Camera + LiDAR + Locomotion | Sensor testing, obstacle avoidance, no AI |
+| **LLM-Integrated** | `wandering_demo_llm.py` | All + Bootylicious (LLM/RAG) | Full robot with conversation capability |
+
+**Rationale**: Separating these allows:
+1. Clear iteration stages during development
+2. Testing sensors/motors without Jetson/LLM dependencies
+3. Basic demo can run on RPi alone
+4. LLM demo requires Jetson (or powerful RPi 5) for inference
+
+### Platform Portability
+
+Scripts should work on both Raspberry Pi and Jetson with minimal changes:
+
+| Script | RPi | Jetson | Notes |
+|--------|-----|--------|-------|
+| `live_monitor.py` | ✅ | ✅ | GPU stats only show on Jetson |
+| `wandering_demo.py` | ✅ | ✅ | Same behavior, different GPIO lib |
+| `wandering_demo_llm.py` | ⚠️ | ✅ | Requires LLM (Jetson preferred) |
+| `install.sh` | ✅ | - | RPi-specific packages |
+| `install-jetson.sh` (future) | - | ✅ | Jetson-specific packages |
+
+**Key differences handled by platform detection:**
+- GPIO: `RPi.GPIO` (RPi) vs `Jetson.GPIO` (Jetson)
+- GPU monitoring: `/sys/devices/17000000.ga10b/load` (Jetson only)
+- LLM: Ollama/nanoLLM on Jetson, optional fallback to API on RPi
 
 ## Notes
 

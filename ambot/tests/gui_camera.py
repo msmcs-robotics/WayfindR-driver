@@ -178,10 +178,25 @@ def run_camera_gui(device=0, cascade_path=None, headless=False, fps_limit=30, ma
                     minSize=(30, 30)
                 )
 
-                # Draw rectangles around faces
+                # Draw rectangles and center points around faces
                 for (x, y, w, h) in faces:
+                    # Bounding box
                     cv2.rectangle(frame, (x, y), (x+w, y+h), (0, 255, 0), 2)
                     cv2.putText(frame, "Face", (x, y-10), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 2)
+
+                    # Center point - filled circle with crosshair
+                    center_x = x + w // 2
+                    center_y = y + h // 2
+                    # Outer ring (cyan)
+                    cv2.circle(frame, (center_x, center_y), 8, (255, 255, 0), 2)
+                    # Inner filled dot (red)
+                    cv2.circle(frame, (center_x, center_y), 4, (0, 0, 255), -1)
+                    # Crosshair lines
+                    cv2.line(frame, (center_x - 12, center_y), (center_x + 12, center_y), (255, 255, 0), 1)
+                    cv2.line(frame, (center_x, center_y - 12), (center_x, center_y + 12), (255, 255, 0), 1)
+                    # Center coordinates label
+                    cv2.putText(frame, f"({center_x},{center_y})", (center_x + 10, center_y - 10),
+                                cv2.FONT_HERSHEY_SIMPLEX, 0.4, (255, 255, 0), 1)
 
                 face_count = len(faces)
 

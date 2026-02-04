@@ -23,7 +23,7 @@ from .config import (
     DRV8833_CONFIG,
     get_config,
 )
-from .factory import create_robot, create_motor
+from .factory import create_robot, create_motor, cleanup_gpio
 
 __all__ = [
     "DriverType",
@@ -39,4 +39,5 @@ __all__ = [
     "get_config",
     "create_robot",
     "create_motor",
+    "cleanup_gpio",
 ]
