@@ -54,6 +54,15 @@
 
 ---
 
+## Next Session Priorities
+
+_Start here when resuming work_
+
+1. **Deploy and verify on RPi** - Run `./deploy.sh rpi --verify` when RPi is online
+2. **Wire L298N motor driver** - Physical wiring needed before motor tests
+3. **Test with hardware connected** - Reconnect camera + LiDAR, run `./deploy.sh rpi --full-test`
+4. **Create wandering_demo_llm.py** - LLM-integrated wandering (requires Jetson or API)
+
 ## In Progress
 
 _Tasks actively being worked on_
@@ -110,7 +119,7 @@ _Lower priority, do when time permits_
 
 ## Recently Completed
 
-_Session 4 - 2026-02-04 (ongoing)_
+_Session 4 - 2026-02-04_
 
 - [x] **Live Monitor** - `live_monitor.py` terminal-based sensor monitoring (no GUI needed)
   - LiDAR status: connection, scan rate, nearest/furthest points, sectors
@@ -124,6 +133,12 @@ _Session 4 - 2026-02-04 (ongoing)_
   - 36 Python files: all syntax valid
   - Fixed missing `cleanup_gpio` export in rpi_motors
   - Graceful handling of GPIO-dependent modules on dev machines
+- [x] **Network troubleshooting script** - `scripts/network-refresh.sh` for RPi connectivity issues
+  - DHCP refresh, service restart, status diagnostics
+  - Run ON the RPi when SSH connectivity is lost
+- [x] **WSL2 SSH helper** - `scripts/wsl-ssh-helper.sh` bypasses WSL2 NAT limitations
+  - Uses Windows SSH from WSL to reach LAN devices
+  - Includes scan, test, and rsync functionality
 
 _Session 3 - 2026-02-04_
 
@@ -190,10 +205,13 @@ ambot/
 ├── scripts/               # Bootstrap & deployment scripts
 │   ├── rpi-bootstrap.sh   # Master RPi bootstrap
 │   ├── rpi-bootstrap-system.sh   # System packages + Docker
-│   └── rpi-bootstrap-python.sh   # Python libraries
+│   ├── rpi-bootstrap-python.sh   # Python libraries
+│   ├── network-refresh.sh # RPi network troubleshooting (run ON RPi)
+│   └── wsl-ssh-helper.sh  # WSL2 SSH helper (run FROM dev machine)
 ├── deploy.sh              # Master deployment script
 ├── install.sh             # Comprehensive install script (sudo, idempotent)
-├── live_monitor.py        # Terminal-based sensor + system monitoring (NEW!)
+├── run_tests.sh           # Comprehensive test runner (run ON target device)
+├── live_monitor.py        # Terminal-based sensor + system monitoring
 ├── wandering_demo.py      # Basic wandering: Camera + LiDAR + Locomotion
 ├── tests/                 # Hardware test & diagnostic scripts
 │   ├── run_all_tests.sh   # Run all tests
@@ -237,9 +255,11 @@ ambot/
 # Check device status
 ./deploy.sh --status
 
-# Deploy to RPi
+# Deploy to RPi (from dev machine)
 ./deploy.sh rpi                     # All components
 ./deploy.sh rpi pathfinder          # Just LiDAR system
+./deploy.sh rpi --verify            # Deploy + run import verification
+./deploy.sh rpi --full-test         # Deploy + run comprehensive test suite
 ./deploy.sh rpi tests --test=lidar  # Deploy + run LiDAR test
 
 # Install dependencies on RPi (run ON the RPi)
@@ -247,7 +267,14 @@ sudo ./install.sh                   # Full install (pathfinder + locomotion)
 sudo ./install.sh --check           # Check what's installed
 sudo ./install.sh --gui             # Include GUI packages
 
-# Verify all imports/syntax before running tests
+# Comprehensive test runner (run ON RPi)
+./run_tests.sh                     # Standard tests (verification + integration)
+./run_tests.sh --all               # ALL tests including hardware
+./run_tests.sh --quick             # Quick syntax/import verification
+./run_tests.sh --hardware          # Hardware tests (GPIO, camera, LiDAR)
+./run_tests.sh --json              # JSON output for automation
+
+# Verify all imports/syntax (manual)
 python3 tests/verify_all_imports.py          # Quick check
 python3 tests/verify_all_imports.py --verbose # Detailed output
 python3 tests/verify_all_imports.py --json   # JSON for automation
@@ -272,6 +299,13 @@ python3 tests/gui_lidar.py --headless --scans 3
 
 # SSH to RPi
 ssh pi@10.33.224.1
+
+# WSL2 SSH Helper (when SSH fails from WSL due to NAT)
+./scripts/wsl-ssh-helper.sh              # SSH using Windows SSH
+./scripts/wsl-ssh-helper.sh --check      # Check if known IP is reachable
+./scripts/wsl-ssh-helper.sh --test       # Test connectivity
+./scripts/wsl-ssh-helper.sh --rsync      # Sync ambot folder to RPi
+./scripts/wsl-ssh-helper.sh --ip 10.33.171.167  # Use specific IP
 ```
 
 ## Design Decisions

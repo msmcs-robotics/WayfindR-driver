@@ -12,6 +12,8 @@
 #   ./deploy.sh rpi tests --run        # Deploy tests and run them
 #   ./deploy.sh rpi --bootstrap        # Deploy + run bootstrap scripts
 #   ./deploy.sh --status               # Check connection status only
+#   ./deploy.sh rpi --verify           # Deploy + run import verification
+#   ./deploy.sh rpi --full-test        # Deploy + run comprehensive test suite
 #
 # Components:
 #   all           - All components (default)
@@ -223,6 +225,30 @@ run_tests() {
 }
 
 # =============================================================================
+# Run Verification
+# =============================================================================
+
+run_verify() {
+    local target="$1"
+    local dest="$2"
+
+    log_step "Running import verification on $target..."
+    ssh "$target" "cd $dest && python3 tests/verify_all_imports.py"
+}
+
+# =============================================================================
+# Run Full Test Suite
+# =============================================================================
+
+run_full_test() {
+    local target="$1"
+    local dest="$2"
+
+    log_step "Running comprehensive test suite on $target..."
+    ssh "$target" "cd $dest && chmod +x run_tests.sh && ./run_tests.sh --all"
+}
+
+# =============================================================================
 # Deploy Functions
 # =============================================================================
 
@@ -231,6 +257,8 @@ deploy_rpi() {
     local bootstrap="${2:-false}"
     local run_test="${3:-false}"
     local test_type="${4:-all}"
+    local run_verify="${5:-false}"
+    local run_full_test="${6:-false}"
 
     log_step "Deploying to Raspberry Pi ($RPI_TARGET)..."
 
@@ -259,9 +287,19 @@ deploy_rpi() {
         ssh "$RPI_TARGET" "chmod +x $RPI_DEST/scripts/*.sh && $RPI_DEST/scripts/rpi-bootstrap.sh --auto"
     fi
 
+    # Run verification if requested
+    if [ "$run_verify" = "true" ]; then
+        run_verify "$RPI_TARGET" "$RPI_DEST"
+    fi
+
     # Run tests if requested
     if [ "$run_test" = "true" ]; then
         run_tests "$RPI_TARGET" "$RPI_DEST" "$test_type"
+    fi
+
+    # Run full test suite if requested
+    if [ "$run_full_test" = "true" ]; then
+        run_full_test "$RPI_TARGET" "$RPI_DEST"
     fi
 
     echo ""
@@ -329,6 +367,8 @@ print_help() {
     echo "  --bootstrap, -b       Run bootstrap scripts after deploy"
     echo "  --run, -r             Run tests after deployment"
     echo "  --test=TYPE           Run specific test (gpio, camera, lidar, motors)"
+    echo "  --verify, -v          Run import verification after deploy"
+    echo "  --full-test           Run comprehensive test suite (run_tests.sh --all)"
     echo "  --status, -s          Check connection status only"
     echo "  --help, -h            Show this help"
     echo ""
@@ -382,6 +422,8 @@ main() {
     STATUS_ONLY=false
     RUN_TESTS=false
     TEST_TYPE="all"
+    RUN_VERIFY=false
+    RUN_FULL_TEST=false
 
     while [[ $# -gt 0 ]]; do
         case $1 in
@@ -414,6 +456,14 @@ main() {
                 TEST_TYPE="${1#*=}"
                 shift
                 ;;
+            --verify|-v)
+                RUN_VERIFY=true
+                shift
+                ;;
+            --full-test)
+                RUN_FULL_TEST=true
+                shift
+                ;;
             --help|-h)
                 print_help
                 exit 0
@@ -441,7 +491,7 @@ main() {
         echo ""
 
         if check_ssh "$RPI_TARGET"; then
-            deploy_rpi "$COMPONENT" "$BOOTSTRAP" "$RUN_TESTS" "$TEST_TYPE"
+            deploy_rpi "$COMPONENT" "$BOOTSTRAP" "$RUN_TESTS" "$TEST_TYPE" "$RUN_VERIFY" "$RUN_FULL_TEST"
         else
             log_warn "Raspberry Pi not available, skipping..."
         fi
@@ -455,7 +505,7 @@ main() {
         # Deploy to specific target
         case "$TARGET" in
             rpi)
-                deploy_rpi "$COMPONENT" "$BOOTSTRAP" "$RUN_TESTS" "$TEST_TYPE"
+                deploy_rpi "$COMPONENT" "$BOOTSTRAP" "$RUN_TESTS" "$TEST_TYPE" "$RUN_VERIFY" "$RUN_FULL_TEST"
                 ;;
             jetson)
                 deploy_jetson "$COMPONENT" "$BOOTSTRAP"

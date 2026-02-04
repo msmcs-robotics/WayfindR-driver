@@ -212,6 +212,27 @@ This roadmap tracks project-level features and milestones. For immediate tasks, 
 - [x] Create integration test suite -- Completed 2026-02-04
 - [x] Create README.md for ambot folder -- Completed 2026-02-04
 
+### Automation & Tooling -- Completed 2026-02-04
+- [x] **Comprehensive test runner** (`run_tests.sh`)
+  - Runs all tests automatically without manual SSH/curl commands
+  - Test suites: `--quick`, `--all`, `--hardware`, `--integration`
+  - JSON output for automation: `--json`
+  - Auto-detects platform and connected hardware
+- [x] **Deploy script enhancements** (`deploy.sh`)
+  - `--verify`: Run import verification after deploy
+  - `--full-test`: Run comprehensive test suite after deploy
+  - `--test=TYPE`: Run specific test (gpio, camera, lidar, motors)
+- [x] **Syntax/import verification** (`tests/verify_all_imports.py`)
+  - Checks all Python files for syntax errors
+  - Tests all module imports with GPIO graceful degradation
+  - JSON output for CI/CD integration
+- [x] **WSL SSH helper** (`scripts/wsl-ssh-helper.sh`)
+  - Bypasses WSL2 NAT networking issues
+  - Commands: `--check`, `--test`, `--rsync`
+- [x] **Network troubleshooting** (`scripts/network-refresh.sh`)
+  - DHCP refresh, service restart, status diagnostics
+  - Run ON the RPi when SSH connectivity is lost
+
 ---
 
 ## Notes
@@ -224,6 +245,10 @@ This roadmap tracks project-level features and milestones. For immediate tasks, 
 - External projects will feed into Ambot: LLM optimization project, audio/voice project
 - First stable release = all three components working independently (not necessarily integrated)
 - ROS2 is a planned upgrade path, not excluded - just not a dependency for the initial working system
+- **Automation philosophy**: Avoid manual SSH/curl commands - use `deploy.sh` and `run_tests.sh` scripts
+  - Deploy from dev machine: `./deploy.sh rpi --verify`
+  - Run tests remotely: `./deploy.sh rpi --full-test`
+  - All test commands in one place: `./run_tests.sh --all`
 
 ---
 
