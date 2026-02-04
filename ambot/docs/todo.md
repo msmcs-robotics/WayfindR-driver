@@ -1,6 +1,6 @@
 # Ambot - Todo & Roadmap
 
-> Last updated: 2026-02-03
+> Last updated: 2026-02-04
 
 ---
 
@@ -85,8 +85,8 @@ _Priority queue for immediate work_
 - [ ] Test RAG system with Docker
 
 ### Integration
-- [ ] Combine pathfinder + locomotion for basic wandering demo
-- [ ] Test obstacle avoidance with actual robot movement
+- [x] Combine pathfinder + locomotion for basic wandering demo — **Done** (`wandering_demo.py`)
+- [ ] Test obstacle avoidance with actual robot movement (needs motors wired)
 
 ## Backlog
 
@@ -108,6 +108,17 @@ _Lower priority, do when time permits_
 - [ ] Voice interaction (STT/TTS via Android device)
 
 ## Recently Completed
+
+_Session 3 - 2026-02-04_
+
+- [x] **Wandering demo integration** - `wandering_demo.py` connects pathfinder + locomotion
+- [x] **RobotAdapter** - Converts pathfinder float speeds (-1.0 to 1.0) → locomotion int speeds (-100 to 100)
+- [x] **Integration test suite** - `tests/test_wandering_integration.py` (all 5 tests passing)
+- [x] **LiDAR GUI updated** - Uses LD19 driver, added `--scans` limit for headless mode
+- [x] **Camera GUI updated** - Added `--captures` limit for headless testing
+- [x] **Comprehensive install script** - `install.sh` (idempotent, sudo-based, component selection)
+- [x] **Face detection verified** - Camera GUI detected 1 face in test capture!
+- [x] **LiDAR visualization** - Saved 3 polar plot images (~450 points/scan)
 
 _Session 2 - 2026-02-03_
 
@@ -164,16 +175,18 @@ ambot/
 │   ├── rpi-bootstrap.sh   # Master RPi bootstrap
 │   ├── rpi-bootstrap-system.sh   # System packages + Docker
 │   └── rpi-bootstrap-python.sh   # Python libraries
-├── deploy.sh              # Master deployment script (NEW)
+├── deploy.sh              # Master deployment script
+├── install.sh             # Comprehensive install script (NEW - sudo, idempotent)
+├── wandering_demo.py      # Pathfinder + Locomotion integration demo (NEW)
 ├── tests/                 # Hardware test & diagnostic scripts
 │   ├── run_all_tests.sh   # Run all tests
 │   ├── test_gpio.py       # GPIO tests
 │   ├── test_usb_camera.py # Camera tests
-│   ├── test_ld19_lidar.py # LD19 LiDAR tests (NEW - all passing!)
-│   ├── test_usb_lidar.py  # Generic LiDAR tests
-│   ├── gui_camera.py      # Camera GUI with face detection
-│   ├── gui_lidar.py       # LiDAR polar visualization
-│   └── results/           # Test output
+│   ├── test_ld19_lidar.py # LD19 LiDAR tests (all passing!)
+│   ├── test_wandering_integration.py  # Pathfinder+Locomotion test (NEW)
+│   ├── gui_camera.py      # Camera GUI with face detection (--captures option)
+│   ├── gui_lidar.py       # LiDAR polar visualization (--scans option)
+│   └── results/           # Test output (JSON, PNG, JPG)
 └── docs/                  # Project documentation
     ├── todo.md            # This file
     ├── roadmap.md         # Project roadmap & milestones
@@ -210,8 +223,22 @@ ambot/
 ./deploy.sh rpi pathfinder          # Just LiDAR system
 ./deploy.sh rpi tests --test=lidar  # Deploy + run LiDAR test
 
-# Run bootstrap (includes Docker)
-./deploy.sh rpi --bootstrap
+# Install dependencies on RPi (run ON the RPi)
+sudo ./install.sh                   # Full install (pathfinder + locomotion)
+sudo ./install.sh --check           # Check what's installed
+sudo ./install.sh --gui             # Include GUI packages
+
+# Run wandering demo (simulation mode - no motors needed)
+python3 wandering_demo.py --simulate
+python3 wandering_demo.py --simulate --behavior wall_follower_right
+
+# GUI diagnostics (run ON RPi with display)
+python3 tests/gui_camera.py         # Live camera + face detection
+python3 tests/gui_lidar.py          # Live LiDAR polar plot
+
+# Headless testing (via SSH)
+python3 tests/gui_camera.py --headless --captures 3
+python3 tests/gui_lidar.py --headless --scans 3
 
 # SSH to RPi
 ssh pi@10.33.224.1

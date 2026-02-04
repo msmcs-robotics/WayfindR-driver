@@ -9,8 +9,8 @@
 **.log
 **/known_faces/
 
-# Test artifacts and outputs
-tests/
+# Test artifacts and outputs (keep scripts, ignore results)
+**/tests/results/
 **/frames_*.pdf
 **/frames_*.gv
 *.pgm

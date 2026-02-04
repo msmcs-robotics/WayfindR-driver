@@ -1,0 +1,36 @@
+# Ambot-specific ignores
+
+# Test results and temp data
+tests/results/
+**/results/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+
+# Virtual environments
+venv/
+.venv/
+env/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Logs
+*.log
+logs/
+
+# Temp files
+tmp*.md
+*.tmp
+.DS_Store
+
+# Build artifacts
+build/
+dist/
+*.egg-info/

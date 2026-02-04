@@ -1,6 +1,6 @@
 # Ambot - Roadmap
 
-> Last updated: 2026-01-29
+> Last updated: 2026-02-04
 
 ## Overview
 
@@ -37,16 +37,16 @@ This roadmap tracks project-level features and milestones. For immediate tasks, 
 - [ ] Document all findings in `docs/findings/`
 
 ### Raspberry Pi Setup
-- [ ] Obtain Pi IP address, username, and password
-- [ ] SSH into Pi and inventory system specs
-- [ ] Document OS version, available resources
-- [ ] Verify LiDAR sensor connectivity
-- [ ] Document all findings in `docs/findings/`
+- [x] Obtain Pi IP address, username, and password -- Completed 2026-02-03
+- [x] SSH into Pi and inventory system specs -- Completed 2026-02-03
+- [x] Document OS version, available resources -- Debian 13, 906MB RAM
+- [x] Verify LiDAR sensor connectivity -- LD19 working, 230400 baud
+- [x] Document all findings in `docs/findings/` -- Completed
 
 ### Development Environment
-- [ ] Set up SSH key-based access to both devices
-- [ ] Document SSH connection procedures
-- [ ] Verify network connectivity between devices
+- [x] Set up SSH key-based access to both devices -- RPi done, Jetson pending
+- [x] Document SSH connection procedures -- In `connections.md` and `docs/todo.md`
+- [x] Verify network connectivity between devices -- RPi: 10.33.224.1
 
 ---
 
@@ -107,11 +107,11 @@ This roadmap tracks project-level features and milestones. For immediate tasks, 
 - [x] Create BehaviorRunner for behavior loop execution -- Completed 2026-01-29
 - [x] Add dynamic obstacle detection (DynamicObstacleMonitor, SafetyWrapper) -- Completed 2026-01-29
 - [x] Add create_safe_wanderer() for safe operation around people -- Completed 2026-01-29
-- [ ] Test with actual RPLidar C1M1 sensor
-- [ ] Tune safety zone distances for robot size
-- [ ] Test wandering behaviors in real environment
-- [ ] Create visualization tool for debugging
-- [ ] Integrate with locomotion for full wandering demo
+- [x] Test with actual LiDAR sensor -- LD19 working (not C1M1 as originally thought)
+- [ ] Tune safety zone distances for robot size -- Blocked by motor wiring
+- [ ] Test wandering behaviors in real environment -- Blocked by motor wiring
+- [x] Create visualization tool for debugging -- `tests/gui_lidar.py` with polar plot
+- [x] Integrate with locomotion for full wandering demo -- `wandering_demo.py` created
 
 ---
 
@@ -202,6 +202,15 @@ This roadmap tracks project-level features and milestones. For immediate tasks, 
 - [x] Research and document wandering algorithms -- Completed 2026-01-29
 - [x] Add dynamic obstacle detection for people walking by (DynamicObstacleMonitor) -- Completed 2026-01-29
 - [x] Add SafetyWrapper and create_safe_wanderer() for safe demos -- Completed 2026-01-29
+- [x] Create LD19 LiDAR driver -- Completed 2026-02-03 (LD19, not C1M1!)
+- [x] Create LiDAR visualization GUI -- Completed 2026-02-04
+
+### Integration & Deployment
+- [x] Create master deploy.sh script -- Completed 2026-02-03
+- [x] Create comprehensive install.sh script (idempotent) -- Completed 2026-02-04
+- [x] Create wandering_demo.py (pathfinder + locomotion) -- Completed 2026-02-04
+- [x] Create integration test suite -- Completed 2026-02-04
+- [x] Create README.md for ambot folder -- Completed 2026-02-04
 
 ---
 
