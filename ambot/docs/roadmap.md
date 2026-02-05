@@ -1,6 +1,6 @@
 # Ambot - Roadmap
 
-> Last updated: 2026-02-04
+> Last updated: 2026-02-05
 
 ## Overview
 
@@ -212,16 +212,34 @@ This roadmap tracks project-level features and milestones. For immediate tasks, 
 - [x] Create integration test suite -- Completed 2026-02-04
 - [x] Create README.md for ambot folder -- Completed 2026-02-04
 
-### Automation & Tooling -- Completed 2026-02-04
+### Automation & Tooling -- Completed 2026-02-04, Updated 2026-02-05
+- [x] **Python virtual environment (.venv)** -- Added 2026-02-05
+  - `.venv` created with `--system-site-packages` (accesses apt packages)
+  - All scripts auto-activate venv before running Python
+  - Excluded from rsync and git
+  - Solves SSH vs desktop terminal package visibility issues
 - [x] **Comprehensive test runner** (`run_tests.sh`)
   - Runs all tests automatically without manual SSH/curl commands
   - Test suites: `--quick`, `--all`, `--hardware`, `--integration`
   - JSON output for automation: `--json`
   - Auto-detects platform and connected hardware
+  - Environment precheck validates package availability at runtime
+  - Auto-activates `.venv` at startup
 - [x] **Deploy script enhancements** (`deploy.sh`)
-  - `--verify`: Run import verification after deploy
-  - `--full-test`: Run comprehensive test suite after deploy
-  - `--test=TYPE`: Run specific test (gpio, camera, lidar, motors)
+  - Unified `--test=TYPE`: suites (all/quick/hardware/integration/verify), individual (gpio/camera/lidar/motors), diagnostics (check/env/env-fix)
+  - One command for deploy + test: `./deploy.sh rpi --test=all`
+  - Environment diagnostic: `./deploy.sh rpi --test=env`
+  - Excludes `.venv/` from rsync sync
+  - Activates venv for individual test commands via SSH
+- [x] **Install script** (`install.sh`)
+  - Creates `.venv` with `--system-site-packages`
+  - Installs pip packages into venv (no `--break-system-packages` needed)
+  - Installs apt system packages (RPi.GPIO, tkinter, PIL.ImageTk)
+  - Idempotent, component-selectable (`--pathfinder`, `--locomotion`, `--gui`)
+- [x] **Environment diagnostic** (`scripts/env_diagnostic.py`) -- Added 2026-02-05
+  - Diagnoses SSH vs desktop terminal Python environment differences
+  - Shows package locations (user-local vs system-wide)
+  - `--json` for automated comparison between environments
 - [x] **Syntax/import verification** (`tests/verify_all_imports.py`)
   - Checks all Python files for syntax errors
   - Tests all module imports with GPIO graceful degradation
@@ -246,9 +264,9 @@ This roadmap tracks project-level features and milestones. For immediate tasks, 
 - First stable release = all three components working independently (not necessarily integrated)
 - ROS2 is a planned upgrade path, not excluded - just not a dependency for the initial working system
 - **Automation philosophy**: Avoid manual SSH/curl commands - use `deploy.sh` and `run_tests.sh` scripts
-  - Deploy from dev machine: `./deploy.sh rpi --verify`
-  - Run tests remotely: `./deploy.sh rpi --full-test`
-  - All test commands in one place: `./run_tests.sh --all`
+  - Deploy + test from dev machine: `./deploy.sh rpi --test=all`
+  - Quick verification: `./deploy.sh rpi --test=quick`
+  - Run locally on RPi: `./run_tests.sh --all`
 
 ---
 

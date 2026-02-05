@@ -5,6 +5,10 @@
 # Installs all system packages and Python dependencies for ambot components.
 # This script is IDEMPOTENT - safe to run multiple times.
 #
+# Python packages are installed into a .venv virtual environment inside the
+# ambot folder. The venv uses --system-site-packages so apt-installed packages
+# (RPi.GPIO, tkinter, etc.) are accessible.
+#
 # Components:
 #   - pathfinder: LiDAR + sensors (pyserial, numpy, opencv)
 #   - locomotion: Motor control (RPi.GPIO, gpiozero)
@@ -19,7 +23,7 @@
 #   sudo ./install.sh --docker     # Include Docker for bootylicious
 #
 # This script requires sudo for system packages.
-# Python packages are installed with --break-system-packages for Debian 12+.
+# Python pip packages are installed into .venv (no --break-system-packages needed).
 
 set -e
 
@@ -140,9 +144,30 @@ is_apt_installed() {
     dpkg -l "$1" 2>/dev/null | grep -q "^ii"
 }
 
-# Check if Python package is installed
+# Venv configuration
+VENV_DIR="$SCRIPT_DIR/.venv"
+
+# Check if Python package is installed (in venv or system)
 is_pip_installed() {
-    python3 -c "import $1" 2>/dev/null
+    get_venv_python -c "import $1" 2>/dev/null
+}
+
+# Get the venv python path (falls back to system python3)
+get_venv_python() {
+    if [[ -f "$VENV_DIR/bin/python3" ]]; then
+        "$VENV_DIR/bin/python3" "$@"
+    else
+        python3 "$@"
+    fi
+}
+
+# Get the venv pip path (falls back to system pip3)
+get_venv_pip() {
+    if [[ -f "$VENV_DIR/bin/pip3" ]]; then
+        echo "$VENV_DIR/bin/pip3"
+    else
+        echo "pip3"
+    fi
 }
 
 # Install apt package if not installed
@@ -165,11 +190,14 @@ install_apt() {
     log_success "Installed $pkg"
 }
 
-# Install Python package if not installed
+# Install Python package into venv
 install_pip() {
     local pkg="$1"
     local import_name="${2:-$1}"
+    local venv_pip
+    venv_pip=$(get_venv_pip)
 
+    # Check using venv python
     if is_pip_installed "$import_name"; then
         if [[ "$VERBOSE" == "true" ]]; then
             log_success "Python: $pkg already installed"
@@ -182,8 +210,8 @@ install_pip() {
         return 1
     fi
 
-    log_info "Installing Python: $pkg..."
-    pip3 install "$pkg" --break-system-packages > /dev/null 2>&1
+    log_info "Installing Python: $pkg (into .venv)..."
+    $venv_pip install "$pkg" > /dev/null 2>&1
     log_success "Installed Python: $pkg"
 }
 
@@ -295,12 +323,13 @@ install_gui_system() {
     log_section "GUI System Packages"
 
     local packages=(
-        "python3-tk"          # Tkinter
-        "python3-matplotlib"  # Matplotlib (system version)
-        "python3-numpy"       # NumPy (system version)
-        "libopencv-dev"       # OpenCV development
-        "python3-opencv"      # OpenCV Python
-        "opencv-data"         # Haar cascades for face detection
+        "python3-tk"              # Tkinter
+        "python3-pil.imagetk"     # PIL ImageTk (Tkinter bridge)
+        "python3-matplotlib"      # Matplotlib (system version)
+        "python3-numpy"           # NumPy (system version)
+        "libopencv-dev"           # OpenCV development
+        "python3-opencv"          # OpenCV Python
+        "opencv-data"             # Haar cascades for face detection
     )
 
     for pkg in "${packages[@]}"; do
@@ -412,6 +441,33 @@ install_gui_python() {
 # Post-Installation
 # =============================================================================
 
+create_venv() {
+    log_section "Virtual Environment Setup"
+
+    if [[ -d "$VENV_DIR" ]] && [[ -f "$VENV_DIR/bin/python3" ]]; then
+        log_success "Virtual environment already exists: $VENV_DIR"
+    else
+        if [[ "$CHECK_ONLY" == "true" ]]; then
+            log_warning "Virtual environment NOT created: $VENV_DIR"
+            return 1
+        fi
+
+        log_info "Creating virtual environment: $VENV_DIR"
+        # --system-site-packages: access apt packages (RPi.GPIO, tkinter, PIL.ImageTk)
+        python3 -m venv --system-site-packages "$VENV_DIR"
+        log_success "Virtual environment created"
+    fi
+
+    # Fix ownership if running as root (install.sh runs with sudo)
+    local target_user="${SUDO_USER:-$USER}"
+    if [[ -n "$target_user" && "$target_user" != "root" ]]; then
+        chown -R "$target_user:$target_user" "$VENV_DIR"
+    fi
+
+    log_info "Venv Python: $($VENV_DIR/bin/python3 --version 2>&1)"
+    log_info "Venv pip: $($VENV_DIR/bin/pip3 --version 2>&1 | head -1)"
+}
+
 setup_udev_rules() {
     log_section "Udev Rules Setup"
 
@@ -449,60 +505,102 @@ EOF
     log_success "Udev rules configured"
 }
 
+check_environment() {
+    log_section "Environment Diagnostic"
+
+    local target_user="${SUDO_USER:-$USER}"
+    local venv_py="$VENV_DIR/bin/python3"
+
+    log_info "Target user: $target_user"
+    log_info "System Python: $(python3 --version 2>&1)"
+
+    if [[ -f "$venv_py" ]]; then
+        log_success "Venv Python: $($venv_py --version 2>&1)"
+        log_info "Venv path: $VENV_DIR"
+    else
+        log_warning "No venv found at $VENV_DIR"
+        log_warning "Run: sudo ./install.sh  (to create venv and install packages)"
+        return 1
+    fi
+
+    # Check where key packages are found (using venv python)
+    local pkg_locations
+    pkg_locations=$($venv_py -c "
+import importlib
+for mod in ['cv2', 'numpy', 'matplotlib', 'serial', 'PIL']:
+    try:
+        m = importlib.import_module(mod)
+        f = getattr(m, '__file__', 'built-in')
+        if '.venv' in str(f):
+            loc = 'venv'
+        elif '.local' in str(f):
+            loc = 'user-local'
+        elif '/usr/local' in str(f):
+            loc = 'system-local'
+        elif '/usr/lib' in str(f):
+            loc = 'system'
+        else:
+            loc = 'other'
+        print(f'{mod}: {loc} ({f})')
+    except ImportError:
+        print(f'{mod}: NOT FOUND')
+" 2>/dev/null)
+
+    echo "$pkg_locations" | while read -r line; do
+        if echo "$line" | grep -q "NOT FOUND"; then
+            log_warning "$line"
+        else
+            log_success "$line"
+        fi
+    done
+
+    # Check ImageTk specifically (common issue)
+    if $venv_py -c "from PIL import ImageTk" 2>/dev/null; then
+        log_success "PIL.ImageTk: available"
+    else
+        log_warning "PIL.ImageTk: NOT available (install python3-pil.imagetk via apt)"
+    fi
+}
+
 verify_installation() {
     log_section "Verification"
 
     local errors=0
+    local venv_py="$VENV_DIR/bin/python3"
 
-    # Python
-    if python3 --version > /dev/null 2>&1; then
-        log_success "Python3: $(python3 --version)"
+    # Venv
+    if [[ -f "$venv_py" ]]; then
+        log_success "Venv: $($venv_py --version) at $VENV_DIR"
     else
-        log_error "Python3 not found"
-        ((errors++))
+        log_error "Venv not found at $VENV_DIR"
+        errors=$((errors + 1))
+        # Fall back to system python for remaining checks
+        venv_py="python3"
     fi
 
-    # pip
-    if pip3 --version > /dev/null 2>&1; then
-        log_success "pip3: $(pip3 --version | head -1)"
-    else
-        log_error "pip3 not found"
-        ((errors++))
-    fi
+    # Check packages using venv python
+    for pkg_check in "serial:pyserial" "numpy:numpy" "cv2:OpenCV" "matplotlib:matplotlib"; do
+        local import_name="${pkg_check%%:*}"
+        local display_name="${pkg_check##*:}"
+        if $venv_py -c "import $import_name" 2>/dev/null; then
+            log_success "$display_name: installed"
+        else
+            log_warning "$display_name: not installed"
+        fi
+    done
 
-    # Serial
-    if is_pip_installed "serial"; then
-        log_success "pyserial: installed"
-    else
-        log_warning "pyserial: not installed"
-    fi
-
-    # NumPy
-    if is_pip_installed "numpy"; then
-        log_success "numpy: installed"
-    else
-        log_warning "numpy: not installed"
-    fi
-
-    # GPIO
-    if is_pip_installed "RPi.GPIO" || is_pip_installed "RPi"; then
+    # GPIO (system apt package, accessible via --system-site-packages)
+    if $venv_py -c "import RPi.GPIO" 2>/dev/null || $venv_py -c "import RPi" 2>/dev/null; then
         log_success "RPi.GPIO: installed"
     else
         log_warning "RPi.GPIO: not installed (may be normal on non-RPi)"
     fi
 
-    # OpenCV
-    if is_pip_installed "cv2"; then
-        log_success "OpenCV: installed"
+    # ImageTk
+    if $venv_py -c "from PIL import ImageTk" 2>/dev/null; then
+        log_success "PIL.ImageTk: installed"
     else
-        log_warning "OpenCV: not installed"
-    fi
-
-    # Matplotlib
-    if is_pip_installed "matplotlib"; then
-        log_success "matplotlib: installed"
-    else
-        log_warning "matplotlib: not installed"
+        log_warning "PIL.ImageTk: not installed (apt: python3-pil.imagetk)"
     fi
 
     # Docker
@@ -557,19 +655,32 @@ main() {
     # Base system packages
     install_system_base
 
-    # Component-specific packages
+    # System packages for each component (apt)
     if [[ "$INSTALL_PATHFINDER" == "true" ]]; then
         install_pathfinder_system
-        install_pathfinder_python
     fi
 
     if [[ "$INSTALL_LOCOMOTION" == "true" ]]; then
         install_locomotion_system
-        install_locomotion_python
     fi
 
     if [[ "$INSTALL_GUI" == "true" ]]; then
         install_gui_system
+    fi
+
+    # Create venv before installing Python packages
+    create_venv
+
+    # Python packages (into venv)
+    if [[ "$INSTALL_PATHFINDER" == "true" ]]; then
+        install_pathfinder_python
+    fi
+
+    if [[ "$INSTALL_LOCOMOTION" == "true" ]]; then
+        install_locomotion_python
+    fi
+
+    if [[ "$INSTALL_GUI" == "true" ]]; then
         install_gui_python
     fi
 
@@ -581,6 +692,9 @@ main() {
     if [[ "$INSTALL_PATHFINDER" == "true" ]]; then
         setup_udev_rules
     fi
+
+    # Environment diagnostic
+    check_environment
 
     # Verify
     verify_installation

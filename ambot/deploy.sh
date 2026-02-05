@@ -9,11 +9,13 @@
 #   ./deploy.sh                        # Deploy all to default targets
 #   ./deploy.sh rpi                    # Deploy all to Raspberry Pi
 #   ./deploy.sh rpi pathfinder         # Deploy only pathfinder to RPi
-#   ./deploy.sh rpi tests --run        # Deploy tests and run them
+#   ./deploy.sh rpi --test=all         # Deploy + run ALL tests
+#   ./deploy.sh rpi --test=quick       # Deploy + quick verification
+#   ./deploy.sh rpi --test=hardware    # Deploy + test connected hardware
+#   ./deploy.sh rpi --test=lidar       # Deploy + run specific LiDAR test
+#   ./deploy.sh rpi --test=check       # Deploy + check installed packages
 #   ./deploy.sh rpi --bootstrap        # Deploy + run bootstrap scripts
 #   ./deploy.sh --status               # Check connection status only
-#   ./deploy.sh rpi --verify           # Deploy + run import verification
-#   ./deploy.sh rpi --full-test        # Deploy + run comprehensive test suite
 #
 # Components:
 #   all           - All components (default)
@@ -67,7 +69,7 @@ SSH_TIMEOUT=15
 
 # Rsync base options
 RSYNC_BASE="-avz --progress"
-RSYNC_EXCLUDE="--exclude='*.pyc' --exclude='__pycache__' --exclude='.git' --exclude='*.egg-info' --exclude='.pytest_cache'"
+RSYNC_EXCLUDE="--exclude='*.pyc' --exclude='__pycache__' --exclude='.git' --exclude='*.egg-info' --exclude='.pytest_cache' --exclude='.venv'"
 
 # =============================================================================
 # Helper Functions
@@ -199,53 +201,65 @@ run_tests() {
     local dest="$2"
     local test_type="${3:-all}"
 
-    log_step "Running tests on $target..."
+    log_step "Running test '$test_type' on $target..."
+
+    # Venv activation prefix for individual commands
+    local venv_act="source $dest/.venv/bin/activate 2>/dev/null;"
 
     case "$test_type" in
+        # --- Test suites (run via run_tests.sh, activates venv itself) ---
         all)
-            ssh "$target" "cd $dest/tests && chmod +x run_all_tests.sh && ./run_all_tests.sh"
+            ssh "$target" "cd $dest && chmod +x run_tests.sh && ./run_tests.sh --all"
             ;;
+        quick)
+            ssh "$target" "cd $dest && chmod +x run_tests.sh && ./run_tests.sh --quick"
+            ;;
+        hardware|hw)
+            ssh "$target" "cd $dest && chmod +x run_tests.sh && ./run_tests.sh --hardware"
+            ;;
+        integration)
+            ssh "$target" "cd $dest && chmod +x run_tests.sh && ./run_tests.sh --integration"
+            ;;
+        verify)
+            ssh "$target" "cd $dest && $venv_act python3 tests/verify_all_imports.py"
+            ;;
+        # --- Individual tests ---
         gpio)
-            ssh "$target" "cd $dest/tests && python3 test_gpio.py"
+            ssh "$target" "cd $dest/tests && $venv_act python3 test_gpio.py"
             ;;
         camera)
-            ssh "$target" "cd $dest/tests && python3 test_usb_camera.py"
+            ssh "$target" "cd $dest/tests && $venv_act python3 test_usb_camera.py"
+            ;;
+        camera-basic)
+            ssh "$target" "cd $dest && $venv_act python3 tests/gui_camera.py --headless --captures 1 --no-faces"
+            ;;
+        camera-faces)
+            ssh "$target" "cd $dest && $venv_act python3 tests/gui_camera.py --headless --captures 1 --faces"
             ;;
         lidar|ld19)
-            ssh "$target" "cd $dest/tests && python3 test_ld19_lidar.py"
+            ssh "$target" "cd $dest/tests && $venv_act python3 test_ld19_lidar.py"
             ;;
         motors)
-            ssh "$target" "cd $dest/locomotion && python3 -m rpi_motors.test_motors --check"
+            ssh "$target" "cd $dest/locomotion && $venv_act python3 -m rpi_motors.test_motors --check"
+            ;;
+        # --- Diagnostics ---
+        check)
+            ssh "$target" "cd $dest && sudo ./install.sh --check"
+            ;;
+        env|env-diag)
+            ssh "$target" "cd $dest && $venv_act python3 scripts/env_diagnostic.py"
+            ;;
+        env-fix)
+            log_info "Setting up venv and installing packages..."
+            ssh "$target" "cd $dest && sudo ./install.sh --gui --pathfinder"
             ;;
         *)
             log_warn "Unknown test type: $test_type"
-            log_info "Valid tests: all, gpio, camera, lidar, motors"
+            log_info "Test suites:    all, quick, hardware, integration, verify"
+            log_info "Individual:     gpio, camera, camera-basic, camera-faces, lidar, motors"
+            log_info "Diagnostics:    check, env, env-fix"
             ;;
     esac
-}
-
-# =============================================================================
-# Run Verification
-# =============================================================================
-
-run_verify() {
-    local target="$1"
-    local dest="$2"
-
-    log_step "Running import verification on $target..."
-    ssh "$target" "cd $dest && python3 tests/verify_all_imports.py"
-}
-
-# =============================================================================
-# Run Full Test Suite
-# =============================================================================
-
-run_full_test() {
-    local target="$1"
-    local dest="$2"
-
-    log_step "Running comprehensive test suite on $target..."
-    ssh "$target" "cd $dest && chmod +x run_tests.sh && ./run_tests.sh --all"
 }
 
 # =============================================================================
@@ -256,9 +270,7 @@ deploy_rpi() {
     local component="${1:-all}"
     local bootstrap="${2:-false}"
     local run_test="${3:-false}"
-    local test_type="${4:-all}"
-    local run_verify="${5:-false}"
-    local run_full_test="${6:-false}"
+    local test_type="${4:-}"
 
     log_step "Deploying to Raspberry Pi ($RPI_TARGET)..."
 
@@ -287,19 +299,9 @@ deploy_rpi() {
         ssh "$RPI_TARGET" "chmod +x $RPI_DEST/scripts/*.sh && $RPI_DEST/scripts/rpi-bootstrap.sh --auto"
     fi
 
-    # Run verification if requested
-    if [ "$run_verify" = "true" ]; then
-        run_verify "$RPI_TARGET" "$RPI_DEST"
-    fi
-
     # Run tests if requested
-    if [ "$run_test" = "true" ]; then
+    if [ "$run_test" = "true" ] && [ -n "$test_type" ]; then
         run_tests "$RPI_TARGET" "$RPI_DEST" "$test_type"
-    fi
-
-    # Run full test suite if requested
-    if [ "$run_full_test" = "true" ]; then
-        run_full_test "$RPI_TARGET" "$RPI_DEST"
     fi
 
     echo ""
@@ -365,18 +367,23 @@ print_help() {
     echo ""
     echo "Options:"
     echo "  --bootstrap, -b       Run bootstrap scripts after deploy"
-    echo "  --run, -r             Run tests after deployment"
-    echo "  --test=TYPE           Run specific test (gpio, camera, lidar, motors)"
-    echo "  --verify, -v          Run import verification after deploy"
-    echo "  --full-test           Run comprehensive test suite (run_tests.sh --all)"
+    echo "  --test=SUITE          Run tests after deploy (see test types below)"
     echo "  --status, -s          Check connection status only"
     echo "  --help, -h            Show this help"
+    echo ""
+    echo "Test Types (--test=TYPE):"
+    echo "  Suites:      all, quick, hardware, integration, verify"
+    echo "  Individual:  gpio, camera, camera-basic, camera-faces, lidar, motors"
+    echo "  Diagnostics: check, env (environment diagnostic), env-fix (install system-wide)"
     echo ""
     echo "Examples:"
     echo "  $0 rpi                        # Deploy all to RPi"
     echo "  $0 rpi pathfinder             # Deploy only pathfinder"
-    echo "  $0 rpi tests --run            # Deploy and run all tests"
-    echo "  $0 rpi tests --test=lidar     # Deploy and run LiDAR test"
+    echo "  $0 rpi --test=all             # Deploy + run ALL tests"
+    echo "  $0 rpi --test=quick           # Deploy + quick verification"
+    echo "  $0 rpi --test=hardware        # Deploy + test hardware"
+    echo "  $0 rpi --test=lidar           # Deploy + single LiDAR test"
+    echo "  $0 rpi --test=check           # Deploy + check packages"
     echo "  $0 rpi --bootstrap            # Deploy all + run bootstrap"
     echo "  $0 --status                   # Check all connections"
 }
@@ -393,14 +400,18 @@ print_summary() {
     echo ""
     echo "Quick commands:"
     echo "  SSH to RPi:        ssh $RPI_TARGET"
-    echo "  Run all tests:     $0 rpi tests --run"
-    echo "  Run LiDAR test:    $0 rpi tests --test=lidar"
-    echo "  Run bootstrap:     $0 rpi --bootstrap"
+    echo "  Run all tests:     $0 rpi --test=all"
+    echo "  Quick verify:      $0 rpi --test=quick"
+    echo "  Hardware tests:    $0 rpi --test=hardware"
+    echo "  Single test:       $0 rpi --test=lidar"
+    echo "  Check packages:    $0 rpi --test=check"
+    echo "  Env diagnostic:    $0 rpi --test=env"
+    echo "  Fix env issues:    $0 rpi --test=env-fix"
     echo ""
-    echo "Deploy individual components:"
+    echo "Deploy components:"
     echo "  $0 rpi pathfinder  # LiDAR system"
     echo "  $0 rpi locomotion  # Motor control"
-    echo "  $0 rpi tests       # Test scripts"
+    echo "  $0 rpi tests       # Test scripts only"
     echo ""
     if [ -n "$JETSON_HOST" ]; then
         echo "Jetson:"
@@ -421,9 +432,7 @@ main() {
     BOOTSTRAP=false
     STATUS_ONLY=false
     RUN_TESTS=false
-    TEST_TYPE="all"
-    RUN_VERIFY=false
-    RUN_FULL_TEST=false
+    TEST_TYPE=""
 
     while [[ $# -gt 0 ]]; do
         case $1 in
@@ -447,21 +456,25 @@ main() {
                 STATUS_ONLY=true
                 shift
                 ;;
-            --run|-r)
-                RUN_TESTS=true
-                shift
-                ;;
             --test=*)
                 RUN_TESTS=true
                 TEST_TYPE="${1#*=}"
                 shift
                 ;;
+            # Backwards compatibility
             --verify|-v)
-                RUN_VERIFY=true
+                RUN_TESTS=true
+                TEST_TYPE="verify"
                 shift
                 ;;
             --full-test)
-                RUN_FULL_TEST=true
+                RUN_TESTS=true
+                TEST_TYPE="all"
+                shift
+                ;;
+            --run|-r)
+                RUN_TESTS=true
+                TEST_TYPE="all"
                 shift
                 ;;
             --help|-h)
@@ -491,7 +504,7 @@ main() {
         echo ""
 
         if check_ssh "$RPI_TARGET"; then
-            deploy_rpi "$COMPONENT" "$BOOTSTRAP" "$RUN_TESTS" "$TEST_TYPE" "$RUN_VERIFY" "$RUN_FULL_TEST"
+            deploy_rpi "$COMPONENT" "$BOOTSTRAP" "$RUN_TESTS" "$TEST_TYPE"
         else
             log_warn "Raspberry Pi not available, skipping..."
         fi
@@ -505,7 +518,7 @@ main() {
         # Deploy to specific target
         case "$TARGET" in
             rpi)
-                deploy_rpi "$COMPONENT" "$BOOTSTRAP" "$RUN_TESTS" "$TEST_TYPE" "$RUN_VERIFY" "$RUN_FULL_TEST"
+                deploy_rpi "$COMPONENT" "$BOOTSTRAP" "$RUN_TESTS" "$TEST_TYPE"
                 ;;
             jetson)
                 deploy_jetson "$COMPONENT" "$BOOTSTRAP"

@@ -105,8 +105,12 @@ def draw_info_overlay(frame, info_dict, show_help=False):
     return frame
 
 
-def run_camera_gui(device=0, cascade_path=None, headless=False, fps_limit=30, max_captures=0):
-    """Run the camera GUI with face detection."""
+def run_camera_gui(device=0, cascade_path=None, headless=False, fps_limit=30, max_captures=0, enable_faces=True):
+    """Run the camera GUI with optional face detection.
+
+    Args:
+        enable_faces: If False, skip face detection entirely (basic camera test).
+    """
     import cv2
 
     # Open camera
@@ -129,9 +133,14 @@ def run_camera_gui(device=0, cascade_path=None, headless=False, fps_limit=30, ma
 
     print(f"Camera opened: {width}x{height} @ {fps}fps")
 
-    # Load face cascade
-    face_cascade = load_face_cascade(cascade_path)
-    face_detection_enabled = face_cascade is not None
+    # Load face cascade only if face detection is enabled
+    if enable_faces:
+        face_cascade = load_face_cascade(cascade_path)
+        face_detection_enabled = face_cascade is not None
+    else:
+        face_cascade = None
+        face_detection_enabled = False
+        print("Face detection: disabled (basic camera test)")
 
     # State
     show_help = True
@@ -277,11 +286,17 @@ def main():
     parser.add_argument("--headless", action="store_true", help="Run without GUI (save frames only)")
     parser.add_argument("--fps", type=int, default=30, help="FPS limit (default: 30)")
     parser.add_argument("--captures", "-n", type=int, default=0, help="Max captures in headless mode (0=unlimited)")
+    parser.add_argument("--faces", action="store_true", default=False, help="Enable face detection with bounding boxes")
+    parser.add_argument("--no-faces", action="store_true", help="Disable face detection (basic camera test)")
 
     args = parser.parse_args()
 
+    # Determine face detection mode (default: enabled unless --no-faces)
+    enable_faces = args.faces and not args.no_faces
+
+    mode_str = "Camera + Face Detection" if enable_faces else "Camera (basic feed)"
     print("=" * 50)
-    print("AMBOT Camera Diagnostic")
+    print(f"AMBOT {mode_str}")
     print("=" * 50)
     print()
 
@@ -307,7 +322,8 @@ def main():
         cascade_path=args.cascade,
         headless=args.headless,
         fps_limit=args.fps,
-        max_captures=args.captures
+        max_captures=args.captures,
+        enable_faces=enable_faces,
     )
 
 

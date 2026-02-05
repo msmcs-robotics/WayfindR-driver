@@ -32,6 +32,23 @@ from collections import deque
 from datetime import datetime
 from pathlib import Path
 
+
+class NumpySafeEncoder(json.JSONEncoder):
+    """JSON encoder that handles numpy types from OpenCV."""
+    def default(self, obj):
+        try:
+            import numpy as np
+            if isinstance(obj, (np.integer,)):
+                return int(obj)
+            if isinstance(obj, (np.floating,)):
+                return float(obj)
+            if isinstance(obj, np.ndarray):
+                return obj.tolist()
+        except ImportError:
+            pass
+        return super().default(obj)
+
+
 # Add parent for imports
 sys.path.insert(0, str(Path(__file__).parent))
 
@@ -440,8 +457,8 @@ class CameraMonitor(threading.Thread):
                     self.face_centers = []
 
                     for (x, y, w, h) in faces:
-                        center_x = x + w // 2
-                        center_y = y + h // 2
+                        center_x = int(x + w // 2)
+                        center_y = int(y + h // 2)
                         self.face_centers.append((center_x, center_y))
 
                     # Emit face events
@@ -639,7 +656,7 @@ class JsonOutput:
 
     def on_event(self, event: Event):
         if self.running:
-            print(json.dumps(event.to_dict()))
+            print(json.dumps(event.to_dict(), cls=NumpySafeEncoder))
 
     def run(self, refresh_rate: float = 1.0):
         self.running = True
@@ -653,7 +670,7 @@ class JsonOutput:
                     status["camera"] = self.camera.get_status()
                 if self.system:
                     status["system"] = self.system.get_status()
-                print(json.dumps(status))
+                print(json.dumps(status, cls=NumpySafeEncoder))
                 time.sleep(refresh_rate)
         except KeyboardInterrupt:
             pass

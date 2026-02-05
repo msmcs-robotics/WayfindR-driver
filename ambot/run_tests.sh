@@ -17,10 +17,13 @@
 #   ./deploy.sh rpi --full-test       # Deploy + run this script
 # =============================================================================
 
-set -e
-
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 cd "$SCRIPT_DIR"
+
+# Activate venv if available
+if [ -f "$SCRIPT_DIR/.venv/bin/activate" ]; then
+    source "$SCRIPT_DIR/.venv/bin/activate"
+fi
 
 # Colors
 RED='\033[0;31m'
@@ -76,9 +79,9 @@ add_result() {
     RESULTS+=("{\"name\": \"$name\", \"status\": \"$status\", \"message\": \"$message\"}")
 
     case "$status" in
-        passed) ((TESTS_PASSED++)) ;;
-        failed) ((TESTS_FAILED++)) ;;
-        skipped) ((TESTS_SKIPPED++)) ;;
+        passed) TESTS_PASSED=$((TESTS_PASSED + 1)) ;;
+        failed) TESTS_FAILED=$((TESTS_FAILED + 1)) ;;
+        skipped) TESTS_SKIPPED=$((TESTS_SKIPPED + 1)) ;;
     esac
 }
 
@@ -123,6 +126,56 @@ has_camera() {
 
 has_lidar() {
     ls /dev/ttyUSB* &>/dev/null
+}
+
+# =============================================================================
+# Environment Precheck
+# =============================================================================
+
+test_environment() {
+    log_test "Running environment precheck..."
+
+    local env_ok=true
+    local env_details=""
+
+    # Check Python version
+    local py_version
+    py_version=$(python3 --version 2>&1)
+    if [ $? -ne 0 ]; then
+        add_result "environment" "failed" "Python3 not found"
+        return 1
+    fi
+
+    # Check user site-packages are enabled
+    local user_site_enabled
+    user_site_enabled=$(python3 -c "import site; print(site.ENABLE_USER_SITE)" 2>/dev/null)
+    if [ "$user_site_enabled" = "False" ]; then
+        log_warn "User site-packages DISABLED (PYTHONNOUSERSITE may be set)"
+        env_details="user_site_disabled"
+    fi
+
+    # Check key packages are importable
+    local missing_pkgs=""
+    for pkg in cv2 numpy serial; do
+        if ! python3 -c "import $pkg" 2>/dev/null; then
+            missing_pkgs="$missing_pkgs $pkg"
+            env_ok=false
+        fi
+    done
+
+    if [ "$env_ok" = true ]; then
+        # Collect package info for the result message
+        local cv2_loc
+        cv2_loc=$(python3 -c "import cv2; f=cv2.__file__; print('user-local' if '.local' in f else 'system')" 2>/dev/null)
+        add_result "environment" "passed" "$py_version, packages: $cv2_loc"
+        return 0
+    else
+        add_result "environment" "failed" "Missing packages:$missing_pkgs. Run: sudo ./install.sh --gui --pathfinder"
+        log_error "Missing Python packages:$missing_pkgs"
+        log_error "Run: sudo ./install.sh --gui --pathfinder"
+        log_error "Or: python3 scripts/env_diagnostic.py  (for detailed diagnosis)"
+        return 1
+    fi
 }
 
 # =============================================================================
@@ -255,19 +308,36 @@ test_wandering_demo_simulate() {
     fi
 }
 
-test_headless_camera_capture() {
-    log_test "Testing headless camera capture..."
+test_headless_camera_basic() {
+    log_test "Testing headless camera (basic feed)..."
 
     if ! has_camera; then
-        add_result "headless_camera" "skipped" "No camera device found"
+        add_result "camera_basic" "skipped" "No camera device found"
         return 0
     fi
 
-    if python3 tests/gui_camera.py --headless --captures 1 2>&1; then
-        add_result "headless_camera" "passed" "Headless camera capture successful"
+    if python3 tests/gui_camera.py --headless --captures 1 --no-faces 2>&1; then
+        add_result "camera_basic" "passed" "Basic camera capture successful"
         return 0
     else
-        add_result "headless_camera" "failed" "Headless camera capture failed"
+        add_result "camera_basic" "failed" "Basic camera capture failed"
+        return 1
+    fi
+}
+
+test_headless_camera_faces() {
+    log_test "Testing headless camera (face detection)..."
+
+    if ! has_camera; then
+        add_result "camera_faces" "skipped" "No camera device found"
+        return 0
+    fi
+
+    if python3 tests/gui_camera.py --headless --captures 1 --faces 2>&1; then
+        add_result "camera_faces" "passed" "Face detection capture successful"
+        return 0
+    else
+        add_result "camera_faces" "failed" "Face detection capture failed"
         return 1
     fi
 }
@@ -297,6 +367,7 @@ run_quick_tests() {
     log_info "Running quick verification tests..."
     echo ""
 
+    test_environment
     test_syntax_verification
     test_import_verification
 }
@@ -305,6 +376,7 @@ run_standard_tests() {
     log_info "Running standard test suite..."
     echo ""
 
+    test_environment
     test_syntax_verification
     test_import_verification
     test_integration
@@ -319,13 +391,17 @@ run_hardware_tests() {
     test_gpio
     test_camera
     test_lidar
-    test_headless_camera_capture
+    test_headless_camera_basic
+    test_headless_camera_faces
     test_headless_lidar_scan
 }
 
 run_all_tests() {
     log_info "Running ALL tests..."
     echo ""
+
+    # Environment precheck
+    test_environment
 
     # Verification
     test_syntax_verification
@@ -340,7 +416,8 @@ run_all_tests() {
     test_gpio
     test_camera
     test_lidar
-    test_headless_camera_capture
+    test_headless_camera_basic
+    test_headless_camera_faces
     test_headless_lidar_scan
 }
 

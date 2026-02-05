@@ -1,6 +1,6 @@
 # Ambot - Todo & Roadmap
 
-> Last updated: 2026-02-04
+> Last updated: 2026-02-05 (Session 7)
 
 ---
 
@@ -58,9 +58,9 @@
 
 _Start here when resuming work_
 
-1. **Deploy and verify on RPi** - Run `./deploy.sh rpi --verify` when RPi is online
-2. **Wire L298N motor driver** - Physical wiring needed before motor tests
-3. **Test with hardware connected** - Reconnect camera + LiDAR, run `./deploy.sh rpi --full-test`
+1. **Test GUI diagnostics on RPi desktop** - Venv approach now active, ImageTk fixed
+2. **Wire L298N motor driver** - See [locomotion/tmp_wiring.md](../locomotion/tmp_wiring.md) for pin table
+3. **Test motors** - `./deploy.sh rpi --test=motors` once wired
 4. **Create wandering_demo_llm.py** - LLM-integrated wandering (requires Jetson or API)
 
 ## In Progress
@@ -68,6 +68,8 @@ _Start here when resuming work_
 _Tasks actively being worked on_
 
 - [ ] Wire L298N motor driver to RPi GPIO
+  - **IMPORTANT: Connect common ground first** (L298N GND → RPi Pin 6, motor PSU GND → L298N GND)
+  - See [locomotion/tmp_wiring.md](../locomotion/tmp_wiring.md) for full pin table
 - [ ] Create `wandering_demo_llm.py` - LLM-integrated wandering with conversation
 
 ## Blocked
@@ -118,6 +120,59 @@ _Lower priority, do when time permits_
 - [ ] Voice interaction (STT/TTS via Android device)
 
 ## Recently Completed
+
+_Session 7 - 2026-02-05_
+
+- [x] **Switched to .venv approach** - Clean Python virtual environment instead of system-wide pip hacks
+  - Created `.venv` with `--system-site-packages` (accesses apt packages like RPi.GPIO, tkinter)
+  - `run_tests.sh` auto-activates venv
+  - `deploy.sh` activates venv for individual test commands, excludes `.venv` from rsync
+  - `install.sh` creates venv and installs pip packages into it
+  - `.gitignore` updated (both root and ambot)
+- [x] **Fixed PIL ImageTk import error** - Installed `python3-pil.imagetk` (separate Debian apt package)
+- [x] **Updated wiring documentation** - `locomotion/tmp_wiring.md` with proper markdown tables
+  - Separated Motor A, Motor B, Power/Ground sections
+  - Added notes about ENA/ENB jumpers, common ground, motor power
+- [x] **All 12 tests passing on RPi** - Verified with venv activated
+
+_Session 6 - 2026-02-05_
+
+- [x] **Diagnosed SSH vs desktop terminal Python issue** - Packages in `~/.local/` not found from desktop
+  - Root cause: `pip3 install --break-system-packages` (as user) installs to `~/.local/lib/python3.13/site-packages/`
+  - RPi desktop (labwc/Wayland + lxterminal) may not load user site-packages
+  - Fix: Switched to .venv approach (Session 7)
+- [x] **Environment diagnostic tool** - `scripts/env_diagnostic.py`
+  - Compares SSH vs desktop terminal environments
+  - Shows package locations (user-local vs system vs system-local)
+  - `--fix` flag installs packages system-wide
+  - `--json` for automated comparison
+- [x] **All 12 tests passing on RPi** (up from 10) - New environment precheck test added
+  - Environment precheck now validates packages at runtime
+  - All hardware tests still passing (camera, LiDAR, GPIO)
+- [x] **Updated install.sh** - Venv-based package installation
+  - Creates `.venv` with `--system-site-packages`
+  - Installs pip packages into venv (no `--break-system-packages` needed)
+  - Added `check_environment()` diagnostic to verification step
+- [x] **Updated deploy.sh** - Added `env` and `env-fix` test types, venv activation
+- [x] **Updated run_tests.sh** - Added environment precheck and venv activation
+
+_Session 5 - 2026-02-05_
+
+- [x] **All 10 tests passing on RPi** - Full hardware test suite verified
+  - Camera: EMEET SmartCam S600 capturing + face detection (2 faces detected)
+  - LiDAR: LD19 scanning ~481 pts/scan, 113mm nearest, 6902mm furthest
+  - GPIO: All libraries available
+  - Integration: All 5 sub-tests passing
+- [x] **Fixed live_monitor.py JSON crash** - numpy int32 not JSON serializable
+  - Added NumpySafeEncoder for OpenCV numpy types
+  - Converted face center coords to native Python int
+- [x] **Fixed run_tests.sh** - `set -e` + `((counter++))` killed script at first test
+  - Removed `set -e` (wrong for test runner), fixed counter arithmetic
+- [x] **Unified deploy.sh `--test=TYPE` interface** - One flag for all test types
+  - Suites: `all`, `quick`, `hardware`, `integration`, `verify`
+  - Individual: `gpio`, `camera`, `lidar`, `motors`
+  - Diagnostics: `check` (verify installed packages)
+  - Backwards compatible: `--verify`, `--full-test`, `--run` still work
 
 _Session 4 - 2026-02-04_
 
@@ -206,6 +261,7 @@ ambot/
 │   ├── rpi-bootstrap.sh   # Master RPi bootstrap
 │   ├── rpi-bootstrap-system.sh   # System packages + Docker
 │   ├── rpi-bootstrap-python.sh   # Python libraries
+│   ├── env_diagnostic.py  # Environment diagnostic (SSH vs desktop, package locations)
 │   ├── network-refresh.sh # RPi network troubleshooting (run ON RPi)
 │   └── wsl-ssh-helper.sh  # WSL2 SSH helper (run FROM dev machine)
 ├── deploy.sh              # Master deployment script
@@ -219,7 +275,7 @@ ambot/
 │   ├── test_usb_camera.py # Camera tests
 │   ├── test_ld19_lidar.py # LD19 LiDAR tests (all passing!)
 │   ├── test_wandering_integration.py  # Pathfinder+Locomotion test
-│   ├── gui_camera.py      # Camera GUI: face detection + center points
+│   ├── gui_camera.py      # Camera GUI: basic feed (--no-faces) or face detection (--faces)
 │   ├── gui_lidar.py       # LiDAR GUI: polar plot + nearest/furthest edges
 │   ├── verify_all_imports.py  # Comprehensive syntax/import verification (NEW)
 │   └── results/           # Test output (JSON, PNG, JPG)
@@ -258,14 +314,23 @@ ambot/
 # Deploy to RPi (from dev machine)
 ./deploy.sh rpi                     # All components
 ./deploy.sh rpi pathfinder          # Just LiDAR system
-./deploy.sh rpi --verify            # Deploy + run import verification
-./deploy.sh rpi --full-test         # Deploy + run comprehensive test suite
-./deploy.sh rpi tests --test=lidar  # Deploy + run LiDAR test
+./deploy.sh rpi --test=all          # Deploy + run ALL tests
+./deploy.sh rpi --test=quick        # Deploy + quick verification
+./deploy.sh rpi --test=hardware     # Deploy + test connected hardware
+./deploy.sh rpi --test=lidar        # Deploy + single LiDAR test
+./deploy.sh rpi --test=check        # Deploy + check installed packages
+./deploy.sh rpi --test=env          # Deploy + environment diagnostic
+./deploy.sh rpi --test=env-fix      # Deploy + fix packages system-wide
 
 # Install dependencies on RPi (run ON the RPi)
-sudo ./install.sh                   # Full install (pathfinder + locomotion)
+sudo ./install.sh                   # Full install (creates .venv + installs packages)
 sudo ./install.sh --check           # Check what's installed
-sudo ./install.sh --gui             # Include GUI packages
+sudo ./install.sh --gui             # Include GUI packages (tkinter, ImageTk, matplotlib)
+
+# Environment diagnostic (run ON RPi)
+source .venv/bin/activate           # Activate venv first (or scripts do it automatically)
+python3 scripts/env_diagnostic.py            # Full diagnostic
+python3 scripts/env_diagnostic.py --json     # JSON for comparison
 
 # Comprehensive test runner (run ON RPi)
 ./run_tests.sh                     # Standard tests (verification + integration)
@@ -290,11 +355,13 @@ python3 wandering_demo.py --simulate
 python3 wandering_demo.py --simulate --behavior wall_follower_right
 
 # GUI diagnostics (run ON RPi with display)
-python3 tests/gui_camera.py         # Live camera + face detection + center points
-python3 tests/gui_lidar.py          # Live LiDAR polar plot + nearest/furthest
+python3 tests/gui_camera.py                # Live camera (basic feed)
+python3 tests/gui_camera.py --faces        # Live camera + face detection + bounding boxes
+python3 tests/gui_lidar.py                 # Live LiDAR polar plot + nearest/furthest
 
 # Headless testing (via SSH)
-python3 tests/gui_camera.py --headless --captures 3
+python3 tests/gui_camera.py --headless --captures 3 --no-faces  # Basic capture
+python3 tests/gui_camera.py --headless --captures 3 --faces     # Face detection
 python3 tests/gui_lidar.py --headless --scans 3
 
 # SSH to RPi
@@ -344,6 +411,12 @@ Scripts should work on both Raspberry Pi and Jetson with minimal changes:
 
 ## Notes
 
+- **Python packages use .venv** inside `ambot/` folder
+  - Venv created with `--system-site-packages` (sees apt packages: RPi.GPIO, tkinter, PIL.ImageTk)
+  - Pip packages installed into `.venv/` (pyserial, numpy, matplotlib, opencv-python-headless)
+  - Scripts auto-activate venv (`run_tests.sh`, `deploy.sh` individual commands)
+  - `.venv/` excluded from rsync and git
+  - Use `./deploy.sh rpi --test=env` to diagnose environment
 - **LiDAR is LD19** (YOUYEETOO/LDRobot), NOT RPLidar C1M1
   - Uses 230400 baud (not 460800)
   - One-way protocol (auto-streams, no commands)
