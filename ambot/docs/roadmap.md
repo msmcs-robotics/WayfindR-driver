@@ -118,6 +118,15 @@ This roadmap tracks project-level features and milestones. For immediate tasks, 
   - Avoids ping-ponging by not always going to the single longest distance
   - Time-based target switching (5s per target) + safety zone fallback
   - Now the default behavior for `safe_wanderer` and both demos
+- [x] **PWM cleanup fix** — Set `_pwm = None` after `stop()` to prevent TypeError warnings -- 2026-02-06
+- [x] **Motor test wrapper** — `tests/test_motors.py` with L298N defaults + deploy.sh integration -- 2026-02-06
+- [x] **Wandering behavior visualization** — `tests/gui_wandering.py` shows NaturalWander decisions on live LiDAR -- 2026-02-06
+- [x] **Localization research** — Documented in `docs/findings/localization-pre-slam.md` -- 2026-02-06
+  - Reactive wandering does NOT need position tracking (the environment IS the memory)
+  - Recommended next: MPU6050 gyro heading (Level 1) for closed-loop turns
+  - Do NOT attempt accelerometer position (drifts 17m in 1 minute)
+- [ ] Fix left motor wiring (right works, left doesn't spin — ENA Pin 33 / terminal screws)
+- [ ] Add MPU6050 IMU driver — gyro heading for turn verification (Level 1 localization)
 - [ ] Tune safety zone distances for robot size
 - [ ] Test wandering behaviors in real environment
 - [ ] Test face tracking with real hardware
@@ -170,12 +179,17 @@ This creates the illusion of purposeful exploration without needing SLAM, odomet
   - LLM can choose between different pathfinder behaviors
   - Context-aware movement (e.g., "follow the person", "go to charging station")
 
-### Sensor Fusion
-- [ ] Integrate MPU6050 IMU for orientation/tilt sensing
+### Sensor Fusion (see `docs/findings/localization-pre-slam.md`)
+- [ ] **MPU6050 IMU driver** — gyro heading for closed-loop turns (Level 1 localization)
+  - I2C reads at ~100Hz, startup calibration (average gyro bias over 2-3s)
+  - Heading integration with complementary filter for pitch/roll
   - Graceful degradation: system works without IMU, IMU enhances when present
+  - Drift: ~1-2 deg/min — negligible for 5s target cycles
+- [ ] Modify NaturalWanderBehavior to use heading-error-based turns
 - [ ] Camera-based facial detection events triggering LLM
   - Detect specific faces → personalized greetings
   - Detect crowd → different behavior than single person
+- [ ] LiDAR scan matching / ICP (Level 2 — only when position tracking needed)
 - [ ] Combined LiDAR + camera + IMU for robust navigation
   - Still NO SLAM - just better reactive navigation
 
@@ -232,6 +246,10 @@ This creates the illusion of purposeful exploration without needing SLAM, odomet
 - [x] Add SafetyWrapper and create_safe_wanderer() for safe demos -- Completed 2026-01-29
 - [x] Create LD19 LiDAR driver -- Completed 2026-02-03 (LD19, not C1M1!)
 - [x] Create LiDAR visualization GUI -- Completed 2026-02-04
+- [x] Create wandering behavior visualization GUI (`tests/gui_wandering.py`) -- Completed 2026-02-06
+- [x] PWM cleanup fix (set `_pwm = None` after `stop()`) -- Completed 2026-02-06
+- [x] Motor test convenience wrapper (`tests/test_motors.py`) -- Completed 2026-02-06
+- [x] Localization research document (`docs/findings/localization-pre-slam.md`) -- Completed 2026-02-06
 
 ### Integration & Deployment
 - [x] Create master deploy.sh script -- Completed 2026-02-03

@@ -58,16 +58,18 @@
 
 _Start here when resuming work_
 
-1. **Test wandering_demo_1.py with real motors** - Basic obstacle avoidance wandering
-2. **Test wandering_demo_2.py with camera** - Face tracking + wandering
-3. **Tune motor speeds and safety zones** for robot size
-4. **Create wandering_demo_3.py** - LLM-integrated wandering (requires Jetson or API)
+1. **Fix left motor** - Right motor works, left doesn't spin. Check ENA (Pin 33) connection, terminal screws, try swapping motor to right channel to isolate motor vs wiring
+2. **Test wandering_demo_1.py with both motors** - Basic obstacle avoidance wandering (needs left motor working)
+3. **Test gui_wandering.py with display** - Verify wandering behavior visualization on RPi desktop
+4. **Add MPU6050 IMU driver** - Gyro heading for closed-loop turns (see `docs/findings/localization-pre-slam.md`)
+5. **Create wandering_demo_3.py** - LLM-integrated wandering (requires Jetson or API)
 
 ## In Progress
 
 _Tasks actively being worked on_
 
-- [ ] Test real-world wandering with motors (`python3 wandering_demo_1.py`)
+- [ ] Fix left motor wiring (right motor works, left doesn't spin — suspected ENA/wiring issue)
+- [ ] Test real-world wandering with both motors (`python3 wandering_demo_1.py`)
 - [ ] Test face tracking demo (`python3 wandering_demo_2.py`)
 - [ ] Create `wandering_demo_3.py` - LLM-integrated wandering with conversation
 
@@ -95,16 +97,21 @@ _Priority queue for immediate work_
 
 ### Integration
 - [x] Combine pathfinder + locomotion for basic wandering demo — **Done** (`wandering_demo_1.py`)
-- [x] L298N motors wired and tested — **Done** (Session 8)
+- [x] L298N motors wired and tested — **Done** (Session 8) — right motor works, left needs wiring fix
 - [x] Camera face tracking demo — **Done** (`wandering_demo_2.py`)
-- [ ] Test obstacle avoidance with actual robot movement
+- [ ] Test obstacle avoidance with actual robot movement (needs both motors working)
 
 ## Backlog
 
 _Lower priority, do when time permits_
 
 ### Sensor Integration
-- [ ] MPU6050 driver with graceful absence handling
+- [ ] MPU6050 IMU driver — gyro heading for closed-loop turns (see `docs/findings/localization-pre-slam.md`)
+  - Startup calibration (keep still 2-3s, average gyro bias)
+  - Heading integration at ~100Hz (I2C reads)
+  - Complementary filter for pitch/roll
+  - Graceful degradation: system works without IMU, IMU enhances when present
+- [ ] Modify NaturalWanderBehavior to use heading for turn commands
 - [ ] Sensor fusion combining LiDAR + IMU data
 - [ ] Camera facial recognition event system
 
@@ -124,7 +131,22 @@ _Session 8 - 2026-02-06_
 
 - [x] **Motors wired and tested** - L298N motor driver connected, basic motor test passing
   - Forward, reverse, turn left/right, arc left/right all working at 30% speed
-  - PWM cleanup warning is harmless (known RPi.GPIO/lgpio interaction)
+  - **Individual motor test**: RIGHT motor works (fwd+rev), LEFT motor doesn't spin
+  - Suspected: ENA (Pin 33) wiring, terminal screws, or underpowered supply
+- [x] **Fixed PWM cleanup TypeError warnings** - RPi.GPIO's `PWM.__del__` fired after `GPIO.cleanup()` freed lgpio chip
+  - Fix: Set `self._pwm = None` after `stop()` in `drivers.py` so `__del__` never fires on freed handle
+  - Added `if self._pwm:` guards on all PWM calls in TB6612FNG, L298N, DRV8833
+- [x] **Created `tests/test_motors.py`** - Convenience motor test wrapper
+  - Defaults to L298N driver at 30% speed (no args needed)
+  - Added deploy.sh sub-tests: `motors`, `motors-basic`, `motors-individual`, `motors-pinout`
+- [x] **Created `tests/gui_wandering.py`** - Wandering behavior visualization
+  - Shows NaturalWanderBehavior decisions overlaid on live LiDAR data
+  - Displays: scan points colored by safety zone, clearance bin wedges, target queue (magenta), current target (cyan star+arrow), safety zone circles, motor command panel
+  - Supports headless mode (save snapshots) and interactive GUI ([Q]uit, [P]ause, [N]ext, [R]eset, [S]ave)
+- [x] **Localization research** - Documented in `docs/findings/localization-pre-slam.md`
+  - Key finding: reactive wandering does NOT need position tracking
+  - Recommended: MPU6050 gyro heading only (Level 1), NOT accelerometer position (drifts 17m in 1 min)
+  - Localization levels: 0 (current) → 1 (gyro heading) → 2 (ICP scan matching) → 3 (fusion) → 4 (SLAM)
 - [x] **Renamed wandering demo** - `wandering_demo.py` → `wandering_demo_1.py` (LiDAR-only)
   - Updated all imports in test_wandering_integration.py, verify_all_imports.py
 - [x] **Created wandering_demo_2.py** - Camera face tracking + LiDAR + motor control
@@ -134,7 +156,7 @@ _Session 8 - 2026-02-06_
   - LiDAR safety override: emergency stop regardless of state
   - Face timeout: resumes wandering after 2s without face
   - Supports --simulate, --no-camera, --dead-zone, --face-timeout
-- [x] **12/12 tests passing on RPi** (39 Python files, 24 modules)
+- [x] **12/12 tests passing on RPi** (43 Python files, 26 modules)
 - [x] **Fixed LiDAR GUI NameError** - `collector` undefined when LD19 driver used in interactive GUI mode
   - Root cause: LD19 path set `use_ld19=True` but never created `collector`, GUI `update()` referenced it
   - Fix: Added LD19 background scan thread + `get_gui_points()` abstraction for both modes
@@ -145,8 +167,6 @@ _Session 8 - 2026-02-06_
   - Avoids ping-ponging (the old MaxClearance problem)
   - Now the default behavior for `safe_wanderer` in both demos
   - Added `raw_points` field to DetectionResult for fine-grained behavior access
-- **Motor observation**: Only one motor appeared to turn during testing (possibly underpowered battery pack)
-  - Next session: test with `--individual` flag, check battery voltage, try stronger power supply
 
 _Session 7 - 2026-02-05_
 
@@ -303,9 +323,11 @@ ambot/
 │   ├── test_usb_camera.py # Camera tests
 │   ├── test_ld19_lidar.py # LD19 LiDAR tests (all passing!)
 │   ├── test_wandering_integration.py  # Pathfinder+Locomotion test
+│   ├── test_motors.py     # Motor test wrapper (defaults to L298N @ 30%)
 │   ├── gui_camera.py      # Camera GUI: basic feed (--no-faces) or face detection (--faces)
 │   ├── gui_lidar.py       # LiDAR GUI: polar plot + nearest/furthest edges
-│   ├── verify_all_imports.py  # Comprehensive syntax/import verification (NEW)
+│   ├── gui_wandering.py   # Wandering behavior visualization (LiDAR + targets + safety zones)
+│   ├── verify_all_imports.py  # Comprehensive syntax/import verification
 │   └── results/           # Test output (JSON, PNG, JPG)
 └── docs/                  # Project documentation
     ├── todo.md            # This file
@@ -314,7 +336,8 @@ ambot/
     ├── findings/          # Research findings
     │   ├── ld19-lidar-protocol.md
     │   ├── live-monitoring-architecture.md  # Live monitor design doc
-    │   └── jetson-llm-deployment-research.md
+    │   ├── jetson-llm-deployment-research.md
+    │   └── localization-pre-slam.md  # IMU/localization analysis (Level 0-4)
     └── archive/           # Session summaries
 ```
 
@@ -325,7 +348,7 @@ ambot/
 | EMEET SmartCam S600 | **Working** | /dev/video0, 640x480 capture verified |
 | LiDAR (LD19) | **Working** | /dev/ttyUSB0, 230400 baud, ~497 pts/scan |
 | GPIO | **Ready** | RPi.GPIO 0.7.2, gpiozero, lgpio all working |
-| Motors (L298N) | **Working** | Wired + tested at 30% speed (Session 8) |
+| Motors (L298N) | **Partial** | Right motor works (fwd+rev), left motor not spinning — check ENA wiring |
 
 ## Hardware Status (Jetson)
 
@@ -387,15 +410,24 @@ python3 wandering_demo_2.py --simulate
 python3 wandering_demo_2.py --simulate --no-camera  # LiDAR only
 python3 wandering_demo_2.py --dead-zone 50 --face-timeout 3.0
 
+# Motor testing
+python3 tests/test_motors.py               # Quick test (L298N, 30%, basic sequence)
+python3 tests/test_motors.py --check       # Platform check only (no motor movement)
+python3 tests/test_motors.py --individual  # Test each motor separately
+python3 tests/test_motors.py --pinout      # Show wiring pinout
+./deploy.sh rpi --test=motors              # Deploy + run motor check
+
 # GUI diagnostics (run ON RPi with display)
 python3 tests/gui_camera.py                # Live camera (basic feed)
 python3 tests/gui_camera.py --faces        # Live camera + face detection + bounding boxes
 python3 tests/gui_lidar.py                 # Live LiDAR polar plot + nearest/furthest
+python3 tests/gui_wandering.py             # Wandering behavior visualization (LiDAR + targets)
 
 # Headless testing (via SSH)
 python3 tests/gui_camera.py --headless --captures 3 --no-faces  # Basic capture
 python3 tests/gui_camera.py --headless --captures 3 --faces     # Face detection
 python3 tests/gui_lidar.py --headless --scans 3
+python3 tests/gui_wandering.py --headless --scans 3  # Save wandering viz snapshots
 
 # SSH to RPi
 ssh pi@10.33.224.1
