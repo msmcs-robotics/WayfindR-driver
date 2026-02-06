@@ -1,5 +1,19 @@
 # DRV8833 Motor Driver Wiring Guide
 
+## Quick Reference — RPi Pin Connections
+
+| DRV8833 Pin | Function | Physical Pin | BCM GPIO |
+|-------------|----------|:------------:|:--------:|
+| **VCC** | Logic power | **1** | 3.3V |
+| **GND** | Ground | **6** | GND |
+| **SLP** | Sleep/Enable | **11** | GPIO17 |
+| **AIN1** | Motor A dir 1 (PWM) | **13** | GPIO27 |
+| **AIN2** | Motor A dir 2 (PWM) | **15** | GPIO22 |
+| **BIN1** | Motor B dir 1 (PWM) | **16** | GPIO23 |
+| **BIN2** | Motor B dir 2 (PWM) | **18** | GPIO24 |
+
+---
+
 Complete pinout and wiring guide for connecting a DRV8833 dual H-bridge motor driver to a Raspberry Pi.
 
 ## Overview

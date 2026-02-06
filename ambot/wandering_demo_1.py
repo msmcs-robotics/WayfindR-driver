@@ -26,10 +26,11 @@ Usage:
 
 import argparse
 import logging
-import sys
 import time
 from datetime import datetime
 from pathlib import Path
+
+from demos_common import RobotAdapter, create_lidar, create_behavior, setup_imu
 
 # Setup logging
 logging.basicConfig(
@@ -39,238 +40,13 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 
-class RobotAdapter:
-    """
-    Adapts pathfinder's RobotInterface to locomotion's DifferentialDrive.
-
-    Converts:
-    - Float speeds (-1.0 to 1.0) → Integer speeds (-100 to 100)
-    - set_motors(left, right) → robot.drive(left, right)
-    """
-
-    def __init__(self, robot=None, simulate: bool = False, log_commands: bool = True):
-        """
-        Initialize adapter.
-
-        Args:
-            robot: DifferentialDrive instance (or None for simulation)
-            simulate: If True, don't send commands to motors
-            log_commands: If True, log all motor commands
-        """
-        self.robot = robot
-        self.simulate = simulate
-        self.log_commands = log_commands
-        self._last_command_time = 0
-        self._command_count = 0
-        self._command_log = []
-
-    def set_motors(self, left: float, right: float) -> None:
-        """
-        Set motor speeds (pathfinder interface).
-
-        Args:
-            left: Left motor speed (-1.0 to 1.0)
-            right: Right motor speed (-1.0 to 1.0)
-        """
-        # Convert to integer percentage
-        left_speed = int(left * 100)
-        right_speed = int(right * 100)
-
-        # Clamp to valid range
-        left_speed = max(-100, min(100, left_speed))
-        right_speed = max(-100, min(100, right_speed))
-
-        self._command_count += 1
-        self._last_command_time = time.time()
-
-        if self.log_commands:
-            cmd = f"L:{left_speed:+4d} R:{right_speed:+4d}"
-            self._command_log.append((time.time(), left_speed, right_speed))
-            # Keep log manageable
-            if len(self._command_log) > 1000:
-                self._command_log = self._command_log[-500:]
-
-        if self.simulate:
-            # Print command visualization
-            self._print_command(left_speed, right_speed)
-        elif self.robot:
-            self.robot.drive(left_speed, right_speed)
-
-    def stop(self) -> None:
-        """Emergency stop."""
-        if self.simulate:
-            print("🛑 STOP")
-        elif self.robot:
-            self.robot.stop()
-
-        self._command_log.append((time.time(), 0, 0))
-
-    def _print_command(self, left: int, right: int):
-        """Print visual representation of motor command."""
-        # Direction indicator
-        if left > 0 and right > 0:
-            direction = "↑ FWD"
-        elif left < 0 and right < 0:
-            direction = "↓ REV"
-        elif left < 0 and right > 0:
-            direction = "↰ LEFT"
-        elif left > 0 and right < 0:
-            direction = "↱ RIGHT"
-        else:
-            direction = "• STOP"
-
-        # Speed bars
-        left_bar = "█" * (abs(left) // 10) if left != 0 else ""
-        right_bar = "█" * (abs(right) // 10) if right != 0 else ""
-
-        print(f"\r{direction:8s} L:{left:+4d}|{left_bar:10s}| R:{right:+4d}|{right_bar:10s}|", end="")
-
-    def get_stats(self) -> dict:
-        """Get command statistics."""
-        return {
-            "command_count": self._command_count,
-            "last_command_time": self._last_command_time,
-            "log_size": len(self._command_log),
-        }
-
-    def cleanup(self):
-        """Cleanup resources."""
-        if self.robot:
-            self.robot.cleanup()
-
-
-class SimulatedObstacleDetector:
-    """Simulated detector for testing without LiDAR."""
-
-    def __init__(self):
-        self.sectors = {}
-
-    def process_scan(self, scan):
-        """Process scan and return simulated detection."""
-        from pathfinder.obstacle_detector import DetectionResult, SectorReading, SafetyLevel
-
-        # Create simulated sectors with random-ish data
-        import random
-
-        sectors = {
-            "front": SectorReading(
-                name="front",
-                angle_range=(337.5, 22.5),
-                min_distance=random.uniform(0.5, 3.0),
-                safety_level=SafetyLevel.CLEAR,
-            ),
-            "right": SectorReading(
-                name="right",
-                angle_range=(22.5, 112.5),
-                min_distance=random.uniform(0.3, 2.0),
-                safety_level=SafetyLevel.CLEAR,
-            ),
-            "back": SectorReading(
-                name="back",
-                angle_range=(112.5, 247.5),
-                min_distance=random.uniform(1.0, 5.0),
-                safety_level=SafetyLevel.CLEAR,
-            ),
-            "left": SectorReading(
-                name="left",
-                angle_range=(247.5, 337.5),
-                min_distance=random.uniform(0.3, 2.0),
-                safety_level=SafetyLevel.CLEAR,
-            ),
-        }
-
-        return DetectionResult(sectors=sectors)
-
-
-def create_lidar():
-    """Create LiDAR instance based on available driver."""
-    try:
-        from pathfinder.lidar_ld19 import LD19Lidar
-        lidar = LD19Lidar()
-        logger.info("Using LD19 LiDAR driver")
-        return lidar
-    except ImportError:
-        pass
-
-    try:
-        from pathfinder.lidar import RPLidar
-        lidar = RPLidar()
-        logger.info("Using RPLidar driver")
-        return lidar
-    except ImportError:
-        pass
-
-    raise RuntimeError("No LiDAR driver available")
-
-
-def create_behavior(behavior_name: str, forward_speed: float, turn_speed: float):
-    """Create behavior instance by name."""
-    from pathfinder.behaviors import (
-        NaturalWanderBehavior,
-        MaxClearanceBehavior,
-        WallFollowerBehavior,
-        RandomWanderBehavior,
-        AvoidAndGoBehavior,
-        SafetyWrapper,
-        DynamicObstacleMonitor,
-        create_safe_wanderer,
-        WallSide,
-    )
-
-    if behavior_name == "safe_wanderer":
-        return create_safe_wanderer(
-            forward_speed=forward_speed,
-            turn_speed=turn_speed,
-        )
-    elif behavior_name == "natural_wander":
-        inner = NaturalWanderBehavior(
-            forward_speed=forward_speed,
-            turn_speed=turn_speed,
-        )
-        return SafetyWrapper(inner)
-    elif behavior_name == "max_clearance":
-        inner = MaxClearanceBehavior(
-            forward_speed=forward_speed,
-            turn_speed=turn_speed,
-        )
-        # Wrap with safety
-        return SafetyWrapper(inner)
-    elif behavior_name == "wall_follower_right":
-        inner = WallFollowerBehavior(
-            wall_side=WallSide.RIGHT,
-            forward_speed=forward_speed,
-            turn_speed=turn_speed,
-        )
-        return SafetyWrapper(inner)
-    elif behavior_name == "wall_follower_left":
-        inner = WallFollowerBehavior(
-            wall_side=WallSide.LEFT,
-            forward_speed=forward_speed,
-            turn_speed=turn_speed,
-        )
-        return SafetyWrapper(inner)
-    elif behavior_name == "random_wander":
-        inner = RandomWanderBehavior(
-            forward_speed=forward_speed,
-            turn_speed=turn_speed,
-        )
-        return SafetyWrapper(inner)
-    elif behavior_name == "avoid_and_go":
-        inner = AvoidAndGoBehavior(
-            forward_speed=forward_speed,
-            turn_speed=turn_speed,
-        )
-        return SafetyWrapper(inner)
-    else:
-        raise ValueError(f"Unknown behavior: {behavior_name}")
-
-
 def run_wandering_demo(
     simulate: bool = False,
     behavior_name: str = "safe_wanderer",
     forward_speed: float = 0.4,
     turn_speed: float = 0.5,
     duration: float = 0,
+    no_imu: bool = False,
     output_file: str = None,
 ):
     """
@@ -282,6 +58,7 @@ def run_wandering_demo(
         forward_speed: Forward speed (0.0-1.0)
         turn_speed: Turn speed (0.0-1.0)
         duration: Run duration in seconds (0 = forever)
+        no_imu: If True, skip IMU setup
         output_file: File to write results to
     """
     from pathfinder.obstacle_detector import SectorBasedDetector
@@ -299,6 +76,7 @@ def run_wandering_demo(
     robot = None
     robot_adapter = None
     lidar = None
+    imu = None
     start_time = time.time()
 
     try:
@@ -320,6 +98,14 @@ def run_wandering_demo(
         if simulate:
             robot_adapter = RobotAdapter(robot=None, simulate=True)
             print("\n[SIMULATION MODE - Commands will be printed]\n")
+
+        # Setup IMU
+        if not no_imu and not simulate:
+            imu = setup_imu()
+            if imu:
+                print(f"IMU: heading={imu.heading:.1f} deg")
+        elif simulate:
+            logger.info("Skipping IMU in simulation mode")
 
         # Create LiDAR
         logger.info("Connecting to LiDAR...")
@@ -345,11 +131,16 @@ def run_wandering_demo(
         scan_count = [0]
         def on_scan(detection):
             scan_count[0] += 1
+            if imu:
+                imu.update()
             if scan_count[0] % 50 == 0:  # Every 5 seconds at 10Hz
                 elapsed = time.time() - start_time
-                print(f"\n[{elapsed:.0f}s] Scans: {scan_count[0]}, "
-                      f"Safety: {detection.overall_safety.name}, "
-                      f"Closest: {detection.closest_distance:.2f}m")
+                status = (f"\n[{elapsed:.0f}s] Scans: {scan_count[0]}, "
+                          f"Safety: {detection.overall_safety.name}, "
+                          f"Closest: {detection.closest_distance:.2f}m")
+                if imu:
+                    status += f", Heading: {imu.heading:.1f} deg"
+                print(status)
 
         runner.on_scan(on_scan)
 
@@ -381,11 +172,14 @@ def run_wandering_demo(
             robot_adapter.stop()
             robot_adapter.cleanup()
 
+        if imu:
+            imu.cleanup()
+
         if lidar:
             lidar.disconnect()
 
         # Save results
-        if output_file:
+        if output_file and robot_adapter:
             results = {
                 "timestamp": datetime.now().isoformat(),
                 "duration_seconds": elapsed,
@@ -393,7 +187,7 @@ def run_wandering_demo(
                 "simulate": simulate,
                 "forward_speed": forward_speed,
                 "turn_speed": turn_speed,
-                "command_count": stats["command_count"] if robot_adapter else 0,
+                "command_count": robot_adapter.get_stats()["command_count"],
             }
 
             output_path = Path(output_file)
@@ -475,6 +269,12 @@ Examples:
     )
 
     parser.add_argument(
+        "--no-imu",
+        action="store_true",
+        help="Disable IMU (skip gyro heading)"
+    )
+
+    parser.add_argument(
         "--output", "-o",
         type=str,
         default=None,
@@ -489,6 +289,7 @@ Examples:
         forward_speed=args.forward_speed,
         turn_speed=args.turn_speed,
         duration=args.duration,
+        no_imu=args.no_imu,
         output_file=args.output,
     )
 

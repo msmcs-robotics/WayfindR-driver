@@ -31,12 +31,19 @@ Usage:
 
 import argparse
 import logging
-import sys
-import threading
 import time
 from datetime import datetime
 from enum import Enum
 from pathlib import Path
+
+from demos_common import (
+    RobotAdapter,
+    create_lidar,
+    create_behavior,
+    CameraFaceThread,
+    FaceData,
+    setup_imu,
+)
 
 # Setup logging
 logging.basicConfig(
@@ -44,135 +51,6 @@ logging.basicConfig(
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
 )
 logger = logging.getLogger(__name__)
-
-# Reuse RobotAdapter and helpers from demo 1
-sys.path.insert(0, str(Path(__file__).parent))
-from wandering_demo_1 import RobotAdapter, create_lidar, create_behavior
-
-
-# =============================================================================
-# Camera Face Detector Thread
-# =============================================================================
-
-class FaceData:
-    """Thread-safe container for face detection results."""
-
-    def __init__(self):
-        self._lock = threading.Lock()
-        self._faces = []  # list of (center_x, center_y, width, height)
-        self._timestamp = 0.0
-        self._frame_count = 0
-
-    def update(self, faces, timestamp):
-        with self._lock:
-            self._faces = list(faces)
-            self._timestamp = timestamp
-            self._frame_count += 1
-
-    def get(self):
-        """Returns (faces, timestamp, frame_count)."""
-        with self._lock:
-            return list(self._faces), self._timestamp, self._frame_count
-
-
-class CameraFaceThread(threading.Thread):
-    """Background thread for camera face detection."""
-
-    def __init__(self, face_data: FaceData, device: int = 0):
-        super().__init__(daemon=True)
-        self.face_data = face_data
-        self.device = device
-        self.running = False
-        self.connected = False
-        self.frame_width = 640
-        self.frame_height = 480
-
-    def run(self):
-        self.running = True
-        try:
-            import cv2
-        except ImportError:
-            logger.error("OpenCV not available - camera disabled")
-            return
-
-        # Open camera
-        cap = cv2.VideoCapture(self.device)
-        if not cap.isOpened():
-            logger.error(f"Failed to open camera device {self.device}")
-            return
-
-        cap.set(cv2.CAP_PROP_FRAME_WIDTH, self.frame_width)
-        cap.set(cv2.CAP_PROP_FRAME_HEIGHT, self.frame_height)
-        self.connected = True
-        logger.info(f"Camera opened: {self.frame_width}x{self.frame_height}")
-
-        # Load face cascade
-        face_cascade = self._load_cascade(cv2)
-        if face_cascade is None:
-            logger.error("Failed to load face cascade - camera disabled")
-            cap.release()
-            return
-
-        logger.info("Face detection ready")
-
-        try:
-            while self.running:
-                ret, frame = cap.read()
-                if not ret:
-                    time.sleep(0.1)
-                    continue
-
-                # Detect faces
-                gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
-                detections = face_cascade.detectMultiScale(
-                    gray,
-                    scaleFactor=1.1,
-                    minNeighbors=5,
-                    minSize=(30, 30),
-                )
-
-                faces = []
-                if len(detections) > 0:
-                    for (x, y, w, h) in detections:
-                        center_x = int(x + w // 2)
-                        center_y = int(y + h // 2)
-                        faces.append((center_x, center_y, int(w), int(h)))
-
-                self.face_data.update(faces, time.time())
-
-                # ~10 fps for face detection
-                time.sleep(0.1)
-
-        finally:
-            cap.release()
-            logger.info("Camera released")
-
-    def stop(self):
-        self.running = False
-
-    def _load_cascade(self, cv2):
-        """Load Haar cascade for face detection."""
-        search_paths = [
-            "/usr/share/opencv4/haarcascades/haarcascade_frontalface_default.xml",
-            "/usr/share/opencv/haarcascades/haarcascade_frontalface_default.xml",
-        ]
-
-        # Try OpenCV package data
-        try:
-            data_dir = getattr(cv2, 'data', None)
-            if data_dir and hasattr(data_dir, 'haarcascades'):
-                search_paths.insert(0, data_dir.haarcascades + "haarcascade_frontalface_default.xml")
-        except Exception:
-            pass
-
-        for path in search_paths:
-            if Path(path).exists():
-                cascade = cv2.CascadeClassifier(path)
-                if not cascade.empty():
-                    logger.info(f"Loaded face cascade: {path}")
-                    return cascade
-
-        return None
 
 
 # =============================================================================
@@ -198,6 +76,7 @@ def run_wandering_v2(
     dead_zone: int = 40,
     face_timeout: float = 2.0,
     no_camera: bool = False,
+    no_imu: bool = False,
     output_file: str = None,
 ):
     """
@@ -213,6 +92,7 @@ def run_wandering_v2(
         dead_zone: Pixels from center considered "centered" (default 40)
         face_timeout: Seconds without face before resuming wander (default 2.0)
         no_camera: If True, disable camera (basic wandering only)
+        no_imu: If True, skip IMU setup
         output_file: File to write results to
     """
     from pathfinder.obstacle_detector import SectorBasedDetector, SafetyLevel
@@ -235,6 +115,7 @@ def run_wandering_v2(
     robot_adapter = None
     lidar = None
     camera_thread = None
+    imu = None
     start_time = time.time()
 
     try:
@@ -256,6 +137,14 @@ def run_wandering_v2(
         if simulate:
             robot_adapter = RobotAdapter(robot=None, simulate=True)
             print("\n[SIMULATION MODE - Commands will be printed]\n")
+
+        # Setup IMU
+        if not no_imu and not simulate:
+            imu = setup_imu()
+            if imu:
+                print(f"IMU: heading={imu.heading:.1f} deg")
+        elif simulate:
+            logger.info("Skipping IMU in simulation mode")
 
         # Start camera thread
         face_data = FaceData()
@@ -299,6 +188,10 @@ def run_wandering_v2(
 
             loop_start = now
             scan_count += 1
+
+            # Update IMU
+            if imu:
+                imu.update()
 
             # Process LiDAR scan
             detection = detector.process_scan(scan)
@@ -351,13 +244,11 @@ def run_wandering_v2(
                             print(f"\r[TRACKING] Face centered (offset={offset:+d}px)    ", end="")
                     else:
                         # Pivot toward face (proportional control)
-                        # Normalize offset to -1.0..1.0 range
                         norm_offset = offset / FRAME_CENTER_X
                         pivot = track_speed * norm_offset
                         pivot = max(-track_speed, min(track_speed, pivot))
 
                         # Pivot: positive offset = face right = turn right
-                        # turn_right = MotorCommand(+speed, -speed)
                         robot_adapter.set_motors(pivot, -pivot)
                         if scan_count % 10 == 0:
                             print(f"\r[TRACKING] Pivoting (offset={offset:+d}px, pivot={pivot:+.2f})", end="")
@@ -381,8 +272,11 @@ def run_wandering_v2(
             # Periodic status
             if scan_count % 50 == 0:
                 elapsed = now - start_time
-                print(f"\n[{elapsed:.0f}s] State={state.value}, Scans={scan_count}, "
-                      f"StateChanges={state_changes}, FaceTracks={face_track_count}")
+                status = (f"\n[{elapsed:.0f}s] State={state.value}, Scans={scan_count}, "
+                          f"StateChanges={state_changes}, FaceTracks={face_track_count}")
+                if imu:
+                    status += f", Heading={imu.heading:.1f} deg"
+                print(status)
 
             # Rate limit to ~10Hz
             elapsed = time.time() - loop_start
@@ -408,6 +302,9 @@ def run_wandering_v2(
             robot_adapter.stop()
             robot_adapter.cleanup()
 
+        if imu:
+            imu.cleanup()
+
         if camera_thread:
             camera_thread.stop()
 
@@ -426,7 +323,7 @@ def run_wandering_v2(
                 "camera_enabled": not no_camera,
                 "state_changes": state_changes,
                 "face_track_count": face_track_count,
-                "command_count": stats["command_count"] if robot_adapter else 0,
+                "command_count": robot_adapter.get_stats()["command_count"] if robot_adapter else 0,
             }
 
             output_path = Path(output_file)
@@ -474,6 +371,8 @@ Examples:
                         help="Seconds without face before resuming wander (default: 2.0)")
     parser.add_argument("--no-camera", action="store_true",
                         help="Disable camera (falls back to basic wandering)")
+    parser.add_argument("--no-imu", action="store_true",
+                        help="Disable IMU (skip gyro heading)")
     parser.add_argument("--output", "-o", type=str, default=None,
                         help="Output file for results (JSON)")
 
@@ -489,6 +388,7 @@ Examples:
         dead_zone=args.dead_zone,
         face_timeout=args.face_timeout,
         no_camera=args.no_camera,
+        no_imu=args.no_imu,
         output_file=args.output,
     )
 

@@ -1,5 +1,21 @@
 # TB6612FNG Motor Driver
 
+## Quick Reference — RPi Pin Connections
+
+| TB6612 Pin | Function | Physical Pin | BCM GPIO |
+|------------|----------|:------------:|:--------:|
+| **VCC** | Logic power | **1** | 3.3V |
+| **GND** | Ground | **6** | GND |
+| **STBY** | Standby enable | **11** | GPIO17 |
+| **PWMA** | Motor A PWM | **33** | GPIO13 |
+| **AIN1** | Motor A dir 1 | **13** | GPIO27 |
+| **AIN2** | Motor A dir 2 | **15** | GPIO22 |
+| **PWMB** | Motor B PWM | **32** | GPIO12 |
+| **BIN1** | Motor B dir 1 | **16** | GPIO23 |
+| **BIN2** | Motor B dir 2 | **18** | GPIO24 |
+
+---
+
 Primary motor driver for the Ambot project. SparkFun TB6612FNG breakout board.
 
 ## Overview

@@ -1,5 +1,19 @@
 # L298N Motor Driver Wiring Guide for Raspberry Pi
 
+## Quick Reference — RPi Pin Connections
+
+| L298N Pin | Function | Physical Pin | BCM GPIO |
+|-----------|----------|:------------:|:--------:|
+| **ENA** | Motor A PWM | **32** | GPIO12 |
+| **IN1** | Motor A dir 1 | **11** | GPIO17 |
+| **IN2** | Motor A dir 2 | **13** | GPIO27 |
+| **IN3** | Motor B dir 1 | **15** | GPIO22 |
+| **IN4** | Motor B dir 2 | **16** | GPIO23 |
+| **ENB** | Motor B PWM | **33** | GPIO13 |
+| **GND** | Common ground | **6** | GND |
+
+---
+
 Complete pinout and wiring guide for connecting an L298N dual H-bridge motor driver to a Raspberry Pi using a 4xAA battery pack (~6V).
 
 ## Overview

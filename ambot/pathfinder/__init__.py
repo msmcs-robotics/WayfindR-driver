@@ -59,6 +59,7 @@ from .behaviors import (
     BehaviorRunner,
     BehaviorSelector,
 )
+from .imu import IMU
 
 __all__ = [
     # Configuration
@@ -89,6 +90,8 @@ __all__ = [
     # Runner
     "BehaviorRunner",
     "BehaviorSelector",
+    # IMU
+    "IMU",
 ]
 
 __version__ = "0.1.0"

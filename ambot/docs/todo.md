@@ -1,6 +1,6 @@
 # Ambot - Todo & Roadmap
 
-> Last updated: 2026-02-06 (Session 8)
+> Last updated: 2026-02-06 (Session 8 cont.)
 
 ---
 
@@ -61,8 +61,9 @@ _Start here when resuming work_
 1. **Fix left motor** - Right motor works, left doesn't spin. Check ENA (Pin 33) connection, terminal screws, try swapping motor to right channel to isolate motor vs wiring
 2. **Test wandering_demo_1.py with both motors** - Basic obstacle avoidance wandering (needs left motor working)
 3. **Test gui_wandering.py with display** - Verify wandering behavior visualization on RPi desktop
-4. **Add MPU6050 IMU driver** - Gyro heading for closed-loop turns (see `docs/findings/localization-pre-slam.md`)
-5. **Create wandering_demo_3.py** - LLM-integrated wandering (requires Jetson or API)
+4. **Test MPU6050 IMU on RPi** - Wire GY-521 (VCC→Pin1, GND→Pin9, SCL→Pin5, SDA→Pin3), run `i2cdetect -y 1`, then `python3 tests/test_imu.py`
+5. **Deploy and verify** - `./deploy.sh rpi --test=all` to confirm all changes work on RPi
+6. **Create wandering_demo_3.py** - LLM-integrated wandering (requires Jetson or API)
 
 ## In Progress
 
@@ -71,6 +72,7 @@ _Tasks actively being worked on_
 - [ ] Fix left motor wiring (right motor works, left doesn't spin — suspected ENA/wiring issue)
 - [ ] Test real-world wandering with both motors (`python3 wandering_demo_1.py`)
 - [ ] Test face tracking demo (`python3 wandering_demo_2.py`)
+- [ ] Test MPU6050 IMU on RPi hardware (`python3 tests/test_imu.py`)
 - [ ] Create `wandering_demo_3.py` - LLM-integrated wandering with conversation
 
 ## Blocked
@@ -106,12 +108,8 @@ _Priority queue for immediate work_
 _Lower priority, do when time permits_
 
 ### Sensor Integration
-- [ ] MPU6050 IMU driver — gyro heading for closed-loop turns (see `docs/findings/localization-pre-slam.md`)
-  - Startup calibration (keep still 2-3s, average gyro bias)
-  - Heading integration at ~100Hz (I2C reads)
-  - Complementary filter for pitch/roll
-  - Graceful degradation: system works without IMU, IMU enhances when present
-- [ ] Modify NaturalWanderBehavior to use heading for turn commands
+- [x] MPU6050 IMU driver — **Done** (Session 8 cont.) — `pathfinder/imu.py`, gyro heading + complementary filter
+- [ ] Modify NaturalWanderBehavior to use heading-error-based turns (IMU integrated, needs testing)
 - [ ] Sensor fusion combining LiDAR + IMU data
 - [ ] Camera facial recognition event system
 
@@ -126,6 +124,32 @@ _Lower priority, do when time permits_
 - [ ] Voice interaction (STT/TTS via Android device)
 
 ## Recently Completed
+
+_Session 8 (continued, final) - 2026-02-06_
+
+- [x] **Updated install.sh for MPU6050** - Added `smbus2` pip package to `install_pathfinder_python()` and `verify_installation()`. System deps (`python3-smbus`, `i2c-tools`) already present.
+- [x] **Added quick-reference pin tables to all wiring guides** - Simple `| Pin | Function | Physical Pin | BCM GPIO |` table at top of L298N, TB6612FNG, DRV8833, TB6612FNG-RPi-Pinout guides
+- [x] **Verified install.sh on RPi** - All deps installed (smbus2 confirmed), 3/3 quick tests passing, 49 files, 31 modules
+
+_Session 8 (continued) - 2026-02-06_
+
+- [x] **Fixed NaturalWanderBehavior target cycling bug** - `_refresh_targets()` was rebuilding the entire queue every 5s, always restarting from the longest clearance. Fixed: separated "advance to next target" from "rebuild queue" logic.
+- [x] **Created MPU6050 IMU driver** - `pathfinder/imu.py` — full I2C driver for GY-521 breakout
+  - Gyro heading integration (Z-axis), startup calibration (bias averaging), complementary filter for pitch/roll
+  - Temperature sensor, graceful degradation (`connect()` returns False if missing)
+  - Wiring docs: `docs/findings/mpu6050-wiring.md`
+- [x] **Created `demos_common/` module** - Shared sensor wrappers for all demos
+  - `robot.py` — RobotAdapter (float-to-int motor speed bridge)
+  - `sensors.py` — `create_lidar()`, `CameraFaceThread`, `FaceData`, `setup_imu()`
+  - `behaviors.py` — `create_behavior()` factory
+- [x] **Refactored wandering demos to use `demos_common`** - Both demos now import shared code
+  - `wandering_demo_1.py`: 498 → 299 lines (removed duplicate classes)
+  - `wandering_demo_2.py`: 498 → 398 lines (removed sys.path hack + duplicate imports from demo 1)
+  - Both demos now support `--no-imu` flag and IMU integration
+- [x] **Created `tests/test_imu.py`** - MPU6050 hardware test (I2C bus, WHO_AM_I, raw reads, calibration, heading integration)
+- [x] **Updated deploy.sh** - Added `--test=imu` for MPU6050 testing
+- [x] **Updated pathfinder/__init__.py** - Exports `IMU` class
+- [x] **Updated verify_all_imports.py** - Added `pathfinder.imu`, `demos_common.*` modules
 
 _Session 8 - 2026-02-06_
 
@@ -302,8 +326,13 @@ ambot/
 │   ├── config.py          # LiDAR type selection (LD19/C1M1), safety zones
 │   ├── lidar.py           # RPLidar C1M1 driver
 │   ├── lidar_ld19.py      # YOUYEETOO LD19 driver (NEW - working!)
+│   ├── imu.py             # MPU6050 IMU driver (gyro heading + complementary filter)
 │   ├── obstacle_detector.py
 │   └── scripts/           # udev rules, etc.
+├── demos_common/          # Shared components for wandering demos
+│   ├── robot.py           # RobotAdapter (float-to-int speed bridge)
+│   ├── sensors.py         # create_lidar(), CameraFaceThread, FaceData, setup_imu()
+│   └── behaviors.py       # create_behavior() factory
 ├── scripts/               # Bootstrap & deployment scripts
 │   ├── rpi-bootstrap.sh   # Master RPi bootstrap
 │   ├── rpi-bootstrap-system.sh   # System packages + Docker
@@ -324,6 +353,7 @@ ambot/
 │   ├── test_ld19_lidar.py # LD19 LiDAR tests (all passing!)
 │   ├── test_wandering_integration.py  # Pathfinder+Locomotion test
 │   ├── test_motors.py     # Motor test wrapper (defaults to L298N @ 30%)
+│   ├── test_imu.py        # MPU6050 IMU hardware test
 │   ├── gui_camera.py      # Camera GUI: basic feed (--no-faces) or face detection (--faces)
 │   ├── gui_lidar.py       # LiDAR GUI: polar plot + nearest/furthest edges
 │   ├── gui_wandering.py   # Wandering behavior visualization (LiDAR + targets + safety zones)
@@ -337,7 +367,8 @@ ambot/
     │   ├── ld19-lidar-protocol.md
     │   ├── live-monitoring-architecture.md  # Live monitor design doc
     │   ├── jetson-llm-deployment-research.md
-    │   └── localization-pre-slam.md  # IMU/localization analysis (Level 0-4)
+    │   ├── localization-pre-slam.md  # IMU/localization analysis (Level 0-4)
+    │   └── mpu6050-wiring.md  # MPU6050 GY-521 wiring guide for RPi 3B
     └── archive/           # Session summaries
 ```
 
@@ -349,6 +380,7 @@ ambot/
 | LiDAR (LD19) | **Working** | /dev/ttyUSB0, 230400 baud, ~497 pts/scan |
 | GPIO | **Ready** | RPi.GPIO 0.7.2, gpiozero, lgpio all working |
 | Motors (L298N) | **Partial** | Right motor works (fwd+rev), left motor not spinning — check ENA wiring |
+| MPU6050 (GY-521) | **Driver Ready** | `pathfinder/imu.py` created, needs hardware wiring + test on RPi |
 
 ## Hardware Status (Jetson)
 
@@ -416,6 +448,12 @@ python3 tests/test_motors.py --check       # Platform check only (no motor movem
 python3 tests/test_motors.py --individual  # Test each motor separately
 python3 tests/test_motors.py --pinout      # Show wiring pinout
 ./deploy.sh rpi --test=motors              # Deploy + run motor check
+
+# IMU testing (MPU6050)
+python3 tests/test_imu.py                  # Full test suite (I2C, WHO_AM_I, reads, calibration)
+python3 tests/test_imu.py --duration 10    # Continuous sensor readout for 10s
+./deploy.sh rpi --test=imu                 # Deploy + run IMU test
+i2cdetect -y 1                             # Verify MPU6050 at 0x68 (run on RPi)
 
 # GUI diagnostics (run ON RPi with display)
 python3 tests/gui_camera.py                # Live camera (basic feed)

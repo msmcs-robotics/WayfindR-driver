@@ -396,6 +396,7 @@ install_pathfinder_python() {
     local packages=(
         "pyserial:serial"
         "numpy:numpy"
+        "smbus2:smbus2"
     )
 
     for entry in "${packages[@]}"; do
@@ -579,7 +580,7 @@ verify_installation() {
     fi
 
     # Check packages using venv python
-    for pkg_check in "serial:pyserial" "numpy:numpy" "cv2:OpenCV" "matplotlib:matplotlib"; do
+    for pkg_check in "serial:pyserial" "numpy:numpy" "smbus2:smbus2" "cv2:OpenCV" "matplotlib:matplotlib"; do
         local import_name="${pkg_check%%:*}"
         local display_name="${pkg_check##*:}"
         if $venv_py -c "import $import_name" 2>/dev/null; then

@@ -134,6 +134,12 @@ def main():
         ("pathfinder.lidar_ld19", False),
         ("pathfinder.obstacle_detector", False),
         ("pathfinder.behaviors", False),
+        ("pathfinder.imu", False),
+        # Demos Common
+        ("demos_common", False),
+        ("demos_common.robot", False),
+        ("demos_common.sensors", False),
+        ("demos_common.behaviors", False),
         # Locomotion - rpi_motors
         ("locomotion.rpi_motors", False),
         ("locomotion.rpi_motors.config", False),

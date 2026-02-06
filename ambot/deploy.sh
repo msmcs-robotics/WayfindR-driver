@@ -254,6 +254,9 @@ run_tests() {
         wandering-viz)
             ssh "$target" "cd $dest && $venv_act python3 tests/gui_wandering.py --headless --scans 3"
             ;;
+        imu)
+            ssh "$target" "cd $dest && $venv_act python3 tests/test_imu.py"
+            ;;
         # --- Diagnostics ---
         check)
             ssh "$target" "cd $dest && sudo ./install.sh --check"
@@ -385,7 +388,7 @@ print_help() {
     echo ""
     echo "Test Types (--test=TYPE):"
     echo "  Suites:      all, quick, hardware, integration, verify"
-    echo "  Individual:  gpio, camera, camera-basic, camera-faces, lidar, motors, motors-basic, motors-individual, motors-pinout"
+    echo "  Individual:  gpio, camera, camera-basic, camera-faces, lidar, imu, motors, motors-basic, motors-individual, motors-pinout"
     echo "  Diagnostics: check, env (environment diagnostic), env-fix (install system-wide)"
     echo ""
     echo "Examples:"

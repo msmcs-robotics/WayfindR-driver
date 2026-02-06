@@ -715,14 +715,21 @@ class NaturalWanderBehavior(Behavior):
         # Build clearance profile from raw scan data
         clearance_bins = self._build_clearance_profile(detection)
 
-        # Check if we need a new target
-        need_new_target = (
-            self._current_target is None
-            or (current_time - self._target_start_time) > self.target_hold_time
-            or len(self._target_queue) == 0
+        # Check if hold time expired → advance to NEXT target (don't rebuild)
+        need_advance = (
+            self._current_target is not None
+            and (current_time - self._target_start_time) > self.target_hold_time
         )
 
-        if need_new_target:
+        # Check if queue needs rebuilding (empty or no current target)
+        need_refresh = (
+            self._current_target is None
+            or (need_advance and len(self._target_queue) == 0)
+        )
+
+        if need_advance and not need_refresh:
+            self._advance_target(current_time)
+        if need_refresh:
             self._refresh_targets(clearance_bins, current_time)
 
         if self._current_target is None:

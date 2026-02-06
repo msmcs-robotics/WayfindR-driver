@@ -125,8 +125,16 @@ This roadmap tracks project-level features and milestones. For immediate tasks, 
   - Reactive wandering does NOT need position tracking (the environment IS the memory)
   - Recommended next: MPU6050 gyro heading (Level 1) for closed-loop turns
   - Do NOT attempt accelerometer position (drifts 17m in 1 minute)
+- [x] **Fixed NaturalWanderBehavior target cycling** — Separated "advance" from "rebuild queue" logic -- 2026-02-06
+- [x] **MPU6050 IMU driver** (`pathfinder/imu.py`) — Gyro heading, calibration, complementary filter -- 2026-02-06
+  - Wiring guide: `docs/findings/mpu6050-wiring.md`
+  - Hardware test: `tests/test_imu.py`
+- [x] **demos_common/ module** — Shared sensor wrappers (LiDAR, camera, IMU, behaviors) -- 2026-02-06
+  - Both wandering demos refactored to import from `demos_common`
+  - Reduced code duplication significantly
+- [x] **install.sh MPU6050 deps** — Added smbus2 pip package, verified on RPi -- 2026-02-06
+- [x] **Quick-reference pin tables** — Added to all wiring guides (L298N, TB6612FNG, DRV8833) -- 2026-02-06
 - [ ] Fix left motor wiring (right works, left doesn't spin — ENA Pin 33 / terminal screws)
-- [ ] Add MPU6050 IMU driver — gyro heading for turn verification (Level 1 localization)
 - [ ] Tune safety zone distances for robot size
 - [ ] Test wandering behaviors in real environment
 - [ ] Test face tracking with real hardware
@@ -180,11 +188,10 @@ This creates the illusion of purposeful exploration without needing SLAM, odomet
   - Context-aware movement (e.g., "follow the person", "go to charging station")
 
 ### Sensor Fusion (see `docs/findings/localization-pre-slam.md`)
-- [ ] **MPU6050 IMU driver** — gyro heading for closed-loop turns (Level 1 localization)
-  - I2C reads at ~100Hz, startup calibration (average gyro bias over 2-3s)
-  - Heading integration with complementary filter for pitch/roll
-  - Graceful degradation: system works without IMU, IMU enhances when present
-  - Drift: ~1-2 deg/min — negligible for 5s target cycles
+- [x] **MPU6050 IMU driver** — gyro heading for closed-loop turns (Level 1 localization) -- Completed 2026-02-06
+  - `pathfinder/imu.py`: I2C reads at ~100Hz, startup calibration, complementary filter for pitch/roll
+  - Graceful degradation: `setup_imu()` returns None if sensor not found
+  - Hardware test: `tests/test_imu.py`, deploy: `./deploy.sh rpi --test=imu`
 - [ ] Modify NaturalWanderBehavior to use heading-error-based turns
 - [ ] Camera-based facial detection events triggering LLM
   - Detect specific faces → personalized greetings
