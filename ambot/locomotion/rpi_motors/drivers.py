@@ -95,10 +95,16 @@ class MotorDriver(ABC):
         pass
 
     def cleanup(self):
-        """Cleanup GPIO resources."""
+        """Cleanup GPIO resources.
+
+        Stops PWM and releases the reference so RPi.GPIO's PWM.__del__
+        doesn't attempt to use an already-freed lgpio chip handle during
+        Python shutdown (which causes TypeError warnings).
+        """
         self.stop()
         if self._pwm:
             self._pwm.stop()
+            self._pwm = None
 
     @property
     def speed(self) -> int:
@@ -132,7 +138,8 @@ class TB6612FNG(MotorDriver):
         speed = max(0, min(100, speed))
         self.GPIO.output(self.in1, self.GPIO.HIGH)
         self.GPIO.output(self.in2, self.GPIO.LOW)
-        self._pwm.ChangeDutyCycle(speed)
+        if self._pwm:
+            self._pwm.ChangeDutyCycle(speed)
         self._speed = speed
 
     def reverse(self, speed: int):
@@ -140,21 +147,24 @@ class TB6612FNG(MotorDriver):
         speed = max(0, min(100, speed))
         self.GPIO.output(self.in1, self.GPIO.LOW)
         self.GPIO.output(self.in2, self.GPIO.HIGH)
-        self._pwm.ChangeDutyCycle(speed)
+        if self._pwm:
+            self._pwm.ChangeDutyCycle(speed)
         self._speed = -speed
 
     def stop(self):
         """Stop motor (coast - both LOW)."""
         self.GPIO.output(self.in1, self.GPIO.LOW)
         self.GPIO.output(self.in2, self.GPIO.LOW)
-        self._pwm.ChangeDutyCycle(0)
+        if self._pwm:
+            self._pwm.ChangeDutyCycle(0)
         self._speed = 0
 
     def brake(self):
         """Brake motor (short brake - both HIGH)."""
         self.GPIO.output(self.in1, self.GPIO.HIGH)
         self.GPIO.output(self.in2, self.GPIO.HIGH)
-        self._pwm.ChangeDutyCycle(0)
+        if self._pwm:
+            self._pwm.ChangeDutyCycle(0)
         self._speed = 0
 
 
@@ -186,7 +196,8 @@ class L298N(MotorDriver):
         speed = max(0, min(100, speed))
         self.GPIO.output(self.in1, self.GPIO.HIGH)
         self.GPIO.output(self.in2, self.GPIO.LOW)
-        self._pwm.ChangeDutyCycle(speed)
+        if self._pwm:
+            self._pwm.ChangeDutyCycle(speed)
         self._speed = speed
 
     def reverse(self, speed: int):
@@ -194,14 +205,16 @@ class L298N(MotorDriver):
         speed = max(0, min(100, speed))
         self.GPIO.output(self.in1, self.GPIO.LOW)
         self.GPIO.output(self.in2, self.GPIO.HIGH)
-        self._pwm.ChangeDutyCycle(speed)
+        if self._pwm:
+            self._pwm.ChangeDutyCycle(speed)
         self._speed = -speed
 
     def stop(self):
         """Stop motor."""
         self.GPIO.output(self.in1, self.GPIO.LOW)
         self.GPIO.output(self.in2, self.GPIO.LOW)
-        self._pwm.ChangeDutyCycle(0)
+        if self._pwm:
+            self._pwm.ChangeDutyCycle(0)
         self._speed = 0
 
     def brake(self):
@@ -262,36 +275,50 @@ class DRV8833(MotorDriver):
     def forward(self, speed: int):
         """Run motor forward (PWM on IN1, IN2 LOW)."""
         speed = max(0, min(100, speed))
-        self._pwm1.ChangeDutyCycle(speed)
-        self._pwm2.ChangeDutyCycle(0)
+        if self._pwm1:
+            self._pwm1.ChangeDutyCycle(speed)
+        if self._pwm2:
+            self._pwm2.ChangeDutyCycle(0)
         self._speed = speed
 
     def reverse(self, speed: int):
         """Run motor in reverse (IN1 LOW, PWM on IN2)."""
         speed = max(0, min(100, speed))
-        self._pwm1.ChangeDutyCycle(0)
-        self._pwm2.ChangeDutyCycle(speed)
+        if self._pwm1:
+            self._pwm1.ChangeDutyCycle(0)
+        if self._pwm2:
+            self._pwm2.ChangeDutyCycle(speed)
         self._speed = -speed
 
     def stop(self):
         """Stop motor (coast - both LOW)."""
-        self._pwm1.ChangeDutyCycle(0)
-        self._pwm2.ChangeDutyCycle(0)
+        if self._pwm1:
+            self._pwm1.ChangeDutyCycle(0)
+        if self._pwm2:
+            self._pwm2.ChangeDutyCycle(0)
         self._speed = 0
 
     def brake(self):
         """Brake motor (slow decay - both HIGH)."""
-        self._pwm1.ChangeDutyCycle(100)
-        self._pwm2.ChangeDutyCycle(100)
+        if self._pwm1:
+            self._pwm1.ChangeDutyCycle(100)
+        if self._pwm2:
+            self._pwm2.ChangeDutyCycle(100)
         self._speed = 0
 
     def cleanup(self):
-        """Cleanup GPIO resources."""
+        """Cleanup GPIO resources.
+
+        Stops both PWM channels and releases references to avoid
+        RPi.GPIO PWM.__del__ TypeError during Python shutdown.
+        """
         self.stop()
         if self._pwm1:
             self._pwm1.stop()
+            self._pwm1 = None
         if self._pwm2:
             self._pwm2.stop()
+            self._pwm2 = None
 
 
 # Driver class lookup

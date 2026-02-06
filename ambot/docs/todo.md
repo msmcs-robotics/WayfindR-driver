@@ -1,6 +1,6 @@
 # Ambot - Todo & Roadmap
 
-> Last updated: 2026-02-05 (Session 7)
+> Last updated: 2026-02-06 (Session 8)
 
 ---
 
@@ -58,36 +58,33 @@
 
 _Start here when resuming work_
 
-1. **Test GUI diagnostics on RPi desktop** - Venv approach now active, ImageTk fixed
-2. **Wire L298N motor driver** - See [locomotion/tmp_wiring.md](../locomotion/tmp_wiring.md) for pin table
-3. **Test motors** - `./deploy.sh rpi --test=motors` once wired
-4. **Create wandering_demo_llm.py** - LLM-integrated wandering (requires Jetson or API)
+1. **Test wandering_demo_1.py with real motors** - Basic obstacle avoidance wandering
+2. **Test wandering_demo_2.py with camera** - Face tracking + wandering
+3. **Tune motor speeds and safety zones** for robot size
+4. **Create wandering_demo_3.py** - LLM-integrated wandering (requires Jetson or API)
 
 ## In Progress
 
 _Tasks actively being worked on_
 
-- [ ] Wire L298N motor driver to RPi GPIO
-  - **IMPORTANT: Connect common ground first** (L298N GND → RPi Pin 6, motor PSU GND → L298N GND)
-  - See [locomotion/tmp_wiring.md](../locomotion/tmp_wiring.md) for full pin table
-- [ ] Create `wandering_demo_llm.py` - LLM-integrated wandering with conversation
+- [ ] Test real-world wandering with motors (`python3 wandering_demo_1.py`)
+- [ ] Test face tracking demo (`python3 wandering_demo_2.py`)
+- [ ] Create `wandering_demo_3.py` - LLM-integrated wandering with conversation
 
 ## Blocked
 
 _Tasks waiting on something (include reason)_
 
 - [ ] Jetson system inventory — **Blocked by**: Fresh Ubuntu 22.04 / JetPack 6.1 installation in progress
-- [ ] Motor hardware test — **Blocked by**: Need to wire L298N to RPi GPIO
 
 ## Up Next
 
 _Priority queue for immediate work_
 
 ### Raspberry Pi (pi@10.33.224.1)
-- [ ] Wire L298N motor driver to RPi GPIO (see [locomotion/docs/l298n-driver-wiring-guide.md](../locomotion/docs/l298n-driver-wiring-guide.md))
-- [ ] Test motors: `./deploy.sh rpi locomotion --test=motors`
 - [ ] Tune pathfinder safety zones for robot size
 - [ ] Test GUI diagnostics with display attached
+- [ ] Verify motor direction (adjust offsets in config.py if reversed)
 
 ### Jetson (when available)
 - [ ] Complete Jetson first boot (set up user: ambot)
@@ -97,8 +94,10 @@ _Priority queue for immediate work_
 - [ ] Test RAG system with Docker
 
 ### Integration
-- [x] Combine pathfinder + locomotion for basic wandering demo — **Done** (`wandering_demo.py`)
-- [ ] Test obstacle avoidance with actual robot movement (needs motors wired)
+- [x] Combine pathfinder + locomotion for basic wandering demo — **Done** (`wandering_demo_1.py`)
+- [x] L298N motors wired and tested — **Done** (Session 8)
+- [x] Camera face tracking demo — **Done** (`wandering_demo_2.py`)
+- [ ] Test obstacle avoidance with actual robot movement
 
 ## Backlog
 
@@ -120,6 +119,34 @@ _Lower priority, do when time permits_
 - [ ] Voice interaction (STT/TTS via Android device)
 
 ## Recently Completed
+
+_Session 8 - 2026-02-06_
+
+- [x] **Motors wired and tested** - L298N motor driver connected, basic motor test passing
+  - Forward, reverse, turn left/right, arc left/right all working at 30% speed
+  - PWM cleanup warning is harmless (known RPi.GPIO/lgpio interaction)
+- [x] **Renamed wandering demo** - `wandering_demo.py` → `wandering_demo_1.py` (LiDAR-only)
+  - Updated all imports in test_wandering_integration.py, verify_all_imports.py
+- [x] **Created wandering_demo_2.py** - Camera face tracking + LiDAR + motor control
+  - State machine: WANDERING ↔ TRACKING
+  - Camera thread runs at ~10fps, detects faces via Haar cascade
+  - P-controller pivots robot to center face horizontally (dead zone ±40px)
+  - LiDAR safety override: emergency stop regardless of state
+  - Face timeout: resumes wandering after 2s without face
+  - Supports --simulate, --no-camera, --dead-zone, --face-timeout
+- [x] **12/12 tests passing on RPi** (39 Python files, 24 modules)
+- [x] **Fixed LiDAR GUI NameError** - `collector` undefined when LD19 driver used in interactive GUI mode
+  - Root cause: LD19 path set `use_ld19=True` but never created `collector`, GUI `update()` referenced it
+  - Fix: Added LD19 background scan thread + `get_gui_points()` abstraction for both modes
+- [x] **Renamed demos** to numbered convention: `wandering_demo_1.py`, `wandering_demo_2.py`
+- [x] **Created NaturalWanderBehavior** - Natural wandering using top-N clearance cycling
+  - Bins ~467 raw scan points into 36 angular buckets (10° each)
+  - Picks top 10 clearance peaks, ≥30° apart, cycles through them sequentially
+  - Avoids ping-ponging (the old MaxClearance problem)
+  - Now the default behavior for `safe_wanderer` in both demos
+  - Added `raw_points` field to DetectionResult for fine-grained behavior access
+- **Motor observation**: Only one motor appeared to turn during testing (possibly underpowered battery pack)
+  - Next session: test with `--individual` flag, check battery voltage, try stronger power supply
 
 _Session 7 - 2026-02-05_
 
@@ -268,7 +295,8 @@ ambot/
 ├── install.sh             # Comprehensive install script (sudo, idempotent)
 ├── run_tests.sh           # Comprehensive test runner (run ON target device)
 ├── live_monitor.py        # Terminal-based sensor + system monitoring
-├── wandering_demo.py      # Basic wandering: Camera + LiDAR + Locomotion
+├── wandering_demo_1.py   # Demo 1: LiDAR obstacle avoidance + motors
+├── wandering_demo_2.py   # Demo 2: Camera face tracking + LiDAR + motors
 ├── tests/                 # Hardware test & diagnostic scripts
 │   ├── run_all_tests.sh   # Run all tests
 │   ├── test_gpio.py       # GPIO tests
@@ -297,7 +325,7 @@ ambot/
 | EMEET SmartCam S600 | **Working** | /dev/video0, 640x480 capture verified |
 | LiDAR (LD19) | **Working** | /dev/ttyUSB0, 230400 baud, ~497 pts/scan |
 | GPIO | **Ready** | RPi.GPIO 0.7.2, gpiozero, lgpio all working |
-| Motors | Not wired | L298N driver ready in code |
+| Motors (L298N) | **Working** | Wired + tested at 30% speed (Session 8) |
 
 ## Hardware Status (Jetson)
 
@@ -350,9 +378,14 @@ python3 live_monitor.py --lidar-only
 python3 live_monitor.py --camera-only
 python3 live_monitor.py --json      # JSON output for scripts
 
-# Run wandering demo (simulation mode - no motors needed)
-python3 wandering_demo.py --simulate
-python3 wandering_demo.py --simulate --behavior wall_follower_right
+# Demo 1: LiDAR obstacle avoidance wandering (simulation - no motors needed)
+python3 wandering_demo_1.py --simulate
+python3 wandering_demo_1.py --simulate --behavior wall_follower_right
+
+# Demo 2: Camera face tracking + LiDAR wandering
+python3 wandering_demo_2.py --simulate
+python3 wandering_demo_2.py --simulate --no-camera  # LiDAR only
+python3 wandering_demo_2.py --dead-zone 50 --face-timeout 3.0
 
 # GUI diagnostics (run ON RPi with display)
 python3 tests/gui_camera.py                # Live camera (basic feed)
@@ -377,14 +410,25 @@ ssh pi@10.33.224.1
 
 ## Design Decisions
 
-### Two Wandering Demo Versions
+### Wandering Behavior Philosophy (Pre-SLAM)
 
-The system will have two wandering demo variants for different development stages:
+The robot should look like it's **naturally wandering** — not bouncing between two open areas. Key principles:
+
+1. **Fine-grained clearance mapping**: Raw LiDAR data (~467 pts/scan) binned into 36 angular buckets (10° each)
+2. **Multi-target selection**: Top 10 clearance peaks, ≥30° apart, cycled sequentially
+3. **Not always the max**: Cycles longest → 2nd → 3rd... so robot explores diverse directions
+4. **Reactive safety**: STOP/SLOW/WARN zones + DynamicObstacleMonitor always override
+5. **No SLAM, no odometry**: Pure reactive navigation — precursor to future SLAM via ROS2
+
+`NaturalWanderBehavior` is the default for both demos (via `safe_wanderer`). Face tracking in Demo 2 is just an interrupt to the wandering progression.
+
+### Three Wandering Demo Versions
 
 | Demo | File | Components | Purpose |
 |------|------|------------|---------|
-| **Basic** | `wandering_demo.py` | Camera + LiDAR + Locomotion | Sensor testing, obstacle avoidance, no AI |
-| **LLM-Integrated** | `wandering_demo_llm.py` | All + Bootylicious (LLM/RAG) | Full robot with conversation capability |
+| **Demo 1** | `wandering_demo_1.py` | LiDAR + Locomotion | Natural wandering with obstacle avoidance |
+| **Demo 2** | `wandering_demo_2.py` | Camera + LiDAR + Locomotion | Wander + pivot to face detected faces |
+| **Demo 3 (LLM)** | `wandering_demo_3.py` | All + Bootylicious (LLM/RAG) | Full robot with conversation capability |
 
 **Rationale**: Separating these allows:
 1. Clear iteration stages during development
@@ -399,8 +443,9 @@ Scripts should work on both Raspberry Pi and Jetson with minimal changes:
 | Script | RPi | Jetson | Notes |
 |--------|-----|--------|-------|
 | `live_monitor.py` | ✅ | ✅ | GPU stats only show on Jetson |
-| `wandering_demo.py` | ✅ | ✅ | Same behavior, different GPIO lib |
-| `wandering_demo_llm.py` | ⚠️ | ✅ | Requires LLM (Jetson preferred) |
+| `wandering_demo_1.py` | ✅ | ✅ | Same behavior, different GPIO lib |
+| `wandering_demo_2.py` | ✅ | ✅ | Camera + LiDAR, same GPIO abstraction |
+| `wandering_demo_3.py` | ⚠️ | ✅ | Requires LLM (Jetson preferred) |
 | `install.sh` | ✅ | - | RPi-specific packages |
 | `install-jetson.sh` (future) | - | ✅ | Jetson-specific packages |
 

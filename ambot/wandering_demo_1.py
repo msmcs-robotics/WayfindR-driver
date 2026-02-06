@@ -1,24 +1,27 @@
 #!/usr/bin/env python3
 """
-Wandering Demo - Pathfinder + Locomotion Integration
+Wandering Demo 1 - LiDAR Obstacle Avoidance + Motor Control
 
-Connects LiDAR-based obstacle detection to motor control for autonomous wandering.
+Uses LiDAR-based obstacle detection to drive motors for autonomous wandering.
+Supports multiple behaviors (max clearance, wall following, random wander).
 Can run in simulation mode (no motors) or with real hardware.
+
+This is the LiDAR-only demo. See wandering_demo_2.py for camera face tracking.
 
 Usage:
     # Simulation mode (no motors, prints commands)
-    python3 wandering_demo.py --simulate
+    python3 wandering_demo_1.py --simulate
 
     # Real mode with motors
-    python3 wandering_demo.py
+    python3 wandering_demo_1.py
 
     # Select behavior
-    python3 wandering_demo.py --behavior max_clearance
-    python3 wandering_demo.py --behavior wall_follower
-    python3 wandering_demo.py --behavior random_wander
+    python3 wandering_demo_1.py --behavior max_clearance
+    python3 wandering_demo_1.py --behavior wall_follower_right
+    python3 wandering_demo_1.py --behavior random_wander
 
     # Adjust speeds
-    python3 wandering_demo.py --forward-speed 0.3 --turn-speed 0.4
+    python3 wandering_demo_1.py --forward-speed 0.3 --turn-speed 0.4
 """
 
 import argparse
@@ -203,6 +206,7 @@ def create_lidar():
 def create_behavior(behavior_name: str, forward_speed: float, turn_speed: float):
     """Create behavior instance by name."""
     from pathfinder.behaviors import (
+        NaturalWanderBehavior,
         MaxClearanceBehavior,
         WallFollowerBehavior,
         RandomWanderBehavior,
@@ -218,6 +222,12 @@ def create_behavior(behavior_name: str, forward_speed: float, turn_speed: float)
             forward_speed=forward_speed,
             turn_speed=turn_speed,
         )
+    elif behavior_name == "natural_wander":
+        inner = NaturalWanderBehavior(
+            forward_speed=forward_speed,
+            turn_speed=turn_speed,
+        )
+        return SafetyWrapper(inner)
     elif behavior_name == "max_clearance":
         inner = MaxClearanceBehavior(
             forward_speed=forward_speed,
@@ -402,8 +412,9 @@ def main():
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog="""
 Behaviors:
-  safe_wanderer      - MaxClearance with dynamic obstacle safety (default)
-  max_clearance      - Move toward longest distance
+  safe_wanderer      - Natural wandering with dynamic obstacle safety (default)
+  natural_wander     - Cycles through top clearance directions (natural movement)
+  max_clearance      - Always move toward longest distance (may ping-pong)
   wall_follower_right - Follow wall on right side
   wall_follower_left  - Follow wall on left side
   random_wander      - Random exploration with avoidance
@@ -411,13 +422,13 @@ Behaviors:
 
 Examples:
   # Simulation mode
-  python3 wandering_demo.py --simulate
+  python3 wandering_demo_1.py --simulate
 
   # Real mode, slow speed
-  python3 wandering_demo.py --forward-speed 0.3
+  python3 wandering_demo_1.py --forward-speed 0.3
 
   # Wall follower for 60 seconds
-  python3 wandering_demo.py --behavior wall_follower_right --duration 60
+  python3 wandering_demo_1.py --behavior wall_follower_right --duration 60
         """
     )
 
@@ -432,6 +443,7 @@ Examples:
         default="safe_wanderer",
         choices=[
             "safe_wanderer",
+            "natural_wander",
             "max_clearance",
             "wall_follower_right",
             "wall_follower_left",

@@ -1,6 +1,6 @@
 # Ambot - Roadmap
 
-> Last updated: 2026-02-05
+> Last updated: 2026-02-06
 
 ## Overview
 
@@ -97,21 +97,49 @@ This roadmap tracks project-level features and milestones. For immediate tasks, 
 - [ ] Implement PID speed control (future enhancement)
 
 ### Pathfinder (`ambot/pathfinder/`)
-> **Note**: Pathfinder is for simple demo wandering, NOT SLAM. The robot should wander around a room avoiding obstacles using reactive algorithms.
+> **Note**: Pathfinder is for simple demo wandering, NOT SLAM. The robot should wander naturally around a room avoiding obstacles using reactive algorithms. This is a precursor to SLAM — when ready, we'll add ROS2.
 
 - [x] Create LiDAR module for RPLidar C1M1 -- Completed 2026-01-29
 - [x] Implement sector-based obstacle detection -- Completed 2026-01-29
 - [x] Create deploy.sh with diagnostics -- Completed 2026-01-29
 - [x] Create udev rules setup script -- Completed 2026-01-29
-- [x] Implement wandering behaviors (MaxClearance, WallFollower, RandomWander, AvoidAndGo) -- Completed 2026-01-29
+- [x] Implement basic behaviors (MaxClearance, WallFollower, RandomWander, AvoidAndGo) -- Completed 2026-01-29
 - [x] Create BehaviorRunner for behavior loop execution -- Completed 2026-01-29
 - [x] Add dynamic obstacle detection (DynamicObstacleMonitor, SafetyWrapper) -- Completed 2026-01-29
 - [x] Add create_safe_wanderer() for safe operation around people -- Completed 2026-01-29
 - [x] Test with actual LiDAR sensor -- LD19 working (not C1M1 as originally thought)
-- [ ] Tune safety zone distances for robot size -- Blocked by motor wiring
-- [ ] Test wandering behaviors in real environment -- Blocked by motor wiring
 - [x] Create visualization tool for debugging -- `tests/gui_lidar.py` with polar plot
-- [x] Integrate with locomotion for full wandering demo -- `wandering_demo.py` created
+- [x] Integrate with locomotion for wandering demos -- `wandering_demo_1.py`, `wandering_demo_2.py`
+- [x] L298N motors wired and tested -- Forward/reverse/turn/arc at 30% -- 2026-02-06
+- [x] Camera face tracking demo -- WANDERING ↔ TRACKING state machine -- 2026-02-06
+- [x] **NaturalWanderBehavior** -- Top-N clearance cycling for natural wandering -- 2026-02-06
+  - Bins raw scan into 36 angular buckets (10° each) for 360° clearance profile
+  - Picks top 10 clearance targets, each ≥30° apart, cycles through them
+  - Avoids ping-ponging by not always going to the single longest distance
+  - Time-based target switching (5s per target) + safety zone fallback
+  - Now the default behavior for `safe_wanderer` and both demos
+- [ ] Tune safety zone distances for robot size
+- [ ] Test wandering behaviors in real environment
+- [ ] Test face tracking with real hardware
+
+#### Wandering Behavior Philosophy (Pre-SLAM)
+
+The robot should look like it's **naturally wandering** — not bouncing between two open areas. The approach:
+
+1. **Fine-grained clearance mapping**: Use raw LiDAR data (~467 points/scan) to build a 360° clearance profile at 10° resolution
+2. **Multi-target selection**: Pick top N (10) clearance directions, enforcing minimum angular separation (30°) so the robot has diverse directions to explore
+3. **Sequential cycling**: Visit targets in order (longest → 2nd → 3rd → ...) rather than always chasing the absolute max
+4. **Reactive safety**: Safety zones (STOP/SLOW/WARN) and DynamicObstacleMonitor still override everything
+
+This creates the illusion of purposeful exploration without needing SLAM, odometry, or waypoints. When SLAM is eventually added (via ROS2), these behaviors can be replaced with proper path planning.
+
+#### Demo Progression
+
+| Demo | File | Behavior | Camera |
+|------|------|----------|--------|
+| **1** | `wandering_demo_1.py` | NaturalWander + SafetyWrapper | No |
+| **2** | `wandering_demo_2.py` | NaturalWander + face tracking interrupt | Yes |
+| **3** | `wandering_demo_3.py` (future) | LLM-driven behavior selection | Yes |
 
 ---
 
@@ -197,7 +225,7 @@ This roadmap tracks project-level features and milestones. For immediate tasks, 
 - [x] Create RPLidar C1M1 module -- Completed 2026-01-29
 - [x] Implement sector-based obstacle detection -- Completed 2026-01-29
 - [x] Create deploy.sh with device diagnostics -- Completed 2026-01-29
-- [x] Implement wandering behaviors (MaxClearance, WallFollower, RandomWander, AvoidAndGo) -- Completed 2026-01-29
+- [x] Implement wandering behaviors (MaxClearance, WallFollower, RandomWander, AvoidAndGo, NaturalWander) -- Completed 2026-01-29, updated 2026-02-06
 - [x] Create BehaviorRunner for autonomous behavior execution -- Completed 2026-01-29
 - [x] Research and document wandering algorithms -- Completed 2026-01-29
 - [x] Add dynamic obstacle detection for people walking by (DynamicObstacleMonitor) -- Completed 2026-01-29
@@ -208,7 +236,7 @@ This roadmap tracks project-level features and milestones. For immediate tasks, 
 ### Integration & Deployment
 - [x] Create master deploy.sh script -- Completed 2026-02-03
 - [x] Create comprehensive install.sh script (idempotent) -- Completed 2026-02-04
-- [x] Create wandering_demo.py (pathfinder + locomotion) -- Completed 2026-02-04
+- [x] Create wandering demos (pathfinder + locomotion) -- Completed 2026-02-04, renamed 2026-02-06
 - [x] Create integration test suite -- Completed 2026-02-04
 - [x] Create README.md for ambot folder -- Completed 2026-02-04
 

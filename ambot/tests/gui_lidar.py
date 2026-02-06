@@ -353,6 +353,23 @@ def run_lidar_gui(port="/dev/ttyUSB0", baudrate=230400, headless=False, raw_mode
 
     else:
         # Interactive GUI mode
+        # For LD19 mode, we need a scan buffer since LD19 uses an iterator
+        # instead of the raw collector's get_scan_points()/clear_data() API
+        ld19_scan_data = {"points": [], "lock": threading.Lock(), "running": True}
+
+        if use_ld19:
+            # Start a background thread to collect LD19 scans for the GUI
+            def ld19_collect():
+                for scan in lidar.iter_scans(min_points=50):
+                    if not ld19_scan_data["running"]:
+                        break
+                    points = [(p.angle, p.distance, p.quality) for p in scan]
+                    with ld19_scan_data["lock"]:
+                        ld19_scan_data["points"] = points
+
+            ld19_thread = threading.Thread(target=ld19_collect, daemon=True)
+            ld19_thread.start()
+
         fig = plt.figure(figsize=(10, 10))
         ax = fig.add_subplot(111, projection='polar')
         scatter = ax.scatter([], [], s=2, c='green', alpha=0.7)
@@ -383,11 +400,19 @@ def run_lidar_gui(port="/dev/ttyUSB0", baudrate=230400, headless=False, raw_mode
         paused = [False]  # Use list to allow modification in nested function
         start_time = [time.time()]
 
+        def get_gui_points():
+            """Get scan points from either LD19 or raw collector."""
+            if use_ld19:
+                with ld19_scan_data["lock"]:
+                    return list(ld19_scan_data["points"])
+            else:
+                return collector.get_scan_points()
+
         def update(frame):
             if paused[0]:
                 return scatter, stats_text, nearest_marker, furthest_marker, edge_text
 
-            points = collector.get_scan_points()
+            points = get_gui_points()
 
             nearest_info = "N/A"
             furthest_info = "N/A"
@@ -426,10 +451,9 @@ def run_lidar_gui(port="/dev/ttyUSB0", baudrate=230400, headless=False, raw_mode
 
             # Update stats
             elapsed = time.time() - start_time[0]
-            data_rate = collector.get_raw_data_rate() / max(elapsed, 0.1)
+            mode_str = "LD19" if use_ld19 else "Raw"
             stats_text.set_text(
-                f'Points: {len(points)}\n'
-                f'Data rate: {data_rate:.0f} B/s\n'
+                f'Points: {len(points)} ({mode_str})\n'
                 f'Elapsed: {elapsed:.1f}s\n'
                 f'[P]ause | [R]eset | [S]ave | [Q]uit'
             )
@@ -450,7 +474,11 @@ def run_lidar_gui(port="/dev/ttyUSB0", baudrate=230400, headless=False, raw_mode
                 paused[0] = not paused[0]
                 print(f"{'Paused' if paused[0] else 'Resumed'}")
             elif event.key == 'r':
-                collector.clear_data()
+                if use_ld19:
+                    with ld19_scan_data["lock"]:
+                        ld19_scan_data["points"] = []
+                else:
+                    collector.clear_data()
                 start_time[0] = time.time()
                 print("Reset")
             elif event.key == 's':
@@ -465,6 +493,9 @@ def run_lidar_gui(port="/dev/ttyUSB0", baudrate=230400, headless=False, raw_mode
             plt.show()
         except KeyboardInterrupt:
             print("\nStopped by user")
+        finally:
+            if use_ld19:
+                ld19_scan_data["running"] = False
 
     # Cleanup
     if use_ld19:

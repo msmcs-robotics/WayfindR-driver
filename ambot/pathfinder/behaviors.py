@@ -1,11 +1,12 @@
 """
 Pathfinder Navigation Behaviors
 
-Simple wandering and navigation algorithms using LiDAR obstacle detection.
+Wandering and navigation algorithms using LiDAR obstacle detection.
 These behaviors work with the SectorBasedDetector to generate motor commands.
 
 Behaviors:
-    - MaxClearanceBehavior: Move toward the direction with longest distance
+    - NaturalWanderBehavior: Cycles through top-N clearance directions for natural wandering
+    - MaxClearanceBehavior: Move toward the direction with longest distance (simple, may ping-pong)
     - WallFollowerBehavior: Follow walls at a set distance
     - RandomWanderBehavior: Random exploration with obstacle avoidance
     - AvoidAndGoBehavior: Simple reactive obstacle avoidance
@@ -13,10 +14,10 @@ Behaviors:
     - SafetyWrapper: Wraps any behavior with emergency stop for dynamic obstacles
 
 Usage:
-    from pathfinder.behaviors import MaxClearanceBehavior, SafetyWrapper, BehaviorRunner
+    from pathfinder.behaviors import NaturalWanderBehavior, SafetyWrapper, BehaviorRunner
     from pathfinder import RPLidar, SectorBasedDetector
 
-    behavior = MaxClearanceBehavior()
+    behavior = NaturalWanderBehavior()
     safe_behavior = SafetyWrapper(behavior)  # Add dynamic obstacle detection
     runner = BehaviorRunner(lidar, detector, safe_behavior, robot_interface)
     runner.run()
@@ -631,6 +632,290 @@ class AvoidAndGoBehavior(Behavior):
 
 
 # =============================================================================
+# NaturalWanderBehavior
+# =============================================================================
+
+@dataclass
+class ClearanceTarget:
+    """A target direction with its clearance distance."""
+    angle: float        # Center angle in degrees (0=front, clockwise)
+    clearance: float    # Minimum distance in that direction (meters)
+
+
+class NaturalWanderBehavior(Behavior):
+    """
+    Natural-looking wandering using fine-grained clearance analysis.
+
+    Instead of always heading toward the single longest distance (which causes
+    ping-ponging), this behavior:
+
+    1. Bins raw scan data into angular buckets for a 360° clearance profile
+    2. Identifies top N clearance peaks, each separated by min_angular_separation
+    3. Cycles through them sequentially (longest → 2nd longest → 3rd → ...)
+    4. Switches to the next target after a time limit or when clearance drops
+
+    This creates a more natural wandering pattern where the robot explores
+    multiple directions rather than bouncing between two open areas.
+
+    This is a pre-SLAM behavior: no map, no odometry, just reactive navigation
+    with smarter direction selection.
+
+    Parameters:
+        forward_speed: Speed when moving forward (0.0-1.0)
+        turn_speed: Speed when turning (0.0-1.0)
+        bin_size: Angular bin size in degrees (default 10)
+        num_targets: Number of clearance targets to track (default 10)
+        min_angular_separation: Minimum degrees between targets (default 30)
+        target_hold_time: Seconds to pursue a target before switching (default 5)
+        min_clearance: Minimum clearance to move forward (meters)
+        alignment_threshold: Degrees tolerance for "facing" target (default 20)
+    """
+
+    def __init__(
+        self,
+        forward_speed: float = 0.4,
+        turn_speed: float = 0.5,
+        bin_size: float = 10.0,
+        num_targets: int = 10,
+        min_angular_separation: float = 30.0,
+        target_hold_time: float = 5.0,
+        min_clearance: float = 0.5,
+        alignment_threshold: float = 20.0
+    ):
+        super().__init__("natural_wander")
+        self.forward_speed = forward_speed
+        self.turn_speed = turn_speed
+        self.bin_size = bin_size
+        self.num_targets = num_targets
+        self.min_angular_separation = min_angular_separation
+        self.target_hold_time = target_hold_time
+        self.min_clearance = min_clearance
+        self.alignment_threshold = alignment_threshold
+
+        # Internal state
+        self._target_queue: List[ClearanceTarget] = []
+        self._current_target: Optional[ClearanceTarget] = None
+        self._target_start_time: float = 0.0
+        self._last_refresh_time: float = 0.0
+
+    def reset(self) -> None:
+        """Reset wandering state."""
+        self._target_queue = []
+        self._current_target = None
+        self._target_start_time = 0.0
+        self._last_refresh_time = 0.0
+
+    def step(self, detection: DetectionResult) -> MotorCommand:
+        """Execute one step of natural wandering."""
+        if not self._enabled:
+            return MotorCommand.stop()
+
+        current_time = time.time()
+
+        # Build clearance profile from raw scan data
+        clearance_bins = self._build_clearance_profile(detection)
+
+        # Check if we need a new target
+        need_new_target = (
+            self._current_target is None
+            or (current_time - self._target_start_time) > self.target_hold_time
+            or len(self._target_queue) == 0
+        )
+
+        if need_new_target:
+            self._refresh_targets(clearance_bins, current_time)
+
+        if self._current_target is None:
+            # No viable targets - fall back to basic avoidance
+            return self._fallback_step(detection)
+
+        # Navigate toward current target
+        target_angle = self._current_target.angle
+
+        # Check front clearance for safety
+        front = detection.get_sector("front")
+        if front and front.safety_level == SafetyLevel.STOP:
+            # Obstacle too close ahead - need to turn, advance to next target
+            self._advance_target(current_time)
+            if self._current_target:
+                target_angle = self._current_target.angle
+            else:
+                return self._fallback_step(detection)
+
+        # Calculate turn direction to face target
+        turn_direction = self._calculate_turn_direction(target_angle)
+
+        if turn_direction == 0:
+            # Aligned with target - move forward
+            speed = self._calculate_speed(detection)
+            if speed <= 0:
+                # Can't move forward even though aligned - advance target
+                self._advance_target(current_time)
+                return MotorCommand.stop()
+            return MotorCommand.forward(speed)
+        elif turn_direction > 0:
+            return MotorCommand.turn_right(self.turn_speed)
+        else:
+            return MotorCommand.turn_left(self.turn_speed)
+
+    def _build_clearance_profile(self, detection: DetectionResult) -> List[Tuple[float, float]]:
+        """
+        Build a 360° clearance profile from raw scan data.
+
+        Returns list of (center_angle, min_distance_meters) for each angular bin.
+        """
+        num_bins = int(360 / self.bin_size)
+        bins = [[] for _ in range(num_bins)]
+
+        if detection.raw_points:
+            # Use raw scan points for fine-grained analysis
+            for point in detection.raw_points:
+                if point.distance <= 0:
+                    continue
+                angle = point.angle % 360
+                bin_idx = int(angle / self.bin_size) % num_bins
+                bins[bin_idx].append(point.distance_m)
+        else:
+            # Fall back to sector data (coarser)
+            for name, sector in detection.sectors.items():
+                center = self._get_sector_center_angle(sector.angle_range)
+                bin_idx = int(center / self.bin_size) % num_bins
+                if sector.min_distance < float('inf'):
+                    bins[bin_idx].append(sector.min_distance)
+
+        # Calculate min distance per bin
+        result = []
+        for i in range(num_bins):
+            center_angle = (i * self.bin_size) + (self.bin_size / 2.0)
+            if bins[i]:
+                min_dist = min(bins[i])
+            else:
+                # No data in this bin - treat as unknown (moderate distance)
+                min_dist = config.WARN_DISTANCE
+            result.append((center_angle, min_dist))
+
+        return result
+
+    def _refresh_targets(self, clearance_bins: List[Tuple[float, float]], current_time: float) -> None:
+        """
+        Pick top N clearance targets from the profile, separated by min_angular_separation.
+        """
+        # Sort bins by clearance (longest first)
+        sorted_bins = sorted(clearance_bins, key=lambda b: b[1], reverse=True)
+
+        # Greedily pick targets that are far enough apart
+        targets = []
+        for angle, clearance in sorted_bins:
+            if clearance < self.min_clearance:
+                continue  # Skip directions that are too close
+
+            # Check angular separation from already-picked targets
+            too_close = False
+            for existing in targets:
+                angular_dist = self._angular_distance(angle, existing.angle)
+                if angular_dist < self.min_angular_separation:
+                    too_close = True
+                    break
+
+            if not too_close:
+                targets.append(ClearanceTarget(angle=angle, clearance=clearance))
+                if len(targets) >= self.num_targets:
+                    break
+
+        self._target_queue = targets
+        self._last_refresh_time = current_time
+
+        # Set current target to first in queue
+        if self._target_queue:
+            self._current_target = self._target_queue.pop(0)
+            self._target_start_time = current_time
+        else:
+            self._current_target = None
+
+    def _advance_target(self, current_time: float) -> None:
+        """Move to the next target in the queue."""
+        if self._target_queue:
+            self._current_target = self._target_queue.pop(0)
+            self._target_start_time = current_time
+        else:
+            self._current_target = None
+
+    def _angular_distance(self, a: float, b: float) -> float:
+        """Calculate minimum angular distance between two angles (0-180)."""
+        diff = abs(a - b) % 360
+        return min(diff, 360 - diff)
+
+    def _get_sector_center_angle(self, angle_range: Tuple[float, float]) -> float:
+        """Get center angle of a sector range."""
+        start, end = angle_range
+        if start < 0:
+            start += 360
+        if end < 0:
+            end += 360
+        if start > end:
+            center = (start + end + 360) / 2.0
+            if center >= 360:
+                center -= 360
+        else:
+            center = (start + end) / 2.0
+        return center % 360
+
+    def _calculate_turn_direction(self, target_angle: float) -> int:
+        """
+        Calculate turn direction to face target angle.
+        Returns: -1 for left, 1 for right, 0 if aligned.
+        """
+        # Normalize to -180..180 relative to front (0°)
+        relative = target_angle
+        if relative > 180:
+            relative -= 360
+
+        if abs(relative) < self.alignment_threshold:
+            return 0
+        elif relative > 0:
+            return 1  # Turn right
+        else:
+            return -1  # Turn left
+
+    def _calculate_speed(self, detection: DetectionResult) -> float:
+        """Calculate forward speed based on front clearance."""
+        front = detection.get_sector("front")
+        if not front:
+            return self.forward_speed * 0.5
+
+        if front.min_distance <= config.STOP_DISTANCE:
+            return 0.0
+        elif front.min_distance <= config.SLOW_DISTANCE:
+            factor = (front.min_distance - config.STOP_DISTANCE) / (config.SLOW_DISTANCE - config.STOP_DISTANCE)
+            return self.forward_speed * 0.5 * factor
+        else:
+            return self.forward_speed
+
+    def _fallback_step(self, detection: DetectionResult) -> MotorCommand:
+        """Fallback when no targets available - turn toward clearest sector."""
+        best_sector = None
+        best_distance = 0
+
+        for name, sector in detection.sectors.items():
+            if sector.min_distance > best_distance:
+                best_distance = sector.min_distance
+                best_sector = sector
+
+        if best_sector is None:
+            return MotorCommand.stop()
+
+        center = self._get_sector_center_angle(best_sector.angle_range)
+        turn_dir = self._calculate_turn_direction(center)
+
+        if turn_dir > 0:
+            return MotorCommand.turn_right(self.turn_speed)
+        elif turn_dir < 0:
+            return MotorCommand.turn_left(self.turn_speed)
+        else:
+            return MotorCommand.forward(self.forward_speed * 0.5)
+
+
+# =============================================================================
 # BehaviorRunner
 # =============================================================================
 
@@ -1131,7 +1416,10 @@ def create_safe_wanderer(
     approach_rate_threshold: float = 0.5
 ) -> SafetyWrapper:
     """
-    Create a wandering behavior with dynamic obstacle safety.
+    Create a natural wandering behavior with dynamic obstacle safety.
+
+    Uses NaturalWanderBehavior (cycles through top clearance directions)
+    wrapped with SafetyWrapper for emergency stop around people.
 
     This is the recommended setup for demo robots around people.
 
@@ -1142,14 +1430,14 @@ def create_safe_wanderer(
         approach_rate_threshold: Approach speed that triggers alert (m/s)
 
     Returns:
-        SafetyWrapper containing MaxClearanceBehavior
+        SafetyWrapper containing NaturalWanderBehavior
 
     Usage:
         behavior = create_safe_wanderer()
         runner = BehaviorRunner(lidar, detector, behavior, robot)
         runner.run()
     """
-    inner = MaxClearanceBehavior(
+    inner = NaturalWanderBehavior(
         forward_speed=forward_speed,
         turn_speed=turn_speed
     )

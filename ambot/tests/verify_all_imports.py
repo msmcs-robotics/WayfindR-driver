@@ -148,13 +148,16 @@ def main():
         # Tests (some need hardware)
         ("tests.gui_camera", False),
         ("tests.gui_lidar", False),
+        ("tests.gui_wandering", False),
         ("tests.test_gpio", True),  # GPIO-dependent
         ("tests.test_ld19_lidar", False),
         ("tests.test_usb_camera", False),
         ("tests.test_wandering_integration", False),
         # Main scripts
         ("live_monitor", False),
-        ("wandering_demo", False),
+        ("wandering_demo_1", False),
+        ("wandering_demo_2", False),
+        ("tests.test_motors", False),
     ]
 
     # Check if we're on embedded hardware

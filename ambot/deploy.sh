@@ -240,7 +240,19 @@ run_tests() {
             ssh "$target" "cd $dest/tests && $venv_act python3 test_ld19_lidar.py"
             ;;
         motors)
-            ssh "$target" "cd $dest/locomotion && $venv_act python3 -m rpi_motors.test_motors --check"
+            ssh "$target" "cd $dest && $venv_act python3 tests/test_motors.py --check"
+            ;;
+        motors-basic)
+            ssh "$target" "cd $dest && $venv_act python3 tests/test_motors.py --basic"
+            ;;
+        motors-individual)
+            ssh "$target" "cd $dest && $venv_act python3 tests/test_motors.py --individual"
+            ;;
+        motors-pinout)
+            ssh "$target" "cd $dest && $venv_act python3 tests/test_motors.py --pinout"
+            ;;
+        wandering-viz)
+            ssh "$target" "cd $dest && $venv_act python3 tests/gui_wandering.py --headless --scans 3"
             ;;
         # --- Diagnostics ---
         check)
@@ -256,7 +268,7 @@ run_tests() {
         *)
             log_warn "Unknown test type: $test_type"
             log_info "Test suites:    all, quick, hardware, integration, verify"
-            log_info "Individual:     gpio, camera, camera-basic, camera-faces, lidar, motors"
+            log_info "Individual:     gpio, camera, camera-basic, camera-faces, lidar, motors, motors-basic, motors-individual, motors-pinout"
             log_info "Diagnostics:    check, env, env-fix"
             ;;
     esac
@@ -373,7 +385,7 @@ print_help() {
     echo ""
     echo "Test Types (--test=TYPE):"
     echo "  Suites:      all, quick, hardware, integration, verify"
-    echo "  Individual:  gpio, camera, camera-basic, camera-faces, lidar, motors"
+    echo "  Individual:  gpio, camera, camera-basic, camera-faces, lidar, motors, motors-basic, motors-individual, motors-pinout"
     echo "  Diagnostics: check, env (environment diagnostic), env-fix (install system-wide)"
     echo ""
     echo "Examples:"

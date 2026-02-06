@@ -30,7 +30,7 @@ def test_robot_adapter():
     # Import after path setup
     sys.path.insert(0, str(Path(__file__).parent.parent))
 
-    from wandering_demo import RobotAdapter
+    from wandering_demo_1 import RobotAdapter
 
     adapter = RobotAdapter(robot=None, simulate=True, log_commands=True)
 
@@ -240,7 +240,7 @@ def test_full_integration_simulation():
     print("=" * 60)
 
     try:
-        from wandering_demo import RobotAdapter, create_lidar, create_behavior
+        from wandering_demo_1 import RobotAdapter, create_lidar, create_behavior
         from pathfinder.obstacle_detector import SectorBasedDetector
         from pathfinder.behaviors import BehaviorRunner
 

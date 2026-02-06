@@ -51,6 +51,7 @@ class DetectionResult:
     closest_distance: float
     overall_safety: SafetyLevel
     timestamp: float
+    raw_points: Optional[List] = None  # Raw scan points for fine-grained analysis
 
     def get_sector(self, name: str) -> Optional[SectorReading]:
         """Get reading for a specific sector."""
@@ -208,7 +209,8 @@ class SectorBasedDetector:
             closest_sector=closest_sector,
             closest_distance=closest_distance,
             overall_safety=worst_safety,
-            timestamp=timestamp
+            timestamp=timestamp,
+            raw_points=points
         )
 
     def get_movement_recommendation(self, result: DetectionResult) -> Dict:
