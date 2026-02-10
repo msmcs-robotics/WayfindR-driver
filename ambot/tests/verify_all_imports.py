@@ -155,6 +155,9 @@ def main():
         ("tests.gui_camera", False),
         ("tests.gui_lidar", False),
         ("tests.gui_wandering", False),
+        ("tests.gui_face_tracker", False),
+        ("tests.gui_lidar_nav", False),
+        ("tests.test_imu_calibrate", False),
         ("tests.test_gpio", True),  # GPIO-dependent
         ("tests.test_ld19_lidar", False),
         ("tests.test_usb_camera", False),

@@ -47,8 +47,8 @@ log_success() { echo -e "${GREEN}[✓]${NC} $1"; }
 # =============================================================================
 # Configuration
 # =============================================================================
-JETSON_USER="${JETSON_USER:-ambot}"
-JETSON_IP="${JETSON_IP:-10.33.183.100}"
+JETSON_USER="${JETSON_USER:-georgejetson}"
+JETSON_IP="${JETSON_IP:-10.33.255.82}"
 REMOTE_DIR="~/bootylicious"
 
 # Parse arguments

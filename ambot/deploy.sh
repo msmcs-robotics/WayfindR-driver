@@ -28,7 +28,7 @@
 #
 # Targets (from connections.md):
 #   Raspberry Pi: pi@10.33.224.1
-#   Jetson:       ambot@<ip> (when available)
+#   Jetson:       georgejetson@10.33.255.82
 # =============================================================================
 
 set -e
@@ -59,8 +59,8 @@ RPI_TARGET="$RPI_USER@$RPI_HOST"
 RPI_DEST="~/ambot"
 
 # Jetson Orin Nano
-JETSON_USER="ambot"
-JETSON_HOST=""  # Set when available (e.g., "10.33.183.100")
+JETSON_USER="georgejetson"
+JETSON_HOST="10.33.255.82"
 JETSON_TARGET="$JETSON_USER@$JETSON_HOST"
 JETSON_DEST="~/ambot"
 

@@ -1,6 +1,6 @@
 # Ambot - Todo & Roadmap
 
-> Last updated: 2026-02-06 (Session 8 cont.)
+> Last updated: 2026-02-10 (Session 9)
 
 ---
 
@@ -58,22 +58,22 @@
 
 _Start here when resuming work_
 
-1. **Fix left motor** - Right motor works, left doesn't spin. Check ENA (Pin 33) connection, terminal screws, try swapping motor to right channel to isolate motor vs wiring
-2. **Test wandering_demo_1.py with both motors** - Basic obstacle avoidance wandering (needs left motor working)
-3. **Test gui_wandering.py with display** - Verify wandering behavior visualization on RPi desktop
-4. **Test MPU6050 IMU on RPi** - Wire GY-521 (VCC→Pin1, GND→Pin9, SCL→Pin5, SDA→Pin3), run `i2cdetect -y 1`, then `python3 tests/test_imu.py`
-5. **Deploy and verify** - `./deploy.sh rpi --test=all` to confirm all changes work on RPi
+1. **Test GUIs on RPi with display** - Run `gui_face_tracker.py`, `gui_lidar_nav.py` on RPi desktop, verify interactive controls
+2. **Calibrate LiDAR front orientation** - Run `gui_lidar_nav.py`, place object in front, press 'c' to calibrate
+3. **Wire and test MPU6050 IMU** - Wire GY-521 (VCC→Pin1, GND→Pin9, SCL→Pin5, SDA→Pin3), run `test_imu_calibrate.py`
+4. **Fix motor power** - Motors heard trying to spin but didn't move. Check battery voltage / try stronger power supply
+5. **Combine LiDAR + IMU** - Use IMU heading with LiDAR front offset for consistent orientation
 6. **Create wandering_demo_3.py** - LLM-integrated wandering (requires Jetson or API)
 
 ## In Progress
 
 _Tasks actively being worked on_
 
-- [ ] Fix left motor wiring (right motor works, left doesn't spin — suspected ENA/wiring issue)
+- [ ] Fix motor power issue (motors tried to spin but didn't move — underpowered?)
+- [ ] Test face tracker GUI on RPi with display (`python3 tests/gui_face_tracker.py`)
+- [ ] Test LiDAR nav GUI on RPi with display (`python3 tests/gui_lidar_nav.py`)
+- [ ] Wire and calibrate MPU6050 IMU on RPi (`python3 tests/test_imu_calibrate.py`)
 - [ ] Test real-world wandering with both motors (`python3 wandering_demo_1.py`)
-- [ ] Test face tracking demo (`python3 wandering_demo_2.py`)
-- [ ] Test MPU6050 IMU on RPi hardware (`python3 tests/test_imu.py`)
-- [ ] Create `wandering_demo_3.py` - LLM-integrated wandering with conversation
 
 ## Blocked
 
@@ -124,6 +124,36 @@ _Lower priority, do when time permits_
 - [ ] Voice interaction (STT/TTS via Android device)
 
 ## Recently Completed
+
+_Session 9 - 2026-02-10_
+
+- [x] **Motor test** - Ran basic + individual motor tests. Motors heard trying to spin but didn't move (likely underpowered/battery issue). Skipping motors for now.
+- [x] **Created `tests/gui_face_tracker.py`** - Camera face-tracking GUI with direction vectors
+  - Live camera feed with face detection (Haar cascade)
+  - Direction vector (arrow) from frame center to nearest face
+  - Horizontal offset indicator bar at top
+  - Motor intention panel (bottom): L/R speed bars, steering direction, steering arrow
+  - Dead zone visualization (adjustable with `[`/`]` keys)
+  - Gain control (`+`/`-` keys), headless mode for SSH testing
+  - Tested on RPi: 2.4 fps face detection, overlays render correctly
+- [x] **Created `tests/gui_lidar_nav.py`** - LiDAR navigation GUI with front calibration
+  - Live polar plot with scan points colored by safety zone
+  - **Front marker** (red triangle + line at 0 degrees = physical front)
+  - **Calibration mode** (press 'c'): finds nearest cluster → sets as front offset
+  - Max clearance direction (cyan star + line = where robot would go)
+  - Movement intention arrow (yellow, shorter, shows navigation intent)
+  - Nearest obstacle marker (red circle)
+  - Calibration saved to `tests/results/lidar_calibration.json`
+  - Tested headless on RPi: 451 pts/scan, max clearance at 165deg, nearest at 58deg
+- [x] **Created `tests/test_imu_calibrate.py`** - IMU calibration & axis orientation tool
+  - Step 1: Gyro bias calibration (keep still for 3s, averages noise)
+  - Step 2: Gravity axis detection (finds which accel axis reads ~1g)
+  - Step 3: Heading axis detection (rotate robot, finds dominant gyro axis)
+  - Saves calibration to `tests/results/imu_calibration.json`
+  - `--stream N` mode for raw data inspection, `--quick` for bias+gravity only
+  - SSH-friendly (no GUI needed)
+- [x] **Updated verify_all_imports.py** - Added gui_face_tracker, gui_lidar_nav, test_imu_calibrate
+- [x] **52 Python files, 34 modules, 0 failures** on RPi
 
 _Session 8 (continued, final) - 2026-02-06_
 
@@ -357,6 +387,9 @@ ambot/
 │   ├── gui_camera.py      # Camera GUI: basic feed (--no-faces) or face detection (--faces)
 │   ├── gui_lidar.py       # LiDAR GUI: polar plot + nearest/furthest edges
 │   ├── gui_wandering.py   # Wandering behavior visualization (LiDAR + targets + safety zones)
+│   ├── gui_face_tracker.py # Face tracking GUI (camera + direction vectors + motor intention)
+│   ├── gui_lidar_nav.py   # LiDAR navigation GUI (front calibration + movement intention)
+│   ├── test_imu_calibrate.py # IMU calibration (axis orientation, bias, heading axis detection)
 │   ├── verify_all_imports.py  # Comprehensive syntax/import verification
 │   └── results/           # Test output (JSON, PNG, JPG)
 └── docs/                  # Project documentation
@@ -379,8 +412,8 @@ ambot/
 | EMEET SmartCam S600 | **Working** | /dev/video0, 640x480 capture verified |
 | LiDAR (LD19) | **Working** | /dev/ttyUSB0, 230400 baud, ~497 pts/scan |
 | GPIO | **Ready** | RPi.GPIO 0.7.2, gpiozero, lgpio all working |
-| Motors (L298N) | **Partial** | Right motor works (fwd+rev), left motor not spinning — check ENA wiring |
-| MPU6050 (GY-521) | **Driver Ready** | `pathfinder/imu.py` created, needs hardware wiring + test on RPi |
+| Motors (L298N) | **Wired, Underpowered** | Both motors try to spin but don't move — need stronger power supply |
+| MPU6050 (GY-521) | **Driver + Calibration Ready** | `pathfinder/imu.py` + `tests/test_imu_calibrate.py`, needs hardware wiring |
 
 ## Hardware Status (Jetson)
 
@@ -458,14 +491,24 @@ i2cdetect -y 1                             # Verify MPU6050 at 0x68 (run on RPi)
 # GUI diagnostics (run ON RPi with display)
 python3 tests/gui_camera.py                # Live camera (basic feed)
 python3 tests/gui_camera.py --faces        # Live camera + face detection + bounding boxes
+python3 tests/gui_face_tracker.py          # Face tracking + direction vectors + motor intention
 python3 tests/gui_lidar.py                 # Live LiDAR polar plot + nearest/furthest
+python3 tests/gui_lidar_nav.py             # LiDAR navigation (front calibration + movement intent)
 python3 tests/gui_wandering.py             # Wandering behavior visualization (LiDAR + targets)
 
 # Headless testing (via SSH)
 python3 tests/gui_camera.py --headless --captures 3 --no-faces  # Basic capture
 python3 tests/gui_camera.py --headless --captures 3 --faces     # Face detection
+python3 tests/gui_face_tracker.py --headless -n 3               # Face tracker snapshots
 python3 tests/gui_lidar.py --headless --scans 3
+python3 tests/gui_lidar_nav.py --headless -n 3                  # LiDAR nav snapshots
 python3 tests/gui_wandering.py --headless --scans 3  # Save wandering viz snapshots
+
+# IMU calibration (run ON RPi)
+python3 tests/test_imu_calibrate.py                  # Full calibration (bias + gravity + heading axis)
+python3 tests/test_imu_calibrate.py --quick           # Quick: bias + gravity only
+python3 tests/test_imu_calibrate.py --stream 10       # Stream raw data for 10s
+python3 tests/test_imu_calibrate.py --load             # Show saved calibration
 
 # SSH to RPi
 ssh pi@10.33.224.1

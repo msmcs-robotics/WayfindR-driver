@@ -1,6 +1,6 @@
 # Ambot - Roadmap
 
-> Last updated: 2026-02-06
+> Last updated: 2026-02-10
 
 ## Overview
 
@@ -134,7 +134,10 @@ This roadmap tracks project-level features and milestones. For immediate tasks, 
   - Reduced code duplication significantly
 - [x] **install.sh MPU6050 deps** — Added smbus2 pip package, verified on RPi -- 2026-02-06
 - [x] **Quick-reference pin tables** — Added to all wiring guides (L298N, TB6612FNG, DRV8833) -- 2026-02-06
-- [ ] Fix left motor wiring (right works, left doesn't spin — ENA Pin 33 / terminal screws)
+- [x] **Face tracking GUI** (`tests/gui_face_tracker.py`) — Camera + direction vectors + motor intention -- 2026-02-10
+- [x] **LiDAR navigation GUI** (`tests/gui_lidar_nav.py`) — Front calibration + movement intent -- 2026-02-10
+- [x] **IMU calibration tool** (`tests/test_imu_calibrate.py`) — Axis orientation detection + bias -- 2026-02-10
+- [ ] Fix motor power (both motors try to spin but don't move — need stronger power supply)
 - [ ] Tune safety zone distances for robot size
 - [ ] Test wandering behaviors in real environment
 - [ ] Test face tracking with real hardware
