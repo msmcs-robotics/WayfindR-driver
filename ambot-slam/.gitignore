@@ -1,0 +1,31 @@
+# Test outputs
+tests/results/
+tests/outputs/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+
+# ROS2 build artifacts
+build/
+install/
+log/
+
+# Virtual environment
+venv/
+.venv/
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Map files (large, generated)
+# Uncomment if you don't want to track maps in git:
+# *.pgm
+# *.posegraph
