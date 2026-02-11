@@ -74,8 +74,9 @@ def draw_motor_intention(frame, steer, base_speed=0.5, bar_width=120, bar_height
     h, w = frame.shape[:2]
 
     # Compute wheel speeds (differential drive)
-    left_speed = base_speed - steer
-    right_speed = base_speed + steer
+    # Positive steer = face is RIGHT = turn RIGHT = left faster, right slower
+    left_speed = base_speed + steer
+    right_speed = base_speed - steer
     left_speed = max(-1.0, min(1.0, left_speed))
     right_speed = max(-1.0, min(1.0, right_speed))
 
