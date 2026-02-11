@@ -2,11 +2,10 @@
 """
 Face Tracking GUI — Camera feed with direction vectors and motor intention.
 
-Shows live camera feed with face detection. For the nearest face, draws
-a direction vector showing where the robot would orient itself, plus
-motor speed intention indicators.
-
-The robot is on a stand (not actually moving) — this visualizes INTENTION only.
+Optimized for RPi 3B (906MB RAM, Cortex-A53). Detects faces every Nth frame
+and reuses results in between. Selects the face closest to horizontal center
+for tracking. Draws a crosshair, bounding boxes on ALL faces, and direction
+vectors from frame center to each face.
 
 Usage:
     python3 tests/gui_face_tracker.py                # Live GUI
@@ -16,8 +15,6 @@ Usage:
 Controls:
     q - Quit
     s - Save screenshot
-    d - Toggle dead-zone indicator
-    h - Toggle help overlay
     +/= - Increase tracking gain
     -/_ - Decrease tracking gain
 """
@@ -35,6 +32,13 @@ SCRIPT_DIR = Path(__file__).parent
 RESULTS_DIR = SCRIPT_DIR / "results"
 RESULTS_DIR.mkdir(exist_ok=True)
 sys.path.insert(0, str(SCRIPT_DIR.parent))
+
+# Detection tuning constants for RPi performance
+DETECT_EVERY_N = 3        # Run face detection every Nth frame
+DETECT_SCALE = 0.5        # Scale factor for detection (0.5 = half res)
+DETECT_MIN_SIZE = (50, 50)  # Minimum face size at detection scale
+DETECT_SCALE_FACTOR = 1.2  # Haar cascade scaleFactor (higher = faster, less accurate)
+DETECT_MIN_NEIGHBORS = 4   # Haar cascade minNeighbors
 
 
 def load_face_cascade():
@@ -76,12 +80,12 @@ def draw_motor_intention(frame, steer, base_speed=0.5, bar_width=120, bar_height
     right_speed = max(-1.0, min(1.0, right_speed))
 
     # Panel background
-    panel_y = h - 70
+    panel_y = h - 60
     cv2.rectangle(frame, (0, panel_y), (w, h), (30, 30, 30), -1)
 
     # Left motor bar
     lx = 20
-    ly = panel_y + 10
+    ly = panel_y + 8
     cv2.putText(frame, "L", (lx - 2, ly + 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (200, 200, 200), 1)
     cv2.rectangle(frame, (lx + 15, ly), (lx + 15 + bar_width, ly + bar_height), (80, 80, 80), -1)
     fill_w = int(abs(left_speed) * bar_width)
@@ -96,7 +100,7 @@ def draw_motor_intention(frame, steer, base_speed=0.5, bar_width=120, bar_height
 
     # Right motor bar
     rx = w - bar_width - 80
-    ry = panel_y + 10
+    ry = panel_y + 8
     cv2.putText(frame, "R", (rx - 2, ry + 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (200, 200, 200), 1)
     cv2.rectangle(frame, (rx + 15, ry), (rx + 15 + bar_width, ry + bar_height), (80, 80, 80), -1)
     fill_w = int(abs(right_speed) * bar_width)
@@ -109,88 +113,20 @@ def draw_motor_intention(frame, steer, base_speed=0.5, bar_width=120, bar_height
     cv2.putText(frame, f"{right_speed:+.2f}", (rx + 15 + bar_width + 5, ry + 15),
                 cv2.FONT_HERSHEY_SIMPLEX, 0.4, (200, 200, 200), 1)
 
-    # Steering direction text center
+    # Steering direction text centered
     if abs(steer) < 0.05:
         direction = "STRAIGHT"
         dir_color = (0, 255, 0)
     elif steer < 0:
-        direction = f"TURN LEFT ({abs(steer):.2f})"
+        direction = f"LEFT ({abs(steer):.2f})"
         dir_color = (0, 200, 255)
     else:
-        direction = f"TURN RIGHT ({abs(steer):.2f})"
+        direction = f"RIGHT ({abs(steer):.2f})"
         dir_color = (255, 200, 0)
 
-    text_size = cv2.getTextSize(direction, cv2.FONT_HERSHEY_SIMPLEX, 0.6, 2)[0]
+    text_size = cv2.getTextSize(direction, cv2.FONT_HERSHEY_SIMPLEX, 0.5, 1)[0]
     tx = (w - text_size[0]) // 2
-    cv2.putText(frame, direction, (tx, panel_y + 25), cv2.FONT_HERSHEY_SIMPLEX, 0.6, dir_color, 2)
-
-    # Steering arrow at center-bottom
-    arrow_cx = w // 2
-    arrow_cy = panel_y + 50
-    arrow_len = 40
-    angle = -steer * math.pi / 3  # map steer to ±60 degrees
-    arrow_tip_x = int(arrow_cx + arrow_len * math.sin(angle))
-    arrow_tip_y = int(arrow_cy - arrow_len * math.cos(angle))
-    cv2.arrowedLine(frame, (arrow_cx, arrow_cy), (arrow_tip_x, arrow_tip_y), dir_color, 2, tipLength=0.3)
-
-
-def draw_direction_vector(frame, frame_cx, frame_cy, face_cx, face_cy, dead_zone_px, show_dead_zone=True):
-    """
-    Draw the direction vector from frame center to nearest face.
-    Returns the normalized horizontal steering value [-1, 1].
-    """
-    import cv2
-    h, w = frame.shape[:2]
-    half_w = w / 2
-
-    # Horizontal error normalized to [-1, 1]
-    error_px = face_cx - frame_cx
-    error_norm = error_px / half_w
-
-    # Dead zone
-    in_dead_zone = abs(error_px) < dead_zone_px
-
-    # Draw center crosshair (robot forward direction)
-    cv2.line(frame, (frame_cx, 0), (frame_cx, h), (100, 100, 100), 1)
-    cv2.line(frame, (0, frame_cy), (w, frame_cy), (100, 100, 100), 1)
-
-    # Dead zone indicator
-    if show_dead_zone:
-        cv2.line(frame, (frame_cx - dead_zone_px, 0), (frame_cx - dead_zone_px, h), (80, 80, 80), 1)
-        cv2.line(frame, (frame_cx + dead_zone_px, 0), (frame_cx + dead_zone_px, h), (80, 80, 80), 1)
-        # Shaded dead zone
-        overlay = frame.copy()
-        cv2.rectangle(overlay, (frame_cx - dead_zone_px, 0), (frame_cx + dead_zone_px, h), (0, 100, 0), -1)
-        cv2.addWeighted(overlay, 0.1, frame, 0.9, 0, frame)
-
-    # Direction vector (arrow from center to face)
-    if in_dead_zone:
-        arrow_color = (0, 255, 0)  # Green = centered
-        steer = 0.0
-    else:
-        arrow_color = (0, 0, 255)  # Red = needs correction
-        steer = error_norm
-
-    # Main direction arrow
-    cv2.arrowedLine(frame, (frame_cx, frame_cy), (face_cx, face_cy),
-                    arrow_color, 3, tipLength=0.08)
-
-    # Horizontal offset bar at top
-    bar_y = 30
-    bar_half = w // 4
-    bar_cx = w // 2
-    # Background
-    cv2.rectangle(frame, (bar_cx - bar_half, bar_y - 5), (bar_cx + bar_half, bar_y + 5), (60, 60, 60), -1)
-    # Dead zone
-    dz_bar = int(dead_zone_px / half_w * bar_half)
-    cv2.rectangle(frame, (bar_cx - dz_bar, bar_y - 5), (bar_cx + dz_bar, bar_y + 5), (0, 80, 0), -1)
-    # Indicator
-    indicator_x = int(bar_cx + error_norm * bar_half)
-    indicator_x = max(bar_cx - bar_half, min(bar_cx + bar_half, indicator_x))
-    cv2.circle(frame, (indicator_x, bar_y), 8, arrow_color, -1)
-    cv2.circle(frame, (indicator_x, bar_y), 8, (255, 255, 255), 1)
-
-    return steer
+    cv2.putText(frame, direction, (tx, panel_y + 45), cv2.FONT_HERSHEY_SIMPLEX, 0.5, dir_color, 1)
 
 
 def run_face_tracker(device=0, headless=False, max_captures=0, dead_zone=40, gain=0.8):
@@ -213,6 +149,7 @@ def run_face_tracker(device=0, headless=False, max_captures=0, dead_zone=40, gai
 
     frame_cx = width // 2
     frame_cy = height // 2
+    half_w = width / 2.0
 
     # Load face cascade
     cascade = load_face_cascade()
@@ -222,9 +159,12 @@ def run_face_tracker(device=0, headless=False, max_captures=0, dead_zone=40, gai
         return 1
     print("Face cascade loaded")
 
+    # Print controls once at startup (instead of on-screen help overlay)
+    print()
+    print("Controls: q=Quit  s=Screenshot  +/-=Gain  [/]=Dead zone")
+    print()
+
     # State
-    show_help = True
-    show_dead_zone = True
     frame_count = 0
     capture_count = 0
     start_time = time.time()
@@ -232,6 +172,9 @@ def run_face_tracker(device=0, headless=False, max_captures=0, dead_zone=40, gai
     actual_fps = 0.0
     current_gain = gain
     current_dead_zone = dead_zone
+
+    # Cached face detections (reused between detection frames)
+    cached_faces = []
 
     window_name = "Ambot Face Tracker"
 
@@ -245,98 +188,102 @@ def run_face_tracker(device=0, headless=False, max_captures=0, dead_zone=40, gai
             frame_count += 1
             now = time.time()
 
-            # FPS
+            # FPS calculation
             if frame_count % 10 == 0:
-                actual_fps = 10.0 / (now - last_fps_time)
+                actual_fps = 10.0 / max(now - last_fps_time, 0.001)
                 last_fps_time = now
 
-            # Face detection
-            gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
-            detections = cascade.detectMultiScale(gray, scaleFactor=1.1, minNeighbors=5, minSize=(30, 30))
-
-            # Parse faces: list of (cx, cy, w, h, area)
-            faces = []
-            for (x, y, w, h) in detections:
-                cx = x + w // 2
-                cy = y + h // 2
-                faces.append((cx, cy, w, h, w * h))
-
-            # Draw all face bounding boxes
-            for (cx, cy, w, h, area) in faces:
-                x = cx - w // 2
-                y = cy - h // 2
-                cv2.rectangle(frame, (x, y), (x + w, y + h), (0, 255, 0), 2)
-                cv2.circle(frame, (cx, cy), 4, (0, 0, 255), -1)
-                cv2.putText(frame, f"({cx},{cy})", (cx + 8, cy - 8),
-                            cv2.FONT_HERSHEY_SIMPLEX, 0.35, (0, 255, 0), 1)
-
-            # Track nearest face (largest area = closest)
-            steer = 0.0
-            if faces:
-                nearest = max(faces, key=lambda f: f[4])
-                ncx, ncy = nearest[0], nearest[1]
-
-                # Highlight nearest face
-                nx = ncx - nearest[2] // 2
-                ny = ncy - nearest[3] // 2
-                cv2.rectangle(frame, (nx, ny), (nx + nearest[2], ny + nearest[3]), (0, 255, 255), 3)
-                cv2.putText(frame, "TRACKING", (nx, ny - 8),
-                            cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 255), 2)
-
-                # Draw direction vector and get steering value
-                raw_steer = draw_direction_vector(
-                    frame, frame_cx, frame_cy, ncx, ncy,
-                    current_dead_zone, show_dead_zone
+            # --- Face detection (every Nth frame for performance) ---
+            if frame_count % DETECT_EVERY_N == 1 or DETECT_EVERY_N == 1:
+                # Scale down for faster detection
+                small = cv2.resize(frame, None, fx=DETECT_SCALE, fy=DETECT_SCALE,
+                                   interpolation=cv2.INTER_AREA)
+                gray = cv2.cvtColor(small, cv2.COLOR_BGR2GRAY)
+                detections = cascade.detectMultiScale(
+                    gray,
+                    scaleFactor=DETECT_SCALE_FACTOR,
+                    minNeighbors=DETECT_MIN_NEIGHBORS,
+                    minSize=DETECT_MIN_SIZE,
                 )
-                steer = raw_steer * current_gain
-            else:
-                # No face — just draw center crosshair and dead zone
-                cv2.line(frame, (frame_cx, 0), (frame_cx, height), (100, 100, 100), 1)
-                cv2.line(frame, (0, frame_cy), (width, frame_cy), (100, 100, 100), 1)
-                if show_dead_zone:
-                    cv2.line(frame, (frame_cx - current_dead_zone, 0),
-                             (frame_cx - current_dead_zone, height), (80, 80, 80), 1)
-                    cv2.line(frame, (frame_cx + current_dead_zone, 0),
-                             (frame_cx + current_dead_zone, height), (80, 80, 80), 1)
+
+                # Scale detections back to full resolution
+                inv_scale = 1.0 / DETECT_SCALE
+                cached_faces = []
+                for (x, y, w, h) in detections:
+                    fx = int(x * inv_scale)
+                    fy = int(y * inv_scale)
+                    fw = int(w * inv_scale)
+                    fh = int(h * inv_scale)
+                    cx = fx + fw // 2
+                    cy = fy + fh // 2
+                    # Distance from horizontal center (for tracking selection)
+                    h_dist = abs(cx - frame_cx)
+                    cached_faces.append((cx, cy, fw, fh, h_dist, fx, fy))
+
+            faces = cached_faces
+
+            # --- Draw crosshair (full frame, always visible) ---
+            crosshair_color = (0, 255, 0)  # bright green
+            cv2.line(frame, (frame_cx, 0), (frame_cx, height), crosshair_color, 1)
+            cv2.line(frame, (0, frame_cy), (width, frame_cy), crosshair_color, 1)
+
+            # --- Draw bounding boxes on ALL faces + vectors ---
+            # Select tracked face: closest to horizontal center
+            tracked_idx = -1
+            if faces:
+                tracked_idx = min(range(len(faces)), key=lambda i: faces[i][4])
+
+            steer = 0.0
+
+            for i, (cx, cy, fw, fh, h_dist, fx, fy) in enumerate(faces):
+                is_tracked = (i == tracked_idx)
+
+                # Bounding box
+                if is_tracked:
+                    box_color = (0, 255, 255)   # yellow for tracked face
+                    box_thickness = 3
+                else:
+                    box_color = (0, 255, 0)     # green for other faces
+                    box_thickness = 2
+
+                cv2.rectangle(frame, (fx, fy), (fx + fw, fy + fh), box_color, box_thickness)
+
+                # Direction vector (arrow from frame center to face center)
+                if is_tracked:
+                    arrow_color = (0, 255, 255)  # yellow
+                    arrow_thickness = 2
+                else:
+                    arrow_color = (0, 180, 0)    # darker green
+                    arrow_thickness = 1
+
+                cv2.arrowedLine(frame, (frame_cx, frame_cy), (cx, cy),
+                                arrow_color, arrow_thickness, tipLength=0.06)
+
+                # Label on tracked face
+                if is_tracked:
+                    cv2.putText(frame, "TRACK", (fx, fy - 6),
+                                cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 255), 2)
+
+            # --- Compute steering from tracked face ---
+            if tracked_idx >= 0:
+                tcx = faces[tracked_idx][0]
+                error_px = tcx - frame_cx
+                error_norm = error_px / half_w  # [-1, 1]
+
+                # Dead zone
+                if abs(error_px) < current_dead_zone:
+                    steer = 0.0
+                else:
+                    steer = error_norm * current_gain
 
             # Motor intention panel
             draw_motor_intention(frame, steer)
 
-            # Info overlay (top-left)
-            overlay = frame.copy()
-            cv2.rectangle(overlay, (5, 45), (220, 140), (0, 0, 0), -1)
-            cv2.addWeighted(overlay, 0.5, frame, 0.5, 0, frame)
+            # Minimal info overlay (top-left, no background box to save draw time)
+            info = f"FPS:{actual_fps:.0f} Faces:{len(faces)} Gain:{current_gain:.1f} DZ:{current_dead_zone}"
+            cv2.putText(frame, info, (8, 20), cv2.FONT_HERSHEY_SIMPLEX, 0.45, (255, 255, 255), 1)
 
-            info_lines = [
-                f"FPS: {actual_fps:.1f}  Faces: {len(faces)}",
-                f"Gain: {current_gain:.2f}  Dead zone: {current_dead_zone}px",
-                f"Steer: {steer:+.3f}",
-                f"Frame: {frame_count}",
-            ]
-            y_pos = 62
-            for line in info_lines:
-                cv2.putText(frame, line, (10, y_pos), cv2.FONT_HERSHEY_SIMPLEX, 0.4, (0, 255, 0), 1)
-                y_pos += 18
-
-            # Help overlay (top-right)
-            if show_help:
-                overlay2 = frame.copy()
-                cv2.rectangle(overlay2, (width - 230, 45), (width - 5, 155), (0, 0, 0), -1)
-                cv2.addWeighted(overlay2, 0.5, frame, 0.5, 0, frame)
-                help_lines = [
-                    "q:Quit  s:Screenshot",
-                    "d:Toggle dead zone",
-                    "h:Toggle help",
-                    "+/-: Adjust gain",
-                    "[/]: Adjust dead zone",
-                ]
-                y_pos = 62
-                for line in help_lines:
-                    cv2.putText(frame, line, (width - 225, y_pos),
-                                cv2.FONT_HERSHEY_SIMPLEX, 0.35, (200, 200, 200), 1)
-                    y_pos += 18
-
-            # Display or save
+            # --- Display or save ---
             if not headless:
                 cv2.imshow(window_name, frame)
                 key = cv2.waitKey(1) & 0xFF
@@ -347,10 +294,6 @@ def run_face_tracker(device=0, headless=False, max_captures=0, dead_zone=40, gai
                     fname = RESULTS_DIR / f"face_track_{datetime.now().strftime('%Y%m%d_%H%M%S')}.jpg"
                     cv2.imwrite(str(fname), frame)
                     print(f"Saved: {fname}")
-                elif key == ord('d'):
-                    show_dead_zone = not show_dead_zone
-                elif key == ord('h'):
-                    show_help = not show_help
                 elif key in (ord('+'), ord('=')):
                     current_gain = min(2.0, current_gain + 0.1)
                     print(f"Gain: {current_gain:.2f}")

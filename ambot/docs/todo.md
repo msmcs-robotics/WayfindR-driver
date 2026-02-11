@@ -58,22 +58,20 @@
 
 _Start here when resuming work_
 
-1. **Improve face tracker** - Horizontal centering: orient robot so tracked face is centered horizontally. Don't worry about vertical (needs servos later). Vector from image center to each face, track face closest to center.
-2. **Clean up LiDAR nav GUI** - Reduce visual clutter, smooth movement intention (currently jumps around). Show longest clearance + intended heading clearly.
-3. **Basic wandering logic** - Simple pre-SLAM wandering without odometry/SLAM. Just pick directions based on clearance. No mapping required yet.
-4. **Calibrate LiDAR front orientation** - Run `gui_lidar_nav.py`, place object in front, press 'c' to calibrate
-5. **Wire and test MPU6050 IMU** - Wire GY-521 (VCC→Pin1, GND→Pin9, SCL→Pin5, SDA→Pin3), run `test_imu_calibrate.py`
-6. **Fix motor power** - Motors heard trying to spin but didn't move. Check battery voltage / try stronger power supply
-7. **Combine LiDAR + IMU** - Use IMU heading with LiDAR front offset for consistent orientation
+1. **Calibrate LiDAR front orientation** - Run `gui_lidar_nav.py`, place object in front, press 'c' to calibrate
+2. **Wire and test MPU6050 IMU** - Wire GY-521 (VCC→Pin1, GND→Pin9, SCL→Pin5, SDA→Pin3), run `test_imu_calibrate.py`
+3. **Fix motor power** - Motors heard trying to spin but didn't move. Check battery voltage / try stronger power supply
+4. **Combine LiDAR + IMU** - Use IMU heading with LiDAR front offset for consistent orientation
+5. **Basic wandering logic** - Simple pre-SLAM wandering without odometry/SLAM. Just pick directions based on clearance. No mapping required yet.
+6. **Test real-world wandering** - Once motors work, run `wandering_demo_1.py` with actual movement
 
 ## In Progress
 
 _Tasks actively being worked on_
 
-- [x] Face tracker GUI verified on RPi desktop (`python3 tests/gui_face_tracker.py`)
-- [x] LiDAR nav GUI verified on RPi desktop (`python3 tests/gui_lidar_nav.py`)
-- [ ] Improve face tracker: horizontal centering logic, track nearest-to-center face
-- [ ] Clean up LiDAR nav: reduce clutter, smooth heading intention
+- [x] Face tracker GUI improved and verified on RPi desktop
+- [x] LiDAR nav GUI cleaned up and verified on RPi desktop
+- [x] deploy.sh refactored to use run_tests.sh wrapper (no more SSH venv sourcing)
 - [ ] Fix motor power issue (motors tried to spin but didn't move — underpowered?)
 - [ ] Wire and calibrate MPU6050 IMU on RPi (`python3 tests/test_imu_calibrate.py`)
 - [ ] Test real-world wandering with both motors (`python3 wandering_demo_1.py`)
@@ -145,6 +143,25 @@ _Session 10 - 2026-02-11_
   - Face tracking: horizontal centering priority (vertical needs servos later)
   - Wandering: basic pre-SLAM logic without odometry, no SLAM until ROS2
   - LiDAR nav: needs smoothing to reduce visual clutter and heading jitter
+- [x] **Refactored deploy.sh** - No more SSH venv sourcing for individual tests
+  - All individual tests now use `./run_tests.sh --test=NAME` on RPi
+  - Added `--test=NAME` support to `run_tests.sh` with dispatch function
+  - Added individual test functions for each test type (gpio, camera, lidar, imu, motors, etc.)
+  - Venv activation happens once in `run_tests.sh`, not per SSH command
+- [x] **Improved face tracker GUI** (`tests/gui_face_tracker.py`)
+  - Performance: detect every 3rd frame at 50% resolution (17.8fps on RPi 3B, up from ~2.4fps)
+  - Display: big green crosshair (full width/height), bounding boxes on ALL faces
+  - Tracking: selects face closest to horizontal center (not largest area)
+  - Tracked face: yellow box + "TRACK" label + yellow arrow from center
+  - Other faces: green box + darker green arrow
+  - Removed: dead zone overlay, help overlay, offset indicator, frame.copy() overlays
+- [x] **Cleaned up LiDAR nav GUI** (`tests/gui_lidar_nav.py`)
+  - Dark theme (black background)
+  - EMA-smoothed heading arrow (alpha=0.15) with circular angle wraparound handling
+  - Single gold heading arrow (removed separate max clearance + intent arrows)
+  - Removed: nearest obstacle marker, controls text on plot, legend clutter
+  - Minimal one-line info text at top
+- [x] **52 files, 34 modules, 3/3 tests passing** on RPi after all changes
 
 _Session 9 - 2026-02-10_
 

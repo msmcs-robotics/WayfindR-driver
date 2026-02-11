@@ -203,11 +203,8 @@ run_tests() {
 
     log_step "Running test '$test_type' on $target..."
 
-    # Venv activation prefix for individual commands
-    local venv_act="source $dest/venv/bin/activate 2>/dev/null;"
-
     case "$test_type" in
-        # --- Test suites (run via run_tests.sh, activates venv itself) ---
+        # --- Test suites (run via run_tests.sh) ---
         all)
             ssh "$target" "cd $dest && chmod +x run_tests.sh && ./run_tests.sh --all"
             ;;
@@ -220,49 +217,13 @@ run_tests() {
         integration)
             ssh "$target" "cd $dest && chmod +x run_tests.sh && ./run_tests.sh --integration"
             ;;
-        verify)
-            ssh "$target" "cd $dest && $venv_act python3 tests/verify_all_imports.py"
+        # --- Individual tests (run via run_tests.sh --test=NAME) ---
+        verify|gpio|camera|camera-basic|camera-faces|lidar|ld19|motors|motors-basic|motors-individual|motors-pinout|wandering-viz|imu|env|env-diag)
+            ssh "$target" "cd $dest && chmod +x run_tests.sh && ./run_tests.sh --test=$test_type"
             ;;
-        # --- Individual tests ---
-        gpio)
-            ssh "$target" "cd $dest/tests && $venv_act python3 test_gpio.py"
-            ;;
-        camera)
-            ssh "$target" "cd $dest/tests && $venv_act python3 test_usb_camera.py"
-            ;;
-        camera-basic)
-            ssh "$target" "cd $dest && $venv_act python3 tests/gui_camera.py --headless --captures 1 --no-faces"
-            ;;
-        camera-faces)
-            ssh "$target" "cd $dest && $venv_act python3 tests/gui_camera.py --headless --captures 1 --faces"
-            ;;
-        lidar|ld19)
-            ssh "$target" "cd $dest/tests && $venv_act python3 test_ld19_lidar.py"
-            ;;
-        motors)
-            ssh "$target" "cd $dest && $venv_act python3 tests/test_motors.py --check"
-            ;;
-        motors-basic)
-            ssh "$target" "cd $dest && $venv_act python3 tests/test_motors.py --basic"
-            ;;
-        motors-individual)
-            ssh "$target" "cd $dest && $venv_act python3 tests/test_motors.py --individual"
-            ;;
-        motors-pinout)
-            ssh "$target" "cd $dest && $venv_act python3 tests/test_motors.py --pinout"
-            ;;
-        wandering-viz)
-            ssh "$target" "cd $dest && $venv_act python3 tests/gui_wandering.py --headless --scans 3"
-            ;;
-        imu)
-            ssh "$target" "cd $dest && $venv_act python3 tests/test_imu.py"
-            ;;
-        # --- Diagnostics ---
+        # --- Diagnostics (stay as direct commands — not Python tests) ---
         check)
             ssh "$target" "cd $dest && sudo ./install.sh --check"
-            ;;
-        env|env-diag)
-            ssh "$target" "cd $dest && $venv_act python3 scripts/env_diagnostic.py"
             ;;
         env-fix)
             log_info "Setting up venv and installing packages..."
@@ -270,9 +231,11 @@ run_tests() {
             ;;
         *)
             log_warn "Unknown test type: $test_type"
-            log_info "Test suites:    all, quick, hardware, integration, verify"
-            log_info "Individual:     gpio, camera, camera-basic, camera-faces, lidar, motors, motors-basic, motors-individual, motors-pinout"
-            log_info "Diagnostics:    check, env, env-fix"
+            log_info "Test suites:    all, quick, hardware, integration"
+            log_info "Individual:     verify, gpio, camera, camera-basic, camera-faces, lidar, imu"
+            log_info "                motors, motors-basic, motors-individual, motors-pinout"
+            log_info "                wandering-viz, env (environment diagnostic)"
+            log_info "Diagnostics:    check, env-fix"
             ;;
     esac
 }

@@ -11,7 +11,13 @@
 #   ./run_tests.sh --quick            # Quick verification only
 #   ./run_tests.sh --hardware         # Hardware tests only (LiDAR, camera, GPIO)
 #   ./run_tests.sh --integration      # Integration tests only
+#   ./run_tests.sh --test=NAME        # Run a single named test
 #   ./run_tests.sh --json             # Output results as JSON
+#
+# Individual test names (--test=NAME):
+#   verify, gpio, camera, camera-basic, camera-faces, lidar, ld19,
+#   motors, motors-basic, motors-individual, motors-pinout,
+#   wandering-viz, imu, env, env-diag
 #
 # From dev machine:
 #   ./deploy.sh rpi --full-test       # Deploy + run this script
@@ -359,6 +365,176 @@ test_headless_lidar_scan() {
     fi
 }
 
+test_motors() {
+    log_test "Testing motors (check)..."
+
+    if ! has_gpio; then
+        add_result "motors" "skipped" "GPIO not available on this platform"
+        return 0
+    fi
+
+    if python3 tests/test_motors.py --check 2>&1; then
+        add_result "motors" "passed" "Motor check passed"
+        return 0
+    else
+        add_result "motors" "failed" "Motor check failed"
+        return 1
+    fi
+}
+
+test_motors_basic() {
+    log_test "Testing motors (basic)..."
+
+    if ! has_gpio; then
+        add_result "motors_basic" "skipped" "GPIO not available on this platform"
+        return 0
+    fi
+
+    if python3 tests/test_motors.py --basic 2>&1; then
+        add_result "motors_basic" "passed" "Basic motor test passed"
+        return 0
+    else
+        add_result "motors_basic" "failed" "Basic motor test failed"
+        return 1
+    fi
+}
+
+test_motors_individual() {
+    log_test "Testing motors (individual)..."
+
+    if ! has_gpio; then
+        add_result "motors_individual" "skipped" "GPIO not available on this platform"
+        return 0
+    fi
+
+    if python3 tests/test_motors.py --individual 2>&1; then
+        add_result "motors_individual" "passed" "Individual motor test passed"
+        return 0
+    else
+        add_result "motors_individual" "failed" "Individual motor test failed"
+        return 1
+    fi
+}
+
+test_motors_pinout() {
+    log_test "Testing motors (pinout)..."
+
+    if ! has_gpio; then
+        add_result "motors_pinout" "skipped" "GPIO not available on this platform"
+        return 0
+    fi
+
+    if python3 tests/test_motors.py --pinout 2>&1; then
+        add_result "motors_pinout" "passed" "Motor pinout test passed"
+        return 0
+    else
+        add_result "motors_pinout" "failed" "Motor pinout test failed"
+        return 1
+    fi
+}
+
+test_imu() {
+    log_test "Testing IMU (MPU6050)..."
+
+    if python3 tests/test_imu.py 2>&1; then
+        add_result "imu" "passed" "IMU test passed"
+        return 0
+    else
+        add_result "imu" "failed" "IMU test failed"
+        return 1
+    fi
+}
+
+test_wandering_viz() {
+    log_test "Testing wandering visualization (headless, 3 scans)..."
+
+    if ! has_lidar; then
+        add_result "wandering_viz" "skipped" "No LiDAR device found"
+        return 0
+    fi
+
+    if python3 tests/gui_wandering.py --headless --scans 3 2>&1; then
+        add_result "wandering_viz" "passed" "Wandering visualization test passed"
+        return 0
+    else
+        add_result "wandering_viz" "failed" "Wandering visualization test failed"
+        return 1
+    fi
+}
+
+test_env_diagnostic() {
+    log_test "Running environment diagnostic..."
+
+    if python3 scripts/env_diagnostic.py 2>&1; then
+        add_result "env_diagnostic" "passed" "Environment diagnostic passed"
+        return 0
+    else
+        add_result "env_diagnostic" "failed" "Environment diagnostic failed"
+        return 1
+    fi
+}
+
+# =============================================================================
+# Individual Test Dispatch (for --test=NAME)
+# =============================================================================
+
+run_individual_test() {
+    local test_name="$1"
+
+    case "$test_name" in
+        verify)
+            test_syntax_verification
+            ;;
+        gpio)
+            test_gpio
+            ;;
+        camera)
+            test_camera
+            ;;
+        camera-basic)
+            test_headless_camera_basic
+            ;;
+        camera-faces)
+            test_headless_camera_faces
+            ;;
+        lidar|ld19)
+            test_lidar
+            ;;
+        motors)
+            test_motors
+            ;;
+        motors-basic)
+            test_motors_basic
+            ;;
+        motors-individual)
+            test_motors_individual
+            ;;
+        motors-pinout)
+            test_motors_pinout
+            ;;
+        wandering-viz)
+            test_wandering_viz
+            ;;
+        imu)
+            test_imu
+            ;;
+        env|env-diag)
+            test_env_diagnostic
+            ;;
+        *)
+            log_error "Unknown test name: $test_name"
+            echo ""
+            echo "Valid test names:"
+            echo "  verify, gpio, camera, camera-basic, camera-faces,"
+            echo "  lidar (or ld19), motors, motors-basic, motors-individual,"
+            echo "  motors-pinout, wandering-viz, imu, env (or env-diag)"
+            echo ""
+            echo "For test suites use: --all, --quick, --hardware, --integration"
+            return 1
+            ;;
+    esac
+}
+
 # =============================================================================
 # Test Suites
 # =============================================================================
@@ -488,6 +664,21 @@ print_help() {
     echo "  --hardware, -w  Hardware tests only (GPIO, camera, LiDAR)"
     echo "  --integration   Integration tests only"
     echo ""
+    echo "Individual Tests (--test=NAME):"
+    echo "  verify          Import verification"
+    echo "  gpio            GPIO test"
+    echo "  camera          USB camera test"
+    echo "  camera-basic    Headless camera (no face detection)"
+    echo "  camera-faces    Headless camera (with face detection)"
+    echo "  lidar, ld19     LiDAR test"
+    echo "  motors          Motor check"
+    echo "  motors-basic    Basic motor test"
+    echo "  motors-individual  Individual motor test"
+    echo "  motors-pinout   Motor pinout test"
+    echo "  wandering-viz   Wandering visualization (headless)"
+    echo "  imu             IMU (MPU6050) test"
+    echo "  env, env-diag   Environment diagnostic"
+    echo ""
     echo "Output Options:"
     echo "  --json, -j      Output results as JSON"
     echo "  --verbose, -v   Verbose output"
@@ -496,10 +687,12 @@ print_help() {
     echo "  --help, -h      Show this help"
     echo ""
     echo "Examples:"
-    echo "  $0                    # Standard tests"
-    echo "  $0 --all              # All tests"
-    echo "  $0 --quick --json     # Quick check with JSON output"
-    echo "  $0 --hardware         # Test connected hardware"
+    echo "  $0                        # Standard tests"
+    echo "  $0 --all                  # All tests"
+    echo "  $0 --quick --json         # Quick check with JSON output"
+    echo "  $0 --hardware             # Test connected hardware"
+    echo "  $0 --test=lidar           # Single LiDAR test"
+    echo "  $0 --test=motors-basic    # Single motor test"
     echo ""
     echo "From dev machine:"
     echo "  ./deploy.sh rpi --full-test   # Deploy + run all tests"
@@ -512,6 +705,7 @@ print_help() {
 
 main() {
     local TEST_SUITE="standard"
+    local INDIVIDUAL_TEST=""
 
     # Parse arguments
     while [[ $# -gt 0 ]]; do
@@ -530,6 +724,11 @@ main() {
                 ;;
             --integration)
                 TEST_SUITE="integration"
+                shift
+                ;;
+            --test=*)
+                TEST_SUITE="individual"
+                INDIVIDUAL_TEST="${1#*=}"
                 shift
                 ;;
             --json|-j)
@@ -575,6 +774,9 @@ main() {
             ;;
         all)
             run_all_tests
+            ;;
+        individual)
+            run_individual_test "$INDIVIDUAL_TEST"
             ;;
     esac
 
