@@ -69,7 +69,7 @@ SSH_TIMEOUT=15
 
 # Rsync base options
 RSYNC_BASE="-avz --progress"
-RSYNC_EXCLUDE="--exclude='*.pyc' --exclude='__pycache__' --exclude='.git' --exclude='*.egg-info' --exclude='.pytest_cache' --exclude='.venv'"
+RSYNC_EXCLUDE="--exclude='*.pyc' --exclude='__pycache__' --exclude='.git' --exclude='*.egg-info' --exclude='.pytest_cache' --exclude='venv' --exclude='.venv'"
 
 # =============================================================================
 # Helper Functions
@@ -204,7 +204,7 @@ run_tests() {
     log_step "Running test '$test_type' on $target..."
 
     # Venv activation prefix for individual commands
-    local venv_act="source $dest/.venv/bin/activate 2>/dev/null;"
+    local venv_act="source $dest/venv/bin/activate 2>/dev/null;"
 
     case "$test_type" in
         # --- Test suites (run via run_tests.sh, activates venv itself) ---

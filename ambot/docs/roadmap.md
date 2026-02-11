@@ -1,6 +1,6 @@
 # Ambot - Roadmap
 
-> Last updated: 2026-02-10
+> Last updated: 2026-02-11
 
 ## Overview
 
@@ -269,8 +269,8 @@ This creates the illusion of purposeful exploration without needing SLAM, odomet
 - [x] Create README.md for ambot folder -- Completed 2026-02-04
 
 ### Automation & Tooling -- Completed 2026-02-04, Updated 2026-02-05
-- [x] **Python virtual environment (.venv)** -- Added 2026-02-05
-  - `.venv` created with `--system-site-packages` (accesses apt packages)
+- [x] **Python virtual environment (venv)** -- Added 2026-02-05
+  - `venv/` created with `--system-site-packages` (accesses apt packages)
   - All scripts auto-activate venv before running Python
   - Excluded from rsync and git
   - Solves SSH vs desktop terminal package visibility issues
@@ -280,15 +280,15 @@ This creates the illusion of purposeful exploration without needing SLAM, odomet
   - JSON output for automation: `--json`
   - Auto-detects platform and connected hardware
   - Environment precheck validates package availability at runtime
-  - Auto-activates `.venv` at startup
+  - Auto-activates `venv` at startup
 - [x] **Deploy script enhancements** (`deploy.sh`)
   - Unified `--test=TYPE`: suites (all/quick/hardware/integration/verify), individual (gpio/camera/lidar/motors), diagnostics (check/env/env-fix)
   - One command for deploy + test: `./deploy.sh rpi --test=all`
   - Environment diagnostic: `./deploy.sh rpi --test=env`
-  - Excludes `.venv/` from rsync sync
+  - Excludes `venv/` from rsync sync
   - Activates venv for individual test commands via SSH
 - [x] **Install script** (`install.sh`)
-  - Creates `.venv` with `--system-site-packages`
+  - Creates `venv/` with `--system-site-packages`
   - Installs pip packages into venv (no `--break-system-packages` needed)
   - Installs apt system packages (RPi.GPIO, tkinter, PIL.ImageTk)
   - Idempotent, component-selectable (`--pathfinder`, `--locomotion`, `--gui`)

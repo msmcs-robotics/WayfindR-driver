@@ -5,7 +5,7 @@
 # Installs all system packages and Python dependencies for ambot components.
 # This script is IDEMPOTENT - safe to run multiple times.
 #
-# Python packages are installed into a .venv virtual environment inside the
+# Python packages are installed into a venv virtual environment inside the
 # ambot folder. The venv uses --system-site-packages so apt-installed packages
 # (RPi.GPIO, tkinter, etc.) are accessible.
 #
@@ -23,7 +23,7 @@
 #   sudo ./install.sh --docker     # Include Docker for bootylicious
 #
 # This script requires sudo for system packages.
-# Python pip packages are installed into .venv (no --break-system-packages needed).
+# Python pip packages are installed into venv (no --break-system-packages needed).
 
 set -e
 
@@ -145,7 +145,7 @@ is_apt_installed() {
 }
 
 # Venv configuration
-VENV_DIR="$SCRIPT_DIR/.venv"
+VENV_DIR="$SCRIPT_DIR/venv"
 
 # Check if Python package is installed (in venv or system)
 is_pip_installed() {
@@ -210,7 +210,7 @@ install_pip() {
         return 1
     fi
 
-    log_info "Installing Python: $pkg (into .venv)..."
+    log_info "Installing Python: $pkg (into venv)..."
     $venv_pip install "$pkg" > /dev/null 2>&1
     log_success "Installed Python: $pkg"
 }
@@ -532,7 +532,7 @@ for mod in ['cv2', 'numpy', 'matplotlib', 'serial', 'PIL']:
     try:
         m = importlib.import_module(mod)
         f = getattr(m, '__file__', 'built-in')
-        if '.venv' in str(f):
+        if 'venv' in str(f):
             loc = 'venv'
         elif '.local' in str(f):
             loc = 'user-local'

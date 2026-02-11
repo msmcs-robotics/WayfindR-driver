@@ -59,8 +59,8 @@ def find_python_files(root_dir: str) -> list:
     """Find all Python files in directory tree."""
     files = []
     for root, dirs, filenames in os.walk(root_dir):
-        # Skip __pycache__ and hidden directories
-        dirs[:] = [d for d in dirs if not d.startswith('.') and d != '__pycache__']
+        # Skip __pycache__, hidden directories, and virtual environments
+        dirs[:] = [d for d in dirs if not d.startswith('.') and d not in ('__pycache__', 'venv')]
         for filename in filenames:
             if filename.endswith('.py'):
                 files.append(os.path.join(root, filename))

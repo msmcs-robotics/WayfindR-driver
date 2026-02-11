@@ -1,6 +1,6 @@
 # Ambot - Todo & Roadmap
 
-> Last updated: 2026-02-10 (Session 9)
+> Last updated: 2026-02-11 (Session 10)
 
 ---
 
@@ -58,20 +58,23 @@
 
 _Start here when resuming work_
 
-1. **Test GUIs on RPi with display** - Run `gui_face_tracker.py`, `gui_lidar_nav.py` on RPi desktop, verify interactive controls
-2. **Calibrate LiDAR front orientation** - Run `gui_lidar_nav.py`, place object in front, press 'c' to calibrate
-3. **Wire and test MPU6050 IMU** - Wire GY-521 (VCC→Pin1, GND→Pin9, SCL→Pin5, SDA→Pin3), run `test_imu_calibrate.py`
-4. **Fix motor power** - Motors heard trying to spin but didn't move. Check battery voltage / try stronger power supply
-5. **Combine LiDAR + IMU** - Use IMU heading with LiDAR front offset for consistent orientation
-6. **Create wandering_demo_3.py** - LLM-integrated wandering (requires Jetson or API)
+1. **Improve face tracker** - Horizontal centering: orient robot so tracked face is centered horizontally. Don't worry about vertical (needs servos later). Vector from image center to each face, track face closest to center.
+2. **Clean up LiDAR nav GUI** - Reduce visual clutter, smooth movement intention (currently jumps around). Show longest clearance + intended heading clearly.
+3. **Basic wandering logic** - Simple pre-SLAM wandering without odometry/SLAM. Just pick directions based on clearance. No mapping required yet.
+4. **Calibrate LiDAR front orientation** - Run `gui_lidar_nav.py`, place object in front, press 'c' to calibrate
+5. **Wire and test MPU6050 IMU** - Wire GY-521 (VCC→Pin1, GND→Pin9, SCL→Pin5, SDA→Pin3), run `test_imu_calibrate.py`
+6. **Fix motor power** - Motors heard trying to spin but didn't move. Check battery voltage / try stronger power supply
+7. **Combine LiDAR + IMU** - Use IMU heading with LiDAR front offset for consistent orientation
 
 ## In Progress
 
 _Tasks actively being worked on_
 
+- [x] Face tracker GUI verified on RPi desktop (`python3 tests/gui_face_tracker.py`)
+- [x] LiDAR nav GUI verified on RPi desktop (`python3 tests/gui_lidar_nav.py`)
+- [ ] Improve face tracker: horizontal centering logic, track nearest-to-center face
+- [ ] Clean up LiDAR nav: reduce clutter, smooth heading intention
 - [ ] Fix motor power issue (motors tried to spin but didn't move — underpowered?)
-- [ ] Test face tracker GUI on RPi with display (`python3 tests/gui_face_tracker.py`)
-- [ ] Test LiDAR nav GUI on RPi with display (`python3 tests/gui_lidar_nav.py`)
 - [ ] Wire and calibrate MPU6050 IMU on RPi (`python3 tests/test_imu_calibrate.py`)
 - [ ] Test real-world wandering with both motors (`python3 wandering_demo_1.py`)
 
@@ -124,6 +127,24 @@ _Lower priority, do when time permits_
 - [ ] Voice interaction (STT/TTS via Android device)
 
 ## Recently Completed
+
+_Session 10 - 2026-02-11_
+
+- [x] **Renamed `.venv` → `venv`** - Made virtual environment folder visible (not hidden)
+  - Updated all scripts: `deploy.sh`, `run_tests.sh`, `install.sh`, `rsync-to-jetson.sh`
+  - Updated `.gitignore`, docs (todo.md, roadmap.md)
+  - Renamed on RPi, fixed internal venv paths (activate, pyvenv.cfg)
+  - Fixed `verify_all_imports.py` to exclude `venv/` directory from file scan
+- [x] **Fixed OpenCV GUI support on RPi** - Switched from pip `opencv-python-headless` (no GUI) to apt `python3-opencv` (Qt5 backend)
+  - Installed `opencv-data` for Haar cascade files
+  - `cv2.imshow()` now works on RPi desktop
+- [x] **Verified GUI demos on RPi desktop** - Both `gui_face_tracker.py` and `gui_lidar_nav.py` run on RPi desktop with display
+- [x] **Reverted `.bashrc`/`.profile` venv auto-activation** - Decided against auto-sourcing venv in shell configs. Scripts handle venv activation themselves.
+- [x] **Design decisions documented**:
+  - Venv activation: handled by deploy scripts and `run_tests.sh`, not shell login configs
+  - Face tracking: horizontal centering priority (vertical needs servos later)
+  - Wandering: basic pre-SLAM logic without odometry, no SLAM until ROS2
+  - LiDAR nav: needs smoothing to reduce visual clutter and heading jitter
 
 _Session 9 - 2026-02-10_
 
@@ -224,10 +245,10 @@ _Session 8 - 2026-02-06_
 
 _Session 7 - 2026-02-05_
 
-- [x] **Switched to .venv approach** - Clean Python virtual environment instead of system-wide pip hacks
-  - Created `.venv` with `--system-site-packages` (accesses apt packages like RPi.GPIO, tkinter)
+- [x] **Switched to venv approach** - Clean Python virtual environment instead of system-wide pip hacks
+  - Created `venv` with `--system-site-packages` (accesses apt packages like RPi.GPIO, tkinter)
   - `run_tests.sh` auto-activates venv
-  - `deploy.sh` activates venv for individual test commands, excludes `.venv` from rsync
+  - `deploy.sh` activates venv for individual test commands, excludes `venv` from rsync
   - `install.sh` creates venv and installs pip packages into it
   - `.gitignore` updated (both root and ambot)
 - [x] **Fixed PIL ImageTk import error** - Installed `python3-pil.imagetk` (separate Debian apt package)
@@ -241,7 +262,7 @@ _Session 6 - 2026-02-05_
 - [x] **Diagnosed SSH vs desktop terminal Python issue** - Packages in `~/.local/` not found from desktop
   - Root cause: `pip3 install --break-system-packages` (as user) installs to `~/.local/lib/python3.13/site-packages/`
   - RPi desktop (labwc/Wayland + lxterminal) may not load user site-packages
-  - Fix: Switched to .venv approach (Session 7)
+  - Fix: Switched to venv approach (Session 7)
 - [x] **Environment diagnostic tool** - `scripts/env_diagnostic.py`
   - Compares SSH vs desktop terminal environments
   - Shows package locations (user-local vs system vs system-local)
@@ -251,7 +272,7 @@ _Session 6 - 2026-02-05_
   - Environment precheck now validates packages at runtime
   - All hardware tests still passing (camera, LiDAR, GPIO)
 - [x] **Updated install.sh** - Venv-based package installation
-  - Creates `.venv` with `--system-site-packages`
+  - Creates `venv` with `--system-site-packages`
   - Installs pip packages into venv (no `--break-system-packages` needed)
   - Added `check_environment()` diagnostic to verification step
 - [x] **Updated deploy.sh** - Added `env` and `env-fix` test types, venv activation
@@ -439,12 +460,12 @@ ambot/
 ./deploy.sh rpi --test=env-fix      # Deploy + fix packages system-wide
 
 # Install dependencies on RPi (run ON the RPi)
-sudo ./install.sh                   # Full install (creates .venv + installs packages)
+sudo ./install.sh                   # Full install (creates venv + installs packages)
 sudo ./install.sh --check           # Check what's installed
 sudo ./install.sh --gui             # Include GUI packages (tkinter, ImageTk, matplotlib)
 
 # Environment diagnostic (run ON RPi)
-source .venv/bin/activate           # Activate venv first (or scripts do it automatically)
+source venv/bin/activate            # Activate venv first (or scripts do it automatically)
 python3 scripts/env_diagnostic.py            # Full diagnostic
 python3 scripts/env_diagnostic.py --json     # JSON for comparison
 
@@ -569,11 +590,13 @@ Scripts should work on both Raspberry Pi and Jetson with minimal changes:
 
 ## Notes
 
-- **Python packages use .venv** inside `ambot/` folder
+- **Python packages use `venv/`** inside `ambot/` folder
   - Venv created with `--system-site-packages` (sees apt packages: RPi.GPIO, tkinter, PIL.ImageTk)
-  - Pip packages installed into `.venv/` (pyserial, numpy, matplotlib, opencv-python-headless)
+  - Pip packages installed into `venv/` (pyserial, numpy, matplotlib, smbus2)
+  - OpenCV: apt `python3-opencv` (Qt5 GUI) + `opencv-data` (cascade files) — NOT pip headless
   - Scripts auto-activate venv (`run_tests.sh`, `deploy.sh` individual commands)
-  - `.venv/` excluded from rsync and git
+  - Venv NOT auto-sourced in `.bashrc`/`.profile` — explicit activation only
+  - `venv/` excluded from rsync and git
   - Use `./deploy.sh rpi --test=env` to diagnose environment
 - **LiDAR is LD19** (YOUYEETOO/LDRobot), NOT RPLidar C1M1
   - Uses 230400 baud (not 460800)
