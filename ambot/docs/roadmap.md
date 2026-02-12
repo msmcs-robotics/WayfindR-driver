@@ -1,6 +1,6 @@
 # Ambot - Roadmap
 
-> Last updated: 2026-02-11
+> Last updated: 2026-02-12
 
 ## Overview
 
@@ -27,14 +27,17 @@ This roadmap tracks project-level features and milestones. For immediate tasks, 
 ## Milestone 1: System Inventory & Environment Setup
 
 ### Jetson Orin Nano Setup
-- [ ] Resolve "no space left on device" issue (user handling, then verify)
-- [ ] Audit disk usage: Docker images, unused packages, logs, cache
-- [ ] SSH into Jetson and inventory installed packages/toolkits
-- [ ] Document GPU, RAM, storage, and OS version
-- [ ] Document installed NVIDIA toolkits and versions
-- [ ] Debug and fix Docker installation issues
-- [ ] Verify Docker Compose works with a test container
-- [ ] Document all findings in `docs/findings/`
+- [x] ~~Resolve "no space left on device" issue~~ — Not applicable, 86 GB free -- 2026-02-12
+- [x] SSH into Jetson and inventory installed packages/toolkits -- 2026-02-12
+- [x] Document GPU, RAM, storage, and OS version -- JetPack R36.4.4, 7.4 GiB, CUDA 12.6 -- 2026-02-12
+- [x] Document installed NVIDIA toolkits and versions -- Driver 540.4.0, Container Toolkit 1.16.2 -- 2026-02-12
+- [x] Docker working (28.2.2), Compose (v2.36.2), NVIDIA GPU runtime verified -- 2026-02-12
+- [x] Document all findings in `bootylicious/docs/findings/jetson-system-inventory.md` -- 2026-02-12
+- [x] Install Ollama 0.6.2 and pull tinyllama model (637 MB) -- 2026-02-12
+- [x] Start and test RAG Docker stack (PostgreSQL + Redis + FastAPI all healthy) -- 2026-02-12
+- [x] Ollama configured for Docker access (`OLLAMA_HOST=0.0.0.0`, bridge gateway URL) -- 2026-02-12
+- [x] Ingest test documents into RAG knowledge base (3 docs, 3 chunks — search + ask verified) -- 2026-02-12
+- [x] Pulled llama3.2:3b model (2.0 GB, better quality than tinyllama) -- 2026-02-12
 
 ### Raspberry Pi Setup
 - [x] Obtain Pi IP address, username, and password -- Completed 2026-02-03
@@ -44,9 +47,10 @@ This roadmap tracks project-level features and milestones. For immediate tasks, 
 - [x] Document all findings in `docs/findings/` -- Completed
 
 ### Development Environment
-- [x] Set up SSH key-based access to both devices -- RPi done, Jetson pending
-- [x] Document SSH connection procedures -- In `connections.md` and `docs/todo.md`
-- [x] Verify network connectivity between devices -- RPi: 10.33.224.1
+- [x] Set up SSH key-based access to both devices -- RPi done, Jetson done (id_git) -- 2026-02-12
+- [x] Document SSH connection procedures -- `connections.md`, SSH config (`ssh jetson` / `ssh rpi`)
+- [x] Verify network connectivity between devices -- RPi: 10.33.224.1, Jetson: 10.33.255.82
+- [x] NOPASSWD sudo configured on Jetson -- 2026-02-12
 
 ---
 
@@ -61,14 +65,13 @@ This roadmap tracks project-level features and milestones. For immediate tasks, 
 - [ ] Create basic conversation loop (text in -> text out)
 
 ### RAG System
-- [ ] Adapt rag-bootstrap Docker Compose for Jetson (ARM64)
-  - Dependencies: Docker working on Jetson
-- [ ] Deploy PostgreSQL + pgvector container
-- [ ] Deploy Redis container
-- [ ] Deploy FastAPI RAG API container
-- [ ] Test document ingestion pipeline
-- [ ] Test search (semantic, keyword, hybrid)
-- [ ] Integrate RAG search results into LLM prompt context
+- [x] Adapt rag-bootstrap Docker Compose for Jetson (ARM64) -- 2026-02-12
+- [x] Deploy PostgreSQL + pgvector container (512 MB limit) -- 2026-02-12
+- [x] Deploy Redis container (256 MB limit) -- 2026-02-12
+- [x] Deploy FastAPI RAG API container (sentence-transformers + Ollama backend) -- 2026-02-12
+- [x] Test document ingestion pipeline (3 docs, 3 chunks) -- 2026-02-12
+- [x] Test search (semantic, keyword, hybrid) -- 2026-02-12
+- [x] Test RAG ask pipeline (search + LLM generation with sources) -- 2026-02-12
 - [ ] Benchmark resource usage (CPU/RAM) of RAG stack alongside LLM
 
 ### Visual System (Person Detection)
@@ -163,13 +166,14 @@ This creates the illusion of purposeful exploration without needing SLAM, odomet
 
 ---
 
-## Milestone 4: Integration & Communication
+## Milestone 4: Single-Platform Integration
 
-- [ ] Define communication protocol between Jetson and Pi (REST API / MQTT / serial)
-- [ ] Implement Jetson -> Pi movement commands
-- [ ] Implement Pi -> Jetson sensor status updates
-- [ ] Test end-to-end: person detected -> conversation + navigation
-- [ ] Integration testing with both systems running
+> **Updated 2026-02-12**: No inter-device communication. All components run on a single platform (Jetson or RPi). Integration is in-process, not over the network.
+
+- [ ] Integrate pathfinder + locomotion + bootylicious on single platform
+- [ ] Test end-to-end: person detected -> conversation + navigation (all on one device)
+- [ ] Demo 3 (`wandering_demo_3.py`): LLM-driven behavior selection
+- [ ] Benchmark full-stack resource usage on Jetson (LLM + RAG + sensors + motors)
 
 ---
 
@@ -311,7 +315,7 @@ This creates the illusion of purposeful exploration without needing SLAM, odomet
 
 ## Notes
 
-- **Platform-agnostic**: Each component can run on Jetson or Raspberry Pi as needed
+- **Single-platform design**: All components run on the same device (Jetson or RPi) — no inter-device communication
 - **Three independent components**: bootylicious (brain), locomotion (motors), pathfinder (sensing)
 - Developer teams can work independently on their respective components
 - Python-first approach; C port is a future optimization milestone

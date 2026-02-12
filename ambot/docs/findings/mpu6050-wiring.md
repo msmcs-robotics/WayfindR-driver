@@ -131,6 +131,109 @@ The MPU6050 axes are printed on the GY-521 board. For heading (yaw):
 - **I2C bus speed**: Default 100kHz. Can increase to 400kHz via `dtparam=i2c_arm_baudrate=400000` in config.txt for faster reads, but 100kHz is fine for our ~100Hz polling.
 - **No interrupt pin needed**: We poll at ~100Hz in the behavior loop. INT pin would be for FIFO-based reads (overkill for our use case).
 
+## Wiring Diagram (Mermaid)
+
+```mermaid
+graph LR
+    subgraph GY521["GY-521 Breakout Board"]
+        VCC_S["VCC"]
+        GND_S["GND"]
+        SCL_S["SCL"]
+        SDA_S["SDA"]
+        AD0_S["AD0"]
+        INT_S["INT"]
+        XDA_S["XDA"]
+        XCL_S["XCL"]
+    end
+
+    subgraph RPi3B["Raspberry Pi 3B (BOARD Pins)"]
+        PIN1["Pin 1 — 3.3V"]
+        PIN3["Pin 3 — SDA1 (GPIO2)"]
+        PIN5["Pin 5 — SCL1 (GPIO3)"]
+        PIN9["Pin 9 — GND"]
+    end
+
+    PIN1 -->|"3.3V Power"| VCC_S
+    PIN9 -->|"Ground"| GND_S
+    PIN5 -->|"I2C Clock"| SCL_S
+    PIN3 -->|"I2C Data"| SDA_S
+
+    style GY521 fill:#2d5016,stroke:#4a8c28,color:#fff
+    style RPi3B fill:#1a3a5c,stroke:#2d6da3,color:#fff
+    style PIN1 fill:#cc3333,color:#fff
+    style PIN9 fill:#333,color:#fff
+    style PIN3 fill:#3366cc,color:#fff
+    style PIN5 fill:#3366cc,color:#fff
+    style AD0_S fill:#666,color:#aaa
+    style INT_S fill:#666,color:#aaa
+    style XDA_S fill:#666,color:#aaa
+    style XCL_S fill:#666,color:#aaa
+```
+
+### RPi 3B Full Pinout Context
+
+```mermaid
+graph TB
+    subgraph HEADER["RPi 3B GPIO Header — AMBOT Pin Allocation"]
+        direction LR
+        subgraph LEFT["Left Column (Odd Pins)"]
+            P1["① 3.3V — MPU6050 VCC 🔴"]
+            P3["③ SDA1 — MPU6050 SDA 🔵"]
+            P5["⑤ SCL1 — MPU6050 SCL 🔵"]
+            P7["⑦ GPIO4"]
+            P9["⑨ GND — MPU6050 GND ⚫"]
+            P11["⑪ GPIO17 — L298N IN1 🟢"]
+            P13["⑬ GPIO27 — L298N IN2 🟢"]
+            P15["⑮ GPIO22 — L298N IN3 🟢"]
+            P17["⑰ 3.3V"]
+            P19["⑲ GPIO10"]
+            P21["㉑ GPIO9"]
+            P23["㉓ GPIO11"]
+            P25["㉕ GND"]
+            P27["㉗ ID_SD"]
+            P29["㉙ GPIO5"]
+            P31["㉛ GPIO6"]
+            P33["㉝ GPIO13 — L298N ENA 🟢"]
+        end
+        subgraph RIGHT["Right Column (Even Pins)"]
+            P2["② 5V"]
+            P4["④ 5V"]
+            P6["⑥ GND — L298N GND 🟤"]
+            P8["⑧ GPIO14"]
+            P10["⑩ GPIO15"]
+            P12["⑫ GPIO18 — L298N IN4 🟢"]
+            P14["⑭ GND"]
+            P16["⑯ GPIO23 — L298N ENB 🟢"]
+            P18["⑱ GPIO24"]
+            P20["⑳ GND"]
+            P22["㉒ GPIO25"]
+            P24["㉔ GPIO8"]
+            P26["㉖ GPIO7"]
+            P28["㉘ ID_SC"]
+            P30["㉚ GND"]
+            P32["㉜ GPIO12"]
+            P34["㉞ GND"]
+        end
+    end
+
+    style P1 fill:#cc3333,color:#fff
+    style P3 fill:#3366cc,color:#fff
+    style P5 fill:#3366cc,color:#fff
+    style P9 fill:#333,color:#fff
+    style P6 fill:#8B4513,color:#fff
+    style P11 fill:#228B22,color:#fff
+    style P13 fill:#228B22,color:#fff
+    style P15 fill:#228B22,color:#fff
+    style P12 fill:#228B22,color:#fff
+    style P16 fill:#228B22,color:#fff
+    style P33 fill:#228B22,color:#fff
+    style HEADER fill:#1a1a2e,stroke:#555,color:#ddd
+```
+
+**Legend**: 🔴 Power | 🔵 I2C (MPU6050) | ⚫ Ground | 🟢 Motor (L298N) | 🟤 Motor GND
+
+**No pin conflicts** — MPU6050 uses I2C bus (pins 1,3,5,9), motors use GPIO (pins 6,11,13,15,16,18,33). LiDAR and camera connect via USB.
+
 ## Software
 
 - Driver: `pathfinder/imu.py` — `IMU` class with gyro heading integration

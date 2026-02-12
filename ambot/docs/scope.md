@@ -1,19 +1,19 @@
 # Ambot - Scope
 
-> Last updated: 2026-01-29
-> Status: Draft
+> Last updated: 2026-02-12
+> Status: Active
 
 ---
 
 ## Overview
 
-Ambot is an autonomous conversational robot platform with three independent components that can be deployed to Jetson Orin Nano or Raspberry Pi as needed:
+Ambot is an autonomous conversational robot platform with three independent components deployed to a **single platform** (either Jetson Orin Nano or Raspberry Pi — no inter-device communication):
 
 - **bootylicious** - LLM inference, RAG knowledge retrieval, visual person detection
 - **locomotion** - Motor control for differential drive robots (YAHBOOM G1 / TB6612FNG)
-- **pathfinder** - LiDAR-based wandering and obstacle avoidance (RPLidar C1M1) - NO SLAM, just demo wandering
+- **pathfinder** - LiDAR-based wandering and obstacle avoidance (LD19) - NO SLAM, just demo wandering
 
-The project enables multiple developer teams to work independently on their respective subsystems while targeting a unified robot. Each component has its own deployment scripts and can run on either platform.
+The project enables multiple developer teams to work independently on their respective subsystems while targeting a unified robot. Each component has its own deployment scripts and can run on either platform. All components run on the same device — there is no Jetson-to-RPi communication protocol.
 
 ## Objectives
 
@@ -50,11 +50,11 @@ The project enables multiple developer teams to work independently on their resp
 ### Resource Requirements
 *Hardware, software, dependencies, services*
 
-- [ ] Jetson Orin Nano (user: ambot, IP: 10.33.183.100)
-- [ ] Raspberry Pi with Ubuntu (IP/credentials TBD)
-- [ ] USB camera for Jetson (not yet connected)
-- [ ] LiDAR sensor (RPLidar or compatible) for Raspberry Pi
-- [ ] Docker and Docker Compose on Jetson
+- [x] Jetson Orin Nano (user: georgejetson, IP: 10.33.255.82) — JetPack R36.4.4, CUDA 12.6, 7.4 GiB
+- [x] Raspberry Pi 3B (user: pi, IP: 10.33.224.1) — Debian 13, 906 MB RAM
+- [x] USB camera (EMEET SmartCam S600) on RPi — face detection working
+- [x] LiDAR sensor (LD19) on RPi — 230400 baud, ~467 pts/scan
+- [x] Docker 28.2.2 + Compose v2.36.2 on Jetson — NVIDIA GPU runtime configured
 - [ ] Small display for text output (model TBD)
 
 ## Constraints
@@ -76,8 +76,8 @@ The project enables multiple developer teams to work independently on their resp
 - [ASSUMED] NVIDIA toolkits are partially installed on the Jetson already
 - [ASSUMED] Docker is installed on the Jetson (but may have configuration issues)
 - [ASSUMED] RPLidar or compatible LiDAR will be used on the Pi (based on WayfindR-driver)
-- [ASSUMED] Both devices are on the same local network for inter-device communication
-- [VERIFIED] Jetson SSH: `ssh ambot@10.33.183.100`
+- [UPDATED] Single-platform design — all components run on one device (no inter-device communication needed)
+- [VERIFIED] Jetson SSH: `ssh jetson` (georgejetson@10.33.255.82)
 
 ## Boundaries
 
@@ -107,17 +107,19 @@ The project enables multiple developer teams to work independently on their resp
 | Decision | Choice | Rationale | Date |
 |----------|--------|-----------|------|
 | LLM Framework | nanoLLM (NVIDIA Jetson AI Lab) | Optimized for Jetson hardware, GPU-accelerated | 2026-01-27 |
-| LLM Models | TinyLlama-1.1B, Phi-2 (candidates) | Small enough for Jetson Orin Nano | 2026-01-27 |
+| LLM Models | TinyLlama-1.1B, Llama-3.2-3B (active) | Small enough for Jetson Orin Nano | 2026-01-27 |
 | RAG Stack | rag-bootstrap (pgvector + Redis + FastAPI) | Proven stack, containerized, MCP-compatible | 2026-01-27 |
 | Embedding Model | all-MiniLM-L6-v2 (384-dim) | Lightweight (~80MB), good quality | 2026-01-27 |
 | LiDAR Approach (initial) | Custom Python (no ROS2) | Start simple, get basic system working first | 2026-01-27 |
 | LiDAR Approach (future) | ROS2 for SLAM/advanced nav | Leverage WayfindR-driver ROS2 stack when ready to iterate | 2026-01-27 |
 | Wandering Algorithms | MaxClearance, WallFollower, RandomWander | Simple demo behaviors without SLAM | 2026-01-29 |
+| Jetson OS | JetPack R36.4.4 | Pre-installed on Jetson Orin Nano | 2026-02-12 |
+| Container Runtime | Docker 28.2.2 (pre-installed) | Works with NVIDIA Container Toolkit 1.16.2 for GPU access | 2026-02-12 |
 | Output Method | Text display (no speaker) | Simplest first iteration | 2026-01-27 |
 
 ## Integration Points
 
-- **Jetson <-> Raspberry Pi**: Future communication protocol TBD (likely REST API or MQTT)
+- **Single-platform deployment**: All components run on the same device (no inter-device communication)
 - **rag-bootstrap**: Template for RAG system deployment on Jetson
 - **WayfindR-driver**: Reference codebase for LiDAR code and motor control patterns
 - **External LLM optimization project**: Will provide optimized models in the future
@@ -125,23 +127,23 @@ The project enables multiple developer teams to work independently on their resp
 
 ## Open Questions
 
-- [ ] What are the actual available resources on the Jetson Orin Nano? (GPU memory, RAM, storage)
-- [ ] What NVIDIA toolkits are already installed on the Jetson?
-- [ ] Jetson currently has "no space left on device" error - needs disk cleanup before proceeding
-- [ ] What Docker issues were encountered on the Jetson?
-- [ ] What is the Raspberry Pi IP address, username, and password?
-- [ ] What specific LiDAR sensor will be used on the Pi?
+- [x] What are the actual available resources on the Jetson Orin Nano? — **7.4 GiB RAM, 113GB disk (86GB free), Orin GPU, CUDA 12.6**
+- [x] What NVIDIA toolkits are already installed on the Jetson? — **Driver 540.4.0, CUDA 12.6, NVIDIA Container Toolkit 1.16.2**
+- [x] ~~Jetson currently has "no space left on device" error~~ — **RESOLVED: 86GB free, no space issue**
+- [x] ~~What Docker issues were encountered on the Jetson?~~ — **Docker 28.2.2 working, just needed user group membership**
+- [x] What is the Raspberry Pi IP address, username, and password? — **pi@10.33.224.1, password: erau**
+- [x] What specific LiDAR sensor will be used on the Pi? — **LD19 (YOUYEETOO/LDRobot), 230400 baud**
+- [x] Can the Jetson run nanoLLM + RAG Docker stack concurrently without resource contention? — **Yes, ~3.6GB total, ~3.8GB headroom**
 - [ ] What display will be used for text output on the Jetson?
-- [ ] How will Jetson and Pi communicate with each other?
-- [ ] Can the Jetson run nanoLLM + RAG Docker stack concurrently without resource contention?
+- [x] ~~How will Jetson and Pi communicate with each other?~~ — **N/A: Single-platform design, no inter-device comms**
 - [ ] Should an Android device be used for STT/TTS instead of on-device processing?
 
 ## Critical Notes
 
-- The Jetson has `user::ambot` / `password::AmbotRules` - do not commit credentials to public repos
-- Docker on the Jetson may have existing configuration issues that need debugging
-- Some NVIDIA packages may already be installed but need to be inventoried
-- The rag-bootstrap system needs ~2.5-3GB RAM minimum; verify Jetson has headroom after nanoLLM
+- The Jetson has `user::georgejetson` / `password::Ambot` - do not commit credentials to public repos
+- The RPi has `user::pi` / `password::erau` - do not commit credentials to public repos
+- Docker on Jetson is working (28.2.2) — user needs logout/login after `usermod -aG docker`
+- RAG stack verified: ~3.6 GB total (LLM + RAG + OS), ~3.8 GB headroom on 7.4 GiB system
 
 ---
 
@@ -151,6 +153,7 @@ The project enables multiple developer teams to work independently on their resp
 |------|---------|-----|
 | 2026-01-27 | Initial draft from project kickoff context | LLM |
 | 2026-01-29 | Reorganized into three components: bootylicious, locomotion, pathfinder | LLM |
+| 2026-02-12 | Updated to single-platform design (no Jetson↔RPi comms); added Jetson details | LLM |
 
 ---
 

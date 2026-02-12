@@ -213,7 +213,21 @@ verify_docker() {
         log_success "User $REAL_USER in docker group"
     else
         usermod -aG docker "$REAL_USER"
-        log_info "Added $REAL_USER to docker group (re-login required)"
+        log_warn "Added $REAL_USER to docker group"
+        log_warn "IMPORTANT: You must log out and back in (or run 'newgrp docker') for this to take effect!"
+        log_warn "Until then, you'll get 'permission denied' when running docker without sudo."
+    fi
+
+    # Docker socket permissions check
+    if [ -S /var/run/docker.sock ]; then
+        local sock_group
+        sock_group=$(stat -c '%G' /var/run/docker.sock 2>/dev/null)
+        if [ "$sock_group" = "docker" ]; then
+            log_success "Docker socket owned by docker group"
+        else
+            log_warn "Docker socket owned by '$sock_group' (expected 'docker')"
+            chgrp docker /var/run/docker.sock 2>/dev/null || true
+        fi
     fi
 
     # Test NVIDIA GPU access in Docker

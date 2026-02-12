@@ -1,6 +1,6 @@
 # Ambot - Todo & Roadmap
 
-> Last updated: 2026-02-11 (Session 10)
+> Last updated: 2026-02-12 (Session 12)
 
 ---
 
@@ -58,12 +58,16 @@
 
 _Start here when resuming work_
 
-1. **Calibrate LiDAR front orientation** - Run `gui_lidar_nav.py`, place object in front, press 'c' to calibrate
+### Raspberry Pi (Pathfinder + Locomotion)
+1. **Fix motor power** - Motors heard trying to spin but didn't move. Check battery voltage / try stronger power supply
 2. **Wire and test MPU6050 IMU** - Wire GY-521 (VCC→Pin1, GND→Pin9, SCL→Pin5, SDA→Pin3), run `test_imu_calibrate.py`
-3. **Fix motor power** - Motors heard trying to spin but didn't move. Check battery voltage / try stronger power supply
-4. **Combine LiDAR + IMU** - Use IMU heading with LiDAR front offset for consistent orientation
-5. **Basic wandering logic** - Simple pre-SLAM wandering without odometry/SLAM. Just pick directions based on clearance. No mapping required yet.
-6. **Test real-world wandering** - Once motors work, run `wandering_demo_1.py` with actual movement
+3. **Calibrate LiDAR front orientation** - Run `gui_lidar_nav.py`, place object in front, press 'c' to calibrate
+4. **Test real-world wandering** - Once motors work, run `wandering_demo_1.py` with actual movement
+
+### Jetson (Bootylicious)
+5. **Test llama3.2:3b model** - Upgraded from tinyllama (1.1B → 3B), test RAG ask quality
+6. **Ingest real EECS docs** - When available, ingest course documentation into RAG knowledge base
+7. **Benchmark Jetson resource usage** - Memory/CPU with RAG + Ollama running concurrently
 
 ## In Progress
 
@@ -80,7 +84,8 @@ _Tasks actively being worked on_
 
 _Tasks waiting on something (include reason)_
 
-- [ ] Jetson system inventory — **Blocked by**: Fresh Ubuntu 22.04 / JetPack 6.1 installation in progress
+- [x] ~~Jetson system inventory~~ — **RESOLVED**: Jetson online at 10.33.255.82, inventory complete (Session 11)
+- [ ] RAG knowledge base content — **Blocked by**: Waiting for documentation to ingest
 
 ## Up Next
 
@@ -91,12 +96,22 @@ _Priority queue for immediate work_
 - [ ] Test GUI diagnostics with display attached
 - [ ] Verify motor direction (adjust offsets in config.py if reversed)
 
-### Jetson (when available)
-- [ ] Complete Jetson first boot (set up user: ambot)
-- [ ] Set `JETSON_HOST` in `deploy.sh`
-- [ ] Deploy: `./deploy.sh jetson --bootstrap`
-- [ ] Test Ollama LLM deployment
-- [ ] Test RAG system with Docker
+### Jetson (georgejetson@10.33.255.82)
+- [x] Jetson online: JetPack R36.4.4, Ubuntu 22.04.5, CUDA 12.6, 7.4 GiB RAM, 86 GB free
+- [x] Set `JETSON_HOST` and `JETSON_USER` in `deploy.sh` and `rsync-to-jetson.sh`
+- [x] Rsync ambot folder to Jetson (`~/ambot/`)
+- [x] pip installed, Docker group configured, NVIDIA runtime set as default
+- [x] `install-jetson.sh` created (idempotent, nohup-safe)
+- [x] Ollama 0.6.2 installed, tinyllama model verified working
+- [x] Docker GPU access: `nvidia-smi` works inside containers (`default-runtime: nvidia`)
+- [x] RAG Docker stack running: PostgreSQL + Redis + FastAPI (all healthy)
+- [x] RAG API healthy: `curl http://localhost:8000/api/health` → all services green
+- [x] Ollama configured to listen on all interfaces (`OLLAMA_HOST=0.0.0.0`)
+- [x] RAG ingestion tested: 3 docs, search + ask pipeline working end-to-end
+- [x] Pulled llama3.2:3b model (2.0 GB, better quality than tinyllama 1.1B)
+- [ ] Test llama3.2:3b model with RAG ask pipeline
+- [ ] Ingest real EECS/course documents into knowledge base
+- [ ] Benchmark Jetson memory with full RAG stack running
 
 ### Integration
 - [x] Combine pathfinder + locomotion for basic wandering demo — **Done** (`wandering_demo_1.py`)
@@ -114,9 +129,9 @@ _Lower priority, do when time permits_
 - [ ] Sensor fusion combining LiDAR + IMU data
 - [ ] Camera facial recognition event system
 
-### Inter-Component Communication
-- [ ] Define protocol (REST API vs MQTT)
-- [ ] Pathfinder → Locomotion obstacle commands
+### Single-Platform Integration
+- [ ] Integrate all components on one device (no inter-device comms)
+- [ ] Demo 3: LLM-driven behavior selection (pathfinder + locomotion + bootylicious)
 - [ ] Pathfinder → Bootylicious event triggers (face detected, etc.)
 
 ### Future Vision (see roadmap.md Milestone 5)
@@ -125,6 +140,27 @@ _Lower priority, do when time permits_
 - [ ] Voice interaction (STT/TTS via Android device)
 
 ## Recently Completed
+
+_Session 12 - 2026-02-12_
+
+- [x] **Fixed jetson-monitor.sh buffering** - All watch functions now buffer output before displaying (no more jagged incremental rendering)
+- [x] **Pulled llama3.2:3b model on Jetson** - Upgraded from tinyllama 1.1B to llama 3.2 3B for better RAG quality
+- [x] **Added Mermaid JS wiring diagram to MPU6050 docs** - Two diagrams: GY-521↔RPi connections + full GPIO header pin allocation
+- [x] **Updated to single-platform design** - Removed Jetson↔RPi communication from scope/roadmap/todo; all components run on one device
+- [x] **Updated scope.md** - Single-platform design, resolved comms question, updated LLM models
+- [x] **Updated roadmap.md** - Milestone 4 rewritten for single-platform integration, marked RAG ingest + llama3.2 as done
+- [x] **Updated todo.md** - New session priorities, single-platform integration backlog, llama3.2 progress
+
+_Session 11 - 2026-02-12_
+
+- [x] **RAG Docker stack running on Jetson** - PostgreSQL + pgvector, Redis, FastAPI (all healthy)
+- [x] **Ollama connectivity fixed** - Bound to 0.0.0.0, Docker bridge gateway IP (172.18.0.1)
+- [x] **RAG pipeline validated end-to-end** - Ingest 3 docs → search → ask with tinyllama
+- [x] **Created jetson-monitor.sh** - Docker, logs, SSH, system, RAG health monitoring
+- [x] **Jetson auto-detection** - Monitor script detects Tegra kernel/device-tree for local mode
+- [x] **Docker permission documentation** - `docker-permission-fix.md` findings
+- [x] **Created install-jetson.sh** - Idempotent Jetson setup script
+- [x] **Created RAG knowledge base docs** - ambot-overview.md, jetson-setup.md, lidar-navigation.md
 
 _Session 10 - 2026-02-11_
 
@@ -379,8 +415,12 @@ _Session 1 - 2026-02-03_
 ambot/
 ├── bootylicious/          # LLM + RAG system (conversation brain)
 │   ├── deploy.sh          # Master deployment script
-│   ├── scripts/           # Setup scripts (Ollama, Docker, HuggingFace)
-│   ├── rag/               # RAG system (Docker)
+│   ├── scripts/           # Setup scripts (Ollama, Docker, rsync-to-jetson)
+│   ├── rag/               # RAG system (Docker Compose + FastAPI)
+│   ├── docs/              # Bootylicious-specific documentation
+│   │   ├── findings/      # Research & setup findings (Docker, Jetson inventory)
+│   │   ├── features/      # Feature documentation
+│   │   └── archive/       # Session summaries
 │   └── tests/             # System tests
 ├── locomotion/            # Motor control component (ONLY movement)
 │   ├── deploy.sh          # Deployment and diagnostics
@@ -406,10 +446,12 @@ ambot/
 │   ├── rpi-bootstrap-system.sh   # System packages + Docker
 │   ├── rpi-bootstrap-python.sh   # Python libraries
 │   ├── env_diagnostic.py  # Environment diagnostic (SSH vs desktop, package locations)
+│   ├── jetson-monitor.sh  # Jetson monitoring (Docker, SSH, system, RAG health)
 │   ├── network-refresh.sh # RPi network troubleshooting (run ON RPi)
 │   └── wsl-ssh-helper.sh  # WSL2 SSH helper (run FROM dev machine)
 ├── deploy.sh              # Master deployment script
-├── install.sh             # Comprehensive install script (sudo, idempotent)
+├── install.sh             # Comprehensive RPi install script (sudo, idempotent)
+├── install-jetson.sh      # Comprehensive Jetson install script (sudo, idempotent)
 ├── run_tests.sh           # Comprehensive test runner (run ON target device)
 ├── live_monitor.py        # Terminal-based sensor + system monitoring
 ├── wandering_demo_1.py   # Demo 1: LiDAR obstacle avoidance + motors
@@ -457,7 +499,10 @@ ambot/
 
 | Device | Status | Notes |
 |--------|--------|-------|
-| System | Pending | Ubuntu 22.04 (JetPack 6.1) being installed |
+| System | **Working** | Ubuntu 22.04.5, JetPack R36.4.4, CUDA 12.6, 7.4 GiB RAM |
+| Docker | **Working** | 28.2.2 + NVIDIA runtime default, Compose v2.36.2 |
+| Ollama | **Working** | 0.6.2, tinyllama 1.1B model loaded |
+| RAG Stack | **Working** | PostgreSQL + pgvector, Redis, FastAPI API |
 
 ## Quick Commands
 
@@ -548,7 +593,32 @@ python3 tests/test_imu_calibrate.py --quick           # Quick: bias + gravity on
 python3 tests/test_imu_calibrate.py --stream 10       # Stream raw data for 10s
 python3 tests/test_imu_calibrate.py --load             # Show saved calibration
 
-# SSH to RPi
+# Jetson monitoring (from WSL)
+./scripts/jetson-monitor.sh docker          # Watch Docker containers + stats
+./scripts/jetson-monitor.sh rag             # RAG health dashboard (API + Ollama + docs)
+./scripts/jetson-monitor.sh logs api        # Follow RAG API container logs
+./scripts/jetson-monitor.sh logs            # Follow all RAG container logs
+./scripts/jetson-monitor.sh ssh             # Watch SSH/remote connections
+./scripts/jetson-monitor.sh system          # CPU/mem/GPU/disk usage
+./scripts/jetson-monitor.sh all             # Combined overview
+./scripts/jetson-monitor.sh docker -n 5     # Custom refresh interval (5s)
+
+# Jetson install/setup (run ON Jetson or via SSH)
+sudo ./install-jetson.sh                    # Full install (all components)
+sudo ./install-jetson.sh --check            # Check what's installed
+sudo ./install-jetson.sh --inventory        # System inventory
+sudo ./install-jetson.sh --docker           # Docker setup only
+sudo ./install-jetson.sh --ollama           # Ollama install only
+sudo ./install-jetson.sh --rag              # Start RAG Docker stack
+
+# RAG API (Jetson)
+curl http://10.33.255.82:8000/api/health    # Health check from WSL
+curl http://localhost:8000/api/health       # Health check from Jetson
+curl -X POST http://10.33.255.82:8000/api/ask -H 'Content-Type: application/json' -d '{"question": "test"}'
+
+# SSH to RPi / Jetson
+ssh rpi                                     # RPi (via SSH config)
+ssh jetson                                  # Jetson (via SSH config)
 ssh pi@10.33.224.1
 
 # WSL2 SSH Helper (when SSH fails from WSL due to NAT)
@@ -598,7 +668,7 @@ Scripts should work on both Raspberry Pi and Jetson with minimal changes:
 | `wandering_demo_2.py` | ✅ | ✅ | Camera + LiDAR, same GPIO abstraction |
 | `wandering_demo_3.py` | ⚠️ | ✅ | Requires LLM (Jetson preferred) |
 | `install.sh` | ✅ | - | RPi-specific packages |
-| `install-jetson.sh` (future) | - | ✅ | Jetson-specific packages |
+| `install-jetson.sh` | - | ✅ | Jetson-specific: pip, Docker, Ollama, RAG |
 
 **Key differences handled by platform detection:**
 - GPIO: `RPi.GPIO` (RPi) vs `Jetson.GPIO` (Jetson)
