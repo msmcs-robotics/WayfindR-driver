@@ -22,7 +22,7 @@ AMBOT-SLAM is a ROS2 Humble SLAM implementation for the AMBOT robot platform. It
 ### Functional Requirements
 *What the system must do*
 
-- [ ] Publish LiDAR scans on `/scan` topic (support both LD19 and Slamtec C1M1 LiDARs)
+- [ ] Publish LiDAR scans on `/scan` topic (configurable: LD19 or Slamtec C1M1, one at a time)
 - [ ] Publish IMU data on `/imu/data` topic (MPU6050, I2C bus 1, addr 0x68)
 - [ ] Subscribe to `/cmd_vel` and drive L298N motors (differential drive)
 - [ ] Run SLAM Toolbox to build 2D occupancy grid maps
@@ -30,7 +30,8 @@ AMBOT-SLAM is a ROS2 Humble SLAM implementation for the AMBOT robot platform. It
 - [ ] Localize on a saved map using AMCL
 - [ ] Navigate autonomously to waypoints using Nav2
 - [ ] Publish proper TF tree: `map` -> `odom` -> `base_link` -> `laser` / `imu_link`
-- [ ] Provide teleop capability for manual driving and mapping
+- [ ] Web-based remote control dashboard (FastAPI) for manual driving over WiFi from any device
+- [ ] RC receiver support for physical manual control
 - [ ] Camera node for optional visual features (not required for core SLAM)
 
 ### Technical Requirements
@@ -61,7 +62,7 @@ AMBOT-SLAM is a ROS2 Humble SLAM implementation for the AMBOT robot platform. It
 |------------|--------|-----------|
 | ROS2 Humble only | LTS release, best package support for SLAM/Nav2 | No |
 | Ubuntu 22.04 required | ROS2 Humble binary packages target this OS | No |
-| Support both LD19 and C1M1 LiDARs | Both may be used depending on the robot build | No |
+| Configurable hardware (one sensor per type) | Support swappable LiDARs (LD19 or C1M1), cameras, IMUs — one active at a time, selected via config | No |
 | No cloud dependencies | Robot must operate fully offline | No |
 | Python-first nodes | Rapid development, consistent with ambot codebase | Yes |
 | Memory-conscious design | RPi has only 906MB RAM | No |
@@ -88,7 +89,8 @@ AMBOT-SLAM is a ROS2 Humble SLAM implementation for the AMBOT robot platform. It
 - AMCL localization with saved maps
 - Nav2 navigation stack (path planning, obstacle avoidance, recovery behaviors)
 - Waypoint navigation
-- Teleop for manual driving
+- Web-based control dashboard (FastAPI on robot, browser UI for driving over network)
+- RC receiver for physical manual control
 - Camera ROS2 node (optional, not blocking)
 - Wheel encoder integration (planned, not blocking)
 - Deploy scripts for RPi and Jetson
@@ -161,7 +163,7 @@ AMBOT-SLAM is a ROS2 Humble SLAM implementation for the AMBOT robot platform. It
 ## Critical Notes
 
 - **RPi OS change required (deferred)**: Current RPi runs Debian 13 / Python 3.13 for ambot. ROS2 Humble needs Ubuntu 22.04 / Python 3.10. Will re-image when ready to transition from ambot to ambot-slam. Not immediate.
-- **Two LiDAR models**: LD19 (230400 baud, LDRobot protocol) and C1M1 (460800 baud, Slamtec protocol). Different drivers needed for each. ROS2 research used C1M1; ambot uses LD19. Both must be supported.
+- **Swappable hardware**: System supports different models of each sensor type (e.g., LD19 or C1M1 for LiDAR), but only one of each runs at a time. Selection is config-based (launch parameters). Same principle applies to cameras, IMUs, etc.
 - **Left motor broken**: L298N left motor doesn't spin — wiring/power issue. Must fix before SLAM testing.
 - **Pin numbering**: ambot uses BOARD pin numbering for GPIO. ROS2 nodes should be consistent.
 - **Memory constraints**: RPi has 906MB RAM. ROS2 + SLAM Toolbox + Nav2 may be tight. Monitor memory usage.

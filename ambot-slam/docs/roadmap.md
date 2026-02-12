@@ -77,10 +77,15 @@ This roadmap tracks project-level features and milestones. For immediate tasks, 
 - [ ] Robot state publisher launch
 - [ ] Verify TF tree: `odom` -> `base_link` -> `laser_frame` / `imu_link`
 
-### Teleop & Basic Driving
-- [ ] Install `teleop_twist_keyboard`
+### Manual Control
 - [ ] Create bringup launch file (LiDAR + IMU + motors + robot_state_publisher)
-- [ ] Verify: can drive robot manually while viewing `/scan` in RViz on desktop
+- [ ] Web-based remote control dashboard (FastAPI on RPi/Jetson)
+  - Serves a browser UI for driving the robot over WiFi
+  - Publishes to `/cmd_vel`
+  - Accessible from any device on the network (phone, laptop, tablet)
+  - Useful for mapping sessions: drive robot through building while SLAM runs
+- [ ] Verify: can drive robot via web dashboard while viewing `/scan` in RViz on desktop
+- [ ] RC receiver for physical manual control (future, lower priority)
 
 ---
 
