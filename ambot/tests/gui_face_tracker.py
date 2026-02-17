@@ -8,13 +8,16 @@ for tracking. Draws a crosshair, bounding boxes on ALL faces, and direction
 vectors from frame center to each face.
 
 Usage:
-    python3 tests/gui_face_tracker.py                # Live GUI
+    python3 tests/gui_face_tracker.py                  # Live GUI (no motors)
+    python3 tests/gui_face_tracker.py --motors         # Live GUI + motor output
+    python3 tests/gui_face_tracker.py --motors --max-speed 30  # Cap at 30%
     python3 tests/gui_face_tracker.py --headless -n 5  # Save 5 frames
     python3 tests/gui_face_tracker.py --dead-zone 50   # Wider dead zone
 
 Controls:
     q - Quit
     s - Save screenshot
+    m - Toggle motors on/off (when --motors enabled)
     +/= - Increase tracking gain
     -/_ - Decrease tracking gain
 """
@@ -64,11 +67,37 @@ def load_face_cascade():
     return None
 
 
-def draw_motor_intention(frame, steer, base_speed=0.5, bar_width=120, bar_height=20):
+def create_motor_robot(driver_type="L298N"):
+    """Create a DifferentialDrive robot for motor output.
+
+    Returns (robot, driver_name) or (None, error_string) on failure.
+    """
+    try:
+        from locomotion.rpi_motors.drivers import DriverType
+        from locomotion.rpi_motors.factory import create_robot
+
+        driver_map = {
+            "L298N": DriverType.L298N,
+            "TB6612FNG": DriverType.TB6612FNG,
+            "DRV8833": DriverType.DRV8833,
+        }
+        dt = driver_map.get(driver_type.upper())
+        if dt is None:
+            return None, f"Unknown driver: {driver_type}"
+
+        robot = create_robot(driver_type=dt)
+        return robot, driver_type.upper()
+    except Exception as e:
+        return None, str(e)
+
+
+def draw_motor_intention(frame, steer, base_speed=0.5, bar_width=120, bar_height=20,
+                         motors_active=False, max_speed=40):
     """
     Draw motor speed bars at bottom of frame.
 
     steer: -1.0 (full left) to +1.0 (full right), 0 = straight.
+    Returns (left_speed, right_speed) as floats in [-1, 1].
     """
     import cv2
     h, w = frame.shape[:2]
@@ -129,9 +158,22 @@ def draw_motor_intention(frame, steer, base_speed=0.5, bar_width=120, bar_height
     tx = (w - text_size[0]) // 2
     cv2.putText(frame, direction, (tx, panel_y + 45), cv2.FONT_HERSHEY_SIMPLEX, 0.5, dir_color, 1)
 
+    # Motor status indicator
+    if motors_active:
+        motor_label = f"MOTORS ON ({max_speed}%)"
+        motor_color = (0, 180, 255)  # orange
+    else:
+        motor_label = "MOTORS OFF"
+        motor_color = (120, 120, 120)
+    cv2.putText(frame, motor_label, (w - 160, panel_y - 5),
+                cv2.FONT_HERSHEY_SIMPLEX, 0.4, motor_color, 1)
 
-def run_face_tracker(device=0, headless=False, max_captures=0, dead_zone=40, gain=0.8):
-    """Run the face tracking GUI."""
+    return left_speed, right_speed
+
+
+def run_face_tracker(device=0, headless=False, max_captures=0, dead_zone=40, gain=0.8,
+                     motors=False, driver_type="L298N", max_speed=40):
+    """Run the face tracking GUI with optional motor output."""
     import cv2
 
     # Open camera
@@ -160,9 +202,25 @@ def run_face_tracker(device=0, headless=False, max_captures=0, dead_zone=40, gai
         return 1
     print("Face cascade loaded")
 
+    # Motor setup
+    robot = None
+    motors_active = False
+    if motors:
+        print(f"Initializing motors ({driver_type}, max {max_speed}%)...")
+        robot, info = create_motor_robot(driver_type)
+        if robot is None:
+            print(f"WARNING: Motor init failed: {info}")
+            print("Continuing without motors")
+        else:
+            print(f"Motors ready: {info}")
+            motors_active = True
+
     # Print controls once at startup (instead of on-screen help overlay)
     print()
-    print("Controls: q=Quit  s=Screenshot  +/-=Gain  [/]=Dead zone")
+    controls = "Controls: q=Quit  s=Screenshot  +/-=Gain  [/]=Dead zone"
+    if motors:
+        controls += "  m=Toggle motors"
+    print(controls)
     print()
 
     # State
@@ -277,8 +335,22 @@ def run_face_tracker(device=0, headless=False, max_captures=0, dead_zone=40, gai
                 else:
                     steer = error_norm * current_gain
 
-            # Motor intention panel
-            draw_motor_intention(frame, steer)
+            # Motor intention panel + get computed speeds
+            left_spd, right_spd = draw_motor_intention(
+                frame, steer, motors_active=motors_active, max_speed=max_speed)
+
+            # Drive motors if active
+            if motors_active and robot is not None:
+                if len(faces) == 0:
+                    # No face — stop motors
+                    robot.stop()
+                else:
+                    # Scale float speeds to int PWM, capped by max_speed
+                    left_pwm = int(left_spd * max_speed)
+                    right_pwm = int(right_spd * max_speed)
+                    left_pwm = max(-max_speed, min(max_speed, left_pwm))
+                    right_pwm = max(-max_speed, min(max_speed, right_pwm))
+                    robot.drive(left_pwm, right_pwm)
 
             # Minimal info overlay (top-left, no background box to save draw time)
             info = f"FPS:{actual_fps:.0f} Faces:{len(faces)} Gain:{current_gain:.1f} DZ:{current_dead_zone}"
@@ -301,6 +373,11 @@ def run_face_tracker(device=0, headless=False, max_captures=0, dead_zone=40, gai
                 elif key in (ord('-'), ord('_')):
                     current_gain = max(0.1, current_gain - 0.1)
                     print(f"Gain: {current_gain:.2f}")
+                elif key == ord('m') and robot is not None:
+                    motors_active = not motors_active
+                    if not motors_active:
+                        robot.stop()
+                    print(f"Motors: {'ON' if motors_active else 'OFF'}")
                 elif key == ord(']'):
                     current_dead_zone = min(200, current_dead_zone + 10)
                     print(f"Dead zone: {current_dead_zone}px")
@@ -323,6 +400,10 @@ def run_face_tracker(device=0, headless=False, max_captures=0, dead_zone=40, gai
     finally:
         elapsed = time.time() - start_time
         print(f"\nSession: {elapsed:.1f}s, {frame_count} frames, {frame_count/max(elapsed,0.1):.1f} avg fps")
+        if robot is not None:
+            print("Stopping motors...")
+            robot.stop()
+            robot.cleanup()
         cap.release()
         if not headless:
             cv2.destroyAllWindows()
@@ -340,6 +421,12 @@ def main():
     parser.add_argument("--captures", "-n", type=int, default=0, help="Max captures in headless (0=unlimited)")
     parser.add_argument("--dead-zone", type=int, default=40, help="Dead zone in pixels (default: 40)")
     parser.add_argument("--gain", "-g", type=float, default=0.8, help="Steering gain (default: 0.8)")
+    parser.add_argument("--motors", action="store_true", help="Enable motor output (requires GPIO)")
+    parser.add_argument("--driver", type=str, default="L298N",
+                        choices=["L298N", "TB6612FNG", "DRV8833"],
+                        help="Motor driver type (default: L298N)")
+    parser.add_argument("--max-speed", type=int, default=40,
+                        help="Max motor speed %% (default: 40)")
 
     args = parser.parse_args()
 
@@ -362,6 +449,9 @@ def main():
         else:
             print(f"Display: {display}")
 
+    if args.motors:
+        print(f"Motor output: {args.driver} (max {args.max_speed}%)")
+
     print()
     return run_face_tracker(
         device=args.device,
@@ -369,6 +459,9 @@ def main():
         max_captures=args.captures,
         dead_zone=args.dead_zone,
         gain=args.gain,
+        motors=args.motors,
+        driver_type=args.driver,
+        max_speed=args.max_speed,
     )
 
 

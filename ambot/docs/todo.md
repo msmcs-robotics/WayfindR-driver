@@ -1,6 +1,6 @@
 # Ambot - Todo & Roadmap
 
-> Last updated: 2026-02-12 (Session 12)
+> Last updated: 2026-02-17 (Session 13)
 
 ---
 
@@ -59,10 +59,11 @@
 _Start here when resuming work_
 
 ### Raspberry Pi (Pathfinder + Locomotion)
-1. **Fix motor power** - Motors heard trying to spin but didn't move. Check battery voltage / try stronger power supply
-2. **Wire and test MPU6050 IMU** - Wire GY-521 (VCC→Pin1, GND→Pin9, SCL→Pin5, SDA→Pin3), run `test_imu_calibrate.py`
-3. **Calibrate LiDAR front orientation** - Run `gui_lidar_nav.py`, place object in front, press 'c' to calibrate
-4. **Test real-world wandering** - Once motors work, run `wandering_demo_1.py` with actual movement
+1. **Test face-to-motor tracking** - Run `gui_face_tracker.py --motors` on RPi desktop, verify motors orient toward faces
+2. **Hardware tuning** - Camera flip (`cv2.flip`), motor direction offsets (`config.py`), dead zone, gain — all adjustable during testing
+3. **Wire and test MPU6050 IMU** - Wire GY-521 (VCC→Pin1, GND→Pin9, SCL→Pin5, SDA→Pin3), run `test_imu_calibrate.py`
+4. **Calibrate LiDAR front orientation** - Run `gui_lidar_nav.py`, place object in front, press 'c' to calibrate
+5. **Test real-world wandering** - Once motors work, run `wandering_demo_1.py` with actual movement
 
 ### Jetson (Bootylicious)
 5. **Test llama3.2:3b model** - Upgraded from tinyllama (1.1B → 3B), test RAG ask quality
@@ -76,7 +77,8 @@ _Tasks actively being worked on_
 - [x] Face tracker GUI improved and verified on RPi desktop
 - [x] LiDAR nav GUI cleaned up and verified on RPi desktop
 - [x] deploy.sh refactored to use run_tests.sh wrapper (no more SSH venv sourcing)
-- [ ] Fix motor power issue (motors tried to spin but didn't move — underpowered?)
+- [x] Face-to-motor bridge added (`--motors` flag on gui_face_tracker.py)
+- [ ] Hardware test: face tracking with motors spinning (`gui_face_tracker.py --motors`)
 - [ ] Wire and calibrate MPU6050 IMU on RPi (`python3 tests/test_imu_calibrate.py`)
 - [ ] Test real-world wandering with both motors (`python3 wandering_demo_1.py`)
 
@@ -140,6 +142,19 @@ _Lower priority, do when time permits_
 - [ ] Voice interaction (STT/TTS via Android device)
 
 ## Recently Completed
+
+_Session 13 - 2026-02-17_
+
+- [x] **Added face-to-motor bridge** (`tests/gui_face_tracker.py --motors`)
+  - `--motors` flag enables live motor output from face tracking steering
+  - `--driver` selects motor driver (L298N/TB6612FNG/DRV8833, default L298N)
+  - `--max-speed` caps PWM duty cycle (default 40% — safe for bench testing)
+  - No face = motors stop (no aimless spinning)
+  - Press 'm' during GUI to toggle motors on/off
+  - Clean GPIO cleanup on exit (Ctrl+C safe)
+  - Tested headless on RPi: motors init, 17.4fps, clean shutdown
+  - Without `--motors`: fully backward compatible (no GPIO touched)
+- [x] **Verified RPi SSH access** - pi@10.33.224.1, password: erau, SSH working
 
 _Session 12 - 2026-02-12_
 
@@ -575,6 +590,9 @@ i2cdetect -y 1                             # Verify MPU6050 at 0x68 (run on RPi)
 python3 tests/gui_camera.py                # Live camera (basic feed)
 python3 tests/gui_camera.py --faces        # Live camera + face detection + bounding boxes
 python3 tests/gui_face_tracker.py          # Face tracking + direction vectors + motor intention
+python3 tests/gui_face_tracker.py --motors               # + actual motor output (L298N, 40%)
+python3 tests/gui_face_tracker.py --motors --max-speed 30 # Cap motor PWM at 30%
+python3 tests/gui_face_tracker.py --motors --driver TB6612FNG  # Use different driver
 python3 tests/gui_lidar.py                 # Live LiDAR polar plot + nearest/furthest
 python3 tests/gui_lidar_nav.py             # LiDAR navigation (front calibration + movement intent)
 python3 tests/gui_wandering.py             # Wandering behavior visualization (LiDAR + targets)
