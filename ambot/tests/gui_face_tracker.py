@@ -26,6 +26,8 @@ import sys
 import os
 import time
 import math
+import signal
+import atexit
 import argparse
 from datetime import datetime
 from pathlib import Path
@@ -35,6 +37,25 @@ SCRIPT_DIR = Path(__file__).parent
 RESULTS_DIR = SCRIPT_DIR / "results"
 RESULTS_DIR.mkdir(exist_ok=True)
 sys.path.insert(0, str(SCRIPT_DIR.parent))
+
+# Motor safety — global reference for emergency shutdown
+_active_robot = None
+
+def _emergency_motor_stop():
+    """Stop motors on any exit — atexit, signal, or crash."""
+    global _active_robot
+    if _active_robot is not None:
+        try:
+            _active_robot.stop()
+            _active_robot.cleanup()
+        except Exception:
+            pass
+        _active_robot = None
+
+def _signal_handler(signum, frame):
+    """Handle SIGTERM/SIGINT — stop motors and exit cleanly."""
+    _emergency_motor_stop()
+    sys.exit(0)
 
 # Detection tuning constants for RPi performance
 DETECT_EVERY_N = 3        # Run face detection every Nth frame
@@ -202,7 +223,8 @@ def run_face_tracker(device=0, headless=False, max_captures=0, dead_zone=40, gai
         return 1
     print("Face cascade loaded")
 
-    # Motor setup
+    # Motor setup with safety handlers
+    global _active_robot
     robot = None
     motors_active = False
     if motors:
@@ -212,8 +234,15 @@ def run_face_tracker(device=0, headless=False, max_captures=0, dead_zone=40, gai
             print(f"WARNING: Motor init failed: {info}")
             print("Continuing without motors")
         else:
-            print(f"Motors ready: {info}")
+            # Immediately stop motors in case they're still running from a previous crash
+            robot.stop()
+            print(f"Motors ready: {info} (stopped on startup)")
             motors_active = True
+            # Register safety handlers so motors stop on ANY exit
+            _active_robot = robot
+            atexit.register(_emergency_motor_stop)
+            signal.signal(signal.SIGTERM, _signal_handler)
+            signal.signal(signal.SIGINT, _signal_handler)
 
     # Print controls once at startup (instead of on-screen help overlay)
     print()
@@ -229,6 +258,7 @@ def run_face_tracker(device=0, headless=False, max_captures=0, dead_zone=40, gai
     start_time = time.time()
     last_fps_time = start_time
     actual_fps = 0.0
+    last_motor_command_time = start_time  # Watchdog: stop motors if no command for 2s
     current_gain = gain
     current_dead_zone = dead_zone
 
@@ -351,6 +381,11 @@ def run_face_tracker(device=0, headless=False, max_captures=0, dead_zone=40, gai
                     left_pwm = max(-max_speed, min(max_speed, left_pwm))
                     right_pwm = max(-max_speed, min(max_speed, right_pwm))
                     robot.drive(left_pwm, right_pwm)
+                    last_motor_command_time = now
+
+                # Watchdog: stop motors if no drive command for 2 seconds
+                if now - last_motor_command_time > 2.0:
+                    robot.stop()
 
             # Minimal info overlay (top-left, no background box to save draw time)
             info = f"FPS:{actual_fps:.0f} Faces:{len(faces)} Gain:{current_gain:.1f} DZ:{current_dead_zone}"
@@ -402,8 +437,7 @@ def run_face_tracker(device=0, headless=False, max_captures=0, dead_zone=40, gai
         print(f"\nSession: {elapsed:.1f}s, {frame_count} frames, {frame_count/max(elapsed,0.1):.1f} avg fps")
         if robot is not None:
             print("Stopping motors...")
-            robot.stop()
-            robot.cleanup()
+            _emergency_motor_stop()
         cap.release()
         if not headless:
             cv2.destroyAllWindows()

@@ -153,7 +153,21 @@ _Session 13 - 2026-02-17_
   - Press 'm' during GUI to toggle motors on/off
   - Clean GPIO cleanup on exit (Ctrl+C safe)
   - Tested headless on RPi: motors init, 17.4fps, clean shutdown
+  - Tested GUI on RPi desktop with motors at 30%
   - Without `--motors`: fully backward compatible (no GPIO touched)
+- [x] **Fixed RPi desktop login** - Stray `fi` in `~/.profile` (line 29) and `~/.bashrc` (line 115)
+  - Left over from Session 10 venv auto-activation revert
+  - X session sources `.profile` on login, hit syntax error, session crashed
+  - Fix: removed stray `fi`, restarted lightdm
+- [x] **Created `docs/known-issues.md`** - Troubleshooting doc for recurring issues
+- [x] **Created `scripts/kill-hardware.sh`** - Emergency stop for motors + kill hardware processes
+  - `--motors`: GPIO reset only, `--procs`: kill processes only, default: both
+  - Fallback raw GPIO pin reset for all motor pins (11,13,15,16,18,32,33)
+- [x] **Motor safety mechanisms** added to `gui_face_tracker.py`:
+  - Motors stopped immediately on startup (in case still spinning from a crash)
+  - Signal handlers (SIGTERM, SIGINT) stop motors on any termination
+  - atexit handler as last-resort cleanup
+  - Watchdog: motors auto-stop if no drive command for 2 seconds
 - [x] **Verified RPi SSH access** - pi@10.33.224.1, password: erau, SSH working
 
 _Session 12 - 2026-02-12_
@@ -461,6 +475,7 @@ ambot/
 │   ├── rpi-bootstrap-system.sh   # System packages + Docker
 │   ├── rpi-bootstrap-python.sh   # Python libraries
 │   ├── env_diagnostic.py  # Environment diagnostic (SSH vs desktop, package locations)
+│   ├── kill-hardware.sh   # Emergency motor stop + kill hardware processes
 │   ├── jetson-monitor.sh  # Jetson monitoring (Docker, SSH, system, RAG health)
 │   ├── network-refresh.sh # RPi network troubleshooting (run ON RPi)
 │   └── wsl-ssh-helper.sh  # WSL2 SSH helper (run FROM dev machine)
@@ -545,6 +560,11 @@ sudo ./install.sh --gui             # Include GUI packages (tkinter, ImageTk, ma
 source venv/bin/activate            # Activate venv first (or scripts do it automatically)
 python3 scripts/env_diagnostic.py            # Full diagnostic
 python3 scripts/env_diagnostic.py --json     # JSON for comparison
+
+# Emergency hardware stop (run ON RPi)
+bash scripts/kill-hardware.sh              # Kill processes + stop motors
+bash scripts/kill-hardware.sh --motors     # Stop motors only (GPIO reset)
+bash scripts/kill-hardware.sh --procs      # Kill hardware processes only
 
 # Comprehensive test runner (run ON RPi)
 ./run_tests.sh                     # Standard tests (verification + integration)
