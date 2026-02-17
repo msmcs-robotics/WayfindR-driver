@@ -11,6 +11,7 @@ Usage:
     python3 tests/gui_face_tracker.py                  # Live GUI (no motors)
     python3 tests/gui_face_tracker.py --motors         # Live GUI + motor output
     python3 tests/gui_face_tracker.py --motors --max-speed 30  # Cap at 30%
+    python3 tests/gui_face_tracker.py --motors --swap-motors   # Swap L/R assignment
     python3 tests/gui_face_tracker.py --headless -n 5  # Save 5 frames
     python3 tests/gui_face_tracker.py --dead-zone 50   # Wider dead zone
 
@@ -18,6 +19,9 @@ Controls:
     q - Quit
     s - Save screenshot
     m - Toggle motors on/off (when --motors enabled)
+    x - Toggle swap L/R motors
+    v - Toggle invert left motor direction
+    b - Toggle invert right motor direction
     +/= - Increase tracking gain
     -/_ - Decrease tracking gain
 """
@@ -193,7 +197,8 @@ def draw_motor_intention(frame, steer, base_speed=0.5, bar_width=120, bar_height
 
 
 def run_face_tracker(device=0, headless=False, max_captures=0, dead_zone=40, gain=0.8,
-                     motors=False, driver_type="L298N", max_speed=40):
+                     motors=False, driver_type="L298N", max_speed=40,
+                     swap_motors=False, invert_left=False, invert_right=False):
     """Run the face tracking GUI with optional motor output."""
     import cv2
 
@@ -248,7 +253,7 @@ def run_face_tracker(device=0, headless=False, max_captures=0, dead_zone=40, gai
     print()
     controls = "Controls: q=Quit  s=Screenshot  +/-=Gain  [/]=Dead zone"
     if motors:
-        controls += "  m=Toggle motors"
+        controls += "  m=Toggle motors  x=Swap L/R  v=Invert L  b=Invert R"
     print(controls)
     print()
 
@@ -261,6 +266,9 @@ def run_face_tracker(device=0, headless=False, max_captures=0, dead_zone=40, gai
     last_motor_command_time = start_time  # Watchdog: stop motors if no command for 2s
     current_gain = gain
     current_dead_zone = dead_zone
+    current_swap = swap_motors
+    current_invert_left = invert_left
+    current_invert_right = invert_right
 
     # Cached face detections (reused between detection frames)
     cached_faces = []
@@ -354,16 +362,29 @@ def run_face_tracker(device=0, headless=False, max_captures=0, dead_zone=40, gai
                                 cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 255), 2)
 
             # --- Compute steering from tracked face ---
+            face_centered = False
             if tracked_idx >= 0:
-                tcx = faces[tracked_idx][0]
-                error_px = tcx - frame_cx
-                error_norm = error_px / half_w  # [-1, 1]
+                tcx, tcy, tfw, tfh, th_dist, tfx, tfy = faces[tracked_idx]
 
-                # Dead zone
-                if abs(error_px) < current_dead_zone:
+                # Check if frame center is inside the tracked face's bounding box.
+                # If so, the face is "close enough" — stop motors.
+                if (tfx <= frame_cx <= tfx + tfw) and (tfy <= frame_cy <= tfy + tfh):
+                    face_centered = True
                     steer = 0.0
                 else:
-                    steer = error_norm * current_gain
+                    error_px = tcx - frame_cx
+                    error_norm = error_px / half_w  # [-1, 1]
+
+                    # Dead zone
+                    if abs(error_px) < current_dead_zone:
+                        steer = 0.0
+                    else:
+                        steer = error_norm * current_gain
+
+                # Draw centered indicator
+                if face_centered:
+                    cv2.putText(frame, "CENTERED", (tfx, tfy - 24),
+                                cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 2)
 
             # Motor intention panel + get computed speeds
             left_spd, right_spd = draw_motor_intention(
@@ -371,8 +392,8 @@ def run_face_tracker(device=0, headless=False, max_captures=0, dead_zone=40, gai
 
             # Drive motors if active
             if motors_active and robot is not None:
-                if len(faces) == 0:
-                    # No face — stop motors
+                if len(faces) == 0 or face_centered:
+                    # No face or face centered — stop motors
                     robot.stop()
                 else:
                     # Scale float speeds to int PWM, capped by max_speed
@@ -380,12 +401,34 @@ def run_face_tracker(device=0, headless=False, max_captures=0, dead_zone=40, gai
                     right_pwm = int(right_spd * max_speed)
                     left_pwm = max(-max_speed, min(max_speed, left_pwm))
                     right_pwm = max(-max_speed, min(max_speed, right_pwm))
+
+                    # Apply motor orientation adjustments
+                    if current_swap:
+                        left_pwm, right_pwm = right_pwm, left_pwm
+                    if current_invert_left:
+                        left_pwm = -left_pwm
+                    if current_invert_right:
+                        right_pwm = -right_pwm
+
                     robot.drive(left_pwm, right_pwm)
                     last_motor_command_time = now
 
                 # Watchdog: stop motors if no drive command for 2 seconds
                 if now - last_motor_command_time > 2.0:
                     robot.stop()
+
+            # Show motor orientation config if any adjustments active
+            if motors and (current_swap or current_invert_left or current_invert_right):
+                orient_parts = []
+                if current_swap:
+                    orient_parts.append("SWAP")
+                if current_invert_left:
+                    orient_parts.append("INV-L")
+                if current_invert_right:
+                    orient_parts.append("INV-R")
+                orient_text = "Motor: " + " ".join(orient_parts)
+                cv2.putText(frame, orient_text, (8, height - 65),
+                            cv2.FONT_HERSHEY_SIMPLEX, 0.35, (0, 180, 255), 1)
 
             # Minimal info overlay (top-left, no background box to save draw time)
             info = f"FPS:{actual_fps:.0f} Faces:{len(faces)} Gain:{current_gain:.1f} DZ:{current_dead_zone}"
@@ -413,6 +456,15 @@ def run_face_tracker(device=0, headless=False, max_captures=0, dead_zone=40, gai
                     if not motors_active:
                         robot.stop()
                     print(f"Motors: {'ON' if motors_active else 'OFF'}")
+                elif key == ord('x') and robot is not None:
+                    current_swap = not current_swap
+                    print(f"Swap motors: {'ON' if current_swap else 'OFF'}")
+                elif key == ord('v') and robot is not None:
+                    current_invert_left = not current_invert_left
+                    print(f"Invert left motor: {'ON' if current_invert_left else 'OFF'}")
+                elif key == ord('b') and robot is not None:
+                    current_invert_right = not current_invert_right
+                    print(f"Invert right motor: {'ON' if current_invert_right else 'OFF'}")
                 elif key == ord(']'):
                     current_dead_zone = min(200, current_dead_zone + 10)
                     print(f"Dead zone: {current_dead_zone}px")
@@ -461,6 +513,12 @@ def main():
                         help="Motor driver type (default: L298N)")
     parser.add_argument("--max-speed", type=int, default=40,
                         help="Max motor speed %% (default: 40)")
+    parser.add_argument("--swap-motors", action="store_true",
+                        help="Swap left/right motor assignments")
+    parser.add_argument("--invert-left", action="store_true",
+                        help="Invert left motor direction")
+    parser.add_argument("--invert-right", action="store_true",
+                        help="Invert right motor direction")
 
     args = parser.parse_args()
 
@@ -485,6 +543,15 @@ def main():
 
     if args.motors:
         print(f"Motor output: {args.driver} (max {args.max_speed}%)")
+        orient = []
+        if args.swap_motors:
+            orient.append("swap-LR")
+        if args.invert_left:
+            orient.append("invert-L")
+        if args.invert_right:
+            orient.append("invert-R")
+        if orient:
+            print(f"Motor orientation: {', '.join(orient)}")
 
     print()
     return run_face_tracker(
@@ -496,6 +563,9 @@ def main():
         motors=args.motors,
         driver_type=args.driver,
         max_speed=args.max_speed,
+        swap_motors=args.swap_motors,
+        invert_left=args.invert_left,
+        invert_right=args.invert_right,
     )
 
 
