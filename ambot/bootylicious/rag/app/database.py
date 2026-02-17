@@ -18,7 +18,14 @@ from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column, relationship
 from .config import settings
 
 
-engine = create_async_engine(settings.DATABASE_URL, echo=False, pool_size=20, max_overflow=10)
+engine = create_async_engine(
+    settings.DATABASE_URL,
+    echo=False,
+    pool_size=5,           # Reduced from 20 (Jetson has few concurrent requests)
+    max_overflow=5,        # Reduced from 10
+    pool_pre_ping=True,    # Validate connections before use
+    pool_recycle=3600,     # Recycle connections hourly
+)
 async_session = async_sessionmaker(engine, class_=AsyncSession, expire_on_commit=False)
 
 

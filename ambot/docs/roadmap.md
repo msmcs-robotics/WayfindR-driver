@@ -57,12 +57,12 @@ This roadmap tracks project-level features and milestones. For immediate tasks, 
 ## Milestone 2: Jetson Nano - LLM Subsystem
 
 ### LLM Inference
-- [ ] Install/verify nanoLLM framework on Jetson
-- [ ] Test loading TinyLlama-1.1B via nanoLLM
-- [ ] Test loading Phi-2 via nanoLLM
-- [ ] Benchmark GPU memory usage and inference speed
-- [ ] Select primary model based on benchmarks
+- [x] ~~nanoLLM framework~~ — Using Ollama instead (simpler, model management built-in) -- 2026-02-12
+- [x] Tested TinyLlama 1.1B — works but hallucinated heavily, ignored context -- 2026-02-12
+- [x] Tested llama3.2:3b — accurately answers from retrieved context, selected as primary -- 2026-02-17
+- [x] Benchmarked resource usage: 5.5 GiB used (Docker 148 MiB + Ollama ~2 GB), 1.9 GiB headroom -- 2026-02-17
 - [ ] Create basic conversation loop (text in -> text out)
+- [ ] Test additional models: phi-3-mini-4k (3.8B), smollm2 (1.7B)
 
 ### RAG System
 - [x] Adapt rag-bootstrap Docker Compose for Jetson (ARM64) -- 2026-02-12
@@ -72,7 +72,44 @@ This roadmap tracks project-level features and milestones. For immediate tasks, 
 - [x] Test document ingestion pipeline (3 docs, 3 chunks) -- 2026-02-12
 - [x] Test search (semantic, keyword, hybrid) -- 2026-02-12
 - [x] Test RAG ask pipeline (search + LLM generation with sources) -- 2026-02-12
-- [ ] Benchmark resource usage (CPU/RAM) of RAG stack alongside LLM
+- [x] Benchmarked resource usage: Docker 148 MiB total, 1.9 GiB headroom -- 2026-02-17
+
+### RAG Optimization (adapted from rag-atc-testing)
+> See `bootylicious/docs/findings/rag-optimization-review.md` for full analysis
+
+#### Phase 1: Quick Wins
+- [x] Switch default LLM to llama3.2:3b -- 2026-02-17
+- [x] Reduce DB connection pool (20→5, overflow 10→5) + pool_pre_ping + pool_recycle -- 2026-02-17
+- [x] Switch Redis eviction policy (LRU→LFU) -- 2026-02-17
+- [x] Increase hybrid search fetch multiplier (3x→5x) -- 2026-02-17
+
+#### Phase 2: Resilience
+- [ ] Add junk chunk filtering (>25% digits, >10% dot leaders)
+- [ ] Add text normalization for embeddings (unicode, 800-char cap)
+- [ ] Add embedding retry with progressive truncation
+- [ ] Add inter-request cooldown (1.5s) for Ollama embedding calls
+- [ ] Add batch commit + resume for ingestion pipeline
+
+#### Phase 3: Search Quality
+- [ ] Evaluate nomic-embed-text (768-dim, 8192-token context) vs current MiniLM
+- [ ] Add database indexes (IVFFlat vector + GIN full-text)
+- [ ] Implement dual keyword search (English stemmed + Simple exact)
+- [ ] Add adaptive semantic weight (short/acronym→keyword, long→semantic)
+- [ ] Create domain-specific acronym expansion table
+
+### GPU & Hardware Acceleration
+> See `bootylicious/docs/findings/jetson-gpu-acceleration.md` for full analysis
+
+- [x] GPU spec documented: Orin (Compute 8.7, Ampere), 8 SMs, 7620 MiB unified memory -- 2026-02-17
+- [x] Ollama GPU acceleration verified: CUDA0 buffers (model 1918 MiB, KV 448 MiB, compute 256 MiB) -- 2026-02-17
+- [x] CUDA 12.6 fully functional: compiled + ran test kernel on GPU -- 2026-02-17
+- [x] cuDNN 9.3.0 + TensorRT 10.3.0 pre-installed via JetPack -- 2026-02-17
+- [x] Created `scripts/setup-cuda.sh` — detection, verification, PATH fix, test compilation -- 2026-02-17
+- [x] Fixed nvcc PATH via `/etc/profile.d/cuda-path.sh` -- 2026-02-17
+- [x] Docker NVIDIA runtime configured as default -- 2026-02-12
+- [ ] Evaluate GPU-accelerated embeddings (requires L4T PyTorch image, +4-7 GB Docker image)
+
+**CUDA Version Policy**: JetPack R36.4.4 = CUDA 12.6. DO NOT install additional CUDA versions.
 
 ### Visual System (Person Detection)
 - [ ] Connect USB camera to Jetson

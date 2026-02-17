@@ -139,8 +139,8 @@ async def hybrid_search(
     limit: int = 10,
     semantic_weight: float = 0.7,
 ) -> list[SearchResult]:
-    # Fetch more candidates than final limit for better fusion
-    fetch_limit = limit * 3
+    # Fetch 5x candidates for better RRF fusion quality (from rag-atc-testing)
+    fetch_limit = limit * 5
     sem_results = await semantic_search(query, session, embedding_service, fetch_limit)
     kw_results = await keyword_search(query, session, fetch_limit)
     fused = _rrf(sem_results, kw_results, semantic_weight)

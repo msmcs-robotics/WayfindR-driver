@@ -13,6 +13,7 @@
 #   sudo ./install-jetson.sh --pip        # Python pip only
 #   sudo ./install-jetson.sh --model      # Pull LLM model only
 #   sudo ./install-jetson.sh --rag        # Start RAG Docker stack only
+#   sudo ./install-jetson.sh --cuda       # CUDA verification & PATH fix
 #   sudo ./install-jetson.sh --inventory  # System inventory (no installs)
 #
 # Background-safe (survives SSH drops):
@@ -311,9 +312,10 @@ install_ollama() {
 pull_model() {
     log_step "Pulling LLM Model"
 
-    # Default: tinyllama (~1.1B params, ~637MB)
-    # Other small options: qwen2:1.5b, gemma:2b, phi
-    MODEL="${MODEL:-tinyllama}"
+    # Default: llama3.2:3b (~3.2B params, ~2GB, good context grounding)
+    # tinyllama hallucinates badly; llama3.2:3b answers from retrieved context
+    # Other options: phi-3-mini-4k (3.8B), smollm2 (1.7B)
+    MODEL="${MODEL:-llama3.2:3b}"
 
     # Check if Ollama is running
     if ! curl -s http://localhost:11434/api/tags &>/dev/null; then
@@ -450,6 +452,7 @@ main() {
     local do_ollama=false
     local do_model=false
     local do_rag=false
+    local do_cuda=false
 
     for arg in "$@"; do
         case $arg in
@@ -460,6 +463,7 @@ main() {
             --ollama)    do_ollama=true; do_all=false ;;
             --model)     do_model=true; do_all=false ;;
             --rag)       do_rag=true; do_all=false ;;
+            --cuda)      do_cuda=true; do_all=false ;;
             --help|-h)
                 echo "Usage: sudo $0 [options]"
                 echo ""
@@ -469,14 +473,15 @@ main() {
                 echo "  --docker     Verify/install Docker"
                 echo "  --pip        Install Python pip"
                 echo "  --ollama     Install Ollama LLM server"
-                echo "  --model      Pull LLM model (default: tinyllama)"
+                echo "  --model      Pull LLM model (default: llama3.2:3b)"
                 echo "  --rag        Start RAG Docker stack"
+                echo "  --cuda       CUDA verification & PATH fix"
                 echo "  --help       Show this help"
                 echo ""
                 echo "No args = full install (all components)"
                 echo ""
                 echo "Environment:"
-                echo "  MODEL=<name>  Override default model (e.g., MODEL=qwen2:1.5b)"
+                echo "  MODEL=<name>  Override default model (e.g., MODEL=phi-3-mini-4k)"
                 echo ""
                 echo "Background-safe:"
                 echo "  nohup sudo ./install-jetson.sh > install.log 2>&1 &"
@@ -520,12 +525,23 @@ main() {
         start_rag
     fi
 
+    if [ "$do_all" = true ] || [ "$do_cuda" = true ]; then
+        log_step "CUDA Verification"
+        local cuda_script="${SCRIPT_DIR}/scripts/setup-cuda.sh"
+        if [ -f "$cuda_script" ]; then
+            bash "$cuda_script"
+        else
+            log_warn "CUDA setup script not found: $cuda_script"
+            log_info "Run scripts/setup-cuda.sh separately"
+        fi
+    fi
+
     print_summary
 
     if [ "$do_all" = true ]; then
         echo "Next steps:" | tee -a "$LOG_FILE"
         echo "  1. Verify: sudo ./install-jetson.sh --check" | tee -a "$LOG_FILE"
-        echo "  2. Test LLM: ollama run tinyllama" | tee -a "$LOG_FILE"
+        echo "  2. Test LLM: ollama run llama3.2:3b" | tee -a "$LOG_FILE"
         echo "  3. Start RAG: sudo ./install-jetson.sh --rag" | tee -a "$LOG_FILE"
         echo "  4. Test RAG: curl http://localhost:8000/api/health" | tee -a "$LOG_FILE"
         echo "" | tee -a "$LOG_FILE"

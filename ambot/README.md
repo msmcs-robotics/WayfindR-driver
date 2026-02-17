@@ -7,8 +7,8 @@ An autonomous conversational robot with three independent components that can be
 | Component | Folder | Purpose | Current Status |
 |-----------|--------|---------|----------------|
 | **pathfinder** | `pathfinder/` | LiDAR sensing & obstacle avoidance | ✅ Working on RPi |
-| **locomotion** | `locomotion/` | Motor control (differential drive) | ✅ Code ready, needs wiring |
-| **bootylicious** | `bootylicious/` | LLM + RAG (conversation brain) | ⏳ Pending Jetson setup |
+| **locomotion** | `locomotion/` | Motor control (differential drive) | ✅ Motors wired, face-to-motor tested |
+| **bootylicious** | `bootylicious/` | LLM + RAG (conversation brain) | ✅ RAG stack running on Jetson |
 
 ## Quick Start
 
@@ -65,39 +65,56 @@ python3 tests/test_usb_camera.py
 python3 tests/test_gpio.py
 ```
 
-### 4. Run Wandering Demo
+### 4. Face-to-Motor Testing (on RPi with display)
 
 ```bash
-# Simulation mode (no motors needed)
-python3 wandering_demo.py --simulate
+# SSH to RPi, activate venv
+ssh pi@10.33.224.1
+cd ~/ambot && source venv/bin/activate
 
-# Different behaviors
-python3 wandering_demo.py --simulate --behavior max_clearance
-python3 wandering_demo.py --simulate --behavior wall_follower_right
-python3 wandering_demo.py --simulate --behavior random_wander
+# Face tracking with LIVE MOTORS (L298N, capped at 30% speed)
+python3 tests/gui_face_tracker.py --motors --max-speed 30
 
-# Real mode (requires motors wired)
-python3 wandering_demo.py
+# Face tracking WITHOUT motors (display only)
+python3 tests/gui_face_tracker.py
+
+# LiDAR navigation display
+python3 tests/gui_lidar_nav.py
 ```
 
-### 5. GUI Diagnostics (on RPi with display)
+**Controls during face tracker**: `q`=Quit, `m`=Toggle motors, `+/-`=Gain, `[/]`=Dead zone, `s`=Screenshot
+
+### 5. Emergency Motor Stop
 
 ```bash
-# Live camera feed with face detection
-python3 tests/gui_camera.py
-
-# Live LiDAR polar plot
-python3 tests/gui_lidar.py
+# If motors are running and won't stop:
+cd ~/ambot && source venv/bin/activate
+bash scripts/kill-hardware.sh              # Kill processes + stop motors
+bash scripts/kill-hardware.sh --motors     # Just stop motors (GPIO reset)
+bash scripts/kill-hardware.sh --procs      # Just kill processes
 ```
 
 ### 6. Headless Testing (via SSH)
 
 ```bash
+# Face tracker + motors (headless, 3 captures)
+python3 tests/gui_face_tracker.py --headless -n 3 --motors --max-speed 30
+
 # Camera test - capture 3 images
-python3 tests/gui_camera.py --headless --captures 3
+python3 tests/gui_camera.py --headless --captures 3 --faces
 
 # LiDAR test - save 3 scan images
-python3 tests/gui_lidar.py --headless --scans 3
+python3 tests/gui_lidar_nav.py --headless -n 3
+```
+
+### 7. Wandering Demo
+
+```bash
+# Simulation mode (no motors needed)
+python3 wandering_demo_1.py --simulate
+
+# Real mode (requires motors wired)
+python3 wandering_demo_1.py
 ```
 
 ## Folder Structure
@@ -141,19 +158,22 @@ ambot/
 
 ## Hardware
 
-### Raspberry Pi 3 (pi@10.33.224.1)
+### Raspberry Pi 3 (pi@10.33.224.1, password: erau)
 
 | Device | Port | Status | Notes |
 |--------|------|--------|-------|
 | LiDAR (LD19) | /dev/ttyUSB0 | ✅ Working | 230400 baud, ~450 pts/scan |
-| Camera (EMEET S600) | /dev/video0 | ✅ Working | 640x480, face detection OK |
-| Motors (L298N) | GPIO | ⏳ Not wired | See `locomotion/docs/l298n-driver-wiring-guide.md` |
+| Camera (EMEET S600) | /dev/video0 | ✅ Working | 640x480, face detection at 17fps |
+| Motors (L298N) | GPIO | ✅ Wired | Face-to-motor bridge tested |
+| MPU6050 IMU | I2C (0x68) | ⏳ Driver ready | Needs hardware wiring |
 
-### Jetson Orin Nano (pending setup)
+### Jetson Orin Nano (ssh jetson, password: Ambot)
 
 | Device | Status | Notes |
 |--------|--------|-------|
-| System | ⏳ Installing | Ubuntu 22.04 / JetPack 6.1 |
+| System | ✅ Working | Ubuntu 22.04.5, JetPack R36.4.4, CUDA 12.6, 7.4 GiB RAM |
+| Ollama | ✅ Working | llama3.2:3b (2.0 GB) |
+| RAG Stack | ✅ Working | PostgreSQL + pgvector + Redis + FastAPI |
 
 ## Install Script Options
 
@@ -271,8 +291,18 @@ See [docs/todo.md](docs/todo.md) for current tasks and [docs/roadmap.md](docs/ro
 - [2026-02-03 Session 2](docs/archive/2026-02-03-session-2-summary.md) - LD19 driver
 - [2026-02-03 Session 1](docs/archive/2026-02-03-session-summary.md) - Initial setup
 
+## Safety
+
+Motors have multiple safety mechanisms:
+- **Startup stop**: Motors are stopped when the script starts (clears state from crashes)
+- **Signal handlers**: SIGTERM/SIGINT stop motors before exit
+- **Watchdog**: Motors auto-stop if no command received for 2 seconds
+- **Kill script**: `scripts/kill-hardware.sh` for emergency GPIO reset
+
+See [docs/known-issues.md](docs/known-issues.md) for troubleshooting.
+
 ## Known Limitations
 
 - **RPi 3**: Only 906MB RAM - be mindful of memory usage
 - **LD19 LiDAR**: One-way protocol, auto-streams (no commands)
-- **No SLAM**: Current system is reactive wandering only
+- **No SLAM**: Current system is reactive wandering only — precursor to ROS2 SLAM

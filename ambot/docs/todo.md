@@ -66,9 +66,9 @@ _Start here when resuming work_
 5. **Test real-world wandering** - Once motors work, run `wandering_demo_1.py` with actual movement
 
 ### Jetson (Bootylicious)
-5. **Test llama3.2:3b model** - Upgraded from tinyllama (1.1B → 3B), test RAG ask quality
+5. **Implement RAG resilience** - Junk filtering, text normalization, embedding retry
 6. **Ingest real EECS docs** - When available, ingest course documentation into RAG knowledge base
-7. **Benchmark Jetson resource usage** - Memory/CPU with RAG + Ollama running concurrently
+7. **Evaluate nomic-embed-text** - Larger embedding model (768-dim, 8192 context) vs current MiniLM (384-dim)
 
 ## In Progress
 
@@ -111,9 +111,17 @@ _Priority queue for immediate work_
 - [x] Ollama configured to listen on all interfaces (`OLLAMA_HOST=0.0.0.0`)
 - [x] RAG ingestion tested: 3 docs, search + ask pipeline working end-to-end
 - [x] Pulled llama3.2:3b model (2.0 GB, better quality than tinyllama 1.1B)
-- [ ] Test llama3.2:3b model with RAG ask pipeline
+- [x] Tested llama3.2:3b — accurately answers from context (tinyllama hallucinated)
+- [x] Switched RAG API default to llama3.2:3b, updated .env.example
+- [x] Benchmarked: 5.5 GiB used, Docker 148 MiB, 1.9 GiB headroom
+- [x] Comprehensive RAG optimization review (from rag-atc-testing patterns)
+- [x] Applied RAG Phase 1 quick wins (DB pool 5/5, Redis LFU, 5x fetch multiplier)
+- [x] GPU acceleration verified: Ollama uses CUDA0 (model 1918 MiB, KV 448 MiB, compute 256 MiB)
+- [x] Created `scripts/setup-cuda.sh` — CUDA detection, verification, PATH fix, test compilation
+- [x] Fixed nvcc PATH via `/etc/profile.d/cuda-path.sh`
+- [x] CUDA test passed: compiled + ran kernel on Orin GPU (Compute 8.7, 8 SMs)
+- [ ] Implement RAG resilience (junk filtering, text normalization, retries)
 - [ ] Ingest real EECS/course documents into knowledge base
-- [ ] Benchmark Jetson memory with full RAG stack running
 
 ### Integration
 - [x] Combine pathfinder + locomotion for basic wandering demo — **Done** (`wandering_demo_1.py`)
@@ -145,6 +153,28 @@ _Lower priority, do when time permits_
 
 _Session 13 - 2026-02-17_
 
+- [x] **Tested llama3.2:3b on Jetson** - Massive quality improvement over tinyllama
+  - tinyllama: hallucinated "Advanced Machine-to-Machine Communication Toolkit" (ignored context)
+  - llama3.2:3b: correctly identified Bootylicious, Locomotion, Pathfinder from retrieved docs
+  - Resource usage: 5.5 GiB total, Docker 148 MiB, ~1.9 GiB headroom
+- [x] **Switched RAG default to llama3.2:3b** - Updated .env on Jetson + .env.example
+- [x] **Comprehensive RAG optimization review** - Analyzed ~/exudeai/rag-atc-testing/ patterns
+  - Documented 18 optimization techniques across 4 priority phases
+  - See `bootylicious/docs/findings/rag-optimization-review.md`
+  - Key patterns: junk filtering, text normalization, embedding retry, dual keyword search, adaptive weights
+- [x] **Applied RAG Phase 1 quick wins** - DB pool reduced (5/5), Redis LFU eviction, 5x search fetch multiplier
+- [x] **GPU acceleration verified** - Ollama uses CUDA0 for LLM inference (model 1918 MiB, KV 448 MiB, compute 256 MiB)
+  - Embeddings run on CPU (acceptable: 22MB model, ~50ms vs LLM 10-20s)
+  - CUDA 12.6 fully functional, cuDNN 9.3.0, TensorRT 10.3.0
+  - Created `bootylicious/docs/findings/jetson-gpu-acceleration.md`
+- [x] **Created CUDA setup script** (`scripts/setup-cuda.sh`)
+  - Detects JetPack version → determines correct CUDA version
+  - Verifies installation (nvcc, libraries, cuDNN, TensorRT)
+  - Fixes PATH (`/etc/profile.d/cuda-path.sh`)
+  - Compiles + runs CUDA test kernel on GPU
+  - Checks Ollama GPU usage and Docker NVIDIA runtime
+  - CUDA version policy: one version per JetPack, never install extras
+- [x] **Updated roadmap with RAG optimization phases** - 3-phase plan (quick wins → resilience → search quality)
 - [x] **Added face-to-motor bridge** (`tests/gui_face_tracker.py --motors`)
   - `--motors` flag enables live motor output from face tracking steering
   - `--driver` selects motor driver (L298N/TB6612FNG/DRV8833, default L298N)
@@ -476,6 +506,7 @@ ambot/
 │   ├── rpi-bootstrap-python.sh   # Python libraries
 │   ├── env_diagnostic.py  # Environment diagnostic (SSH vs desktop, package locations)
 │   ├── kill-hardware.sh   # Emergency motor stop + kill hardware processes
+│   ├── setup-cuda.sh      # CUDA detection, verification, PATH fix (Jetson)
 │   ├── jetson-monitor.sh  # Jetson monitoring (Docker, SSH, system, RAG health)
 │   ├── network-refresh.sh # RPi network troubleshooting (run ON RPi)
 │   └── wsl-ssh-helper.sh  # WSL2 SSH helper (run FROM dev machine)
@@ -530,8 +561,9 @@ ambot/
 | Device | Status | Notes |
 |--------|--------|-------|
 | System | **Working** | Ubuntu 22.04.5, JetPack R36.4.4, CUDA 12.6, 7.4 GiB RAM |
+| GPU | **Working** | Orin (Compute 8.7, Ampere), 8 SMs, CUDA 12.6, cuDNN 9.3.0 |
 | Docker | **Working** | 28.2.2 + NVIDIA runtime default, Compose v2.36.2 |
-| Ollama | **Working** | 0.6.2, tinyllama 1.1B model loaded |
+| Ollama | **Working** | 0.6.2, llama3.2:3b (primary) + tinyllama, GPU-accelerated |
 | RAG Stack | **Working** | PostgreSQL + pgvector, Redis, FastAPI API |
 
 ## Quick Commands
@@ -648,6 +680,13 @@ sudo ./install-jetson.sh --inventory        # System inventory
 sudo ./install-jetson.sh --docker           # Docker setup only
 sudo ./install-jetson.sh --ollama           # Ollama install only
 sudo ./install-jetson.sh --rag              # Start RAG Docker stack
+sudo ./install-jetson.sh --cuda            # CUDA verification & PATH fix
+
+# CUDA verification (Jetson)
+bash scripts/setup-cuda.sh                  # Full check + fix + test
+bash scripts/setup-cuda.sh --check          # Check only (no changes)
+bash scripts/setup-cuda.sh --fix-path       # Fix nvcc PATH only
+bash scripts/setup-cuda.sh --test           # Compile + run CUDA test
 
 # RAG API (Jetson)
 curl http://10.33.255.82:8000/api/health    # Health check from WSL
