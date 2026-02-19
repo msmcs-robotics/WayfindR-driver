@@ -7,6 +7,7 @@ Shows live LiDAR polar plot with:
   - Front marker (red triangle at 0 degrees = physical front of robot)
   - Smoothed heading arrow (where robot would go, yellow, EMA-filtered)
   - Front calibration mode: place object in front, press 'c' to calibrate
+  - Optional motor output driven by behavior (max_clearance or natural_wander)
 
 The front_offset_deg is saved to tests/results/lidar_calibration.json and can
 be loaded automatically in future runs.
@@ -15,6 +16,9 @@ Usage:
     python3 tests/gui_lidar_nav.py                      # Live GUI
     python3 tests/gui_lidar_nav.py --headless -n 3       # Save 3 snapshots
     python3 tests/gui_lidar_nav.py --front-offset 90     # Override front angle
+    python3 tests/gui_lidar_nav.py --motors              # Enable motor output
+    python3 tests/gui_lidar_nav.py --motors --behavior natural_wander
+    python3 tests/gui_lidar_nav.py --motors --max-speed 30 --swap-motors
 
 Controls:
     c - Calibrate front (place object directly in front first!)
@@ -23,6 +27,11 @@ Controls:
     s - Save screenshot
     r - Reset view
     q - Quit
+    m - Toggle motors on/off (when --motors enabled)
+    n - Cycle behavior (max_clearance / natural_wander)
+    x - Toggle swap L/R motors
+    v - Toggle invert left motor direction
+    b - Toggle invert right motor direction
 """
 
 import sys
@@ -30,6 +39,8 @@ import os
 import time
 import math
 import json
+import signal
+import atexit
 import argparse
 import threading
 from datetime import datetime
@@ -41,6 +52,27 @@ RESULTS_DIR.mkdir(exist_ok=True)
 CALIBRATION_FILE = RESULTS_DIR / "lidar_calibration.json"
 
 sys.path.insert(0, str(SCRIPT_DIR.parent))
+
+# Motor safety — global reference for emergency shutdown
+_active_robot = None
+
+
+def _emergency_motor_stop():
+    """Stop motors on any exit — atexit, signal, or crash."""
+    global _active_robot
+    if _active_robot is not None:
+        try:
+            _active_robot.stop()
+            _active_robot.cleanup()
+        except Exception:
+            pass
+        _active_robot = None
+
+
+def _signal_handler(signum, frame):
+    """Handle SIGTERM/SIGINT — stop motors and exit cleanly."""
+    _emergency_motor_stop()
+    sys.exit(0)
 
 
 def load_calibration():
@@ -155,8 +187,56 @@ def smooth_angle(current, target, alpha=0.15):
     return (current + alpha * diff) % 360
 
 
-def run_lidar_nav(port="/dev/ttyUSB0", headless=False, max_scans=0, front_offset=None):
-    """Run the LiDAR navigation GUI."""
+def create_motor_robot(driver_type="L298N"):
+    """Create a DifferentialDrive robot for motor output.
+
+    Returns (robot, driver_name) or (None, error_string) on failure.
+    """
+    try:
+        from locomotion.rpi_motors.drivers import DriverType
+        from locomotion.rpi_motors.factory import create_robot
+
+        driver_map = {
+            "L298N": DriverType.L298N,
+            "TB6612FNG": DriverType.TB6612FNG,
+            "DRV8833": DriverType.DRV8833,
+        }
+        dt = driver_map.get(driver_type.upper())
+        if dt is None:
+            return None, f"Unknown driver: {driver_type}"
+
+        robot = create_robot(driver_type=dt)
+        return robot, driver_type.upper()
+    except Exception as e:
+        return None, str(e)
+
+
+BEHAVIOR_NAMES = ["max_clearance", "natural_wander"]
+
+
+def create_behavior(behavior_name):
+    """Create a behavior instance wrapped in SafetyWrapper."""
+    from pathfinder.behaviors import (
+        MaxClearanceBehavior,
+        NaturalWanderBehavior,
+        SafetyWrapper,
+    )
+
+    if behavior_name == "max_clearance":
+        inner = MaxClearanceBehavior(forward_speed=0.4, turn_speed=0.5)
+    elif behavior_name == "natural_wander":
+        inner = NaturalWanderBehavior(forward_speed=0.4, turn_speed=0.5)
+    else:
+        raise ValueError(f"Unknown behavior: {behavior_name}")
+
+    return SafetyWrapper(inner)
+
+
+def run_lidar_nav(port="/dev/ttyUSB0", headless=False, max_scans=0, front_offset=None,
+                  motors=False, driver_type="L298N", max_speed=40,
+                  behavior_name="max_clearance",
+                  swap_motors=False, invert_left=False, invert_right=False):
+    """Run the LiDAR navigation GUI with optional motor output."""
     import numpy as np
 
     try:
@@ -190,6 +270,39 @@ def run_lidar_nav(port="/dev/ttyUSB0", headless=False, max_scans=0, front_offset
     except ImportError:
         print("ERROR: LD19 driver not available")
         return 1
+
+    # Motor setup with safety handlers
+    global _active_robot
+    robot = None
+    motors_active = False
+    detector = None
+    behavior = None
+
+    if motors:
+        print(f"Initializing motors ({driver_type}, max {max_speed}%)...")
+        robot, info = create_motor_robot(driver_type)
+        if robot is None:
+            print(f"WARNING: Motor init failed: {info}")
+            print("Continuing without motors")
+        else:
+            robot.stop()
+            print(f"Motors ready: {info} (stopped on startup)")
+            motors_active = True
+            _active_robot = robot
+            atexit.register(_emergency_motor_stop)
+            signal.signal(signal.SIGTERM, _signal_handler)
+            signal.signal(signal.SIGINT, _signal_handler)
+
+        # Set up behavior pipeline: SectorBasedDetector → Behavior → MotorCommand
+        try:
+            from pathfinder.obstacle_detector import SectorBasedDetector
+            detector = SectorBasedDetector()
+            behavior = create_behavior(behavior_name)
+            print(f"Behavior: {behavior_name}")
+        except Exception as e:
+            print(f"WARNING: Behavior init failed: {e}")
+            print("Continuing without behavior-driven motors")
+            motors_active = False
 
     # Shared scan state
     scan_state = {"points": [], "lock": threading.Lock(), "running": True}
@@ -288,29 +401,47 @@ def run_lidar_nav(port="/dev/ttyUSB0", headless=False, max_scans=0, front_offset
                             verticalalignment='top', fontsize=9, color='#cccccc',
                             family='monospace')
 
+        # Motor info text (bottom)
+        motor_text = ax.text(0.02, 0.02, '', transform=ax.transAxes,
+                             verticalalignment='bottom', fontsize=9, color='#cccccc',
+                             family='monospace')
+
         state = {
             "paused": False,
             "show_front": True,
             "frame_count": 0,
             "front_offset": front_offset_deg,
             "smooth_heading": None,  # EMA-smoothed heading angle
+            "motors_active": motors_active,
+            "behavior_name": behavior_name,
+            "swap": swap_motors,
+            "invert_left": invert_left,
+            "invert_right": invert_right,
+            "last_motor_time": time.time(),
+            "last_cmd": (0, 0),  # (left_pwm, right_pwm) for display
         }
 
-        # Print controls once at startup (not cluttering the plot)
-        print("\nControls: [C]alibrate  [F]ront toggle  [P]ause  [S]ave  [R]eset  [Q]uit\n")
+        # Print controls once at startup
+        controls = "\nControls: [C]alibrate  [F]ront toggle  [P]ause  [S]ave  [R]eset  [Q]uit"
+        if motors:
+            controls += "\n          [M]otors toggle  [N]ext behavior  [X]swap L/R  [V]invert L  [B]invert R"
+        print(controls + "\n")
 
-        def update(frame):
+        def update(frame_num):
             if state["paused"]:
-                return (scatter, front_line, front_marker, heading_arrow, heading_tip, info_text)
+                return (scatter, front_line, front_marker, heading_arrow,
+                        heading_tip, info_text, motor_text)
 
             with scan_state["lock"]:
                 points = list(scan_state["points"])
 
             if not points:
-                return (scatter, front_line, front_marker, heading_arrow, heading_tip, info_text)
+                return (scatter, front_line, front_marker, heading_arrow,
+                        heading_tip, info_text, motor_text)
 
             state["frame_count"] += 1
             offset = state["front_offset"]
+            now = time.time()
 
             # Plot scan points
             angles = np.array([math.radians(apply_offset(p.angle, offset)) for p in points])
@@ -342,7 +473,7 @@ def run_lidar_nav(port="/dev/ttyUSB0", headless=False, max_scans=0, front_offset
                 front_line.set_visible(False)
                 front_marker.set_visible(False)
 
-            # Max clearance → smoothed heading
+            # Max clearance → smoothed heading (always shown as the gold arrow)
             max_angle, max_clear = find_max_clearance(points, offset)
             if max_angle is not None:
                 state["smooth_heading"] = smooth_angle(
@@ -368,22 +499,77 @@ def run_lidar_nav(port="/dev/ttyUSB0", headless=False, max_scans=0, front_offset
                 if abs(rel) < 15:
                     steer_str = "STRAIGHT"
                 elif rel > 0:
-                    steer_str = f"RIGHT {rel:.0f}°"
+                    steer_str = f"RIGHT {rel:.0f}\u00b0"
                 else:
-                    steer_str = f"LEFT {abs(rel):.0f}°"
+                    steer_str = f"LEFT {abs(rel):.0f}\u00b0"
 
             clear_str = f"{max_clear/1000:.1f}m" if max_clear else "?"
             info_text.set_text(
                 f'{len(points)} pts  |  Clear: {clear_str}  |  {steer_str}'
             )
 
-            return (scatter, front_line, front_marker, heading_arrow, heading_tip, info_text)
+            # --- Motor control via behavior ---
+            if state["motors_active"] and robot is not None and detector is not None and behavior is not None:
+                # Feed scan through detector → behavior → motor command
+                detection = detector.process_scan(points)
+                command = behavior.step(detection)
+
+                left_pwm = int(command.left_speed * max_speed)
+                right_pwm = int(command.right_speed * max_speed)
+                left_pwm = max(-max_speed, min(max_speed, left_pwm))
+                right_pwm = max(-max_speed, min(max_speed, right_pwm))
+
+                # Apply motor orientation adjustments
+                if state["swap"]:
+                    left_pwm, right_pwm = right_pwm, left_pwm
+                if state["invert_left"]:
+                    left_pwm = -left_pwm
+                if state["invert_right"]:
+                    right_pwm = -right_pwm
+
+                robot.drive(left_pwm, right_pwm)
+                state["last_motor_time"] = now
+                state["last_cmd"] = (left_pwm, right_pwm)
+            elif state["motors_active"] and robot is not None:
+                # Watchdog: stop if no valid command for 2 seconds
+                if now - state["last_motor_time"] > 2.0:
+                    robot.stop()
+                    state["last_cmd"] = (0, 0)
+
+            # Motor info display
+            if motors:
+                lp, rp = state["last_cmd"]
+                active_str = "ON" if state["motors_active"] else "OFF"
+                orient_parts = []
+                if state["swap"]:
+                    orient_parts.append("SWAP")
+                if state["invert_left"]:
+                    orient_parts.append("INV-L")
+                if state["invert_right"]:
+                    orient_parts.append("INV-R")
+                orient_str = " " + " ".join(orient_parts) if orient_parts else ""
+                motor_text.set_text(
+                    f'Motor {active_str} ({max_speed}%)  L:{lp:+d} R:{rp:+d}'
+                    f'  [{state["behavior_name"]}]{orient_str}'
+                )
+                motor_text.set_color('#ff9900' if state["motors_active"] else '#666666')
+            else:
+                motor_text.set_text('')
+
+            return (scatter, front_line, front_marker, heading_arrow,
+                    heading_tip, info_text, motor_text)
 
         def on_key(event):
+            nonlocal behavior
             if event.key == 'q':
+                if robot is not None:
+                    robot.stop()
                 plt.close()
             elif event.key == 'p':
                 state["paused"] = not state["paused"]
+                if state["paused"] and robot is not None:
+                    robot.stop()
+                    state["last_cmd"] = (0, 0)
                 print(f"{'Paused' if state['paused'] else 'Resumed'}")
             elif event.key == 'f':
                 state["show_front"] = not state["show_front"]
@@ -396,7 +582,7 @@ def run_lidar_nav(port="/dev/ttyUSB0", headless=False, max_scans=0, front_offset
                         state["front_offset"] = raw_angle
                         state["smooth_heading"] = None  # reset smoothing
                         save_calibration(raw_angle)
-                        print(f"CALIBRATED: front_offset = {raw_angle:.1f}°")
+                        print(f"CALIBRATED: front_offset = {raw_angle:.1f}\u00b0")
                     else:
                         print("Calibration failed: no valid points")
                 else:
@@ -409,6 +595,30 @@ def run_lidar_nav(port="/dev/ttyUSB0", headless=False, max_scans=0, front_offset
                 fname = RESULTS_DIR / f"lidar_nav_{datetime.now().strftime('%Y%m%d_%H%M%S')}.png"
                 fig.savefig(fname, dpi=150, facecolor='black')
                 print(f"Saved: {fname}")
+            elif event.key == 'm' and robot is not None:
+                state["motors_active"] = not state["motors_active"]
+                if not state["motors_active"]:
+                    robot.stop()
+                    state["last_cmd"] = (0, 0)
+                print(f"Motors: {'ON' if state['motors_active'] else 'OFF'}")
+            elif event.key == 'n' and robot is not None:
+                # Cycle to next behavior
+                cur_idx = BEHAVIOR_NAMES.index(state["behavior_name"])
+                next_idx = (cur_idx + 1) % len(BEHAVIOR_NAMES)
+                state["behavior_name"] = BEHAVIOR_NAMES[next_idx]
+                behavior = create_behavior(state["behavior_name"])
+                robot.stop()
+                state["last_cmd"] = (0, 0)
+                print(f"Behavior: {state['behavior_name']}")
+            elif event.key == 'x' and robot is not None:
+                state["swap"] = not state["swap"]
+                print(f"Swap motors: {'ON' if state['swap'] else 'OFF'}")
+            elif event.key == 'v' and robot is not None:
+                state["invert_left"] = not state["invert_left"]
+                print(f"Invert left motor: {'ON' if state['invert_left'] else 'OFF'}")
+            elif event.key == 'b' and robot is not None:
+                state["invert_right"] = not state["invert_right"]
+                print(f"Invert right motor: {'ON' if state['invert_right'] else 'OFF'}")
 
         fig.canvas.mpl_connect('key_press_event', on_key)
 
@@ -419,6 +629,9 @@ def run_lidar_nav(port="/dev/ttyUSB0", headless=False, max_scans=0, front_offset
             print("\nStopped")
         finally:
             scan_state["running"] = False
+            if robot is not None:
+                print("Stopping motors...")
+                _emergency_motor_stop()
 
     # Cleanup
     scan_state["running"] = False
@@ -435,11 +648,19 @@ def main():
 Calibration:
   1. Place a flat object (book, box) directly in front of the robot
   2. Start gui_lidar_nav.py
-  3. Press 'c' — the nearest cluster becomes the new "front"
+  3. Press 'c' -- the nearest cluster becomes the new "front"
   4. Calibration saved to tests/results/lidar_calibration.json
   5. Future runs load this automatically
 
 Red triangle = front. Gold arrow = smoothed heading intention.
+
+Behaviors (--behavior):
+  max_clearance    — Always move toward longest distance (simple)
+  natural_wander   — Cycle through top clearance directions (explores more)
+
+Motor orientation:
+  Press 'x' to swap L/R, 'v' to invert left, 'b' to invert right.
+  Press 'n' to cycle through behaviors at runtime.
         """
     )
     parser.add_argument("--port", "-p", default="/dev/ttyUSB0", help="LiDAR port (default: /dev/ttyUSB0)")
@@ -447,6 +668,21 @@ Red triangle = front. Gold arrow = smoothed heading intention.
     parser.add_argument("--scans", "-n", type=int, default=0, help="Max scans in headless (0=unlimited)")
     parser.add_argument("--front-offset", type=float, default=None,
                         help="Override front offset in degrees (default: load from calibration)")
+    parser.add_argument("--motors", action="store_true", help="Enable motor output (requires GPIO)")
+    parser.add_argument("--driver", type=str, default="L298N",
+                        choices=["L298N", "TB6612FNG", "DRV8833"],
+                        help="Motor driver type (default: L298N)")
+    parser.add_argument("--max-speed", type=int, default=40,
+                        help="Max motor speed %% (default: 40)")
+    parser.add_argument("--behavior", type=str, default="max_clearance",
+                        choices=BEHAVIOR_NAMES,
+                        help="Navigation behavior (default: max_clearance)")
+    parser.add_argument("--swap-motors", action="store_true",
+                        help="Swap left/right motor assignments")
+    parser.add_argument("--invert-left", action="store_true",
+                        help="Invert left motor direction")
+    parser.add_argument("--invert-right", action="store_true",
+                        help="Invert right motor direction")
 
     args = parser.parse_args()
 
@@ -470,6 +706,20 @@ Red triangle = front. Gold arrow = smoothed heading intention.
             print(f"Display: {display}")
 
     print(f"Port: {args.port}")
+
+    if args.motors:
+        print(f"Motor output: {args.driver} (max {args.max_speed}%)")
+        print(f"Behavior: {args.behavior}")
+        orient = []
+        if args.swap_motors:
+            orient.append("swap-LR")
+        if args.invert_left:
+            orient.append("invert-L")
+        if args.invert_right:
+            orient.append("invert-R")
+        if orient:
+            print(f"Motor orientation: {', '.join(orient)}")
+
     print()
 
     return run_lidar_nav(
@@ -477,6 +727,13 @@ Red triangle = front. Gold arrow = smoothed heading intention.
         headless=args.headless,
         max_scans=args.scans,
         front_offset=args.front_offset,
+        motors=args.motors,
+        driver_type=args.driver,
+        max_speed=args.max_speed,
+        behavior_name=args.behavior,
+        swap_motors=args.swap_motors,
+        invert_left=args.invert_left,
+        invert_right=args.invert_right,
     )
 
 

@@ -392,8 +392,8 @@ def run_face_tracker(device=0, headless=False, max_captures=0, dead_zone=40, gai
 
             # Drive motors if active
             if motors_active and robot is not None:
-                if len(faces) == 0 or face_centered:
-                    # No face or face centered — stop motors
+                if len(faces) == 0 or face_centered or abs(steer) < 0.001:
+                    # No face, face centered, or in dead zone — stop motors
                     robot.stop()
                 else:
                     # Scale float speeds to int PWM, capped by max_speed

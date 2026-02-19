@@ -46,9 +46,11 @@ class Settings(BaseSettings):
     # Ollama Configuration (when LLM_BACKEND = "ollama")
     # -------------------------------------------------------------------------
     OLLAMA_BASE_URL: str = "http://localhost:11434"
-    LLM_MODEL: str = "tinyllama"
+    LLM_MODEL: str = "llama3.2:3b"
     LLM_TEMPERATURE: float = 0.3
     LLM_TIMEOUT: int = 300
+    LLM_NUM_CTX: int = 4096       # Context window (Ollama default for <24 GiB VRAM)
+    LLM_NUM_PREDICT: int = 512    # Max response tokens (default 128 truncates RAG answers)
 
     # -------------------------------------------------------------------------
     # HuggingFace Configuration (when LLM_BACKEND = "huggingface")

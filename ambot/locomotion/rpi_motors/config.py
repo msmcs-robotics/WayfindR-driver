@@ -282,7 +282,7 @@ L298N_CONFIG = DriverConfig(
         in1=13,    # Physical Pin 13 → L298N IN1 (GPIO27)
         in2=15,    # Physical Pin 15 → L298N IN2 (GPIO22)
         pwm=33,    # Physical Pin 33 → L298N ENA (GPIO13) - Remove jumper!
-        offset=1,
+        offset=-1, # Left motor wired in reverse — negate direction
     ),
     right_motor=MotorPins(
         in1=16,    # Physical Pin 16 → L298N IN3 (GPIO23)

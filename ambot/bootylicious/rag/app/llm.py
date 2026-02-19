@@ -127,6 +127,8 @@ class OllamaClient(BaseLLMClient):
             "stream": False,
             "options": {
                 "temperature": temperature if temperature is not None else self.temperature,
+                "num_ctx": settings.LLM_NUM_CTX,
+                "num_predict": settings.LLM_NUM_PREDICT,
             },
         }
         if system:
