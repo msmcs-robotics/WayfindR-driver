@@ -41,8 +41,8 @@ The project enables multiple developer teams to work independently on their resp
 *Technical constraints, compatibility, performance needs*
 
 - [ ] Both systems run Ubuntu-based OS
-- [ ] Jetson runs nanoLLM framework for LLM inference (GPU-accelerated)
-- [ ] RAG system containerized via Docker (PostgreSQL + pgvector + Redis + FastAPI)
+- [x] Jetson runs Ollama for LLM inference (GPU-accelerated via CUDA 12.6)
+- [x] RAG system containerized via Docker (PostgreSQL + pgvector + Redis + FastAPI)
 - [ ] LiDAR system runs without ROS2 (lightweight Python-based)
 - [ ] SSH access to both systems for remote development
 - [ ] Python-first development on Raspberry Pi (C port is future work)
@@ -65,16 +65,16 @@ The project enables multiple developer teams to work independently on their resp
 | No ML training on either device | Only inference; training/optimization is external project | No |
 | No speaker/microphone initially | First iteration uses text display only | Yes |
 | Python-first on Pi | Rapid development, C port later | Yes |
-| Small LLM only (1-3B params) | Jetson Orin Nano resource constraints | No |
+| Small LLM only (1-3B params, Q4_K_M quantized) | Jetson Orin Nano: 7.4 GiB shared memory | No |
 | RAG system via Docker | Isolation and reproducibility (based on rag-bootstrap) | No |
 | No LLM optimization work in this project | Covered by external project | No |
 
 ## Assumptions
 
-- [ASSUMED] Jetson Orin Nano has sufficient GPU memory for nanoLLM + RAG embedding model concurrently
-- [ASSUMED] RAG system (PostgreSQL + Redis) can run on CPU while LLM uses GPU
-- [ASSUMED] NVIDIA toolkits are partially installed on the Jetson already
-- [ASSUMED] Docker is installed on the Jetson (but may have configuration issues)
+- [VERIFIED] Jetson Orin Nano runs Ollama LLM + RAG embedding model concurrently (~4 GiB used, ~3.4 GiB headroom)
+- [VERIFIED] RAG system (PostgreSQL + Redis + embeddings) runs on CPU while Ollama LLM uses GPU
+- [VERIFIED] NVIDIA toolkits installed: CUDA 12.6, cuDNN 9.3.0, TensorRT 10.3.0, Driver 540.4.0
+- [VERIFIED] Docker 28.2.2 working with NVIDIA Container Toolkit 1.16.2 (default GPU runtime)
 - [ASSUMED] RPLidar or compatible LiDAR will be used on the Pi (based on WayfindR-driver)
 - [UPDATED] Single-platform design — all components run on one device (no inter-device communication needed)
 - [VERIFIED] Jetson SSH: `ssh jetson` (georgejetson@10.33.255.82)
@@ -106,8 +106,8 @@ The project enables multiple developer teams to work independently on their resp
 
 | Decision | Choice | Rationale | Date |
 |----------|--------|-----------|------|
-| LLM Framework | nanoLLM (NVIDIA Jetson AI Lab) | Optimized for Jetson hardware, GPU-accelerated | 2026-01-27 |
-| LLM Models | TinyLlama-1.1B, Llama-3.2-3B (active) | Small enough for Jetson Orin Nano | 2026-01-27 |
+| LLM Framework | Ollama 0.6.2 (GPU-accelerated via llama.cpp) | Simpler model management, memory efficient, proven on Jetson | 2026-02-12 |
+| LLM Model | llama3.2:3b Q4_K_M (primary) | Best RAG quality at 3B; gemma2:2b, phi3:mini, smollm2 tested and rejected | 2026-02-19 |
 | RAG Stack | rag-bootstrap (pgvector + Redis + FastAPI) | Proven stack, containerized, MCP-compatible | 2026-01-27 |
 | Embedding Model | all-MiniLM-L6-v2 (384-dim) | Lightweight (~80MB), good quality | 2026-01-27 |
 | LiDAR Approach (initial) | Custom Python (no ROS2) | Start simple, get basic system working first | 2026-01-27 |

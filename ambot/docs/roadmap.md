@@ -69,7 +69,11 @@ This roadmap tracks project-level features and milestones. For immediate tasks, 
   - Model selection, quantization, context management, deployment patterns
   - Findings from `~/exudeai/` and web research
 - [x] Created model comparison test script: `scripts/test-llm-models.sh` -- 2026-02-19
-- [ ] Test additional models: phi3:mini (3.8B), gemma2:2b, smollm2:1.7b (testing in progress)
+- [x] Tested additional models on Jetson: phi3:mini, gemma2:2b, smollm2:1.7b -- 2026-02-19
+  - gemma2:2b fastest (27s, 2.4 GiB), phi3:mini slowest (50s, 3.7 GiB)
+  - smollm2:1.7b hallucinated — not reliable for RAG
+  - llama3.2:3b confirmed as best choice for RAG quality
+- [x] Applied Ollama memory optimizations (flash attention, q8 KV cache, single model/parallel) -- 2026-02-19
 - [ ] Create basic conversation loop (text in -> text out)
 
 ### RAG System
