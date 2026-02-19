@@ -1,6 +1,6 @@
 # Ambot - Todo & Roadmap
 
-> Last updated: 2026-02-17 (Session 13)
+> Last updated: 2026-02-19 (Session 14)
 
 ---
 
@@ -66,9 +66,10 @@ _Start here when resuming work_
 5. **Test real-world wandering** - Once motors work, run `wandering_demo_1.py` with actual movement
 
 ### Jetson (Bootylicious)
-5. **Implement RAG resilience** - Junk filtering, text normalization, embedding retry
-6. **Ingest real EECS docs** - When available, ingest course documentation into RAG knowledge base
-7. **Evaluate nomic-embed-text** - Larger embedding model (768-dim, 8192 context) vs current MiniLM (384-dim)
+5. **Review model test results** - Compare phi3:mini, gemma2:2b, smollm2 against llama3.2:3b (results in `scripts/test-llm-models.sh` output)
+6. **Implement RAG resilience** - Junk filtering, text normalization, embedding retry
+7. **Ingest real EECS docs** - When available, ingest course documentation into RAG knowledge base
+8. **Evaluate nomic-embed-text** - Larger embedding model (768-dim, 8192 context) vs current MiniLM (384-dim)
 
 ## In Progress
 
@@ -120,6 +121,11 @@ _Priority queue for immediate work_
 - [x] Created `scripts/setup-cuda.sh` — CUDA detection, verification, PATH fix, test compilation
 - [x] Fixed nvcc PATH via `/etc/profile.d/cuda-path.sh`
 - [x] CUDA test passed: compiled + ran kernel on Orin GPU (Compute 8.7, 8 SMs)
+- [x] Added `num_ctx=4096` and `num_predict=512` to Ollama config + API calls (default 128 truncated RAG answers)
+- [x] Created LLM configuration guide (`docs/findings/llm-configuration-guide.md`)
+- [x] Created edge LLM research doc (`docs/findings/edge-llm-research.md`) from exudeai + web research
+- [x] Created model comparison test script (`scripts/test-llm-models.sh`)
+- [ ] Review model comparison results (phi3:mini, gemma2:2b, smollm2 vs llama3.2:3b)
 - [ ] Implement RAG resilience (junk filtering, text normalization, retries)
 - [ ] Ingest real EECS/course documents into knowledge base
 
@@ -150,6 +156,35 @@ _Lower priority, do when time permits_
 - [ ] Voice interaction (STT/TTS via Android device)
 
 ## Recently Completed
+
+_Session 14 - 2026-02-19_
+
+- [x] **Added Ollama generation parameters** (`num_ctx`, `num_predict`) to config + API calls
+  - Default `num_predict=128` was truncating RAG answers with source citations
+  - Added `LLM_NUM_CTX=4096` and `LLM_NUM_PREDICT=512` to config.py, llm.py, .env.example
+  - Deployed to Jetson, rebuilt API container, verified working
+- [x] **Created LLM configuration guide** (`docs/findings/llm-configuration-guide.md`)
+  - Ollama API parameter reference (num_ctx, num_predict, temperature, etc.)
+  - Thinking model gotcha (qwen3/deepseek-r1 consume num_predict in hidden `<think>` block)
+  - Model selection table for Jetson Orin Nano (6 candidates with sizes)
+  - Quantization guide (Q4_K_M recommended default)
+  - Memory budget calculations
+- [x] **Created edge LLM research doc** (`docs/findings/edge-llm-research.md`)
+  - Comprehensive findings from `~/exudeai/` repository exploration
+  - SLM selection, quantization techniques, context window management
+  - "Lost in the Middle" attention problem and mitigation
+  - Three-layer cognitive architecture mapping to AMBOT components
+  - Embedding model comparison (MiniLM vs nomic-embed-text)
+- [x] **Created model comparison test script** (`scripts/test-llm-models.sh`)
+  - Pulls and benchmarks: llama3.2:3b, phi3:mini, gemma2:2b, smollm2:1.7b
+  - Tests both direct speed and RAG-quality (with retrieved context)
+  - Reports timing, token count, and answer quality
+- [x] **Changed config.py default model** from `tinyllama` to `llama3.2:3b`
+- [x] **Model comparison results** — Pulled and tested phi3:mini, gemma2:2b, smollm2:1.7b on Jetson
+  - gemma2:2b fastest (27s, 2.4 GiB VRAM), phi3:mini slowest (50s, 3.7 GiB VRAM)
+  - smollm2:1.7b hallucinated when context missing — not recommended for RAG
+  - llama3.2:3b remains best choice: proven RAG quality, moderate speed/VRAM
+  - RAG script context-escaping issue needs fix; direct API test confirmed llama3.2 works correctly
 
 _Session 13 - 2026-02-17_
 
@@ -507,6 +542,7 @@ ambot/
 │   ├── env_diagnostic.py  # Environment diagnostic (SSH vs desktop, package locations)
 │   ├── kill-hardware.sh   # Emergency motor stop + kill hardware processes
 │   ├── setup-cuda.sh      # CUDA detection, verification, PATH fix (Jetson)
+│   ├── test-llm-models.sh # LLM model comparison test (pull + benchmark)
 │   ├── jetson-monitor.sh  # Jetson monitoring (Docker, SSH, system, RAG health)
 │   ├── network-refresh.sh # RPi network troubleshooting (run ON RPi)
 │   └── wsl-ssh-helper.sh  # WSL2 SSH helper (run FROM dev machine)
@@ -542,7 +578,9 @@ ambot/
     │   ├── live-monitoring-architecture.md  # Live monitor design doc
     │   ├── jetson-llm-deployment-research.md
     │   ├── localization-pre-slam.md  # IMU/localization analysis (Level 0-4)
-    │   └── mpu6050-wiring.md  # MPU6050 GY-521 wiring guide for RPi 3B
+    │   ├── mpu6050-wiring.md  # MPU6050 GY-521 wiring guide for RPi 3B
+    │   ├── llm-configuration-guide.md  # Ollama/HF API parameters, model selection
+    │   └── edge-llm-research.md  # Edge LLM findings from exudeai + web research
     └── archive/           # Session summaries
 ```
 

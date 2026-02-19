@@ -249,16 +249,44 @@ The Jetson Orin Nano (7.4 GiB) could theoretically QLoRA-train a 1.5B model, but
 
 ---
 
-## 8. Key Takeaways for AMBOT
+## 8. Benchmark Results (Jetson Orin Nano, 2026-02-19)
 
-1. **llama3.2:3b is a good choice** -- 3B parameters is the sweet spot for RAG quality on 7.4 GiB
-2. **Test phi3:mini and qwen2.5:3b** -- similar size, potentially better for specific tasks
-3. **Always set num_predict >= 512** for RAG (default 128 truncates answers)
-4. **Always set num_ctx = 4096** (sufficient for current RAG, matches Jetson memory budget)
-5. **Avoid thinking models** (qwen3, deepseek-r1) for RAG unless `think: false` is set
-6. **Q4_K_M quantization** is the right level -- all Ollama models use this by default
-7. **Stick with MiniLM embeddings** for now -- switch to nomic-embed-text only if quality demands it
-8. **Context ordering matters** -- most relevant chunks should go first (current code does this)
+Tested via `scripts/test-llm-models.sh` on Jetson with CUDA 12.6.
+
+### Direct Speed Test (simple question, no RAG)
+
+| Model | Time | Tokens | VRAM Used | Notes |
+|-------|------|--------|-----------|-------|
+| **gemma2:2b** | **27.2s** | 40 | 2.4 GiB | Fastest, most concise |
+| smollm2:1.7b | 41.0s | 58 | 2.7 GiB | Surprisingly large VRAM for 1.7B |
+| llama3.2:3b | 42.9s | 62 | 2.6 GiB | Moderate speed |
+| phi3:mini | 49.9s | 68 | 3.7 GiB | Slowest, highest VRAM |
+
+### RAG Quality (via direct API test)
+
+- **llama3.2:3b**: Correctly identified Bootylicious, Locomotion, Pathfinder from retrieved docs. Cited sources accurately.
+- **smollm2:1.7b**: Hallucinated "Ambot-EECS-Core on RPi 400" when context was missing. Not reliable for RAG.
+- **gemma2:2b**: Fast but needs further RAG quality testing with properly injected context.
+- **phi3:mini**: Good general reasoning but highest memory footprint (3.7 GiB).
+
+### Recommendation
+
+**Keep llama3.2:3b as primary**. It's the proven choice for RAG quality. Consider gemma2:2b as a speed-optimized alternative if RAG quality holds up in future testing.
+
+---
+
+## 9. Key Takeaways for AMBOT
+
+1. **llama3.2:3b is the right choice** -- proven RAG quality, moderate VRAM, confirmed in benchmarks
+2. **gemma2:2b is a speed alternative** -- 1.6x faster, less VRAM, needs RAG quality validation
+3. **smollm2:1.7b is not recommended** -- hallucinated without context, unreliable for RAG
+4. **phi3:mini has high VRAM cost** -- 3.7 GiB leaves only 3.7 GiB for everything else
+5. **Always set num_predict >= 512** for RAG (default 128 truncates answers)
+6. **Always set num_ctx = 4096** (sufficient for current RAG, matches Jetson memory budget)
+7. **Avoid thinking models** (qwen3, deepseek-r1) for RAG unless `think: false` is set
+8. **Q4_K_M quantization** is the right level -- all Ollama models use this by default
+9. **Stick with MiniLM embeddings** for now -- switch to nomic-embed-text only if quality demands it
+10. **Context ordering matters** -- most relevant chunks should go first (current code does this)
 
 ---
 

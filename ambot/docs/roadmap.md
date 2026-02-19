@@ -1,6 +1,6 @@
 # Ambot - Roadmap
 
-> Last updated: 2026-02-17
+> Last updated: 2026-02-19
 
 ## Overview
 
@@ -61,8 +61,16 @@ This roadmap tracks project-level features and milestones. For immediate tasks, 
 - [x] Tested TinyLlama 1.1B — works but hallucinated heavily, ignored context -- 2026-02-12
 - [x] Tested llama3.2:3b — accurately answers from retrieved context, selected as primary -- 2026-02-17
 - [x] Benchmarked resource usage: 5.5 GiB used (Docker 148 MiB + Ollama ~2 GB), 1.9 GiB headroom -- 2026-02-17
+- [x] Added `num_ctx` (4096) and `num_predict` (512) to Ollama config and API calls -- 2026-02-19
+  - Default `num_predict=128` was truncating RAG answers with citations
+  - Documented thinking model gotcha (qwen3/deepseek-r1 consume num_predict in hidden `<think>` block)
+- [x] Created LLM configuration guide: `docs/findings/llm-configuration-guide.md` -- 2026-02-19
+- [x] Created edge LLM research doc: `docs/findings/edge-llm-research.md` -- 2026-02-19
+  - Model selection, quantization, context management, deployment patterns
+  - Findings from `~/exudeai/` and web research
+- [x] Created model comparison test script: `scripts/test-llm-models.sh` -- 2026-02-19
+- [ ] Test additional models: phi3:mini (3.8B), gemma2:2b, smollm2:1.7b (testing in progress)
 - [ ] Create basic conversation loop (text in -> text out)
-- [ ] Test additional models: phi-3-mini-4k (3.8B), smollm2 (1.7B)
 
 ### RAG System
 - [x] Adapt rag-bootstrap Docker Compose for Jetson (ARM64) -- 2026-02-12

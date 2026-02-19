@@ -6,7 +6,7 @@ Shows live LiDAR polar plot with:
   - Scan points colored by safety zone (red/orange/yellow/green)
   - Smoothed heading arrow (where robot would go, gold, EMA-filtered)
   - Front calibration mode: place object in front, press 'c' to calibrate
-  - Optional motor output driven by behavior (max_clearance or natural_wander)
+  - Optional motor output with command smoothing (holds direction 1.5s)
 
 The front_offset_deg is saved to tests/results/lidar_calibration.json and can
 be loaded automatically in future runs.
@@ -15,8 +15,8 @@ Usage:
     python3 tests/gui_lidar_nav.py                      # Live GUI
     python3 tests/gui_lidar_nav.py --headless -n 3       # Save 3 snapshots
     python3 tests/gui_lidar_nav.py --front-offset 90     # Override front angle
-    python3 tests/gui_lidar_nav.py --motors              # Enable motor output
-    python3 tests/gui_lidar_nav.py --motors --behavior natural_wander
+    python3 tests/gui_lidar_nav.py --motors              # Enable motor output (natural_wander)
+    python3 tests/gui_lidar_nav.py --motors --behavior max_clearance
     python3 tests/gui_lidar_nav.py --motors --max-speed 30 --swap-motors
 
 Controls:
@@ -209,7 +209,7 @@ def create_motor_robot(driver_type="L298N"):
         return None, str(e)
 
 
-BEHAVIOR_NAMES = ["max_clearance", "natural_wander"]
+BEHAVIOR_NAMES = ["natural_wander", "max_clearance"]
 
 
 def create_behavior(behavior_name):
@@ -225,6 +225,113 @@ def create_behavior(behavior_name):
         return NaturalWanderBehavior(forward_speed=0.4, turn_speed=0.5)
     else:
         raise ValueError(f"Unknown behavior: {behavior_name}")
+
+
+class CommandSmoother:
+    """Smooth motor commands to prevent rapid direction switching.
+
+    Without this, every LiDAR scan (~4Hz) can flip the motor direction,
+    making the robot oscillate instead of committing to a heading.
+
+    Approach:
+    - Classify each command as an intent (FORWARD, LEFT, RIGHT, STOP, REVERSE)
+    - Lock in the intent for a minimum hold time before allowing changes
+    - EMA-smooth the actual PWM values for gradual transitions
+    - Emergency stops (both wheels = 0 from behavior) bypass the hold
+    """
+
+    INTENT_FORWARD = "FWD"
+    INTENT_LEFT = "LEFT"
+    INTENT_RIGHT = "RIGHT"
+    INTENT_STOP = "STOP"
+    INTENT_REVERSE = "REV"
+
+    def __init__(self, hold_time=1.5, ema_alpha=0.3):
+        """
+        Args:
+            hold_time: Minimum seconds to hold a turn direction before switching
+            ema_alpha: Smoothing factor for PWM values (0=frozen, 1=instant)
+        """
+        self.hold_time = hold_time
+        self.ema_alpha = ema_alpha
+        self._current_intent = self.INTENT_STOP
+        self._intent_start = 0.0
+        self._smooth_left = 0.0
+        self._smooth_right = 0.0
+
+    def _classify(self, left, right):
+        """Classify a motor command into a directional intent."""
+        if abs(left) < 3 and abs(right) < 3:
+            return self.INTENT_STOP
+        if left < -3 and right < -3:
+            return self.INTENT_REVERSE
+        if left < right - 5:
+            return self.INTENT_RIGHT
+        if right < left - 5:
+            return self.INTENT_LEFT
+        return self.INTENT_FORWARD
+
+    def smooth(self, left, right):
+        """Apply direction hold + EMA smoothing to motor commands.
+
+        Args:
+            left: Left motor PWM (-100 to 100)
+            right: Right motor PWM (-100 to 100)
+
+        Returns:
+            (smoothed_left, smoothed_right) as ints
+        """
+        now = time.time()
+        new_intent = self._classify(left, right)
+
+        # Emergency stop always passes through immediately
+        if new_intent == self.INTENT_STOP:
+            self._current_intent = self.INTENT_STOP
+            self._intent_start = now
+            self._smooth_left = 0.0
+            self._smooth_right = 0.0
+            return 0, 0
+
+        # Check if we should accept the new intent
+        time_in_current = now - self._intent_start
+        intent_changed = new_intent != self._current_intent
+
+        if intent_changed and time_in_current < self.hold_time:
+            # Still within hold time — keep current intent, ignore new direction
+            # but still EMA-smooth toward the MAGNITUDE of the new command
+            # using the current intent's direction
+            if self._current_intent == self.INTENT_FORWARD:
+                # Keep going forward at roughly the requested speed
+                target_left = abs(left)
+                target_right = abs(right)
+            elif self._current_intent == self.INTENT_LEFT:
+                # Keep turning left at roughly the requested magnitude
+                mag = max(abs(left), abs(right))
+                target_left = -mag * 0.5
+                target_right = mag
+            elif self._current_intent == self.INTENT_RIGHT:
+                mag = max(abs(left), abs(right))
+                target_left = mag
+                target_right = -mag * 0.5
+            elif self._current_intent == self.INTENT_REVERSE:
+                target_left = -abs(left)
+                target_right = -abs(right)
+            else:
+                target_left = left
+                target_right = right
+        else:
+            # Accept the new intent (hold time expired or same intent)
+            if intent_changed:
+                self._current_intent = new_intent
+                self._intent_start = now
+            target_left = left
+            target_right = right
+
+        # EMA smooth toward target
+        self._smooth_left += self.ema_alpha * (target_left - self._smooth_left)
+        self._smooth_right += self.ema_alpha * (target_right - self._smooth_right)
+
+        return int(self._smooth_left), int(self._smooth_right)
 
 
 def make_offset_points(raw_points, front_offset_deg):
@@ -297,6 +404,8 @@ def run_lidar_nav(port="/dev/ttyUSB0", headless=False, max_scans=0, front_offset
     detector = None
     behavior = None
 
+    smoother = None
+
     if motors:
         print(f"Initializing motors ({driver_type}, max {max_speed}%)...")
         robot, info = create_motor_robot(driver_type)
@@ -312,12 +421,13 @@ def run_lidar_nav(port="/dev/ttyUSB0", headless=False, max_scans=0, front_offset
             signal.signal(signal.SIGTERM, _signal_handler)
             signal.signal(signal.SIGINT, _signal_handler)
 
-        # Set up behavior pipeline: SectorBasedDetector -> Behavior -> MotorCommand
+        # Set up behavior pipeline: SectorBasedDetector -> Behavior -> Smoother -> Motors
         try:
             from pathfinder.obstacle_detector import SectorBasedDetector
             detector = SectorBasedDetector()
             behavior = create_behavior(behavior_name)
-            print(f"Behavior: {behavior_name}")
+            smoother = CommandSmoother(hold_time=1.5, ema_alpha=0.3)
+            print(f"Behavior: {behavior_name} (direction hold: 1.5s)")
         except Exception as e:
             print(f"WARNING: Behavior init failed: {e}")
             print("Continuing without behavior-driven motors")
@@ -529,7 +639,7 @@ def run_lidar_nav(port="/dev/ttyUSB0", headless=False, max_scans=0, front_offset
                 f'{len(points)} pts  |  Clear: {clear_str}  |  {steer_str}'
             )
 
-            # --- Motor control via behavior ---
+            # --- Motor control via behavior + command smoother ---
             if (state["motors_active"] and robot is not None
                     and detector is not None and behavior is not None):
                 try:
@@ -538,10 +648,16 @@ def run_lidar_nav(port="/dev/ttyUSB0", headless=False, max_scans=0, front_offset
                     detection = detector.process_scan(adjusted)
                     command = behavior.step(detection)
 
-                    left_pwm = int(command.left_speed * max_speed)
-                    right_pwm = int(command.right_speed * max_speed)
-                    left_pwm = max(-max_speed, min(max_speed, left_pwm))
-                    right_pwm = max(-max_speed, min(max_speed, right_pwm))
+                    raw_left = int(command.left_speed * max_speed)
+                    raw_right = int(command.right_speed * max_speed)
+                    raw_left = max(-max_speed, min(max_speed, raw_left))
+                    raw_right = max(-max_speed, min(max_speed, raw_right))
+
+                    # Smooth commands: hold direction for 1.5s, EMA speed values
+                    if smoother is not None:
+                        left_pwm, right_pwm = smoother.smooth(raw_left, raw_right)
+                    else:
+                        left_pwm, right_pwm = raw_left, raw_right
 
                     # Apply motor orientation adjustments
                     if state["swap"]:
@@ -633,6 +749,8 @@ def run_lidar_nav(port="/dev/ttyUSB0", headless=False, max_scans=0, front_offset
                 next_idx = (cur_idx + 1) % len(BEHAVIOR_NAMES)
                 state["behavior_name"] = BEHAVIOR_NAMES[next_idx]
                 behavior = create_behavior(state["behavior_name"])
+                if smoother is not None:
+                    smoother = CommandSmoother(hold_time=1.5, ema_alpha=0.3)
                 robot.stop()
                 state["last_cmd"] = (0, 0)
                 print(f"Behavior: {state['behavior_name']}")
@@ -682,8 +800,8 @@ Calibration:
 Gold arrow = smoothed heading (direction of max clearance).
 
 Behaviors (--behavior):
-  max_clearance    -- Always move toward longest distance (simple)
-  natural_wander   -- Cycle through top clearance directions (explores more)
+  natural_wander   -- Cycle through top clearance directions, 5s hold (default)
+  max_clearance    -- Always move toward longest distance (reactive, oscillates more)
 
 Motor orientation:
   Press 'x' to swap L/R, 'v' to invert left, 'b' to invert right.
@@ -701,9 +819,9 @@ Motor orientation:
                         help="Motor driver type (default: L298N)")
     parser.add_argument("--max-speed", type=int, default=40,
                         help="Max motor speed %% (default: 40)")
-    parser.add_argument("--behavior", type=str, default="max_clearance",
+    parser.add_argument("--behavior", type=str, default="natural_wander",
                         choices=BEHAVIOR_NAMES,
-                        help="Navigation behavior (default: max_clearance)")
+                        help="Navigation behavior (default: natural_wander)")
     parser.add_argument("--swap-motors", action="store_true",
                         help="Swap left/right motor assignments")
     parser.add_argument("--invert-left", action="store_true",
