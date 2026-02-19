@@ -686,6 +686,7 @@ def run_lidar_nav(port="/dev/ttyUSB0", headless=False, max_scans=0, front_offset
             if motors:
                 lp, rp = state["last_cmd"]
                 active_str = "ON" if state["motors_active"] else "OFF"
+                intent_str = smoother._current_intent if smoother else ""
                 orient_parts = []
                 if state["swap"]:
                     orient_parts.append("SWAP")
@@ -696,7 +697,7 @@ def run_lidar_nav(port="/dev/ttyUSB0", headless=False, max_scans=0, front_offset
                 orient_str = " " + " ".join(orient_parts) if orient_parts else ""
                 motor_text.set_text(
                     f'Motor {active_str} ({max_speed}%)  L:{lp:+d} R:{rp:+d}'
-                    f'  [{state["behavior_name"]}]{orient_str}'
+                    f'  {intent_str}  [{state["behavior_name"]}]{orient_str}'
                 )
                 motor_text.set_color('#ff9900' if state["motors_active"] else '#666666')
             else:

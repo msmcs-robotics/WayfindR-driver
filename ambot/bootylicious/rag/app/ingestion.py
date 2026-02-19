@@ -9,6 +9,7 @@ from pathlib import Path
 from typing import Protocol, runtime_checkable
 
 import yaml
+from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from .config import settings
@@ -85,6 +86,31 @@ class HandlerRegistry:
 # =============================================================================
 
 _SENTENCE_RE = re.compile(r"(?<=[.!?])\s+")
+_DOT_LEADER_RE = re.compile(r"\.{2,}")  # two or more consecutive dots
+
+
+def is_junk_chunk(
+    text: str,
+    digit_threshold: float = settings.JUNK_DIGIT_THRESHOLD,
+    dot_leader_threshold: float = settings.JUNK_DOT_LEADER_THRESHOLD,
+) -> bool:
+    """Return True if *text* looks like a table-of-contents, index, or
+    other non-prose content that would pollute embeddings.
+
+    Heuristics (from rag-atc-testing findings):
+      - >25% of characters are digits (page-number-heavy content)
+      - >10% of characters are part of dot-leader patterns (TOC lines)
+    """
+    if not text:
+        return True
+    length = len(text)
+    digit_count = sum(c.isdigit() for c in text)
+    if digit_count / length > digit_threshold:
+        return True
+    dot_leader_chars = sum(len(m.group()) for m in _DOT_LEADER_RE.finditer(text))
+    if dot_leader_chars / length > dot_leader_threshold:
+        return True
+    return False
 
 
 def chunk_text(
@@ -155,12 +181,25 @@ async def ingest_file(
     text = handler.extract_text(filepath)
 
     # Chunk
-    chunks_text = chunk_text(text, settings.CHUNK_SIZE, settings.CHUNK_OVERLAP)
+    all_chunks = chunk_text(text, settings.CHUNK_SIZE, settings.CHUNK_OVERLAP)
+
+    # Filter junk chunks (TOC, indexes, page-number-heavy content)
+    chunks_text = [c for c in all_chunks if not is_junk_chunk(c)]
+    junk_count = len(all_chunks) - len(chunks_text)
+    if junk_count:
+        logger.info(
+            "Filtered %d/%d junk chunks from %s",
+            junk_count, len(all_chunks), filepath.name,
+        )
+
+    if not chunks_text:
+        logger.warning("No usable chunks after filtering for %s", filepath.name)
+        chunks_text = all_chunks[:1] if all_chunks else [text.strip()[:500]]
 
     # Embed
     embeddings = await embedding_service.embed_batch(chunks_text)
 
-    # Store
+    # Store — batch commit every INGEST_BATCH_SIZE chunks for resume support
     content_hash = hashlib.sha256(text.encode()).hexdigest()
     doc = Document(
         filename=filepath.name,
@@ -174,6 +213,7 @@ async def ingest_file(
     session.add(doc)
     await session.flush()  # get doc.id
 
+    batch_size = settings.INGEST_BATCH_SIZE
     for idx, (chunk_content, embedding) in enumerate(zip(chunks_text, embeddings)):
         chunk = Chunk(
             document_id=doc.id,
@@ -183,10 +223,21 @@ async def ingest_file(
         )
         session.add(chunk)
 
+        # Commit in batches to survive interruptions
+        if (idx + 1) % batch_size == 0:
+            await session.commit()
+            logger.debug("Batch commit at chunk %d/%d", idx + 1, len(chunks_text))
+
     await session.commit()
     await session.refresh(doc)
-    logger.info("Ingested %s (%d chunks)", filepath.name, len(chunks_text))
+    logger.info("Ingested %s (%d chunks, %d junk filtered)", filepath.name, len(chunks_text), junk_count)
     return doc
+
+
+async def _existing_hashes(session: AsyncSession) -> set[str]:
+    """Return content hashes already in the database (for resume support)."""
+    result = await session.execute(select(Document.content_hash))
+    return {row[0] for row in result.fetchall()}
 
 
 async def ingest_directory(
@@ -199,14 +250,33 @@ async def ingest_directory(
         raise FileNotFoundError(f"Directory not found: {dirpath}")
 
     supported = HandlerRegistry.supported_extensions()
+    known_hashes = await _existing_hashes(session)
     documents: list[Document] = []
+    skipped = 0
 
     for entry in sorted(dirpath.rglob("*")):
-        if entry.is_file() and entry.suffix.lower() in supported:
-            try:
-                doc = await ingest_file(entry, session, embedding_service)
-                documents.append(doc)
-            except Exception:
-                logger.exception("Failed to ingest %s", entry)
+        if not (entry.is_file() and entry.suffix.lower() in supported):
+            continue
 
+        # Resume support: skip files whose content is already ingested
+        try:
+            content_hash = hashlib.sha256(entry.read_bytes()).hexdigest()
+        except OSError:
+            logger.warning("Cannot read %s, skipping", entry)
+            continue
+
+        if content_hash in known_hashes:
+            skipped += 1
+            logger.debug("Skipping already-ingested %s", entry.name)
+            continue
+
+        try:
+            doc = await ingest_file(entry, session, embedding_service)
+            documents.append(doc)
+            known_hashes.add(content_hash)
+        except Exception:
+            logger.exception("Failed to ingest %s", entry)
+
+    if skipped:
+        logger.info("Skipped %d already-ingested files", skipped)
     return documents

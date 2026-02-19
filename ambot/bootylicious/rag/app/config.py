@@ -29,12 +29,17 @@ class Settings(BaseSettings):
     EMBEDDING_MODEL: str = "all-MiniLM-L6-v2"
     EMBEDDING_DIMENSION: int = 384
     EMBEDDING_BACKEND: str = "sentence-transformers"  # or "ollama"
+    EMBED_MAX_CHARS: int = 800          # Truncate text before embedding
+    EMBED_MAX_RETRIES: int = 8          # Retry attempts for failed embeddings
+    EMBED_COOLDOWN: float = 1.5         # Seconds between Ollama embedding requests
 
     # -------------------------------------------------------------------------
     # Chunking
     # -------------------------------------------------------------------------
     CHUNK_SIZE: int = 512
     CHUNK_OVERLAP: int = 50
+    JUNK_DIGIT_THRESHOLD: float = 0.25   # Discard chunks with >25% digit chars
+    JUNK_DOT_LEADER_THRESHOLD: float = 0.10  # Discard chunks with >10% dot-leader patterns
 
     # -------------------------------------------------------------------------
     # LLM Backend Selection
@@ -67,6 +72,11 @@ class Settings(BaseSettings):
     # -------------------------------------------------------------------------
     RAG_TOP_K: int = 3  # Reduced for resource efficiency
     RAG_MIN_SIMILARITY: float = 0.75
+
+    # -------------------------------------------------------------------------
+    # Ingestion
+    # -------------------------------------------------------------------------
+    INGEST_BATCH_SIZE: int = 25  # Commit every N chunks (for resume on interruption)
 
     # -------------------------------------------------------------------------
     # Project
