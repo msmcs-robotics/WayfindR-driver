@@ -1,6 +1,6 @@
 # Ambot - Todo & Roadmap
 
-> Last updated: 2026-02-19 (Session 14)
+> Last updated: 2026-02-19 (Session 15)
 
 ---
 
@@ -59,17 +59,25 @@
 _Start here when resuming work_
 
 ### Raspberry Pi (Pathfinder + Locomotion)
-1. **Test face-to-motor tracking** - Run `gui_face_tracker.py --motors` on RPi desktop, verify motors orient toward faces
-2. **Hardware tuning** - Camera flip (`cv2.flip`), motor direction offsets (`config.py`), dead zone, gain — all adjustable during testing
-3. **Wire and test MPU6050 IMU** - Wire GY-521 (VCC→Pin1, GND→Pin9, SCL→Pin5, SDA→Pin3), run `test_imu_calibrate.py`
+1. **Fix left motor** - Right motor works, left doesn't spin. Check ENA (Pin 33) wiring, terminal screws, power supply
+2. **Wire and test MPU6050 IMU** - Wire GY-521 (VCC→Pin1, GND→Pin9, SCL→Pin5, SDA→Pin3), run `test_imu_calibrate.py`
+3. **Test face-to-motor tracking** - Run `gui_face_tracker.py --motors` on RPi desktop, verify motors orient toward faces
 4. **Calibrate LiDAR front orientation** - Run `gui_lidar_nav.py`, place object in front, press 'c' to calibrate
-5. **Test real-world wandering** - Once motors work, run `wandering_demo_1.py` with actual movement
+5. **Test real-world wandering** - Once both motors work, run `wandering_demo_1.py` with actual movement
+6. **Test CommandSmoother** - Verify 1.5s direction hold + EMA smoothing on real robot with LiDAR + motors
 
 ### Jetson (Bootylicious)
-5. **Review model test results** - Compare phi3:mini, gemma2:2b, smollm2 against llama3.2:3b (results in `scripts/test-llm-models.sh` output)
-6. **Implement RAG resilience** - Junk filtering, text normalization, embedding retry
-7. **Ingest real EECS docs** - When available, ingest course documentation into RAG knowledge base
-8. **Evaluate nomic-embed-text** - Larger embedding model (768-dim, 8192 context) vs current MiniLM (384-dim)
+7. ~~Deploy RAG resilience to Jetson~~ - **Done** (2026-02-19): Docker rebuild, health check, RAG ask test all passing
+8. **Ingest real EECS docs** - When available, ingest course documentation into RAG knowledge base
+9. **Evaluate nomic-embed-text** - Larger embedding model (768-dim, 8192 context) vs current MiniLM (384-dim)
+
+### Future: SLAM / Localization (when ready)
+> See research docs in `docs/findings/` — lightweight-slam-research.md, research-icp-scan-matching.md, research-particle-filter-localization.md
+
+10. **Wire MPU6050 first** - Gyro-constrained ICP achieves 4.5% drift vs 27.4% pure ICP (6x improvement)
+11. **Try BreezySLAM** - Only viable standalone Python SLAM library (no ROS2). Risk: Python 3.13 compatibility with C extensions
+12. **ICP scan matching** - ~32ms for 467pts on Pi 3B (31Hz). Keyframe matching critical (skip < 8cm motion)
+13. **ROS2 migration** - Existing docs in `ros2_comprehensive_attempt/`, `ros2_cartography_attempt/`, etc.
 
 ## In Progress
 
@@ -79,7 +87,10 @@ _Tasks actively being worked on_
 - [x] LiDAR nav GUI cleaned up and verified on RPi desktop
 - [x] deploy.sh refactored to use run_tests.sh wrapper (no more SSH venv sourcing)
 - [x] Face-to-motor bridge added (`--motors` flag on gui_face_tracker.py)
-- [ ] Hardware test: face tracking with motors spinning (`gui_face_tracker.py --motors`)
+- [x] CommandSmoother added to gui_lidar_nav.py (1.5s direction hold + EMA smoothing)
+- [x] SLAM/localization research completed (3 research docs in `docs/findings/`)
+- [x] RAG embedding resilience coded and deployed (retry, normalization, cooldown, junk filtering)
+- [ ] Fix left motor (ENA Pin 33 wiring / power supply)
 - [ ] Wire and calibrate MPU6050 IMU on RPi (`python3 tests/test_imu_calibrate.py`)
 - [ ] Test real-world wandering with both motors (`python3 wandering_demo_1.py`)
 
@@ -125,8 +136,9 @@ _Priority queue for immediate work_
 - [x] Created LLM configuration guide (`docs/findings/llm-configuration-guide.md`)
 - [x] Created edge LLM research doc (`docs/findings/edge-llm-research.md`) from exudeai + web research
 - [x] Created model comparison test script (`scripts/test-llm-models.sh`)
-- [ ] Review model comparison results (phi3:mini, gemma2:2b, smollm2 vs llama3.2:3b)
-- [ ] Implement RAG resilience (junk filtering, text normalization, retries)
+- [x] Model comparison results reviewed (llama3.2:3b confirmed best for RAG)
+- [x] RAG resilience coded (junk filtering, text normalization, retries, cooldown)
+- [x] Deploy RAG resilience to Jetson (Docker rebuild, tested, verified) -- 2026-02-19
 - [ ] Ingest real EECS/course documents into knowledge base
 
 ### Integration
@@ -156,6 +168,30 @@ _Lower priority, do when time permits_
 - [ ] Voice interaction (STT/TTS via Android device)
 
 ## Recently Completed
+
+_Session 15 - 2026-02-19_
+
+- [x] **CommandSmoother for motor direction stability** (`tests/gui_lidar_nav.py`)
+  - Every LiDAR scan update was flipping motor direction — robot couldn't hold a heading
+  - Added `CommandSmoother` class: classifies commands into intents (FWD/LEFT/RIGHT/STOP/REV)
+  - Direction held for 1.5s minimum before allowing changes (emergency stops bypass)
+  - EMA speed smoothing (alpha=0.3) for gradual speed transitions
+  - Changed default behavior from `max_clearance` to `natural_wander` (5s target hold)
+  - Intent displayed in motor info text
+- [x] **SLAM/localization research** (3 research docs in `docs/findings/`)
+  - `lightweight-slam-research.md` — BreezySLAM is only viable standalone Python SLAM (no ROS2). C extensions, RMHC algorithm. Risk: Python 3.13 compatibility.
+  - `research-icp-scan-matching.md` — Gyro-constrained ICP = 4.5% drift vs 27.4% pure ICP (6x improvement). ~32ms for 467pts on Pi 3B. Keyframe matching critical.
+  - `research-particle-filter-localization.md` — Memory not a bottleneck (SLAM working set <65MB). Phased approach: ICP → occupancy grid → BreezySLAM.
+  - Found extensive existing ROS2/SLAM docs in repo: `ros2_cartography_attempt/`, `ros2_comprehensive_attempt/`, `ros2_localization_attempt/`
+- [x] **RAG embedding resilience** (`bootylicious/rag/app/embeddings.py`)
+  - Text normalization: strip null bytes, NFKC unicode, collapse whitespace, cap at 800 chars
+  - Ollama retry with exponential backoff (up to 8 attempts) + progressive truncation (600 chars after 4 failures)
+  - Inter-request cooldown (1.5s) between Ollama embedding calls to prevent overload
+  - Updated `.env.example` with new config values
+- [x] **RAG ingestion improvements** (`bootylicious/rag/app/ingestion.py`)
+  - Junk chunk filtering: discard chunks with >25% digits or >10% dot-leader patterns (TOC/index content)
+  - Batch commit every 25 chunks for resume-on-interruption support
+  - Content-hash-based skip for already-ingested files (resume support in `ingest_directory`)
 
 _Session 14 - 2026-02-19_
 
@@ -580,7 +616,10 @@ ambot/
     │   ├── localization-pre-slam.md  # IMU/localization analysis (Level 0-4)
     │   ├── mpu6050-wiring.md  # MPU6050 GY-521 wiring guide for RPi 3B
     │   ├── llm-configuration-guide.md  # Ollama/HF API parameters, model selection
-    │   └── edge-llm-research.md  # Edge LLM findings from exudeai + web research
+    │   ├── edge-llm-research.md  # Edge LLM findings from exudeai + web research
+    │   ├── lightweight-slam-research.md  # BreezySLAM + standalone SLAM options
+    │   ├── research-icp-scan-matching.md  # ICP scan matching + gyro constraint
+    │   └── research-particle-filter-localization.md  # Particle filter for RPi
     └── archive/           # Session summaries
 ```
 

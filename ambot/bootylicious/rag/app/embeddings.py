@@ -1,8 +1,11 @@
 from __future__ import annotations
 
+import asyncio
 import hashlib
 import json
 import logging
+import re
+import unicodedata
 from typing import TYPE_CHECKING
 
 import httpx
@@ -64,15 +67,34 @@ class EmbeddingService:
             return
         await self.redis.set(self._cache_key(text), json.dumps(vector), ex=_CACHE_TTL)
 
+    # -- text normalization -----------------------------------------------------
+
+    @staticmethod
+    def _normalize_text(text: str, max_chars: int = settings.EMBED_MAX_CHARS) -> str:
+        """Normalize text before embedding to prevent model runner crashes.
+
+        - Strip null bytes and control characters
+        - Normalize unicode (NFKC)
+        - Collapse runs of whitespace
+        - Cap length to *max_chars*
+        """
+        text = text.replace("\x00", "")
+        text = unicodedata.normalize("NFKC", text)
+        text = re.sub(r"\s+", " ", text).strip()
+        if len(text) > max_chars:
+            text = text[:max_chars]
+        return text
+
     # -- public API -------------------------------------------------------------
 
     async def embed_text(self, text: str) -> list[float]:
+        text = self._normalize_text(text)
         cached = await self._cache_get(text)
         if cached is not None:
             return cached
 
         if self.backend == "ollama":
-            vector = await self._embed_ollama(text)
+            vector = await self._embed_ollama_with_retry(text)
         else:
             vector = self._embed_local(text)
 
@@ -80,6 +102,7 @@ class EmbeddingService:
         return vector
 
     async def embed_batch(self, texts: list[str]) -> list[list[float]]:
+        texts = [self._normalize_text(t) for t in texts]
         results: list[list[float] | None] = [None] * len(texts)
         uncached_indices: list[int] = []
         uncached_texts: list[str] = []
@@ -95,7 +118,11 @@ class EmbeddingService:
 
         if uncached_texts:
             if self.backend == "ollama":
-                vectors = [await self._embed_ollama(t) for t in uncached_texts]
+                vectors: list[list[float]] = []
+                for t in uncached_texts:
+                    vectors.append(await self._embed_ollama_with_retry(t))
+                    # Inter-request cooldown to prevent Ollama overload
+                    await asyncio.sleep(settings.EMBED_COOLDOWN)
             else:
                 vectors = self._embed_local_batch(uncached_texts)
 
@@ -123,6 +150,38 @@ class EmbeddingService:
             resp = await client.post(url, json=payload)
             resp.raise_for_status()
             return resp.json()["embedding"]
+
+    async def _embed_ollama_with_retry(self, text: str) -> list[float]:
+        """Embed via Ollama with exponential backoff and progressive truncation.
+
+        On repeated failures, truncates text to 600 chars (some text patterns
+        crash the Ollama model runner on constrained hardware).
+        """
+        max_retries = settings.EMBED_MAX_RETRIES
+        truncated = False
+        for attempt in range(1, max_retries + 1):
+            try:
+                return await self._embed_ollama(text)
+            except Exception:
+                if attempt == max_retries:
+                    logger.error(
+                        "Embedding failed after %d attempts (truncated=%s), len=%d",
+                        max_retries, truncated, len(text),
+                    )
+                    raise
+                # After half the retries, try truncating text
+                if attempt >= max_retries // 2 and not truncated:
+                    text = text[:600]
+                    truncated = True
+                    logger.warning(
+                        "Truncating text to 600 chars after %d failures", attempt,
+                    )
+                backoff = min(2 ** (attempt - 1), 30)
+                logger.warning(
+                    "Embedding attempt %d/%d failed, retrying in %ds",
+                    attempt, max_retries, backoff,
+                )
+                await asyncio.sleep(backoff)
 
     # -- health -----------------------------------------------------------------
 

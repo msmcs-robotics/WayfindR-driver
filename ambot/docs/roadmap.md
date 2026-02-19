@@ -96,11 +96,12 @@ This roadmap tracks project-level features and milestones. For immediate tasks, 
 - [x] Increase hybrid search fetch multiplier (3x→5x) -- 2026-02-17
 
 #### Phase 2: Resilience
-- [ ] Add junk chunk filtering (>25% digits, >10% dot leaders)
-- [ ] Add text normalization for embeddings (unicode, 800-char cap)
-- [ ] Add embedding retry with progressive truncation
-- [ ] Add inter-request cooldown (1.5s) for Ollama embedding calls
-- [ ] Add batch commit + resume for ingestion pipeline
+- [x] Add junk chunk filtering (>25% digits, >10% dot leaders) -- 2026-02-19
+- [x] Add text normalization for embeddings (unicode, NFKC, 800-char cap) -- 2026-02-19
+- [x] Add embedding retry with progressive truncation (8 attempts, truncate to 600 chars at halfway) -- 2026-02-19
+- [x] Add inter-request cooldown (1.5s) for Ollama embedding calls -- 2026-02-19
+- [x] Add batch commit + resume for ingestion pipeline (25 chunks per batch) -- 2026-02-19
+- [x] Deploy Phase 2 to Jetson and verify (Docker rebuild, health check, RAG ask test) -- 2026-02-19
 
 #### Phase 3: Search Quality
 - [ ] Evaluate nomic-embed-text (768-dim, 8192-token context) vs current MiniLM
@@ -189,9 +190,18 @@ This roadmap tracks project-level features and milestones. For immediate tasks, 
 - [x] **Face tracking GUI** (`tests/gui_face_tracker.py`) — Camera + direction vectors + motor intention -- 2026-02-10
 - [x] **LiDAR navigation GUI** (`tests/gui_lidar_nav.py`) — Front calibration + movement intent -- 2026-02-10
 - [x] **IMU calibration tool** (`tests/test_imu_calibrate.py`) — Axis orientation detection + bias -- 2026-02-10
-- [ ] Fix motor power (both motors try to spin but don't move — need stronger power supply)
+- [x] **CommandSmoother** (`tests/gui_lidar_nav.py`) — 1.5s direction hold + EMA speed smoothing -- 2026-02-19
+  - Prevents motor direction oscillation on every LiDAR scan update
+  - Intent classification (FWD/LEFT/RIGHT/STOP/REV), emergency stops bypass hold
+- [x] **SLAM/localization research** — 3 research docs in `docs/findings/` -- 2026-02-19
+  - BreezySLAM: only viable standalone Python SLAM (risk: Python 3.13 C extension compat)
+  - Gyro-constrained ICP: 4.5% drift vs 27.4% pure ICP (6x improvement with MPU6050)
+  - ICP timing: ~32ms for 467pts on Pi 3B (31Hz, within 10Hz budget)
+  - Particle filter: memory OK (<65MB), phased approach recommended
+  - Existing ROS2/SLAM docs found in repo (`ros2_comprehensive_attempt/`, etc.)
+- [ ] Fix left motor (right works, left doesn't spin — ENA Pin 33 wiring or power issue)
 - [ ] Tune safety zone distances for robot size
-- [ ] Test wandering behaviors in real environment
+- [ ] Test wandering behaviors in real environment (CommandSmoother + NaturalWander)
 - [ ] Test face tracking with real hardware
 
 #### Wandering Behavior Philosophy (Pre-SLAM)
@@ -244,17 +254,29 @@ This creates the illusion of purposeful exploration without needing SLAM, odomet
   - Context-aware movement (e.g., "follow the person", "go to charging station")
 
 ### Sensor Fusion (see `docs/findings/localization-pre-slam.md`)
+> Also see: `lightweight-slam-research.md`, `research-icp-scan-matching.md`, `research-particle-filter-localization.md`
+
 - [x] **MPU6050 IMU driver** — gyro heading for closed-loop turns (Level 1 localization) -- Completed 2026-02-06
   - `pathfinder/imu.py`: I2C reads at ~100Hz, startup calibration, complementary filter for pitch/roll
   - Graceful degradation: `setup_imu()` returns None if sensor not found
   - Hardware test: `tests/test_imu.py`, deploy: `./deploy.sh rpi --test=imu`
-- [ ] Modify NaturalWanderBehavior to use heading-error-based turns
+- [x] **SLAM/localization research** — Comprehensive research completed -- 2026-02-19
+  - BreezySLAM: only viable standalone Python SLAM (RMHC algo, C extensions with ARM NEON)
+  - Gyro-constrained ICP: 4.5% drift vs 27.4% pure ICP (6x improvement — strong case for wiring MPU6050)
+  - ICP timing: ~32ms for 467pts on Pi 3B (31Hz, within 10Hz budget)
+  - Particle filter: memory OK (<65MB on 906MB RPi), phased approach recommended
+  - Existing ROS2/SLAM docs in repo: `ros2_comprehensive_attempt/`, `ros2_cartography_attempt/`
+- [ ] Wire MPU6050 hardware and run calibration (driver + tools already exist)
+- [ ] Modify NaturalWanderBehavior to use heading-error-based turns (with IMU)
 - [ ] Camera-based facial detection events triggering LLM
   - Detect specific faces → personalized greetings
   - Detect crowd → different behavior than single person
-- [ ] LiDAR scan matching / ICP (Level 2 — only when position tracking needed)
+- [ ] LiDAR scan matching / ICP (Level 2 — gyro-constrained, keyframe-based)
+  - Implementation plan in `research-icp-scan-matching.md`
+  - Only run ICP when robot moved ≥8cm or rotated ≥5° from last keyframe
+- [ ] Try BreezySLAM (risk: Python 3.13 C extension compatibility)
 - [ ] Combined LiDAR + camera + IMU for robust navigation
-  - Still NO SLAM - just better reactive navigation
+  - Still NO SLAM initially - just better reactive navigation
 
 ### Voice Interaction
 - [ ] Speech-to-text input (possibly via Android device)
