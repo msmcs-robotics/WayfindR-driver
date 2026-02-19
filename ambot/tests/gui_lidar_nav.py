@@ -4,8 +4,7 @@ LiDAR Navigation GUI — Front orientation calibration + movement intention.
 
 Shows live LiDAR polar plot with:
   - Scan points colored by safety zone (red/orange/yellow/green)
-  - Front marker (red triangle at 0 degrees = physical front of robot)
-  - Smoothed heading arrow (where robot would go, yellow, EMA-filtered)
+  - Smoothed heading arrow (where robot would go, gold, EMA-filtered)
   - Front calibration mode: place object in front, press 'c' to calibrate
   - Optional motor output driven by behavior (max_clearance or natural_wander)
 
@@ -22,7 +21,6 @@ Usage:
 
 Controls:
     c - Calibrate front (place object directly in front first!)
-    f - Toggle front marker
     p - Pause/resume
     s - Save screenshot
     r - Reset view
@@ -215,21 +213,39 @@ BEHAVIOR_NAMES = ["max_clearance", "natural_wander"]
 
 
 def create_behavior(behavior_name):
-    """Create a behavior instance wrapped in SafetyWrapper."""
+    """Create a raw behavior instance (no SafetyWrapper for responsive testing)."""
     from pathfinder.behaviors import (
         MaxClearanceBehavior,
         NaturalWanderBehavior,
-        SafetyWrapper,
     )
 
     if behavior_name == "max_clearance":
-        inner = MaxClearanceBehavior(forward_speed=0.4, turn_speed=0.5)
+        return MaxClearanceBehavior(forward_speed=0.4, turn_speed=0.5)
     elif behavior_name == "natural_wander":
-        inner = NaturalWanderBehavior(forward_speed=0.4, turn_speed=0.5)
+        return NaturalWanderBehavior(forward_speed=0.4, turn_speed=0.5)
     else:
         raise ValueError(f"Unknown behavior: {behavior_name}")
 
-    return SafetyWrapper(inner)
+
+def make_offset_points(raw_points, front_offset_deg):
+    """Create scan points with front_offset applied to angles.
+
+    The SectorBasedDetector expects 0 = front. Raw LiDAR angles may not
+    align with the robot's physical front, so we adjust them here.
+    """
+    from pathfinder.lidar_ld19 import ScanPoint
+    return [
+        ScanPoint(
+            angle=apply_offset(p.angle, front_offset_deg),
+            distance=p.distance,
+            quality=p.quality,
+        )
+        for p in raw_points
+    ]
+
+
+# Maximum points to display (subsample if more for performance)
+MAX_DISPLAY_POINTS = 150
 
 
 def run_lidar_nav(port="/dev/ttyUSB0", headless=False, max_scans=0, front_offset=None,
@@ -250,6 +266,9 @@ def run_lidar_nav(port="/dev/ttyUSB0", headless=False, max_scans=0, front_offset
     except ImportError as e:
         print(f"ERROR: matplotlib not installed: {e}")
         return 1
+
+    # Pre-import config outside animation loop
+    from pathfinder import config as pf_config
 
     # Load calibration
     if front_offset is not None:
@@ -293,7 +312,7 @@ def run_lidar_nav(port="/dev/ttyUSB0", headless=False, max_scans=0, front_offset
             signal.signal(signal.SIGTERM, _signal_handler)
             signal.signal(signal.SIGINT, _signal_handler)
 
-        # Set up behavior pipeline: SectorBasedDetector → Behavior → MotorCommand
+        # Set up behavior pipeline: SectorBasedDetector -> Behavior -> MotorCommand
         try:
             from pathfinder.obstacle_detector import SectorBasedDetector
             detector = SectorBasedDetector()
@@ -308,11 +327,14 @@ def run_lidar_nav(port="/dev/ttyUSB0", headless=False, max_scans=0, front_offset
     scan_state = {"points": [], "lock": threading.Lock(), "running": True}
 
     def lidar_collect():
-        for scan in lidar.iter_scans(min_points=50):
-            if not scan_state["running"]:
-                break
-            with scan_state["lock"]:
-                scan_state["points"] = scan
+        try:
+            for scan in lidar.iter_scans(min_points=50):
+                if not scan_state["running"]:
+                    break
+                with scan_state["lock"]:
+                    scan_state["points"] = scan
+        except Exception as e:
+            print(f"\nLiDAR thread error: {e}")
 
     lidar_thread = threading.Thread(target=lidar_collect, daemon=True)
     lidar_thread.start()
@@ -345,10 +367,6 @@ def run_lidar_nav(port="/dev/ttyUSB0", headless=False, max_scans=0, front_offset
                 distances = np.array([p.distance for p in points])
                 ax.scatter(angles, distances, s=2, c='green', alpha=0.6)
 
-                # Front marker
-                ax.plot([0, 0], [0, 6000], 'r-', linewidth=2, alpha=0.5)
-                ax.scatter([0], [500], s=200, c='red', marker='^', zorder=20)
-
                 # Heading arrow
                 if max_angle is not None:
                     mr = math.radians(max_angle)
@@ -378,14 +396,10 @@ def run_lidar_nav(port="/dev/ttyUSB0", headless=False, max_scans=0, front_offset
         fig = plt.figure(figsize=(8, 8), facecolor='black')
         ax = fig.add_subplot(111, projection='polar', facecolor='#111111')
 
-        # Scan points
-        scatter = ax.scatter([], [], s=3, alpha=0.7, zorder=5)
+        # Scan points (start with empty placeholder)
+        scatter = ax.scatter([0], [0], s=3, alpha=0.7, zorder=5, c='#33cc33')
 
-        # Front marker (red line at 0 degrees)
-        front_line, = ax.plot([0, 0], [0, 6000], 'r-', linewidth=2, alpha=0.4)
-        front_marker = ax.scatter([0], [400], s=150, c='red', marker='^', zorder=20)
-
-        # Smoothed heading arrow (single yellow arrow from center)
+        # Smoothed heading arrow (gold line from center = "go this way")
         heading_arrow, = ax.plot([], [], color='gold', linewidth=4, alpha=0.9,
                                  zorder=18, solid_capstyle='round')
         heading_tip = ax.scatter([], [], s=200, c='gold', marker='o', zorder=19)
@@ -396,60 +410,77 @@ def run_lidar_nav(port="/dev/ttyUSB0", headless=False, max_scans=0, front_offset
         ax.grid(True, alpha=0.15, color='#444444')
         ax.set_title("LiDAR Navigation", fontsize=12, pad=15, color='white')
 
-        # Minimal info text
+        # Info text (top-left)
         info_text = ax.text(0.02, 0.98, '', transform=ax.transAxes,
                             verticalalignment='top', fontsize=9, color='#cccccc',
                             family='monospace')
 
-        # Motor info text (bottom)
+        # Motor info text (bottom-left)
         motor_text = ax.text(0.02, 0.02, '', transform=ax.transAxes,
                              verticalalignment='bottom', fontsize=9, color='#cccccc',
                              family='monospace')
 
         state = {
             "paused": False,
-            "show_front": True,
             "frame_count": 0,
             "front_offset": front_offset_deg,
-            "smooth_heading": None,  # EMA-smoothed heading angle
+            "smooth_heading": None,
             "motors_active": motors_active,
             "behavior_name": behavior_name,
             "swap": swap_motors,
             "invert_left": invert_left,
             "invert_right": invert_right,
             "last_motor_time": time.time(),
-            "last_cmd": (0, 0),  # (left_pwm, right_pwm) for display
+            "last_cmd": (0, 0),
         }
 
         # Print controls once at startup
-        controls = "\nControls: [C]alibrate  [F]ront toggle  [P]ause  [S]ave  [R]eset  [Q]uit"
+        controls = "\nControls: [C]alibrate  [P]ause  [S]ave  [R]eset  [Q]uit"
         if motors:
             controls += "\n          [M]otors toggle  [N]ext behavior  [X]swap L/R  [V]invert L  [B]invert R"
         print(controls + "\n")
 
         def update(frame_num):
+            try:
+                return _do_update(frame_num)
+            except Exception as e:
+                # Don't let exceptions kill the animation loop
+                print(f"\rUpdate error: {e}       ", end="")
+                return (scatter, heading_arrow, heading_tip, info_text, motor_text)
+
+        def _do_update(frame_num):
             if state["paused"]:
-                return (scatter, front_line, front_marker, heading_arrow,
-                        heading_tip, info_text, motor_text)
+                return (scatter, heading_arrow, heading_tip, info_text, motor_text)
 
             with scan_state["lock"]:
                 points = list(scan_state["points"])
 
             if not points:
-                return (scatter, front_line, front_marker, heading_arrow,
-                        heading_tip, info_text, motor_text)
+                info_text.set_text("Waiting for LiDAR data...")
+                return (scatter, heading_arrow, heading_tip, info_text, motor_text)
 
             state["frame_count"] += 1
             offset = state["front_offset"]
             now = time.time()
 
-            # Plot scan points
-            angles = np.array([math.radians(apply_offset(p.angle, offset)) for p in points])
-            distances = np.array([p.distance for p in points])
+            # Subsample for display performance (keep every Nth point)
+            if len(points) > MAX_DISPLAY_POINTS:
+                step = len(points) // MAX_DISPLAY_POINTS
+                display_points = points[::step]
+            else:
+                display_points = points
+
+            # Plot scan points with offset-adjusted angles
+            angles = np.array([math.radians(apply_offset(p.angle, offset))
+                               for p in display_points])
+            distances = np.array([p.distance for p in display_points])
+
+            if len(angles) == 0:
+                return (scatter, heading_arrow, heading_tip, info_text, motor_text)
+
             scatter.set_offsets(np.column_stack([angles, distances]))
 
             # Color by safety zone
-            from pathfinder import config as pf_config
             colors = []
             for d in distances:
                 d_m = d / 1000.0
@@ -463,17 +494,7 @@ def run_lidar_nav(port="/dev/ttyUSB0", headless=False, max_scans=0, front_offset
                     colors.append('#33cc33')
             scatter.set_color(colors)
 
-            # Front marker
-            if state["show_front"]:
-                front_line.set_data([0, 0], [0, 6000])
-                front_marker.set_offsets([[0, 400]])
-                front_line.set_visible(True)
-                front_marker.set_visible(True)
-            else:
-                front_line.set_visible(False)
-                front_marker.set_visible(False)
-
-            # Max clearance → smoothed heading (always shown as the gold arrow)
+            # Max clearance -> smoothed heading arrow
             max_angle, max_clear = find_max_clearance(points, offset)
             if max_angle is not None:
                 state["smooth_heading"] = smooth_angle(
@@ -509,27 +530,36 @@ def run_lidar_nav(port="/dev/ttyUSB0", headless=False, max_scans=0, front_offset
             )
 
             # --- Motor control via behavior ---
-            if state["motors_active"] and robot is not None and detector is not None and behavior is not None:
-                # Feed scan through detector → behavior → motor command
-                detection = detector.process_scan(points)
-                command = behavior.step(detection)
+            if (state["motors_active"] and robot is not None
+                    and detector is not None and behavior is not None):
+                try:
+                    # Apply front_offset so detector sees 0 = robot front
+                    adjusted = make_offset_points(points, offset)
+                    detection = detector.process_scan(adjusted)
+                    command = behavior.step(detection)
 
-                left_pwm = int(command.left_speed * max_speed)
-                right_pwm = int(command.right_speed * max_speed)
-                left_pwm = max(-max_speed, min(max_speed, left_pwm))
-                right_pwm = max(-max_speed, min(max_speed, right_pwm))
+                    left_pwm = int(command.left_speed * max_speed)
+                    right_pwm = int(command.right_speed * max_speed)
+                    left_pwm = max(-max_speed, min(max_speed, left_pwm))
+                    right_pwm = max(-max_speed, min(max_speed, right_pwm))
 
-                # Apply motor orientation adjustments
-                if state["swap"]:
-                    left_pwm, right_pwm = right_pwm, left_pwm
-                if state["invert_left"]:
-                    left_pwm = -left_pwm
-                if state["invert_right"]:
-                    right_pwm = -right_pwm
+                    # Apply motor orientation adjustments
+                    if state["swap"]:
+                        left_pwm, right_pwm = right_pwm, left_pwm
+                    if state["invert_left"]:
+                        left_pwm = -left_pwm
+                    if state["invert_right"]:
+                        right_pwm = -right_pwm
 
-                robot.drive(left_pwm, right_pwm)
-                state["last_motor_time"] = now
-                state["last_cmd"] = (left_pwm, right_pwm)
+                    robot.drive(left_pwm, right_pwm)
+                    state["last_motor_time"] = now
+                    state["last_cmd"] = (left_pwm, right_pwm)
+                except Exception as e:
+                    # Don't let behavior errors kill the animation
+                    robot.stop()
+                    state["last_cmd"] = (0, 0)
+                    print(f"\rBehavior error: {e}       ", end="")
+
             elif state["motors_active"] and robot is not None:
                 # Watchdog: stop if no valid command for 2 seconds
                 if now - state["last_motor_time"] > 2.0:
@@ -556,8 +586,7 @@ def run_lidar_nav(port="/dev/ttyUSB0", headless=False, max_scans=0, front_offset
             else:
                 motor_text.set_text('')
 
-            return (scatter, front_line, front_marker, heading_arrow,
-                    heading_tip, info_text, motor_text)
+            return (scatter, heading_arrow, heading_tip, info_text, motor_text)
 
         def on_key(event):
             nonlocal behavior
@@ -571,8 +600,6 @@ def run_lidar_nav(port="/dev/ttyUSB0", headless=False, max_scans=0, front_offset
                     robot.stop()
                     state["last_cmd"] = (0, 0)
                 print(f"{'Paused' if state['paused'] else 'Resumed'}")
-            elif event.key == 'f':
-                state["show_front"] = not state["show_front"]
             elif event.key == 'c':
                 with scan_state["lock"]:
                     cal_points = list(scan_state["points"])
@@ -580,7 +607,7 @@ def run_lidar_nav(port="/dev/ttyUSB0", headless=False, max_scans=0, front_offset
                     raw_angle = find_nearest_cluster(cal_points, state["front_offset"])
                     if raw_angle is not None:
                         state["front_offset"] = raw_angle
-                        state["smooth_heading"] = None  # reset smoothing
+                        state["smooth_heading"] = None
                         save_calibration(raw_angle)
                         print(f"CALIBRATED: front_offset = {raw_angle:.1f}\u00b0")
                     else:
@@ -602,7 +629,6 @@ def run_lidar_nav(port="/dev/ttyUSB0", headless=False, max_scans=0, front_offset
                     state["last_cmd"] = (0, 0)
                 print(f"Motors: {'ON' if state['motors_active'] else 'OFF'}")
             elif event.key == 'n' and robot is not None:
-                # Cycle to next behavior
                 cur_idx = BEHAVIOR_NAMES.index(state["behavior_name"])
                 next_idx = (cur_idx + 1) % len(BEHAVIOR_NAMES)
                 state["behavior_name"] = BEHAVIOR_NAMES[next_idx]
@@ -623,7 +649,8 @@ def run_lidar_nav(port="/dev/ttyUSB0", headless=False, max_scans=0, front_offset
         fig.canvas.mpl_connect('key_press_event', on_key)
 
         try:
-            anim = FuncAnimation(fig, update, interval=150, blit=False, cache_frame_data=False)
+            # 250ms interval (was 150) — better performance on RPi
+            anim = FuncAnimation(fig, update, interval=250, blit=False, cache_frame_data=False)
             plt.show()
         except KeyboardInterrupt:
             print("\nStopped")
@@ -652,11 +679,11 @@ Calibration:
   4. Calibration saved to tests/results/lidar_calibration.json
   5. Future runs load this automatically
 
-Red triangle = front. Gold arrow = smoothed heading intention.
+Gold arrow = smoothed heading (direction of max clearance).
 
 Behaviors (--behavior):
-  max_clearance    — Always move toward longest distance (simple)
-  natural_wander   — Cycle through top clearance directions (explores more)
+  max_clearance    -- Always move toward longest distance (simple)
+  natural_wander   -- Cycle through top clearance directions (explores more)
 
 Motor orientation:
   Press 'x' to swap L/R, 'v' to invert left, 'b' to invert right.
