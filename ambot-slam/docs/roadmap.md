@@ -176,6 +176,48 @@ This roadmap tracks project-level features and milestones. For immediate tasks, 
 
 ---
 
+## LiDAR Denoising & Native Code (C/Rust)
+
+> **Key insight**: Video game development techniques for particle systems, point cloud rendering, and spatial clustering are directly applicable to LiDAR scan processing. This could dramatically improve SLAM quality and performance.
+
+### Why This Matters for SLAM
+- Raw LD19 scans (~467 pts) contain noise, multipath reflections, and irrelevant detail
+- Denoising before SLAM Toolbox ingestion improves map quality and reduces compute
+- C/Rust inner loops for scan processing could run 10-100x faster than Python on RPi/Jetson
+- Same techniques used in game engines for rendering thousands of particles efficiently
+
+### Video Game Techniques → LiDAR Processing
+> **RESEARCH NEEDED**: Web research on translating game dev particle/rendering techniques to LiDAR
+
+- **Density-based clustering**: Group nearby points into objects, discard isolated noise (like particle LOD in games)
+- **Spatial hashing**: O(1) neighbor lookup for point clustering (used in game physics engines)
+- **Level-of-detail (LOD)**: Reduce point density at long range, full resolution close up
+- **Temporal accumulation**: Average across multiple scans to reduce noise (like temporal anti-aliasing in rendering)
+- **Frustum culling**: Only process points in direction of travel (like camera frustum culling)
+- **GPU point processing**: Jetson's GPU could accelerate scan filtering (CUDA kernels, same as game particle systems)
+
+### Object Detection via Point Density
+- Cluster scan points by proximity → identify discrete objects
+- Filter clusters below minimum point count (noise, thin wires, dust)
+- Classify by shape: wall (long/thin), person (medium blob), furniture (irregular)
+- Feed cleaned object list to SLAM instead of raw noisy points
+
+### Implementation Plan
+- [ ] **Web research**: Game dev particle techniques applicable to 2D LiDAR
+- [ ] **Web research**: DBSCAN/density clustering on embedded ARM (RPi + Jetson)
+- [ ] **Web research**: C vs Rust for real-time robotics on aarch64
+- [ ] **Prototype**: C extension for scan filtering/denoising (callable from Python or ROS2 node)
+- [ ] **Benchmark**: Python vs C scan processing on RPi (ICP, clustering, filtering)
+- [ ] **Evaluate**: GPU-accelerated LiDAR processing on Jetson (CUDA point cloud kernels)
+- [ ] **Integration**: Pre-filter scans before publishing to `/scan` topic for SLAM Toolbox
+
+### C/Rust Considerations
+- Both RPi (aarch64) and Jetson (aarch64) support C and Rust
+- C is simpler for GPIO + hardware interop; Rust is safer but more complex build
+- Challenge: Python ↔ C interop for mixed systems (face detection in Python, LiDAR in C)
+- Challenge: OpenCV face detection in C++ is possible but adds build complexity
+- Recommended: Start with C extensions for hot loops only, keep Python orchestration
+
 ## Nice to Have (Lower Priority)
 
 - [ ] Web dashboard for remote monitoring (map + robot pose)

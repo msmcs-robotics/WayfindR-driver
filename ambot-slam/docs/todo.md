@@ -36,6 +36,16 @@ _Lower priority, do when time permits_
 - [ ] Research wheel encoder options
 - [ ] Set up RViz on desktop for remote visualization
 
+### LiDAR Denoising Research (Future)
+> See `roadmap.md` "LiDAR Denoising & Native Code" section for full context
+
+- [ ] **Web research**: Video game particle system techniques → LiDAR point cloud denoising
+- [ ] **Web research**: DBSCAN density-based clustering on embedded ARM (RPi/Jetson)
+- [ ] **Web research**: C vs Rust for real-time robotics on aarch64
+- [ ] **Prototype**: C extension for scan pre-filtering before SLAM Toolbox ingestion
+- [ ] **Benchmark**: Python vs C for ICP and scan processing on RPi
+- [ ] **Evaluate**: GPU-accelerated point cloud processing on Jetson (CUDA)
+
 ## ✅ Recently Completed
 
 _For context; clear periodically_

@@ -846,6 +846,47 @@ curl -X POST http://localhost:8000/api/navigation/waypoint/goto \
 - Learned navigation policies (RL)
 - Predictive obstacle avoidance
 
+### LiDAR Denoising & Native Code Port (C/Rust)
+
+> **Key insight**: Video game development techniques for particle rendering, spatial clustering, and point-cloud denoising are directly applicable to LiDAR scan processing. C/Rust implementations can be 10-100x faster than Python for tight inner loops.
+
+> **RESEARCH NEEDED**: Dedicated web research session on how game dev techniques translate to LiDAR processing.
+
+**Video Game Techniques → LiDAR Processing:**
+- **Density-based clustering (DBSCAN-like)**: Group nearby LiDAR points into discrete objects; discard noise points too isolated to be real obstacles. Same technique used in game engines for particle grouping.
+- **Spatial hashing / grid binning**: O(1) neighbor lookup for point clustering — used in game physics engines for collision detection across thousands of particles.
+- **Level-of-detail (LOD)**: Reduce point density at long range, full resolution close up — like game engine LOD for distant objects.
+- **Temporal smoothing**: Average across multiple scans to reduce single-scan noise (like temporal anti-aliasing / frame accumulation in rendering).
+- **Frustum culling**: Only process points in direction of travel — skip rear data when moving forward.
+- **GPU-accelerated processing**: Jetson's GPU could process point clouds in parallel (same architecture as game particle systems).
+- **Octree / KD-tree indexing**: Efficient spatial queries for ICP scan matching (standard in game engines).
+
+**Object Detection via Point Density:**
+- Cluster points by proximity → identify discrete objects (walls, people, furniture)
+- Filter clusters below minimum point count (noise, dust, thin wires)
+- Classify objects by cluster size/shape
+- Feed cleaned objects to navigation instead of raw noisy scan data
+- Don't need all ~467 points — optimize by reducing point count where density is low
+
+**C/Rust Implementation Considerations:**
+- Both RPi (aarch64) and Jetson (aarch64) support C and Rust natively
+- C for maximum hardware compatibility (GPIO, I2C, SPI); Rust for memory safety
+- **Challenge**: Python ↔ C interop — face detection (OpenCV/Python) + LiDAR (C) need clean IPC
+- **Challenge**: GPIO from C on both RPi (pigpio) and Jetson (Jetson.GPIO C API)
+- **Challenge**: If moving face detection to C++ (OpenCV C++ API), adds significant build complexity
+- **Recommended approach**: C extensions for hot inner loops (ICP, filtering, clustering) called from Python via ctypes/cffi. Keep Python for orchestration.
+
+**Research Tasks:**
+- [ ] Web research: Video game particle system techniques applicable to 2D LiDAR denoising
+- [ ] Web research: DBSCAN and density clustering on embedded ARM (RPi + Jetson)
+- [ ] Web research: C vs Rust for real-time robotics on aarch64
+- [ ] Web research: GPU-accelerated point cloud processing on Jetson Orin Nano
+- [ ] Benchmark: Python vs C for ICP scan matching on RPi
+- [ ] Prototype: C extension for LiDAR point filtering, callable from Python
+- [ ] Evaluate: Full C/Rust port vs Python+C hybrid for the whole sensor pipeline
+
+> Cross-reference: See also `ambot/docs/roadmap.md` (Milestone 5) and `ambot-slam/docs/roadmap.md` for project-specific details.
+
 ---
 
 ## Testing Strategy

@@ -104,7 +104,7 @@ AMBOT-SLAM is a ROS2 Humble SLAM implementation for the AMBOT robot platform. It
 - ROS2 Galactic, Iron, or Jazzy (Humble only)
 - Custom SLAM algorithm development (we use SLAM Toolbox)
 - Gazebo simulation (reference the existing `ros2_comprehensive_attempt/launch/gazebo_sim.launch.py` if needed)
-- C/C++ node implementations (Python first)
+- C/C++ node implementations (Python first — but C extensions for LiDAR denoising/filtering are a planned future optimization, see `roadmap.md`)
 
 ## Technical Decisions
 

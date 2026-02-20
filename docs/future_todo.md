@@ -628,6 +628,70 @@ Week 11-12: Polish
 
 ---
 
+---
+
+## LiDAR Denoising & Native Code Port (C/Rust)
+
+> **Added 2026-02-19** — Key future direction for the entire WayfindR platform.
+
+### Core Idea
+
+Video game development techniques for particle systems, point-cloud rendering, and spatial clustering translate directly to LiDAR scan processing. C (or Rust) implementations of these techniques can run 10-100x faster than Python for tight inner loops, which matters on memory/CPU-constrained platforms like RPi (906MB, Cortex-A53) and Jetson.
+
+### Why This Matters
+
+- Current Python LiDAR processing works but is slow for real-time SLAM
+- Don't need all ~467 raw scan points — can reduce via density filtering and still navigate effectively
+- Game engines solve the same fundamental problem: processing thousands of spatial points per frame efficiently
+- C is proven on both RPi and Jetson (aarch64) with excellent hardware access (GPIO, I2C, SPI)
+
+### Video Game Techniques → LiDAR
+
+> **RESEARCH NEEDED**: Dedicated web research session required before implementation.
+
+| Game Dev Technique | LiDAR Application |
+|---|---|
+| **Density-based clustering** (particle LOD) | Group nearby points into objects, discard isolated noise |
+| **Spatial hashing** (collision detection) | O(1) neighbor lookup for point clustering |
+| **Level-of-detail (LOD)** | Reduce point density at long range, full res close up |
+| **Temporal accumulation** (TAA) | Average across multiple scans to reduce noise |
+| **Frustum culling** | Only process points in direction of travel |
+| **GPU particle systems** | CUDA-accelerated point processing on Jetson |
+| **KD-tree / octree** | Efficient nearest-neighbor for ICP scan matching |
+
+### Object Detection via Point Density
+
+- Cluster scan points by proximity → discrete objects
+- Filter clusters below minimum point count (noise, dust, wires)
+- Classify by shape: wall (long/thin), person (blob), furniture (irregular)
+- Replace naive "nearest point in sector" with actual object awareness
+
+### C vs Rust vs Python+C Hybrid
+
+| Approach | Pros | Cons |
+|---|---|---|
+| **Pure C** | Max speed, full GPIO/I2C access, proven on ARM | Manual memory management, no safety guarantees |
+| **Pure Rust** | Memory safety, modern tooling | More complex cross-compilation, less GPIO library support |
+| **Python + C extensions** | Best of both — Python orchestration + C hot loops | IPC overhead, two languages to maintain |
+
+**Recommended**: Start with **Python + C extensions** (ctypes/cffi) for scan processing hot loops. Expand to more C if the performance gains justify the complexity.
+
+**Challenge**: If LiDAR processing moves to C but face detection (OpenCV) stays in Python, need clean interprocess communication. If face detection also moves to C++ (OpenCV C++ API), the entire sensor pipeline could be native — but adds significant build complexity and GPIO interop work on both platforms.
+
+### Research Tasks
+
+- [ ] Web research: Video game particle techniques → 2D LiDAR denoising
+- [ ] Web research: DBSCAN density clustering on embedded ARM
+- [ ] Web research: C vs Rust for real-time robotics on aarch64 (RPi + Jetson)
+- [ ] Web research: GPU-accelerated point cloud processing on Jetson Orin Nano
+- [ ] Benchmark: Python vs C for ICP scan matching on RPi (currently ~32ms Python)
+- [ ] Prototype: C extension for LiDAR filtering/clustering (callable from Python)
+- [ ] Evaluate: Full C/Rust port vs hybrid for entire sensor pipeline (LiDAR + camera + GPIO)
+
+> Cross-reference: See `ambot/docs/roadmap.md` (Milestone 5), `ambot-slam/docs/roadmap.md`, and `docs/roadmap.md` for project-specific details.
+
+---
+
 ## Summary
 
 **What works today**:
@@ -636,12 +700,14 @@ Week 11-12: Polish
 - SLAM mapping with Slamtec LiDAR
 - AMCL localization on saved maps
 - A* waypoint pathfinding
+- AMBOT: LiDAR wandering, face tracking, IMU driver, RAG stack on Jetson
 
 **Critical gaps**:
 - No Pi ↔ ESP32 communication
 - No ROS2 ↔ PI_API bridge
 - No IMU or encoder feedback
 - No unified launch/deployment
+- LiDAR denoising and C/Rust port (research needed)
 
 **Recommended first steps**:
 1. Wire and test ESP32 → motors

@@ -290,8 +290,51 @@ This creates the illusion of purposeful exploration without needing SLAM, odomet
   - Dependencies: Basic Python LiDAR system working first
   - Reference: WayfindR-driver `ros2_comprehensive_attempt/` has ROS2 Humble stack
 
+### LiDAR Denoising & Native Code Port (C/Rust)
+> **Key insight**: Video game development techniques for particle rendering, point cloud denoising, and spatial clustering translate directly to LiDAR processing. Research needed.
+
+#### Why C/Rust for LiDAR Processing
+- Python LiDAR processing (~467 pts/scan) is functional but slow for real-time SLAM
+- C is significantly faster for tight loops over scan data (ICP, filtering, clustering)
+- Both RPi (aarch64) and Jetson (aarch64) support C and Rust natively
+- Opportunity to reduce scan points (don't need all 360°) and still get good navigation
+- BreezySLAM already uses C extensions for performance — same principle applies to our code
+
+#### Video Game Development Techniques for LiDAR
+> **RESEARCH NEEDED**: Web research on how game dev particle/point-cloud techniques apply to LiDAR
+
+- **Density-based clustering (DBSCAN-like)**: Group nearby LiDAR points into objects; discard isolated noise points that are too small to be real obstacles
+- **Spatial hashing / grid binning**: Same technique used in game engines for collision detection on thousands of particles — bin points into cells for O(1) neighbor lookup
+- **Level-of-detail (LOD)**: Reduce point density at long range (far points matter less), keep full resolution close up — exactly like game engine LOD for distant objects
+- **Temporal smoothing / motion blur**: Average scan data across multiple frames (like frame accumulation in rendering) to reduce single-scan noise
+- **Octree / KD-tree spatial indexing**: Game engines use these for efficient nearest-neighbor queries on large point sets — directly applicable to ICP scan matching
+- **GPU-accelerated point processing**: Jetson's GPU could process point clouds in parallel (same as game engine particle systems)
+- **Frustum culling**: Only process points in the robot's direction of travel (like camera frustum in games) — skip rear-facing data when moving forward
+
+#### Object Detection via Point Density
+- Cluster LiDAR points by proximity to identify discrete objects
+- Filter out clusters below a minimum point count (noise, dust, thin wires)
+- Classify objects by cluster size/shape (wall = long thin cluster, person = medium blob, chair leg = small cluster)
+- This replaces naive "nearest point in sector" with actual object awareness
+
+#### C/Rust Implementation Considerations
+- **Language choice**: C for maximum compatibility with both platforms; Rust for safety but potentially more complex cross-compilation
+- **Challenge — Python interop**: If LiDAR processing is in C but face detection (OpenCV) stays in Python, need clean IPC (shared memory, Unix sockets, or ctypes/cffi)
+- **Challenge — GPIO from C**: Both RPi and Jetson have C GPIO libraries (pigpio, Jetson.GPIO C API) but need testing
+- **Challenge — OpenCV in C**: Face detection via OpenCV's C++ API is well-supported but adds build complexity
+- **Phased approach**: Start with C extension for ICP/denoising only (called from Python via ctypes), then expand if beneficial
+- **Alternative**: Keep Python orchestration, use C only for hot inner loops (scan matching, filtering) — best of both worlds
+
+#### Research Tasks (Future Session)
+- [ ] **Web research**: Video game particle system techniques that apply to 2D LiDAR point clouds
+- [ ] **Web research**: DBSCAN and density-based clustering for LiDAR denoising on embedded ARM
+- [ ] **Web research**: C vs Rust for real-time robotics on aarch64 (RPi + Jetson compatibility)
+- [ ] **Web research**: GPU-accelerated point cloud processing on Jetson Orin Nano (CUDA kernels for LiDAR)
+- [ ] **Benchmark**: Compare Python vs C for ICP scan matching on RPi (current: ~32ms in Python)
+- [ ] **Prototype**: C extension for LiDAR point filtering/clustering, callable from Python
+- [ ] **Evaluate**: Whether to port face detection to C++ OpenCV or keep Python + C hybrid
+
 ### Other Enhancements
-- [ ] Port LiDAR/movement system from Python to C
 - [ ] Multiple display modes (conversation, status, map)
 - [ ] Leverage optimized LLMs from external project
 - [ ] Multi-person conversation handling
