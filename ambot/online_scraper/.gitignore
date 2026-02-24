@@ -1,2 +1,1 @@
-# Scraped output files (regenerable, don't commit)
-output/
+# Nothing to ignore — output/ is tracked in git

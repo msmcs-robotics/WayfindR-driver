@@ -1,6 +1,6 @@
 # Ambot - Todo & Roadmap
 
-> Last updated: 2026-02-24 (Session 17)
+> Last updated: 2026-02-24 (Session 18)
 
 ---
 
@@ -58,6 +58,12 @@
 
 _Start here when resuming work_
 
+### Online Scraper → RAG Ingestion
+1. **Copy cleaned scraper output to knowledge/** - `cp online_scraper/output/*.md bootylicious/rag/knowledge/`
+2. **Deploy + ingest on Jetson** - `./deploy.sh jetson bootylicious --rebuild` then `ssh jetson "cd ~/ambot && ./bootylicious/ingest.sh"`
+3. **Test RAG with real ERAU content** - `./deploy.sh jetson --test=rag-test`
+4. **Optional: Re-scrape at depth 5** for more coverage (currently depth 2 = 49 pages)
+
 ### Web Control Dashboard
 1. **Deploy web_control to RPi** - `pip install -r web_control/requirements.txt`, run `python3 web_control/run.py`
 2. **Test motor control from browser** - Direction pad, WASD keys, speed slider via WiFi
@@ -75,8 +81,9 @@ _Start here when resuming work_
 
 ### Jetson (Bootylicious)
 7. ~~Deploy RAG resilience to Jetson~~ - **Done** (2026-02-19)
-8. **Ingest real EECS docs** - Scrape ERAU College of Engineering pages, ingest into RAG knowledge base
+8. ~~Ingest real EECS docs~~ - **Done** (2026-02-24): Online scraper built + content cleaner, 49 pages scraped from ERAU CoE
 9. ~~Evaluate nomic-embed-text~~ - **Done** (2026-02-24): Kept MiniLM (nomic causes model-swap latency)
+10. **Copy cleaned scraper output to knowledge/ and ingest** - `cp online_scraper/output/*.md bootylicious/rag/knowledge/` then deploy+ingest
 
 ### Future: SLAM / Localization (when ready)
 > See research docs in `docs/findings/` — lightweight-slam-research.md, research-icp-scan-matching.md, research-particle-filter-localization.md
@@ -106,7 +113,7 @@ _Tasks actively being worked on_
 _Tasks waiting on something (include reason)_
 
 - [x] ~~Jetson system inventory~~ — **RESOLVED**: Jetson online at 10.33.255.82, inventory complete (Session 11)
-- [ ] RAG knowledge base content — **Blocked by**: Waiting for documentation to ingest
+- [x] ~~RAG knowledge base content~~ — **RESOLVED**: Online scraper built, 49 ERAU CoE pages scraped + cleaned (Session 18)
 
 ## Up Next
 
@@ -146,7 +153,9 @@ _Priority queue for immediate work_
 - [x] Model comparison results reviewed (llama3.2:3b confirmed best for RAG)
 - [x] RAG resilience coded (junk filtering, text normalization, retries, cooldown)
 - [x] Deploy RAG resilience to Jetson (Docker rebuild, tested, verified) -- 2026-02-19
-- [ ] Ingest real EECS/course documents into knowledge base
+- [x] Built online scraper for ERAU CoE website (49 pages, stdlib-only, strict scope enforcement)
+- [x] Built content cleaner/curator (removes footer, nav links, enrollment tables — 27% junk removed)
+- [ ] Copy cleaned scraper output to `bootylicious/rag/knowledge/` and ingest on Jetson
 
 ### Integration
 - [x] Combine pathfinder + locomotion for basic wandering demo — **Done** (`wandering_demo_1.py`)
@@ -191,6 +200,24 @@ _Session 18 - 2026-02-24_
   - `rag-ctl.sh` — single entry point for all Jetson RAG ops (one SSH call)
   - `rag-test.py` — 10 automated tests (health, search, ask, models)
   - Eliminates ad-hoc SSH command spam
+
+_Session 18 - 2026-02-24_
+
+- [x] **Online Scraper** (`online_scraper/scraper.py`)
+  - BFS web crawler for ERAU College of Engineering (strict scope enforcement)
+  - Python stdlib only (html.parser, urllib), polite 1.5s delay
+  - 49 pages scraped at depth 2, all within `daytonabeach.erau.edu/college-engineering/*`
+  - Skip patterns: login/SSO, PDFs, images, media files
+  - Saves one .md file per page with source URL and timestamp
+- [x] **Content Cleaner** (`online_scraper/cleaner.py`)
+  - Post-scrape curation: removes footer, nav links, enrollment tables, contact blocks
+  - 27% junk content removed (100K chars out of 371K total)
+  - Dry-run, stats, verbose modes; idempotent
+- [x] **RAG Knowledge Workflow** documented (`docs/rag-knowledge-workflow.md`)
+- [x] **Scraper scope** documented (`online_scraper/scope.md`)
+- [x] Committed ingest.sh (was uncommitted from prior session)
+- [x] Evaluated nomic-embed-text — Kept MiniLM (nomic causes 25-40s model-swap latency)
+- [x] Domain acronym expansion (35+ terms in search.py, wired into keyword search)
 
 _Session 17 - 2026-02-24_
 

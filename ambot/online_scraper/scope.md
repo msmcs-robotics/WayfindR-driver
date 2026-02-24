@@ -67,6 +67,51 @@ python3 scraper.py --output ./my_output
 python3 scraper.py --delay 2.0
 ```
 
+## Post-Scrape Content Cleaning
+
+The `cleaner.py` script removes junk content from scraped files before RAG ingestion:
+
+### What Gets Removed
+
+- **Site-wide footer**: Contact info, social media links, legal boilerplate (~200 lines per page, identical across all pages)
+- **Navigation link runs**: "Future Student Resources", "Current Student Resources", campus links, etc. (standalone hyperlink text that provides no content value)
+- **Enrollment data tables**: Raw numbers (FT/PT counts, enrollment figures), semester labels ("Fall 2025"), table headers — these don't parse as useful text
+- **Table footnotes**: Asterisk-prefixed explanation lines for enrollment tables
+- **Contact blocks**: Address, phone, email, copyright notices
+
+### What Gets Kept
+
+- All educational content (program descriptions, objectives, outcomes)
+- Faculty and research information
+- Lab descriptions and facility details
+- Accreditation statements and program details
+- News articles and event descriptions
+
+### Usage
+
+```bash
+# Clean all files in output/ (in-place)
+python3 cleaner.py
+
+# Preview changes without modifying files
+python3 cleaner.py --dry-run
+
+# Show per-file stats
+python3 cleaner.py --stats
+
+# Detailed breakdown of what was removed
+python3 cleaner.py --verbose
+
+# Custom input directory
+python3 cleaner.py --input ./my_output
+```
+
+### Typical Results
+
+- 49 files, ~27% content removed (100K chars of junk out of 371K total)
+- Footer removal accounts for most savings (consistent ~1.8K chars/file)
+- Accreditation pages with enrollment tables see 40-55% reduction
+
 ## Pipeline to RAG
 
 ```bash
@@ -74,18 +119,23 @@ python3 scraper.py --delay 2.0
 cd ambot/online_scraper
 python3 scraper.py
 
-# 2. Review output
+# 2. Clean scraped content (removes footer, tables, nav links)
+python3 cleaner.py --stats
+
+# 3. Review output
 ls -la output/
 
-# 3. Copy to RAG knowledge folder
+# 4. Copy to RAG knowledge folder
 cp output/*.md ../bootylicious/rag/knowledge/
 
-# 4. Sync to Jetson and ingest
+# 5. Sync to Jetson and ingest
 rsync -avz ../bootylicious/rag/knowledge/ jetson:~/ambot/bootylicious/rag/knowledge/
 ssh jetson "cd ~/ambot && ./bootylicious/ingest.sh"
 ```
 
 ## Configuration
+
+### Scraper (`scraper.py`)
 
 | Setting | Default | Description |
 |---------|---------|-------------|
@@ -95,10 +145,21 @@ ssh jetson "cd ~/ambot && ./bootylicious/ingest.sh"
 | `--output` | `./output/` | Directory for saved markdown files |
 | `--list-only` | false | Only discover and list URLs |
 
+### Cleaner (`cleaner.py`)
+
+| Setting | Default | Description |
+|---------|---------|-------------|
+| `--input` | `./output/` | Directory with .md files to clean |
+| `--dry-run` | false | Preview changes without writing |
+| `--stats` | false | Show per-file cleaning statistics |
+| `--verbose` | false | Show detailed removal breakdown |
+
 ## Notes
 
-- Uses only Python stdlib (no pip dependencies)
+- Both scripts use only Python stdlib (no pip dependencies)
 - Polite crawler: 1.5s default delay, identifies itself as educational project
 - BFS crawl order (breadth-first)
 - Deduplication via normalized URLs
 - Does NOT handle JavaScript-rendered content (works because ERAU serves server-side HTML)
+- Cleaner is idempotent — running it multiple times on already-cleaned files has no effect
+- Output files are tracked in git (not gitignored)

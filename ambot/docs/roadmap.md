@@ -408,6 +408,14 @@ This creates the illusion of purposeful exploration without needing SLAM, odomet
 - [x] Create integration test suite -- Completed 2026-02-04
 - [x] Create README.md for ambot folder -- Completed 2026-02-04
 
+### Online Scraper & Knowledge Curation (`online_scraper/`) -- Added 2026-02-24
+- [x] BFS web crawler (`scraper.py`) — ERAU College of Engineering, strict scope enforcement, stdlib only
+- [x] Content cleaner (`cleaner.py`) — post-scrape footer/nav/table removal, 27% junk cleaned
+- [x] Scope documentation (`online_scraper/scope.md`)
+- [x] RAG knowledge workflow docs (`docs/rag-knowledge-workflow.md`)
+- [ ] Copy cleaned output to `bootylicious/rag/knowledge/` and ingest on Jetson
+- [ ] Re-scrape at depth 5 for broader coverage (currently depth 2 = 49 pages)
+
 ### Automation & Tooling -- Completed 2026-02-04, Updated 2026-02-24
 - [x] **Python virtual environment (venv)** -- Added 2026-02-05
   - `venv/` created with `--system-site-packages` (accesses apt packages)
