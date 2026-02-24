@@ -23,7 +23,7 @@ def ask():
 
     try:
         resp = requests.post(
-            f'{rag_url}/api/query',
+            f'{rag_url}/api/ask',
             json={'question': question},
             timeout=60,
         )

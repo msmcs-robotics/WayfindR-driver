@@ -1,6 +1,6 @@
 # Ambot - Known Issues & Troubleshooting
 
-> Last updated: 2026-02-17 (Session 13)
+> Last updated: 2026-02-24 (Session 18)
 
 ---
 
@@ -66,6 +66,68 @@ cd ~/ambot && source venv/bin/activate && bash scripts/kill-hardware.sh
 
 ---
 
+### Jetson: Firefox & Chromium Crash on Launch
+
+**Symptom**: Firefox and Chromium crash immediately when opened from the Jetson desktop as the non-root user (`georgejetson`). The browser window appears briefly then closes, or doesn't appear at all.
+
+**Status**: Not investigated yet. Needs root cause analysis.
+
+**Possible causes**:
+- GPU driver conflict (NVIDIA driver 540.4.0 may not support browser hardware acceleration properly)
+- Snap/Flatpak packaging issues on JetPack/Ubuntu 22.04 for ARM64
+- Insufficient shared memory (`/dev/shm`) or GPU memory for browser rendering
+- AppArmor or sandboxing restrictions
+- Corrupted browser profile in `/home/georgejetson/.mozilla/` or `.config/chromium/`
+
+**Investigation steps** (for next session):
+```bash
+# Try launching from terminal to see errors
+ssh jetson
+firefox --no-remote 2>&1 | head -50
+chromium-browser --no-sandbox 2>&1 | head -50
+
+# Check if it's a GPU issue
+firefox --safe-mode
+chromium-browser --disable-gpu
+
+# Check installed browser versions
+dpkg -l | grep -iE 'firefox|chrom'
+snap list 2>/dev/null | grep -iE 'firefox|chrom'
+
+# Check logs
+journalctl --user -u snap.firefox.firefox 2>/dev/null | tail -20
+dmesg | tail -30
+```
+
+**Workaround**: Use SSH port forwarding to access web applications from the dev machine's browser instead of the Jetson's browser.
+
+```bash
+ssh -L 5000:localhost:5000 jetson
+# Then open http://localhost:5000 in local browser
+```
+
+---
+
+### Web Dashboard: Chat API Endpoint Mismatch (FIXED - Session 18)
+
+**Symptom**: Chat returns `404 Not Found` when asking questions through the web dashboard.
+
+**Cause**: `api_chat.py` used `/api/query` but the RAG API endpoint is `/api/ask`.
+
+**Fix**: Changed endpoint in `web_control/routes/api_chat.py` from `/api/query` to `/api/ask`.
+
+---
+
+### Web Dashboard: Missing `requests` Dependency (FIXED - Session 18)
+
+**Symptom**: Dashboard fails to start with `ModuleNotFoundError: No module named 'requests'`.
+
+**Cause**: `api_chat.py` imports `requests` but it wasn't listed in `requirements.txt`.
+
+**Fix**: Added `requests>=2.28` to `web_control/requirements.txt`.
+
+---
+
 ## Resolved Issues
 
 _Previously known issues that have been fixed_
@@ -113,6 +175,26 @@ ssh pi@10.33.224.1 "ls -la /dev/ttyUSB*"
 
 # Full environment check
 ./deploy.sh rpi --test=env
+
+# === Jetson ===
+
+# Check RAG health
+./deploy.sh jetson --test=rag-health
+
+# Check web dashboard
+./deploy.sh jetson --test=web-status
+
+# Start/stop web dashboard
+./deploy.sh jetson --test=web-start
+./deploy.sh jetson --test=web-stop
+
+# SSH port forward for browser access
+ssh -L 5000:localhost:5000 jetson
+# Then open: http://localhost:5000
+
+# Check browser crash logs
+ssh jetson "firefox --no-remote 2>&1 | head -20"
+ssh jetson "chromium-browser --disable-gpu --no-sandbox 2>&1 | head -20"
 ```
 
 ---

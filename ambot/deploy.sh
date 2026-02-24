@@ -189,9 +189,15 @@ sync_component() {
             eval rsync $RSYNC_BASE $RSYNC_EXCLUDE \
                 "$SCRIPT_DIR/docs/" "$target:$dest/docs/"
             ;;
+        web_control|web|dashboard)
+            log_info "Syncing web_control (dashboard)..."
+            ssh "$target" "mkdir -p $dest/web_control"
+            eval rsync $RSYNC_BASE $RSYNC_EXCLUDE \
+                "$SCRIPT_DIR/web_control/" "$target:$dest/web_control/"
+            ;;
         *)
             log_error "Unknown component: $component"
-            log_info "Valid components: all, bootylicious, locomotion, pathfinder, tests, scripts, docs"
+            log_info "Valid components: all, bootylicious, locomotion, pathfinder, tests, scripts, docs, web_control"
             return 1
             ;;
     esac
@@ -380,9 +386,32 @@ run_jetson_tests() {
             ssh -o ConnectTimeout=15 "$JETSON_TARGET" \
                 "cd $JETSON_DEST && bash bootylicious/scripts/rag-ctl.sh logs"
             ;;
+        web-setup)
+            # Install web dashboard deps on Jetson
+            log_info "Installing web dashboard dependencies..."
+            ssh -o ConnectTimeout=15 "$JETSON_TARGET" \
+                "cd $JETSON_DEST && pip3 install -r web_control/requirements.txt"
+            ;;
+        web-start)
+            # Start web dashboard on Jetson (simulate mode, background)
+            log_info "Starting web dashboard on Jetson (simulate mode)..."
+            ssh -o ConnectTimeout=15 "$JETSON_TARGET" \
+                "cd $JETSON_DEST && RAG_API_URL=http://localhost:8000 nohup python3 web_control/run.py --simulate > /tmp/ambot-web.log 2>&1 &"
+            log_info "Dashboard starting at http://$JETSON_HOST:5000/"
+            ;;
+        web-stop)
+            log_info "Stopping web dashboard..."
+            ssh -o ConnectTimeout=15 "$JETSON_TARGET" \
+                "pkill -f 'web_control/run.py' || echo 'Not running'"
+            ;;
+        web-status)
+            ssh -o ConnectTimeout=15 "$JETSON_TARGET" \
+                "pgrep -a -f 'web_control/run.py' || echo 'Dashboard not running'"
+            ;;
         *)
             log_warn "Unknown Jetson test type: $test_type"
             log_info "RAG tests:  rag, rag-test, rag-health, rag-status, rag-docs, rag-logs"
+            log_info "Web tests:  web-setup, web-start, web-stop, web-status"
             ;;
     esac
 }
@@ -473,6 +502,10 @@ print_summary() {
         echo "  Full RAG test:    $0 jetson --test=rag"
         echo "  Quick health:     $0 jetson --test=rag-health"
         echo "  RAG logs:         $0 jetson --test=rag-logs"
+        echo "  Deploy dashboard: $0 jetson web_control"
+        echo "  Setup dashboard:  $0 jetson --test=web-setup"
+        echo "  Start dashboard:  $0 jetson --test=web-start"
+        echo "  Stop dashboard:   $0 jetson --test=web-stop"
     fi
     echo ""
 }
