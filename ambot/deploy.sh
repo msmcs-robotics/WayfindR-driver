@@ -15,6 +15,9 @@
 #   ./deploy.sh rpi --test=lidar       # Deploy + run specific LiDAR test
 #   ./deploy.sh rpi --test=check       # Deploy + check installed packages
 #   ./deploy.sh rpi --bootstrap        # Deploy + run bootstrap scripts
+#   ./deploy.sh jetson bootylicious    # Deploy RAG code to Jetson
+#   ./deploy.sh jetson --rebuild       # Deploy + rebuild RAG containers
+#   ./deploy.sh jetson --test=rag      # Deploy + rebuild + test RAG
 #   ./deploy.sh --status               # Check connection status only
 #
 # Components:
@@ -147,7 +150,11 @@ sync_component() {
             log_info "Syncing bootylicious (LLM + RAG)..."
             ssh "$target" "mkdir -p $dest/bootylicious"
             eval rsync $RSYNC_BASE $RSYNC_EXCLUDE \
+                --exclude='.env' \
+                --exclude='knowledge/' \
+                --exclude='*.sqlite*' \
                 "$SCRIPT_DIR/bootylicious/" "$target:$dest/bootylicious/"
+            ssh "$target" "chmod +x $dest/bootylicious/scripts/*.sh $dest/bootylicious/ingest.sh 2>/dev/null || true"
             ;;
         locomotion)
             log_info "Syncing locomotion (motors)..."
@@ -289,6 +296,9 @@ deploy_rpi() {
 deploy_jetson() {
     local component="${1:-all}"
     local bootstrap="${2:-false}"
+    local run_test="${3:-false}"
+    local test_type="${4:-}"
+    local rebuild="${5:-false}"
 
     if [ -z "$JETSON_HOST" ]; then
         log_warn "Jetson host not configured."
@@ -318,8 +328,63 @@ deploy_jetson() {
         log_info "Run manually: $JETSON_DEST/bootylicious/scripts/setup-all.sh"
     fi
 
+    # Rebuild RAG containers if requested
+    if [ "$rebuild" = "true" ]; then
+        log_step "Rebuilding RAG containers on Jetson..."
+        ssh -o ConnectTimeout=30 "$JETSON_TARGET" \
+            "cd $JETSON_DEST && bash bootylicious/scripts/rag-ctl.sh rebuild"
+    fi
+
+    # Run Jetson tests if requested
+    if [ "$run_test" = "true" ] && [ -n "$test_type" ]; then
+        run_jetson_tests "$test_type"
+    fi
+
     echo ""
     log_info "Jetson deployment complete!"
+}
+
+# =============================================================================
+# Run Jetson Tests (via rag-ctl.sh — single SSH call per operation)
+# =============================================================================
+
+run_jetson_tests() {
+    local test_type="$1"
+
+    log_step "Running Jetson test '$test_type'..."
+
+    case "$test_type" in
+        rag)
+            # Full RAG test: rebuild + test suite
+            ssh -o ConnectTimeout=30 "$JETSON_TARGET" \
+                "cd $JETSON_DEST && bash bootylicious/scripts/rag-ctl.sh rebuild && bash bootylicious/scripts/rag-ctl.sh test"
+            ;;
+        rag-health)
+            ssh -o ConnectTimeout=15 "$JETSON_TARGET" \
+                "cd $JETSON_DEST && bash bootylicious/scripts/rag-ctl.sh health"
+            ;;
+        rag-test)
+            # Test suite only (no rebuild)
+            ssh -o ConnectTimeout=30 "$JETSON_TARGET" \
+                "cd $JETSON_DEST && bash bootylicious/scripts/rag-ctl.sh test"
+            ;;
+        rag-status)
+            ssh -o ConnectTimeout=15 "$JETSON_TARGET" \
+                "cd $JETSON_DEST && bash bootylicious/scripts/rag-ctl.sh status"
+            ;;
+        rag-docs)
+            ssh -o ConnectTimeout=15 "$JETSON_TARGET" \
+                "cd $JETSON_DEST && bash bootylicious/scripts/rag-ctl.sh docs"
+            ;;
+        rag-logs)
+            ssh -o ConnectTimeout=15 "$JETSON_TARGET" \
+                "cd $JETSON_DEST && bash bootylicious/scripts/rag-ctl.sh logs"
+            ;;
+        *)
+            log_warn "Unknown Jetson test type: $test_type"
+            log_info "RAG tests:  rag, rag-test, rag-health, rag-status, rag-docs, rag-logs"
+            ;;
+    esac
 }
 
 # =============================================================================
@@ -345,25 +410,34 @@ print_help() {
     echo ""
     echo "Options:"
     echo "  --bootstrap, -b       Run bootstrap scripts after deploy"
+    echo "  --rebuild             Rebuild RAG Docker containers (Jetson)"
     echo "  --test=SUITE          Run tests after deploy (see test types below)"
     echo "  --status, -s          Check connection status only"
     echo "  --help, -h            Show this help"
     echo ""
-    echo "Test Types (--test=TYPE):"
+    echo "RPi Test Types (--test=TYPE):"
     echo "  Suites:      all, quick, hardware, integration, verify"
     echo "  Individual:  gpio, camera, camera-basic, camera-faces, lidar, imu, motors, motors-basic, motors-individual, motors-pinout"
     echo "  Diagnostics: check, env (environment diagnostic), env-fix (install system-wide)"
     echo ""
+    echo "Jetson Test Types (--test=TYPE):"
+    echo "  rag           Deploy + rebuild + full RAG test suite"
+    echo "  rag-test      RAG test suite only (no rebuild)"
+    echo "  rag-health    Quick API health check"
+    echo "  rag-status    Docker container status"
+    echo "  rag-docs      List ingested documents"
+    echo "  rag-logs      Show recent API logs"
+    echo ""
     echo "Examples:"
-    echo "  $0 rpi                        # Deploy all to RPi"
-    echo "  $0 rpi pathfinder             # Deploy only pathfinder"
-    echo "  $0 rpi --test=all             # Deploy + run ALL tests"
-    echo "  $0 rpi --test=quick           # Deploy + quick verification"
-    echo "  $0 rpi --test=hardware        # Deploy + test hardware"
-    echo "  $0 rpi --test=lidar           # Deploy + single LiDAR test"
-    echo "  $0 rpi --test=check           # Deploy + check packages"
-    echo "  $0 rpi --bootstrap            # Deploy all + run bootstrap"
-    echo "  $0 --status                   # Check all connections"
+    echo "  $0 rpi                              # Deploy all to RPi"
+    echo "  $0 rpi pathfinder                   # Deploy only pathfinder"
+    echo "  $0 rpi --test=all                   # Deploy + run ALL tests"
+    echo "  $0 rpi --test=quick                 # Deploy + quick verification"
+    echo "  $0 jetson bootylicious              # Sync RAG code to Jetson"
+    echo "  $0 jetson bootylicious --rebuild    # Sync + rebuild containers"
+    echo "  $0 jetson --test=rag                # Sync + rebuild + test"
+    echo "  $0 jetson --test=rag-health         # Quick health check"
+    echo "  $0 --status                         # Check all connections"
 }
 
 # =============================================================================
@@ -393,8 +467,12 @@ print_summary() {
     echo ""
     if [ -n "$JETSON_HOST" ]; then
         echo "Jetson:"
-        echo "  SSH: ssh $JETSON_TARGET"
-        echo "  Setup: $0 jetson --bootstrap"
+        echo "  SSH:              ssh $JETSON_TARGET"
+        echo "  Deploy RAG:       $0 jetson bootylicious"
+        echo "  Deploy + rebuild: $0 jetson bootylicious --rebuild"
+        echo "  Full RAG test:    $0 jetson --test=rag"
+        echo "  Quick health:     $0 jetson --test=rag-health"
+        echo "  RAG logs:         $0 jetson --test=rag-logs"
     fi
     echo ""
 }
@@ -411,6 +489,7 @@ main() {
     STATUS_ONLY=false
     RUN_TESTS=false
     TEST_TYPE=""
+    REBUILD=false
 
     while [[ $# -gt 0 ]]; do
         case $1 in
@@ -432,6 +511,10 @@ main() {
                 ;;
             --status|-s)
                 STATUS_ONLY=true
+                shift
+                ;;
+            --rebuild)
+                REBUILD=true
                 shift
                 ;;
             --test=*)
@@ -488,7 +571,7 @@ main() {
         fi
 
         if [ -n "$JETSON_HOST" ] && check_ssh "$JETSON_TARGET"; then
-            deploy_jetson "$COMPONENT" "$BOOTSTRAP"
+            deploy_jetson "$COMPONENT" "$BOOTSTRAP" "$RUN_TESTS" "$TEST_TYPE" "$REBUILD"
         else
             log_warn "Jetson not available or not configured, skipping..."
         fi
@@ -499,7 +582,7 @@ main() {
                 deploy_rpi "$COMPONENT" "$BOOTSTRAP" "$RUN_TESTS" "$TEST_TYPE"
                 ;;
             jetson)
-                deploy_jetson "$COMPONENT" "$BOOTSTRAP"
+                deploy_jetson "$COMPONENT" "$BOOTSTRAP" "$RUN_TESTS" "$TEST_TYPE" "$REBUILD"
                 ;;
         esac
     fi

@@ -176,6 +176,22 @@ _Lower priority, do when time permits_
 
 ## Recently Completed
 
+_Session 18 - 2026-02-24_
+
+- [x] **nomic-embed-text evaluation** — Benchmarked on Jetson, decided to keep MiniLM
+  - nomic-embed-text: 768-dim, 120ms warm, 25-40s cold, 568 MiB VRAM
+  - MiniLM: 384-dim, ~50ms (CPU), always available, no model swapping
+  - With OLLAMA_MAX_LOADED_MODELS=1, swapping would add 60-90s per query
+- [x] **Domain acronym expansion table** (35+ terms) in `search.py`
+  - Expands EECS/robotics/AI acronyms before keyword search
+  - "LLM" → searches for "LLM large language model" etc.
+- [x] **RAG deployment infrastructure** (deploy.sh + rag-ctl.sh + rag-test.py)
+  - `./deploy.sh jetson bootylicious --rebuild` — sync + Docker rebuild
+  - `./deploy.sh jetson --test=rag` — sync + rebuild + 10-test suite
+  - `rag-ctl.sh` — single entry point for all Jetson RAG ops (one SSH call)
+  - `rag-test.py` — 10 automated tests (health, search, ask, models)
+  - Eliminates ad-hoc SSH command spam
+
 _Session 17 - 2026-02-24_
 
 - [x] **Web Control Dashboard** (`web_control/`)

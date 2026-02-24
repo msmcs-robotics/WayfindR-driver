@@ -104,11 +104,16 @@ This roadmap tracks project-level features and milestones. For immediate tasks, 
 - [x] Deploy Phase 2 to Jetson and verify (Docker rebuild, health check, RAG ask test) -- 2026-02-19
 
 #### Phase 3: Search Quality
-- [ ] Evaluate nomic-embed-text (768-dim, 8192-token context) vs current MiniLM
+- [x] Evaluate nomic-embed-text (768-dim, 2048-token context via Ollama) vs current MiniLM -- 2026-02-24
+  - **Decision: Keep MiniLM.** nomic-embed-text (274 MB, 568 MiB VRAM) causes model-swapping with
+    OLLAMA_MAX_LOADED_MODELS=1, adding 25-40s cold starts per query. MiniLM runs on CPU in Docker
+    (~50ms), no conflict with Ollama LLM. Both models in memory would leave only ~1.3 GiB headroom.
 - [x] Add database indexes (IVFFlat vector + GIN full-text, lists=10) -- 2026-02-24
 - [x] Implement dual keyword search (English stemmed AND + Simple exact OR, 20% overlap boost) -- 2026-02-24
 - [x] Add adaptive semantic weight (acronym→0.2, mixed→0.3, short→0.5, long→0.7) -- 2026-02-24
-- [ ] Create domain-specific acronym expansion table
+- [x] Create domain-specific acronym expansion table (35+ EECS/robotics/AI terms) -- 2026-02-24
+  - Expands query before English keyword search (e.g., "LLM" → "LLM large language model")
+  - Simple keyword search keeps original (exact acronym match)
 
 ### GPU & Hardware Acceleration
 > See `bootylicious/docs/findings/jetson-gpu-acceleration.md` for full analysis
@@ -403,7 +408,7 @@ This creates the illusion of purposeful exploration without needing SLAM, odomet
 - [x] Create integration test suite -- Completed 2026-02-04
 - [x] Create README.md for ambot folder -- Completed 2026-02-04
 
-### Automation & Tooling -- Completed 2026-02-04, Updated 2026-02-05
+### Automation & Tooling -- Completed 2026-02-04, Updated 2026-02-24
 - [x] **Python virtual environment (venv)** -- Added 2026-02-05
   - `venv/` created with `--system-site-packages` (accesses apt packages)
   - All scripts auto-activate venv before running Python
@@ -422,6 +427,22 @@ This creates the illusion of purposeful exploration without needing SLAM, odomet
   - Environment diagnostic: `./deploy.sh rpi --test=env`
   - Excludes `venv/` from rsync sync
   - Activates venv for individual test commands via SSH
+  - **Jetson RAG deploy** (added 2026-02-24):
+    - `./deploy.sh jetson bootylicious` — sync RAG code (excludes .env, knowledge/)
+    - `./deploy.sh jetson bootylicious --rebuild` — sync + Docker rebuild + health wait
+    - `./deploy.sh jetson --test=rag` — sync + rebuild + 10-test RAG suite
+    - `./deploy.sh jetson --test=rag-test` — test suite only (no rebuild)
+    - `./deploy.sh jetson --test=rag-health` — quick API health check
+- [x] **RAG control script** (`bootylicious/scripts/rag-ctl.sh`) -- Added 2026-02-24
+  - Single entry point for all RAG ops on Jetson (one SSH call per operation)
+  - Commands: status, health, rebuild, restart, test, logs, docs
+- [x] **RAG test suite** (`bootylicious/scripts/rag-test.py`) -- Added 2026-02-24
+  - 10 automated tests: health (DB, Redis, embeddings, LLM), documents, keyword search, hybrid search, RAG ask, models
+  - Python stdlib only (urllib), runs on Jetson directly
+  - JSON output mode for automation: `--json`
+- [x] **Ingestion helper** (`bootylicious/ingest.sh`) -- Added 2026-02-24
+  - CLI for document ingestion: single file, directory, status, clear
+  - Wraps RAG API endpoints, handles resume/dedup
 - [x] **Install script** (`install.sh`)
   - Creates `venv/` with `--system-site-packages`
   - Installs pip packages into venv (no `--break-system-packages` needed)

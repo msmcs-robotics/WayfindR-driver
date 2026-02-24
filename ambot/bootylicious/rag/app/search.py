@@ -149,8 +149,9 @@ async def keyword_search(
 
     Chunks found by both methods get a 20% score boost.
     """
-    english_results = await _keyword_english(query, session, limit)
-    simple_results = await _keyword_simple(query, session, limit)
+    expanded = _expand_acronyms(query)
+    english_results = await _keyword_english(expanded, session, limit)
+    simple_results = await _keyword_simple(query, session, limit)  # simple uses original (exact match)
 
     # Merge with overlap boost
     result_map: dict[int, SearchResult] = {}
@@ -179,6 +180,68 @@ async def keyword_search(
         )
         for cid in ranked_ids[:limit]
     ]
+
+
+# =============================================================================
+# Domain acronym expansion
+# =============================================================================
+#
+# Expand acronyms to include their full form so keyword search matches both.
+# E.g., query "LLM" becomes "LLM large language model" — this lets the English
+# stemmed search find chunks containing the full phrase too.
+
+ACRONYM_TABLE: dict[str, str] = {
+    # AI / ML
+    "LLM": "large language model",
+    "RAG": "retrieval augmented generation",
+    "NLP": "natural language processing",
+    "ML": "machine learning",
+    "AI": "artificial intelligence",
+    "GPU": "graphics processing unit",
+    "CUDA": "compute unified device architecture",
+    "VRAM": "video random access memory",
+    "KV": "key value cache",
+    "GGUF": "GPT-Generated Unified Format quantization",
+    # Robotics / Sensors
+    "IMU": "inertial measurement unit",
+    "SLAM": "simultaneous localization and mapping",
+    "ICP": "iterative closest point",
+    "LiDAR": "light detection and ranging",
+    "PWM": "pulse width modulation",
+    "GPIO": "general purpose input output",
+    "I2C": "inter-integrated circuit",
+    "PID": "proportional integral derivative",
+    "DOF": "degrees of freedom",
+    "MPU": "motion processing unit",
+    # Computing / Networking
+    "SSH": "secure shell",
+    "API": "application programming interface",
+    "MCP": "model context protocol",
+    "ROS": "robot operating system",
+    "STT": "speech to text",
+    "TTS": "text to speech",
+    # Hardware
+    "RPi": "Raspberry Pi",
+    "SBC": "single board computer",
+    "ARM": "Advanced RISC Machine",
+    "EECS": "electrical engineering computer science",
+}
+
+
+def _expand_acronyms(query: str) -> str:
+    """Append expanded forms for any acronyms found in the query."""
+    words = query.split()
+    expansions: list[str] = []
+    for word in words:
+        # Strip common punctuation for matching
+        clean = word.strip("?.,!:;")
+        if clean in ACRONYM_TABLE:
+            expansions.append(ACRONYM_TABLE[clean])
+        elif clean.upper() in ACRONYM_TABLE:
+            expansions.append(ACRONYM_TABLE[clean.upper()])
+    if expansions:
+        return query + " " + " ".join(expansions)
+    return query
 
 
 # =============================================================================
