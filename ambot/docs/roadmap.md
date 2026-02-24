@@ -74,7 +74,7 @@ This roadmap tracks project-level features and milestones. For immediate tasks, 
   - smollm2:1.7b hallucinated — not reliable for RAG
   - llama3.2:3b confirmed as best choice for RAG quality
 - [x] Applied Ollama memory optimizations (flash attention, q8 KV cache, single model/parallel) -- 2026-02-19
-- [ ] Create basic conversation loop (text in -> text out)
+- [x] Create basic conversation loop (`bootylicious/chat.py` — CLI, custom system prompts) -- 2026-02-24
 
 ### RAG System
 - [x] Adapt rag-bootstrap Docker Compose for Jetson (ARM64) -- 2026-02-12

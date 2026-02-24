@@ -177,6 +177,12 @@ _Session 16 - 2026-02-24_
   - Adaptive semantic weight based on query type (acronym→0.2, mixed→0.3, short→0.5, long→0.7)
   - Deployed to Jetson, Docker rebuild, verified with multiple query types
   - Index creation added to `init_db()` for persistence across rebuilds
+- [x] **Basic conversation loop** (`bootylicious/chat.py`)
+  - CLI tool: text in → RAG search → LLM answer → text out
+  - Custom system prompts (`--system`), source toggle (`--no-sources`)
+  - Configurable API URL (`--url`) for remote or local use
+  - Health check on startup, graceful error handling
+  - Uses only stdlib (urllib) — no extra dependencies needed
 
 _Session 15 - 2026-02-19_
 
@@ -553,6 +559,7 @@ _Session 1 - 2026-02-03_
 ```
 ambot/
 ├── bootylicious/          # LLM + RAG system (conversation brain)
+│   ├── chat.py            # Interactive conversation loop (CLI, RAG-powered)
 │   ├── deploy.sh          # Master deployment script
 │   ├── scripts/           # Setup scripts (Ollama, Docker, rsync-to-jetson)
 │   ├── rag/               # RAG system (Docker Compose + FastAPI)
