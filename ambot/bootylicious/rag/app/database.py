@@ -86,7 +86,18 @@ async def get_session() -> AsyncGenerator[AsyncSession, None]:
 
 
 async def init_db() -> None:
-    """Create the pgvector extension and all tables."""
+    """Create the pgvector extension, tables, and search indexes."""
     async with engine.begin() as conn:
         await conn.execute(text("CREATE EXTENSION IF NOT EXISTS vector"))
         await conn.run_sync(Base.metadata.create_all)
+        # GIN index for full-text keyword search
+        await conn.execute(text(
+            "CREATE INDEX IF NOT EXISTS idx_chunks_content_fts "
+            "ON chunks USING GIN (to_tsvector('english', content))"
+        ))
+        # IVFFlat index for vector cosine similarity search
+        # lists=10 is conservative; rebuild with lists=sqrt(N) when >1000 chunks
+        await conn.execute(text(
+            "CREATE INDEX IF NOT EXISTS idx_chunks_embedding_cosine "
+            "ON chunks USING ivfflat (embedding vector_cosine_ops) WITH (lists = 10)"
+        ))

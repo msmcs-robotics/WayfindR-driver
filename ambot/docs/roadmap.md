@@ -105,9 +105,9 @@ This roadmap tracks project-level features and milestones. For immediate tasks, 
 
 #### Phase 3: Search Quality
 - [ ] Evaluate nomic-embed-text (768-dim, 8192-token context) vs current MiniLM
-- [ ] Add database indexes (IVFFlat vector + GIN full-text)
-- [ ] Implement dual keyword search (English stemmed + Simple exact)
-- [ ] Add adaptive semantic weight (short/acronym→keyword, long→semantic)
+- [x] Add database indexes (IVFFlat vector + GIN full-text, lists=10) -- 2026-02-24
+- [x] Implement dual keyword search (English stemmed AND + Simple exact OR, 20% overlap boost) -- 2026-02-24
+- [x] Add adaptive semantic weight (acronym→0.2, mixed→0.3, short→0.5, long→0.7) -- 2026-02-24
 - [ ] Create domain-specific acronym expansion table
 
 ### GPU & Hardware Acceleration

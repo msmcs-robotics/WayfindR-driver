@@ -1,6 +1,6 @@
 # Ambot - Todo & Roadmap
 
-> Last updated: 2026-02-19 (Session 15)
+> Last updated: 2026-02-24 (Session 16)
 
 ---
 
@@ -168,6 +168,15 @@ _Lower priority, do when time permits_
 - [ ] Voice interaction (STT/TTS via Android device)
 
 ## Recently Completed
+
+_Session 16 - 2026-02-24_
+
+- [x] **RAG Phase 3: Search Quality** (database indexes, dual keyword, adaptive weight)
+  - Added IVFFlat vector index + GIN full-text index to chunks table
+  - Dual keyword search: English stemmed (AND) + Simple exact (OR), 20% overlap boost
+  - Adaptive semantic weight based on query type (acronym→0.2, mixed→0.3, short→0.5, long→0.7)
+  - Deployed to Jetson, Docker rebuild, verified with multiple query types
+  - Index creation added to `init_db()` for persistence across rebuilds
 
 _Session 15 - 2026-02-19_
 
