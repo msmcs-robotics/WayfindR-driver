@@ -74,9 +74,9 @@ _Start here when resuming work_
 6. **Test CommandSmoother** - Verify 1.5s direction hold + EMA smoothing on real robot with LiDAR + motors
 
 ### Jetson (Bootylicious)
-7. ~~Deploy RAG resilience to Jetson~~ - **Done** (2026-02-19): Docker rebuild, health check, RAG ask test all passing
-8. **Ingest real EECS docs** - When available, ingest course documentation into RAG knowledge base
-9. **Evaluate nomic-embed-text** - Larger embedding model (768-dim, 8192 context) vs current MiniLM (384-dim)
+7. ~~Deploy RAG resilience to Jetson~~ - **Done** (2026-02-19)
+8. **Ingest real EECS docs** - Scrape ERAU College of Engineering pages, ingest into RAG knowledge base
+9. ~~Evaluate nomic-embed-text~~ - **Done** (2026-02-24): Kept MiniLM (nomic causes model-swap latency)
 
 ### Future: SLAM / Localization (when ready)
 > See research docs in `docs/findings/` — lightweight-slam-research.md, research-icp-scan-matching.md, research-particle-filter-localization.md
