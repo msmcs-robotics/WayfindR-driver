@@ -1,0 +1,165 @@
+{% extends "base.html" %}
+{% block title %}AMBOT Dashboard{% endblock %}
+
+{% block content %}
+<div class="dashboard-grid">
+
+    <!-- Motor Control Panel -->
+    <section class="panel control-panel">
+        <h2>Motor Control</h2>
+        <div class="control-area">
+            <div class="direction-pad">
+                <button class="dir-btn" id="btn-forward-left" data-throttle="1" data-steering="-0.5">&#8598;</button>
+                <button class="dir-btn" id="btn-forward" data-throttle="1" data-steering="0">&#8593;</button>
+                <button class="dir-btn" id="btn-forward-right" data-throttle="1" data-steering="0.5">&#8599;</button>
+
+                <button class="dir-btn" id="btn-rotate-left" data-rotate="-1">&#8630;</button>
+                <button class="dir-btn stop-btn" id="btn-stop">STOP</button>
+                <button class="dir-btn" id="btn-rotate-right" data-rotate="1">&#8631;</button>
+
+                <button class="dir-btn" id="btn-backward-left" data-throttle="-1" data-steering="-0.5">&#8601;</button>
+                <button class="dir-btn" id="btn-backward" data-throttle="-1" data-steering="0">&#8595;</button>
+                <button class="dir-btn" id="btn-backward-right" data-throttle="-1" data-steering="0.5">&#8600;</button>
+            </div>
+
+            <div class="speed-control">
+                <label for="speed-slider">Speed: <span id="speed-value">50</span>%</label>
+                <input type="range" id="speed-slider" min="10" max="100" value="50">
+            </div>
+        </div>
+
+        <div class="motor-status">
+            <h3>Motors</h3>
+            <div class="motor-grid">
+                <div class="motor" id="motor-left">
+                    <span class="motor-label">L</span>
+                    <div class="motor-bar"><div class="motor-fill"></div></div>
+                    <span class="motor-value">0</span>
+                </div>
+                <div class="motor" id="motor-right">
+                    <span class="motor-label">R</span>
+                    <div class="motor-bar"><div class="motor-fill"></div></div>
+                    <span class="motor-value">0</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="keyboard-hint">
+            <p><strong>Keyboard:</strong> W/&#8593; Forward &middot; S/&#8595; Back &middot; A/&#8592; Left &middot; D/&#8594; Right</p>
+            <p>Q Rotate Left &middot; E Rotate Right &middot; Space: Stop</p>
+            <p><em>Combine keys for curves!</em></p>
+        </div>
+    </section>
+
+    <!-- Camera Feed Panel -->
+    <section class="panel camera-panel">
+        <h2>Camera Feed</h2>
+        <div class="camera-container">
+            <img id="camera-feed" src="/video_feed" alt="Camera Feed"
+                 onerror="this.style.display='none'; document.getElementById('camera-placeholder').style.display='flex';">
+            <div id="camera-placeholder" class="placeholder">
+                <p>No Camera Feed</p>
+                <p class="placeholder-detail">Camera unavailable in simulation mode</p>
+            </div>
+            <div id="face-overlay" class="face-overlay"></div>
+        </div>
+        <div class="camera-info">
+            <span id="camera-fps">FPS: --</span>
+            <span id="face-count">Faces: 0</span>
+        </div>
+    </section>
+
+    <!-- LiDAR Panel -->
+    <section class="panel lidar-panel">
+        <h2>LiDAR View</h2>
+        <div class="lidar-container">
+            <canvas id="lidar-canvas" width="400" height="400"></canvas>
+        </div>
+        <div class="lidar-info">
+            <span id="lidar-rate">Scan rate: --</span>
+            <span id="lidar-closest">Closest: -- mm</span>
+        </div>
+    </section>
+
+    <!-- LLM Chat Panel -->
+    <section class="panel chat-panel">
+        <h2>LLM Chat</h2>
+        <div id="chat-messages" class="chat-messages">
+            <div class="chat-msg system">Welcome! Ask me anything about the robot.</div>
+        </div>
+        <div class="chat-input-row">
+            <input type="text" id="chat-input" placeholder="Ask a question..."
+                   autocomplete="off">
+            <button id="chat-send" class="action-btn">Send</button>
+        </div>
+        <div class="chat-status">
+            <span id="llm-status" class="status-dot offline"></span>
+            <span id="llm-status-text">LLM: checking...</span>
+        </div>
+    </section>
+
+    <!-- Diagnostics Panel -->
+    <section class="panel diagnostics-panel">
+        <h2>Diagnostics</h2>
+        <div class="diag-grid">
+            <div class="diag-item">
+                <label>CPU Load</label>
+                <div class="diag-bar"><div id="cpu-bar" class="diag-fill"></div></div>
+                <span id="cpu-value">--</span>
+            </div>
+            <div class="diag-item">
+                <label>Memory</label>
+                <div class="diag-bar"><div id="mem-bar" class="diag-fill"></div></div>
+                <span id="mem-value">--</span>
+            </div>
+        </div>
+        <div class="sensor-lights">
+            <h3>Sensors</h3>
+            <div class="sensor-row">
+                <span class="sensor-dot" id="sensor-lidar"></span> LiDAR
+            </div>
+            <div class="sensor-row">
+                <span class="sensor-dot" id="sensor-camera"></span> Camera
+            </div>
+            <div class="sensor-row">
+                <span class="sensor-dot" id="sensor-imu"></span> IMU
+            </div>
+        </div>
+    </section>
+
+    <!-- Telemetry Panel -->
+    <section class="panel telemetry-panel">
+        <h2>Telemetry</h2>
+        <div class="telemetry-grid">
+            <div class="telemetry-item">
+                <label>Uptime</label>
+                <span id="uptime-display">0s</span>
+            </div>
+            <div class="telemetry-item">
+                <label>Motor Cmds</label>
+                <span id="cmd-count">0</span>
+            </div>
+            <div class="telemetry-item">
+                <label>Scan Rate</label>
+                <span id="scan-rate-display">-- Hz</span>
+            </div>
+            <div class="telemetry-item">
+                <label>Camera FPS</label>
+                <span id="cam-fps-display">--</span>
+            </div>
+        </div>
+    </section>
+
+</div>
+
+{% if simulate %}
+<script>document.getElementById('sim-mode').style.display = 'inline';</script>
+{% endif %}
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/motors.js') }}"></script>
+<script src="{{ url_for('static', filename='js/lidar.js') }}"></script>
+<script src="{{ url_for('static', filename='js/camera.js') }}"></script>
+<script src="{{ url_for('static', filename='js/chat.js') }}"></script>
+{% endblock %}

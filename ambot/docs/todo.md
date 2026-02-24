@@ -1,6 +1,6 @@
 # Ambot - Todo & Roadmap
 
-> Last updated: 2026-02-24 (Session 16)
+> Last updated: 2026-02-24 (Session 17)
 
 ---
 
@@ -58,8 +58,15 @@
 
 _Start here when resuming work_
 
+### Web Control Dashboard
+1. **Deploy web_control to RPi** - `pip install -r web_control/requirements.txt`, run `python3 web_control/run.py`
+2. **Test motor control from browser** - Direction pad, WASD keys, speed slider via WiFi
+3. **Test camera MJPEG stream** - Verify `/video_feed` serves real camera frames
+4. **Test LiDAR polar plot** - Verify real scan data renders correctly in canvas
+5. **Test from laptop browser** - Access `http://10.33.224.1:5000` over WiFi
+
 ### Raspberry Pi (Pathfinder + Locomotion)
-1. **Fix left motor** - Right motor works, left doesn't spin. Check ENA (Pin 33) wiring, terminal screws, power supply
+6. **Fix left motor** - Right motor works, left doesn't spin. Check ENA (Pin 33) wiring, terminal screws, power supply
 2. **Wire and test MPU6050 IMU** - Wire GY-521 (VCC→Pin1, GND→Pin9, SCL→Pin5, SDA→Pin3), run `test_imu_calibrate.py`
 3. **Test face-to-motor tracking** - Run `gui_face_tracker.py --motors` on RPi desktop, verify motors orient toward faces
 4. **Calibrate LiDAR front orientation** - Run `gui_lidar_nav.py`, place object in front, press 'c' to calibrate
@@ -168,6 +175,23 @@ _Lower priority, do when time permits_
 - [ ] Voice interaction (STT/TTS via Android device)
 
 ## Recently Completed
+
+_Session 17 - 2026-02-24_
+
+- [x] **Web Control Dashboard** (`web_control/`)
+  - Full Flask + Flask-SocketIO web dashboard for browser-based robot control
+  - 6-panel layout: Motor Control, Camera Feed, LiDAR View, LLM Chat, Diagnostics, Telemetry
+  - Motor control: Direction pad (mouse/touch), WASD keyboard, speed slider
+  - Camera: MJPEG streaming endpoint, face detection count
+  - LiDAR: Canvas polar plot with safety zone rings, mock room scan in sim mode
+  - LLM Chat: POST proxy to Jetson RAG API with status check
+  - Diagnostics: CPU/RAM bars, sensor status lights (LiDAR, camera, IMU)
+  - Telemetry: Uptime, motor cmd count, scan rate, camera FPS (SocketIO broadcast)
+  - Safety: Motor watchdog (1s), emergency stop (button + spacebar + REST + SocketIO), blur-stop
+  - HardwareManager with graceful degradation (simulation mode works without any hardware)
+  - Dark theme CSS ported from PI_API, offline socket.io.min.js for RPi
+  - All 10 REST endpoints verified working in simulation mode
+  - Docs: scope.md, roadmap.md, todo.md, README.md
 
 _Session 16 - 2026-02-24_
 

@@ -1,6 +1,6 @@
 # Ambot - Roadmap
 
-> Last updated: 2026-02-19
+> Last updated: 2026-02-24
 
 ## Overview
 
@@ -203,6 +203,23 @@ This roadmap tracks project-level features and milestones. For immediate tasks, 
 - [ ] Tune safety zone distances for robot size
 - [ ] Test wandering behaviors in real environment (CommandSmoother + NaturalWander)
 - [ ] Test face tracking with real hardware
+
+### Web Control Dashboard (`web_control/`) -- 2026-02-24
+- [x] Flask + Flask-SocketIO app with simulation mode
+- [x] 6-panel dashboard: Motor Control, Camera, LiDAR, Chat, Diagnostics, Telemetry
+- [x] Motor control: direction pad (mouse/touch), WASD keyboard, speed slider
+- [x] Camera: MJPEG stream endpoint, face detection count
+- [x] LiDAR: Canvas polar plot with safety zone rings, mock scan in sim mode
+- [x] LLM Chat: POST proxy to Jetson RAG API
+- [x] Diagnostics: CPU/RAM bars, sensor status lights
+- [x] Telemetry: SocketIO broadcast (uptime, motor cmds, scan rate, FPS)
+- [x] Safety: motor watchdog (1s), emergency stop, blur-stop, disconnect-stop
+- [x] Dark theme CSS (ported from PI_API), offline socket.io.min.js
+- [x] HardwareManager with graceful degradation
+- [x] All endpoints verified in simulation mode
+- [ ] Deploy to RPi and test with real hardware
+- [ ] Test motor control over WiFi from laptop browser
+- [ ] Test camera MJPEG + LiDAR polar plot with real sensor data
 
 #### Wandering Behavior Philosophy (Pre-SLAM)
 
