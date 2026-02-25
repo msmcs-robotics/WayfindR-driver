@@ -58,6 +58,19 @@
 
 _Start here when resuming work_
 
+### Chat Panel UX Improvements (User Requested — Session 19)
+1. **Streaming chat responses** — Stream LLM output token-by-token via SocketIO (not block response)
+   - Requires RAG API streaming support (check `/api/ask` or add streaming endpoint)
+   - Frontend: append tokens to chat message div as they arrive
+2. **Loading animation with status stages** — Show pipeline progress while generating:
+   - Stage 1: "Searching knowledge base..." (RAG retrieval)
+   - Stage 2: "Loading model..." (Ollama model load into VRAM)
+   - Stage 3: "Generating response..." (LLM inference)
+   - Spinner/pulse animation in chat panel
+3. **Fix Jetson browser crashes** — Try fixes from `docs/known-issues.md`
+   - First check: `which firefox && dpkg -l firefox` vs `snap list firefox` (APT or Snap?)
+   - Try `sudo apt install --reinstall snapd`, or Firefox ESR from Mozilla PPA
+
 ### Web Control Dashboard (RPi Hardware Mode)
 1. **Deploy web_control to RPi** - `pip install -r web_control/requirements.txt`, run `python3 web_control/run.py`
 2. **Test motor control from browser** - Direction pad, WASD keys, speed slider via WiFi
@@ -77,7 +90,7 @@ _Start here when resuming work_
 7. ~~Deploy RAG resilience to Jetson~~ - **Done** (2026-02-19)
 8. ~~Ingest real EECS docs~~ - **Done** (2026-02-24): Online scraper built + content cleaner, 49 pages scraped from ERAU CoE
 9. ~~Evaluate nomic-embed-text~~ - **Done** (2026-02-24): Kept MiniLM (nomic causes model-swap latency)
-10. **Copy cleaned scraper output to knowledge/ and ingest** - `cp online_scraper/output/*.md bootylicious/rag/knowledge/` then deploy+ingest
+10. ~~Copy cleaned scraper output to knowledge/ and ingest~~ - **Done** (Session 19): 52 docs, 104 chunks ingested, RAG answers verified
 
 ### Future: SLAM / Localization (when ready)
 > See research docs in `docs/findings/` — lightweight-slam-research.md, research-icp-scan-matching.md, research-particle-filter-localization.md
