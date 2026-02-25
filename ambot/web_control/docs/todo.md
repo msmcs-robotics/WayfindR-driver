@@ -1,8 +1,8 @@
 # AMBOT Web Control — Todo
 
-Last updated: Session 18 (2026-02-24)
+Last updated: Session 19 (2026-02-24)
 
-## Completed (Session 16-18)
+## Completed (Session 16-19)
 
 - [x] Project structure created
 - [x] Flask app + SocketIO + blueprints
@@ -21,14 +21,13 @@ Last updated: Session 18 (2026-02-24)
 - [x] Added `requests` to requirements.txt (missing dependency) -- Session 18
 - [x] Deployed to Jetson in simulation mode with RAG chat working -- Session 18
 - [x] Added deploy.sh support: `web_control` sync, web-setup, web-start, web-stop, web-status -- Session 18
+- [x] Ingested 52 ERAU docs (49 scraped + 3 existing) into RAG, 104 chunks -- Session 19
+- [x] Verified RAG chat answers with grounded ERAU content and source citations -- Session 19
+- [x] SSH port forward verified working (localhost:5123 → jetson:5000) -- Session 19
+- [x] Pytest frontend test suite: 62 tests (7 classes), all passing in simulation mode -- Session 19
+- [x] JS/CSS already separated: style.css (615 lines), 5 JS modules (654 lines), only 1 line inline -- Session 19
 
 ## Next Session Priorities
-
-### Jetson (chat-only mode)
-- [ ] Ingest scraped ERAU content into RAG knowledge base, then re-test chat
-- [ ] SSH port forward for browser access: `ssh -L 5000:localhost:5000 jetson`
-- [ ] Build pytest-based frontend tests (use Python requests/BeautifulSoup, NOT browser)
-- [ ] Separate HTML, JS, CSS into their own files (no inline JS/CSS in HTML templates)
 
 ### Raspberry Pi (full hardware mode)
 - [ ] Deploy to RPi and test with real hardware
@@ -44,11 +43,20 @@ Last updated: Session 18 (2026-02-24)
 Use SSH port forwarding to access the web dashboard:
 
 ```bash
-# Forward Jetson port 5000 to your local machine
-ssh -L 5000:localhost:5000 jetson
+# Forward Jetson port 5000 to local port 5123 (5000 may be occupied locally)
+ssh -f -N -L 5123:localhost:5000 jetson
 
 # Then open in browser on your local machine:
-# http://localhost:5000
+# http://localhost:5123
+
+# To kill the tunnel later:
+pkill -f 'ssh.*5123.*jetson'
+```
+
+**Alternative** (if port 5000 is free locally):
+```bash
+ssh -L 5000:localhost:5000 jetson
+# Then open: http://localhost:5000
 ```
 
 ## Starting/Stopping the Dashboard
@@ -69,6 +77,19 @@ RAG_API_URL=http://localhost:8000 python3 web_control/run.py --simulate
 runs locally via Docker). The default config points to the Jetson's external IP which
 works when the dashboard runs on RPi.
 
+## Running Tests
+
+```bash
+# From the ambot/ directory (on Jetson or dev machine)
+python3 -m pytest web_control/tests/ -v
+
+# Quick run (just structure tests)
+python3 -m pytest web_control/tests/test_frontend.py::TestDashboardPage -v
+
+# API tests only
+python3 -m pytest web_control/tests/test_frontend.py::TestChatAPI -v
+```
+
 ## Backlog
 
 - [ ] Add movement pattern execution (circle, square, zigzag)
@@ -78,12 +99,12 @@ works when the dashboard runs on RPi.
 - [ ] Add snapshot/download button for camera
 - [ ] Log viewer panel
 - [ ] Configuration page
-- [ ] Pytest-based frontend test suite (endpoints, HTML structure, chat proxy)
-- [ ] Separate all inline JS/CSS from HTML templates into standalone files
+- [ ] Extract final 1 line of inline JS to app.js (trivial)
 
 ## Known Issues
 
 ### Jetson Browser Crashes
 Firefox and Chromium crash on launch from the Jetson desktop (non-root user).
-Needs investigation — may be GPU driver conflict, memory issue, or Snap/Flatpak
-packaging problem. Workaround: SSH port forward and use browser on dev machine.
+Root cause: `snap-confine` capability failure on Tegra kernel (no AppArmor support).
+See `docs/known-issues.md` for full investigation and potential fixes.
+Workaround: SSH port forward and use browser on dev machine.

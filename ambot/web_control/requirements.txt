@@ -3,3 +3,7 @@ flask>=3.0
 flask-socketio>=5.3
 simple-websocket>=1.0
 requests>=2.28
+
+# Testing
+beautifulsoup4>=4.12
+pytest>=7.0

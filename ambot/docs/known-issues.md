@@ -1,6 +1,6 @@
 # Ambot - Known Issues & Troubleshooting
 
-> Last updated: 2026-02-24 (Session 18)
+> Last updated: 2026-02-24 (Session 18-19)
 
 ---
 
@@ -70,40 +70,68 @@ cd ~/ambot && source venv/bin/activate && bash scripts/kill-hardware.sh
 
 **Symptom**: Firefox and Chromium crash immediately when opened from the Jetson desktop as the non-root user (`georgejetson`). The browser window appears briefly then closes, or doesn't appear at all.
 
-**Status**: Not investigated yet. Needs root cause analysis.
+**Status**: Root cause identified (Session 19). Fix not yet applied — low priority since SSH port forwarding works as workaround.
 
-**Possible causes**:
-- GPU driver conflict (NVIDIA driver 540.4.0 may not support browser hardware acceleration properly)
-- Snap/Flatpak packaging issues on JetPack/Ubuntu 22.04 for ARM64
-- Insufficient shared memory (`/dev/shm`) or GPU memory for browser rendering
-- AppArmor or sandboxing restrictions
-- Corrupted browser profile in `/home/georgejetson/.mozilla/` or `.config/chromium/`
+**Root cause**: `snap-confine` capability failure on JetPack/Tegra kernel.
 
-**Investigation steps** (for next session):
-```bash
-# Try launching from terminal to see errors
-ssh jetson
-firefox --no-remote 2>&1 | head -50
-chromium-browser --no-sandbox 2>&1 | head -50
+The Jetson's JetPack R36.4.4 kernel (`5.15.148-tegra`) does **not** have AppArmor compiled in (`CONFIG_SECURITY_APPARMOR` not set). The `snap-confine` binary (from `snapd` deb package v2.67.1) requires `cap_dac_override` capability, which either isn't granted or the kernel doesn't fully support POSIX capabilities for snap confinement.
 
-# Check if it's a GPU issue
-firefox --safe-mode
-chromium-browser --disable-gpu
-
-# Check installed browser versions
-dpkg -l | grep -iE 'firefox|chrom'
-snap list 2>/dev/null | grep -iE 'firefox|chrom'
-
-# Check logs
-journalctl --user -u snap.firefox.firefox 2>/dev/null | tail -20
-dmesg | tail -30
+**Error** (from `firefox --no-remote 2>&1`):
 ```
+snap-confine is packaged without necessary permissions and cannot continue;
+required permitted capability cap_dac_override not found in current capabilities:
+=: Function not implemented
+```
+
+**Investigation performed** (Session 19):
+```bash
+# Confirmed snap-confine lacks capabilities
+getcap /usr/lib/snapd/snap-confine
+# (empty — no capabilities set)
+
+# Confirmed kernel lacks AppArmor
+ssh jetson "grep CONFIG_SECURITY_APPARMOR /boot/config-* 2>/dev/null"
+# CONFIG_SECURITY_APPARMOR is not set
+
+# snapd version mismatch
+dpkg -l snapd | grep snapd  # deb: 2.67.1
+snap version                 # snapd: 2.73
+
+# Attempted fix: setcap (did NOT resolve the issue)
+sudo setcap cap_dac_override+ep /usr/lib/snapd/snap-confine
+# Capability was set but error persists — kernel may not support it properly
+```
+
+**Note**: User reports browsers may have been installed via APT, not Snap. Check with:
+```bash
+which firefox && dpkg -l firefox 2>/dev/null   # APT-installed?
+snap list firefox 2>/dev/null                    # Snap-installed?
+```
+
+**Potential fixes** (to try in future session):
+1. **Reinstall snapd**: `sudo apt install --reinstall snapd` — may restore correct capabilities
+2. **Install Firefox ESR from Mozilla PPA** (bypass Snap entirely):
+   ```bash
+   sudo add-apt-repository ppa:mozillateam/ppa
+   sudo apt update
+   sudo apt install firefox-esr
+   ```
+3. **Install Chromium via APT** (bypass Snap):
+   ```bash
+   sudo apt install chromium-browser  # May still redirect to snap on Ubuntu 22.04
+   ```
+4. **Use Flatpak** as alternative:
+   ```bash
+   sudo apt install flatpak
+   flatpak install flathub org.mozilla.firefox
+   ```
 
 **Workaround**: Use SSH port forwarding to access web applications from the dev machine's browser instead of the Jetson's browser.
 
 ```bash
-ssh -L 5000:localhost:5000 jetson
-# Then open http://localhost:5000 in local browser
+# Forward Jetson port 5000 to local port 5123 (5000 may be in use locally)
+ssh -f -N -L 5123:localhost:5000 jetson
+# Then open http://localhost:5123 in local browser
 ```
 
 ---
@@ -188,9 +216,10 @@ ssh pi@10.33.224.1 "ls -la /dev/ttyUSB*"
 ./deploy.sh jetson --test=web-start
 ./deploy.sh jetson --test=web-stop
 
-# SSH port forward for browser access
-ssh -L 5000:localhost:5000 jetson
-# Then open: http://localhost:5000
+# SSH port forward for browser access (use 5123 if 5000 is occupied locally)
+ssh -f -N -L 5123:localhost:5000 jetson
+# Then open: http://localhost:5123
+# To kill the tunnel later: pkill -f 'ssh.*5123.*jetson'
 
 # Check browser crash logs
 ssh jetson "firefox --no-remote 2>&1 | head -20"

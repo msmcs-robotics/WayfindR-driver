@@ -386,6 +386,20 @@ run_jetson_tests() {
             ssh -o ConnectTimeout=15 "$JETSON_TARGET" \
                 "cd $JETSON_DEST && bash bootylicious/scripts/rag-ctl.sh logs"
             ;;
+        rag-ingest)
+            # Run RAG ingestion (foreground — waits for completion)
+            log_info "Running RAG ingestion (foreground)..."
+            ssh -o ConnectTimeout=120 "$JETSON_TARGET" \
+                "cd $JETSON_DEST && bash bootylicious/ingest.sh"
+            ;;
+        rag-ingest-bg)
+            # Run RAG ingestion in background on Jetson
+            log_info "Starting RAG ingestion in background..."
+            ssh -o ConnectTimeout=15 "$JETSON_TARGET" \
+                "cd $JETSON_DEST && nohup bash -c 'bash bootylicious/ingest.sh 2>&1 | tee /tmp/ambot-ingest.log' > /dev/null 2>&1 &"
+            log_info "Ingestion running in background. Check progress:"
+            log_info "  ssh jetson 'tail -f /tmp/ambot-ingest.log'"
+            ;;
         web-setup)
             # Install web dashboard deps on Jetson
             log_info "Installing web dashboard dependencies..."
@@ -411,6 +425,7 @@ run_jetson_tests() {
         *)
             log_warn "Unknown Jetson test type: $test_type"
             log_info "RAG tests:  rag, rag-test, rag-health, rag-status, rag-docs, rag-logs"
+            log_info "RAG ops:    rag-ingest, rag-ingest-bg"
             log_info "Web tests:  web-setup, web-start, web-stop, web-status"
             ;;
     esac
@@ -456,6 +471,8 @@ print_help() {
     echo "  rag-status    Docker container status"
     echo "  rag-docs      List ingested documents"
     echo "  rag-logs      Show recent API logs"
+    echo "  rag-ingest    Run RAG ingestion (foreground, waits)"
+    echo "  rag-ingest-bg Run RAG ingestion in background"
     echo ""
     echo "Examples:"
     echo "  $0 rpi                              # Deploy all to RPi"

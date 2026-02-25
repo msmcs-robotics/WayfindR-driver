@@ -1,6 +1,6 @@
 # Ambot - Todo & Roadmap
 
-> Last updated: 2026-02-24 (Session 18)
+> Last updated: 2026-02-24 (Session 19)
 
 ---
 
@@ -58,13 +58,7 @@
 
 _Start here when resuming work_
 
-### Online Scraper → RAG Ingestion
-1. **Copy cleaned scraper output to knowledge/** - `cp online_scraper/output/*.md bootylicious/rag/knowledge/`
-2. **Deploy + ingest on Jetson** - `./deploy.sh jetson bootylicious --rebuild` then `ssh jetson "cd ~/ambot && ./bootylicious/ingest.sh"`
-3. **Test RAG with real ERAU content** - `./deploy.sh jetson --test=rag-test`
-4. **Optional: Re-scrape at depth 5** for more coverage (currently depth 2 = 49 pages)
-
-### Web Control Dashboard
+### Web Control Dashboard (RPi Hardware Mode)
 1. **Deploy web_control to RPi** - `pip install -r web_control/requirements.txt`, run `python3 web_control/run.py`
 2. **Test motor control from browser** - Direction pad, WASD keys, speed slider via WiFi
 3. **Test camera MJPEG stream** - Verify `/video_feed` serves real camera frames
@@ -155,7 +149,12 @@ _Priority queue for immediate work_
 - [x] Deploy RAG resilience to Jetson (Docker rebuild, tested, verified) -- 2026-02-19
 - [x] Built online scraper for ERAU CoE website (49 pages, stdlib-only, strict scope enforcement)
 - [x] Built content cleaner/curator (removes footer, nav links, enrollment tables — 27% junk removed)
-- [ ] Copy cleaned scraper output to `bootylicious/rag/knowledge/` and ingest on Jetson
+- [x] Moved cleaned scraper output to `bootylicious/rag/knowledge/` and ingested on Jetson (52 docs, 104 chunks)
+- [x] Web dashboard deployed to Jetson (simulation mode), chat working end-to-end with RAG
+- [x] Pytest frontend test suite (62 tests, all passing in simulation mode)
+- [x] SSH port forwarding verified (localhost:5123 → jetson:5000)
+- [x] Browser crash root cause identified (snap-confine capability issue on Tegra kernel)
+- [x] deploy.sh: added `rag-ingest`, `rag-ingest-bg` commands for background ingestion
 
 ### Integration
 - [x] Combine pathfinder + locomotion for basic wandering demo — **Done** (`wandering_demo_1.py`)
@@ -184,6 +183,27 @@ _Lower priority, do when time permits_
 - [ ] Voice interaction (STT/TTS via Android device)
 
 ## Recently Completed
+
+_Session 19 - 2026-02-24_
+
+- [x] **RAG ingestion with ERAU content** — 52 documents (49 scraped + 3 existing), 104 chunks
+  - Moved cleaned scraper output from `online_scraper/output/` to `bootylicious/rag/knowledge/`
+  - Synced to Jetson and ran ingestion — RAG now answers ERAU-specific questions with source citations
+  - Verified: engineering programs, robotics research, EECS labs — all grounded in real content
+- [x] **Pytest frontend test suite** (`web_control/tests/test_frontend.py`)
+  - 62 tests across 7 classes: dashboard page, health, motors, chat, diagnostics, video, errors
+  - Uses Flask test_client + BeautifulSoup (no browser needed)
+  - All tests pass in simulation mode
+  - Mocked RAG API for deterministic chat tests
+- [x] **SSH port forwarding** verified and documented
+  - `ssh -f -N -L 5123:localhost:5000 jetson` — campus network only allows SSH
+  - Documented in `web_control/docs/todo.md`, `docs/known-issues.md`
+- [x] **Browser crash investigation** — root cause: `snap-confine` capability failure
+  - JetPack Tegra kernel lacks AppArmor support
+  - `snap-confine` requires `cap_dac_override` capability not available
+  - Documented 4 potential fixes in `docs/known-issues.md`
+- [x] **deploy.sh enhancements** — `rag-ingest`, `rag-ingest-bg` for background ingestion
+- [x] **JS/CSS separation audit** — already 99% separated (615 lines CSS, 654 lines JS in standalone files)
 
 _Session 18 - 2026-02-24_
 
