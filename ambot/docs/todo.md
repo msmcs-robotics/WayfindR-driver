@@ -1,6 +1,6 @@
 # Ambot - Todo & Roadmap
 
-> Last updated: 2026-02-24 (Session 19)
+> Last updated: 2026-02-26 (Session 20)
 
 ---
 
@@ -57,19 +57,6 @@
 ## Next Session Priorities
 
 _Start here when resuming work_
-
-### Chat Panel UX Improvements (User Requested — Session 19)
-1. **Streaming chat responses** — Stream LLM output token-by-token via SocketIO (not block response)
-   - Requires RAG API streaming support (check `/api/ask` or add streaming endpoint)
-   - Frontend: append tokens to chat message div as they arrive
-2. **Loading animation with status stages** — Show pipeline progress while generating:
-   - Stage 1: "Searching knowledge base..." (RAG retrieval)
-   - Stage 2: "Loading model..." (Ollama model load into VRAM)
-   - Stage 3: "Generating response..." (LLM inference)
-   - Spinner/pulse animation in chat panel
-3. **Fix Jetson browser crashes** — Try fixes from `docs/known-issues.md`
-   - First check: `which firefox && dpkg -l firefox` vs `snap list firefox` (APT or Snap?)
-   - Try `sudo apt install --reinstall snapd`, or Firefox ESR from Mozilla PPA
 
 ### Web Control Dashboard (RPi Hardware Mode)
 1. **Deploy web_control to RPi** - `pip install -r web_control/requirements.txt`, run `python3 web_control/run.py`
@@ -196,6 +183,25 @@ _Lower priority, do when time permits_
 - [ ] Voice interaction (STT/TTS via Android device)
 
 ## Recently Completed
+
+_Session 20 - 2026-02-26_
+
+- [x] **Streaming chat responses** — Full pipeline: Ollama `stream:true` → RAG API `/api/ask/stream` (NDJSON) → SocketIO `chat:token` events → browser DOM append
+  - `OllamaClient.generate_stream()` — async generator yielding tokens from Ollama
+  - `BaseLLMClient.ask_with_context_stream()` — RAG context + streaming generation
+  - `/api/ask/stream` endpoint — NDJSON: `{event:"sources",...}` → `{event:"token",...}` → `{event:"done"}`
+  - `realtime/chat_stream.py` — SocketIO handler consuming RAG stream, emitting `chat:stage`, `chat:sources`, `chat:token`, `chat:done`
+  - `chat.js` — SocketIO client with streaming DOM updates, REST fallback when disconnected
+- [x] **Loading animation with pipeline stages** — Spinner + status text during search and generation
+  - Stage 1: "Searching knowledge base..." (during RAG retrieval)
+  - Stage 2: "Generating response..." (during LLM token streaming)
+  - CSS spinner animation, `.chat-stage` and `.chat-spinner` classes
+- [x] **Firefox ESR on Jetson** — Installed from Mozilla PPA (`firefox-esr` 140.8.0), set as default browser
+  - Root cause was Snap `snap-confine` capability failure on Tegra kernel (no AppArmor)
+  - `sudo add-apt-repository ppa:mozillateam/ppa && sudo apt install firefox-esr`
+  - `sudo update-alternatives --set x-www-browser /usr/bin/firefox-esr`
+- [x] **deploy.sh fix** — Added `web_control` to CLI argument parser (was only in `sync_component()`)
+- [x] All 62 frontend tests still passing
 
 _Session 19 - 2026-02-24_
 

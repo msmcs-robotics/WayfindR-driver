@@ -551,7 +551,7 @@ main() {
                 TARGET="jetson"
                 shift
                 ;;
-            bootylicious|locomotion|pathfinder|tests|scripts|docs|all)
+            bootylicious|locomotion|pathfinder|tests|scripts|docs|web_control|all)
                 COMPONENT="$1"
                 shift
                 ;;

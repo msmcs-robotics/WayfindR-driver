@@ -7,7 +7,10 @@ from pathlib import Path
 from typing import Annotated
 
 import redis.asyncio as aioredis
-from fastapi import Depends, FastAPI, HTTPException, UploadFile, status
+import json
+
+from fastapi import Depends, FastAPI, HTTPException, Request, UploadFile, status
+from fastapi.responses import StreamingResponse
 from pydantic import BaseModel, Field
 from sqlalchemy import func, select
 from sqlalchemy.ext.asyncio import AsyncSession
@@ -333,6 +336,81 @@ async def ask_question(
         model=llm_response.model,
         sources=sources,
     )
+
+
+@app.post("/api/ask/stream")
+async def ask_question_stream(
+    body: AskRequest,
+    session: SessionDep,
+    embed: EmbeddingDep,
+    llm: LLMDep,
+):
+    """Stream an answer token-by-token using RAG-retrieved context.
+
+    Returns newline-delimited JSON (NDJSON):
+      {"event":"sources","sources":[...],"model":"..."}
+      {"event":"token","token":"Hello"}
+      {"event":"token","token":" world"}
+      {"event":"done"}
+    """
+    # Search for context
+    if body.mode == SearchMode.semantic:
+        results = await semantic_search(body.question, session, embed, body.limit)
+    elif body.mode == SearchMode.keyword:
+        results = await keyword_search(body.question, session, body.limit)
+    else:
+        results = await hybrid_search(body.question, session, embed, body.limit)
+
+    if not results:
+        async def no_results():
+            yield json.dumps({
+                "event": "sources", "sources": [], "model": llm.get_model_name()
+            }) + "\n"
+            yield json.dumps({
+                "event": "token",
+                "token": "No relevant documents found. Please ingest documents first.",
+            }) + "\n"
+            yield json.dumps({"event": "done"}) + "\n"
+
+        return StreamingResponse(no_results(), media_type="application/x-ndjson")
+
+    # Build sources payload
+    sources = [
+        {
+            "chunk_id": r.chunk_id,
+            "document_id": r.document_id,
+            "document_filename": r.document_filename,
+            "chunk_index": r.chunk_index,
+            "score": r.score,
+        }
+        for r in results
+    ]
+    context_chunks = [
+        {"content": r.content, "document_filename": r.document_filename, "score": r.score}
+        for r in results
+    ]
+
+    async def token_stream():
+        # Emit sources first (search is done)
+        yield json.dumps({
+            "event": "sources", "sources": sources, "model": llm.get_model_name()
+        }) + "\n"
+
+        # Stream tokens from LLM
+        try:
+            async for token in llm.ask_with_context_stream(
+                question=body.question,
+                context_chunks=context_chunks,
+                system_prompt=body.system_prompt,
+            ):
+                yield json.dumps({"event": "token", "token": token}) + "\n"
+        except Exception as e:
+            logger.error("Streaming error: %s", e)
+            yield json.dumps({"event": "error", "error": str(e)}) + "\n"
+
+        yield json.dumps({"event": "done"}) + "\n"
+
+    return StreamingResponse(token_stream(), media_type="application/x-ndjson")
 
 
 @app.post(

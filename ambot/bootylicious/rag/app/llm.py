@@ -5,8 +5,10 @@ Supports both Ollama and HuggingFace backends for text generation.
 
 from __future__ import annotations
 
+import json
 import logging
 from abc import ABC, abstractmethod
+from collections.abc import AsyncGenerator
 from dataclasses import dataclass
 from typing import Optional
 
@@ -38,6 +40,16 @@ class BaseLLMClient(ABC):
     ) -> str:
         """Generate a response from the LLM."""
         pass
+
+    async def generate_stream(
+        self,
+        prompt: str,
+        system: str | None = None,
+        temperature: float | None = None,
+    ) -> AsyncGenerator[str, None]:
+        """Stream tokens from the LLM. Default: yield full response at once."""
+        result = await self.generate(prompt, system, temperature)
+        yield result
 
     @abstractmethod
     async def health_check(self) -> bool:
@@ -95,6 +107,46 @@ class BaseLLMClient(ABC):
             context_chunks=context_chunks,
         )
 
+    async def ask_with_context_stream(
+        self,
+        question: str,
+        context_chunks: list[dict],
+        system_prompt: str | None = None,
+    ) -> AsyncGenerator[str, None]:
+        """Stream answer tokens using retrieved RAG context chunks."""
+        context_parts = []
+        for i, chunk in enumerate(context_chunks, 1):
+            source = chunk.get("document_filename", "unknown")
+            content = chunk.get("content", "")
+            context_parts.append(f"[Source {i}: {source}]\n{content}")
+
+        context_str = "\n\n---\n\n".join(context_parts)
+
+        default_system = (
+            f"You are a knowledgeable assistant for '{settings.PROJECT_NAME}'. "
+            "You help answer questions about EECS (Electrical Engineering and Computer Science) "
+            "at Embry-Riddle Aeronautical University. "
+            "Answer questions accurately using ONLY the provided context. "
+            "If the context does not contain enough information to answer, say so clearly. "
+            "Cite sources by their source number when possible."
+        )
+
+        user_prompt = f"""## Retrieved Context
+
+{context_str}
+
+---
+
+## Question
+
+{question}"""
+
+        async for token in self.generate_stream(
+            prompt=user_prompt,
+            system=system_prompt or default_system,
+        ):
+            yield token
+
 
 class OllamaClient(BaseLLMClient):
     """Async client for Ollama LLM API."""
@@ -139,6 +191,44 @@ class OllamaClient(BaseLLMClient):
             resp.raise_for_status()
             data = resp.json()
             return data.get("response", "")
+
+    async def generate_stream(
+        self,
+        prompt: str,
+        system: str | None = None,
+        temperature: float | None = None,
+    ) -> AsyncGenerator[str, None]:
+        """Stream tokens from Ollama one at a time."""
+        payload = {
+            "model": self.model,
+            "prompt": prompt,
+            "stream": True,
+            "options": {
+                "temperature": temperature if temperature is not None else self.temperature,
+                "num_ctx": settings.LLM_NUM_CTX,
+                "num_predict": settings.LLM_NUM_PREDICT,
+            },
+        }
+        if system:
+            payload["system"] = system
+
+        async with httpx.AsyncClient(timeout=self.timeout) as client:
+            async with client.stream(
+                "POST", f"{self.base_url}/api/generate", json=payload
+            ) as resp:
+                resp.raise_for_status()
+                async for line in resp.aiter_lines():
+                    if not line:
+                        continue
+                    try:
+                        data = json.loads(line)
+                    except json.JSONDecodeError:
+                        continue
+                    token = data.get("response", "")
+                    if token:
+                        yield token
+                    if data.get("done", False):
+                        return
 
     async def health_check(self) -> bool:
         """Check if Ollama server is reachable and model exists."""

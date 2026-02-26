@@ -70,7 +70,7 @@ cd ~/ambot && source venv/bin/activate && bash scripts/kill-hardware.sh
 
 **Symptom**: Firefox and Chromium crash immediately when opened from the Jetson desktop as the non-root user (`georgejetson`). The browser window appears briefly then closes, or doesn't appear at all.
 
-**Status**: Root cause identified (Session 19). Fix not yet applied — low priority since SSH port forwarding works as workaround.
+**Status**: FIXED (Session 20). Installed Firefox ESR from Mozilla PPA (bypasses broken Snap).
 
 **Root cause**: `snap-confine` capability failure on JetPack/Tegra kernel.
 
@@ -108,28 +108,22 @@ which firefox && dpkg -l firefox 2>/dev/null   # APT-installed?
 snap list firefox 2>/dev/null                    # Snap-installed?
 ```
 
-**Potential fixes** (to try in future session):
-1. **Reinstall snapd**: `sudo apt install --reinstall snapd` — may restore correct capabilities
-2. **Install Firefox ESR from Mozilla PPA** (bypass Snap entirely):
-   ```bash
-   sudo add-apt-repository ppa:mozillateam/ppa
-   sudo apt update
-   sudo apt install firefox-esr
-   ```
-3. **Install Chromium via APT** (bypass Snap):
-   ```bash
-   sudo apt install chromium-browser  # May still redirect to snap on Ubuntu 22.04
-   ```
-4. **Use Flatpak** as alternative:
-   ```bash
-   sudo apt install flatpak
-   flatpak install flathub org.mozilla.firefox
-   ```
-
-**Workaround**: Use SSH port forwarding to access web applications from the dev machine's browser instead of the Jetson's browser.
-
+**Fix applied** (Session 20):
 ```bash
-# Forward Jetson port 5000 to local port 5123 (5000 may be in use locally)
+# Install Firefox ESR from Mozilla PPA (bypasses broken Snap)
+sudo add-apt-repository -y ppa:mozillateam/ppa
+sudo apt update
+sudo apt install -y firefox-esr
+
+# Set as default browser
+sudo update-alternatives --set x-www-browser /usr/bin/firefox-esr
+sudo update-alternatives --set gnome-www-browser /usr/bin/firefox-esr
+```
+
+Firefox ESR 140.8.0 now works. The Snap `firefox` package is still installed but broken — use `firefox-esr` instead.
+
+**Alternative**: Use SSH port forwarding to access web applications from the dev machine's browser:
+```bash
 ssh -f -N -L 5123:localhost:5000 jetson
 # Then open http://localhost:5123 in local browser
 ```

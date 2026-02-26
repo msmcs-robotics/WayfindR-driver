@@ -1,8 +1,8 @@
 # AMBOT Web Control — Todo
 
-Last updated: Session 19 (2026-02-24)
+Last updated: Session 20 (2026-02-26)
 
-## Completed (Session 16-19)
+## Completed (Session 16-20)
 
 - [x] Project structure created
 - [x] Flask app + SocketIO + blueprints
@@ -26,25 +26,12 @@ Last updated: Session 19 (2026-02-24)
 - [x] SSH port forward verified working (localhost:5123 → jetson:5000) -- Session 19
 - [x] Pytest frontend test suite: 62 tests (7 classes), all passing in simulation mode -- Session 19
 - [x] JS/CSS already separated: style.css (615 lines), 5 JS modules (654 lines), only 1 line inline -- Session 19
-
-## Next Session Priorities
-
-### Chat Panel UX Improvements (User Requested)
-- [ ] **Streaming chat responses** — Stream LLM output token-by-token instead of waiting for full response
-  - Use SocketIO to push tokens as they arrive from the RAG API
-  - Requires RAG API to support streaming (check if `/api/ask` has a streaming mode, or add one)
-  - Frontend: append tokens to the chat message div as they arrive
-- [ ] **Loading animation with status stages** — Show what the system is doing while generating:
-  - Stage 1: "Searching knowledge base..." (RAG retrieval)
-  - Stage 2: "Loading model..." (if Ollama needs to load model into VRAM)
-  - Stage 3: "Generating response..." (LLM inference)
-  - Use a spinner/pulse animation in the chat panel during each stage
-  - Backend needs to report stages (may need RAG API changes or timing heuristics)
-- [ ] **Fix browser crashes on Jetson** — Try potential fixes from `docs/known-issues.md`:
-  1. Check if browsers are APT or Snap: `which firefox && dpkg -l firefox` vs `snap list firefox`
-  2. Try `sudo apt install --reinstall snapd`
-  3. If still broken, install Firefox ESR from Mozilla PPA (bypass Snap)
-  4. Or try Flatpak as alternative
+- [x] **Streaming chat responses** via SocketIO — token-by-token from Ollama through RAG API → web dashboard -- Session 20
+- [x] **Loading animation with pipeline stages** — "Searching knowledge base..." → "Generating response..." with spinner -- Session 20
+- [x] **RAG API streaming endpoint** (`/api/ask/stream`) — NDJSON with sources + token events -- Session 20
+- [x] **SocketIO chat stream handler** (`realtime/chat_stream.py`) — proxies RAG stream to browser -- Session 20
+- [x] **Firefox ESR installed on Jetson** — bypasses broken Snap, set as default browser -- Session 20
+- [x] **deploy.sh fix**: `web_control` now accepted as CLI component argument -- Session 20
 
 ### Raspberry Pi (full hardware mode)
 - [ ] Deploy to RPi and test with real hardware
