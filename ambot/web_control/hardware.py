@@ -5,8 +5,6 @@ unavailable, the manager falls back to simulation/mock data.
 """
 
 import logging
-import math
-import random
 import threading
 import time
 
@@ -182,27 +180,7 @@ class HardwareManager:
         with self._scan_lock:
             if self._latest_scan is not None:
                 return self._latest_scan
-
-        # Mock data: simulated room
-        if self.simulate:
-            return self._mock_scan()
         return []
-
-    def _mock_scan(self):
-        """Generate a mock room scan for development."""
-        points = []
-        for i in range(360):
-            angle = float(i)
-            # Rectangular room ~3m x 4m with some noise
-            rad = math.radians(angle)
-            dx = abs(math.cos(rad))
-            dy = abs(math.sin(rad))
-            dist_x = 2000.0 / dx if dx > 0.01 else 9999.0  # mm
-            dist_y = 1500.0 / dy if dy > 0.01 else 9999.0
-            dist = min(dist_x, dist_y) + random.gauss(0, 30)
-            dist = max(100, min(6000, dist))
-            points.append({'angle': angle, 'distance': dist})
-        return points
 
     # -- Camera ----------------------------------------------------------------
 
@@ -353,7 +331,7 @@ class HardwareManager:
             'mem_pct': round(mem_pct, 1),
             'motor': motor,
             'lidar': {
-                'connected': self.lidar is not None or self.simulate,
+                'connected': self.lidar is not None,
                 'scan_rate': round(self._scan_rate, 1),
             },
             'camera': {
@@ -364,7 +342,7 @@ class HardwareManager:
                 'connected': self.imu is not None,
             },
             'sensors': {
-                'lidar': self.lidar is not None or self.simulate,
+                'lidar': self.lidar is not None,
                 'camera': self.camera is not None,
                 'imu': self.imu is not None,
             },

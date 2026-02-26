@@ -201,7 +201,13 @@ _Session 20 - 2026-02-26_
   - `sudo add-apt-repository ppa:mozillateam/ppa && sudo apt install firefox-esr`
   - `sudo update-alternatives --set x-www-browser /usr/bin/firefox-esr`
 - [x] **deploy.sh fix** — Added `web_control` to CLI argument parser (was only in `sync_component()`)
-- [x] All 62 frontend tests still passing
+- [x] **Simulation mode cleanup** — Removed fake sensor data, dashboard shows "not connected" messages
+  - Removed `_mock_scan()` (360-point room simulation) from HardwareManager
+  - LiDAR, Camera, IMU all report `connected: false` in simulation mode
+  - LiDAR panel shows "LiDAR not connected or unavailable" placeholder (no canvas polling)
+  - Camera panel shows "Camera not connected or unavailable" placeholder
+  - LiDAR SocketIO stream skipped entirely in simulation mode
+  - Updated 2 tests to match new behavior, all 62 tests passing
 
 _Session 19 - 2026-02-24_
 

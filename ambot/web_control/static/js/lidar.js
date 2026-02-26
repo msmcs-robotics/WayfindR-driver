@@ -2,6 +2,7 @@
  * AMBOT Web Control — LiDAR polar plot renderer.
  *
  * Fetches scan data and renders on a canvas with safety zone rings.
+ * Shows a "not connected" placeholder when no LiDAR hardware is available.
  */
 
 const Lidar = {
@@ -9,15 +10,41 @@ const Lidar = {
     ctx: null,
     pollTimer: null,
     maxRange: 6000,  // mm
+    _connected: false,
 
     init() {
         this.canvas = document.getElementById('lidar-canvas');
         if (!this.canvas) return;
         this.ctx = this.canvas.getContext('2d');
 
-        // Poll scan data at ~4 Hz
-        this.pollTimer = setInterval(() => this.fetchAndDraw(), 250);
-        this.draw([]);  // Draw empty plot
+        // Check sensor status first, then start polling only if connected
+        this.checkSensorStatus();
+    },
+
+    async checkSensorStatus() {
+        try {
+            const resp = await fetch('/api/diagnostics/sensors');
+            if (resp.ok) {
+                const data = await resp.json();
+                this._connected = data.lidar === true;
+            }
+        } catch (e) {
+            this._connected = false;
+        }
+
+        if (this._connected) {
+            this.pollTimer = setInterval(() => this.fetchAndDraw(), 250);
+            this.draw([]);
+        } else {
+            this.showPlaceholder();
+        }
+    },
+
+    showPlaceholder() {
+        // Hide canvas, show placeholder
+        if (this.canvas) this.canvas.style.display = 'none';
+        const placeholder = document.getElementById('lidar-placeholder');
+        if (placeholder) placeholder.style.display = 'flex';
     },
 
     async fetchAndDraw() {
@@ -85,7 +112,7 @@ const Lidar = {
             ctx.fillStyle = '#8892b0';
             ctx.font = '14px sans-serif';
             ctx.textAlign = 'center';
-            ctx.fillText('No LiDAR data', cx, cy + 30);
+            ctx.fillText('Waiting for scan data...', cx, cy + 30);
             return;
         }
 

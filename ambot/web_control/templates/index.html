@@ -59,7 +59,7 @@
                  onerror="this.style.display='none'; document.getElementById('camera-placeholder').style.display='flex';">
             <div id="camera-placeholder" class="placeholder">
                 <p>No Camera Feed</p>
-                <p class="placeholder-detail">Camera unavailable in simulation mode</p>
+                <p class="placeholder-detail">Camera not connected or unavailable</p>
             </div>
             <div id="face-overlay" class="face-overlay"></div>
         </div>
@@ -74,6 +74,10 @@
         <h2>LiDAR View</h2>
         <div class="lidar-container">
             <canvas id="lidar-canvas" width="400" height="400"></canvas>
+            <div id="lidar-placeholder" class="placeholder" style="display:none;">
+                <p>No LiDAR Data</p>
+                <p class="placeholder-detail">LiDAR not connected or unavailable</p>
+            </div>
         </div>
         <div class="lidar-info">
             <span id="lidar-rate">Scan rate: --</span>

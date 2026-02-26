@@ -470,11 +470,11 @@ class TestDiagnosticsAPI:
         assert "camera" in data
         assert "imu" in data
 
-    def test_lidar_simulation_shows_connected(self, client):
-        """In simulation mode, LiDAR should report as connected."""
+    def test_lidar_simulation_shows_not_connected(self, client):
+        """In simulation mode, LiDAR should report as not connected."""
         resp = client.get("/api/diagnostics/sensors")
         data = resp.get_json()
-        assert data["lidar"] is True
+        assert data["lidar"] is False
 
     def test_lidar_scan_returns_200(self, client):
         """GET /api/diagnostics/lidar_scan should return 200."""
@@ -490,16 +490,12 @@ class TestDiagnosticsAPI:
         assert isinstance(data["scan"], list)
         assert isinstance(data["count"], int)
 
-    def test_lidar_scan_mock_data_in_simulation(self, client):
-        """In simulation mode, mock scan should return 360 points."""
+    def test_lidar_scan_empty_in_simulation(self, client):
+        """In simulation mode, LiDAR scan should return empty (no mock data)."""
         resp = client.get("/api/diagnostics/lidar_scan")
         data = resp.get_json()
-        assert data["count"] == 360
-        # Each point should have angle and distance
-        if data["count"] > 0:
-            point = data["scan"][0]
-            assert "angle" in point
-            assert "distance" in point
+        assert data["count"] == 0
+        assert data["scan"] == []
 
     def test_faces_returns_200(self, client):
         """GET /api/diagnostics/faces should return 200."""

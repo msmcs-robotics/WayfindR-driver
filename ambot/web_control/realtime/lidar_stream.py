@@ -10,6 +10,12 @@ def register_lidar_stream(socketio, app):
     """Start a background thread that emits lidar_scan events."""
     from web_control.config import LIDAR_HZ
 
+    # Skip broadcasting mock data in simulation mode
+    with app.app_context():
+        if app.config.get('SIMULATE', False):
+            logger.info('LiDAR stream: skipped (simulation mode, no hardware)')
+            return
+
     def broadcast():
         interval = 1.0 / LIDAR_HZ
         while True:

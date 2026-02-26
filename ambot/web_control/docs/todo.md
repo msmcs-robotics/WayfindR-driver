@@ -32,6 +32,7 @@ Last updated: Session 20 (2026-02-26)
 - [x] **SocketIO chat stream handler** (`realtime/chat_stream.py`) — proxies RAG stream to browser -- Session 20
 - [x] **Firefox ESR installed on Jetson** — bypasses broken Snap, set as default browser -- Session 20
 - [x] **deploy.sh fix**: `web_control` now accepted as CLI component argument -- Session 20
+- [x] **Simulation cleanup**: removed fake LiDAR/camera data, shows "not connected" placeholders -- Session 20
 
 ### Raspberry Pi (full hardware mode)
 - [ ] Deploy to RPi and test with real hardware
