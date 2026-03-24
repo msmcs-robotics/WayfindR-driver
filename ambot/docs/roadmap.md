@@ -1,6 +1,6 @@
 # Ambot - Roadmap
 
-> Last updated: 2026-02-24
+> Last updated: 2026-03-24
 
 ## Overview
 
@@ -75,6 +75,15 @@ This roadmap tracks project-level features and milestones. For immediate tasks, 
   - llama3.2:3b confirmed as best choice for RAG quality
 - [x] Applied Ollama memory optimizations (flash attention, q8 KV cache, single model/parallel) -- 2026-02-19
 - [x] Create basic conversation loop (`bootylicious/chat.py` — CLI, custom system prompts) -- 2026-02-24
+
+### Chat App (`chat_app/`)
+- [x] FastAPI + SSE streaming chat frontend — 2026-03-24
+- [x] Smart query routing (casual vs RAG) — 2026-03-24
+- [x] Multi-turn conversation context via Ollama /api/chat — 2026-03-24
+- [x] Response timing display (search + generation) — 2026-03-24
+- [x] Context condensation for long conversations — 2026-03-24
+- [ ] Conversation persistence (currently in-memory, lost on restart)
+- [ ] Token counting accuracy improvement (currently rough ~4 chars/token estimate)
 
 ### RAG System
 - [x] Adapt rag-bootstrap Docker Compose for Jetson (ARM64) -- 2026-02-12
@@ -299,6 +308,25 @@ This creates the illusion of purposeful exploration without needing SLAM, odomet
 - [ ] Try BreezySLAM (risk: Python 3.13 C extension compatibility)
 - [ ] Combined LiDAR + camera + IMU for robust navigation
   - Still NO SLAM initially - just better reactive navigation
+
+### MCP Tour Guide System (Future)
+> The robot will serve as an interactive tour guide using MCP (Model Context Protocol) tools
+> for location awareness and movement commands.
+
+- [ ] Define location list with descriptions (building names, labs, landmarks)
+- [ ] MCP tool: `check_location()` — query current robot position
+- [ ] MCP tool: `move_to(location_name)` — command robot to navigate to named location
+- [ ] Intent classification: distinguish "asking about a location" vs "wanting to go there"
+- [ ] MCP action display in chat UI — italic text below assistant messages showing triggered actions
+- [ ] Autonomous MCP commands — movement commands that don't require a chat response
+- [ ] Location confirmation flow — LLM asks user to confirm before initiating movement
+- [ ] Integration with locomotion component for actual movement execution
+
+### Advanced Chat Features
+- [ ] Conversation persistence across sessions (SQLite or file-based)
+- [ ] Voice input/output integration (STT/TTS)
+- [ ] Multi-user session support
+- [ ] Chat history export
 
 ### Voice Interaction
 - [ ] Speech-to-text input (possibly via Android device)

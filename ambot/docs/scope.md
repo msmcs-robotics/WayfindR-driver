@@ -1,6 +1,6 @@
 # Ambot - Scope
 
-> Last updated: 2026-02-12
+> Last updated: 2026-03-24
 > Status: Active
 
 ---
@@ -91,6 +91,9 @@ The project enables multiple developer teams to work independently on their resp
 - Platform-agnostic components (deploy to Jetson or Pi as needed)
 - System capability research and documentation
 - Future ROS2 integration path for SLAM and advanced navigation
+- Chat app (FastAPI) for LLM conversation with RAG integration
+- Smart query routing (casual conversation vs knowledge base lookup)
+- MCP tools for location-based tour guide functionality (future)
 
 ### Out of Scope (Exclusions)
 - LLM training, fine-tuning, or optimization (external project)
@@ -101,6 +104,7 @@ The project enables multiple developer teams to work independently on their resp
 - Multi-robot fleet management
 - Cloud-based LLM inference
 - SLAM mapping (future work - current focus is simple wandering algorithms)
+- Manual robot steering/motor control via chat (future MCP provides abstracted location movement, not low-level commands)
 
 ## Technical Decisions
 
@@ -115,6 +119,7 @@ The project enables multiple developer teams to work independently on their resp
 | Wandering Algorithms | MaxClearance, WallFollower, RandomWander | Simple demo behaviors without SLAM | 2026-01-29 |
 | Jetson OS | JetPack R36.4.4 | Pre-installed on Jetson Orin Nano | 2026-02-12 |
 | Container Runtime | Docker 28.2.2 (pre-installed) | Works with NVIDIA Container Toolkit 1.16.2 for GPU access | 2026-02-12 |
+| Chat Frontend | FastAPI + vanilla JS (SSE streaming) | Lightweight, no npm/webpack needed, runs directly on Jetson | 2026-03-24 |
 | Output Method | Text display (no speaker) | Simplest first iteration | 2026-01-27 |
 
 ## Integration Points

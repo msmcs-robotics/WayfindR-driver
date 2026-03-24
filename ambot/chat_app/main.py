@@ -1,12 +1,20 @@
-"""AMBOT Chat — Lightweight FastAPI chat interface for the RAG API.
+"""AMBOT Chat — FastAPI chat interface with conversation context and smart routing.
 
-Proxies to the bootylicious RAG API and serves a simple chat frontend
-with streaming responses and state indicators.
+Architecture:
+- Manages conversation history per session (in-memory)
+- Smart routing: casual chat goes direct to Ollama, knowledge questions use RAG
+- Uses Ollama /api/chat (multi-turn messages) for conversation context
+- Uses RAG API /api/search for knowledge retrieval when needed
+- SSE streaming with state indicators and timing
+- Context condensation when approaching model limits
 """
 
 import json
 import logging
 import os
+import time
+import uuid
+from collections import defaultdict
 
 import httpx
 from fastapi import FastAPI, Request
@@ -16,15 +24,170 @@ from fastapi.staticfiles import StaticFiles
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
+# ── Configuration ────────────────────────────────────────────────
 RAG_API_URL = os.environ.get("RAG_API_URL", "http://localhost:8000")
-RAG_TIMEOUT = float(os.environ.get("RAG_TIMEOUT", "120"))
+OLLAMA_URL = os.environ.get("OLLAMA_URL", "http://localhost:11434")
+OLLAMA_MODEL = os.environ.get("OLLAMA_MODEL", "llama3.2:3b")
+OLLAMA_TIMEOUT = float(os.environ.get("OLLAMA_TIMEOUT", "120"))
+MAX_CONTEXT_TOKENS = int(os.environ.get("MAX_CONTEXT_TOKENS", "3200"))
+MAX_HISTORY_TURNS = int(os.environ.get("MAX_HISTORY_TURNS", "20"))
 
+SYSTEM_PROMPT = (
+    "You are AMBOT, a helpful and friendly conversational robot assistant at "
+    "Embry-Riddle Aeronautical University (ERAU). You help with questions about "
+    "EECS, robotics, engineering, campus life, and general conversation. "
+    "Be concise but thorough. When you have retrieved knowledge context, "
+    "cite sources by their source number. When you don't have context, "
+    "answer from your general knowledge or say you're not sure."
+)
+
+# ── App Setup ────────────────────────────────────────────────────
 app = FastAPI(title="AMBOT Chat", docs_url=None, redoc_url=None)
 
-# Serve static files (CSS, JS)
 static_dir = os.path.join(os.path.dirname(__file__), "static")
 app.mount("/static", StaticFiles(directory=static_dir), name="static")
 
+# ── Session Store ────────────────────────────────────────────────
+# In-memory conversation history keyed by session_id
+_sessions: dict[str, dict] = defaultdict(lambda: {
+    "messages": [],
+    "created": time.time(),
+    "turn_count": 0,
+    "condensation_count": 0,
+})
+
+
+def _get_session(session_id: str) -> dict:
+    """Get or create a session."""
+    return _sessions[session_id]
+
+
+def _estimate_tokens(text: str) -> int:
+    """Rough token estimate: ~4 chars per token for English."""
+    return len(text) // 4
+
+
+def _estimate_messages_tokens(messages: list[dict]) -> int:
+    """Estimate total tokens in a messages list."""
+    total = 0
+    for msg in messages:
+        total += _estimate_tokens(msg.get("content", ""))
+        total += 4  # overhead per message (role, formatting)
+    return total
+
+
+# ── Query Classification ────────────────────────────────────────
+_CASUAL_PATTERNS = {
+    "hello", "hi", "hey", "greetings", "good morning", "good afternoon",
+    "good evening", "thanks", "thank you", "bye", "goodbye", "see you",
+    "ok", "okay", "sure", "yes", "no", "cool", "nice", "great",
+    "how are you", "what's up", "sup", "yo",
+    "lol", "haha", "hmm", "wow",
+}
+
+
+def classify_query(question: str) -> str:
+    """Classify whether a query needs RAG retrieval or is casual conversation.
+
+    Returns: 'rag' or 'casual'
+    """
+    lower = question.lower().strip().rstrip("?!.")
+    words = lower.split()
+
+    # Check casual patterns FIRST (regardless of length)
+    for pattern in _CASUAL_PATTERNS:
+        if lower == pattern or lower.startswith(pattern):
+            return "casual"
+
+    # Very short messages (1-2 words) without RAG keywords are casual
+    if len(words) <= 2:
+        return "casual"
+
+    # Check for domain-specific RAG indicators (nouns, not question words)
+    _DOMAIN_KEYWORDS = {
+        "program", "degree", "lab", "faculty", "professor", "department",
+        "course", "class", "major", "minor", "accreditation", "research",
+        "club", "student", "campus", "erau", "embry", "riddle",
+        "eecs", "engineering", "computer science", "electrical",
+        "robotics", "ambot", "robot", "lidar", "sensor", "jetson",
+        "rag", "knowledge", "document",
+    }
+    for keyword in _DOMAIN_KEYWORDS:
+        if keyword in lower:
+            return "rag"
+
+    # Question words + enough length suggest a knowledge question
+    _QUESTION_STARTERS = {"what", "where", "which", "how", "who", "when", "does", "is there",
+                          "tell me about", "explain", "describe", "list", "show me"}
+    if len(words) > 4:
+        for starter in _QUESTION_STARTERS:
+            if lower.startswith(starter):
+                return "rag"
+
+    # Questions (ending with ?) with 5+ words likely need lookup
+    if question.strip().endswith("?") and len(words) > 4:
+        return "rag"
+
+    return "casual"
+
+
+# ── Context Condensation ────────────────────────────────────────
+async def condense_history(session: dict) -> None:
+    """Summarize older conversation turns to free up context window.
+
+    Keeps the last 4 turns verbatim, summarizes everything before that.
+    """
+    messages = session["messages"]
+    if len(messages) < 10:
+        return  # Not enough to condense
+
+    # Keep last 4 exchanges (8 messages: user+assistant pairs)
+    keep_count = 8
+    to_condense = messages[:-keep_count]
+    to_keep = messages[-keep_count:]
+
+    # Build condensation prompt
+    convo_text = ""
+    for msg in to_condense:
+        role = msg["role"].capitalize()
+        convo_text += f"{role}: {msg['content']}\n"
+
+    condense_prompt = (
+        "Summarize this conversation in 2-3 sentences, preserving key topics "
+        "discussed and any important facts or decisions:\n\n" + convo_text
+    )
+
+    try:
+        async with httpx.AsyncClient(timeout=30) as client:
+            resp = await client.post(
+                f"{OLLAMA_URL}/api/generate",
+                json={
+                    "model": OLLAMA_MODEL,
+                    "prompt": condense_prompt,
+                    "stream": False,
+                    "options": {"num_predict": 150, "temperature": 0.1},
+                },
+            )
+            if resp.status_code == 200:
+                summary = resp.json().get("response", "").strip()
+                if summary:
+                    # Replace old messages with a summary message
+                    session["messages"] = [
+                        {"role": "system",
+                         "content": f"[Previous conversation summary: {summary}]"}
+                    ] + to_keep
+                    session["condensation_count"] += 1
+                    logger.info("Condensed %d messages into summary (condensation #%d)",
+                                len(to_condense), session["condensation_count"])
+                    return
+    except Exception as e:
+        logger.warning("Condensation failed: %s", e)
+
+    # Fallback: just trim old messages
+    session["messages"] = to_keep
+
+
+# ── Routes ───────────────────────────────────────────────────────
 
 @app.get("/", response_class=HTMLResponse)
 async def index():
@@ -36,24 +199,35 @@ async def index():
 
 @app.get("/api/health")
 async def health():
-    """Check RAG API health and return combined status."""
-    try:
-        async with httpx.AsyncClient(timeout=10) as client:
+    """Check RAG API and Ollama health."""
+    result = {"status": "ready", "rag_api": False, "ollama": False}
+
+    async with httpx.AsyncClient(timeout=10) as client:
+        # Check RAG API
+        try:
             resp = await client.get(f"{RAG_API_URL}/api/health")
             if resp.status_code == 200:
-                data = resp.json()
-                return {
-                    "status": "ready",
-                    "rag_api": True,
-                    "details": data,
-                }
-    except httpx.ConnectError:
-        return {"status": "rag_unavailable", "rag_api": False,
-                "error": "Cannot reach RAG API"}
-    except Exception as e:
-        return {"status": "error", "rag_api": False, "error": str(e)}
+                result["rag_api"] = True
+                result["details"] = resp.json()
+        except Exception:
+            pass
 
-    return {"status": "degraded", "rag_api": False}
+        # Check Ollama directly
+        try:
+            resp = await client.get(f"{OLLAMA_URL}/api/tags")
+            if resp.status_code == 200:
+                result["ollama"] = True
+        except Exception:
+            pass
+
+    if result["ollama"]:
+        result["status"] = "ready"
+    elif result["rag_api"]:
+        result["status"] = "degraded"
+    else:
+        result["status"] = "offline"
+
+    return result
 
 
 @app.get("/api/models")
@@ -61,63 +235,149 @@ async def models():
     """Return available LLM models."""
     try:
         async with httpx.AsyncClient(timeout=10) as client:
-            resp = await client.get(f"{RAG_API_URL}/api/models")
+            resp = await client.get(f"{OLLAMA_URL}/api/tags")
             if resp.status_code == 200:
-                return resp.json()
+                model_list = [m["name"] for m in resp.json().get("models", [])]
+                return {"models": model_list, "current": OLLAMA_MODEL}
     except Exception as e:
         logger.warning("Failed to fetch models: %s", e)
-    return {"models": [], "current": "unknown"}
+    return {"models": [], "current": OLLAMA_MODEL}
 
 
-@app.get("/api/documents")
-async def documents():
-    """Return ingested document list."""
-    try:
-        async with httpx.AsyncClient(timeout=10) as client:
-            resp = await client.get(f"{RAG_API_URL}/api/documents")
-            if resp.status_code == 200:
-                docs = resp.json()
-                return {"documents": docs, "count": len(docs)}
-    except Exception as e:
-        logger.warning("Failed to fetch documents: %s", e)
-    return {"documents": [], "count": 0}
+@app.post("/api/session")
+async def create_session():
+    """Create a new chat session."""
+    session_id = str(uuid.uuid4())[:8]
+    _get_session(session_id)  # Initialize
+    return {"session_id": session_id}
+
+
+@app.delete("/api/session/{session_id}")
+async def clear_session(session_id: str):
+    """Clear a session's conversation history."""
+    if session_id in _sessions:
+        del _sessions[session_id]
+    return {"cleared": True}
+
+
+@app.get("/api/session/{session_id}/history")
+async def get_history(session_id: str):
+    """Return conversation history for a session."""
+    session = _get_session(session_id)
+    return {
+        "messages": session["messages"],
+        "turn_count": session["turn_count"],
+        "condensation_count": session["condensation_count"],
+    }
 
 
 @app.post("/api/chat")
 async def chat(request: Request):
-    """Stream a chat response from the RAG API via SSE.
+    """Stream a chat response with conversation context and smart routing.
 
-    Expects JSON: {"question": "...", "mode": "hybrid"}
-    Returns: text/event-stream with state transitions.
+    Expects JSON: {"question": "...", "session_id": "..."}
+    Returns: text/event-stream with state transitions and timing.
     """
     body = await request.json()
     question = body.get("question", "").strip()
     if not question:
         return {"error": "Empty question"}
 
-    mode = body.get("mode", "hybrid")
+    session_id = body.get("session_id", "default")
+    session = _get_session(session_id)
+
+    # Classify the query
+    query_type = classify_query(question)
+    t_start = time.time()
 
     async def event_stream():
-        # Stage 1: Searching
-        yield _sse("state", {"stage": "searching",
-                              "message": "Searching knowledge base..."})
+        sources = []
+        rag_context = ""
+        t_search_done = t_start
 
+        # ── RAG Search (if needed) ──────────────────────────────
+        if query_type == "rag":
+            yield _sse("state", {"stage": "searching",
+                                  "message": "Searching knowledge base..."})
+            try:
+                async with httpx.AsyncClient(timeout=30) as client:
+                    resp = await client.post(
+                        f"{RAG_API_URL}/api/search",
+                        json={"query": question, "mode": "hybrid", "limit": 5},
+                    )
+                    if resp.status_code == 200:
+                        sources = resp.json()
+                        if sources:
+                            # Format context for injection
+                            parts = []
+                            for i, s in enumerate(sources, 1):
+                                fname = s.get("document_filename", "unknown")
+                                content = s.get("content", "")
+                                parts.append(f"[Source {i}: {fname}]\n{content}")
+                            rag_context = "\n\n---\n\n".join(parts)
+
+                            yield _sse("sources", {
+                                "sources": sources,
+                                "model": OLLAMA_MODEL,
+                            })
+            except Exception as e:
+                logger.warning("RAG search failed: %s", e)
+
+            t_search_done = time.time()
+
+        # ── Build Messages Array ────────────────────────────────
+        yield _sse("state", {"stage": "generating",
+                              "message": "Generating response..."})
+
+        # Check if we need to condense history
+        history_tokens = _estimate_messages_tokens(session["messages"])
+        if history_tokens > MAX_CONTEXT_TOKENS * 0.7:
+            yield _sse("state", {"stage": "condensing",
+                                  "message": "Condensing conversation history..."})
+            await condense_history(session)
+
+        # Build the messages array for Ollama /api/chat
+        messages = [{"role": "system", "content": SYSTEM_PROMPT}]
+
+        # Add conversation history
+        messages.extend(session["messages"])
+
+        # Build the user message (with optional RAG context)
+        if rag_context:
+            user_content = (
+                f"## Retrieved Knowledge\n\n{rag_context}\n\n---\n\n"
+                f"## Question\n\n{question}"
+            )
+        else:
+            user_content = question
+
+        messages.append({"role": "user", "content": user_content})
+
+        # ── Stream from Ollama /api/chat ────────────────────────
+        full_response = ""
         try:
-            async with httpx.AsyncClient(timeout=RAG_TIMEOUT) as client:
-                payload = {"question": question, "mode": mode}
+            async with httpx.AsyncClient(timeout=OLLAMA_TIMEOUT) as client:
                 async with client.stream(
                     "POST",
-                    f"{RAG_API_URL}/api/ask/stream",
-                    json=payload,
+                    f"{OLLAMA_URL}/api/chat",
+                    json={
+                        "model": OLLAMA_MODEL,
+                        "messages": messages,
+                        "stream": True,
+                        "options": {
+                            "num_ctx": 4096,
+                            "num_predict": 512,
+                            "temperature": 0.4,
+                        },
+                    },
                 ) as resp:
                     if resp.status_code != 200:
                         yield _sse("error", {
-                            "message": f"RAG API returned {resp.status_code}"
+                            "message": f"Ollama returned {resp.status_code}",
                         })
                         return
 
                     async for line in resp.aiter_lines():
-                        line = line.strip()
                         if not line:
                             continue
                         try:
@@ -125,45 +385,52 @@ async def chat(request: Request):
                         except json.JSONDecodeError:
                             continue
 
-                        event = data.get("event")
+                        token = data.get("message", {}).get("content", "")
+                        if token:
+                            full_response += token
+                            yield _sse("token", {"text": token})
 
-                        if event == "sources":
-                            # Stage 2: Generating
-                            yield _sse("sources", {
-                                "sources": data.get("sources", []),
-                                "model": data.get("model", "unknown"),
-                            })
-                            yield _sse("state", {
-                                "stage": "generating",
-                                "message": "Generating response...",
-                            })
-
-                        elif event == "token":
-                            yield _sse("token", {
-                                "text": data.get("token", ""),
-                            })
-
-                        elif event == "done":
-                            yield _sse("state", {
-                                "stage": "done",
-                                "message": "Complete",
-                            })
-
-                        elif event == "error":
-                            yield _sse("error", {
-                                "message": data.get("error", "Unknown error"),
-                            })
+                        if data.get("done", False):
+                            break
 
         except httpx.ConnectError:
             yield _sse("error", {
-                "message": "Cannot connect to RAG API. Is the Docker stack running?",
+                "message": "Cannot connect to Ollama. Is it running?",
             })
+            return
         except httpx.ReadTimeout:
             yield _sse("error", {
                 "message": "Response timed out. The model may still be loading.",
             })
+            return
         except Exception as e:
             yield _sse("error", {"message": str(e)})
+            return
+
+        # ── Update Session History ──────────────────────────────
+        # Store the clean question (without RAG context) in history
+        session["messages"].append({"role": "user", "content": question})
+        session["messages"].append({"role": "assistant", "content": full_response})
+        session["turn_count"] += 1
+
+        # Trim if too many turns
+        if len(session["messages"]) > MAX_HISTORY_TURNS * 2:
+            session["messages"] = session["messages"][-(MAX_HISTORY_TURNS * 2):]
+
+        # ── Done ────────────────────────────────────────────────
+        t_end = time.time()
+        yield _sse("state", {
+            "stage": "done",
+            "message": "Complete",
+            "timing": {
+                "total_ms": round((t_end - t_start) * 1000),
+                "search_ms": round((t_search_done - t_start) * 1000) if query_type == "rag" else 0,
+                "generate_ms": round((t_end - t_search_done) * 1000),
+            },
+            "query_type": query_type,
+            "turn": session["turn_count"],
+            "condensation_count": session["condensation_count"],
+        })
 
     return StreamingResponse(
         event_stream(),

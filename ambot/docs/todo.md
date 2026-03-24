@@ -1,6 +1,6 @@
 # Ambot - Todo & Roadmap
 
-> Last updated: 2026-02-26 (Session 20)
+> Last updated: 2026-03-24 (Session 21)
 
 ---
 
@@ -78,6 +78,12 @@ _Start here when resuming work_
 8. ~~Ingest real EECS docs~~ - **Done** (2026-02-24): Online scraper built + content cleaner, 49 pages scraped from ERAU CoE
 9. ~~Evaluate nomic-embed-text~~ - **Done** (2026-02-24): Kept MiniLM (nomic causes model-swap latency)
 10. ~~Copy cleaned scraper output to knowledge/ and ingest~~ - **Done** (Session 19): 52 docs, 104 chunks ingested, RAG answers verified
+
+### Chat App Improvements
+1. **Improve query classification accuracy** - Edge cases between casual conversation and RAG-routed queries
+2. **Add conversation context persistence** - Currently in-memory, lost on restart
+3. **Test context condensation with long conversations** - 20+ turns to verify auto-summarization behavior
+4. **Add MCP tool layer for location/movement commands** - See roadmap.md Milestone 5 (MCP Tour Guide System)
 
 ### Future: SLAM / Localization (when ready)
 > See research docs in `docs/findings/` — lightweight-slam-research.md, research-icp-scan-matching.md, research-particle-filter-localization.md
@@ -183,6 +189,18 @@ _Lower priority, do when time permits_
 - [ ] Voice interaction (STT/TTS via Android device)
 
 ## Recently Completed
+
+_Session 21 - 2026-03-24_
+
+- [x] **FastAPI chat app** (`chat_app/`) — Replaced Flask web_control dashboard with focused chat interface
+- [x] **Smart RAG routing** — Query classifier routes casual conversation direct to Ollama, knowledge questions through RAG search
+- [x] **Conversation context** — Multi-turn conversation history via Ollama `/api/chat` messages array, per-session state
+- [x] **Response timing** — Shows total time, search time, generation time for each response
+- [x] **Context condensation** — Auto-summarizes older conversation turns when approaching 4096 token context limit
+- [x] **Session management** — New Chat button, turn counter, session creation/clearing API
+- [x] **Jetson IP updated** — 10.33.255.82 → 10.33.155.83 across 14 files + SSH config
+- [x] **Firefox ESR browser fix** — Installed from Mozilla PPA (session 20)
+- [x] **Simulation cleanup** — Removed fake sensor data, "not connected" placeholders (session 20)
 
 _Session 20 - 2026-02-26_
 
