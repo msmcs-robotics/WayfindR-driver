@@ -1,7 +1,9 @@
 # AMBOT Locations
 
-This directory contains location definitions for the AMBOT tour guide system.
-Each markdown file defines rooms/locations that the robot can navigate to.
+**Location files have moved to `bootylicious/rag/knowledge/locations/`**
+so they can be both parsed by the chat app AND ingested into the RAG knowledge base.
+
+See that directory for the format specification and all location files.
 
 ## Format
 

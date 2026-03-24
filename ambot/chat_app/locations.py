@@ -59,8 +59,10 @@ class LocationManager:
     """Manages all known locations, loaded from markdown files."""
 
     def __init__(self, locations_dir: str | None = None):
+        # Default: knowledge/locations/ in the bootylicious RAG directory
         self.locations_dir = locations_dir or os.path.join(
-            os.path.dirname(__file__), "locations"
+            os.path.dirname(__file__), "..", "bootylicious", "rag",
+            "knowledge", "locations"
         )
         self.locations: list[Location] = []
         self.load()
@@ -143,6 +145,11 @@ def parse_locations_file(path: str) -> list[Location]:
         content = f.read()
 
     locations = []
+
+    # Extract building name from # heading (level 1)
+    building_match = re.search(r'^# (.+)$', content, re.MULTILINE)
+    file_building = building_match.group(1).strip() if building_match else ""
+
     # Split on ## headings (level 2)
     sections = re.split(r'^## ', content, flags=re.MULTILINE)
 
@@ -153,14 +160,15 @@ def parse_locations_file(path: str) -> list[Location]:
 
         name = lines[0].strip()
         aliases = []
-        building = ""
+        building = file_building  # Default to file-level building name
         floor_val = ""
         room = ""
         desc_lines = []
 
         for line in lines[1:]:
             stripped = line.strip()
-            if stripped.startswith("- **aliases**:"):
+            # Accept both "aliases" and "also known as"
+            if stripped.startswith("- **aliases**:") or stripped.startswith("- **also known as**:"):
                 alias_str = stripped.split(":", 1)[1].strip()
                 aliases = [a.strip() for a in alias_str.split(",") if a.strip()]
             elif stripped.startswith("- **building**:"):
