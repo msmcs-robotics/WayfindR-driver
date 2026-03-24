@@ -79,11 +79,13 @@ _Start here when resuming work_
 9. ~~Evaluate nomic-embed-text~~ - **Done** (2026-02-24): Kept MiniLM (nomic causes model-swap latency)
 10. ~~Copy cleaned scraper output to knowledge/ and ingest~~ - **Done** (Session 19): 52 docs, 104 chunks ingested, RAG answers verified
 
-### Chat App Improvements
-1. **Improve query classification accuracy** - Edge cases between casual conversation and RAG-routed queries
-2. **Add conversation context persistence** - Currently in-memory, lost on restart
-3. **Test context condensation with long conversations** - 20+ turns to verify auto-summarization behavior
-4. **Add MCP tool layer for location/movement commands** - See roadmap.md Milestone 5 (MCP Tour Guide System)
+### Chat App + MCP Tour Guide
+1. **Add real location data** — Edit `knowledge/locations/*.md` with actual rooms, update descriptions
+2. **Re-ingest knowledge base** — Run `./deploy.sh jetson --test=rag-ingest` after knowledge folder reorganization
+3. **Test MCP confirmation flow** — Verify ambiguous locations trigger confirmation, "yes"/"no" works
+4. **Test conversation condensation** — 20+ turns to verify auto-summarization behavior
+5. **Improve query classification edge cases** — Test more casual vs RAG boundary cases
+6. **Add location waypoints** — Allow "take me to A then B" multi-stop navigation
 
 ### Future: SLAM / Localization (when ready)
 > See research docs in `docs/findings/` — lightweight-slam-research.md, research-icp-scan-matching.md, research-particle-filter-localization.md
@@ -198,6 +200,22 @@ _Session 21 - 2026-03-24_
 - [x] **Response timing** — Shows total time, search time, generation time for each response
 - [x] **Context condensation** — Auto-summarizes older conversation turns when approaching 4096 token context limit
 - [x] **Session management** — New Chat button, turn counter, session creation/clearing API
+- [x] **MCP tour guide system** — Location-based navigation with intent classification
+  - Markdown location files in `knowledge/locations/` (24 rooms across 4 buildings)
+  - Location parser with fuzzy name matching, building auto-detection from `#` headings
+  - Intent classification: consultation ("tell me about RASL") vs execution ("take me to RASL")
+  - MCP tools: `move_to`, `check_location`, `list_locations`
+  - MCP actions displayed as yellow italic text in chat UI
+  - Confirmation flow for ambiguous location matches
+- [x] **PostgreSQL conversation persistence** — Reuses RAG Docker container (172.18.0.3)
+  - `conversations` + `sessions` tables auto-created on startup
+  - Messages saved per turn, sessions loadable across app restarts
+  - Graceful fallback to in-memory when DB unavailable
+- [x] **Knowledge folder reorganized** — 52 files into `ambot/`, `college/`, `programs/` subfolders
+- [x] **deploy.sh chat commands** — `chat-start`, `chat-stop`, `chat-status`, `chat-health`, `chat-logs`
+- [x] **Follow-up detection** — Short referential queries ("why?", "tell me more") skip RAG
+- [x] **Token estimation improved** — `len/3.5` for Llama models (was `len/4`)
+- [x] **Research documented** — `docs/findings/chat-app-architecture.md`, `docs/findings/mcp-research-cars-demo.md`
 - [x] **Jetson IP updated** — 10.33.255.82 → 10.33.155.83 across 14 files + SSH config
 - [x] **Firefox ESR browser fix** — Installed from Mozilla PPA (session 20)
 - [x] **Simulation cleanup** — Removed fake sensor data, "not connected" placeholders (session 20)
