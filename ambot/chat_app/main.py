@@ -26,6 +26,7 @@ from chat_app.mcp_tools import (
     classify_location_intent, execute_check_location,
     execute_move_to, execute_list_locations,
 )
+from chat_app import db
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -58,6 +59,13 @@ app.mount("/static", StaticFiles(directory=static_dir), name="static")
 # ── Location Manager ─────────────────────────────────────────────
 location_mgr = LocationManager()
 
+# ── Database Init ────────────────────────────────────────────────
+_db_available = db.init_db()
+if _db_available:
+    logger.info("PostgreSQL conversation persistence enabled")
+else:
+    logger.info("PostgreSQL unavailable — using in-memory sessions only")
+
 # ── Session Store ────────────────────────────────────────────────
 # In-memory conversation history keyed by session_id
 _sessions: dict[str, dict] = defaultdict(lambda: {
@@ -69,7 +77,13 @@ _sessions: dict[str, dict] = defaultdict(lambda: {
 
 
 def _get_session(session_id: str) -> dict:
-    """Get or create a session."""
+    """Get or create a session. Loads from DB if available."""
+    if session_id not in _sessions and _db_available:
+        loaded = db.load_session(session_id)
+        if loaded:
+            _sessions[session_id] = loaded
+            logger.info("Loaded session %s from DB (%d messages)",
+                        session_id, len(loaded["messages"]))
     return _sessions[session_id]
 
 
@@ -97,7 +111,7 @@ _CASUAL_PATTERNS = {
 }
 
 
-def classify_query(question: str) -> str:
+def classify_query(question: str, has_history: bool = False) -> str:
     """Classify whether a query needs RAG retrieval or is casual conversation.
 
     Returns: 'rag' or 'casual'
@@ -109,6 +123,14 @@ def classify_query(question: str) -> str:
     for pattern in _CASUAL_PATTERNS:
         if lower == pattern or lower.startswith(pattern):
             return "casual"
+
+    # Follow-up detection: short referential queries use conversation context
+    _FOLLOWUP_WORDS = {"more", "why", "elaborate", "explain that", "what about",
+                       "how so", "really", "interesting", "go on", "continue",
+                       "and", "also", "what else", "tell me more"}
+    if has_history and len(words) <= 5:
+        if any(w in lower for w in _FOLLOWUP_WORDS):
+            return "casual"  # Use conversation context, skip RAG
 
     # Very short messages (1-2 words) without RAG keywords are casual
     if len(words) <= 2:
@@ -264,11 +286,21 @@ async def create_session():
 
 
 @app.delete("/api/session/{session_id}")
-async def clear_session(session_id: str):
+async def delete_session(session_id: str):
     """Clear a session's conversation history."""
     if session_id in _sessions:
         del _sessions[session_id]
+    if _db_available:
+        db.clear_session(session_id)
     return {"cleared": True}
+
+
+@app.get("/api/sessions")
+async def get_sessions():
+    """List recent conversation sessions."""
+    if _db_available:
+        return {"sessions": db.list_sessions()}
+    return {"sessions": []}
 
 
 @app.get("/api/session/{session_id}/history")
@@ -311,7 +343,8 @@ async def chat(request: Request):
     session = _get_session(session_id)
 
     # Classify the query
-    query_type = classify_query(question)
+    has_history = len(session["messages"]) > 0
+    query_type = classify_query(question, has_history=has_history)
     t_start = time.time()
 
     # Check for location intent
@@ -323,11 +356,30 @@ async def chat(request: Request):
         mcp_actions = []
         t_search_done = t_start
 
-        # ── MCP: Location execution ─────────────────────────────
+        # ── MCP: Location intent handling ─────────────────────────
         if loc_intent.intent == "execution" and loc_intent.matched_locations:
             top_match = loc_intent.matched_locations[0]
-            if top_match["score"] >= 0.8 and loc_intent.confidence >= 0.8:
-                # High confidence — execute move
+
+            # Check if user is confirming a pending navigation
+            pending = session.get("pending_navigation")
+            is_confirmation = pending and question.lower().strip() in (
+                "yes", "yeah", "yep", "sure", "ok", "okay", "confirm",
+                "go", "let's go", "do it", "yes please",
+            )
+
+            if is_confirmation:
+                # User confirmed — execute the pending move
+                action = execute_move_to(pending["name"], location_mgr)
+                mcp_actions.append(action)
+                yield _sse("mcp_action", {
+                    "tool": action.tool,
+                    "text": action.display_text,
+                    "result": action.result,
+                })
+                session.pop("pending_navigation", None)
+
+            elif top_match["score"] >= 0.9 and loc_intent.confidence >= 0.8:
+                # Very high confidence exact match — execute directly
                 action = execute_move_to(top_match["name"], location_mgr)
                 mcp_actions.append(action)
                 yield _sse("mcp_action", {
@@ -335,7 +387,39 @@ async def chat(request: Request):
                     "text": action.display_text,
                     "result": action.result,
                 })
-            # Let the LLM still respond about the navigation
+                session.pop("pending_navigation", None)
+
+            else:
+                # Lower confidence — store as pending, let LLM ask for confirmation
+                session["pending_navigation"] = top_match
+                yield _sse("mcp_action", {
+                    "tool": "pending_confirmation",
+                    "text": f"Did you mean: {top_match['name']}?",
+                    "result": {"pending": True, "candidates": loc_intent.matched_locations[:3]},
+                })
+
+        elif loc_intent.intent == "none":
+            # Check if this is a confirmation for a pending navigation
+            pending = session.get("pending_navigation")
+            if pending and question.lower().strip() in (
+                "yes", "yeah", "yep", "sure", "ok", "okay", "confirm",
+                "go", "let's go", "do it", "yes please",
+            ):
+                action = execute_move_to(pending["name"], location_mgr)
+                mcp_actions.append(action)
+                yield _sse("mcp_action", {
+                    "tool": action.tool,
+                    "text": action.display_text,
+                    "result": action.result,
+                })
+                session.pop("pending_navigation", None)
+            elif pending and question.lower().strip() in ("no", "nope", "cancel", "nevermind", "never mind"):
+                session.pop("pending_navigation", None)
+                yield _sse("mcp_action", {
+                    "tool": "cancelled",
+                    "text": "Navigation cancelled.",
+                    "result": {"cancelled": True},
+                })
 
         # ── RAG Search (if needed) ──────────────────────────────
         if query_type == "rag":
@@ -462,6 +546,11 @@ async def chat(request: Request):
         session["messages"].append({"role": "user", "content": question})
         session["messages"].append({"role": "assistant", "content": full_response})
         session["turn_count"] += 1
+
+        # Persist to DB
+        if _db_available:
+            db.save_message(session_id, "user", question, session["turn_count"])
+            db.save_message(session_id, "assistant", full_response, session["turn_count"])
 
         # Trim if too many turns
         if len(session["messages"]) > MAX_HISTORY_TURNS * 2:

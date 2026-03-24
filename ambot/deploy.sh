@@ -428,11 +428,39 @@ run_jetson_tests() {
             ssh -o ConnectTimeout=15 "$JETSON_TARGET" \
                 "pgrep -a -f 'web_control/run.py' || echo 'Dashboard not running'"
             ;;
+        chat-start)
+            # Start chat app on Jetson
+            log_info "Starting chat app on Jetson..."
+            ssh -o ConnectTimeout=15 "$JETSON_TARGET" \
+                "pkill -f 'chat_app.main:app' 2>/dev/null; sleep 1; cd $JETSON_DEST && RAG_API_URL=http://localhost:8000 OLLAMA_URL=http://localhost:11434 DB_HOST=172.18.0.3 nohup python3 -m uvicorn chat_app.main:app --host 0.0.0.0 --port 5050 > /tmp/chat_app.log 2>&1 &"
+            sleep 2
+            log_info "Chat app starting at http://$JETSON_HOST:5050/"
+            log_info "SSH tunnel: ssh -f -N -L 5050:localhost:5050 jetson"
+            ;;
+        chat-stop)
+            log_info "Stopping chat app..."
+            ssh -o ConnectTimeout=15 "$JETSON_TARGET" \
+                "pkill -f 'chat_app.main:app' || echo 'Not running'"
+            ;;
+        chat-status)
+            ssh -o ConnectTimeout=15 "$JETSON_TARGET" \
+                "pgrep -a -f 'chat_app.main:app' || echo 'Chat app not running'"
+            ;;
+        chat-health)
+            log_info "Checking chat app health..."
+            ssh -o ConnectTimeout=15 "$JETSON_TARGET" \
+                "curl -s http://localhost:5050/api/health | python3 -m json.tool"
+            ;;
+        chat-logs)
+            ssh -o ConnectTimeout=15 "$JETSON_TARGET" \
+                "tail -20 /tmp/chat_app.log"
+            ;;
         *)
             log_warn "Unknown Jetson test type: $test_type"
             log_info "RAG tests:  rag, rag-test, rag-health, rag-status, rag-docs, rag-logs"
             log_info "RAG ops:    rag-ingest, rag-ingest-bg"
             log_info "Web tests:  web-setup, web-start, web-stop, web-status"
+            log_info "Chat app:   chat-start, chat-stop, chat-status, chat-health, chat-logs"
             ;;
     esac
 }
