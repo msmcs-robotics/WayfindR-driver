@@ -141,6 +141,7 @@ const Chat = {
         const textEl = msgEl.querySelector('.msg-text');
 
         let sources = [];
+        let mcpActions = [];
         let gotTokens = false;
         let timing = null;
         let queryType = null;
@@ -192,6 +193,9 @@ const Chat = {
                                 }
                             } else if (eventType === 'sources') {
                                 sources = data.sources || [];
+                            } else if (eventType === 'mcp_action') {
+                                mcpActions.push(data);
+                                this._addMcpAction(msgEl, data);
                             } else if (eventType === 'token') {
                                 textEl.textContent += data.text;
                                 gotTokens = true;
@@ -276,6 +280,20 @@ const Chat = {
         this.chatArea.appendChild(div);
         this._scrollToBottom();
         return div;
+    },
+
+    _addMcpAction(msgEl, data) {
+        const action = document.createElement('div');
+        action.className = 'mcp-action';
+        action.textContent = '\u2192 MCP: ' + (data.text || data.tool);
+        // Insert before the message text
+        const textEl = msgEl.querySelector('.msg-text');
+        if (textEl) {
+            msgEl.insertBefore(action, textEl);
+        } else {
+            msgEl.appendChild(action);
+        }
+        this._scrollToBottom();
     },
 
     _addStage(text) {

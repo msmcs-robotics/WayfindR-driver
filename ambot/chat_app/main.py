@@ -21,6 +21,12 @@ from fastapi import FastAPI, Request
 from fastapi.responses import HTMLResponse, StreamingResponse
 from fastapi.staticfiles import StaticFiles
 
+from chat_app.locations import LocationManager
+from chat_app.mcp_tools import (
+    classify_location_intent, execute_check_location,
+    execute_move_to, execute_list_locations,
+)
+
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
@@ -33,12 +39,14 @@ MAX_CONTEXT_TOKENS = int(os.environ.get("MAX_CONTEXT_TOKENS", "3200"))
 MAX_HISTORY_TURNS = int(os.environ.get("MAX_HISTORY_TURNS", "20"))
 
 SYSTEM_PROMPT = (
-    "You are AMBOT, a helpful and friendly conversational robot assistant at "
+    "You are AMBOT, a helpful and friendly conversational robot assistant and tour guide at "
     "Embry-Riddle Aeronautical University (ERAU). You help with questions about "
     "EECS, robotics, engineering, campus life, and general conversation. "
+    "You can also help people navigate to locations on campus. "
     "Be concise but thorough. When you have retrieved knowledge context, "
     "cite sources by their source number. When you don't have context, "
-    "answer from your general knowledge or say you're not sure."
+    "answer from your general knowledge or say you're not sure. "
+    "When a user wants to go to a location, confirm the destination before navigating."
 )
 
 # ── App Setup ────────────────────────────────────────────────────
@@ -46,6 +54,9 @@ app = FastAPI(title="AMBOT Chat", docs_url=None, redoc_url=None)
 
 static_dir = os.path.join(os.path.dirname(__file__), "static")
 app.mount("/static", StaticFiles(directory=static_dir), name="static")
+
+# ── Location Manager ─────────────────────────────────────────────
+location_mgr = LocationManager()
 
 # ── Session Store ────────────────────────────────────────────────
 # In-memory conversation history keyed by session_id
@@ -63,8 +74,8 @@ def _get_session(session_id: str) -> dict:
 
 
 def _estimate_tokens(text: str) -> int:
-    """Rough token estimate: ~4 chars per token for English."""
-    return len(text) // 4
+    """Rough token estimate: ~3.5 chars per token for Llama models."""
+    return int(len(text) / 3.5)
 
 
 def _estimate_messages_tokens(messages: list[dict]) -> int:
@@ -271,6 +282,19 @@ async def get_history(session_id: str):
     }
 
 
+@app.get("/api/locations")
+async def list_locations():
+    """List all available locations."""
+    return {"locations": location_mgr.list_all(), "count": len(location_mgr.locations)}
+
+
+@app.get("/api/locations/reload")
+async def reload_locations():
+    """Reload locations from markdown files."""
+    location_mgr.load()
+    return {"reloaded": True, "count": len(location_mgr.locations)}
+
+
 @app.post("/api/chat")
 async def chat(request: Request):
     """Stream a chat response with conversation context and smart routing.
@@ -290,10 +314,28 @@ async def chat(request: Request):
     query_type = classify_query(question)
     t_start = time.time()
 
+    # Check for location intent
+    loc_intent = classify_location_intent(question, location_mgr)
+
     async def event_stream():
         sources = []
         rag_context = ""
+        mcp_actions = []
         t_search_done = t_start
+
+        # ── MCP: Location execution ─────────────────────────────
+        if loc_intent.intent == "execution" and loc_intent.matched_locations:
+            top_match = loc_intent.matched_locations[0]
+            if top_match["score"] >= 0.8 and loc_intent.confidence >= 0.8:
+                # High confidence — execute move
+                action = execute_move_to(top_match["name"], location_mgr)
+                mcp_actions.append(action)
+                yield _sse("mcp_action", {
+                    "tool": action.tool,
+                    "text": action.display_text,
+                    "result": action.result,
+                })
+            # Let the LLM still respond about the navigation
 
         # ── RAG Search (if needed) ──────────────────────────────
         if query_type == "rag":
@@ -308,7 +350,6 @@ async def chat(request: Request):
                     if resp.status_code == 200:
                         sources = resp.json()
                         if sources:
-                            # Format context for injection
                             parts = []
                             for i, s in enumerate(sources, 1):
                                 fname = s.get("document_filename", "unknown")
@@ -337,17 +378,26 @@ async def chat(request: Request):
             await condense_history(session)
 
         # Build the messages array for Ollama /api/chat
-        messages = [{"role": "system", "content": SYSTEM_PROMPT}]
+        system_content = SYSTEM_PROMPT
+        # Add location context if relevant
+        if loc_intent.intent != "none" and location_mgr.locations:
+            system_content += "\n\n" + location_mgr.format_for_llm()
+
+        messages = [{"role": "system", "content": system_content}]
 
         # Add conversation history
         messages.extend(session["messages"])
 
-        # Build the user message (with optional RAG context)
+        # Build the user message (with optional RAG context + MCP results)
+        extra_context = ""
         if rag_context:
-            user_content = (
-                f"## Retrieved Knowledge\n\n{rag_context}\n\n---\n\n"
-                f"## Question\n\n{question}"
-            )
+            extra_context += f"## Retrieved Knowledge\n\n{rag_context}\n\n---\n\n"
+        if mcp_actions:
+            action_texts = [f"[MCP {a.tool}: {a.display_text}]" for a in mcp_actions]
+            extra_context += "## Actions Taken\n\n" + "\n".join(action_texts) + "\n\n---\n\n"
+
+        if extra_context:
+            user_content = extra_context + f"## Question\n\n{question}"
         else:
             user_content = question
 
@@ -428,6 +478,8 @@ async def chat(request: Request):
                 "generate_ms": round((t_end - t_search_done) * 1000),
             },
             "query_type": query_type,
+            "location_intent": loc_intent.intent if loc_intent.intent != "none" else None,
+            "mcp_actions": [a.tool for a in mcp_actions] if mcp_actions else None,
             "turn": session["turn_count"],
             "condensation_count": session["condensation_count"],
         })
