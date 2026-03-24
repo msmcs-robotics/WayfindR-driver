@@ -49,7 +49,7 @@ This roadmap tracks project-level features and milestones. For immediate tasks, 
 ### Development Environment
 - [x] Set up SSH key-based access to both devices -- RPi done, Jetson done (id_git) -- 2026-02-12
 - [x] Document SSH connection procedures -- `connections.md`, SSH config (`ssh jetson` / `ssh rpi`)
-- [x] Verify network connectivity between devices -- RPi: 10.33.224.1, Jetson: 10.33.255.82
+- [x] Verify network connectivity between devices -- RPi: 10.33.224.1, Jetson: 10.33.155.83
 - [x] NOPASSWD sudo configured on Jetson -- 2026-02-12
 
 ---

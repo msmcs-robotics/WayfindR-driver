@@ -106,7 +106,7 @@ _Tasks actively being worked on_
 
 _Tasks waiting on something (include reason)_
 
-- [x] ~~Jetson system inventory~~ — **RESOLVED**: Jetson online at 10.33.255.82, inventory complete (Session 11)
+- [x] ~~Jetson system inventory~~ — **RESOLVED**: Jetson online at 10.33.155.83, inventory complete (Session 11)
 - [x] ~~RAG knowledge base content~~ — **RESOLVED**: Online scraper built, 49 ERAU CoE pages scraped + cleaned (Session 18)
 
 ## Up Next
@@ -118,7 +118,7 @@ _Priority queue for immediate work_
 - [ ] Test GUI diagnostics with display attached
 - [ ] Verify motor direction (adjust offsets in config.py if reversed)
 
-### Jetson (georgejetson@10.33.255.82)
+### Jetson (georgejetson@10.33.155.83)
 - [x] Jetson online: JetPack R36.4.4, Ubuntu 22.04.5, CUDA 12.6, 7.4 GiB RAM, 86 GB free
 - [x] Set `JETSON_HOST` and `JETSON_USER` in `deploy.sh` and `rsync-to-jetson.sh`
 - [x] Rsync ambot folder to Jetson (`~/ambot/`)
@@ -894,9 +894,9 @@ bash scripts/setup-cuda.sh --fix-path       # Fix nvcc PATH only
 bash scripts/setup-cuda.sh --test           # Compile + run CUDA test
 
 # RAG API (Jetson)
-curl http://10.33.255.82:8000/api/health    # Health check from WSL
+curl http://10.33.155.83:8000/api/health    # Health check from WSL
 curl http://localhost:8000/api/health       # Health check from Jetson
-curl -X POST http://10.33.255.82:8000/api/ask -H 'Content-Type: application/json' -d '{"question": "test"}'
+curl -X POST http://10.33.155.83:8000/api/ask -H 'Content-Type: application/json' -d '{"question": "test"}'
 
 # SSH to RPi / Jetson
 ssh rpi                                     # RPi (via SSH config)

@@ -31,7 +31,7 @@
 #
 # Targets (from connections.md):
 #   Raspberry Pi: pi@10.33.224.1
-#   Jetson:       georgejetson@10.33.255.82
+#   Jetson:       georgejetson@10.33.155.83
 # =============================================================================
 
 set -e
@@ -63,7 +63,7 @@ RPI_DEST="~/ambot"
 
 # Jetson Orin Nano
 JETSON_USER="georgejetson"
-JETSON_HOST="10.33.255.82"
+JETSON_HOST="10.33.155.83"
 JETSON_TARGET="$JETSON_USER@$JETSON_HOST"
 JETSON_DEST="~/ambot"
 
@@ -195,9 +195,15 @@ sync_component() {
             eval rsync $RSYNC_BASE $RSYNC_EXCLUDE \
                 "$SCRIPT_DIR/web_control/" "$target:$dest/web_control/"
             ;;
+        chat_app|chat)
+            log_info "Syncing chat_app (LLM chat UI)..."
+            ssh "$target" "mkdir -p $dest/chat_app"
+            eval rsync $RSYNC_BASE $RSYNC_EXCLUDE \
+                "$SCRIPT_DIR/chat_app/" "$target:$dest/chat_app/"
+            ;;
         *)
             log_error "Unknown component: $component"
-            log_info "Valid components: all, bootylicious, locomotion, pathfinder, tests, scripts, docs, web_control"
+            log_info "Valid components: all, bootylicious, locomotion, pathfinder, tests, scripts, docs, web_control, chat_app"
             return 1
             ;;
     esac
@@ -551,7 +557,7 @@ main() {
                 TARGET="jetson"
                 shift
                 ;;
-            bootylicious|locomotion|pathfinder|tests|scripts|docs|web_control|all)
+            bootylicious|locomotion|pathfinder|tests|scripts|docs|web_control|chat_app|chat|all)
                 COMPONENT="$1"
                 shift
                 ;;

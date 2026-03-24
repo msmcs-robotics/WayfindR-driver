@@ -307,7 +307,7 @@ ssh jetson "echo 'What is AMBOT?' | ollama run phi3:mini"
 ssh jetson "ollama ps && free -h"
 
 # 5. Test through RAG API
-curl -X POST http://10.33.255.82:8000/api/ask \
+curl -X POST http://10.33.155.83:8000/api/ask \
   -H 'Content-Type: application/json' \
   -d '{"question": "What are the components of AMBOT?"}'
 

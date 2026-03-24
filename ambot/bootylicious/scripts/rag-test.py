@@ -3,7 +3,7 @@
 
 Usage:
     python3 rag-test.py                  # Test against localhost:8000
-    python3 rag-test.py http://10.33.255.82:8000  # Test against remote
+    python3 rag-test.py http://10.33.155.83:8000  # Test against remote
     python3 rag-test.py --json           # JSON output for automation
 """
 

@@ -50,7 +50,7 @@ The project enables multiple developer teams to work independently on their resp
 ### Resource Requirements
 *Hardware, software, dependencies, services*
 
-- [x] Jetson Orin Nano (user: georgejetson, IP: 10.33.255.82) — JetPack R36.4.4, CUDA 12.6, 7.4 GiB
+- [x] Jetson Orin Nano (user: georgejetson, IP: 10.33.155.83) — JetPack R36.4.4, CUDA 12.6, 7.4 GiB
 - [x] Raspberry Pi 3B (user: pi, IP: 10.33.224.1) — Debian 13, 906 MB RAM
 - [x] USB camera (EMEET SmartCam S600) on RPi — face detection working
 - [x] LiDAR sensor (LD19) on RPi — 230400 baud, ~467 pts/scan
@@ -77,7 +77,7 @@ The project enables multiple developer teams to work independently on their resp
 - [VERIFIED] Docker 28.2.2 working with NVIDIA Container Toolkit 1.16.2 (default GPU runtime)
 - [ASSUMED] RPLidar or compatible LiDAR will be used on the Pi (based on WayfindR-driver)
 - [UPDATED] Single-platform design — all components run on one device (no inter-device communication needed)
-- [VERIFIED] Jetson SSH: `ssh jetson` (georgejetson@10.33.255.82)
+- [VERIFIED] Jetson SSH: `ssh jetson` (georgejetson@10.33.155.83)
 
 ## Boundaries
 

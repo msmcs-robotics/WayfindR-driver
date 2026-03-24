@@ -56,7 +56,7 @@ Initial system inventory of the Jetson Orin Nano Developer Kit after fresh JetPa
 ssh jetson
 
 # Or explicitly
-ssh -i ~/.ssh/id_git georgejetson@10.33.255.82
+ssh -i ~/.ssh/id_git georgejetson@10.33.155.83
 ```
 
 ## Memory Budget for AMBOT

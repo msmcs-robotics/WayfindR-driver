@@ -14,7 +14,7 @@ user - georgejetson
 password - Ambot
 known MAC address WLAN (wlP1p1s0) - f8:3d:c6:57:05:77
 known MAC address ETH (enP8p1s0) - 3c:6d:66:b4:7f:ed
-known IP - 10.33.255.82
+known IP - 10.33.155.83
 hostname - georgejetson-desktop
 
 System Info (as of 2026-02-10):
@@ -30,4 +30,4 @@ System Info (as of 2026-02-10):
 rsync the bootylicious folder into ~/bootylicious/ on the Jetson
 
 SSH from WSL:
-  ssh -i ~/.ssh/id_git georgejetson@10.33.255.82
+  ssh -i ~/.ssh/id_git georgejetson@10.33.155.83

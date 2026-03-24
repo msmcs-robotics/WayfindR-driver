@@ -19,7 +19,7 @@ def ask():
     if not question:
         return jsonify({'error': 'No question provided'}), 400
 
-    rag_url = current_app.config.get('RAG_API_URL', 'http://10.33.255.82:8000')
+    rag_url = current_app.config.get('RAG_API_URL', 'http://10.33.155.83:8000')
 
     try:
         resp = requests.post(
@@ -50,7 +50,7 @@ def ask():
 @chat_bp.route('/status')
 def chat_status():
     """Check if the RAG API is reachable."""
-    rag_url = current_app.config.get('RAG_API_URL', 'http://10.33.255.82:8000')
+    rag_url = current_app.config.get('RAG_API_URL', 'http://10.33.155.83:8000')
     try:
         resp = requests.get(f'{rag_url}/api/health', timeout=5)
         resp.raise_for_status()

@@ -3,7 +3,7 @@
 ## System Information
 
 - Hostname: georgejetson-desktop
-- IP Address: 10.33.255.82
+- IP Address: 10.33.155.83
 - WiFi MAC (wlP1p1s0): f8:3d:c6:57:05:77
 - Ethernet MAC (enP8p1s0): 3c:6d:66:b4:7f:ed
 

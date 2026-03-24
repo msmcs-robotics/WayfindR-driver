@@ -18,7 +18,7 @@ DRIVER_TYPE = os.environ.get('DRIVER_TYPE', 'L298N')
 MAX_MOTOR_SPEED = int(os.environ.get('MAX_MOTOR_SPEED', '50'))
 
 # LLM / RAG
-RAG_API_URL = os.environ.get('RAG_API_URL', 'http://10.33.255.82:8000')
+RAG_API_URL = os.environ.get('RAG_API_URL', 'http://10.33.155.83:8000')
 
 # Timing
 MOTOR_WATCHDOG_TIMEOUT = 1.0   # seconds — stop motors if no command

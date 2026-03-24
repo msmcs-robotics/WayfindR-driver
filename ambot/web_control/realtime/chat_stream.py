@@ -21,7 +21,7 @@ def register_chat_stream(socketio, app):
             emit('chat:error', {'error': 'No question provided'})
             return
 
-        rag_url = app.config.get('RAG_API_URL', 'http://10.33.255.82:8000')
+        rag_url = app.config.get('RAG_API_URL', 'http://10.33.155.83:8000')
 
         # Stage 1: Searching
         emit('chat:stage', {'stage': 'searching', 'message': 'Searching knowledge base...'})

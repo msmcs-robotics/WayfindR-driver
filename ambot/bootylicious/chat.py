@@ -7,7 +7,7 @@ reach the API.
 
 Usage:
     python3 chat.py                        # defaults to localhost:8000
-    python3 chat.py --url http://10.33.255.82:8000
+    python3 chat.py --url http://10.33.155.83:8000
     python3 chat.py --no-sources           # hide source citations
     python3 chat.py --system "You are a helpful robot named AMBOT"
 """
