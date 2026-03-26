@@ -4,7 +4,7 @@
 
 | L298N Pin | Function | Jetson BOARD Pin | Jetson GPIO | Notes |
 |-----------|----------|:----------------:|:-----------:|-------|
-| **ENA** | Motor A PWM | **32** | GPIO07 | Hardware PWM, needs pinmux |
+| **ENA** | Motor A PWM | **32** | GPIO07 | Hardware PWM, needs pinmux (see Pin 32 note) |
 | **IN1** | Motor A dir 1 | **29** | GPIO01 | General GPIO |
 | **IN2** | Motor A dir 2 | **31** | GPIO11 | General GPIO |
 | **ENB** | Motor B PWM | **33** | GPIO13 | Hardware PWM, needs pinmux |
@@ -85,6 +85,14 @@ Arrows (-->) indicate pins used for L298N motor control.
 | 33 | GPIO13 | PWM | **Motor B ENB** |
 
 Only pins 32 and 33 are used for motor PWM. Pin 15 is kept available for future
+
+> **WARNING — Pin 32 Reliability**: Web research (GitHub issue #105, multiple forum
+> threads) indicates Pin 32 PWM can be unreliable on Orin Nano across JetPack versions.
+> Pin 33 works consistently. If Pin 32 fails to produce PWM output:
+> 1. Try Pin 15 (third HW PWM pin) as ENA instead
+> 2. Reconfigure pinmux and reinstall jetson-gpio from GitHub source
+> 3. Fallback: use a PCA9685 I2C PWM board for both motor channels
+> See `findings/jetson-gpio-pwm-research.md` for full details.
 peripherals (servos, etc.).
 
 ---
