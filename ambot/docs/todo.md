@@ -1,6 +1,6 @@
 # Ambot - Todo & Roadmap
 
-> Last updated: 2026-03-24 (Session 21)
+> Last updated: 2026-03-26 (Session 22)
 
 ---
 
@@ -58,30 +58,36 @@
 
 _Start here when resuming work_
 
-### Web Control Dashboard (RPi Hardware Mode)
-1. **Deploy web_control to RPi** - `pip install -r web_control/requirements.txt`, run `python3 web_control/run.py`
-2. **Test motor control from browser** - Direction pad, WASD keys, speed slider via WiFi
-3. **Test camera MJPEG stream** - Verify `/video_feed` serves real camera frames
-4. **Test LiDAR polar plot** - Verify real scan data renders correctly in canvas
-5. **Test from laptop browser** - Access `http://10.33.224.1:5000` over WiFi
+### Jetson-First: L298N Motor Control (HIGHEST PRIORITY)
+> **Session 22 pivot**: All hardware migrating to Jetson. Adeept Robot HAT abandoned.
 
-### Raspberry Pi (Pathfinder + Locomotion)
-6. **Fix left motor** - Right motor works, left doesn't spin. Check ENA (Pin 33) wiring, terminal screws, power supply
-2. **Wire and test MPU6050 IMU** - Wire GY-521 (VCC→Pin1, GND→Pin9, SCL→Pin5, SDA→Pin3), run `test_imu_calibrate.py`
-3. **Test face-to-motor tracking** - Run `gui_face_tracker.py --motors` on RPi desktop, verify motors orient toward faces
-4. **Calibrate LiDAR front orientation** - Run `gui_lidar_nav.py`, place object in front, press 'c' to calibrate
-5. **Test real-world wandering** - Once both motors work, run `wandering_demo_1.py` with actual movement
-6. **Test CommandSmoother** - Verify 1.5s direction hold + EMA smoothing on real robot with LiDAR + motors
+1. **Wire L298N to Jetson GPIO** — See `locomotion/docs/l298n-jetson-pinout-guide.md` for pinout
+2. **Test motor control on Jetson** — Run `locomotion/jetson_motors/test_motors.py --simulate` then `--test`
+3. **Install FastMCP on Jetson** — `pip3 install fastmcp` (dry-run confirmed clean)
+4. **Test MCP ability server** — `python3 mcp_ability/run.py --simulate` on Jetson
+5. **Integrate MCP with Ollama** — LLM sends "move forward" → MCP tool → motors spin
+6. **Fix LiDAR permissions** — Re-login for `dialout` group to take effect
 
-### Jetson (Bootylicious)
-7. ~~Deploy RAG resilience to Jetson~~ - **Done** (2026-02-19)
-8. ~~Ingest real EECS docs~~ - **Done** (2026-02-24): Online scraper built + content cleaner, 49 pages scraped from ERAU CoE
-9. ~~Evaluate nomic-embed-text~~ - **Done** (2026-02-24): Kept MiniLM (nomic causes model-swap latency)
-10. ~~Copy cleaned scraper output to knowledge/ and ingest~~ - **Done** (Session 19): 52 docs, 104 chunks ingested, RAG answers verified
+### Jetson Sensors (verified Session 22)
+- [x] Camera (EMEET S600): WORKING on Jetson — `/dev/video0`, 640x480
+- [x] LiDAR (LD19): DETECTED — `/dev/ttyUSB0`, needs dialout group re-login
+- [x] GPIO PWM: VERIFIED — Pins 32, 33 tested OK for L298N
+- [ ] L298N motors: NOT YET WIRED — waiting on physical hookup
 
-### Chat App + MCP Tour Guide
-1. **Add real location data** — Edit `knowledge/locations/*.md` with actual rooms, update descriptions
-2. **Re-ingest knowledge base** — Run `./deploy.sh jetson --test=rag-ingest` after knowledge folder reorganization
+### RAG Knowledge Restructuring
+7. **Restructure faculty.md** — Add degree details, education, research areas for better RAG answers
+8. **Modify scraper output** — Change scraper to output to temp folder for review before ingestion
+9. **Scrape detailed faculty pages** — Individual professor profiles from ERAU website
+10. **Re-ingest knowledge base** — After restructuring
+
+### Raspberry Pi (DEPRIORITIZED — Jetson-first)
+- [ ] Deploy web_control to RPi (deferred)
+- [ ] Fix left motor on RPi (deferred — using Jetson now)
+- [ ] Wire MPU6050 IMU on RPi (deferred)
+
+### Chat App + MCP
+- [ ] Add real location data to `knowledge/locations/*.md`
+- [ ] Re-ingest knowledge base after restructuring
 3. **Test MCP confirmation flow** — Verify ambiguous locations trigger confirmation, "yes"/"no" works
 4. **Test conversation condensation** — 20+ turns to verify auto-summarization behavior
 5. **Improve query classification edge cases** — Test more casual vs RAG boundary cases
