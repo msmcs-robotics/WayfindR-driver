@@ -14,6 +14,27 @@
 
 ---
 
+## Jetson Hardware
+
+| Property | Value |
+|----------|-------|
+| **Model** | Jetson Orin Nano Developer Kit |
+| **Type** | JETSON_ORIN_NANO (p3767-0003/0004/0005) |
+| **Processor** | 6x Cortex-A78AE (Tegra T234) |
+| **JetPack** | R36.4.4 (JetPack 6.x), CUDA 12.6 |
+| **RAM** | 7.4 GiB (8 GB variant, unified CPU/GPU) |
+| **GPIO Chip** | tegra234-gpio |
+
+### 40-Pin Header Pinout
+
+![Jetson Orin Nano J12 Header - Pin 1 Location](imgs/jetson-orin-nano-40pin-header-pinout.png)
+
+*Photo: J12 expansion header with Pin 1 marked (source: JetsonHacks)*
+
+Full ASCII pinout diagram with all pin functions: [jetson-orin-nano-40pin-header-pinout.txt](imgs/jetson-orin-nano-40pin-header-pinout.txt)
+
+---
+
 ## Overview
 
 This guide covers wiring an L298N dual H-bridge motor driver to a **Jetson Orin Nano**

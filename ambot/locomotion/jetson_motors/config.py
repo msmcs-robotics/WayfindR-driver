@@ -1,14 +1,18 @@
 """
 Pin Configuration for L298N on Jetson Orin Nano
 
-BOARD pin numbering — physical header positions, not GPIO names.
+Uses gpiod (libgpiod v2) chip:line mapping instead of BOARD pin numbers.
+Jetson.GPIO is broken on JetPack 6.x (R36.4.4) — GPIO.output() silently
+fails to drive pins, while gpioset/gpiod work correctly.
 
-L298N wiring summary:
-  Motor A (left):  ENA=32 (PWM), IN1=29, IN2=31
-  Motor B (right): ENB=33 (PWM), IN3=7,  IN4=13
+Pin mapping (BOARD → gpiochip:line), confirmed via gpioinfo:
 
-Pins 32 and 33 are hardware PWM-capable on the Orin Nano 40-pin header.
-Direction pins (29, 31, 7, 13) are standard digital GPIO.
+  BOARD 32 (ENA) → gpiochip1, line 9  (PBB.01) — PWM pin
+  BOARD 29 (IN1) → gpiochip0, line 144 (PAC.06)
+  BOARD 31 (IN2) → gpiochip1, line 15 (PCC.03)
+  BOARD 33 (ENB) → gpiochip0, line 105 (PQ.05) — PWM pin
+  BOARD  7 (IN3) → gpiochip1, line 12 (PCC.00)
+  BOARD 13 (IN4) → gpiochip0, line 43 (PH.00)
 
 Power:
   L298N VCC  -> external 12V supply (NOT from Jetson)
@@ -16,14 +20,17 @@ Power:
   L298N 5V   -> leave disconnected (Jetson has its own 5V rail)
 """
 
-# L298N -> Jetson Orin Nano pin mapping (BOARD numbering)
+# L298N -> Jetson Orin Nano pin mapping (gpiochip:line)
+# Each pin is a tuple: (chip_path, line_offset)
 JETSON_L298N_CONFIG = {
-    'ENA': 32,   # Motor A PWM (hardware PWM pin)
-    'IN1': 29,   # Motor A direction
-    'IN2': 31,   # Motor A direction
-    'ENB': 33,   # Motor B PWM (hardware PWM pin)
-    'IN3': 7,    # Motor B direction
-    'IN4': 13,   # Motor B direction
+    'ENA': ('/dev/gpiochip1', 9),    # Motor A enable (BOARD 32, PBB.01)
+    'IN1': ('/dev/gpiochip0', 144),  # Motor A direction (BOARD 29, PAC.06)
+    'IN2': ('/dev/gpiochip1', 15),   # Motor A direction (BOARD 31, PCC.03)
+    'ENB': ('/dev/gpiochip0', 105),  # Motor B enable (BOARD 33, PQ.05)
+    'IN3': ('/dev/gpiochip1', 12),   # Motor B direction (BOARD 7, PCC.00)
+    'IN4': ('/dev/gpiochip0', 43),   # Motor B direction (BOARD 13, PH.00)
 }
 
-PWM_FREQ = 1000  # Hz
+# PWM not available via gpiod — ENA/ENB use HIGH/LOW (full speed on/off).
+# For variable speed, use sysfs PWM or Jetson's hardware PWM via /sys/class/pwm/.
+PWM_FREQ = 1000  # Hz — retained for API compatibility (currently unused)

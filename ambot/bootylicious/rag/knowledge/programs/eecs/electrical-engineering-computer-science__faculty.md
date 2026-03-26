@@ -5,183 +5,87 @@
 **Scraped**: 2026-02-24 18:21:31
 
 ---
+
 The faculty of the Department of Electrical Engineering and Computer Science includes a wide range of technical backgrounds as is appropriate to the department's range of related technical disciplines. Its members include those with degrees from preeminent research institutions like Georgia Tech, Virginia Tech, University of Florida and University of Virginia, as well as those with extensive experience in the software, aerospace and avionics industries.
 
 Recognized throughout the college and campus as student-centric, department faculty are usually found in their offices in the Lehman Building 340 suite with open doors, ready to meet and talk with students and colleagues.
 
-Displaying 1-20 of 26
+## Parham Ahmady Phoulady
 
-Parham Ahmady Phoulady
+**Parham Ahmady Phoulady** is an Assistant Professor in the Electrical Engineering and Computer Science Department at Embry-Riddle Aeronautical University. Parham Ahmady Phoulady holds a Ph.D. and M.S. from the University of South Florida.
 
-Title
-Assistant Professor
-College
-Degrees
-Ph.D., M.S., University of South Florida
+## M. Ilhan Akbas
 
-M. Ilhan Akbas
+**M. Ilhan Akbas** is an Associate Professor, Associate Chair, and Program Coordinator in the Electrical Engineering and Computer Science Department at Embry-Riddle Aeronautical University. M. Ilhan Akbas holds a Ph.D. from the University of Central Florida.
 
-Title
-Associate Professor, Associate Chair, and Program Coord.
-College
-Degrees
-Ph.D., University of Central Florida
+## Farahzad Behi
 
-Farahzad Behi
+**Farahzad Behi** is a Professor in the Electrical Engineering and Computer Science Department at Embry-Riddle Aeronautical University. Farahzad Behi holds an M.S. from the University of Central Florida.
 
-Title
-Professor
-College
-Degrees
-M.S., University of Central Florida
+## David Bethelmy
 
-David Bethelmy
+**David Bethelmy** is an Associate Professor in the Electrical Engineering and Computer Science Department at Embry-Riddle Aeronautical University. David Bethelmy holds a Ph.D. from Nova Southeastern University.
 
-Title
-Associate Professor
-College
-Degrees
-Ph.D., Nova Southeastern University
+## Brian Butka
 
-Brian Butka
+**Brian Butka** is a Professor in the Electrical Engineering and Computer Science Department at Embry-Riddle Aeronautical University. Brian Butka holds a Ph.D. and M.S. from the Georgia Institute of Technology.
 
-Title
-Professor
-College
-Degrees
-Ph.D., M.S., Georgia Institute of Technology-Main Campus
+## Christopher Cerqueira
 
-Christopher Cerqueira
+**Christopher Cerqueira** is an Assistant Professor in the Electrical Engineering and Computer Science Department at Embry-Riddle Aeronautical University. Christopher Cerqueira holds a Ph.D. and M.S. from the Instituto Nacional de Pesquisas Espaciais.
 
-Title
-Assistant Professor
-College
-Degrees
-Ph.D., M.S., Instituto Nacional de Pesquisas Espaciais
+## Ilteris Demirkiran
 
-Ilteris Demirkiran
+**Ilteris Demirkiran** is a Professor in the Electrical Engineering and Computer Science Department at Embry-Riddle Aeronautical University. Ilteris Demirkiran holds a Ph.D. and M.S. from Syracuse University.
 
-Title
-Professor
-College
-Degrees
-Ph.D., M.S., Syracuse University
+## Daniel Diessner
 
-Daniel Diessner
+**Daniel Diessner** is the Executive Director of CARS and Research Professor in the Electrical Engineering and Computer Science Department at Embry-Riddle Aeronautical University.
 
-Title
-Executive Director of CARS and Research Professor
-College
-Degrees
+## Keith Garfield
 
-Keith Garfield
+**Keith Garfield** is a Professor in the Electrical Engineering and Computer Science Department at Embry-Riddle Aeronautical University. Keith Garfield holds a Ph.D. and M.S. from the University of Central Florida.
 
-Title
-Professor
-College
-Degrees
-Ph.D., M.S., University of Central Florida
+## Rogelio Gracia Otalvaro
 
-Rogelio Gracia Otalvaro
+**Rogelio Gracia Otalvaro** is a Visiting Assistant Professor in the Electrical Engineering and Computer Science Department at Embry-Riddle Aeronautical University. Rogelio Gracia Otalvaro holds a Ph.D. and M.S. from Embry-Riddle Aeronautical University.
 
-Title
-Visiting Assistant Professor
-College
-Degrees
-Ph.D., M.S., Embry-Riddle Aeronautical University
+## Siyao Li
 
-Siyao Li
+**Siyao Li** is an Assistant Professor in the Electrical Engineering and Computer Science Department at Embry-Riddle Aeronautical University. Siyao Li holds a Ph.D. and M.S. from the University of Illinois at Chicago.
 
-Title
-Assistant Professor
-College
-Degrees
-Ph.D., M.S., University of Illinois at Chicago
+## Jianhua Liu
 
-Jianhua Liu
+**Jianhua Liu** is an Associate Professor and Program Coordinator in the Electrical Engineering and Computer Science Department at Embry-Riddle Aeronautical University. Jianhua Liu holds a Ph.D. from the University of Florida.
 
-Title
-Associate Professor and Program Coordinator
-College
-Degrees
-Ph.D., University of Florida
+## Shafika Showkat Moni
 
-Shafika Showkat Moni
+**Shafika Showkat Moni** is an Assistant Professor in the Electrical Engineering and Computer Science Department at Embry-Riddle Aeronautical University. Shafika Showkat Moni holds a Ph.D. and M.S. from the University of Kentucky.
 
-Title
-Assistant Professor
-College
-Degrees
-Ph.D., M.S., University of Kentucky
+## Vidhyashree Nagaraju
 
-Vidhyashree Nagaraju
+**Vidhyashree Nagaraju** is an Assistant Professor in the Electrical Engineering and Computer Science Department at Embry-Riddle Aeronautical University. Vidhyashree Nagaraju holds a Ph.D. and M.S. from the University of Massachusetts-Dartmouth.
 
-Title
-Assistant Professor
-College
-Degrees
-Ph.D., M.S., University of Massachusetts-Dartmouth
+## Laxima Niure Kandel
 
-Laxima Niure Kandel
+**Laxima Niure Kandel** is an Assistant Professor in the Electrical Engineering and Computer Science Department at Embry-Riddle Aeronautical University. Laxima Niure Kandel holds a Ph.D. from Stevens Institute of Technology and an M.S. from the University of Essex.
 
-Title
-Assistant Professor
-College
-Degrees
-Ph.D., Stevens Institute of Technology
+## Omar Ochoa
 
-M.S., University of Essex
+**Omar Ochoa** is an Associate Professor and Program Coordinator for M.S. in Computer Science and M.S. in Software Engineering in the Electrical Engineering and Computer Science Department at Embry-Riddle Aeronautical University. Omar Ochoa holds a Ph.D., M.S., and B.S. from The University of Texas at El Paso.
 
-Omar Ochoa
+## Berker Pekoz
 
-Title
-Associate Professor and Program Coordinator for M.S. in Computer Science and M.S. in Software Engineering
-College
-Degrees
-Ph.D., M.S., B.S., The University of Texas at El Paso
+**Berker Pekoz** is an Assistant Professor in the Electrical Engineering and Computer Science Department at Embry-Riddle Aeronautical University. Berker Pekoz holds a Ph.D. and M.S. from the University of South Florida.
 
-Berker Pekoz
+## Daniel Penny
 
-Title
-Assistant Professor
-College
-Degrees
-Ph.D., M.S., University of South Florida
+**Daniel Penny** is an Associate Professor in the Electrical Engineering and Computer Science Department at Embry-Riddle Aeronautical University. Daniel Penny holds an M. and B.S. from Embry-Riddle Aeronautical University.
 
-Daniel Penny
+## Eduardo Rojas
 
-Title
-Associate Professor
-College
-Degrees
-M., B.S., Embry-Riddle Aeronautical University
+**Eduardo Rojas** is a Professor and Chair of the Electrical Engineering and Computer Science Department at Embry-Riddle Aeronautical University. Eduardo Rojas holds a Ph.D. and M.S. from the University of South Florida.
 
-Eduardo Rojas
+## Richard S. Stansbury
 
-Title
-Professor and Chair
-College
-Degrees
-Ph.D., M.S., University of South Florida
-
-Richard S. Stansbury
-
-Title
-Associate Professor and Director - ASSURE Center of Excellence
-College
-Degrees
-Ph.D., M.S., B.S., University of Kansas
-
-Displaying 1-20 of 26
-
-1
-
-2
-
-›
-
-»
-
-×
-
-Close
+**Richard S. Stansbury** is an Associate Professor and Director of the ASSURE Center of Excellence in the Electrical Engineering and Computer Science Department at Embry-Riddle Aeronautical University. Richard S. Stansbury holds a Ph.D., M.S., and B.S. from the University of Kansas.

@@ -192,11 +192,41 @@ _Lower priority, do when time permits_
 - [ ] Pathfinder → Bootylicious event triggers (face detected, etc.)
 
 ### Future Vision (see roadmap.md Milestone 5)
-- [ ] MCP server (FastMCP) for LLM-to-locomotion control
+- [x] MCP ability server (FastMCP) created — `mcp_ability/` with 6 tools — **Done** (Session 22)
+- [x] Ollama tool-calling bridge — LLM→tool_call→motors tested on Jetson — **Done** (Session 22)
 - [ ] Scale to 8-12B parameter LLMs on Jetson
 - [ ] Voice interaction (STT/TTS via Android device)
 
 ## Recently Completed
+
+_Session 22 - 2026-03-26_
+
+**Jetson-First Pivot**: Adeept Robot HAT abandoned. All hardware migrating to Jetson Orin Nano with L298N direct GPIO.
+
+- [x] **Jetson motor driver** (`locomotion/jetson_motors/`) — gpiod + Jetson.GPIO drivers for L298N
+  - Pin mapping: BOARD 32(ENA), 29(IN1), 31(IN2), 33(ENB), 7(IN3), 13(IN4)
+  - GPIO confirmed driving via `gpioinfo` (output active-high [used])
+  - Motors awaiting fresh batteries for physical verification
+- [x] **MCP ability server** (`mcp_ability/`) — FastMCP with 6 LLM-callable tools
+  - `move_forward`, `move_backward`, `turn_left`, `turn_right`, `stop_motors`, `get_motor_status`
+  - Ollama tool-calling bridge tested end-to-end on Jetson (llama3.2:3b)
+  - Auto-stop watchdog (30s), duration timer, thread-safe
+- [x] **Dashboard motor wiring** — `HardwareManager` auto-detects Jetson vs RPi platform
+- [x] **Chat smart auto-scroll** — Pauses on scroll-up, resumes at bottom
+- [x] **LiDAR on Jetson** — 350 pts/scan, 10 Hz, existing pathfinder driver works unchanged
+- [x] **Camera on Jetson** — 640x480, 29 FPS, face detection cascade available
+- [x] **152 faculty profiles scraped** — All 5 CoE departments from faculty.erau.edu
+  - EECS(35), Aerospace(57), Mechanical(28), Civil(13), Fundamentals(19)
+  - Education(97%), Courses(56%), Expertise(44%) data coverage
+- [x] **6 faculty files restructured** — Per-person paragraphs for better RAG chunking (112 entries)
+- [x] **Faculty-research cross-reference** — 30 faculty linked to research projects
+- [x] **Modular scraper** — `update_knowledge.sh` pipeline, `scrape_config.py`, resume support
+- [x] **L298N pinout guides** — Jetson (569 lines) + RPi consolidated
+- [x] **Jetson setup script** — `setup-jetson-motors.sh` (idempotent, installs all packages)
+- [x] **6 research docs** — GPIO PWM, FastMCP patterns, Ollama tools, ERAU scraping, motor debug
+- [x] **GPIO root cause documented** — Jetson.GPIO works on original DTB, `gpioinfo` confirms pins driven
+  - DT overlay approach failed (JetPack 6 doesn't support OVERLAYS in extlinux)
+  - Correct pin→line mapping: ALL on gpiochip0 (tegra234-gpio)
 
 _Session 21 - 2026-03-24_
 

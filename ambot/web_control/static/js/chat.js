@@ -12,6 +12,7 @@ const Chat = {
     _streaming: false,   // true while a stream is in progress
     _currentMsg: null,    // the DOM element being built during stream
     _stageEl: null,       // the loading stage indicator element
+    _userScrolledUp: false, // true when user has scrolled away from bottom
 
     init() {
         this.messagesEl = document.getElementById('chat-messages');
@@ -27,6 +28,15 @@ const Chat = {
                     e.preventDefault();
                     this.send();
                 }
+            });
+        }
+
+        // Smart scroll: track whether user has scrolled away from bottom
+        if (this.messagesEl) {
+            this.messagesEl.addEventListener('scroll', () => {
+                const el = this.messagesEl;
+                const atBottom = (el.scrollHeight - el.scrollTop - el.clientHeight) < 50;
+                this._userScrolledUp = !atBottom;
             });
         }
 
@@ -64,7 +74,9 @@ const Chat = {
         socket.on('chat:token', (data) => {
             if (this._currentMsg && data.token) {
                 this._currentMsg.textContent += data.token;
-                this.messagesEl.scrollTop = this.messagesEl.scrollHeight;
+                if (!this._userScrolledUp) {
+                    this.messagesEl.scrollTop = this.messagesEl.scrollHeight;
+                }
             }
         });
 
@@ -93,6 +105,7 @@ const Chat = {
         if (!question || this._streaming) return;
 
         this.inputEl.value = '';
+        this._userScrolledUp = false;  // new message: always scroll to bottom
         this.addMessage(question, 'user');
         this.sendBtn.disabled = true;
 
@@ -139,7 +152,9 @@ const Chat = {
         div.className = 'chat-msg ' + type;
         div.textContent = text;
         this.messagesEl.appendChild(div);
-        this.messagesEl.scrollTop = this.messagesEl.scrollHeight;
+        if (!this._userScrolledUp) {
+            this.messagesEl.scrollTop = this.messagesEl.scrollHeight;
+        }
     },
 
     _createStreamMsg() {
@@ -147,7 +162,9 @@ const Chat = {
         const div = document.createElement('div');
         div.className = 'chat-msg assistant streaming';
         this.messagesEl.appendChild(div);
-        this.messagesEl.scrollTop = this.messagesEl.scrollHeight;
+        if (!this._userScrolledUp) {
+            this.messagesEl.scrollTop = this.messagesEl.scrollHeight;
+        }
         return div;
     },
 
@@ -158,7 +175,9 @@ const Chat = {
         el.className = 'chat-stage';
         el.innerHTML = '<span class="chat-spinner"></span> ' + message;
         this.messagesEl.appendChild(el);
-        this.messagesEl.scrollTop = this.messagesEl.scrollHeight;
+        if (!this._userScrolledUp) {
+            this.messagesEl.scrollTop = this.messagesEl.scrollHeight;
+        }
         this._stageEl = el;
     },
 

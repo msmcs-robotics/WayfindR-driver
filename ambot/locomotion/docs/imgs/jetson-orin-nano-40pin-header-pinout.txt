@@ -1,0 +1,146 @@
+================================================================================
+  JETSON ORIN NANO DEVELOPER KIT — 40-PIN EXPANSION HEADER (J12) PINOUT
+================================================================================
+
+  Model:      JETSON_ORIN_NANO (p3767-0003/0004/0005)
+  Processor:  6x Cortex-A78AE (Tegra T234)
+  JetPack:    R36.4.4 (JetPack 6.x), CUDA 12.6
+  RAM:        7.4 GiB (8 GB variant, unified CPU/GPU)
+  GPIO Chip:  tegra234-gpio
+  I2C Buses:  Bus 7 (pins 3/5), Bus 1 (pins 27/28)
+  UART:       /dev/ttyTHS0 (pins 8/10, RTS/CTS on 11/36)
+  PWM Pins:   15 (PWM1), 32 (PWM7), 33 (PWM)
+
+  Header is physically compatible with Raspberry Pi 40-pin layout.
+  Pin 1 is closest to the carrier board edge (marked on PCB).
+
+  Source: NVIDIA/jetson-gpio gpio_pin_data.py (JETSON_ORIN_NX_PIN_DEFS)
+          JetsonHacks.com pinout reference
+
+  ┌─────────────────────────────────────────────────────────────────────┐
+  │                        J12 EXPANSION HEADER                        │
+  │                     (view from component side)                     │
+  │                                                                    │
+  │    Pin 1 = top-left (3.3V)        Pin 2 = top-right (5V)          │
+  ├──────────────────────────┬────┬────┬──────────────────────────────┤
+  │        FUNCTION          │ L  │ R  │        FUNCTION               │
+  ├──────────────────────────┼────┼────┼──────────────────────────────┤
+  │ [PWR]  3.3V              │  1 │  2 │ 5.0V               [PWR]     │
+  │ [I2C]  I2C1_SDA (Bus 7)  │  3 │  4 │ 5.0V               [PWR]     │
+  │ [I2C]  I2C1_SCL (Bus 7)  │  5 │  6 │ GND                [GND]     │
+  │ [GPIO] GPIO09 / MCLK     │  7 │  8 │ UART1_TX (ttyTHS0) [UART]    │
+  │ [GND]  GND               │  9 │ 10 │ UART1_RX (ttyTHS0) [UART]    │
+  │ [GPIO] UART1_RTS         │ 11 │ 12 │ I2S0_SCLK          [I2S]     │
+  │ [SPI]  SPI1_SCK          │ 13 │ 14 │ GND                [GND]     │
+  │ [PWM]  GPIO12 / PWM1     │ 15 │ 16 │ SPI1_CS1           [SPI]     │
+  │ [PWR]  3.3V              │ 17 │ 18 │ SPI1_CS0           [SPI]     │
+  │ [SPI]  SPI0_MOSI         │ 19 │ 20 │ GND                [GND]     │
+  │ [SPI]  SPI0_MISO         │ 21 │ 22 │ SPI1_MISO          [SPI]     │
+  │ [SPI]  SPI0_SCK          │ 23 │ 24 │ SPI0_CS0           [SPI]     │
+  │ [GND]  GND               │ 25 │ 26 │ SPI0_CS1           [SPI]     │
+  │ [I2C]  I2C0_SDA (Bus 1)  │ 27 │ 28 │ I2C0_SCL (Bus 1)   [I2C]     │
+  │ [GPIO] GPIO01            │ 29 │ 30 │ GND                [GND]     │
+  │ [GPIO] GPIO11            │ 31 │ 32 │ GPIO07 / PWM7      [PWM]     │
+  │ [PWM]  GPIO13 / PWM      │ 33 │ 34 │ GND                [GND]     │
+  │ [I2S]  I2S0_FS           │ 35 │ 36 │ UART1_CTS          [UART]    │
+  │ [SPI]  SPI1_MOSI         │ 37 │ 38 │ I2S0_SDIN          [I2S]     │
+  │ [GND]  GND               │ 39 │ 40 │ I2S0_SDOUT         [I2S]     │
+  └──────────────────────────┴────┴────┴──────────────────────────────┘
+
+================================================================================
+  DETAILED PIN REFERENCE (from NVIDIA jetson-gpio, JETSON_ORIN_NX_PIN_DEFS)
+================================================================================
+
+  Pin  BOARD  BCM  CVM Name      Tegra SOC Name        Line  Chip Alias  PWM
+  ───  ─────  ───  ──────────    ────────────────────  ────  ──────────  ───
+   1   -      -    3.3V POWER    -                     -     -           -
+   2   -      -    5V POWER      -                     -     -           -
+   3   -      -    I2C1_SDA      I2C Bus 7             -     -           -
+   4   -      -    5V POWER      -                     -     -           -
+   5   -      -    I2C1_SCL      I2C Bus 7             -     -           -
+   6   -      -    GND           -                     -     -           -
+   7   7      4    GPIO09        GP167                 144   PAC.06      -
+   8   -      -    UART1_TX      /dev/ttyTHS0          -     -           -
+   9   -      -    GND           -                     -     -           -
+  10   -      -    UART1_RX      /dev/ttyTHS0          -     -           -
+  11   11     17   UART1_RTS     GP72_UART1_RTS_N      112   PR.04       -
+  12   12     18   I2S0_SCLK     GP122                  50   PH.07       -
+  13   13     27   SPI1_SCK      GP36_SPI3_CLK         122   PY.00       -
+  14   -      -    GND           -                     -     -           -
+  15   15     22   GPIO12        GP88_PWM1              85   PN.01       3280000.pwm:0
+  16   16     23   SPI1_CS1      GP40_SPI3_CS1_N       126   PY.04       -
+  17   -      -    3.3V POWER    -                     -     -           -
+  18   18     24   SPI1_CS0      GP39_SPI3_CS0_N       125   PY.03       -
+  19   19     10   SPI0_MOSI     GP49_SPI1_MOSI        135   PZ.05       -
+  20   -      -    GND           -                     -     -           -
+  21   21      9   SPI0_MISO     GP48_SPI1_MISO        134   PZ.04       -
+  22   22     25   SPI1_MISO     GP37_SPI3_MISO        123   PY.01       -
+  23   23     11   SPI0_SCK      GP47_SPI1_CLK         133   PZ.03       -
+  24   24      8   SPI0_CS0      GP50_SPI1_CS0_N       136   PZ.06       -
+  25   -      -    GND           -                     -     -           -
+  26   26      7   SPI0_CS1      GP51_SPI1_CS1_N       137   PZ.07       -
+  27   -      -    I2C0_SDA      I2C Bus 1             -     -           -
+  28   -      -    I2C0_SCL      I2C Bus 1             -     -           -
+  29   29      5   GPIO01        GP65                  105   PQ.05       -
+  30   -      -    GND           -                     -     -           -
+  31   31      6   GPIO11        GP66                  106   PQ.06       -
+  32   32     12   GPIO07        GP113_PWM7             41   PG.06       32e0000.pwm:0
+  33   33     13   GPIO13        GP115                  43   PH.00       32c0000.pwm:0
+  34   -      -    GND           -                     -     -           -
+  35   35     19   I2S0_FS       GP125                  53   PI.02       -
+  36   36     16   UART1_CTS     GP73_UART1_CTS_N      113   PR.05       -
+  37   37     26   SPI1_MOSI     GP38_SPI3_MOSI        124   PY.02       -
+  38   38     20   I2S0_SDIN     GP124                  52   PI.01       -
+  39   -      -    GND           -                     -     -           -
+  40   40     21   I2S0_SDOUT    GP123                  51   PI.00       -
+
+================================================================================
+  PIN GROUPS BY FUNCTION
+================================================================================
+
+  POWER (4 pins):
+    Pin  1 — 3.3V
+    Pin  2 — 5V
+    Pin  4 — 5V
+    Pin 17 — 3.3V
+
+  GROUND (8 pins):
+    Pin  6, 9, 14, 20, 25, 30, 34, 39
+
+  I2C (4 pins, 2 buses):
+    Bus 7:  Pin  3 (SDA), Pin  5 (SCL)  — General purpose
+    Bus 1:  Pin 27 (SDA), Pin 28 (SCL)  — EEPROM / ID bus
+
+  UART (4 pins, 1 port):
+    /dev/ttyTHS0:  Pin  8 (TX), Pin 10 (RX), Pin 11 (RTS), Pin 36 (CTS)
+
+  SPI (10 pins, 2 buses):
+    SPI0:  Pin 19 (MOSI), Pin 21 (MISO), Pin 23 (SCK), Pin 24 (CS0), Pin 26 (CS1)
+    SPI1:  Pin 13 (SCK),  Pin 22 (MISO), Pin 37 (MOSI), Pin 18 (CS0), Pin 16 (CS1)
+
+  I2S (4 pins, 1 bus):
+    Pin 12 (SCLK), Pin 35 (FS), Pin 38 (SDIN), Pin 40 (SDOUT)
+
+  PWM (3 pins):
+    Pin 15 — GPIO12 / PWM1   (3280000.pwm channel 0)
+    Pin 32 — GPIO07 / PWM7   (32e0000.pwm channel 0)
+    Pin 33 — GPIO13 / PWM    (32c0000.pwm channel 0)
+
+  GENERAL GPIO (4 pins):
+    Pin  7 — GPIO09 (also Audio MCLK)
+    Pin 29 — GPIO01
+    Pin 31 — GPIO11
+    (Most other pins can be reconfigured as GPIO via Jetson-IO / pinmux)
+
+================================================================================
+  NOTES FOR AMBOT PROJECT
+================================================================================
+
+  - For motor control (L298N/TB6612FNG/DRV8833), use PWM pins 15, 32, 33
+    plus GPIO pins 7, 29, 31 for direction control.
+  - I2C Bus 7 (pins 3/5) is best for IMU (MPU6050) — same role as RPi pins 3/5.
+  - UART ttyTHS0 (pins 8/10) available for serial peripherals.
+  - SPI buses available for additional sensors if needed.
+  - Pin numbering: Use BOARD mode in Jetson.GPIO (same concept as RPi.GPIO).
+  - Unlike RPi, the Jetson uses 3.3V logic — do NOT connect 5V signals directly.
+  - All GPIO pins are 3.3V tolerant only (NOT 5V tolerant).

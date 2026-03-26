@@ -2,27 +2,29 @@
 """
 Motor Test Script for Jetson Orin Nano
 
-Tests L298N motor control via Jetson.GPIO.  Automatically falls back
-to simulation mode when Jetson.GPIO is not installed (e.g., running
-on a laptop for development).
+Tests L298N motor control via gpiod (libgpiod v2). Automatically falls back
+to simulation mode when gpiod is not installed (e.g., running on a laptop
+for development).
+
+Requires root/sudo for GPIO access on Jetson.
 
 Usage (on Jetson via SSH):
     # Run full test sequence
-    python3 test_motors.py
+    sudo python3 test_motors.py
 
     # Test a single motor
-    python3 test_motors.py --motor A --speed 40 --duration 3
+    sudo python3 test_motors.py --motor A --speed 40 --duration 3
 
     # Specific test patterns
-    python3 test_motors.py --test basic
-    python3 test_motors.py --test individual
-    python3 test_motors.py --test ramp
+    sudo python3 test_motors.py --test basic
+    sudo python3 test_motors.py --test individual
+    sudo python3 test_motors.py --test ramp
 
-    # Simulation mode (forced, even if GPIO is available)
+    # Simulation mode (forced, even if gpiod is available)
     python3 test_motors.py --simulate
 
     # Emergency stop (kill any running motor process)
-    python3 test_motors.py --kill
+    sudo python3 test_motors.py --kill
 
     # Show pin mapping
     python3 test_motors.py --pinout
@@ -88,7 +90,7 @@ def create_driver(force_simulate: bool = False):
     Create a JetsonL298N instance.
 
     If force_simulate is True, temporarily patches the module so the driver
-    always uses simulation mode regardless of GPIO availability.
+    always uses simulation mode regardless of gpiod availability.
     """
     global _motors
 
@@ -116,6 +118,7 @@ def test_basic(motors, speed: int, duration: float):
     """Run through all compound movement commands."""
     print("=" * 55)
     print(f"  BASIC TEST  |  speed={speed}%  duration={duration}s")
+    print("  NOTE: No PWM — any nonzero speed = full power")
     print("=" * 55)
 
     steps = [
@@ -143,6 +146,7 @@ def test_individual(motors, speed: int, duration: float):
     """Test each motor one at a time, forward then reverse."""
     print("=" * 55)
     print(f"  INDIVIDUAL MOTOR TEST  |  speed={speed}%  duration={duration}s")
+    print("  NOTE: No PWM — any nonzero speed = full power")
     print("=" * 55)
 
     for label, motor_fn in [("Motor A", motors.motor_a), ("Motor B", motors.motor_b)]:
@@ -171,6 +175,7 @@ def test_single_motor(motors, motor: str, speed: int, duration: float):
     motor_fn = motors.motor_a if motor == "A" else motors.motor_b
 
     print(f"Motor {motor}: speed={speed}% for {duration}s")
+    print("  (No PWM — any nonzero speed = full power)")
     motor_fn(speed)
     time.sleep(duration)
     motors.stop()
@@ -179,11 +184,14 @@ def test_single_motor(motors, motor: str, speed: int, duration: float):
 
 def test_ramp(motors, max_speed: int, duration: float):
     """
-    Ramp both motors from 0 to max_speed and back down.
-    Useful for checking that PWM duty cycle changes smoothly.
+    Step both motors on/off to simulate ramp behavior.
+
+    Note: Without PWM, this just toggles between full speed and stop.
+    Retained for API compatibility — will be useful once sysfs PWM is added.
     """
     print("=" * 55)
     print(f"  RAMP TEST  |  0 -> {max_speed}% -> 0  over {duration}s each")
+    print("  NOTE: No PWM — this will just toggle on/off")
     print("=" * 55)
 
     steps = 20
@@ -210,20 +218,27 @@ def test_ramp(motors, max_speed: int, duration: float):
 def print_pinout():
     """Print the Jetson L298N pin mapping."""
     print("=" * 55)
-    print("  L298N Pin Mapping  (Jetson Orin Nano, BOARD mode)")
+    print("  L298N Pin Mapping  (Jetson Orin Nano, gpiod)")
     print("=" * 55)
     print()
     print("  Motor A (left):")
-    print(f"    ENA (PWM) : pin {JETSON_L298N_CONFIG['ENA']}")
-    print(f"    IN1       : pin {JETSON_L298N_CONFIG['IN1']}")
-    print(f"    IN2       : pin {JETSON_L298N_CONFIG['IN2']}")
+    chip, line = JETSON_L298N_CONFIG['ENA']
+    print(f"    ENA (enable) : {chip}, line {line}")
+    chip, line = JETSON_L298N_CONFIG['IN1']
+    print(f"    IN1          : {chip}, line {line}")
+    chip, line = JETSON_L298N_CONFIG['IN2']
+    print(f"    IN2          : {chip}, line {line}")
     print()
     print("  Motor B (right):")
-    print(f"    ENB (PWM) : pin {JETSON_L298N_CONFIG['ENB']}")
-    print(f"    IN3       : pin {JETSON_L298N_CONFIG['IN3']}")
-    print(f"    IN4       : pin {JETSON_L298N_CONFIG['IN4']}")
+    chip, line = JETSON_L298N_CONFIG['ENB']
+    print(f"    ENB (enable) : {chip}, line {line}")
+    chip, line = JETSON_L298N_CONFIG['IN3']
+    print(f"    IN3          : {chip}, line {line}")
+    chip, line = JETSON_L298N_CONFIG['IN4']
+    print(f"    IN4          : {chip}, line {line}")
     print()
-    print(f"  PWM frequency: {PWM_FREQ} Hz")
+    print("  PWM: Not available via gpiod (ENA/ENB = HIGH/LOW only)")
+    print("  For variable speed, use sysfs PWM or Jetson hardware PWM.")
     print()
     print("  Power:")
     print("    L298N VCC  -> external 12V (NOT from Jetson)")
@@ -235,7 +250,7 @@ def print_pinout():
 def kill_motors():
     """
     Emergency stop: kill any running test_motors.py process
-    and attempt a GPIO cleanup.
+    and attempt to set all motor pins LOW via gpiod.
     """
     print("Emergency stop — killing motor processes...")
     my_pid = os.getpid()
@@ -261,16 +276,32 @@ def kill_motors():
     else:
         print("  No other motor processes found.")
 
-    # Also do a direct GPIO cleanup in case nothing else is running
+    # Also do a direct gpiod cleanup in case nothing else is running
     try:
-        import Jetson.GPIO as GPIO
-        GPIO.setmode(GPIO.BOARD)
-        cfg = JETSON_L298N_CONFIG
-        for pin in [cfg['ENA'], cfg['IN1'], cfg['IN2'],
-                     cfg['ENB'], cfg['IN3'], cfg['IN4']]:
-            GPIO.setup(pin, GPIO.OUT, initial=GPIO.LOW)
-        GPIO.cleanup()
-        print("  GPIO pins set LOW and cleaned up.")
+        import gpiod
+        from gpiod.line import Direction, Value
+        from collections import defaultdict
+
+        # Group pins by chip
+        chip_lines = defaultdict(list)
+        for pin_name, (chip_path, line_offset) in JETSON_L298N_CONFIG.items():
+            if line_offset not in chip_lines[chip_path]:
+                chip_lines[chip_path].append(line_offset)
+
+        for chip_path, lines in chip_lines.items():
+            settings = gpiod.LineSettings(
+                direction=Direction.OUTPUT,
+                output_value=Value.INACTIVE,
+            )
+            req = gpiod.request_lines(
+                chip_path,
+                consumer="ambot-motors-kill",
+                config={tuple(lines): settings},
+            )
+            # All lines are already INACTIVE from the settings
+            req.release()
+
+        print("  All motor GPIO lines set LOW and released.")
     except Exception as e:
         print(f"  GPIO cleanup skipped: {e}")
 
@@ -283,16 +314,16 @@ def kill_motors():
 
 def main():
     parser = argparse.ArgumentParser(
-        description="Jetson Orin Nano L298N motor test",
+        description="Jetson Orin Nano L298N motor test (gpiod)",
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog="""\
 Examples:
-  python3 test_motors.py                        # basic test, 50%% speed
-  python3 test_motors.py --test ramp            # smooth ramp test
-  python3 test_motors.py --motor A --speed 40   # single motor
-  python3 test_motors.py --simulate             # no hardware needed
-  python3 test_motors.py --kill                 # emergency stop
-  python3 test_motors.py --pinout               # show wiring
+  sudo python3 test_motors.py                        # basic test, 50%% speed
+  sudo python3 test_motors.py --test ramp            # ramp test (on/off toggle)
+  sudo python3 test_motors.py --motor A --speed 40   # single motor
+  python3 test_motors.py --simulate                   # no hardware needed
+  sudo python3 test_motors.py --kill                  # emergency stop
+  python3 test_motors.py --pinout                     # show wiring
 """
     )
 
@@ -323,7 +354,7 @@ Examples:
     parser.add_argument(
         "--simulate",
         action="store_true",
-        help="Force simulation mode (no GPIO)"
+        help="Force simulation mode (no gpiod)"
     )
     parser.add_argument(
         "--kill",

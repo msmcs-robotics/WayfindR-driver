@@ -5,184 +5,83 @@
 **Scraped**: 2026-02-24 18:21:11
 
 ---
-Displaying 1-20 of 28
 
-Susan D. Allen
+## Susan D. Allen
 
-Title
-Visiting Distinguished Professor
-College
-Degrees
-Ph.D., University of Southern California
+**Susan D. Allen** is a Visiting Distinguished Professor in the Mechanical Engineering Department at Embry-Riddle Aeronautical University. Susan D. Allen holds a Ph.D. from the University of Southern California.
 
-Omar Almahmoud
+## Omar Almahmoud
 
-Title
-Assistant Professor
-College
-Degrees
-Ph.D., University of North Texas
+**Omar Almahmoud** is an Assistant Professor in the Mechanical Engineering Department at Embry-Riddle Aeronautical University. Omar Almahmoud holds a Ph.D. from the University of North Texas.
 
-Carolina Barriento
+## Carolina Barriento
 
-Title
-Assistant Professor
-College
-Degrees
-M.S., B.S., University of Central Florida
+**Carolina Barriento** is an Assistant Professor in the Mechanical Engineering Department at Embry-Riddle Aeronautical University. Carolina Barriento holds an M.S. and B.S. from the University of Central Florida.
 
-Fady Barsoum
+## Fady Barsoum
 
-Title
-Professor and Co-Op and Internship Coordinator
-College
-Degrees
-Ph.D., M.S., University of Central Florida
+**Fady Barsoum** is a Professor and Co-Op and Internship Coordinator in the Mechanical Engineering Department at Embry-Riddle Aeronautical University. Fady Barsoum holds a Ph.D. and M.S. from the University of Central Florida.
 
-Sandra Boetcher
+## Sandra Boetcher
 
-Title
-Professor, Interim Chair, and Program Coordinator
-College
-Degrees
-Ph.D., M.S., University of Minnesota-Twin Cities
+**Sandra Boetcher** is a Professor, Interim Chair, and Program Coordinator in the Mechanical Engineering Department at Embry-Riddle Aeronautical University. Sandra Boetcher holds a Ph.D. and M.S. from the University of Minnesota-Twin Cities.
 
-Leitao Chen
+## Leitao Chen
 
-Title
-Assistant Professor
-College
-Degrees
-Ph.D., University of Pittsburgh-Pittsburgh Campus
+**Leitao Chen** is an Assistant Professor in the Mechanical Engineering Department at Embry-Riddle Aeronautical University. Leitao Chen holds a Ph.D. from the University of Pittsburgh.
 
-Marc Compere
+## Marc Compere
 
-Title
-Professor
-College
-Degrees
-Ph.D., The University of Texas at Austin
+**Marc Compere** is a Professor in the Mechanical Engineering Department at Embry-Riddle Aeronautical University. Marc Compere holds a Ph.D. from The University of Texas at Austin.
 
-Eric Coyle
+## Eric Coyle
 
-Title
-Professor
-College
-Degrees
-Ph.D., Florida State University
+**Eric Coyle** is a Professor in the Mechanical Engineering Department at Embry-Riddle Aeronautical University. Eric Coyle holds a Ph.D. from Florida State University.
 
-Paul Crittenden
+## Paul Crittenden
 
-Title
-Assistant Professor
-College
-Degrees
-Ph.D., University of Florida
+**Paul Crittenden** is an Assistant Professor in the Mechanical Engineering Department at Embry-Riddle Aeronautical University. Paul Crittenden holds a Ph.D. from the University of Florida.
 
-Patrick Currier
+## Patrick Currier
 
-Title
-Chair and Professor
-College
-Degrees
-Ph.D., M.S., Virginia Polytechnic Institute and State University
+**Patrick Currier** is the Chair and Professor of the Mechanical Engineering Department at Embry-Riddle Aeronautical University. Patrick Currier holds a Ph.D. and M.S. from Virginia Polytechnic Institute and State University and a B.S. from Tennessee Technological University.
 
-B.S., Tennessee Technological University
+## Arka Das
 
-Arka Das
+**Arka Das** is an Assistant Professor in the Mechanical Engineering Department at Embry-Riddle Aeronautical University. Arka Das holds a Ph.D. and M.S. from Embry-Riddle Aeronautical University.
 
-Title
-Assistant Professor
-College
-Degrees
-Ph.D., M.S., Embry-Riddle Aeronautical University
+## Jean-Michel Dhainaut
 
-Jean-Michel Dhainaut
+**Jean-Michel Dhainaut** is a Professor and Program Coordinator for M.S. in Mechanical Engineering in the Mechanical Engineering Department at Embry-Riddle Aeronautical University. Jean-Michel Dhainaut holds a Ph.D. from Old Dominion University.
 
-Title
-Professor and Program Coordinator for M.S. in Mechanical Engineering
-College
-Degrees
-Ph.D., Old Dominion University
+## Birce Dikici
 
-Birce Dikici
+**Birce Dikici** is an Associate Professor in the Mechanical Engineering Department at Embry-Riddle Aeronautical University. Birce Dikici holds a Ph.D. and M.S. from Texas Tech University.
 
-Title
-Associate Professor
-College
-Degrees
-Ph.D., M.S., Texas Tech University
+## Eduardo Divo
 
-Eduardo Divo
+**Eduardo Divo** is the Vice Provost for Faculty Affairs and Professor in the Mechanical Engineering Department at Embry-Riddle Aeronautical University. Eduardo Divo holds a Ph.D. and M.S. from the University of Central Florida.
 
-Title
-Vice Provost for Faculty Affairs and Professor
-College
-Degrees
-Ph.D., M.S., University of Central Florida
+## Sathya Gangadharan
 
-Sathya Gangadharan
+**Sathya Gangadharan** is a Professor in the Mechanical Engineering Department at Embry-Riddle Aeronautical University. Sathya Gangadharan holds a Ph.D. from Virginia Polytechnic Institute and State University and an M.S. from Memorial University of Newfoundland.
 
-Title
-Professor
-College
-Degrees
-Ph.D., Virginia Polytechnic Institute and State University
+## Monica Garcia
 
-M.S., Memorial University of Newfoundland
+**Monica Garcia** is an Assistant Professor in the Mechanical Engineering Department at Embry-Riddle Aeronautical University. Monica Garcia holds a Ph.D. and Graduate Certificate from Duke University and a B.S. from Johns Hopkins University.
 
-Monica Garcia
+## Christopher Hockley
 
-Title
-Assistant Professor
-College
-Degrees
-Ph.D., Graduate Certificate, Duke University
+**Christopher Hockley** is an Assistant Professor in the Mechanical Engineering Department at Embry-Riddle Aeronautical University. Christopher Hockley holds a Ph.D., M.S., and B.S. from Embry-Riddle Aeronautical University.
 
-B.S., Johns Hopkins University
+## Victor Huayamave
 
-Christopher Hockley
+**Victor Huayamave** is an Associate Professor in the Mechanical Engineering Department at Embry-Riddle Aeronautical University. Victor Huayamave holds a Ph.D., M.S., and B.S. from the University of Central Florida.
 
-Title
-Assistant Professor
-College
-Degrees
-Ph.D., M.S., B.S., Embry-Riddle Aeronautical University
+## Daniel Lane
 
-Victor Huayamave
+**Daniel Lane** is a Visiting Assistant Professor in the Mechanical Engineering Department at Embry-Riddle Aeronautical University. Daniel Lane holds an M.S. from Embry-Riddle Aeronautical University.
 
-Title
-Associate Professor
-College
-Degrees
-Ph.D., M.S., B.S., University of Central Florida
+## Yongho Lee
 
-Daniel Lane
-
-Title
-Visiting Assistant Professor
-College
-Degrees
-M.S., Embry-Riddle Aeronautical University
-
-Yongho Lee
-
-Title
-Professor
-College
-Degrees
-Ph.D., M.S., University of Illinois at Urbana-Champaign
-
-Displaying 1-20 of 28
-
-1
-
-2
-
-›
-
-»
-
-×
-
-Close
+**Yongho Lee** is a Professor in the Mechanical Engineering Department at Embry-Riddle Aeronautical University. Yongho Lee holds a Ph.D. and M.S. from the University of Illinois at Urbana-Champaign.

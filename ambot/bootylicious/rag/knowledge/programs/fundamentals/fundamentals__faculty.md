@@ -5,180 +5,83 @@
 **Scraped**: 2026-02-24 18:21:06
 
 ---
-Displaying 1-20 of 20
 
-Lorraine Acevedo
+## Lorraine Acevedo
 
-Title
-Assistant Professor
-College
-Degrees
-M.S., B.S., Embry-Riddle Aeronautical University
+**Lorraine Acevedo** is an Assistant Professor in the Engineering Fundamentals Department at Embry-Riddle Aeronautical University. Lorraine Acevedo holds an M.S. and B.S. from Embry-Riddle Aeronautical University.
 
-Boutros Azizi
+## Boutros Azizi
 
-Title
-Assistant Professor
-College
-Degrees
-Ph.D., M.S., Embry-Riddle Aeronautical University
+**Boutros Azizi** is an Assistant Professor in the Engineering Fundamentals Department at Embry-Riddle Aeronautical University. Boutros Azizi holds a Ph.D. and M.S. from Embry-Riddle Aeronautical University.
 
-Debarati Basu
+## Debarati Basu
 
-Title
-Assistant Professor
-College
-Degrees
-Ph.D., Graduate Certificate, Virginia Polytechnic Institute and State University
+**Debarati Basu** is an Assistant Professor in the Engineering Fundamentals Department at Embry-Riddle Aeronautical University. Debarati Basu holds a Ph.D. and Graduate Certificate from Virginia Polytechnic Institute and State University.
 
-Leonardo Bueno-Benitez
+## Leonardo Bueno-Benitez
 
-Title
-Associate Professor
-College
-Degrees
-Ph.D., M.S., B.S., Embry-Riddle Aeronautical University
+**Leonardo Bueno-Benitez** is an Associate Professor in the Engineering Fundamentals Department at Embry-Riddle Aeronautical University. Leonardo Bueno-Benitez holds a Ph.D., M.S., and B.S. from Embry-Riddle Aeronautical University and an M.S. from the University of Central Florida.
 
-M.S., University of Central Florida
+## KJ Chew
 
-KJ Chew
+**KJ Chew** is an Assistant Professor in the Engineering Fundamentals Department at Embry-Riddle Aeronautical University. KJ Chew holds a Ph.D. from Virginia Polytechnic Institute and State University, an M.S. from Stanford University, and a B.S. from the University of Southern California.
 
-Title
-Assistant Professor
-College
-Degrees
-Ph.D., Virginia Polytechnic Institute and State University
+## Lisa Davids
 
-M.S., Stanford University
+**Lisa Davids** is a Professor, Associate Chair, and Program Coordinator for Engineering Fundamentals in the Engineering Fundamentals Department at Embry-Riddle Aeronautical University. Lisa Davids holds an M.S. and B.S. from Florida State University.
 
-B.S., University of Southern California
+## Charles Davis
 
-Lisa Davids
+**Charles Davis** is an Associate Professor in the Engineering Fundamentals Department at Embry-Riddle Aeronautical University. Charles Davis holds a Ph.D., M.S., and B.S. from the University of Central Florida.
 
-Title
-Professor, Associate Chair, and Program Coordinator for Engineering Fundamentals
-College
-Degrees
-M.S., B.S., Florida State University
+## Claudia Marcela Ehringer Lucas
 
-Charles Davis
+**Claudia Marcela Ehringer Lucas** is an Associate Professor in the Engineering Fundamentals Department at Embry-Riddle Aeronautical University. Claudia Marcela Ehringer Lucas holds an M.A.E. and B.S. from Embry-Riddle Aeronautical University.
 
-Title
-Associate Professor
-College
-Degrees
-Ph.D., M.S., B.S., University of Central Florida
+## Lucas Ferrando Quilez
 
-Claudia Marcela Ehringer Lucas
+**Lucas Ferrando Quilez** is an Assistant Professor in the Engineering Fundamentals Department at Embry-Riddle Aeronautical University. Lucas Ferrando Quilez holds an M.S. and B.S. from Embry-Riddle Aeronautical University.
 
-Title
-Associate Professor
-College
-Degrees
-M.A.E., B.S., Embry-Riddle Aeronautical University
+## Leo Ghelarducci
 
-Lucas Ferrando Quilez
+**Leo Ghelarducci** is a Visiting Assistant Professor in the Engineering Fundamentals Department at Embry-Riddle Aeronautical University. Leo Ghelarducci holds an M.S. and B.S. from Embry-Riddle Aeronautical University.
 
-Title
-Assistant Professor
-College
-Degrees
-M.S., B.S., Embry-Riddle Aeronautical University
+## Juan Granizo Martinez
 
-Leo Ghelarducci
+**Juan Granizo Martinez** is an Associate Professor in the Engineering Fundamentals Department at Embry-Riddle Aeronautical University. Juan Granizo Martinez holds an M.S., M.B.A., and B.S. from Embry-Riddle Aeronautical University.
 
-Title
-Visiting Assistant Professor
-College
-Degrees
-M.S., B.S., Embry-Riddle Aeronautical University
+## Sarah Grigg
 
-Juan Granizo Martinez
+**Sarah Grigg** is an Associate Professor in the Engineering Fundamentals Department at Embry-Riddle Aeronautical University. Sarah Grigg holds a Ph.D., M.S., M.B.A., Graduate Certificate, and B.S. from Clemson University.
 
-Title
-Associate Professor
-College
-Degrees
-M.S., M.B.A., B.S., Embry-Riddle Aeronautical University
+## Ethan Hilton
 
-Sarah Grigg
+**Ethan Hilton** is an Assistant Professor in the Engineering Fundamentals Department at Embry-Riddle Aeronautical University. Ethan Hilton holds a Ph.D. from the Georgia Institute of Technology and a B.S. from Louisiana Tech University.
 
-Title
-Associate Professor
-College
-Degrees
-Ph.D., M.S., M.B.A., Graduate Certificate, B.S., Clemson University
+## Noemi Liberati
 
-Ethan Hilton
+**Noemi Liberati** is an Assistant Professor in the Engineering Fundamentals Department at Embry-Riddle Aeronautical University. Noemi Liberati holds an M.S. and B.S. from the Universita degli Studi di Roma La Sapienza.
 
-Title
-Assistant Professor
-College
-Degrees
-Ph.D., Georgia Institute of Technology-Main Campus
+## Wairimu Mwangi
 
-B.S., Louisiana Tech University
+**Wairimu Mwangi** is a Visiting Assistant Professor in the Engineering Fundamentals Department at Embry-Riddle Aeronautical University. Wairimu Mwangi holds an M.S. and B.S. from Embry-Riddle Aeronautical University.
 
-Noemi Liberati
+## James J Pembridge
 
-Title
-Assistant Professor
-College
-Degrees
-M.S., B.S., Universita degli Studi di Roma La Sapienza
+**James J Pembridge** is the Associate Dean and Professor in the Engineering Fundamentals Department at Embry-Riddle Aeronautical University. James J Pembridge holds a Ph.D., M.A., and B.S. from Virginia Polytechnic Institute and State University.
 
-Wairimu Mwangi
+## David Richter
 
-Title
-Visiting Assistant Professor
-College
-Degrees
-M.S., B.S., Embry-Riddle Aeronautical University
+**David Richter** is an Assistant Professor in the Engineering Fundamentals Department at Embry-Riddle Aeronautical University. David Richter holds an M.S. from Virginia Polytechnic Institute and State University.
 
-James J Pembridge
+## Heidi M Steinhauer
 
-Title
-Associate Dean and Professor
-College
-Degrees
-Ph.D., M.A., B.S., Virginia Polytechnic Institute and State University
+**Heidi M Steinhauer** is a Professor in the Engineering Fundamentals Department at Embry-Riddle Aeronautical University. Heidi M Steinhauer holds a Ph.D. from Virginia Polytechnic Institute and State University and an M.S. and B.S. from Embry-Riddle Aeronautical University.
 
-David Richter
+## Lulu Sun
 
-Title
-Assistant Professor
-College
-Degrees
-M.S., Virginia Polytechnic Institute and State University
+**Lulu Sun** is a Professor in the Engineering Fundamentals Department at Embry-Riddle Aeronautical University. Lulu Sun holds a Ph.D. from the University of California-Riverside.
 
-Heidi M Steinhauer
+## Matthew Alan Verleger
 
-Title
-Professor
-College
-Degrees
-Ph.D., Virginia Polytechnic Institute and State University
-
-M.S., B.S., Embry-Riddle Aeronautical University
-
-Lulu Sun
-
-Title
-Professor
-College
-Degrees
-Ph.D., University of California-Riverside
-
-Matthew Alan Verleger
-
-Title
-Professor
-College
-Degrees
-Ph.D., M.S., B.S., Purdue University-Main Campus
-
-Displaying 1-20 of 20
-
-×
-
-Close
+**Matthew Alan Verleger** is a Professor in the Engineering Fundamentals Department at Embry-Riddle Aeronautical University. Matthew Alan Verleger holds a Ph.D., M.S., and B.S. from Purdue University.

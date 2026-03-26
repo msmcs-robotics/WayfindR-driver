@@ -1,0 +1,1757 @@
+[
+  {
+    "angle": 0.11181818181819381,
+    "distance": 233.0,
+    "quality": 255
+  },
+  {
+    "angle": 0.8190909090909031,
+    "distance": 234.0,
+    "quality": 255
+  },
+  {
+    "angle": 1.5263636363636124,
+    "distance": 236.0,
+    "quality": 255
+  },
+  {
+    "angle": 2.2336363636363785,
+    "distance": 232.0,
+    "quality": 236
+  },
+  {
+    "angle": 2.940909090909088,
+    "distance": 227.0,
+    "quality": 246
+  },
+  {
+    "angle": 3.648181818181797,
+    "distance": 221.0,
+    "quality": 250
+  },
+  {
+    "angle": 4.355454545454506,
+    "distance": 219.0,
+    "quality": 255
+  },
+  {
+    "angle": 5.0627272727272725,
+    "distance": 216.0,
+    "quality": 255
+  },
+  {
+    "angle": 5.769999999999982,
+    "distance": 214.0,
+    "quality": 255
+  },
+  {
+    "angle": 6.53,
+    "distance": 212.0,
+    "quality": 255
+  },
+  {
+    "angle": 7.247272727272728,
+    "distance": 211.0,
+    "quality": 255
+  },
+  {
+    "angle": 7.964545454545455,
+    "distance": 209.0,
+    "quality": 255
+  },
+  {
+    "angle": 8.681818181818182,
+    "distance": 208.0,
+    "quality": 255
+  },
+  {
+    "angle": 9.399090909090908,
+    "distance": 207.0,
+    "quality": 255
+  },
+  {
+    "angle": 10.116363636363637,
+    "distance": 207.0,
+    "quality": 255
+  },
+  {
+    "angle": 10.833636363636364,
+    "distance": 207.0,
+    "quality": 255
+  },
+  {
+    "angle": 11.55090909090909,
+    "distance": 207.0,
+    "quality": 255
+  },
+  {
+    "angle": 12.26818181818182,
+    "distance": 207.0,
+    "quality": 255
+  },
+  {
+    "angle": 12.985454545454544,
+    "distance": 206.0,
+    "quality": 255
+  },
+  {
+    "angle": 13.702727272727273,
+    "distance": 204.0,
+    "quality": 255
+  },
+  {
+    "angle": 14.420000000000002,
+    "distance": 202.0,
+    "quality": 255
+  },
+  {
+    "angle": 15.14,
+    "distance": 200.0,
+    "quality": 255
+  },
+  {
+    "angle": 15.844545454545456,
+    "distance": 200.0,
+    "quality": 255
+  },
+  {
+    "angle": 16.54909090909091,
+    "distance": 201.0,
+    "quality": 255
+  },
+  {
+    "angle": 17.253636363636364,
+    "distance": 209.0,
+    "quality": 255
+  },
+  {
+    "angle": 17.95818181818182,
+    "distance": 211.0,
+    "quality": 255
+  },
+  {
+    "angle": 18.662727272727274,
+    "distance": 207.0,
+    "quality": 162
+  },
+  {
+    "angle": 19.367272727272727,
+    "distance": 205.0,
+    "quality": 68
+  },
+  {
+    "angle": 20.07181818181818,
+    "distance": 886.0,
+    "quality": 22
+  },
+  {
+    "angle": 20.776363636363637,
+    "distance": 892.0,
+    "quality": 45
+  },
+  {
+    "angle": 21.480909090909094,
+    "distance": 857.0,
+    "quality": 128
+  },
+  {
+    "angle": 22.185454545454547,
+    "distance": 855.0,
+    "quality": 208
+  },
+  {
+    "angle": 22.89,
+    "distance": 855.0,
+    "quality": 230
+  },
+  {
+    "angle": 23.61,
+    "distance": 868.0,
+    "quality": 229
+  },
+  {
+    "angle": 24.334545454545452,
+    "distance": 541.0,
+    "quality": 164
+  },
+  {
+    "angle": 25.05909090909091,
+    "distance": 542.0,
+    "quality": 146
+  },
+  {
+    "angle": 25.78363636363636,
+    "distance": 877.0,
+    "quality": 170
+  },
+  {
+    "angle": 26.508181818181818,
+    "distance": 889.0,
+    "quality": 222
+  },
+  {
+    "angle": 27.23272727272727,
+    "distance": 895.0,
+    "quality": 218
+  },
+  {
+    "angle": 27.957272727272727,
+    "distance": 896.0,
+    "quality": 218
+  },
+  {
+    "angle": 28.68181818181818,
+    "distance": 897.0,
+    "quality": 219
+  },
+  {
+    "angle": 29.406363636363636,
+    "distance": 898.0,
+    "quality": 216
+  },
+  {
+    "angle": 30.13090909090909,
+    "distance": 899.0,
+    "quality": 219
+  },
+  {
+    "angle": 30.855454545454545,
+    "distance": 942.0,
+    "quality": 222
+  },
+  {
+    "angle": 31.58,
+    "distance": 996.0,
+    "quality": 232
+  },
+  {
+    "angle": 32.72,
+    "distance": 1021.0,
+    "quality": 120
+  },
+  {
+    "angle": 33.43818181818182,
+    "distance": 463.0,
+    "quality": 137
+  },
+  {
+    "angle": 34.156363636363636,
+    "distance": 464.0,
+    "quality": 228
+  },
+  {
+    "angle": 34.874545454545455,
+    "distance": 434.0,
+    "quality": 222
+  },
+  {
+    "angle": 35.592727272727274,
+    "distance": 217.0,
+    "quality": 176
+  },
+  {
+    "angle": 36.31090909090909,
+    "distance": 200.0,
+    "quality": 198
+  },
+  {
+    "angle": 37.02909090909091,
+    "distance": 199.0,
+    "quality": 210
+  },
+  {
+    "angle": 37.74727272727272,
+    "distance": 204.0,
+    "quality": 209
+  },
+  {
+    "angle": 38.46545454545454,
+    "distance": 218.0,
+    "quality": 220
+  },
+  {
+    "angle": 39.18363636363636,
+    "distance": 337.0,
+    "quality": 230
+  },
+  {
+    "angle": 39.90181818181818,
+    "distance": 384.0,
+    "quality": 229
+  },
+  {
+    "angle": 40.62,
+    "distance": 394.0,
+    "quality": 243
+  },
+  {
+    "angle": 41.3,
+    "distance": 401.0,
+    "quality": 255
+  },
+  {
+    "angle": 42.03090909090909,
+    "distance": 407.0,
+    "quality": 255
+  },
+  {
+    "angle": 42.76181818181818,
+    "distance": 409.0,
+    "quality": 255
+  },
+  {
+    "angle": 43.49272727272727,
+    "distance": 413.0,
+    "quality": 255
+  },
+  {
+    "angle": 44.223636363636366,
+    "distance": 420.0,
+    "quality": 255
+  },
+  {
+    "angle": 44.95454545454545,
+    "distance": 425.0,
+    "quality": 255
+  },
+  {
+    "angle": 45.68545454545455,
+    "distance": 430.0,
+    "quality": 255
+  },
+  {
+    "angle": 46.41636363636364,
+    "distance": 435.0,
+    "quality": 255
+  },
+  {
+    "angle": 47.14727272727273,
+    "distance": 442.0,
+    "quality": 255
+  },
+  {
+    "angle": 47.87818181818182,
+    "distance": 449.0,
+    "quality": 255
+  },
+  {
+    "angle": 48.60909090909091,
+    "distance": 457.0,
+    "quality": 255
+  },
+  {
+    "angle": 49.34,
+    "distance": 467.0,
+    "quality": 255
+  },
+  {
+    "angle": 50.06,
+    "distance": 483.0,
+    "quality": 224
+  },
+  {
+    "angle": 50.77090909090909,
+    "distance": 539.0,
+    "quality": 78
+  },
+  {
+    "angle": 51.481818181818184,
+    "distance": 537.0,
+    "quality": 56
+  },
+  {
+    "angle": 52.192727272727275,
+    "distance": 523.0,
+    "quality": 56
+  },
+  {
+    "angle": 52.903636363636366,
+    "distance": 506.0,
+    "quality": 56
+  },
+  {
+    "angle": 53.61454545454546,
+    "distance": 487.0,
+    "quality": 56
+  },
+  {
+    "angle": 54.32545454545455,
+    "distance": 470.0,
+    "quality": 58
+  },
+  {
+    "angle": 55.03636363636364,
+    "distance": 456.0,
+    "quality": 60
+  },
+  {
+    "angle": 55.74727272727273,
+    "distance": 440.0,
+    "quality": 63
+  },
+  {
+    "angle": 56.45818181818182,
+    "distance": 419.0,
+    "quality": 73
+  },
+  {
+    "angle": 57.16909090909091,
+    "distance": 278.0,
+    "quality": 76
+  },
+  {
+    "angle": 57.88,
+    "distance": 278.0,
+    "quality": 106
+  },
+  {
+    "angle": 58.63,
+    "distance": 277.0,
+    "quality": 135
+  },
+  {
+    "angle": 59.344545454545454,
+    "distance": 270.0,
+    "quality": 141
+  },
+  {
+    "angle": 60.05909090909091,
+    "distance": 265.0,
+    "quality": 146
+  },
+  {
+    "angle": 60.77363636363636,
+    "distance": 260.0,
+    "quality": 150
+  },
+  {
+    "angle": 61.488181818181815,
+    "distance": 258.0,
+    "quality": 152
+  },
+  {
+    "angle": 62.20272727272727,
+    "distance": 254.0,
+    "quality": 156
+  },
+  {
+    "angle": 62.917272727272724,
+    "distance": 250.0,
+    "quality": 159
+  },
+  {
+    "angle": 63.631818181818176,
+    "distance": 246.0,
+    "quality": 161
+  },
+  {
+    "angle": 64.34636363636363,
+    "distance": 242.0,
+    "quality": 167
+  },
+  {
+    "angle": 65.06090909090909,
+    "distance": 238.0,
+    "quality": 173
+  },
+  {
+    "angle": 65.77545454545454,
+    "distance": 235.0,
+    "quality": 182
+  },
+  {
+    "angle": 66.49,
+    "distance": 232.0,
+    "quality": 192
+  },
+  {
+    "angle": 67.25,
+    "distance": 229.0,
+    "quality": 205
+  },
+  {
+    "angle": 67.96454545454546,
+    "distance": 226.0,
+    "quality": 216
+  },
+  {
+    "angle": 68.6790909090909,
+    "distance": 223.0,
+    "quality": 226
+  },
+  {
+    "angle": 69.39363636363636,
+    "distance": 222.0,
+    "quality": 235
+  },
+  {
+    "angle": 70.10818181818182,
+    "distance": 224.0,
+    "quality": 219
+  },
+  {
+    "angle": 70.82272727272728,
+    "distance": 228.0,
+    "quality": 226
+  },
+  {
+    "angle": 71.53727272727272,
+    "distance": 231.0,
+    "quality": 224
+  },
+  {
+    "angle": 72.25181818181818,
+    "distance": 233.0,
+    "quality": 227
+  },
+  {
+    "angle": 72.96636363636364,
+    "distance": 239.0,
+    "quality": 230
+  },
+  {
+    "angle": 73.6809090909091,
+    "distance": 250.0,
+    "quality": 203
+  },
+  {
+    "angle": 74.39545454545454,
+    "distance": 267.0,
+    "quality": 167
+  },
+  {
+    "angle": 75.11,
+    "distance": 624.0,
+    "quality": 157
+  },
+  {
+    "angle": 75.82,
+    "distance": 638.0,
+    "quality": 236
+  },
+  {
+    "angle": 76.58363636363636,
+    "distance": 648.0,
+    "quality": 251
+  },
+  {
+    "angle": 77.34727272727272,
+    "distance": 650.0,
+    "quality": 253
+  },
+  {
+    "angle": 78.11090909090909,
+    "distance": 653.0,
+    "quality": 255
+  },
+  {
+    "angle": 78.87454545454545,
+    "distance": 654.0,
+    "quality": 255
+  },
+  {
+    "angle": 79.63818181818182,
+    "distance": 648.0,
+    "quality": 255
+  },
+  {
+    "angle": 80.40181818181817,
+    "distance": 638.0,
+    "quality": 255
+  },
+  {
+    "angle": 81.16545454545454,
+    "distance": 630.0,
+    "quality": 255
+  },
+  {
+    "angle": 81.9290909090909,
+    "distance": 625.0,
+    "quality": 255
+  },
+  {
+    "angle": 82.69272727272727,
+    "distance": 623.0,
+    "quality": 255
+  },
+  {
+    "angle": 83.45636363636363,
+    "distance": 621.0,
+    "quality": 255
+  },
+  {
+    "angle": 84.22,
+    "distance": 620.0,
+    "quality": 255
+  },
+  {
+    "angle": 84.94,
+    "distance": 621.0,
+    "quality": 255
+  },
+  {
+    "angle": 85.66090909090909,
+    "distance": 623.0,
+    "quality": 255
+  },
+  {
+    "angle": 86.38181818181818,
+    "distance": 627.0,
+    "quality": 255
+  },
+  {
+    "angle": 87.10272727272728,
+    "distance": 634.0,
+    "quality": 255
+  },
+  {
+    "angle": 87.82363636363637,
+    "distance": 639.0,
+    "quality": 253
+  },
+  {
+    "angle": 88.54454545454546,
+    "distance": 640.0,
+    "quality": 245
+  },
+  {
+    "angle": 89.26545454545455,
+    "distance": 642.0,
+    "quality": 171
+  },
+  {
+    "angle": 89.98636363636363,
+    "distance": 152.0,
+    "quality": 80
+  },
+  {
+    "angle": 90.70727272727272,
+    "distance": 154.0,
+    "quality": 120
+  },
+  {
+    "angle": 91.42818181818183,
+    "distance": 158.0,
+    "quality": 196
+  },
+  {
+    "angle": 92.14909090909092,
+    "distance": 161.0,
+    "quality": 245
+  },
+  {
+    "angle": 92.87,
+    "distance": 164.0,
+    "quality": 255
+  },
+  {
+    "angle": 93.62,
+    "distance": 165.0,
+    "quality": 255
+  },
+  {
+    "angle": 94.3409090909091,
+    "distance": 165.0,
+    "quality": 255
+  },
+  {
+    "angle": 95.06181818181818,
+    "distance": 164.0,
+    "quality": 255
+  },
+  {
+    "angle": 95.78272727272727,
+    "distance": 163.0,
+    "quality": 255
+  },
+  {
+    "angle": 96.50363636363636,
+    "distance": 161.0,
+    "quality": 255
+  },
+  {
+    "angle": 97.22454545454545,
+    "distance": 160.0,
+    "quality": 255
+  },
+  {
+    "angle": 97.94545454545455,
+    "distance": 158.0,
+    "quality": 255
+  },
+  {
+    "angle": 98.66636363636364,
+    "distance": 156.0,
+    "quality": 255
+  },
+  {
+    "angle": 99.38727272727273,
+    "distance": 155.0,
+    "quality": 255
+  },
+  {
+    "angle": 100.10818181818182,
+    "distance": 153.0,
+    "quality": 255
+  },
+  {
+    "angle": 100.82909090909091,
+    "distance": 152.0,
+    "quality": 255
+  },
+  {
+    "angle": 101.55,
+    "distance": 150.0,
+    "quality": 255
+  },
+  {
+    "angle": 102.27,
+    "distance": 149.0,
+    "quality": 255
+  },
+  {
+    "angle": 102.95818181818181,
+    "distance": 147.0,
+    "quality": 255
+  },
+  {
+    "angle": 103.64636363636363,
+    "distance": 147.0,
+    "quality": 255
+  },
+  {
+    "angle": 104.33454545454545,
+    "distance": 146.0,
+    "quality": 255
+  },
+  {
+    "angle": 105.02272727272727,
+    "distance": 146.0,
+    "quality": 255
+  },
+  {
+    "angle": 105.71090909090908,
+    "distance": 145.0,
+    "quality": 255
+  },
+  {
+    "angle": 106.39909090909092,
+    "distance": 144.0,
+    "quality": 255
+  },
+  {
+    "angle": 107.08727272727273,
+    "distance": 142.0,
+    "quality": 255
+  },
+  {
+    "angle": 107.77545454545455,
+    "distance": 140.0,
+    "quality": 249
+  },
+  {
+    "angle": 108.46363636363637,
+    "distance": 137.0,
+    "quality": 170
+  },
+  {
+    "angle": 109.15181818181819,
+    "distance": 130.0,
+    "quality": 151
+  },
+  {
+    "angle": 109.84,
+    "distance": 128.0,
+    "quality": 138
+  },
+  {
+    "angle": 110.56,
+    "distance": 125.0,
+    "quality": 92
+  },
+  {
+    "angle": 111.27818181818182,
+    "distance": 124.0,
+    "quality": 80
+  },
+  {
+    "angle": 111.99636363636364,
+    "distance": 125.0,
+    "quality": 77
+  },
+  {
+    "angle": 112.71454545454546,
+    "distance": 126.0,
+    "quality": 73
+  },
+  {
+    "angle": 113.43272727272728,
+    "distance": 128.0,
+    "quality": 71
+  },
+  {
+    "angle": 114.1509090909091,
+    "distance": 131.0,
+    "quality": 71
+  },
+  {
+    "angle": 114.8690909090909,
+    "distance": 140.0,
+    "quality": 72
+  },
+  {
+    "angle": 115.58727272727272,
+    "distance": 216.0,
+    "quality": 165
+  },
+  {
+    "angle": 116.30545454545454,
+    "distance": 238.0,
+    "quality": 238
+  },
+  {
+    "angle": 117.02363636363636,
+    "distance": 243.0,
+    "quality": 255
+  },
+  {
+    "angle": 117.74181818181818,
+    "distance": 243.0,
+    "quality": 255
+  },
+  {
+    "angle": 118.46,
+    "distance": 243.0,
+    "quality": 255
+  },
+  {
+    "angle": 119.21,
+    "distance": 244.0,
+    "quality": 255
+  },
+  {
+    "angle": 119.94090909090909,
+    "distance": 246.0,
+    "quality": 255
+  },
+  {
+    "angle": 120.67181818181818,
+    "distance": 254.0,
+    "quality": 255
+  },
+  {
+    "angle": 121.40272727272726,
+    "distance": 260.0,
+    "quality": 255
+  },
+  {
+    "angle": 122.13363636363636,
+    "distance": 268.0,
+    "quality": 255
+  },
+  {
+    "angle": 122.86454545454545,
+    "distance": 278.0,
+    "quality": 255
+  },
+  {
+    "angle": 123.59545454545454,
+    "distance": 287.0,
+    "quality": 255
+  },
+  {
+    "angle": 124.32636363636364,
+    "distance": 289.0,
+    "quality": 255
+  },
+  {
+    "angle": 125.05727272727273,
+    "distance": 291.0,
+    "quality": 255
+  },
+  {
+    "angle": 125.78818181818181,
+    "distance": 291.0,
+    "quality": 255
+  },
+  {
+    "angle": 126.5190909090909,
+    "distance": 288.0,
+    "quality": 255
+  },
+  {
+    "angle": 127.25,
+    "distance": 279.0,
+    "quality": 236
+  },
+  {
+    "angle": 127.93,
+    "distance": 278.0,
+    "quality": 196
+  },
+  {
+    "angle": 128.64454545454547,
+    "distance": 276.0,
+    "quality": 107
+  },
+  {
+    "angle": 129.35909090909092,
+    "distance": 277.0,
+    "quality": 26
+  },
+  {
+    "angle": 130.07363636363635,
+    "distance": 2362.0,
+    "quality": 105
+  },
+  {
+    "angle": 130.7881818181818,
+    "distance": 2368.0,
+    "quality": 142
+  },
+  {
+    "angle": 131.50272727272727,
+    "distance": 2149.0,
+    "quality": 106
+  },
+  {
+    "angle": 132.21727272727273,
+    "distance": 2147.0,
+    "quality": 92
+  },
+  {
+    "angle": 132.9318181818182,
+    "distance": 2145.0,
+    "quality": 88
+  },
+  {
+    "angle": 133.64636363636365,
+    "distance": 2144.0,
+    "quality": 65
+  },
+  {
+    "angle": 134.36090909090908,
+    "distance": 6850.0,
+    "quality": 52
+  },
+  {
+    "angle": 135.07545454545453,
+    "distance": 6866.0,
+    "quality": 51
+  },
+  {
+    "angle": 135.79,
+    "distance": 6880.0,
+    "quality": 44
+  },
+  {
+    "angle": 136.51,
+    "distance": 6894.0,
+    "quality": 28
+  },
+  {
+    "angle": 138.10090909090908,
+    "distance": 181.0,
+    "quality": 25
+  },
+  {
+    "angle": 138.89636363636362,
+    "distance": 182.0,
+    "quality": 57
+  },
+  {
+    "angle": 139.69181818181818,
+    "distance": 183.0,
+    "quality": 85
+  },
+  {
+    "angle": 140.4872727272727,
+    "distance": 183.0,
+    "quality": 105
+  },
+  {
+    "angle": 141.28272727272727,
+    "distance": 183.0,
+    "quality": 128
+  },
+  {
+    "angle": 142.0781818181818,
+    "distance": 183.0,
+    "quality": 128
+  },
+  {
+    "angle": 142.87363636363636,
+    "distance": 174.0,
+    "quality": 88
+  },
+  {
+    "angle": 143.6690909090909,
+    "distance": 164.0,
+    "quality": 93
+  },
+  {
+    "angle": 144.46454545454546,
+    "distance": 163.0,
+    "quality": 160
+  },
+  {
+    "angle": 145.26,
+    "distance": 162.0,
+    "quality": 221
+  },
+  {
+    "angle": 145.94,
+    "distance": 162.0,
+    "quality": 236
+  },
+  {
+    "angle": 146.62545454545455,
+    "distance": 160.0,
+    "quality": 240
+  },
+  {
+    "angle": 147.3109090909091,
+    "distance": 156.0,
+    "quality": 243
+  },
+  {
+    "angle": 147.99636363636364,
+    "distance": 152.0,
+    "quality": 246
+  },
+  {
+    "angle": 148.6818181818182,
+    "distance": 149.0,
+    "quality": 247
+  },
+  {
+    "angle": 149.36727272727273,
+    "distance": 145.0,
+    "quality": 247
+  },
+  {
+    "angle": 150.05272727272725,
+    "distance": 142.0,
+    "quality": 247
+  },
+  {
+    "angle": 150.7381818181818,
+    "distance": 139.0,
+    "quality": 247
+  },
+  {
+    "angle": 151.42363636363635,
+    "distance": 135.0,
+    "quality": 247
+  },
+  {
+    "angle": 152.1090909090909,
+    "distance": 132.0,
+    "quality": 247
+  },
+  {
+    "angle": 152.79454545454544,
+    "distance": 128.0,
+    "quality": 246
+  },
+  {
+    "angle": 153.48,
+    "distance": 124.0,
+    "quality": 247
+  },
+  {
+    "angle": 154.2,
+    "distance": 120.0,
+    "quality": 247
+  },
+  {
+    "angle": 154.91727272727272,
+    "distance": 118.0,
+    "quality": 247
+  },
+  {
+    "angle": 155.63454545454545,
+    "distance": 116.0,
+    "quality": 247
+  },
+  {
+    "angle": 156.35181818181817,
+    "distance": 114.0,
+    "quality": 247
+  },
+  {
+    "angle": 157.0690909090909,
+    "distance": 112.0,
+    "quality": 247
+  },
+  {
+    "angle": 157.78636363636363,
+    "distance": 110.0,
+    "quality": 245
+  },
+  {
+    "angle": 158.50363636363636,
+    "distance": 109.0,
+    "quality": 245
+  },
+  {
+    "angle": 159.2209090909091,
+    "distance": 107.0,
+    "quality": 244
+  },
+  {
+    "angle": 159.93818181818182,
+    "distance": 105.0,
+    "quality": 245
+  },
+  {
+    "angle": 160.65545454545455,
+    "distance": 103.0,
+    "quality": 245
+  },
+  {
+    "angle": 267.20181818181817,
+    "distance": 107.0,
+    "quality": 240
+  },
+  {
+    "angle": 267.9027272727273,
+    "distance": 113.0,
+    "quality": 249
+  },
+  {
+    "angle": 268.6036363636364,
+    "distance": 115.0,
+    "quality": 255
+  },
+  {
+    "angle": 269.30454545454546,
+    "distance": 118.0,
+    "quality": 255
+  },
+  {
+    "angle": 270.00545454545454,
+    "distance": 119.0,
+    "quality": 255
+  },
+  {
+    "angle": 270.7063636363636,
+    "distance": 120.0,
+    "quality": 255
+  },
+  {
+    "angle": 271.4072727272727,
+    "distance": 120.0,
+    "quality": 255
+  },
+  {
+    "angle": 272.10818181818183,
+    "distance": 120.0,
+    "quality": 255
+  },
+  {
+    "angle": 272.8090909090909,
+    "distance": 120.0,
+    "quality": 255
+  },
+  {
+    "angle": 273.51,
+    "distance": 120.0,
+    "quality": 255
+  },
+  {
+    "angle": 274.23,
+    "distance": 122.0,
+    "quality": 255
+  },
+  {
+    "angle": 274.9481818181818,
+    "distance": 124.0,
+    "quality": 255
+  },
+  {
+    "angle": 275.66636363636366,
+    "distance": 126.0,
+    "quality": 255
+  },
+  {
+    "angle": 276.38454545454545,
+    "distance": 130.0,
+    "quality": 255
+  },
+  {
+    "angle": 277.1027272727273,
+    "distance": 133.0,
+    "quality": 255
+  },
+  {
+    "angle": 277.8209090909091,
+    "distance": 137.0,
+    "quality": 255
+  },
+  {
+    "angle": 278.53909090909093,
+    "distance": 140.0,
+    "quality": 253
+  },
+  {
+    "angle": 279.2572727272727,
+    "distance": 142.0,
+    "quality": 251
+  },
+  {
+    "angle": 279.97545454545457,
+    "distance": 145.0,
+    "quality": 249
+  },
+  {
+    "angle": 280.69363636363636,
+    "distance": 149.0,
+    "quality": 250
+  },
+  {
+    "angle": 281.4118181818182,
+    "distance": 153.0,
+    "quality": 250
+  },
+  {
+    "angle": 282.13,
+    "distance": 157.0,
+    "quality": 252
+  },
+  {
+    "angle": 282.84,
+    "distance": 164.0,
+    "quality": 253
+  },
+  {
+    "angle": 283.4990909090909,
+    "distance": 166.0,
+    "quality": 254
+  },
+  {
+    "angle": 284.1581818181818,
+    "distance": 170.0,
+    "quality": 254
+  },
+  {
+    "angle": 284.8172727272727,
+    "distance": 174.0,
+    "quality": 254
+  },
+  {
+    "angle": 285.4763636363636,
+    "distance": 181.0,
+    "quality": 255
+  },
+  {
+    "angle": 286.13545454545454,
+    "distance": 186.0,
+    "quality": 255
+  },
+  {
+    "angle": 286.7945454545454,
+    "distance": 192.0,
+    "quality": 255
+  },
+  {
+    "angle": 287.45363636363635,
+    "distance": 199.0,
+    "quality": 255
+  },
+  {
+    "angle": 288.1127272727272,
+    "distance": 206.0,
+    "quality": 255
+  },
+  {
+    "angle": 288.77181818181816,
+    "distance": 213.0,
+    "quality": 255
+  },
+  {
+    "angle": 289.43090909090904,
+    "distance": 220.0,
+    "quality": 255
+  },
+  {
+    "angle": 290.09,
+    "distance": 228.0,
+    "quality": 255
+  },
+  {
+    "angle": 290.81,
+    "distance": 236.0,
+    "quality": 253
+  },
+  {
+    "angle": 291.5281818181818,
+    "distance": 245.0,
+    "quality": 253
+  },
+  {
+    "angle": 292.24636363636364,
+    "distance": 254.0,
+    "quality": 252
+  },
+  {
+    "angle": 292.96454545454543,
+    "distance": 268.0,
+    "quality": 255
+  },
+  {
+    "angle": 293.6827272727273,
+    "distance": 287.0,
+    "quality": 255
+  },
+  {
+    "angle": 294.40090909090907,
+    "distance": 308.0,
+    "quality": 255
+  },
+  {
+    "angle": 295.1190909090909,
+    "distance": 317.0,
+    "quality": 255
+  },
+  {
+    "angle": 295.8372727272727,
+    "distance": 319.0,
+    "quality": 255
+  },
+  {
+    "angle": 296.55545454545455,
+    "distance": 321.0,
+    "quality": 255
+  },
+  {
+    "angle": 297.27363636363634,
+    "distance": 322.0,
+    "quality": 255
+  },
+  {
+    "angle": 297.9918181818182,
+    "distance": 321.0,
+    "quality": 255
+  },
+  {
+    "angle": 298.71,
+    "distance": 320.0,
+    "quality": 255
+  },
+  {
+    "angle": 299.42,
+    "distance": 319.0,
+    "quality": 255
+  },
+  {
+    "angle": 300.1281818181818,
+    "distance": 319.0,
+    "quality": 255
+  },
+  {
+    "angle": 300.83636363636367,
+    "distance": 318.0,
+    "quality": 255
+  },
+  {
+    "angle": 301.54454545454547,
+    "distance": 318.0,
+    "quality": 255
+  },
+  {
+    "angle": 302.25272727272727,
+    "distance": 317.0,
+    "quality": 255
+  },
+  {
+    "angle": 302.96090909090907,
+    "distance": 317.0,
+    "quality": 255
+  },
+  {
+    "angle": 303.6690909090909,
+    "distance": 316.0,
+    "quality": 255
+  },
+  {
+    "angle": 304.3772727272727,
+    "distance": 315.0,
+    "quality": 255
+  },
+  {
+    "angle": 305.0854545454545,
+    "distance": 314.0,
+    "quality": 255
+  },
+  {
+    "angle": 305.7936363636363,
+    "distance": 311.0,
+    "quality": 255
+  },
+  {
+    "angle": 306.5018181818182,
+    "distance": 253.0,
+    "quality": 243
+  },
+  {
+    "angle": 307.21,
+    "distance": 202.0,
+    "quality": 221
+  },
+  {
+    "angle": 307.89,
+    "distance": 269.0,
+    "quality": 229
+  },
+  {
+    "angle": 308.61454545454546,
+    "distance": 318.0,
+    "quality": 246
+  },
+  {
+    "angle": 309.3390909090909,
+    "distance": 319.0,
+    "quality": 255
+  },
+  {
+    "angle": 310.06363636363636,
+    "distance": 320.0,
+    "quality": 255
+  },
+  {
+    "angle": 310.78818181818184,
+    "distance": 321.0,
+    "quality": 255
+  },
+  {
+    "angle": 311.51272727272726,
+    "distance": 322.0,
+    "quality": 255
+  },
+  {
+    "angle": 312.23727272727274,
+    "distance": 323.0,
+    "quality": 255
+  },
+  {
+    "angle": 312.96181818181816,
+    "distance": 324.0,
+    "quality": 255
+  },
+  {
+    "angle": 313.68636363636364,
+    "distance": 325.0,
+    "quality": 255
+  },
+  {
+    "angle": 314.4109090909091,
+    "distance": 324.0,
+    "quality": 255
+  },
+  {
+    "angle": 315.13545454545454,
+    "distance": 322.0,
+    "quality": 255
+  },
+  {
+    "angle": 315.86,
+    "distance": 314.0,
+    "quality": 255
+  },
+  {
+    "angle": 316.54,
+    "distance": 274.0,
+    "quality": 251
+  },
+  {
+    "angle": 317.32272727272726,
+    "distance": 306.0,
+    "quality": 243
+  },
+  {
+    "angle": 318.10545454545456,
+    "distance": 316.0,
+    "quality": 255
+  },
+  {
+    "angle": 318.8881818181818,
+    "distance": 315.0,
+    "quality": 255
+  },
+  {
+    "angle": 319.6709090909091,
+    "distance": 284.0,
+    "quality": 255
+  },
+  {
+    "angle": 320.45363636363635,
+    "distance": 273.0,
+    "quality": 255
+  },
+  {
+    "angle": 321.23636363636365,
+    "distance": 267.0,
+    "quality": 255
+  },
+  {
+    "angle": 322.0190909090909,
+    "distance": 266.0,
+    "quality": 255
+  },
+  {
+    "angle": 322.8018181818182,
+    "distance": 263.0,
+    "quality": 255
+  },
+  {
+    "angle": 323.58454545454543,
+    "distance": 261.0,
+    "quality": 255
+  },
+  {
+    "angle": 324.36727272727273,
+    "distance": 259.0,
+    "quality": 255
+  },
+  {
+    "angle": 325.15,
+    "distance": 253.0,
+    "quality": 255
+  },
+  {
+    "angle": 325.84,
+    "distance": 248.0,
+    "quality": 238
+  },
+  {
+    "angle": 326.55727272727273,
+    "distance": 249.0,
+    "quality": 217
+  },
+  {
+    "angle": 327.27454545454543,
+    "distance": 251.0,
+    "quality": 200
+  },
+  {
+    "angle": 327.9918181818182,
+    "distance": 246.0,
+    "quality": 211
+  },
+  {
+    "angle": 328.7090909090909,
+    "distance": 244.0,
+    "quality": 208
+  },
+  {
+    "angle": 329.42636363636365,
+    "distance": 244.0,
+    "quality": 221
+  },
+  {
+    "angle": 330.14363636363635,
+    "distance": 260.0,
+    "quality": 241
+  },
+  {
+    "angle": 330.8609090909091,
+    "distance": 274.0,
+    "quality": 255
+  },
+  {
+    "angle": 331.5781818181818,
+    "distance": 283.0,
+    "quality": 255
+  },
+  {
+    "angle": 332.29545454545456,
+    "distance": 288.0,
+    "quality": 255
+  },
+  {
+    "angle": 333.01272727272726,
+    "distance": 290.0,
+    "quality": 255
+  },
+  {
+    "angle": 333.73,
+    "distance": 293.0,
+    "quality": 255
+  },
+  {
+    "angle": 334.48,
+    "distance": 296.0,
+    "quality": 255
+  },
+  {
+    "angle": 335.19454545454545,
+    "distance": 299.0,
+    "quality": 255
+  },
+  {
+    "angle": 335.90909090909093,
+    "distance": 301.0,
+    "quality": 255
+  },
+  {
+    "angle": 336.62363636363636,
+    "distance": 304.0,
+    "quality": 255
+  },
+  {
+    "angle": 337.3381818181818,
+    "distance": 308.0,
+    "quality": 255
+  },
+  {
+    "angle": 338.0527272727273,
+    "distance": 311.0,
+    "quality": 255
+  },
+  {
+    "angle": 338.7672727272727,
+    "distance": 315.0,
+    "quality": 255
+  },
+  {
+    "angle": 339.4818181818182,
+    "distance": 318.0,
+    "quality": 255
+  },
+  {
+    "angle": 340.1963636363636,
+    "distance": 322.0,
+    "quality": 255
+  },
+  {
+    "angle": 340.91090909090906,
+    "distance": 326.0,
+    "quality": 255
+  },
+  {
+    "angle": 341.62545454545455,
+    "distance": 330.0,
+    "quality": 255
+  },
+  {
+    "angle": 342.34,
+    "distance": 334.0,
+    "quality": 255
+  },
+  {
+    "angle": 343.1,
+    "distance": 341.0,
+    "quality": 255
+  },
+  {
+    "angle": 343.79454545454547,
+    "distance": 346.0,
+    "quality": 255
+  },
+  {
+    "angle": 344.4890909090909,
+    "distance": 351.0,
+    "quality": 255
+  },
+  {
+    "angle": 345.18363636363637,
+    "distance": 356.0,
+    "quality": 255
+  },
+  {
+    "angle": 345.8781818181818,
+    "distance": 358.0,
+    "quality": 255
+  },
+  {
+    "angle": 346.57272727272726,
+    "distance": 365.0,
+    "quality": 255
+  },
+  {
+    "angle": 347.26727272727277,
+    "distance": 366.0,
+    "quality": 255
+  },
+  {
+    "angle": 347.9618181818182,
+    "distance": 368.0,
+    "quality": 247
+  },
+  {
+    "angle": 348.65636363636366,
+    "distance": 366.0,
+    "quality": 231
+  },
+  {
+    "angle": 349.3509090909091,
+    "distance": 304.0,
+    "quality": 198
+  },
+  {
+    "angle": 350.04545454545456,
+    "distance": 132.0,
+    "quality": 126
+  },
+  {
+    "angle": 351.49,
+    "distance": 137.0,
+    "quality": 91
+  },
+  {
+    "angle": 352.2109090909091,
+    "distance": 218.0,
+    "quality": 205
+  },
+  {
+    "angle": 352.9318181818182,
+    "distance": 226.0,
+    "quality": 255
+  },
+  {
+    "angle": 353.6527272727273,
+    "distance": 226.0,
+    "quality": 255
+  },
+  {
+    "angle": 354.37363636363636,
+    "distance": 224.0,
+    "quality": 255
+  },
+  {
+    "angle": 355.0945454545455,
+    "distance": 222.0,
+    "quality": 255
+  },
+  {
+    "angle": 355.81545454545454,
+    "distance": 220.0,
+    "quality": 255
+  },
+  {
+    "angle": 356.53636363636366,
+    "distance": 218.0,
+    "quality": 255
+  },
+  {
+    "angle": 357.2572727272727,
+    "distance": 218.0,
+    "quality": 255
+  },
+  {
+    "angle": 357.97818181818184,
+    "distance": 218.0,
+    "quality": 255
+  },
+  {
+    "angle": 358.6990909090909,
+    "distance": 220.0,
+    "quality": 255
+  },
+  {
+    "angle": 359.42,
+    "distance": 227.0,
+    "quality": 255
+  }
+]

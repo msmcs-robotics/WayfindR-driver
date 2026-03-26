@@ -42,7 +42,7 @@ log = logging.getLogger(__name__)
 
 # Default configuration
 DEFAULT_BASE_URL = "https://daytonabeach.erau.edu/college-engineering/"
-DEFAULT_OUTPUT_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "output")
+DEFAULT_OUTPUT_DIR = "/tmp/erau-scrape-staging"
 DEFAULT_DELAY = 1.5  # seconds between requests (be polite)
 DEFAULT_TIMEOUT = 15  # seconds per request
 DEFAULT_MAX_DEPTH = 5

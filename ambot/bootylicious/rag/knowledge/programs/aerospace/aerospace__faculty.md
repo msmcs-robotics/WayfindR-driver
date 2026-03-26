@@ -5,190 +5,83 @@
 **Scraped**: 2026-02-24 18:20:43
 
 ---
-Displaying 1-20 of 57
 
-Richard P. Anderson
+## Richard P. Anderson
 
-Title
-Professor
-College
-Degrees
-Ph.D., University of Central Florida
+**Richard P. Anderson** is a Professor in the Aerospace Engineering Department at Embry-Riddle Aeronautical University. Richard P. Anderson holds a Ph.D. from the University of Central Florida and an M.S. and B.S. from The Pennsylvania State University.
 
-M.S., B.S., The Pennsylvania State University-Main Campus
+## Riccardo Bevilacqua
 
-Riccardo Bevilacqua
+**Riccardo Bevilacqua** is an Interim Vice Provost and Professor in the Aerospace Engineering Department at Embry-Riddle Aeronautical University. Riccardo Bevilacqua holds a Ph.D., M., and B. from Universita degli Studi di Roma La Sapienza.
 
-Title
-Interim Vice Provost and Professor
-College
-Degrees
-Ph.D., M., B., Universita degli Studi di Roma La Sapienza
+## Surabhi Bhadauria
 
-Surabhi Bhadauria
+**Surabhi Bhadauria** is an Assistant Professor in the Aerospace Engineering Department at Embry-Riddle Aeronautical University. Surabhi Bhadauria holds a Ph.D. and M.S. from Purdue University.
 
-Title
-Assistant Professor
-College
-Degrees
-Ph.D., M.S., Purdue University-Main Campus
+## Andrew Bustard
 
-Andrew Bustard
+**Andrew Bustard** is an Assistant Professor in the Aerospace Engineering Department at Embry-Riddle Aeronautical University. Andrew Bustard holds a Ph.D. and M.S. from the University of Notre Dame.
 
-Title
-Assistant Professor
-College
-Degrees
-Ph.D., M.S., University of Notre Dame
+## David Canales Garcia
 
-David Canales Garcia
+**David Canales Garcia** is an Assistant Professor in the Aerospace Engineering Department at Embry-Riddle Aeronautical University. David Canales Garcia holds a Ph.D. from Purdue University, an M. from the Universitat de Barcelona, and an M. and B. from the Universitat Politecnica de Catalunya.
 
-Title
-Assistant Professor
-College
-Degrees
-Ph.D., Purdue University-Main Campus
+## Kyle Collins
 
-M., Universitat de Barcelona
+**Kyle Collins** is a Research Assistant Professor and Director of the Eagle Flight Research Center (EFRC) in the Aerospace Engineering Department at Embry-Riddle Aeronautical University. Kyle Collins holds a Ph.D., M.S., and B.M.E. from the Georgia Institute of Technology.
 
-M., B., Universitat Politecnica de Catalunya
+## Francisco Crespo Cutillas
 
-Kyle Collins
+**Francisco Crespo Cutillas** is an Associate Professor in the Aerospace Engineering Department at Embry-Riddle Aeronautical University. Francisco Crespo Cutillas holds a Ph.D., M.S., and M.S. from the Universidad de Murcia.
 
-Title
-Research Assistant Professor and Director of the Eagle Flight Research Center (EFRC)
-College
-Degrees
-Ph.D., M.S., B.M.E., Georgia Institute of Technology-Main Campus
+## Roberto Cuellar Rangel
 
-Francisco Crespo Cutillas
+**Roberto Cuellar Rangel** is a Visiting Assistant Professor in the Aerospace Engineering Department at Embry-Riddle Aeronautical University. Roberto Cuellar Rangel holds a Ph.D., M.S., and B.S. from Embry-Riddle Aeronautical University.
 
-Title
-Associate Professor
-College
-Degrees
-Ph.D., M.S., M.S., Universidad de Murcia
+## Kranthi Kumar Deveerasetty
 
-Roberto Cuellar Rangel
+**Kranthi Kumar Deveerasetty** is a Research Assistant Professor in the Aerospace Engineering Department at Embry-Riddle Aeronautical University. Kranthi Kumar Deveerasetty holds a Ph.D. and M. from Banaras Hindu University.
 
-Title
-Visiting Assistant Professor
-College
-Degrees
-Ph.D., M.S., B.S., Embry-Riddle Aeronautical University
+## Kadriye Merve Dogan
 
-Kranthi Kumar Deveerasetty
+**Kadriye Merve Dogan** is an Assistant Professor in the Aerospace Engineering Department at Embry-Riddle Aeronautical University. Kadriye Merve Dogan holds a Ph.D. from the University of South Florida.
 
-Title
-Research Assistant Professor
-College
-Degrees
-Ph.D., M., Banaras Hindu University
+## William Engblom
 
-Kadriye Merve Dogan
+**William Engblom** is a Professor in the Aerospace Engineering Department at Embry-Riddle Aeronautical University. William Engblom holds a Ph.D. and M.S. from The University of Texas at Austin.
 
-Title
-Assistant Professor
-College
-Degrees
-Ph.D., University of South Florida
+## Habib Eslami
 
-William Engblom
+**Habib Eslami** is a Professor in the Aerospace Engineering Department at Embry-Riddle Aeronautical University. Habib Eslami holds a Ph.D. from Old Dominion University.
 
-Title
-Professor
-College
-Degrees
-Ph.D., M.S., The University of Texas at Austin
+## Saman Farhangdoust
 
-Habib Eslami
+**Saman Farhangdoust** is an Assistant Professor in the Aerospace Engineering Department at Embry-Riddle Aeronautical University. Saman Farhangdoust holds a Ph.D. and M.S. from Florida International University.
 
-Title
-Professor
-College
-Degrees
-Ph.D., Old Dominion University
+## Luis Estefano Ferrer-Vidal Espana-Heredia
 
-Saman Farhangdoust
+**Luis Estefano Ferrer-Vidal Espana-Heredia** is an Associate Professor in the Aerospace Engineering Department at Embry-Riddle Aeronautical University. Luis Estefano Ferrer-Vidal Espana-Heredia holds a Ph.D. from Cranfield University and an M.S. and B.S. from Embry-Riddle Aeronautical University.
 
-Title
-Assistant Professor
-College
-Degrees
-Ph.D., M.S., Florida International University
+## Emanuela Gaglio
 
-Luis Estefano Ferrer-Vidal Espana-Heredia
+**Emanuela Gaglio** is a Visiting Assistant Professor in the Aerospace Engineering Department at Embry-Riddle Aeronautical University. Emanuela Gaglio holds an M. from the Universita degli Studi di Napoli Federico II.
 
-Title
-Associate Professor
-College
-Degrees
-Ph.D., Cranfield University
+## Anouck Girard
 
-M.S., B.S., Embry-Riddle Aeronautical University
+**Anouck Girard** is the Chair and Professor of Aerospace Engineering at Embry-Riddle Aeronautical University. Anouck Girard holds a Ph.D. from the University of California-Berkeley.
 
-Emanuela Gaglio
+## Ebenezer P. Gnanamanickam
 
-Title
-Visiting Assistant Professor
-College
-Degrees
-M., Universit?? degli Studi di Napoli Federico II
+**Ebenezer P. Gnanamanickam** is an Associate Professor in the Aerospace Engineering Department at Embry-Riddle Aeronautical University. Ebenezer P. Gnanamanickam holds a Ph.D. and M.S. from Purdue University.
 
-Anouck Girard
+## Vladimir Golubev
 
-Title
-Chair & Professor of Aerospace Engineering
-College
-Degrees
-Ph.D., University of California-Berkeley
+**Vladimir Golubev** is a Professor in the Aerospace Engineering Department at Embry-Riddle Aeronautical University. Vladimir Golubev holds a Ph.D. and M.S. from the University of Notre Dame.
 
-Ebenezer P. Gnanamanickam
+## Jim Gregory
 
-Title
-Associate Professor
-College
-Degrees
-Ph.D., M.S., Purdue University-Main Campus
+**Jim Gregory** is the Dean and Professor in the Aerospace Engineering Department at Embry-Riddle Aeronautical University. Jim Gregory holds a Ph.D. and M.S. from Purdue University and a B. from the Georgia Institute of Technology.
 
-Vladimir Golubev
+## Glenn Greiner
 
-Title
-Professor
-College
-Degrees
-Ph.D., M.S., University of Notre Dame
-
-Jim Gregory
-
-Title
-Dean and Professor
-College
-Degrees
-Ph.D., M.S., Purdue University-Main Campus
-
-B., Georgia Institute of Technology-Main Campus
-
-Glenn Greiner
-
-Title
-Associate Professor
-College
-Degrees
-M.S., B.S., Embry-Riddle Aeronautical University
-
-Displaying 1-20 of 57
-
-1
-
-2
-
-3
-
-›
-
-»
-
-×
-
-Close
+**Glenn Greiner** is an Associate Professor in the Aerospace Engineering Department at Embry-Riddle Aeronautical University. Glenn Greiner holds an M.S. and B.S. from Embry-Riddle Aeronautical University.

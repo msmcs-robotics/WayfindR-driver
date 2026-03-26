@@ -4,217 +4,90 @@
 
 **Scraped**: 2026-02-24 18:20:26
 
+**Note**: This is a partial listing (20 of 143 faculty members).
+
 ---
+
 The diverse faculty of the College of Engineering share a common mission of providing a world-class education to our undergraduate and graduate students, contributing to the academic body of knowledge in their respective fields, and producing solutions to industry problems.
 
-Many faculty have years of experience in industry to bring to their classroom lectures and research laboratories. Six of our faculty are “distinguished” faculty, bringing decades of high-profile research and funding history to their positions at Embry-Riddle, where they are actively building new laboratories and student research groups to support a growing graduate student population and research-focused culture.
+Many faculty have years of experience in industry to bring to their classroom lectures and research laboratories. Six of our faculty are "distinguished" faculty, bringing decades of high-profile research and funding history to their positions at Embry-Riddle, where they are actively building new laboratories and student research groups to support a growing graduate student population and research-focused culture.
 
-Displaying 1-20 of 143
+## Lorraine Acevedo
 
-Lorraine Acevedo
+**Lorraine Acevedo** is an Assistant Professor in Engineering Fundamentals at Embry-Riddle Aeronautical University, Daytona Beach. Lorraine Acevedo holds an M.S. and B.S. from Embry-Riddle Aeronautical University.
 
-Title
-Assistant Professor
-Department
-Engineering Fundamentals
-Degrees
-M.S., B.S., Embry-Riddle Aeronautical University
+## Parham Ahmady Phoulady
 
-Parham Ahmady Phoulady
+**Parham Ahmady Phoulady** is an Assistant Professor in the Electrical Engineering and Computer Science Dept at Embry-Riddle Aeronautical University, Daytona Beach. Parham Ahmady Phoulady holds a Ph.D. and M.S. from the University of South Florida.
 
-Title
-Assistant Professor
-Department
-Electrical Engineering and Computer Science Dept
-Degrees
-Ph.D., M.S., University of South Florida
+## M. Ilhan Akbas
 
-M. Ilhan Akbas
+**M. Ilhan Akbas** is an Associate Professor, Associate Chair, and Program Coordinator in the Electrical Engineering and Computer Science Dept at Embry-Riddle Aeronautical University, Daytona Beach. M. Ilhan Akbas holds a Ph.D. from the University of Central Florida.
 
-Title
-Associate Professor, Associate Chair, and Program Coord.
-Department
-Electrical Engineering and Computer Science Dept
-Degrees
-Ph.D., University of Central Florida
+## Susan D. Allen
 
-Susan D. Allen
+**Susan D. Allen** is a Visiting Distinguished Professor in the Mechanical Engineering Department at Embry-Riddle Aeronautical University, Daytona Beach. Susan D. Allen holds a Ph.D. from the University of Southern California.
 
-Title
-Visiting Distinguished Professor
-Department
-Mechanical Engineering Department
-Degrees
-Ph.D., University of Southern California
+## Omar Almahmoud
 
-Omar Almahmoud
+**Omar Almahmoud** is an Assistant Professor in the Mechanical Engineering Department at Embry-Riddle Aeronautical University, Daytona Beach. Omar Almahmoud holds a Ph.D. from the University of North Texas.
 
-Title
-Assistant Professor
-Department
-Mechanical Engineering Department
-Degrees
-Ph.D., University of North Texas
+## Richard P. Anderson
 
-Richard P. Anderson
+**Richard P. Anderson** is a Professor in the Aerospace Engineering Department at Embry-Riddle Aeronautical University, Daytona Beach. Richard P. Anderson holds a Ph.D. from the University of Central Florida, and an M.S. and B.S. from The Pennsylvania State University-Main Campus.
 
-Title
-Professor
-Department
-Aerospace Engineering Department
-Degrees
-Ph.D., University of Central Florida
+## Boutros Azizi
 
-M.S., B.S., The Pennsylvania State University-Main Campus
+**Boutros Azizi** is an Assistant Professor in Engineering Fundamentals at Embry-Riddle Aeronautical University, Daytona Beach. Boutros Azizi holds a Ph.D. and M.S. from Embry-Riddle Aeronautical University.
 
-Boutros Azizi
+## Carolina Barriento
 
-Title
-Assistant Professor
-Department
-Engineering Fundamentals
-Degrees
-Ph.D., M.S., Embry-Riddle Aeronautical University
+**Carolina Barriento** is an Assistant Professor in the Mechanical Engineering Department at Embry-Riddle Aeronautical University, Daytona Beach. Carolina Barriento holds an M.S. and B.S. from the University of Central Florida.
 
-Carolina Barriento
+## Fady Barsoum
 
-Title
-Assistant Professor
-Department
-Mechanical Engineering Department
-Degrees
-M.S., B.S., University of Central Florida
+**Fady Barsoum** is a Professor and Co-Op and Internship Coordinator in the Mechanical Engineering Department at Embry-Riddle Aeronautical University, Daytona Beach. Fady Barsoum holds a Ph.D. and M.S. from the University of Central Florida.
 
-Fady Barsoum
+## Debarati Basu
 
-Title
-Professor and Co-Op and Internship Coordinator
-Department
-Mechanical Engineering Department
-Degrees
-Ph.D., M.S., University of Central Florida
+**Debarati Basu** is an Assistant Professor in Engineering Fundamentals at Embry-Riddle Aeronautical University, Daytona Beach. Debarati Basu holds a Ph.D. and Graduate Certificate from Virginia Polytechnic Institute and State University.
 
-Debarati Basu
+## Farahzad Behi
 
-Title
-Assistant Professor
-Department
-Engineering Fundamentals
-Degrees
-Ph.D., Graduate Certificate, Virginia Polytechnic Institute and State University
+**Farahzad Behi** is a Professor in the Electrical Engineering and Computer Science Dept at Embry-Riddle Aeronautical University, Daytona Beach. Farahzad Behi holds an M.S. from the University of Central Florida.
 
-Farahzad Behi
+## David Bethelmy
 
-Title
-Professor
-Department
-Electrical Engineering and Computer Science Dept
-Degrees
-M.S., University of Central Florida
+**David Bethelmy** is an Associate Professor in the Electrical Engineering and Computer Science Dept at Embry-Riddle Aeronautical University, Daytona Beach. David Bethelmy holds a Ph.D. from Nova Southeastern University.
 
-David Bethelmy
+## Riccardo Bevilacqua
 
-Title
-Associate Professor
-Department
-Electrical Engineering and Computer Science Dept
-Degrees
-Ph.D., Nova Southeastern University
+**Riccardo Bevilacqua** is the Interim Vice Provost and a Professor in the Aerospace Engineering Department at Embry-Riddle Aeronautical University, Daytona Beach. Riccardo Bevilacqua holds a Ph.D., M., and B. from Universita degli Studi di Roma La Sapienza.
 
-Riccardo Bevilacqua
+## Surabhi Bhadauria
 
-Title
-Interim Vice Provost and Professor
-Department
-Aerospace Engineering Department
-Degrees
-Ph.D., M., B., Universita degli Studi di Roma La Sapienza
+**Surabhi Bhadauria** is an Assistant Professor in the Aerospace Engineering Department at Embry-Riddle Aeronautical University, Daytona Beach. Surabhi Bhadauria holds a Ph.D. and M.S. from Purdue University-Main Campus.
 
-Surabhi Bhadauria
+## Sandra Boetcher
 
-Title
-Assistant Professor
-Department
-Aerospace Engineering Department
-Degrees
-Ph.D., M.S., Purdue University-Main Campus
+**Sandra Boetcher** is a Professor, Interim Chair, and Program Coordinator in the Mechanical Engineering Department at Embry-Riddle Aeronautical University, Daytona Beach. Sandra Boetcher holds a Ph.D. and M.S. from the University of Minnesota-Twin Cities.
 
-Sandra Boetcher
+## Jeff Brown
 
-Title
-Professor, Interim Chair, and Program Coordinator
-Department
-Mechanical Engineering Department
-Degrees
-Ph.D., M.S., University of Minnesota-Twin Cities
+**Jeff Brown** is a Professor and Director of the Honors Program in the Civil Engineering Department at Embry-Riddle Aeronautical University, Daytona Beach. Jeff Brown holds a Ph.D. from the University of Florida.
 
-Jeff Brown
+## Leonardo Bueno-Benitez
 
-Title
-Professor and Director of the Honors Program
-Department
-Civil Engineering Department
-Degrees
-Ph.D., University of Florida
+**Leonardo Bueno-Benitez** is an Associate Professor in Engineering Fundamentals at Embry-Riddle Aeronautical University, Daytona Beach. Leonardo Bueno-Benitez holds a Ph.D., M.S., and B.S. from Embry-Riddle Aeronautical University, and an M.S. from the University of Central Florida.
 
-Leonardo Bueno-Benitez
+## Andrew Bustard
 
-Title
-Associate Professor
-Department
-Engineering Fundamentals
-Degrees
-Ph.D., M.S., B.S., Embry-Riddle Aeronautical University
+**Andrew Bustard** is an Assistant Professor in the Aerospace Engineering Department at Embry-Riddle Aeronautical University, Daytona Beach. Andrew Bustard holds a Ph.D. and M.S. from the University of Notre Dame.
 
-M.S., University of Central Florida
+## Brian Butka
 
-Andrew Bustard
+**Brian Butka** is a Professor in the Electrical Engineering and Computer Science Dept at Embry-Riddle Aeronautical University, Daytona Beach. Brian Butka holds a Ph.D. and M.S. from the Georgia Institute of Technology-Main Campus.
 
-Title
-Assistant Professor
-Department
-Aerospace Engineering Department
-Degrees
-Ph.D., M.S., University of Notre Dame
+## David Canales Garcia
 
-Brian Butka
-
-Title
-Professor
-Department
-Electrical Engineering and Computer Science Dept
-Degrees
-Ph.D., M.S., Georgia Institute of Technology-Main Campus
-
-David Canales Garcia
-
-Title
-Assistant Professor
-Department
-Aerospace Engineering Department
-Degrees
-Ph.D., Purdue University-Main Campus
-
-M., Universitat de Barcelona
-
-M., B., Universitat Politecnica de Catalunya
-
-Displaying 1-20 of 143
-
-1
-
-2
-
-3
-
-4
-
-…
-
-›
-
-»
-
-×
-
-Close
+**David Canales Garcia** is an Assistant Professor in the Aerospace Engineering Department at Embry-Riddle Aeronautical University, Daytona Beach. David Canales Garcia holds a Ph.D. from Purdue University-Main Campus, an M. from Universitat de Barcelona, and an M. and B. from Universitat Politecnica de Catalunya.

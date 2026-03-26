@@ -5,110 +5,51 @@
 **Scraped**: 2026-02-24 18:21:00
 
 ---
-Displaying 1-12 of 12
 
-Jeff Brown
+## Jeff Brown
 
-Title
-Professor and Director of the Honors Program
-College
-Degrees
-Ph.D., University of Florida
+**Jeff Brown** is a Professor and Director of the Honors Program in the Civil Engineering Department at Embry-Riddle Aeronautical University. Jeff Brown holds a Ph.D. from the University of Florida.
 
-Hongyun Chen
+## Hongyun Chen
 
-Title
-Associate Professor
-College
-Degrees
-Ph.D., M.S., University of South Florida
+**Hongyun Chen** is an Associate Professor in the Civil Engineering Department at Embry-Riddle Aeronautical University. Hongyun Chen holds a Ph.D. and M.S. from the University of South Florida.
 
-Kien Dinh
+## Kien Dinh
 
-Title
-Assistant Professor
-College
-Degrees
-Ph.D., Concordia University-Montreal
+**Kien Dinh** is an Assistant Professor in the Civil Engineering Department at Embry-Riddle Aeronautical University. Kien Dinh holds a Ph.D. from Concordia University-Montreal.
 
-Ghada Ellithy
+## Ghada Ellithy
 
-Title
-Assistant Professor
-College
-Degrees
-Ph.D., West Virginia University
+**Ghada Ellithy** is an Assistant Professor in the Civil Engineering Department at Embry-Riddle Aeronautical University. Ghada Ellithy holds a Ph.D. from West Virginia University.
 
-Christopher Grant
+## Christopher Grant
 
-Title
-Professor
-College
-Degrees
-Ph.D., Georgia Institute of Technology-Main Campus
+**Christopher Grant** is a Professor in the Civil Engineering Department at Embry-Riddle Aeronautical University. Christopher Grant holds a Ph.D. from the Georgia Institute of Technology.
 
-Ashok Gurjar
+## Ashok Gurjar
 
-Title
-Chair and Professor
-College
-Degrees
-Ph.D., Texas A & M University
+**Ashok Gurjar** is the Chair and Professor of the Civil Engineering Department at Embry-Riddle Aeronautical University. Ashok Gurjar holds a Ph.D. from Texas A & M University.
 
-Sherif Ishak
+## Sherif Ishak
 
-Title
-Senior Associate Dean and Professor
-College
-Degrees
-Ph.D., M.S., University of Central Florida
+**Sherif Ishak** is the Senior Associate Dean and Professor in the Civil Engineering Department at Embry-Riddle Aeronautical University. Sherif Ishak holds a Ph.D. and M.S. from the University of Central Florida.
 
-Payal Kotecha
+## Payal Kotecha
 
-Title
-Assistant Professor
-College
-Degrees
-Ph.D., The University of Texas at Arlington
+**Payal Kotecha** is an Assistant Professor in the Civil Engineering Department at Embry-Riddle Aeronautical University. Payal Kotecha holds a Ph.D. from The University of Texas at Arlington.
 
-Stephen Medeiros
+## Stephen Medeiros
 
-Title
-Associate Professor
-College
-Degrees
-Ph.D., University of Central Florida
+**Stephen Medeiros** is an Associate Professor in the Civil Engineering Department at Embry-Riddle Aeronautical University. Stephen Medeiros holds a Ph.D. from the University of Central Florida and an M.S. and B.S. from the Florida Institute of Technology.
 
-M.S., B.S., Florida Institute of Technology
+## Siddharth Parida
 
-Siddharth Parida
+**Siddharth Parida** is an Assistant Professor in the Civil Engineering Department at Embry-Riddle Aeronautical University. Siddharth Parida holds a Ph.D. and M.S. from the University at Buffalo.
 
-Title
-Assistant Professor
-College
-Degrees
-Ph.D., M.S., University at Buffalo
+## Scott Parr
 
-Scott Parr
+**Scott Parr** is an Associate Professor and Program Coordinator for M.S. and B.S. in Civil Engineering in the Civil Engineering Department at Embry-Riddle Aeronautical University. Scott Parr holds a Ph.D. from Louisiana State University and an M.S. and B.S. from Florida Atlantic University.
 
-Title
-Associate Professor and Program Coordinator for M.S. and B.S. in Civil Engineering
-College
-Degrees
-Ph.D., Louisiana State University
+## Dan Su
 
-M.S., B.S., Florida Atlantic University
-
-Dan Su
-
-Title
-Associate Professor
-College
-Degrees
-Ph.D., Rutgers University-New Brunswick
-
-Displaying 1-12 of 12
-
-×
-
-Close
+**Dan Su** is an Associate Professor in the Civil Engineering Department at Embry-Riddle Aeronautical University. Dan Su holds a Ph.D. from Rutgers University-New Brunswick.

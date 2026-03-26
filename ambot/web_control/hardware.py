@@ -11,6 +11,34 @@ import time
 logger = logging.getLogger(__name__)
 
 
+def _detect_platform():
+    """Detect whether we're running on Jetson, RPi, or unknown.
+
+    Returns 'jetson', 'rpi', or 'unknown'.
+    """
+    try:
+        with open('/proc/device-tree/model', 'r') as f:
+            model = f.read().lower()
+        if 'nvidia' in model or 'jetson' in model:
+            return 'jetson'
+        if 'raspberry' in model:
+            return 'rpi'
+    except (FileNotFoundError, OSError):
+        pass
+    # Fallback: check importable GPIO libraries
+    try:
+        import Jetson.GPIO  # noqa: F401
+        return 'jetson'
+    except ImportError:
+        pass
+    try:
+        import RPi.GPIO  # noqa: F401
+        return 'rpi'
+    except ImportError:
+        pass
+    return 'unknown'
+
+
 class HardwareManager:
     """Singleton manager for all robot hardware."""
 
@@ -30,6 +58,8 @@ class HardwareManager:
         self._watchdog_thread = None
         self._start_time = time.time()
         self._motor_cmd_count = 0
+        self._jetson_driver = None  # JetsonL298N instance (if on Jetson)
+        self._platform = None
 
         # LiDAR background thread
         self._lidar_thread = None
@@ -59,18 +89,32 @@ class HardwareManager:
             logger.info('Motors: simulation mode')
             return
 
-        try:
-            from locomotion.rpi_motors.factory import create_robot
-            from locomotion.rpi_motors.drivers import DriverType
-            real_robot = create_robot(driver_type=DriverType.L298N)
-            real_robot.setup()
-            real_robot.stop()
+        self._platform = _detect_platform()
+        logger.info('Platform detected: %s', self._platform)
 
-            from demos_common.robot import RobotAdapter
-            self.robot = RobotAdapter(robot=real_robot, simulate=False)
-            logger.info('Motors: L298N initialized')
-        except Exception as e:
-            logger.warning('Motors unavailable: %s', e)
+        if self._platform == 'jetson':
+            try:
+                from locomotion.jetson_motors.driver import JetsonL298N
+                self._jetson_driver = JetsonL298N()
+                self._jetson_driver.stop()
+                logger.info('Motors: Jetson L298N initialized')
+            except Exception as e:
+                logger.warning('Motors unavailable (Jetson): %s', e)
+        elif self._platform == 'rpi':
+            try:
+                from locomotion.rpi_motors.factory import create_robot
+                from locomotion.rpi_motors.drivers import DriverType
+                real_robot = create_robot(driver_type=DriverType.L298N)
+                real_robot.setup()
+                real_robot.stop()
+
+                from demos_common.robot import RobotAdapter
+                self.robot = RobotAdapter(robot=real_robot, simulate=False)
+                logger.info('Motors: RPi L298N initialized')
+            except Exception as e:
+                logger.warning('Motors unavailable (RPi): %s', e)
+        else:
+            logger.warning('Motors: unknown platform, no driver loaded')
 
     def motor_drive(self, left, right):
         """Send motor command. left/right are -100 to 100."""
@@ -80,7 +124,10 @@ class HardwareManager:
             self._last_motor_cmd = time.time()
             self._motor_cmd_count += 1
 
-        if self.robot:
+        if self._jetson_driver:
+            self._jetson_driver.motor_a(self._motor_left)
+            self._jetson_driver.motor_b(self._motor_right)
+        elif self.robot:
             self.robot.set_motors(self._motor_left / 100.0,
                                   self._motor_right / 100.0)
         elif self.simulate:
@@ -94,7 +141,9 @@ class HardwareManager:
             self._motor_right = 0
             self._last_motor_cmd = time.time()
 
-        if self.robot:
+        if self._jetson_driver:
+            self._jetson_driver.stop()
+        elif self.robot:
             self.robot.stop()
         logger.warning('EMERGENCY STOP')
 
@@ -120,7 +169,9 @@ class HardwareManager:
                         if elapsed > MOTOR_WATCHDOG_TIMEOUT:
                             self._motor_left = 0
                             self._motor_right = 0
-                            if self.robot:
+                            if self._jetson_driver:
+                                self._jetson_driver.stop()
+                            elif self.robot:
                                 self.robot.stop()
                             logger.info('Watchdog: motors stopped (%.1fs idle)',
                                         elapsed)
@@ -356,7 +407,13 @@ class HardwareManager:
         self._running = False
 
         # Stop motors first
-        if self.robot:
+        if self._jetson_driver:
+            try:
+                self._jetson_driver.cleanup()
+                self._jetson_driver = None
+            except Exception:
+                pass
+        elif self.robot:
             try:
                 self.robot.stop()
             except Exception:
