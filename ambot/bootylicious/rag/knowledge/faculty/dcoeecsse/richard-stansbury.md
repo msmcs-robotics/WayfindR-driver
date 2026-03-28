@@ -1,0 +1,318 @@
+# Richard Stansbury
+
+**Department:** Electrical Engineering and Computer Science
+**Email:** stansbur@erau.edu
+**Profile:** https://faculty.erau.edu/Richard.Stansbury
+
+## Education
+
+- Ph.D. - Doctor of Philosophy in Computer Science,
+- M.S. - Master of Science in Computer Engineering,
+- B.S. - Bachelor of Science in Computer Engineering,
+
+## Areas of Expertise
+
+- Regulatory issues for UAV; unmanned systems; control systems; software integration; applied artificial intelligence
+- ADS-B Payload for the RED-4U Re-entry Space Vehicle
+- ADS-B Technology for Reusable Launch Vehicles
+- NOAA UAS for In-Situ Tropical Cyclone Sensing
+- FAA ASSURE Center of Excellence for Unmanned Aircraft Systems
+- ASSURE A55
+- Examination of Urban Air Mobility Integration into the National Airspace System
+- (Richard Stansbury, Clyde Rinkinen, William B. Coyne, William Coyne, Mykyta Zhyla, Randon Senn, Maaliyah Bowden)
+- National Training Aircraft Symposium (NTAS)
+- (2024)
+- A comparative study of redundant and non-redundant flight control system architectures for unmanned aircraft
+- (Richard Stansbury)
+- Pure Portfolio
+- (2024)
+- Minimum Flight Data Requirements for Analyzing Crash Causes in Small UAS
+- (Richard Stansbury)
+- Pure Portfolio
+- (2024)
+- Behavior-Based Communication-Aware Formation Control in Dynamic Multi-Agent Systems for Jamming Detection and Avoidance
+- (Thomas Yang, Richard Stansbury)
+- Pure Portfolio
+- (2024)
+- Flight Data Recorders
+- (Richard Stansbury)
+- Pure Portfolio
+- (2024)
+- Proposed Flight Recorder Recommendations for Unmanned Aircraft Systems Integration into the National Airspace System
+- (Richard Stansbury)
+- Pure Portfolio
+- (2024)
+- NSF REU Site
+- (Thomas Yang, Richard Stansbury)
+- Pure Portfolio
+- (2023)
+- An Undergraduate Research Experience in Unmanned Aircraft Systems (UAS) Cybersecurity - Outcomes and Lessons Learned
+- (Matthew Verleger, Richard Stansbury)
+- Pure Portfolio
+- (2022)
+- A Study of Weather-Induced Flight Delay using Deep Learning Techniques
+- (Richard Stansbury)
+- Pure Portfolio
+- (2022)
+- Work in Progress
+- (Matthew Verleger, Richard Stansbury, Philip Craiger)
+- Pure Portfolio
+- (2021)
+- Towards Collaborative Obstacle Avoidance using Small UAS in Indoor Environments
+- (Richard Stansbury)
+- Pure Portfolio
+- (2020)
+- Design and prototyping of an aviation big data repository
+- (Richard Stansbury)
+- Pure Portfolio
+- (2020)
+- Assessment of the impact of maintenance-induced failures on unmanned aircraft systems to operations in national airspace system
+- (Richard Stansbury)
+- Pure Portfolio
+- (2019)
+- Fountain Code Enabled ADS-B for Aviation Security and Safety Enhancement
+- (Richard Stansbury, Thomas Yang)
+- Pure Portfolio
+- (2018)
+- T4-D: Development and Delivery of a Multidisciplinary Online Course on Unmanned Aircraft Design
+- (Richard Stansbury)
+- ASEE Southeastern Section Conference
+- (2018)
+- Progress and Future Development toward a UAT ADS-B Transmitter for Space Operations
+- (Richard Stansbury Ph.D., Richard Stansbury)
+- Space Congress®  Proceedings
+- (2018)
+- Integrating Unmanned Aircraft Systems into the National Airspace System
+- (Richard Stansbury Ph.D., Richard Stansbury, John Robbins Ph.D., John Robbins)
+- Space Congress®  Proceedings
+- (2018)
+- Dr. Richard Stansbury
+- (Dr. Richard Stansbury, Richard Stansbury)
+- 2018 Space Congress® Bios
+- (2018)
+- A10 - Human factors considerations of UAS procedures &amp; control stations
+- (Richard Stansbury)
+- Pure Portfolio
+- (2017)
+- Progress and future development toward a UAT ADS-B transmitter for space operations
+- (Richard Stansbury)
+- Pure Portfolio
+- (2016)
+- 2nd Panel - Integration & Coordination I
+- (Jorge Ferrand, Zheng Tao, Stephen Hunter, Dirk-Roger Schmitt, Ruth Stillwell, Richard Stansbury)
+- Space Traffic Management Conference
+- (2015)
+- Advanced ADS-B Prototype for Support of Reusable Launch Vehicles and Other Spacecraft
+- (Richard S. Stansbury, Richard Stansbury)
+- Space Traffic Management Conference
+- (2015)
+- An Alternative UAS Classification and Analysis Approach for Integration into the National Airspace System
+- (Richard Stansbury)
+- Pure Portfolio
+- (2015)
+- Richard Stansbury
+- (Richard Stansbury, Dr. Richard Stansbury)
+- Biographies of Presenters and Panelists
+- (2015)
+- A Graduate Program in Unmanned and Autonomous Systems Engineering
+- (Richard Stansbury, Hever Moncayo, Patrick Currier)
+- Pure Portfolio
+- (2015)
+- A Graduate Program in Unmanned and Autonomous Systems Engineering
+- (Richard Stansbury, Hever Moncayo, Patrick Currier)
+- Pure Portfolio
+- (2015)
+- Modeling and simulation for UAS integration into the United States National airspace system and Nextgen
+- (Richard Stansbury)
+- Pure Portfolio
+- (2015)
+- Technology surveys and regulatory gap analyses of uas subsystems toward access to the nas
+- (Richard Stansbury, Timothy Wilson)
+- Pure Portfolio
+- (2015)
+- Ethical Concerns of Unmanned and Autonomous Systems in Engineering Programs
+- (Richard Stansbury)
+- Pure Portfolio
+- (2014)
+- Demonstration and evaluation of ADS-B technology for commercial space operations onboard reusable sub-orbital launch vehicles
+- (Richard Stansbury)
+- Pure Portfolio
+- (2014)
+- Passive multispectral sensor architecture for radar-EOIR sensor fusion for low SWAP UAS sense and avoid
+- (Richard Stansbury)
+- Pure Portfolio
+- (2014)
+- Technology Surveys and Regulatory Gap Analyses of UAS Sub-Systems toward Access to the NAS
+- (Richard Stansbury, Timothy Wilson)
+- Pure Portfolio
+- (2014)
+- Initial flight tests of UAT ADS-B unit for suborbital reusable launch vehicles
+- (Richard Stansbury)
+- Pure Portfolio
+- (2013)
+- Inspiring Interest in STEM Through Summer Robotics Camp
+- (Richard Stansbury)
+- Pure Portfolio
+- (2012)
+- Using Mini-projects to Foster Student Collaboration in Multi-disciplinary Capstone Design Course
+- (Richard Stansbury)
+- Pure Portfolio
+- (2012)
+- A robot decision making framework using constraint programming
+- (Richard Stansbury)
+- Pure Portfolio
+- (2012)
+- Developing an air/ground robots for disaster response as a project for a senior capstone design course
+- (Richard Stansbury)
+- Pure Portfolio
+- (2012)
+- Using Mini-Projects to foster student collaboration in multi-disciplinary capstone design course
+- (Richard Stansbury)
+- Pure Portfolio
+- (2012)
+- Immersive audio-visual system for an unmanned robotic vehicle in a senior design project
+- (Richard Stansbury)
+- Pure Portfolio
+- (2012)
+- Intelligent control system for improving the efficiency of a series hybrid for the EcoCAR 2 challenge
+- (Richard Stansbury)
+- Pure Portfolio
+- (2012)
+- The Gale UAS for tropical cyclone measurement
+- (Richard Stansbury)
+- Pure Portfolio
+- (2012)
+- Inspiring interest in STEM through summer robotics camp
+- (Richard Stansbury)
+- Pure Portfolio
+- (2012)
+- Using the EcoCAR Challenge as a Non-Traditional Domain for Software and Computer Engineering Capstone Course
+- (Richard Stansbury)
+- Pure Portfolio
+- (2011)
+- Using Vertically Integrated Project Teams to Inspire Studnet Interest in Computing Careers
+- (Richard Stansbury)
+- Pure Portfolio
+- (2011)
+- Agile Methodologies for Hardware/Software Teams for a Capstone Design Course: Lessons Learned
+- (Richard Stansbury)
+- Pure Portfolio
+- (2011)
+- A P-3 Deployable Unmanned Aircraft for Scientific Measurement of Tropical Cyclones
+- (Richard Stansbury)
+- Pure Portfolio
+- (2011)
+- Using vertically integrated project teams
+- (Richard Stansbury)
+- Pure Portfolio
+- (2011)
+- Agile methodologies for hardware / software teams for a capstone design course
+- (Richard Stansbury)
+- Pure Portfolio
+- (2011)
+- Using the EcoCAR challenge as a non-traditional domain for software and computer engineering capstone course
+- (Richard Stansbury)
+- Pure Portfolio
+- (2011)
+- An engineering capstone project to develop an unmanned air/ground team for search and rescue
+- (Richard Stansbury)
+- Pure Portfolio
+- (2010)
+- Enhancing student learning in artificial intelligence using robotics
+- (Richard Stansbury)
+- Pure Portfolio
+- (2010)
+- An Intelligent System for Improving the Efficiency of a PHEV for the EcoCar Challenge
+- (Richard Stansbury)
+- Pure Portfolio
+- (2009)
+- A Technology Survey of Emergency Recovery and Flight Termination Systems for UAS
+- (Richard Stansbury, Wesley Tanis, Timothy Wilson)
+- (2009)
+- A Technology Survey of Emergency Recovery and Flight Termination Systems for UAS
+- (Richard Stansbury, Timothy Wilson)
+- Pure Portfolio
+- (2009)
+- A technology survey and regulatory gap analysis of UAS technologies for C3
+- (Richard Stansbury, Timothy Wilson)
+- Pure Portfolio
+- (2009)
+- A survey of UAS technologies for command, control, and communication (C3)
+- (Richard Stansbury, Timothy Wilson)
+- Pure Portfolio
+- (2009)
+- UAS Emergency Recovery and Flight Termination: Technologies and Regulatory Gaps
+- (Richard Stansbury)
+- Pure Portfolio
+- (2009)
+- Ecoeagles hybrid vehicle control architecture
+- (Richard Stansbury)
+- Pure Portfolio
+- (2009)
+- Mobile robots for polar remote sensing
+- (Richard Stansbury)
+- Pure Portfolio
+- (2009)
+- A technology survey and regulatory gap analysis of emergency recovery and flight termination for UAS
+- (Richard Stansbury, Timothy Wilson)
+- Pure Portfolio
+- (2009)
+- An assessment strategy for a capstone course in software and computer engineering
+- (Richard Stansbury)
+- Pure Portfolio
+- (2009)
+- Autonomous Mobile Robot Task Selection and Configuration Using Constraints
+- (Richard Stansbury)
+- Pure Portfolio
+- (2008)
+- Autonomous mobile robot task selection and configuration using constraint satisfaction
+- (Richard Stansbury)
+- Pure Portfolio
+- (2008)
+- Constraint-based Task Selection and Configuration for Autonomous Mobile Robots
+- (Richard Stansbury)
+- Pure Portfolio
+- (2007)
+- Simulation and testbeds of autonomous robots in harsh environments
+- (Richard Stansbury)
+- Pure Portfolio
+- (2007)
+- Long-term survival of polar mobile robots
+- (Richard Stansbury)
+- Pure Portfolio
+- (2006)
+- Mobile robots for harsh environments
+- (Richard Stansbury)
+- Pure Portfolio
+- (2006)
+- Survivability, mobility, and functionality of a rover for radars in polar regions
+- (Richard Stansbury)
+- Pure Portfolio
+- (2004)
+- Design, fabrication, and evaluation of a mobile robot for polar environments
+- (Richard Stansbury)
+- Pure Portfolio
+- (2004)
+- EECS Capstone Design Laboratory
+## Courses
+
+- CEC 300
+- Computing A/Space & Aviation
+- CESYS 697
+- Coop Ed Systems Engineering
+- CEUAS 696
+- Coop Ed Unmanned Auto Sys Eng
+- CPSC 315
+- Data Struc & Anyls of Algms
+- CS 800
+- Dissertation
+- CS 317
+- Files/Database Systems
+- SYS 700
+- Graduate Thesis
+- UAS 691 - UAS Capstone Desgin Proj I
+- CS 455 - Artificial Intelligence (crosslisted with CS 595)
+- UAS 501 - Introduction to Unmanned Aircraft Design
+
+---
+*Scraped from faculty.erau.edu on 2026-03-28 09:56*

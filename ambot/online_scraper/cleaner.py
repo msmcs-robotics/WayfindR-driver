@@ -1,19 +1,20 @@
 #!/usr/bin/env python3
 """Post-scrape content cleaner for ERAU scraped markdown files.
 
-Reads scraped .md files from the output/ directory (or specified directory),
+Reads scraped .md files from the staging directory (or specified directory),
 removes junk content (site-wide footer, enrollment tables, navigation link
 lists, boilerplate), and writes cleaned versions back in-place.
 
 Usage:
-    python3 cleaner.py                          # Clean all files in output/
-    python3 cleaner.py --input ./output         # Specify input directory
+    python3 cleaner.py                          # Clean all files in staging dir
+    python3 cleaner.py --input /tmp/my-staging  # Specify input directory
     python3 cleaner.py --dry-run                # Preview changes without writing
     python3 cleaner.py --stats                  # Show per-file cleaning stats
     python3 cleaner.py --verbose                # Show what was removed
 
 This is a post-processing step — run it AFTER scraper.py, BEFORE copying
-files to the RAG knowledge folder.
+files to the RAG knowledge folder. Default input is the staging directory
+defined in scrape_config.py (/tmp/erau-scrape-staging).
 """
 
 from __future__ import annotations
@@ -24,9 +25,13 @@ import re
 import sys
 from pathlib import Path
 
-# Default paths
-SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
-DEFAULT_INPUT_DIR = os.path.join(SCRIPT_DIR, "output")
+# Default paths — use the staging directory from scrape_config, not a local output/ folder
+try:
+    from scrape_config import GENERAL_STAGING_DIR
+    DEFAULT_INPUT_DIR = GENERAL_STAGING_DIR
+except ImportError:
+    # Fallback if run standalone outside the online_scraper directory
+    DEFAULT_INPUT_DIR = "/tmp/erau-scrape-staging"
 
 
 # =============================================================================
@@ -395,11 +400,11 @@ def main():
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog="""
 Examples:
-  python3 cleaner.py                    # Clean all files in output/
+  python3 cleaner.py                    # Clean all files in staging dir
   python3 cleaner.py --dry-run          # Preview without writing
   python3 cleaner.py --stats            # Show per-file stats
   python3 cleaner.py --verbose          # Detailed removal info
-  python3 cleaner.py --input ./output   # Custom input directory
+  python3 cleaner.py --input /tmp/my-staging   # Custom input directory
         """,
     )
     parser.add_argument(

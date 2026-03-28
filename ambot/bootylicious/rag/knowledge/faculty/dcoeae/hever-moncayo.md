@@ -1,0 +1,631 @@
+# Hever Moncayo
+
+**Department:** Aerospace Engineering
+**Email:** Hever.Moncayo@erau.edu
+**Profile:** https://faculty.erau.edu/Hever.Moncayo
+
+## Education
+
+- Ph.D. - Doctor of Philosophy in Aerospace Engineering,
+
+## Areas of Expertise
+
+- Resilient Flight Dynamics and Control
+- Guidance, Navigation and Control
+- Unmanned and Autonomous Systems
+- Artificial Intelligence
+- Multi-agent Systems and Distributed Control
+- The views expressed on faculty and external web pages are those of the author and do not necessarily represent those of Embry-Riddle Aeronautical University.
+- Research Group Website Link
+- Google Scholar
+- SALA4 Project
+
+## Courses
+
+- AERO 626
+- Adv Topics Discr Control Theor
+- AE 413
+- Airplane Stability & Control
+- AE 413HON
+- Airplane Stability & Control
+- AE 800
+- Dissertation
+- AE 700
+- Thesis
+- AE 413 - Aircraft Stability and Control
+- AE 432 - Flight Dynamics and Control
+- AE 442/443 - Experimental Dynamics and Control
+- AE 626 - Advanced Discrete Control Theory
+- AE 623 - Navigation, Guidance and Control
+- Bio-inspired adaptive fault-tolerant attitude control for spacecraft with actuator failures
+- (Hever Moncayo)
+- Pure Portfolio
+- (2025)
+- Deep-Learning based Unobtrusive Estimation of Pilot Adverse Interactions and Loss of Energy State Awareness
+- (Stephen Brutch, Stephen A. Brutch, Gabriela Gavilanez, Rocio Jado-Puente, Rocio Jado Puente, Dr. Hever Moncayo, Hever Moncayo)
+- BCAAS Annual Safety Research Symposium
+- (2025)
+- Reinforcement Learning Control with Reciprocal Barrier Function for Safety-Critical Multi-Agent Systems
+- (Hever Moncayo)
+- Pure Portfolio
+- (2025)
+- Machine-learning based Validation of a Digital Twin Spacecraft for Health-Management Systems
+- (Hever Moncayo)
+- Pure Portfolio
+- (2025)
+- Correction
+- (Hever Moncayo)
+- Pure Portfolio
+- (2025)
+- A Physics-Informed Deep Learning Model for Estimating Human Pilot Behavior and Mitigating Adverse Interactions
+- (Hever Moncayo)
+- Pure Portfolio
+- (2025)
+- Machine-Learning based Pose and Attitude Estimation for Enhanced Spacecraft Proximity Operations
+- (Hever Moncayo)
+- Pure Portfolio
+- (2025)
+- Performance Analysis of Machine Learning Algorithms to Human-Pilot-Model Parameter Estimation
+- (Hever Moncayo)
+- Pure Portfolio
+- (2025)
+- Artificial-Intelligence-Assisted Geomagnetic Navigation Framework
+- (Hever Moncayo)
+- Pure Portfolio
+- (2025)
+- Vision-based relative position and attitude determination of non-cooperative spacecraft using a generative model architecture
+- (Hever Moncayo)
+- Pure Portfolio
+- (2024)
+- In-Flight Testing Verification of an Adaptive Distributed Fault-Tolerant Control Architecture
+- (Hever Moncayo)
+- Pure Portfolio
+- (2024)
+- Machine Learning Approach to Estimation of Human-Pilot Model Parameters
+- (Hever Moncayo)
+- Pure Portfolio
+- (2024)
+- Robotic Spacecraft Testbed for Validation and Verification of AI-Based Attitude Controllers
+- (Hever Moncayo)
+- Pure Portfolio
+- (2024)
+- Deep-learning based Multiple-Model Bayesian Architecture for Spacecraft Fault Estimation
+- (Hever Moncayo)
+- Pure Portfolio
+- (2024)
+- Vision and Wireless-based Surveying for Intelligent OSAM Navigation (VISION)
+- (Hever Moncayo, K. Merve Dogan)
+- Faculty Research Projects
+- (2023)
+- Mitigating GPS and ADS-B Risks for UAS
+- (Hever Moncayo)
+- Faculty Research Projects
+- (2023)
+- Shielded UAS Operations Detect and Avoid
+- (Hever Moncayo)
+- Faculty Research Projects
+- (2023)
+- Mitigating GPS and ADS-B Risks for UAS
+- (Hever Moncayo)
+- Pure Portfolio
+- (2023)
+- Vision and Wireless-based Surveying for Intelligent OSAM Navigation (VISION)
+- (Hever Moncayo)
+- Pure Portfolio
+- (2023)
+- Shielded UAS Operations Detect and Avoid
+- (Hever Moncayo)
+- Pure Portfolio
+- (2023)
+- Distributed Intelligent Adaptive Controller for Disturbance Rejection in Multiagent Systems
+- (Hever Moncayo)
+- Pure Portfolio
+- (2023)
+- Q-Learning Model Covariance Adaptation of Rao-Blackwellized Particle Filtering in Airborne Geomagnetic Navigation
+- (Hever Moncayo)
+- Pure Portfolio
+- (2023)
+- Data and Model-Based Approaches in Fault Detection and Identification for Connected Vehicles
+- (Hever Moncayo)
+- Pure Portfolio
+- (2023)
+- Performance Analysis of UAV Control Architectures Over Urban Environments with Degraded GNSS Accessibility
+- (Hever Moncayo)
+- Pure Portfolio
+- (2023)
+- On-Board Artificial Intelligence for Failure Detection and Safe Trajectory Generation
+- (Hever Moncayo)
+- Pure Portfolio
+- (2023)
+- Modeling of GPS Degradation Conditions for Risk Assessment of UAS Operations in Urban Environments
+- (Hever Moncayo)
+- Pure Portfolio
+- (2023)
+- Machine Learning Based Architecture for Generation of Synthetic Flight Test Data
+- (Hever Moncayo)
+- Pure Portfolio
+- (2023)
+- Correction
+- (Hever Moncayo)
+- Pure Portfolio
+- (2023)
+- Geomagnetic Navigation using Rao Blackwellized Particle Filter
+- (Hever Moncayo)
+- Pure Portfolio
+- (2023)
+- Data-driven Health Management System for Multi-Spacecraft On-orbit Servicing
+- (Hever Moncayo)
+- Pure Portfolio
+- (2023)
+- Performance Analysis of Flight Control Laws Applied to a Simplified Analog of the Dual-Aircraft Platform Concept
+- (Hever Moncayo)
+- Pure Portfolio
+- (2022)
+- Artificial Immune System Optimized Support Vector Machine for Satellite Fault Detection
+- (Hever Moncayo)
+- Pure Portfolio
+- (2022)
+- Comparison of an Adaptive-Immunized and an Adversarial Deep Learning Control Laws to Increase Resiliency in Distributed Cyber-Physical Systems
+- (Hever Moncayo)
+- Pure Portfolio
+- (2022)
+- Disturbance Observer-based Reinforcement Learning Control and the Application to a Nonlinear Dynamic System
+- (Hever Moncayo)
+- Pure Portfolio
+- (2022)
+- Development of a Simulation Environment for Validation and Verification of Small UAS Operations
+- (Hever Moncayo)
+- Pure Portfolio
+- (2022)
+- Machine Learning Application to Estimation of Magnetospheric Contributions for Geomagnetic-based Navigation
+- (Hever Moncayo)
+- Pure Portfolio
+- (2022)
+- Bio-Inspired Feedback Linearized Adaptive Control For a Thrust Vectoring Free-Flyer Vehicle
+- (Hever Moncayo)
+- Pure Portfolio
+- (2021)
+- A Geomagnetic-based Integrated Architecture for Dead-Reckoning Navigation
+- (Hever Moncayo)
+- Pure Portfolio
+- (2021)
+- Spacecraft Testbed to Support Control System Design for Space Missions
+- (Hever Moncayo)
+- Pure Portfolio
+- (2021)
+- Immunity-based Consensus Algorithm for Increased Resilience in Multiagent Missions
+- (Hever Moncayo)
+- Pure Portfolio
+- (2021)
+- Comparison of Discrete Direct and Indirect Adaptive Control Laws for UAV Fault-tolerance
+- (Hever Moncayo)
+- Pure Portfolio
+- (2021)
+- An Online Machine Learning Paradigm for Spacecraft Fault Detection
+- (Hever Moncayo)
+- Pure Portfolio
+- (2021)
+- Immunity-based consensus algorithm for increased resilience in multiagent missions
+- (Hever Moncayo)
+- Pure Portfolio
+- (2021)
+- An online machine learning paradigm for spacecraft fault detection
+- (Hever Moncayo)
+- Pure Portfolio
+- (2021)
+- A geomagnetic-based integrated architecture for dead-reckoning navigation
+- (Hever Moncayo)
+- Pure Portfolio
+- (2021)
+- Spacecraft testbed to support control system design for space missions
+- (Hever Moncayo)
+- Pure Portfolio
+- (2021)
+- Vision Based Relative Navigation for Close-Formation Flight Missions
+- (Hever Moncayo)
+- Pure Portfolio
+- (2020)
+- UAS Model Identification and Simulation to Support In-Flight Testing of Discrete Adaptive Fault-Tolerant Control Laws
+- (Hever Moncayo)
+- Pure Portfolio
+- (2020)
+- Hybrid Immunized Swarm Optimization Concept for Resilient Coordinated Missions
+- (Hever Moncayo)
+- Pure Portfolio
+- (2020)
+- Comparison of Optimal and Bioinspired Adaptive Control Laws for Spacecraft Sloshing Dynamics
+- (Hever Moncayo)
+- Pure Portfolio
+- (2020)
+- Comparison of Adaptive Control Laws for Wind Rejection in Quadrotor UAVs
+- (Hever Moncayo)
+- Pure Portfolio
+- (2019)
+- Robust Control Architecture for Wind Rejection in Quadrotors
+- (Hever Moncayo)
+- Pure Portfolio
+- (2019)
+- Artificial Immune System for Comprehensive and Integrated Aircraft Abnormal Conditions Management
+- (Hever Moncayo)
+- Pure Portfolio
+- (2019)
+- Design and Development of a Test Bed with Active Tracking Control to Support Gravity Off-loading
+- (Hever Moncayo)
+- Pure Portfolio
+- (2019)
+- Comparison of MRAC and L1 Adaptive Controllers for a Gimbaled Mini-Free Flyer
+- (Hever Moncayo)
+- Pure Portfolio
+- (2019)
+- Design and Implementation of Intelligent Decision-Making Algorithms for Unmanned Aerial Vehicles Mission Protection
+- (Hever Moncayo)
+- Pure Portfolio
+- (2019)
+- Development and Demonstration of a Flight Simulator for the Dual-Aircraft Platform Concept
+- (Hever Moncayo)
+- Pure Portfolio
+- (2018)
+- Evaluation and Comparison of Sailing Flight Optimization Algorithms for a Stratospheric Dual Aircraft Platform Concept
+- (Hever Moncayo)
+- Pure Portfolio
+- (2018)
+- Spacecraft Heath Monitoring Using a Biomimetic Fault Diagnosis Scheme
+- (Hever Moncayo)
+- Pure Portfolio
+- (2018)
+- Modeling, Simulation and Flight Testing to Support Proof of a Stratospheric Dual Aircraft Platform Concept
+- (Hever Moncayo)
+- Pure Portfolio
+- (2018)
+- Free-Flying Robotic System for Interplanetary Prospecting and In Situ Resource Utilization
+- (Hever Moncayo)
+- Pure Portfolio
+- (2017)
+- Spacecraft Health Monitoring Using a Biomimetic Fault Diagnosis Scheme
+- (Hever Moncayo)
+- Pure Portfolio
+- (2017)
+- Immunity-Based Accommodation of Aircraft Subsystem Failures
+- (Hever Moncayo)
+- Pure Portfolio
+- (2017)
+- Spacecraft heath monitoring using a biomimetic fault diagnosis scheme
+- (Hever Moncayo)
+- Pure Portfolio
+- (2017)
+- Immunity-based aircraft actuator failure evaluation
+- (Hever Moncayo)
+- Pure Portfolio
+- (2016)
+- Low cost implementation of a biomimetic approach for UAV health management
+- (Hever Moncayo)
+- Pure Portfolio
+- (2016)
+- Comparison of immunity-based schemes for aircraft failure detection and identification
+- (Hever Moncayo)
+- Pure Portfolio
+- (2016)
+- Structured Non-Self Approach for Aircraft Failure Identification within an Immunity-Based Fault Tolerance Architecture
+- (Hever Moncayo)
+- Pure Portfolio
+- (2016)
+- Vision-Aided Navigation for a Free-Flying Unmanned Robotic System to Support Interplanetary Bodies Prospecting and Characterization Missions
+- (Hever Moncayo)
+- Pure Portfolio
+- (2016)
+- Control Laws Development for a Free-Flying Unmanned Robotic System to Support Interplanetary Bodies Prospecting and Characterization Missions
+- (Hever Moncayo)
+- Pure Portfolio
+- (2016)
+- A Bio-Inspired Adaptive Control Compensation System for an Aircraft Outside Bounds of Nominal Design
+- (Hever Moncayo)
+- Pure Portfolio
+- (2015)
+- Simplified Estimation Algorithms for Aircraft Structural Damage Effects Using an Artificial Immune System
+- (Hever Moncayo)
+- Pure Portfolio
+- (2015)
+- Evaluation of Aircraft Sensor Failures Effects Using the Artificial Immune System Paradigm
+- (Hever Moncayo)
+- Pure Portfolio
+- (2015)
+- Immunity-based flight envelope prediction at post-failure conditions
+- (Hever Moncayo)
+- Pure Portfolio
+- (2015)
+- A dendritic cell mechanism for detection, identification, and evaluation of aircraft failures
+- (Hever Moncayo)
+- Pure Portfolio
+- (2015)
+- In-Flight Testing of a Bio-Inspired Approach for Assessment of an UAV Outside Bounds of Nominal Design
+- (Hever Moncayo)
+- Pure Portfolio
+- (2015)
+- Development and Testing of an Unmanned Aerial System with Micro-Fiber Composite Actuators
+- (Hever Moncayo)
+- Pure Portfolio
+- (2015)
+- Pilot-in-the-Loop Evaluation of a Bio-Inspired Adaptive Fault Tolerant Control System in a Motion Based Flight Simulator
+- (Hever Moncayo)
+- Pure Portfolio
+- (2015)
+- Development of a Surrogate Autonomous Aircraft for Entry in the NASA Airspace Operation Challenge
+- (Hever Moncayo)
+- Pure Portfolio
+- (2015)
+- A Graduate Program in Unmanned and Autonomous Systems Engineering
+- (Richard Stansbury, Hever Moncayo, Patrick Currier)
+- Pure Portfolio
+- (2015)
+- A Graduate Program in Unmanned and Autonomous Systems Engineering
+- (Richard Stansbury, Hever Moncayo, Patrick Currier)
+- Pure Portfolio
+- (2015)
+- Development of a surrogate autonomous aircraft for entry in the NASA airspace operationschallenge
+- (Hever Moncayo)
+- Pure Portfolio
+- (2015)
+- Pilot-in-the-loop evaluation of a bio-inspired adaptive fault tolerant control system in a motion based flight simulator
+- (Hever Moncayo)
+- Pure Portfolio
+- (2015)
+- Artificial Immune System for Flight Envelope Estimation and Protection
+- (Hever Moncayo)
+- Pure Portfolio
+- (2014)
+- Immunity-Based Abnormal Condition Accommodation of Aircraft Sub-system Failures
+- (Hever Moncayo)
+- Pure Portfolio
+- (2014)
+- Development of Immunity Based Adaptive Control Laws for Aircraft Fault Tolerance
+- (Hever Moncayo)
+- Pure Portfolio
+- (2014)
+- Bio-Inspired Approach for Aircraft Health Assessment and Flight Envelope Estimation
+- (Hever Moncayo)
+- Pure Portfolio
+- (2014)
+- Low Cost Autopilot System for an Autonomous Unmanned Aerial System
+- (Hever Moncayo)
+- Pure Portfolio
+- (2014)
+- Biologically-Inspired Approach for Aircraft Management under Upset Conditions
+- (Hever Moncayo)
+- Pure Portfolio
+- (2014)
+- Evaluating Aircraft Abnormal Conditions Using an Artificial Dendritic Cell Mechanism
+- (Hever Moncayo)
+- Pure Portfolio
+- (2014)
+- Neurally-augmented Immnity-based Detection and Identification of Aircraft Sub-system Failures
+- (Hever Moncayo)
+- Pure Portfolio
+- (2014)
+- Artificial Dendritic Cell Mechanism for Aircraft Immunity-Based Failure Detection and Identification
+- (Hever Moncayo)
+- Pure Portfolio
+- (2014)
+- Design, characterization, and testing of macro-fiber composite actuators for integration on a fixed-wing UAV
+- (Hever Moncayo)
+- Pure Portfolio
+- (2014)
+- Generation of Artificial Immune System Antibodies Using Raw Data and Cluster Set Union
+- (Hever Moncayo)
+- Pure Portfolio
+- (2014)
+- Integrated Immunity-Based Framework for Aircraft Abnormal Conditions Management
+- (Hever Moncayo)
+- Pure Portfolio
+- (2014)
+- Development and Flight Testing of a Model Based Autopilot Library for a Low Cost Unmanned Aerial System
+- (Hever Moncayo)
+- Pure Portfolio
+- (2013)
+- Hardware-in-the-Loop Simulation of an Extended Non-linear Dynamic Inversion Augmented with an Immunity-Based Adaptive Control System
+- (Hever Moncayo)
+- Pure Portfolio
+- (2013)
+- Development and Flight Testing of a Model Based Autopilot for a Low Cost Unmanned Aerial System
+- (Hever Moncayo)
+- Pure Portfolio
+- (2013)
+- Development of Immunity-based Framework for Aircraft Abnormal Conditions Detection, Identification, Evaluation, and Accommodation
+- (Hever Moncayo)
+- Pure Portfolio
+- (2013)
+- Dendritic Cell Mechanism for Aircraft Immunity-based Failure Detection and Identification
+- (Hever Moncayo)
+- Pure Portfolio
+- (2013)
+- Unmanned Aerial Vehicle Trajectory Tracking Algorithms Comparison
+- (Hever Moncayo)
+- Pure Portfolio
+- (2013)
+- Performance Analysis of Fault Tolerant UAV Baseline Control Laws with L1 Adaptive Augmentation
+- (Hever Moncayo)
+- Pure Portfolio
+- (2013)
+- Simulation Environment for UAV Fault Tolerant Autonomous Control Laws Development
+- (Hever Moncayo)
+- Pure Portfolio
+- (2013)
+- Dendritic cell mechanism for aircraft immunity-based failure detection and identification
+- (Hever Moncayo)
+- Pure Portfolio
+- (2013)
+- UAV Adaptive Control Laws Using Non-Linear Dynamic Inversion Augmented with an Immunity-based Mechanism
+- (Hever Moncayo)
+- Pure Portfolio
+- (2012)
+- Extended Nonlinear Dynamic Inversion Control Laws for Unmanned Air Vehicles
+- (Hever Moncayo)
+- Pure Portfolio
+- (2012)
+- Artificial Immune System-Based Detection Scheme for Aircraft Engine Failures
+- (Hever Moncayo)
+- Pure Portfolio
+- (2011)
+- Testing of Immunity-Based Failure Detection and Identification Scheme with the NASA Generic Transport Model
+- (Hever Moncayo)
+- Pure Portfolio
+- (2011)
+- Simulation Environment for the Development and Testing of Immunity-Based Aircraft Failure Detection Schemes
+- (Hever Moncayo)
+- Pure Portfolio
+- (2011)
+- Testing of Artificial Immune System Failure Detection with the NASA Generic Transport Model
+- (Hever Moncayo)
+- Pure Portfolio
+- (2011)
+- Development of a Simulation Environment for Autonomous Flight Control Algorithms
+- (Hever Moncayo)
+- Pure Portfolio
+- (2011)
+- Artificial Immune System Based Aircraft Failure Evaluation over Extended Flight Envelope
+- (Hever Moncayo)
+- Pure Portfolio
+- (2011)
+- Aircraft Fault Tolerance: A Biologically Inspired Immune Framework for Sub-System Failures
+- (Hever Moncayo)
+- Pure Portfolio
+- (2011)
+- Aircraft Failure Detection and Identification over an Extended Flight Envelope Using an Artificial Immune System
+- (Hever Moncayo)
+- Pure Portfolio
+- (2011)
+- Simulation environment for the development and testing of immunity-based aircraft failure detection schemes
+- (Hever Moncayo)
+- Pure Portfolio
+- (2011)
+- Evolutionary Algorithm for Artificial Immune System Based Failure Detector Generation and Optimization
+- (Hever Moncayo)
+- Pure Portfolio
+- (2010)
+- Integrated Framework for Artificial Immunity-Based Aircraft Failure Detection, Identification, and Evaluation
+- (Hever Moncayo)
+- Pure Portfolio
+- (2010)
+- Artificial Immune System – Based Aircraft Failure Evaluation over Extended Flight Envelope
+- (Hever Moncayo)
+- Pure Portfolio
+- (2010)
+- Development of a Detection Scheme for Aircraft Engine Failures Based on the Artificial Immune System Paradigm
+- (Hever Moncayo)
+- Pure Portfolio
+- (2010)
+- Aircraft Failure Detection and Identification Using an Immunological Hierarchical Multiself Strategy
+- (Hever Moncayo)
+- Pure Portfolio
+- (2010)
+- Identification and Monitoring of Modal Parameters in Aircraft Structures using the Natural Excitation Technique (NExT) Combined with the Eigensystem Realization Algorithm (ERA)
+- (Hever Moncayo)
+- Pure Portfolio
+- (2010)
+- Integrated Framework for Aircraft Sub-System Failure Detection, Identification, and Evaluation Based on the Artificial Immune System Paradigm
+- (Hever Moncayo)
+- Pure Portfolio
+- (2009)
+- In-flight Actuator Failure Detection and Identification for a Reduced Size UAV Using the Artificial Immune System Approach
+- (Hever Moncayo)
+- Pure Portfolio
+- (2009)
+- Evolutionary Algorithm for Artificial Immune System Based Failure Detector Generation and Optimization
+- (Hever Moncayo)
+- Pure Portfolio
+- (2009)
+- Immunity – Based Aircraft Failure Detection and Identification Using an Integrated Hierarchical Multi-Self Strategy
+- (Hever Moncayo)
+- Pure Portfolio
+- (2009)
+- Immunity-based detection, identification, and evaluation of aircraft sub-system failures
+- (Hever Moncayo)
+- Pure Portfolio
+- (2009)
+- Evolutionary algorithm for artificial immune system-based failure detector generation and optimization
+- (Hever Moncayo)
+- Pure Portfolio
+- (2009)
+- Modal Identification and Monitoring of Human-induced Vibration of Cali’s Olympic Stadium
+- (Hever Moncayo)
+- Pure Portfolio
+- (2006)
+- The Natural Excitation Technique (NExT) combined with the Eigensystem Realization Algorithm (ERA) to identify modal parameters in aircraft structures
+- (Hever Moncayo)
+- Pure Portfolio
+- (2006)
+- Aspectos del Modelamiento de Estructuras para la Implementación de Sistemas de Control Activo
+- (Hever Moncayo)
+- Pure Portfolio
+- (2005)
+- Análisis Comparativo de Vibraciones de Dos Aviones AC-47T Fantasma de la Fuerza Aérea Colombiana
+- (Hever Moncayo)
+- Pure Portfolio
+- (2005)
+- Análisis de Vibraciones en Vuelo del Avión de Tipo Acrobático T-34A Mentor de la Fuerza Aérea Colombiana
+- (Hever Moncayo)
+- Pure Portfolio
+- (2005)
+- Análisis de Vibraciones en Vuelo del Avión de Tipo Acrobático T-34A Mentor de la Fuerza Aérea Colombiana
+- (Hever Moncayo)
+- Pure Portfolio
+- (2005)
+- Aspectos del Modelamiento de Estructuras para la Implementación de Sistemas de Control Activo
+- (Hever Moncayo)
+- Pure Portfolio
+- (2005)
+- Efectos de Polarización en sistemas WDM (Multiplexación por División de Longitud de Onda)
+- (Hever Moncayo)
+- Pure Portfolio
+- (2004)
+- Desarrollo de un Sistema de Monitoreo del Comportamiento Dinámico para el Edificio de la Gobernación del Valle del Cauca
+- (Hever Moncayo)
+- Pure Portfolio
+- (2003)
+- Método de compensación de los efectos de polarización en sistemas de telecomunicaciones ópticas
+- (Hever Moncayo)
+- Pure Portfolio
+- (2003)
+- Efectos del Desacoplamiento entre Fibras Opticas Teniendo en Cuenta la Apertura Numérica y el Diámetro del Núcleo
+- (Hever Moncayo)
+- Pure Portfolio
+- (2002)
+- Caracterización de un Enlace de Fibra Optica con Empalmes
+- (Hever Moncayo)
+- Pure Portfolio
+- (2002)
+- Análisis de la Propagación de una Señal Optica en un Medio Dicroico Usando el Modelo de Cuaterniones
+- (Hever Moncayo)
+- Pure Portfolio
+- (2002)
+- Uso de Cuaterniones Para el Estudio de los Efectos de Polarización en Sistemas de Transmisión por Fibra Optica
+- (Hever Moncayo)
+- Pure Portfolio
+- (2002)
+- Uso de Cuaterniones Para el Estudio de los Efectos de Polarización en Sistemas de Transmisión por Fibra Optica
+- (Hever Moncayo)
+- Pure Portfolio
+- (2002)
+- Análisis de la Propagación de una Señal Optica en un Medio Dicroico Usando el Modelo de Cuaterniones
+- (Hever Moncayo)
+- Pure Portfolio
+- (2002)
+- Caracterización de un Enlace de Fibra Optica con Empalmes
+- (Hever Moncayo)
+- Pure Portfolio
+- (2002)
+- Efectos del Desacoplamiento entre Fibras Opticas Teniendo en Cuenta la Apertura Numérica y el Diámetro del Núcleo
+- (Hever Moncayo)
+- Pure Portfolio
+- (2002)
+- NASA Jet Propulsion Laboratory Visiting Researcher
+- Member of Editorial Board of AIAA Progress in Astronautics and Aeronautics Series
+- Deputy Technical Chair of AIAA SciTech Technical Session
+- AIAA Intelligent Systems Technical Committee
+- Associate Editor of the Journal of Aerospace Science and Technology
+- Associate Editor of The Aeronautical Journal
+- Fellow of the Royal Aeronautical Society (RAeS)
+- Associate Fellow of the American Institute of Aeronautics and Astronautics (AIAA)
+- NASA Jet Propulsion Laboratory Visiting Researcher
+- 2022-2023 Aerospace Engineering Research Award​
+- Flight Dynamics and Control Research Laboratory
+- Advanced Dynamics and Control Laboratory

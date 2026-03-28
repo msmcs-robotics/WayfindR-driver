@@ -1,0 +1,1003 @@
+# Anastasios Lyrintzis
+
+**Department:** Aerospace Engineering
+**Email:** lyrintzi@erau.edu
+**Profile:** https://faculty.erau.edu/Anastasios.Lyrintzis
+
+## Education
+
+- Ph.D. - Doctor of Philosophy in Aerospace Engineering,
+- M.S. - Master of Science in Aerospace Engineering,
+
+## Areas of Expertise
+
+- Computational Aeroacoustics and Aerodynamics with Applications to Rotorcraft and Jet Flows
+
+## Courses
+
+- AE 319
+- Aerodynamics
+- AERO 307HON
+- Incompressible Aerodynamics
+- AE 700
+- Thesis
+- Embry-Riddle Aeronautical University
+- Aerodynamics I
+- (AE 301; junior lever required undergraduate course)
+- Aerodynamics II
+- (AE 302; junior lever required undergraduate course)
+- Incompressible Aerodynamics
+- (AE 307; junior lever required course)
+- Compressible Aerodynamics
+- (AE 308; junior level required course)
+- Aerodynamics
+- (AE 319; new course; junior level required course)
+- Rotorcraft Aerodynamics
+- (AE 536;
+- new course
+- , graduate/senior course)
+- Purdue University
+- Fluid Mechanics
+- (AAE 333; junior level required undergraduate course)
+- Aerodynamics
+- (AAE 334; junior level required undergraduate course)
+- Rotorcraft Aerodynamics
+- (AAE 515; reorganized & renamed course, graduate/Senior course)
+- Intermediate Aerodynamics
+- (AAE 514; new course, graduate level)
+- Aeroacoustics
+- (AAE/ME 615; new course, graduate level)
+- University of Minnesota
+- Computational Aerodynamics
+- (AEM 8250; new course, Advanced graduate course)
+- Hypersonic Aerodynamics
+- (AEM 5244; new course, Graduate/Senior course)
+- Advanced Aerodynamics (AEM 5243; reorganized course, Graduate/Senior course)
+- Aerodynamics of Lifting Surfaces
+- (AEM 5206; junior level required course)
+- Shock Waves and Compressible Flow (AEM 5204; junior level required course)
+- Flight Mechanics
+- (AEM 5300; Junior level required course)
+- Dynamic Stability of Aerospace Craft (AEM 5319; Senior level required course)
+- Cornell University
+- Fluid Dynamics
+- (MAE 530); Graduate/Senior elective course)
+- Flight Dynamics
+- (MAE 507); Graduate/Senior elective course)
+- Computational Aerodynamics
+- (MAE 736; Advanced graduate course)
+- Mechanical Engineering Laboratory
+- (MAE 427; Senior level required course)
+- Syracuse University
+- Aircraft Dynamics II
+- (AEE 477; Senior level required course)
+- Aerospace Laboratory I, II
+- (AEE 415, AEE 416; Senior level required courses)
+- Advanced Aerodynamics
+- (AEE 863, reorganized course; graduate level)
+- Fluid Mechanics II
+- (MEE 342; Junior level required course)
+- Professor Lyrintzis  has co-authored 69 journal papers and 141 conference papers. A search on Google Scholar shows (3/7/25) 3983 citations, an h-index of 32 and an i10 index of 87, and 8 papers with more than 100 citations. In addition, Professor Lyrintzis is included in the top 2% of scientists for career scholarly impact in recent Elsevier/Stanford studies https://elsevier.digitalcommonsdata.com/datasets/btchxktzyw/7  and he is currently (10/24) ranked 468/1250 in the Aerospace Engineering discipline.
+- Books Edited
+- [1]     Mankbadi, R. R., Lyrintzis, A. S., Baysal, O., Povinelli, L. A., and Hussaini, M. Y. (editors),
+- Computational Aero- and Hydro-Acoustics
+- , ASME, FED Vol. 147, Fluids Engineering Conference, ISBN 0791809552, Washington, DC, June 1993 (131 pages).
+- [2]     Lyrintzis, A. S., Mankbadi, R. R., and Baysal, O. (editors),
+- Computational Aeroacoustics
+- , ASME, FED Vol. 219, ASME/JSME Fluids Engineering Conference, ISBN 0791814742, Hilton Head, SC, Aug. 1995 (113 pages).
+- [3]     Lyrintzis, A. S. and Baysal, O. (editors),
+- Computational Aeroacoustics
+- , ASME, FED, Vol. 238 (Part III), ASME Fluids Engineering Summer Conference, ISBN 0791817938, San Diego, CA, July 1996, pp. 463-516.
+- [4]     Voutsinas, S., Lyrintzis A., and Morino, L. (guest editors)
+- International Journal of Aeroacoustics
+- , Vol. 2, No. 2, 2003, Multi-Science Publishing Co., (127 pages).
+- Book Chapters
+- (* indicates student)
+- [1]     Uzun A*., Blaisdell G. A., and Lyrintzis, A. S.  “Coupling of Integral Acoustics Methods with LES for Jet Noise Prediction,” in
+- Jet Aeroacoustics
+- , edited by G. Raman, Multi-Science Publishing Company, ISBN 0906522692, Essex, UK, July 2008, pp. 1--37; also published as refereed journal article [49].
+- [2]     Lyrintzis, A. S., "Integral Acoustics Methods: From the (CFD) Near- Field to the (Acoustic) Far-field," in
+- Computational Aeroacoustics,
+- edited by G. Raman, Multi-Science Publishing Company, ISBN 0906522552,  Essex, UK, Dec. 2008, pp. 95--145; also published as refereed journal article [43].
+- Refereed Journal Articles
+- [1]     George, A. R. and Lyrintzis, A. S., “Acoustics of Transonic Blade-Vortex Interactions,”
+- AIAA Journal
+- , Vol. 26, No. 7, July 1988, pp. 769-776. https://doi.org/10.2514/3.9968
+- [2]     Lyrintzis, A. S. and George, A. R., “Study of Transonic Blade-Vortex Interaction Noise,”
+- Noise Control Engineering Journal
+- , Vol. 32, No. 3, May-June 1989, pp. 105-109. https://doi.org/10.3397/1.2827735
+- [3]     Lyrintzis, A. S. and George, A. R., “Far-Field Noise of Transonic Blade-Vortex Interactions,”
+- Journal of the American Helicopter Society,
+- Vol. 34, No. 3, July 1989, pp. 30-39.  https://doi.org/10.4050/JAHS.34.30
+- [4]     Lyrintzis, A. S. and George, A. R., “The Use of Kirchhoff’s Method in Acoustics,”
+- AIAA Journal
+- , Vol. 27, No. 10, Oct. 1989, pp. 1451-1453. https://doi.org/10.2514/3.10285
+- [5]     Lyrintzis, A. S. and Xue, Y*, “A Study of the Noise Mechanisms of Transonic Blade-Vortex Interactions,”
+- AIAA Journal
+- , Vol. 29, No. 10, Oct. 1991, pp. 1562-1572. https://doi.org/10.2514/3.10776
+- [6]     Lyrintzis, A. S. and Xue, Y*, “Acoustics of Transonic Flow Around an Oscillating Flap,”
+- ASME Journal of Fluids Engineering
+- , Vol. 114, No. 2, June 1992, pp. 240-245. https://doi.org/10.1115/1.2910021
+- [7]     Lyrintzis, A. S., Wissink, A. M*, and Chronopoulos, A. T., “Efficient Iterative Methods for the Transonic Small Disturbance Equations,”
+- AIAA Journal,
+- Vol. 30, No. 10, Oct. 1992, pp. 2556-2558.  https://doi.org/10.2514/3.11263
+- [8]    Michalopoulos, P. G., Yi, P*, and Lyrintzis, A. S., “Development of an Improved High-Order Continuum Traffic Flow Model, “
+- Transportation Research Record
+- , No. 1365 TRB, National Research Council, Washington, DC, 1992, pp. 125-132. http://onlinepubs.trb.org/Onlinepubs/trr/1992/1365/1365-013.pdf
+- [9]     Chronopoulos, A., Lyrintzis, A., Michalopoulos, P., Rhee, C*., and Yi, P*., “Traffic Flow Simulation Through High Order Traffic Modeling,”
+- Mathematical and Computer Modeling
+- , Vol. 17, No. 8, 1993, pp. 11-22.  https://doi.org/10.1016/0895-7177(93)90150-W
+- [10]   Xue, Y*. and Lyrintzis, A. S., “Transonic Blade-Vortex Interactions:  Noise Reduction Techniques,”
+- AIAA Journal of Aircraft
+- , Vol. 30, No. 3, May-June 1993, pp. 408-411. https://doi.org/10.2514/3.56888
+- [11]   Michalopoulos, P. G., Yi, P*, and Lyrintzis, A. S., “Continuum Modeling of Traffic Dynamics for Congested Freeways,”
+- International Journal of Transportation Research
+- , Vol. 27B, No. 4, 1993, pp. 315-332.  https://doi.org/10.1016/0191-2615(93)90041-8
+- [12]   Lyrintzis, A. S., Yi, P*., Michalopoulos, P. G., and Beskos, D. E., “Development and Field Testing of Advanced Continuum Traffic Flow Models for Congested Freeways,”
+- ASCE Journal of Transportation Engineering
+- , Vol. 120, No. 3, May-June 1994, pp. 461-477. https://doi.org/10.1061/(ASCE)0733-947X(1994)120:3(461)
+- [13]   Olejniczak, J*. and Lyrintzis, A. S., “The Design of Optimized Airfoils in Subcritical Flow,”
+- AIAA Journal of Aircraft,
+- Vol. 31, No. 3, May-June 1994, pp. 680-687.  https://doi-org/10.2514/3.46548
+- [14]   Xue, Y*. and Lyrintzis, A. S., “Rotating Kirchhoff Formulation for 3-D Transonic Blade Vortex Interaction Hover Noise,”
+- AIAA Journal
+- , Vol. 32, No. 7, July 1994, pp. 1350-1359. https://doi-org/10.2514/3.12202
+- [15]   Lyrintzis, A. S., Lee, J*, and Xue, Y*., “Mechanisms and Directivity of Unsteady Transonic Flow Noise,”
+- ASME
+- Journal of Fluids Engineering
+- , Vol. 116, No. 3, Sept. 1994, pp. 649-652. https://doi.org/10.1115/1.2910327
+- [16]   Lyrintzis, A. S., “Review:  The Use of Kirchhoff’s Method in Computational Aeroacoustics,”
+- ASME
+- Journal of Fluids Engineering
+- , Vol. 116, No. 4, Dec. 1994, pp. 665-676. https://doi.org/10.1115/1.2911834
+- [17]   Lyrintzis, A. S., Liu, G*, and Michalopoulos, P. G., “Development and Comparative Evaluation of High-Order Traffic Models,”
+- Transportation Research Record
+- , No. 1457 TRB, 1994, pp. 174-183.   http://onlinepubs.trb.org/Onlinepubs/trr/1994/1457/1457-021.pdf
+- [18]   Wissink, A. M*, Lyrintzis, A. S., and Chronopoulos, A. T., “Efficient Iterative Methods Applied to the Solution of Transonic Flows,”
+- Journal of Computational Physics,
+- Vol. 123, 1996, pp. 379-393.  https://doi.org/10.1006/jcph.1996.0031
+- [19]   Pilon, A*. and Lyrintzis, A. S., “A Data-Parallel Total Variation Diminishing Method for Sonic Boom Calculations,”
+- AIAA Journal of Aircraft
+- , Vol. 33, No. 1, January-February 1996, pp. 87-92.  https://doi.org/10.2514/3.46907
+- [20]   Lyrintzis, A. S. and Mankbadi, R. R., “On the Prediction of the Far-Field Jet Noise Using Kirchhoff’s Method,”
+- AIAA Journal
+- , Vol. 34, No. 2, February 1996, pp. 413-416. https://doi.org/10.2514/3.13079
+- [21]   Liu, G*., Lyrintzis, A. S., and Michalopoulos, P. G., “Modeling of Freeway Merging and Diverging Flow Dynamics,”
+- Applied Mathematical Modeling
+- , Vol. 20, June 1996, pp. 459-469.  https://doi.org/10.1016/0307-904X(95)00165-G
+- [22]   Strawn, R. C., Biswas, R., and Lyrintzis, A. S., “Computation of Helicopter Blade-Vortex Interaction Noise with Kirchhoff Methods,”
+- IMACS Journal of Computational Acoustics
+- , Vol. 4, No. 3, Sept. 1996, pp. 321-339.  https://doi.org/10.1142/S0218396X96000106
+- [23]   Wissink, A. M*, Lyrintzis, A. S., and Strawn, R. C., “Parallelization of a Three-Dimensional Flow Solver for Euler Rotorcraft Aerodynamics Predictions,”
+- AIAA Journal
+- , Vol. 34, No. 11, Nov. 1996, pp. 2276-2283.  https://doi.org/10.2514/3.13391
+- [24]   Lyrintzis, A. S., and Koutsavdis, E. K*, “Rotorcraft Impulsive Noise Prediction Using a Rotating Kirchhoff Formulation,”
+- AIAA Journal of Aircraft
+- , Vol. 33, No. 6, Nov-Dec., 1996, pp. 1054-1061.  https://doi.org/10.2514/3.47057
+- [25]   Lyrintzis, A. S., and Xue, Y*, “Towards a Versatile Kirchhoff Code for Aeroacoustic Predictions,”
+- AIAA Journal
+- , Vol. 35, No. 1, Jan. 1997, pp. 198-200.  https://doi.org/10.2514/2.7434
+- [26]   Lyrintzis, A. S., Koutsavdis, E. K*., and Strawn, R. C., “A Comparison of Computational Aeroacoustic Prediction Methods,”
+- Journal of the American Helicopter Society,
+- Vol. 42, No. 1, Jan. 1997, pp. 54-57.  https://doi.org/10.4050/JAHS.42.54
+- [27]   Brentner, K. S., Lyrintzis, A. S., and Koutsavdis, E. K*., “A Comparison of Computational Aeroacoustic Prediction Methods for Transonic Rotor Noise,”
+- AIAA Journal of Aircraft
+- , Vol. 34, No. 4, Jul.-Aug. 1997, pp. 531-538.  https://doi.org/10.2514/2.2205
+- [28]   Liu, G*., Lyrintzis, A. S., and Michalopoulos, P. G., “Numerical Simulation of Freeway Traffic Flow,”
+- ASCE Journal of Transportation Engineering
+- , Vol. 123, No. 6, Nov.-Dec. 1997, pp. 503-513.  https://doi.org/10.1061/(ASCE)0733-947X(1997)123:6(503)
+- [29]   Lyrintzis, A., Koutsavdis*, E., Berezin, C., Visintainer, J., and Pollack, M., “An Evaluation of a Rotating Kirchhoff Acoustic Methodology,”
+- Journal of the American Helicopter Society,
+- Vol. 43, No. 1, Jan. 1998, pp. 57-65.  https://doi.org/10.3141/1644-05
+- [30]   Pilon, A. R*. and Lyrintzis, A. S., “An Improved Kirchhoff Method for Jet Aeroacoustics,”
+- AIAA Journal
+- , Vol. 36, No. 5, May 1998, pp. 783-790.  https://doi.org/10.4050/JAHS.43.57
+- [31]   Pilon, A R*. and Lyrintzis, A. S., “Refraction Corrections for the Kirchhoff Method,”
+- AIAA Journal of Aircraft
+- , Vol. 35, No. 4, Jul.-Aug. 1998, pp. 661-664. https://doi.org/10.2514/2.437
+- [32]   Liu, G*., Lyrintzis, A. S., and Michalopoulos, P. G., “An Improved High Order Model for Freeway Traffic Flow,”
+- Transportation Research Record
+- , No. 1644, TRB, National Research Council, 1998, pp. 37-46.  https://doi.org/10.2514/2.2355
+- [33]   Wissink*, A. M., Lyrintzis, A. S., and Chronopoulos, A. T., “A Parallel Newton-Krylov Method for Rotary-wing Flowfield Calculations,”
+- AIAA Journal,
+- Vol. 37, No. 9, Oct. 1999, pp. 1213-1221.  https://doi.org/10.2514/2.615
+- [34]   Lyrintzis, A. S., Jameson, J. R*., and Koutsavdis, E. K*., “A Study of Rotorcraft Blade-Tip Shape Noise Characteristics,”
+- Journal of the American Helicopter Society
+- , Vol. 45, No. 1, Jan. 2000, pp. 54-57.   https://doi.org/10.4050/JAHS.45.54
+- [35]   Koutsavdis, E. K*., Blaisdell, G., and Lyrintzis, A. S., “On the Use of Compact Schemes with Partial Filtering in Computational Aeroacoustics,”
+- AIAA Journal
+- , Vol. 38, No. 4, April 2000, pp. 713-715.   https://doi.org/10.2514/2.1016
+- [36]   Caradonna, F., Kitaplioglu, C., McCluer, M., Baeder, J., Leishman, G., Berezin, C., Visintainer, J., Bridgeman, J., Burley, C., Epstein, R., Lyrintzis, A., Koutsavdis, E*., Rahier, G., Delrieux, Y., Rule, J., and Bliss, D., “A Review of Methods for the Prediction of BVI Noise,”
+- Journal of the American Helicopter Society,
+- Vol. 45, No. 4, Oct. 2000, pp. 303-320.  https://doi.org/10.4050/JAHS.45.303
+- [37]   Jones, B. R*., Crossley, W. A., and Lyrintzis, A. S., “Aerodynamic and Aeroacoustic Optimization of Airfoils via a Parallel Genetic Algorithm,”
+- AIAA Journal of Aircraft
+- , Vol. 37, No. 5, Nov.-Dec. 2000, pp. 1088-1096.  https://doi.org/10.2514/6.1998-4811
+- [38]   Boeing Welliver Scholars 1998 (Dr. Lyrintzis was a member of that team), “Transforming the Engineering Curriculum:  Lessons Learned from a Summer at Boeing,”
+- ASEE Journal of Engineering Education
+- , Vol. 90, No. 1, Jan. 2001, pp. 143-149.  https://doi.org/10.1002/j.2168-9830.2001.tb00582.x
+- [39]   Ekici, K*. and Lyrintzis, A. S., “Parallelization of Rotorcraft Aerodynamics Navier-Stokes Codes,”
+- AIAA Journal
+- Vol. 40, No. 5, May 2002, pp. 887-896. https://doi.org/10.2514/2.1725
+- [40]   Kim, H*., Williams M. H., and Lyrintzis, A. S., “An Improved Method for Rotor Wake Capturing,”
+- AIAA Journal of Aircraft
+- Vol. 39, No. 5, Sept.-Oct. 2002, pp. 794-203. https://doi.org/10.2514/2.3025
+- [41]   Ekici K*. and Lyrintzis, A. S, "Newton-Krylov Methods for Unsteady Navier-Stokes Codes,"
+- International Journal of Computational Fluid Dynamics,
+- Vol. 17, Number 3, June  2003, pp. 225–230.  https://doi.org/10.1080/1061856031000123599
+- [42]   Uzun, A*., Blaisdell G. A., and Lyrintzis, A. S.,  "Deficiencies of the Smagoriski Model for Turbulent Jet Simulations,"
+- AIAA Journal
+- , Vol. 41, No. 10, Oct. 2003 pp. 2077-2079.  https://doi.org/10.2514/2.1900
+- [43]   Lyrintzis, A. S., "Integral Acoustics Methods: From the (CFD) Near- Field to the (Acoustic) Far-field,"
+- International Journal of Aeroacoustics
+- Vol. 2, No. 2, 2003 pp. 95-128 (34 pages).  https://doi.org/10.1260/147547203322775498
+- [44]   Zhang, X*., Blaisdell, G. A., and Lyrintzis, A., S., "High-Order Compact Schemes with Filters on Multi-Block Domains,"
+- Journal of Scientific Computing
+- , Vol. 21 No. 3, Dec. 2004, pp. 321–339.  https://doi.org/10.1007/s10915-004-1320-7
+- [45]   Uzun, A*., Blaisdell, G. A., and Lyrintzis, A. S., "Application of Compact Schemes to LES of Turbulent Jets,"
+- Journal of Scientific Computing
+- , Vol. 21 No. 3, Dec. 2004, pp. 283–319 (37 pages).   https://doi.org/10.1007/s10915-004-1319-0
+- [46]   Uzun A*., Lyrintzis, A., and Blaisdell G. A.,  “Coupling of Integral Acoustics Methods with LES for Jet Noise Prediction,”
+- Journal of Aeroacoustics
+- , Vol. 3, No. 4, Oct. 2004, pp. 297-346 (50 pages).  https://doi.org/10.2514/6.2004-517
+- [47]   Garrison L*., Dalton, W., Lyrintzis A., and Blaisdell, G, "Semi-Empirical Noise Models for Predicting the Noise from Jets with Internal Forced Mixers,"
+- International Journal of Aeroacoustics
+- , Vol. 5, No. 2, April 2006, pp. 139-171 (33 pages).  https://doi.org/10.1260/147547206777629862
+- [48]   Wright, C*., Blaisdell G. A., and Lyrintzis, A. S., “Investigating Correlations Between Reynolds Averaged Flow Fields and Noise for Forced Mixed Jets,”
+- AIAA Journal of Aircraft
+- , Vol. 43, No. 4, Jul.-Aug. 2006, pp. 886-894.   https://doi.org/10.2514/1.12555
+- [49]   Uzun A*., Blaisdell G. A., and Lyrintzis, A. S., “Impact of Subgrid-Scale Models on Jet Turbulence and Noise,”
+- AIAA Journal
+- , Vol. 44, No. 6, June 2006, pp. 1365-1368.  https://doi.org/10.2514/1.9608
+- [50]   Namgoong, H*., Crossley, W., and Lyrintzis, A. S., “Aerodynamic Optimization of a Morphing Airfoil Using Energy as an Objective”
+- AIAA Journal
+- Vol. 49, No. 9, Sept. 2007, pp. 2113-2124.  https://doi.org/10.2514/1.24355
+- [51]   Pan F*., Uzun, A., and Lyrintzis, A., “Surface Integral Methods in Jet Aeroacoustics: Refraction Corrections,”
+- AIAA Journal of Aircraft
+- , Vol. 45, No. 2, March-April 2008, pp. 381--387.  https://doi.org/10.2514/2.2355
+- [52]   Lo, S-C*, Blaisdell, G. A., and Lyrintzis A. S. “High-Order Shock Capturing Schemes for Turbulence Calculations,”
+- International Journal of Numerical Methods in Fluids
+- , February 2010, pp. 473--498.   https://doi.org/10.1002/fld.2021
+- [53] Lew P-T*, Lyrintzis, A. S., and Mongeau L., “Noise Prediction of a Subsonic Turbulent Round Jet Using the Lattice-Boltzmann Method,”
+- Journal of the Acoustical Society of America
+- Vol. 128, No. 3, Sept. 2010, pp. 1118--1127.  https://doi.org/10.1121/1.3458846
+- [54] Kube-MacDowell, M*., Lyrintzis, A. S., and Blaisdell, G.  “A Parametric Study of the Generation of Shocks in Near-Critical Turbofan Nozzles”,
+- AIAA Journal of Propulsion and Power
+- Vol. 26, No. 6, Nov.-Dec. 2010, pp.1259-1268.  https://doi.org/10.2514/1.45691
+- [55] Namgoong, H*., Crossley, W., and Lyrintzis, A. S., “Morphing Airfoil Design for Minimum Aerodynamic Drag and Actuation Energy Including Aerodynamic Work,”
+- AIAA Journal of Aircraft
+- Jul.-Aug. 2012, pp.981--990.   https://doi.org/10.2514/6.2006-2041
+- [56] Lo S.-C*., Aikens, K.*, Blaisdell,G. A. and Lyrintzis, A. S. “Numerical Investigation of 3-D Supersonic Jet Flows using Large Eddy Simulation,”
+- International Journal of Aeroacoustics
+- Vol. 11, No. 7 & 8, 2012, pp. 782--812.          https://doi.org/10.1260/1475-472X.11.7-8.783
+- [57] Situ Y*., Liu L., Martha C*., Louis M*., Li Z., Sameh, A., Blaisdell G., and Lyrintzis, A. “Reducing Communication Overhead in Large Eddy Simulation of Jet Engine Noise.”
+- Cluster Computing,
+- Volume 16, Issue 1 (June 2013), pp. 157--170. (on line DOI 10.1007/s10586-011-0180-9, Sept. 2011).   https://doi.org/10.1007/s10586-011-0180-9
+- [58] Martha, C*., Blaisdell, G., and Lyrintzis, A., “Large Eddy Simulations of 2-D and 3-D Spatially Developing Mixing Layers,”
+- Aerospace Science and Technology
+- , Vol. 31, 2013, pp. 59-72.   https://doi.org/10.1016/j.ast.2013.09.007
+- [59] Situ Y.*, Martha C.*, Louis M.*, Li Z., Sameh, A., Blaisdell, G., and Lyrintzis, A. “Petascale Large Eddy Simulation on Jet Noise Based on the Truncated SPIKE Algorithm.”
+- Parallel Computing,
+- Volume 40, 2014, pp. 496-511.  https://doi.org/10.1016/j.parco.2014.07.002
+- [60] Swift S. H.*, Blaisdell, G., and Lyrintzis, A., “An Efficient Time-Domain Equivalent Method for Acoustic Scattering,”
+- International Journal of Aeroacoustics
+- , Vol. 14, No. 1&2, 2015, pp. 133-160.   https://doi.org/10.1260/1475-472X.14.1-2.133
+- [61] Aikens, K.*, Dhamankar N.*, Blaisdell, G., and Lyrintzis, A. S. “An Efficient Large Eddy Simulation (LES) Methodology for Jet Aeroacoustics–Recent Developments, “
+- International Journal of Systems Applications, Engineering and Development
+- ,” Vol. 9, 2015, pp 120-128. https://www.naun.org/main/UPress/saed/2015/a405900039.pdf
+- [62] Mankbadi, R, Lo, S-C, Lyrintzis, A., Golubev, V., Dewan, Y.*, Kurbatskii K., Hybrid LES-RANS Simulations of a Jet Impinging on a Flat Plate,
+- International Journal of Aeroacoustics
+- , Vol. 15, Issue 4&5, July 2016, pp. 535-553.  https://doi.org/10.1177/1475472X16642355
+- [63] Dhamankar N.*, Blaisdell, G., and Lyrintzis, A., “A Simple Extension of Digital Filter-based Turbulent Inflow to Non-Uniform Structured Grids,”
+- Aerospace Science and Technology
+- , Vol. 56, Sept. 2016, pp. 29-33.   https://doi.org/10.1016/j.ast.2016.06.023
+- [64] Dhamankar N.*, Blaisdell, G., and Lyrintzis, A., “Overview of Turbulent Inflow Boundary Conditions,”
+- AIAA Journal
+- Vol. 56, No. 4, April 2018, pp. 1317-1334. https://doi.org/10.2514/1.J055528
+- [65] Coderoni, M.*, Lyrintzis, A. S., and Blaisdell, G. A. “Noise reduction analysis of supersonic unheated jets with fluidic injection using large eddy simulations,”
+- International Journal of Aeroacoustics
+- , Vol. 17, No. 4–5, July 2018, pp. 467-501. https://doi.org/10.1177/1475472X18778285
+- [66] Coderoni, M.*, Lyrintzis, A. S., and Blaisdell, G. A. “LES Analysis of Supersonic Heated Jets with Fluid Injection for Noise Reduction,”
+- AIAA Journal
+- , Vol. 57, No. 8, Aug. 2019, pp. 3442-3455. https://doi.org/10.2514/1.J057674
+- [67] Lyrintzis, A. S., Coderoni, M.*. “Overview of the Use of Large Eddy Simulations in Aeroacoustics,”
+- AIAA Journal
+- , Vol. 58, No. 4, April 2020, 1620-1638.  https://doi.org/10.2514/1.J058498
+- [68] Afari, S.*, Golubev, V., Lyrintzis, A. S., and Mankbadi R. R., “Control Technologies for Quiet Operations of Advanced Air-Mobility,”
+- Journal of Applied Science,
+- Vol. 13 No. 4, Feb. 2023, 2543 (17 pages) https://doi.org/10.3390/app13042543
+- [69] Marques Goncalves, M.,*, Singh, S. Lyrintzis, A. S., and Golubev, V. “Noise Reduction Using Synthetic Microjet Excitation in Supersonic Rectangular Jets,”
+- Applied Sciences,
+- 2025, 15(3), 1180, (20 pages), published by MDPI (Multidisciplinary Digital Publishing Institute), https://doi.org/10.3390/app15031180
+- Refereed Conference Articles
+- [1]     Lyrintzis, A. S., Bergeles, G., and Athanassiadis, N., “Optimized Airfoils for Wind Energy Applications,”
+- Proceedings of the European Wind Energy Association Workshop on Wind Energy Applications
+- , Delphi, Greece, May 20-22, 1985, pp. 170-177.
+- [2]     George, A. R. and Lyrintzis, A. S., “Mid-Field and Far-Field Calculations of Transonic Blade-Vortex Interactions,” AIAA paper 86-1854, AIAA 10
+- Aeroacoustics Conference, Seattle, WA, July 9-11, 1986.   https://doi.org/10.2514/6.1986-1854
+- [3]     Lyrintzis, A. S., and George, A. R., “Transonic Blade-Vortex Interactions:  The Far-Field,”
+- Proceedings of the American Helicopter Society National Specialists’ Meeting on Aerodynamics and Aeroacoustics
+- , Arlington, TX, Feb. 25-27, 1987.  https://vtol.org/store/product/transonic-bladevortex-interactions-the-far-field-13299.cfm
+- [4]     Lyrintzis, A. S., and George, A. R., “Calculation of Far-Field Noise Using the Kirchhoff Method,” AIAA Paper 87-2673, AIAA 11
+- Aeroacoustics Conference, Sunnyvale, CA, Oct. 19-21, 1987.        https://doi.org/10.2514/6.1987-2673
+- [5]     Lyrintzis, A. S. and George, A. R., “A Parametric Study of Transonic Blade-Vortex Interactions,”
+- Proceedings of NOISE-CON 88, Noise Control Design:  Methods and Practice
+- , edited by J. S. Bolton, Noise Control Foundation, New York, Purdue University, West Lafayette, IN, June 20-22, 1988, pp. 155-160.   https://ui.adsabs.harvard.edu/abs/1988nce..conf..155L/abstract
+- [6]     Lyrintzis, A. S. and Xue, Y*., “Acoustics of Unsteady Transonic Flow,”
+- Proceedings of the International Symposium on Nonsteady Fluid Dynamics,
+- FED-Vol. 92, Spring meeting of Fluids Engineering Division ASME, Toronto, Canada, June 1990, pp. 187-199. https://ui.adsabs.harvard.edu/abs/1990nfd..symp..187L/abstract
+- [7]     Lyrintzis, A. S. and Xue, Y*., “Noise Mechanisms of Transonic Blade-Vortex Interactions,”
+- Proceedings of the American Helicopter Society 46
+- Annual Forum
+- , Washington, DC, May 1990.      https://vtol.org/store/product/noise-mechanisms-of-trnsonic-bladevortex-interactions-16185.cfm
+- [8]     Ke, K.-H*. and Lyrintzis, A. S., “A Comparison of Aerodynamic Characteristics of Forward Swept Wings and Aft Swept Wings,” presented at the 5
+- National Conference on Undergraduate Research, California Institute of Technology, Pasadena, CA, March 1991.
+- [9]     Michalopoulos, P. G., Yi, P*., Beskos, D. E., and Lyrintzis, A. S., “Continuum Modeling of Traffic Dynamics,”
+- Proceedings of the 2
+- International Conference on Applications of Advanced Technologies in Transportation Engineering, ASCE
+- , ISBN 0872628183
+- Minneapolis, MN, Aug. 1991, pp. 36-40.
+- [10]   Xue, Y*. and Lyrintzis, A. S., “Noise Reduction for Transonic Blade-Vortex Interactions,”
+- Proceedings of AHS/RAeS International Technical Specialists Meeting on Rotorcraft Acoustics and Rotor Fluid Dynamics,
+- Philadelphia, PA, Oct. 1991.  https://ui.adsabs.harvard.edu/abs/1991ahs..proc.....X/abstract
+- [11]   Lyrintzis, A. S and Farmer, J. D*., “On the Design for Maximum Lift Airfoils,”
+- Multidisciplinary Applications of CFD
+- , FED-Vol. 129, pp. 63-74, ASME Winter Annual Meeting, ISBN 0791808793, Atlanta, GA, Dec. 1991.
+- [12]   Michalopoulos, P. G., Yi, P*., and Lyrintzis A. S., “Development of an Improved High-Order Continuum Traffic Flow Model,” presented at the Transportation Research Board 71
+- Annual Meeting, Washington, DC, Jan. 1992.
+- [13]   Wissink, A. M*. and Lyrintzis, A. S., “Efficient Transonic Flow Calculations,” presented at the 6
+- National Conference on Undergraduate Research, University of Minnesota, Minneapolis, MN, March 1992.
+- [14]   Olejniczak, J*. and Lyrintzis, A. S., “On the Design for Maximum Lift Airfoils,” presented at the 6
+- National Conference on Undergraduate Research, University of Minnesota, Minneapolis, MN, March 1992.
+- [15]   Michalopoulos, P. G., Yi, P*., and Lyrintzis A. S., “Continuum Modeling of Traffic Dynamics Using High-Order Models,” CTS 3
+- Annual Meeting, Minneapolis, MN, May 1992.
+- [16]   Lyrintzis, A. S., Lee, J*., and Xue, Y., “Mechanisms and Directivity of Unsteady Transonic Flow Noise,” presented at the International Symposium on Flow Induced Vibration and Noise III, Vol. 3:
+- Flow-Structure and Flow-Sound Interactions
+- , eds. Farabee, T. M., Paidoussis, M. P., ASME Winter Annual Meeting, Anaheim, CA, Nov. 1992, pp. 85-113.
+- [17]   Lyrintzis, A. S., Wissink, A. M*., and Chronopoulos, A. T., “Efficient Transonic Flow Calculations,” presented at the 29
+- Annual Technical Meeting of Society of Engineering Science, University of California, San Diego, La Jolla, CA, Sept. 1992.
+- [18]   Olejniczak, J*. and Lyrintzis, A. S., “The Design of Optimized Airfoils in Subcritical Flow,” AIAA paper 93-0532, presented at the AIAA 31
+- Aerospace Science Meeting, Reno, NV, Jan. 1993.                                  https://doi-org/10.2514/6.1993-532
+- [19]   Liu, G*., Lyrintzis, A. S., and Michalopoulos, P. G., “On the Development of Continuum High-Order Traffic Flow Models,” CTS 4
+- Annual Meeting, Minneapolis, MN, May 1993.
+- [20]   Chronopoulos, A., Lyrintzis, A. S., Michalopoulos, P., Rhee, C*., and Yi, P., “Traffic Flow Simulation Through High Order Traffic Modeling,” CTS 4
+- Annual Meeting, Minneapolis, MN, May 1993.
+- [21]   Xue, Y*. and Lyrintzis, A. S., “The Use of Rotating Kirchhoff Formulation for 3-D Transonic BVI Far-Field Noise,”
+- Proceedings of the American Helicopter Society 49
+- Annual Forum
+- , St. Louis, MO, May 1993.
+- [22]   Lyrintzis, A. S., “The Use of Kirchhoff Method in Aeroacoustics,” in
+- Computational Aero- and Hydro-Acoustics
+- , FED Vol. 147, eds.:  Mankbadi, R. R., Lyrintzis, A. S., Baysal, O., Povinelli, L. A., and Hussaini, M. Y., pp. 53-61; ASME Fluids Engineering Conference, Washington, DC, June 1993.
+- [23]   Lyrintzis, A. S., Xue, Y*., and Kilaras, M. S*., “The Use of a Rotating Kirchhoff Formulation for the Calculation of High-Speed Impulsive Noise,” AIAA paper 94-0463, presented at the AIAA 32
+- Aerospace Science Meeting, Reno, NV, Jan. 1994.  https://doi.org/10.2514/6.1994-463
+- [24]   Lyrintzis, A. S., Liu, G*., and Michalopoulos, P. G., “Development and Comparative Evaluation of High-Order Traffic Models,” presented at the Transportation Research Board 73
+- Annual Meeting, Washington, DC, Jan. 1994.
+- [25]   Lyrintzis, A. S., Kilaras, M*., and Xue, Y*., “Transonic 3-D BVI Noise Using a Rotating Kirchhoff Formulation for Advancing Rotors,”
+- Proceedings of the AHS 50
+- Annual Forum, Vol. I
+- , Washington, DC, May 1994, pp. 115-127.    https://vtol.org/store/product/transonic-3d-bvi-noise-calculations-using-a-rotating-kirchhoff-formulation-for-advancing-rotors-498.cfm
+- [26] Lyrintzis, A. S., “The Use of Kirchhoff’s Method in Rotorcraft Aeroacoustics,” Paper No. 34, presented at the 75
+- AGARD Fluid Dynamics Panel Meeting and Symposium on Aerodynamics and Aeroacoustics of Rotorcraft, Berlin, Germany, Oct. 1994; AGARD Conference Proceedings, No. 552, Aug. 1995, pp. 34-1 - 34-16.   https://apps.dtic.mil/dtic/tr/fulltext/u2/a298988.pdf
+- [27]   Lyrintzis, A. S., “A Review of The Uses of Kirchhoff’s Method in Computational Aeroacoustics,” presented at the 1994 ASME International Mechanical Engineering Congress and Exposition, Chicago, IL, Nov. 1994;
+- Acoustic Radiation and Wave Propagation
+- , Ed. S. F. Wu, NCA Vol. 17, pp. 73-92.
+- [28]   Lyrintzis, A. S. and Mankbadi, R. R., “On the Prediction of the Far-Field Jet Noise Using Kirchhoff’s Method,” AIAA paper No. 95-0508 presented at the 33
+- Aerospace Science Meeting, Reno, NV, Jan. 1995.   https://doi.org/10.2514/6.1995-508
+- [29]   Pilon, A*. and Lyrintzis, A. S., “A Data-Parallel Total Variation Diminishing Method for Sonic Boom Calculations,” AIAA paper No. 95-0833 presented at the 33
+- Aerospace Science Meeting, Reno, NV, Jan. 1995.   https://doi.org/10.2514/6.1995-833
+- [30]   Wissink, A. M*., Lyrintzis, A. S., and Chronopoulos, A. T., “High-Performance Computing Techniques for Solving the Transonic Small Disturbance Equation,” AIAA paper No. 95-0576 presented at the 33
+- Aerospace Science Meeting, Reno, NV, Jan. 1995.  https://doi.org/10.2514/6.1995-576
+- [31]   Wissink, A. M*., Lyrintzis, A. S., and Strawn, R. C., “On the Parallelization of the Transonic Unsteady Rotor Navier Stokes (TURNS) Code,” Proceedings of the Computational Aerosciences Workshop, NASA Ames Research Center, Moffett Field, CA, March 1995; editors:  Feiereisen, W. J., and Lacer, A. K.,NASA CD Conference Publication 20010, Jan-1996, pp. 48-51.
+- [32]   Liu, G*., Lyrintzis, A. S., and Michalopoulos, P. G., “Modeling of Freeway Merging and Diverging Flow Dynamics,” presented at the CTS 4
+- Annual Meeting, Minneapolis, MN, May 1995.
+- [33]   Strawn, R. C., Biswas, R., and Lyrintzis, A. S., “Computation of Helicopter Blade-Vortex Interaction Noise with Kirchhoff Methods,”
+- Proceedings of the 51
+- AHS Annual Forum,
+- Fort Worth, TX, May 1995, Vol. I, pp. 495-508.
+- [Awarded Best Paper in the Acoustics Sessions]
+- .                                  https://vtol.org/store/product/helicopter-noise-predictions-using-kirchhoff-methods-321.cfm
+- [34]   Wissink, A. M*., Lyrintzis, A. S., and Strawn, R. C., “On the Efficient Parallelization of the Transonic Unsteady Rotor Navier Stokes (TURNS) Code,” presented at the 77
+- AGARD Fluid Dynamics Panel Meeting and Symposium on Progress and Challenges in CFD Methods and Algorithms, Seville, Spain, Oct. 1995; AGARD Conference Proceedings, No. 578, Apr. 1996, pp. 6-1 - 6-11.  https://apps.dtic.mil/dtic/tr/fulltext/u2/a310874.pdf
+- [35]   Lyrintzis, A., Koutsavdis, E*., Berezin, C., Visintainer, J., and Pollack, M., “Kirchhoff Acoustic Methodology Validation and Implementation to TiltRotor Aeroacoustic Codes (TRAC),”
+- Proceedings of the 2
+- International Aeromechanics Specialists’ Conference
+- , Bridgeport, CT, Oct. 1995.
+- [36]   Lyrintzis, A. S., Koutsavdis, E. K*., and Strawn, R. C., “A Comparison of Computational Aeroacoustic Prediction Methods,”
+- Proceedings of the
+- AHS International Aeromechanics Specialists’ Conference,
+- Vol. I, Bridgeport, CT, Oct. 1995, pp. 3-58 - 3-69. https://vtol.org/store/product/a-comparison-of-computational-aeroacoustic-prediction-methods-13248.cfm
+- [37]   Lyrintzis, A. S., “The Use of Kirchhoff’s Method in Computational Aeroacoustics,” presented at the Minisymposium on Issues and Methods in Computational Aeroacoustics, 1995 SIAM Annual Meeting, Charlotte, NC, Oct. 1995 [
+- invited
+- [38]   Wissink, A. M*., Lyrintzis, A. S., Oliher, L., Biswas, R., and Strawn, R. C., “Efficient Helicopter Aerodynamic and Aeroacoustic Predictions on Parallel Computers,” AIAA paper No. 96-0153, presented at the AIAA 34
+- Aerospace Science Meeting, Reno, NV, Jan. 1996.  https://doi.org/10.2514/6.1996-153
+- [39]   Lyrintzis, A. S., “The Use of Kirchhoff’s Method in Computational Aeroacoustics,” presented at the session on Direct and Inverse Problems in Aeroacoustics, University of Notre Dame Symposium on Current and Future Directions in Applied Mathematics, Notre Dame, IN, April 1996 [
+- invited
+- [40]   Pilon, A*. and Lyrintzis, A. S., “On the Development of a Modified Kirchhoff Method for Jet Aeroacoustics,” AIAA paper No. 96-1709, presented at the 2
+- AIAA/CEAS Aeroacoustics Meeting, (17
+- AIAA Aeroacoustics Meeting) State College, PA, May 1996.  https://doi.org/10.2514/6.1996-1709
+- [41]   Lyrintzis, A. S. and Xue, Y*., “Towards a Versatile Kirchhoff’s Method Code,” AIAA paper No. 96-1710, presented at the 2
+- AIAA/CEAS Aeroacoustics Meeting, (17
+- AIAA Aeroacoustics Meeting) State College, PA, May 1996.  https://doi.org/10.2514/6.1996-1710
+- [42]   Brentner, K. S., Lyrintzis, A. S., and Koutsavdis, E K*., “A Comparison of Computational Aeroacoustic Prediction Methods for Transonic Rotor Noise,”
+- Proceedings of the 52
+- AHS Annual Forum
+- , Washington, DC, June 1996, Vol. 2, pp. 1103-1114.  https://dl.acm.org/doi/pdf/10.5555/886827
+- [43]   Wissink, A. M*., Lyrintzis, A. S., and Chronopoulos, A. T., “Parallel Krylov Solvers Applied to the Rotorcraft CFD code TURNS,” Proceedings of the 1996 Computational Aerosciences (CAS) Workshop, NASA Ames Research Center, Aug. 1996, NASA Conference Publication CD 20011, May 1997, pp. 43-48.
+- [44]   Pilon, A. R*. and Lyrintzis, A. S., “Integral Methods for Computational Aeroacoustics,” AIAA paper No. 97-0020, presented at the 35
+- Aerospace Science Meeting, Reno, NV, Jan. 1997.  https://doi.org/10.2514/6.1997-20
+- [45]   Scott, J. N., Pilon, A. R*., Lyrintzis, A. S., and Rozmajzl, T., “A Numerical Investigation of Noise from a Rectangular Jet,” AIAA paper No. 97-0485, presented at the 35
+- Aerospace Science Meeting, Reno, NV, Jan. 1997.  https://doi.org/10.2514/6.1997-285
+- [46]   Shih, S. H., Hixon, D. R., Mankbadi, R. R., Pilon, A. R*., and Lyrintzis, A. S., “Evaluation of Far-Field Jet Noise Prediction Methods,” AIAA paper No. 97-0282, presented at the 35
+- Aerospace Science Meeting, Reno, NV, Jan. 1997. https://doi.org/10.2514/6.1997-282
+- [47]   Koutsavdis, E. K*. and Lyrintzis, A. S., “An Investigation of Kirchhoff’s Methodologies for Computational Aeroacoustics,” AIAA paper No. 97-0487, presented at the 35
+- Aerospace Science Meeting, Reno, NV, Jan. 1997.  https://doi.org/10.2514/6.1997-487
+- [48]   Pilon, A R*. and Lyrintzis, A. S., “Refraction Corrections for the Kirchhoff Method,” AIAA paper No. 97-1654 presented at the 3
+- AIAA/CEAS Aeroacoustics Meeting, Atlanta, GA, May 1997.        https://doi.org/10.2514/6.1997-1654
+- [49]   Spyropoulos, J. T*., Douglas, J., and Lyrintzis, A. S., “A New Scheme for the Incompressible Navier-Stokes Equations Employing Alternating-Direction Operator Splitting and Domain Decomposition - a Preliminary Report,” presented at the American Mathematical Society (AMS) Meeting #922 (922-76-257).  Special Section on Partial Differential Equations:  Theories Applications and Numerical Approaches, IV, Wayne State University, Detroit, MI, May 1997.
+- [50]   Wissink, A. M*., Lyrintzis, A. S., and Chronopoulos, A. T., “A Parallel Newton-Krylov Method for Rotorcraft Flowfield Calculations,” AIAA paper No. 97-2049,
+- Proceedings of the 13
+- AIAA Computational Fluid Dynamics Conference
+- , Snowmass, CO, June 1997, pp. 1060-1070. https://doi.org/10.2514/6.1997-2049
+- [51]   Lyrintzis, A. S., Koutsavdis, E. K*., and Pilon, A. R*., “An Extended Kirchhoff Method for Rotorcraft Impulsive Noise,”
+- Proceedings of the AHS Technical Specialists’ Meeting for Rotorcraft Acoustics and Aerodynamics
+- , Williamsburg, VA, Oct. 1997.  https://vtol.org/store/product/an-extended-kirchhoff-method-for-rotorcraft-impulsive-noise-13217.cfm
+- [52]   Lyrintzis, A. S., Jameson, J. R*., and Koutsavdis, E. K*., “A Study of Rotorcraft Blade-Tip Shape Noise Characteristics,”
+- Proceedings of the AHS Technical Specialists’ Meeting for Rotorcraft Acoustics and Aerodynamics
+- , Williamsburg, VA, Oct. 1997.  https://vtol.org/store/product/a-study-of-rotorcraft-bladetip-shape-hsi-noise-characteristics-13215.cfm
+- [53]   Berezin, C., Pollack, M., Visintainer, J., Lyrintzis, A., and Koutsavdis, E*., “Development and Practical Application of the Rotating Kirchhoff Method for the Prediction of HSI and BVI Noise,”
+- Proceedings of the AHS Technical Specialists’ Meeting for Rotorcraft Acoustics and Aerodynamics
+- , Williamsburg, VA, Oct. 1997.  https://vtol.org/store/product/development-and-practical-application-of-the-rotating-kirchhoff-method-for-the-prediction-of-hsi-and-bvi-noise-13219.cfm
+- [54]   Caradonna, F., Kitaplioglu, C., McCluer, M., Baeder, J., Leishman, G., Berezin, C., Visintainer, J., Bridgeman, J., Burley, C., Epstein, R., Lyrintzis, A., Koutsavdis, E*., Rahier, G., Delrieux, Y., Rule, J., and Bliss, D., “A Review of Methods for the Prediction of BVI Noise,”
+- Proceedings of the AHS Technical Specialists’ Meeting for Rotorcraft Acoustics and Aerodynamics
+- , Williamsburg, VA, Oct. 1997. https://vtol.org/store/product/a-review-of-methods-for-the-prediction-of-bvi-noise-13189.cfm
+- [55]   Spyropoulos, J. T*., Douglas, J., and Lyrintzis, A. S., “A New Scheme for the Incompressible Navier-Stokes Equations Employing Alternating-Direction Operator Splitting and Domain Decomposition,” AIAA paper No. 98-0126, presented at the 36
+- Aerospace Science Meeting, Reno, NV, Jan. 1998.          https://doi.org/10.2514/6.1998-126
+- [56]   Jones, B. R*., Crossley, W. A., and Lyrintzis, A. S., “Aerodynamic and Aeroacoustic Optimization of Airfoils via a Parallel Genetic Algorithm,” AIAA paper No. 98-4811 presented at the 7
+- AIAA/USAF/NASA/ISSMO Symposium on Multidisciplinary Analysis and Optimization, St. Louis, MO, Sept. 1998.   https://doi.org/10.2514/6.1998-4811
+- [57]   Lyrintzis, A. S., “Some Recent Advances in the Use of Kirchhoff Methods for Computational Aeroacoustics,” NCA-Vol. 25, pp. 453-469, ASME International Mechanical Engineering Congress and Exposition, ISBN-10 : 0791815943, Anaheim, CA Nov. 1998 [
+- invited
+- [58]   Koutsavdis, E. K*., Blaisdell, G., and Lyrintzis, A. S., “On the Use of Compact Schemes with Partial Filtering in Computational Aeroacoustics,” AIAA paper No. 99-0360, presented at the 37
+- Aerospace Science Meeting, Reno, NV, Jan. 1999. https://doi.org/10.2514/6.1999-360
+- [59]   Koutsavdis, E. K*., Blaisdell, G., and Lyrintzis, A. S., “A Numerical Investigation of Two-Dimensional Jet Noise Using Spatial Filtering,” AIAA paper No. 99-1875, presented at the 4
+- AIAA/CEAS Aeroacoustics Meeting, Seattle, WA, May 1999.  https://doi.org/10.2514/6.1999-1875
+- [60]   Ekici, K*. and Lyrintzis, A. S., “Parallel Computing Techniques for Rotorcraft Aerodynamics,” AIAA paper No. 2000-2617 presented at the AIAA Fluids 2000 Meeting, Denver, CO, June 2000. https://doi.org/10.2514/6.2000-2617
+- [61]   Lyrintzis, A. S. and Uzun, A*., “Integral Techniques for Jet Aeroacoustics Calculations,” AIAA paper 2001-2253 presented at the 7
+- AIAA/CEAS Aeroacoustics Conference, Maastricht, Netherlands, May 2001. https://doi.org/10.2514/6.2001-2253
+- [62]   Uzun, A*., Koutsavdis, K., Blaisdell G. A., and Lyrintzis, A. S., “Direct Numerical Simulation of 3-D Jets Using Compact Schemes and Partial Filtering,” AIAA paper 2001-2543 presented at the 15
+- AIAA Computational Fluid Dynamics Conference, Anaheim, CA, June 2001.  https://doi.org/10.2514/6.2001-2543
+- [63]   Ekici, K*. and Lyrintzis, A. S., “Parallel Newton-Krylov Methods for Rotorcraft Aerodynamics,” AIAA paper 2001-2617 presented at the 15
+- AIAA Computational Fluid Dynamics Conference, Anaheim, CA, June 2001.  https://doi.org/10.2514/6.2001-2617
+- [64]   Kim, H*., Williams M. H., and Lyrintzis, A. S., “An Improved Method for Rotor Wake Capturing,” AIAA paper 2001-2669 presented at the 15
+- AIAA Computational Fluid Dynamics Conference, Anaheim, CA, June 2001.  https://doi.org/10.2514/6.2001-2669
+- [65]   Uzun, A*., Blaisdell G. A., and Lyrintzis, A. S., “Recent Progress Towards a Large Eddy Simulation Code for Jet Aeroacoustics,” AIAA paper 2002-2598 presented at the 8
+- AIAA/CEAS Aeroacoustics Conference, Breckenridge, CO, June 2002.  https://doi.org/10.2514/6.2002-2598
+- [66]   Namgoong, H*, Crossley, W., and Lyrintzis, A. S. “Global Optimization Issues for Transonic Airfoil Design,” AIAA paper 2002-5641 presented at the 9
+- AIAA/ISSMO Symposium and Exhibit on Multidisciplinary Analysis and Optimization, Atlanta, GA, Sept. 2002.  https://doi.org/10.2514/6.2002-5641
+- [67]   Lyrintzis, A. S., “From the Near-Field to the Far-field: Integral Acoustics Methods,” presented at the CAES 6
+- Workshop “From CFD to CAA”, Athens, Greece, Nov. 2002.
+- [68]   Uzun, A*., Blaisdell G. A., and Lyrintzis, A. S., “3D Large-Eddy Simulations for Jet Aeroacoustics,” AIAA paper 2003-3322 presented at the 9
+- AIAA/CEAS Aeroacoustics Conference, Hilton Head, SC, May 2003.  https://doi.org/10.2514/6.2003-3322
+- [69]   Wright C*.,  Blaisdell G. A., and Lyrintzis, A. S., “The Effects of Various Mixer Shapes on Jet Noise,” AIAA paper 2003-3251 presented at the 9
+- AIAA/CEAS Aeroacoustics Conference, Hilton Head, SC, May 2003.  https://doi.org/10.2514/6.2003-3251
+- [70]   Garrison L*., Dalton, W., Lyrintzis A., and Blaisdell, G “An Investigation of Extension of the Four-Source Method for Predicting the Noise from Jets with Forced Mixers,” AIAA paper 2003-3165 presented at the 9
+- AIAA/CEAS Aeroacoustics Conference, Hilton Head, SC, May 2003.  https://doi.org/10.2514/6.2003-3165
+- [71]   Lyrintzis, A. S., “Aeroacoustics of Forced Mixers,” presented at the International Turbulence Workshop, Orlando, FL, May 2003
+- [Invited]
+- [72]   Zhang, X*., Blaisdell G. A., and Lyrintzis, A. S., “High-Order Compact Schemes with Filters for Multi-Block Domains,” presented at the 2nd MIT Conference on Computational Fluid and Solid Mechanics, Boston MA, June 2003.  https://doi.org/10.1016/B978-008044046-0.50297-9
+- [73]   Uzun, A*., Blaisdell G. A., and Lyrintzis, A. S., “Application of Compact Schemes for Turbulent Jets,” presented at the 2nd MIT Conference on Computational Fluid and Solid Mechanics, Boston MA, June 2003.
+- [74]   Lew, P*., Uzun, A*., Blaisdell G. A., and Lyrintzis, A. S., “Effects of Inflow Forcing on Jet Noise Using Large Eddy Simulation,” AIAA paper No. 2004-0516, presented at the 42nd Aerospace Science Meeting, Reno, NV, Jan. 2004.  https://doi.org/10.2514/6.2004-516
+- [75]   Uzun, A*., Lyrintzis, A. S., and Blaisdell, G. A., “Coupling Integral Acoustics Methods with LES for Jet Noise Prediction,” AIAA paper No. 2004-0517, presented at the 42nd Aerospace Science Meeting, Reno, NV, Jan. 2004.  https://doi.org/10.2514/6.2004-517
+- [76]   Wright, C*., Blaisdell G. A., and Lyrintzis, A. S., “Using RANS to Predict the Performance of Mixers in Reducing Jet Noise,” AIAA paper No. 2004-1274, presented at the 42nd Aerospace Science Meeting, Reno, NV, Jan. 2004. https://doi.org/10.2514/6.2004-1274
+- [77]   Pan F*., Uzun, A*., and Lyrintzis, A., “Refraction Corrections for Surface Integral Methods in Jet Aeroacoustics,”  AIAA paper 2004-2873, presented at the 10
+- AIAA/CEAS Aeroacoustics Conference, Manchester, United Kingdom, May 2004. https://doi.org/10.2514/6.2004-2873
+- [78]   Garrison L*., Dalton, W., Lyrintzis A., and Blaisdell, G, "On the Development of Semi-Empirical Noise Models for Predicting the Noise from Jets with Internal Forced Mixers," AIAA paper 2004-2898 presented at the 10th AIAA/CEAS Aeroacoustics Conference, Manchester, United Kingdom, May 2004. https://doi.org/10.2514/6.2004-2898
+- [79]   Garrison L*., Lyrintzis A., Blaisdell, G, and Dalton, W., "Computational Fluid Dynamics Analysis of Flows with Internal Forced Mixers," AIAA paper 2005-2887 presented at the 11th AIAA/CEAS Aeroacoustics Conference, Monterey, CA, May 2005. https://doi.org/10.2514/6.2005-2887
+- [80]   Lew, P*., Blaisdell G. A., and Lyrintzis, A. S., "Recent Progress on Hot Jet Aeroacoustics Using 3-D Large Eddy Simulation," AIAA paper 2005-3084 presented at the 11th AIAA/CEAS Aeroacoustics Conference, Monterey, CA, May 2005.  https://doi.org/10.2514/6.2005-3084
+- [81]   Lew, P*., Blaisdell G. A., and Lyrintzis, A. S., "Development of a Parallel 3D LES Methodology for Jet Aeroacoustics via the Schur Complement,”  AIAA paper No. 2006-0796, presented at the 44th Aerospace Science Meeting, Reno, NV, Jan. 2006.  https://doi.org/10.2514/6.2006-796
+- [82]   Oliver, A. B*., Lillard, R. P*.,  Blaisdell G. A., and Lyrintzis, A. S., "Validation of High-Speed Turbulent Boundary Layer and Shock Boundary Layer Interaction Computations with the OVERFLOW code,” AIAA paper No. 2006-0894, presented at the 44th Aerospace Science Meeting, Reno, NV, Jan. 2006. https://doi.org/10.2514/6.2006-894
+- [83]   Namgoong, H*, Crossley, W., and Lyrintzis, A. S., “Aerodynamic Optimization of a Morphing Aircraft Using Energy as an Objective,” AIAA paper No. 2006-1234, presented at the 44th Aerospace Science Meeting, Reno, NV, Jan. 2006.  https://doi.org/10.2514/6.2006-1324
+- [84]   Namgoong, H*, Crossley, W., and Lyrintzis, A. S., Using Aerodynamic Pressure to Reduce Actuation Energy for a Morphing Airfoil," AIAA paper 2006-2041, presented at the 2
+- Multidisciplinary Design and Optimization Specialists’ Meeting, Newport, RI, May 2006. https://doi.org/10.2514/6.2006-2041
+- [85]   Garrison L*., Lyrintzis A., and Blaisdell, G., "RANS-Based Noise Predictions of Jets with Internal Flow Mixers," AIAA paper 2006-2599, presented at the 12th AIAA/CEAS Aeroacoustics Conference, Cambridge, MA, May 2006.  https://doi.org/10.2514/6.2006-2599
+- [86]   Lew, P*., Blaisdell G. A., and Lyrintzis, A. S., "Investigation of Noise Sources in Turbulent Hot Jets Using Large Eddy Simulation Data,” AIAA paper 2007-0016 presented at the 45th Aerospace Science Meeting, Reno, NV, Jan. 2007.  https://doi.org/10.2514/6.2007-16
+- [87]   Oliver, A. B*., Lillard, R. P*., Schwig, A*., Blaisdell G. A., and Lyrintzis, A. S., "Assessment of Turbulent Shock-Boundary Layer Interaction Computations Using the OVERFLOW Code,” AIAA paper 2007-0104, presented at the 45th Aerospace Science Meeting, Reno, NV, Jan. 2007. https://doi.org/10.2514/6.2007-104
+- [88]   Lo, S-C*, Blaisdell, G. A., and Lyrintzis A. S. “High-Order Shock Capturing Schemes for Turbulence Calculations,” AIAA paper 2007-0827, presented at the 45th Aerospace Science Meeting, Reno, NV, Jan. 2007.  https://doi.org/10.2514/6.2007-827
+- [89]   Lew, P-T*., Lyrintzis, A. S., Crouse B., Balasubramanian, G., Freed, D., and Mongeau L., ‘Noise Prediction of a Subsonic Turbulent Jet Using the Lattice-Boltzmann Method,” AIAA paper 2007-3626, presented at the 13th AIAA/CEAS Aeroacoustics Conference, Rome Italy, May 2007.  https://doi.org/10.2514/6.2007-3636
+- [90] Oliver, A. B*., Lillard, R. P., and Lyrintzis, A. S., “Effects of Three-Dimensionality in Turbulent Compression Ramp Shock-Boundary Layer Interactions,” AIAA paper 2008-0720, presented at the 45th Aerospace Science Meeting, Reno, NV, Jan. 2008.  https://doi.org/10.2514/6.2008-720
+- [91]  Kube-McDowell, M. T*., Lyrintzis, A. S., and Blaisdell, G. A., “Parametric Study of the Generation of Shocks in Near-Critical Turbofan Nozzles,” AIAA paper 2008-2984 presented at the 14th AIAA/CEAS Aeroacoustics Conference, Vancouver Canada, May 2008.  https://doi.org/10.2514/6.2008-2984
+- [92]   Lo, S-C*, Blaisdell, G. A., and Lyrintzis A. S. “High-Order Shock Capturing Schemes for Turbulence Calculations,” AIAA paper 2008-2970 presented at the 14th AIAA/CEAS Aeroacoustics Conference, Vancouver Canada, May 2008.  https://doi.org/10.2514/6.2008-2970
+- [93]   Thirumurthy, D*. Jones, J*., Blaisdell, G., Lyrintzis, A., and Sullivan, J., “Experimental Investigation and Computation of a Supersonic Ejector Nozzle with Clamshells,” AIAA paper 2010-4725 presented at the  40th Fluid Dynamics Conference, Chicago, IL, June-July 2010.  https://doi.org/10.2514/6.2010-4725
+- [94] Gross, N*., Blaisdell G., Lyrintzis, A., “Evaluation of Turbulence Model Corrections for Supersonic Jets using the OVERFLOW Code,” AIAA paper 2010-4604 presented at the  40th AIAA Fluid Dynamics Conference, Chicago, IL, June-July 2010.  https://doi.org/10.2514/6.2010-4604
+- [95] Situ Y*., Liu L*., Martha C*., Louis M*., Li Z., Sameh, A., Blaisdell G., and Lyrintzis, A. “Reducing Communication Overhead in Large Eddy Simulation of Jet Engine Noise.” presented at the IEEE International Conference on Cluster Computer, Heraklion Crete, Greece, Sept. 2010.  https://doi.org/10.1109/CLUSTER.2010.31
+- [96] Lo, S-C*, Blaisdell, G. A., and Lyrintzis A. S. “Numerical Investigation of 3-D Supersonic Jet Flows using Large Eddy Simulation,” AIAA paper 2011-1155 presented at the 49th AIAA Aerospace Science Meeting, Orlando, FL, Jan. 2011. https://doi.org/10.2514/6.2011-1155
+- [97] Gross, N*., Blaisdell G., Lyrintzis, A., “Analysis of Modified Compressibility Corrections for Turbulence Models,” AIAA paper 2011-0279 presented at the 49th AIAA Aerospace Science Meeting, Orlando, FL, Jan. 2011.   https://doi.org/10.2514/6.2011-279
+- [98] Thirumurthy, D*., Blaisdell, G., Lyrintzis, A., and Sullivan, J., “Preliminary Design and Computational Analysis of an Ejector Nozzle with Chevrons”  AIAA paper 2011-0918, presented at the  49th AIAA Aerospace Science Meeting, Orlando, FL, Jan. 2011.  https://doi.org/10.2514/6.2011-918
+- [99] Martha, C*., Blaisdell, and Lyrintzis, A., “Large Eddy Simulations of 2-D and 3-D Spatially Developing Mixing Layers,” AIAA paper 2011-0830 presented at the  49th AIAA Aerospace Science Meeting, Orlando, FL, Jan. 2011,
+- paper selected after winning 1
+- place in region III competition
+- .  https://doi.org/10.2514/6.2011-830
+- [100] Lyrintzis, A., and Blaisdell G., “Jet Noise Predictions Using Large Eddy Simulations,” 2nd International Conference on Fluid Mechanics and Heat & Mass Transfer 2011, Corfu Island, Greece, July 14-16, 2011, pp. 196-201 [Invited Keynote Speaker].
+- [101] Blaisdell, G., Lyrintzis, A., Situ Y*., Martha C*., Louis M*., ., Situ Y*., and Li, Z., “Recent Advances in Jet Noise Predictions Based on Large Eddy Simulations,” Proceedings of the Inter-Noise 2011, ISBN 1618392808,  Tokyo, Japan, Sept. 2011.
+- [102] Lillard, R*., Oliver B*., Olsen, M., Blaisdell G., Lyrintzis, A., “The lagRST Model: a Turbulence Model for Non-Equilibrium Flows,” AIAA paper 2012-0444 presented the 50
+- AIAA Aerospace Science Meeting, Nashville, TN, Jan. 2012.  https://doi.org/10.2514/6.2012-444
+- [103] Martha C*., Situ Y*.,  Louis M*., Blaisdell G., and Lyrintzis, A., and Li Z.,  “Development of an Efficient, Multiblock 3-D Large Eddy Simulation Tool for Jet Noise,” presented at the 50
+- AIAA paper 2012-833 presented at the 50th AIAA Aerospace Science Meeting, Nashville, TN, Jan. 2012.  https://doi.org/10.2514/6.2012-833
+- [104] Shurtz, T*., Blaisdell, G., and  Lyrintzis, A. “Suitability of Detached Eddy Simulation in Overflow for Predicting Environments Near Supersonic Jets” AIAA paper 2012-888 presented at the 50
+- AIAA Aerospace Science Meeting, Nashville, TN, Jan. 2012.  https://doi.org/10.2514/6.2012-888
+- [105] Lyrintzis, A., Blaisdell G., and Z. Li “Towards Petaflop Computing – An Example Application on Jet Noise,” 16th WSEAS International Conference on Computers 2012, Kos Island, Greece, July, 2012 [Invited Plenary Speaker]. http://www.wseas.us/e-library/conferences/2012/Kos/COMCOM/COMCOM-00.pdf
+- [106] Martha, C*., Situ, Y*., Dhamankar N*., Lyrintzis, A., Blaisdell, G. Li, Z., “The Use of Petaflop Computing for Jet Noise Predictions,” 16th WSEAS International Conference on Computers 2012, Kos Island, Greece, July, 2012, pp. 470-476.  http://www.wseas.us/e-library/conferences/2012/Kos/COMCOM/COMCOM-78.pdf
+- [107] Swift, S. H.*, Blaisdell, G. A., and Lyrintzis, A. S., “A Time Domain Equivalent Source Method for Accurate Scattering with Coincident Source and Panel Points,” AIAA paper paper 2013-2017, presented at the 19th AIAA/CEAS Aeroacoustics Conference, Munich Germany, May 2013.  https://doi.org/10.2514/6.2013-2017
+- [108] Desai Y.*, Golubev, V., Lyrintzis A., Mankbadi R., and Osman H., “Large Eddy Simulation of a Supersonic Jet Impinging on a Flat Plate,” AIAA paper 2013-3097, presented at the 21st AIAA Computational Fluid Dynamics Conference, San Diego, CA, June 2013. https://doi.org/10.2514/6.2013-3097
+- [109] Lyrintzis, A., Blaisdell G., and Z. Li “Jet Noise Simulations Utilizing Petaflop Computing,” 17th WSEAS International Conference on Computers 2013, Rhodes Island, Greece, July, 2013 [Invited Plenary Speaker].  http://www.wseas.us/e-library/conferences/2013/Rhodes/COMPUTE/COMPUTE-00.pdf
+- [110] Situ, Y*., Wang, Y.*, Aikens K.*, Dhamankar N*., Martha C.*, Li, Z., Blaisdell, G. Lyrintzis, A., “Jet Noise Simulations Utilizing Petaflop Computing,” 17th WSEAS International Conference on Computers 2013, Rhodes Island, Greece, July, 2013. http://www.wseas.us/e-library/conferences/2013/Rhodes/COMPUTE/COMPUTE-26.pdf
+- [111] Aikens, K.*, Dhamankar N., Martha C.*, Situ, Y.*, Blaisdell, G., Lyrintzis, A., and Li, Z. “Equilibrium Wall Model for Large Eddy Simulations for Jets for Aeroacoustics,” AIAA paper 2014-0180, presented at the AIAA SciTech, 52
+- AIAA Aerospace Sciences Meeting, National Harbor MD, Jan. 2014. https://doi.org/10.2514/6.2014-0180
+- [112] Dhamankar N.*, Martha C., Situ, Y., Aikens K., Blaisdell, G., Lyrintzis, A., and Li, Z. “Digital Filter-based Turbulent Inflow Generation for Jet Aeroacoustics for Non-Uniform Structured Grids,” AIAA paper 2014-1401, presented at the AIAA SciTech, 52
+- AIAA Aerospace Sciences Meeting, National Harbor MD, Jan. 2014.    https://doi.org/10.2514/6.2014-1401
+- [113] Kurbatskii, K., Guenther, B.*, Golubev, V., Lyrintzis, A., Mankbadi, R., and Osman, E., Effect of Inclination Angle on Mean Flow and Noise Radiation from Impinging Rocket Plume, AIAA paper 2014-3308, presented at the  AIAA 20
+- Aeroacoustics Meeting, Atlanta GA, June 2014.  https://doi.org/10.2514/6.2014-3308
+- [114] Swift S*. H., Blaisdell, G., and Lyrintzis, A., “Development and Testing of a time Domain Equivalent Source Method for Acoustic Scattering,”   AIAA paper 2014-2743, presented at the AIAA/CEAS 20
+- Aeroacoustics Meeting, Atlanta GA, June 2014.  https://doi.org/10.2514/6.2014-2743
+- [115] Aikens, K.*, Dhamankar N.*, Blaisdell, G., Lyrintzis, A., and Li, Z. “High Fidelity Wall-Modeled Large Eddy Simulation for Jet Noise Predictions” presented at the 6
+- International Conference from “Scientific Computing to Computational Engineering” 6
+- IC-SCCE, ISBN 6188052742, Athens, Greece, July, 2014.
+- [116] Lyrintzis, A. S. “Towards Realistic Jet Noise Simulations” International Conference from “Scientific Computing to Computational Engineering” presented at the 6
+- IC-SCCE, ISBN 6188052742, Athens, Greece, July, 2014, [Invited Plenary Speaker].
+- [117] Lyrintzis, A., Golubev, V., Mankbadi, R., Kurbatskii, K., and Osman, E., “Detached-Eddy Simulations of Rocket Plume Noise at Lift-off” presented at the 168
+- Meeting of the Acoustical Society, Launch Vehicle Acoustics Special Session - Indianapolis, IN, Oct. 2014. [
+- Invited
+- ]; also
+- Journal of the Acoustical Society of America
+- Vol. 136, No. 4, Oct. 2014, pp. 2168. https://doi.org/10.1121/1.4899846
+- [118] Aikens, K*., Blaisdell G., and Lyrintzis, A., “Analysis of Converging-Diverging Beveled Nozzle Jets Using Large Eddy Simulation with a Wall Model,” AIAA paper 2015-0509, AIAA SciTech, 53
+- AIAA Aerospace Sciences Meeting, Kissimmee, FL, Jan. 2015.  https://doi.org/10.2514/6.2015-0509
+- [119] Dhamankar N.*, Blaisdell, G., and Lyrintzis, A., “Implementation of a Sharp Immersed Boundary Method in a 3-D Multi-Block Tool for Jet Aeroacoustics,” AIAA paper 2015-0504, AIAA SciTech, 53
+- AIAA Aerospace Sciences Meeting, Kissimmee, FL, Jan. 2015.  https://doi.org/10.2514/6.2015-0504
+- [120] Kube-McDowell, M.*, Blaisdell, G., and Lyrintzis, A. “Empirical Source Strength Correlations for RANS-Based Acoustic Analogy Methods,” AIAA paper 2015-1005, AIAA SciTech, 53
+- AIAA Aerospace Sciences Meeting, Kissimmee, FL, Jan. 2015. https://doi.org/10.2514/6.2015-1005
+- [121] Dhamankar N.*, Blaisdell, G., and Lyrintzis, A., “An Overview of Turbulent Inflow Boundary Conditions for Large Eddy Simulations,” AIAA paper 2015-3213, AIAA 22
+- Computational Fluid Dynamics Meeting, Dallas, TX, June 2015. [Invited].  https://doi.org/10.2514/6.2015-3213
+- [122] Swift S. H.*, Blaisdell, G., and Lyrintzis, A., “Enhancements of a Time-Domain Equivalent Source Method for Acoustic Scattering,” AIAA paper 2015-2681, AIAA/CEAS 21
+- Aeroacoustics Meeting, Dallas, TX, June 2015.  https://doi.org/10.2514/6.2015-2681
+- [123] Lyrintzis, A. S. “Efficient Jet Noise Simulations” presented at the 19
+- INASE, Zakynthos, Greece, July, 2015, [Invited Plenary Speaker].
+- [124] Aikens, K.*, Dhamankar N.*, Blaisdell, G., and Lyrintzis, A. S. “An Efficient Large Eddy Simulation (LES) Methodology for Jet Aeroacoustics–Recent Developments,” presented at the 19th INASE, Zakynthos, Greece, July, 2015.
+- [125] Dhamankar N.*, Blaisdell, G., and Lyrintzis, A. S. “Implementation of a Wall-Modeled Sharp Immersed Boundary Method in a High-Order Large Eddy Simulation Tool for Jet Aeroacoustics “  AIAA Paper 2016-0257, presented at the AIAA SciTech, 54
+- AIAA Aerospace Sciences Meeting, San Diego CA, Jan. 2016.   https://doi.org/10.2514/6.2016-0257
+- [126] Dhamankar N.*, Blaisdell, G., and Lyrintzis, A. S. “Analysis of Turbulent Jet Flow and Associated Noise with Round and Chevron Nozzles Using Large Eddy Simulation, AIAA paper 2016-3045, presented at the AIAA SciTech, 22
+- AIAA/CEAS Aeroacoustics Conference, Lyon, France, May-June. 2016.  https://doi.org/10.2514/6.2016-3045
+- [127] Coderoni, M.*, Lyrintzis, A., and Blaisdell, G., “Aeroacoustics of Supersonic Jets With Fluidic Injection,” AIAA paper 2017-3210, presented at the 23
+- AIAA/CEAS Aeroacoustics Conference, Denver, CO, June. 2017. https://doi.org/10.2514/6.2017-3210
+- [128] Lyrintzis, A. S. “Jet Noise Simulations-Towards Noise Control” presented at the 21st International Conference on Circuits, Systems, Communications and Computers  (CSCC 2017), ISBN 9781510849686, Agia Pelagia Beach, Crete Island, Greece, July, 2017, [Plenary lecture-invited].
+- [129] Coderoni, M.*, Lyrintzis, A. S., & Blaisdell, G. A., “LES of Unheated and Heated Supersonic Jets with Fluidic Injection,” AIAA Paper 2018-0257, presented at the AIAA SciTech Forum, AIAA Aerospace Sciences Meeting, Kissimmee, Florida, January, 2018. https://doi.org/10.2514/6.2018-0257
+- [130] Lyrintzis, A. S. “Jet Noise Simulations for Noise Reduction” International Conference from Scientific Computing to Computational Engineering” presented at the 8
+- International Conference from Scientific Computing to Computational Engineering (IC-SCCE), Athens, Greece, July, 2018, [Invited Plenary Speaker].
+- [131] Lyrintzis, A. S. and Coderoni, M.* "The Use of Large Eddy Simulations in Jet Aeroacoustics", AIAA paper 2019-0633, presented at the AIAA SciTech Forum, San Diego, CA, Jan. 2019. https://doi.org/10.2514/6.2019-0633
+- [132] Lyrintzis A. S.  “Realistic Jet Noise Simulations Including Noise Control Strategies” presented at the 23
+- International Conference on Circuits, Systems, Communications and Computers  (CSCC 2019),  ISBN 9781510894228, July, 2019, Marathon, Greece, July 2019. [Invited Plenary Speaker].
+- [133] Smith B., Healy R., Gandhi F., and Lyrintzis, A. S., “eVTOL Rotor Noise in Ground Effect,” Proceedings of the 77
+- VFS Annual Forum, ISBN: 9781713830016, May 2021, pp. 25-38.
+- [134] Smith B., Gandhi F., and Lyrintzis, A. S., "An Assessment of Multi-copter Noise in Edgewise Flight,” Proceedings of the 77
+- VFS Annual Forum, ISBN 9781713830016, May 2021, pp. 127-139.
+- [135] Marques Goncalves M.,* Salehian, S., Singh, S., Golubev, V., Lyrintzis, A. S., and Mankbadi, R. R., “Comparative High-Fidelity Studies of Supersonic Rectangular and Round Jet Noise Flow,” AIAA paper 2023-4517, AIAA Aviation 2023 Forum, San Diego, CA, June 2023. https://doi.org/10.2514/6.2023-4517
+- [136] Lyrintzis A. S. “A Review of the Current Status of Urban Air Mobility Noise” 10
+- International Conference on Experiments/Process/System Modeling/Simulation/Optimization (10
+- IC-EpsMsO 2023), Loutraki Greece, July 2023, Invited Plenary Speaker.
+- [137] Marques Goncalves M.,* Golubev, V., and Lyrintzis, A. S., “ Analysis of e-VTOL Rotor Noise Predictions” AIAA paper 2024-2809, AIAA SciTech Forum, Orlando, FL, Jan. 2024. https://doi.org/10.2514/6.2024-2809
+- [138] Marques Goncalves M.,* Singh, S., Salehian, S., Golubev, V., and Lyrintzis, A. S., “High Fidelity Simulations of a Rectangular Jet Noise Control  Strategy Using Micro-Jet Excitation,” AIAA paper 2024-2306, AIAA SciTech Forum, Orlando, FL, Jan. 2024. https://doi.org/10.2514/6.2024-2306
+- [139] Marques Goncalves M.,*  Golubev, V., and Lyrintzis, A., Mankbadi, R., “ High-Fidelity Simulations of Vertiport Ground-effects on eVTOL Rotor Noise,” AIAA paper 2024-3333, AIAA/CEAS Aeroacoustics Meeting, Rome, June, 2024. https://doi.org/10.2514/6.2024-3333
+- [140] Marques Goncalves M.,*  Golubev, V., and Lyrintzis, A., “Acoustic Analysis of Noise Control of Rectangular Jet Using Micro-Jet Excitation,” AIAA paper 2024-3308, AIAA/CEAS Aeroacoustics Meeting, Rome, June, 2024. https://doi.org/10.2514/6.2024-3308
+- [141] Marques Goncalves M.,* Golubev, V., Lyrintzis, A. S., and Mankbadi, R., “Evaluation of Ground Effects for eVTOL Noise,” AIAA paper 2025-1242, AIAA SciTech Forum, Orlando, FL, Jan. 2025. https://doi.org/10.2514/6.2025-1242
+- Other Publications
+- [1]     Lyrintzis, A. S., “A Test of a Two-Dimensional Airfoil Optimized for Maximum Lift,” Aerodynamics Laboratory Report, National Technical University of Athens, Greece, Aug. 1982 (25 pages).
+- [2]     Lyrintzis, A. S. and George, A. R., “VTRAN2:  Computation of Two-dimensional Blade-Vortex Interactions Using the Unsteady Small Disturbance Equation (User’s Manual),” Cornell University, Ithaca, NY, March 1986 (28 pages).
+- [3]     Lyrintzis, A. S. and Xue, Y*., “Transonic Blade-Vortex Interactions:  A Parametric Study,” NASA/NAG-2-588 Final Report, Aug. 1990 (38 pages).
+- [4]     Lyrintzis, A. S. and Xue, Y*., “A Parametric Study of Transonic Blade-Vortex Interactions,” NASA/NAG 2-646 Final Report, Oct. 1991; also University of Minnesota Supercomputer Institute Research Report, UMSI 91/265, Minneapolis, MN, Oct. 1991 (57 pages).
+- [5]     Lyrintzis, A. S., Wissink, A. M*., and Chronopoulos, A. T., “The Use of Efficient Iterative Methods for Solving the Transonic Small Disturbance Equation,” University of Minnesota Supercomputer Institute Research Report, UMSI 91/288, Minneapolis, MN, Nov. 1991 (12 pages).
+- [6]     Lyrintzis, A. S., Michalopoulos, P. G., Chronopoulos, A. T., Yi, P*., Liu, G*., and Rhee, C.-Y*., “Development of Advanced Traffic Models and Implementation in Parallel Processing (Phase I),” Final Report, Center of Transportation Studies, University of Minnesota, Minneapolis, MN, Oct. 1992 (216 pages).
+- [7]     Wissink, A. M.*, Lyrintzis, A. S., and Chronopoulos, A. T., “Efficient Iterative Methods Applied to the Solution of Transonic Flow,” University of Minnesota Supercomputer Institute Research Report, UMSI 93/233, Minneapolis, MN, Dec. 1993 (54 pages).
+- [8]     Lyrintzis, A. S., Michalopoulos, P. G., Liu, G*., and Rangiah R. P*., “Development of Advanced Traffic Models and Implementation in Parallel Processing (Phase II),” Final Report, Center of Transportation Studies, University of Minnesota, Minneapolis, MN, Feb. 1994 (93 pages).
+- [9]     Lyrintzis, A. S. and Pilon, A. R*., “The Use of Kirchhoff’s Method in Jet Aeroacoustics,” NASA/NAG 1-1605 Final Report, May 1995 (25 pages).
+- [10]   Lyrintzis, A. S. and Koutsavdis, E. K*., “Kirchhoff Acoustic Methodology Implementation and Validation for Rotorcraft Aeroacoustics,” Final Report, submitted to Sikorsky Aircraft, July 1995 (36 pages).
+- [11]   Lyrintzis, A. S., Michalopoulos, P. G., and Liu, G*., “Development of Advanced Traffic Models and Implementation in Parallel Processing (Phase III),” Final Report, Minnesota Dept. of Transportation, University of Minnesota, Minneapolis, MN, Sept. 1995, (106 pages).
+- [12]   Lyrintzis, A. S. and Koutsavdis, E. K*., “Kirchhoff Acoustic Methodology Implementation and Validation for TiltRotor Aeroacoustic Codes (TRAC),” Final Report, submitted to Sikorsky Aircraft, Oct., 1995 (25 pages).
+- [13]   Lyrintzis, A. S. and Koutsavdis, E. K*., “Kirchhoff Acoustic Methodology Implementation for TiltRotor Aeroacoustic Codes (TRAC),” Final Report, submitted to Sikorsky Aircraft, Dec. 1996 (28 pages).
+- [14]   Lyrintzis, A. S., Jameson, J. R*., and Koutsavdis, E. K*., “A Study of Rotorcraft Blade-Tip Shape Noise Characteristics,” NASA Langley Final Report, submitted Nov. 1997 (30 pages).
+- [15]   Pilon, A. R*. and Lyrintzis, A. S., “The Use of Kirchhoff’s Method in Jet Aeroacoustics,” NASA/NAG 1660 Final Report, submitted Dec. 1997 (118 pages).
+- [16]   Lyrintzis, A. S., Koutsavdis, E. K*., and Pilon, A. R*., “An Extended Kirchhoff Method for Rotorcraft Impulsive Noise,” ARO/DAAG55-97-1-0108, Final Report, submitted Feb. 1998 (32 pages).
+- [17]   Lyrintzis, A. S., Blaisdell, G., and Koutsavdis, E. K*., “On the Development of a Jet Noise Prediction Methodology,” Second Year Progress Report, NASA Glenn Research Center Grant NAG3-2095 March 2000, (89 pages).
+- [18]   Koutsavdis, E. K*., Uzun, A*., Lyrintzis, A. S., and Blaisdell, G., A., “On the Development of a Jet Noise Prediction Methodology,” Final Report, NASA Glenn Research Center Grant NAG3-2095 February 2002, (145 pages).
+- [19]   Lyrintzis, A.S., Blaisdell, G. A., Mongeau, L., and Bolton S.  “Development of Low Jet Noise Aircraft Engines,” Quarterly Reports to the 21
+- Century Research and Technology Fund (9/01,12/01,3/02, 6/02, 9/02, 12/02, 3/03, 6/03, 9/03) and final report April 2004.
+- [20]   Lyrintzis, A. S., Integral Techniques for Jet Aeroacoustics, Ohio Aerospace Institute (Aeroacoustics Research Consortium) Final Report, April, 2004.
+- [21]   Tester, B., Fisher M., Garrison, L*., Lyrintzis, A.S., Blaisdell, G. A., “Understanding and Prediction of Lobed Mixer Noise,” Ohio Aerospace Institute (Aeroacoustics Research Consortium) Final Report, August 2005.
+- [22] Lyrintzis, A. S., Blaisdell G. A., Lo S. C. “Large Eddy Simulation of Hot Supersonic Jets for Aeroacoustics,” Navy STTR Phase I Final Report, March 2010.
+- [23] Lyrintzis, A. S., Blaisdell, G. A., Ng, K., Aikens, K., “Development of Time-Domain Equivalent Source Method and its Application to Aeroacoustics of High-Speed Impingement,” Navy SBIR Phase I Final Report, March 2011.
+- [24] Aikens, K. M., Blaisdell G. A., and Lyrintzis, A. S., “Large Eddy Simulation of Hot Supersonic Jets for Aeroacoustics,” Navy STTR Phase II Final Report, February 2012.
+- Published Book Review
+- Lyrintzis, A. S. Review of “Large Eddy Simulation for acoustics”
+- AIAA Journal
+- , Vol. 47, No. 3, March 2009, pp. 796-797; https://doi.org/10.2514/1.42646
+- Invited Presentations
+- (Last 15 Years)
+- [1]     NASA Johnson, Houston, TX, June 2006
+- [2]     Ohio Aerospace Institute, Cleveland, OH, Nov. 2006 (Annual Contractor’s meeting)
+- [3]     Naval Air Systems Command, Workshop on Jet Noise Reduction for Tactical Aircraft, Patuxent River, MD, Dec. 2006.
+- [4]     Mechanical and Aerospace Engineering Dept. Seminar, Cornell University, Nov. 2007.
+- [5]     Ohio Aerospace Institute, Cleveland, OH, Dec. 2007 (Annual Contractor’s meeting)
+- [6]     1
+- Jet LES Workshop, NASA Glenn, June 2010.
+- [7]     Rice University, Mechanical Engineering Seminar, Oct. 2010.
+- [8]     WSAES 2nd International Conference on Fluid Mechanics and Heat & Mass Transfer 2011, Corfu Island, Greece, July, 2011, Invited Keynote Speaker.
+- [9]     16th WSEAS International Conference on Computers 2012, Kos Island, Greece, July, 2012, Invited Plenary Speaker.
+- [10]     17th WSEAS International Conference on Computers 2013, Rhodes Island, Greece, July, 2013, Invited Plenary Speaker.
+- [11]     6
+- IC-SCCE, Athens, Greece, July, 2014, Invited Plenary Speaker.
+- [12]     INASE, Zakynthos Greece, July 2015, Invited Plenary Speaker.
+- [13]     Florida State University, Mechanical Engineering Seminar, Oct. 2015.
+- [14] 21st International Conference on Circuits, Systems, Communications and Computers  (CSCC 2017), Agia Pelagia Beach, Crete Island, Greece, July, 2017, Invited Plenary Speaker.
+- [15] University of Central Florida, Mechanical & Aerospace Engineering Seminar, Feb. 2018.
+- [16] 8
+- International Conference from Scientific Computing to Computational Engineering (IC-SCCE), Athens, Greece, July, 2018, Invited Plenary Speaker.
+- [17] University of Florida, Mechanical and Aerospace Engineering Seminar, February 2019.
+- [18] 23rd International Conference on Circuits, Systems, Communications and Computers  (CSCC 2019), Marathon, Greece, July, 2019, Invited Plenary Speaker.
+- [19] Rensselaer Polytechnic Institute, Mechanical and Aerospace Engineering Seminar, October 2019.
+- [20]  Penn State University, Aerospace Engineering, April 2023
+- [21] 10
+- International Conference on Experiments/Process/System Modeling/Simulation/Optimization (10
+- IC-EpsMsO 2023), Loutraki Greece, July 2023, Invited Plenary Speaker.
+- [21]  Auburn University, Aerospace Engineering, October 2023.
+- [22]  Florida International University, Department of Aerospace Physics and Space Sciences, April, 2024
+- [23]  University of Alabama, Aerospace Engineering, October 2024.
+- Academic Appointments
+- Distinguished Professor (august 2024-now) Department of Aerospace Engineering, Embry-Riddle Aeronautical University
+- Distinguished Professor and Chair (Jan. 2012-August 2024) Department of Aerospace Engineering, Embry-Riddle Aeronautical University
+- Associate Head (Fall 2010-December 2011) School of Aeronautics and Astronautics, Purdue University,
+- Professor (Fall 2002-December 2011)  School of Aeronautics and Astronautics, Purdue University
+- Associate Professor (Fall 1994-Summer 2002)  School of Aeronautics and Astronautics, Purdue University
+- Assistant Professor (1989-1994)  Department of Aerospace Engineering & Mechanics, University of Minnesota
+- Visiting Assistant Professor (1988-1989) Sibley School of Mechanical and Aerospace Engineering, Cornell University
+- Visiting Assistant Professor (1987-1988) Department of Mechanical and Aerospace Engineering, Syracuse University
+- Leave of Absences - Sabbaticals
+- NASA Ames (Fall 1992) [quarter leave from University of Minnesota]
+- Computer Science Department, Purdue University (1997-98) Faculty Program of Study in a Second Discipline
+- Rolls-Royce Allison, Sabbatical (Fall 2000)
+- Summer visits
+- NASA Glenn Research Center (Summers 1993, 1999)
+- Boeing Faculty Summer Welliver Fellowship Program (Summer 1998)
+- Teaching
+- Dr. Lyrintzis believes that effective teaching is of paramount importance and has made conscious efforts to enhance his teaching abilities (e.g. attended the Boeing Fellowship program, the advanced College Teaching Workshop at Purdue University, and the Bush program for teaching excellence at the University of Minnesota.).
+- Contribution in Course & Curriculum Development
+- Dr. Lyrintzis has taught a variety of courses covering the areas of Fluid Mechanics, Aerodynamics, Aeroacoustics, Flight Mechanics and Flight Dynamics.  He has developed and re-organized several courses.
+- New Courses (ERAU)
+- 1)    Rotorcraft Aerodynamics (AE 536, Graduate elective course).  This course includes a comprehensive treatment of helicopter aerodynamics and elements of helicopter design and wind turbine aerodynamics.
+- 2)  Aerodynamics (AE 319, junior required course).  This course combines incompressible and compressible Aerodynamics for Astodynamics students.
+- New Courses (Purdue University)
+- 1)    Aeroacoustics (AAE/ME 615 Graduate elective course).  Since the 90s there has been an increased concern about aircraft noise.  This course addresses the problem of aircraft noise in a timely and useful manner.  The course includes an introduction to theory of aeroacoustics with applications in jet noise, rotorcraft noise sonic boom, and fan noise.  It was developed with the help of Professor Mongeau of the School of Mechanical Engineering at Purdue University and it is cross-listed with Mechanical Engineering.
+- 2)    Intermediate Aerodynamics (AAE 514 Graduate/Senior elective course).  This course is a continuation of AAE 511 (Introduction to Fluid Mechanics) and covers the general area of aerodynamics at a graduate level.  Some of the topics are:  Incompressible aerodynamics, compressible aerodynamics, and airfoil/wing design.  This course fulfills a need of the graduate curriculum in the Aerodynamics area and it is now (spring 2006) offered though CEE.
+- Reorganized Courses (Purdue University)
+- 1)    Rotorcraft Aerodynamics (AAE 515, Graduate/Senior elective course).  The course was restructured to include a comprehensive treatment of helicopter aerodynamics and elements of helicopter design.  The course was renamed rotorcraft aerodynamics.
+- Experimentation in Teaching Methods and Techniques
+- Several active learning techniques are employed.  Example problems and typical exam questions are assigned during class time and the students are allowed to work in teams.  Several homework and computer projects also involve teamwork.  Many students have had positive comments about the techniques Dr. Lyrintzis uses.
+- Other Teaching Activities
+- Participated in the Bush Project to Promote Excellence and Diversity in Teaching, University of Minnesota (1991-92)
+- Attended the Aircraft Design Seminar (funded by NSF), University of Kansas (July 13-24, 1992)
+- Attended the AIAA short course in hypersonics (April, 1991)
+- Attended College Teaching Workshop sponsored by the Center for Instructional Services at Purdue University (June 4-16, 1996)
+- Boeing Faculty Summer (Welliver) Fellowship (Summer 1998)
+- Publication:
+- Boeing Welliver Scholars 1998 (Dr. Lyrintzis was a member of that team), Transforming the Engineering Curriculum:  Lessons Learned from a Summer at Boeing,
+- ASEE Journal of Engineering Education
+- , Vol. 90, No. 1, Jan. 2001, pp. 143--149.
+- Research Description
+- 1. Integral methods for CAA
+- . Dr. Lyrintzis has pioneered the use of surface integral techniques in Computational Aeroacoustics (CAA). Dr. Lyrintzis introduced the term “Kirchhoff method” in 1986 and published its first successful application that extends near-field CFD results to the acoustic far-field. Dr. Lyrintzis has utilized surface integral acoustic methods for rotorcraft and jet noise predictions.  The impact of this work is very high, as these surface integral methods have become the preferred way for extending near-field CFD results to the far-field, and are used almost universally in CAA.
+- 2. LES for jet Aeroacoustics.
+- A new high-order accurate Large Eddy Simulation (LES) CFD code was developed with Professor Blaisdell (Purdue University) for jet aeroacoustics computations.  The use of the LES code was extended for realistic Reynolds numbers using petaflop computing. Results were obtained with calculations of one billion grid points and using up to 91,000 cores in 2012.  The code was enhanced to include nozzle walls utilizing an approximate turbulent inflow boundary condition and a wall model. The code was used for an analysis (done for the first time using LES) of the noise reduction concept of beveling the nozzle exit plane.  Recently, the solver was further developed to include a sharp Immersed Boundary Method (IBM), to allow simulations of more complex nozzle shapes, i.e. chevrons. This is a pioneering effort and there are only a few research LES codes capable of such calculations.  The impact of this work is significant. As the LES code predicts realistically and accurately the noise reduction trends for beveling, chevrons, as well as fluidic injection and it has become a very powerful tool to evaluate jet noise reduction strategies.
+- 3. Other.
+- In 2000 Dr. Lyrintzis formed and led a partnership with Rolls-Royce Indianapolis, the University of Southampton (home of Rolls-Royce Center on Acoustics), and Purdue researchers to investigate jet noise reduction strategies for flows with mixers. Dr. Lyrintzis (with Professor Blaisdell) were also supported by NASA Houston to improve the CFD code OVERFLOW by adding a new turbulence model designed for wall-bounded high Reynolds number flows with separation.  Finally, Dr. Lyrintzis has worked on airfoil optimization and traffic flow modeling. All these efforts have a significant impact and advanced the state-of-the-art of the problems attempted.
+- Graduate Theses/Projects Directed
+- Doctoral Dissertations
+- 1.      Yi, P. [co-advised with Dr. Michalopoulos Civil and Mineral Engineering University of Minnesota], “Development and Testing of Advanced Continuum Traffic Flow Models for Congested Freeways,” Ph.D. Dissertation, Department of Civil and Mineral Engineering, University of Minnesota, Minneapolis, MN, April 1992.  Dr. Yi worked initially at the Minnesota Department of Transportation (MN/DOT).  He is currently a Professor at the Department of Civil Engineering, University of Akron, Akron, OH.
+- 2.      Xue, Y. [advisor], “The Computation and Analysis of Helicopter Impulsive Noise,” Ph.D. Dissertation, Department of Aerospace Engineering & Mechanics, University of Minnesota, Minneapolis, MN, Jan. 1994.  Dr. Xue currently works as an Aerospace Engineer at Bell Helicopters, Fort Worth, TX.
+- 3.      Liu, G. [co-advised with Dr. Michalopoulos Civil and Mineral Engineering, University of Minnesota], “High-Order Modeling for Traffic Flow Problems,” Ph.D. Dissertation, Department of Civil and Mineral Engineering, University of Minnesota, Minneapolis, MN, April 1996.  Dr. Liu currently works as a Senior Software Developer at ZH Computer Inc., Minneapolis, MN.
+- 4.      Wissink, A. [co-advised with Dr. Chronopoulos Computer Science, University of Texas at San Antonio (formerly at University of Minnesota)], “Efficient Parallelization of Rotorcraft Aerodynamics Navier-Stokes Codes,” Ph.D. Dissertation, Department of Aerospace Engineering and Mechanics, University of Minnesota, Minneapolis, MN, Oct. 1996; Dr. Wissink is currently working at NASA Ames Research Center, Moffett Field, CA.
+- 5.      Pilon, A. [advisor], “Development of Improved Surface Integral Methods for Jet Aeroacoustic Predictions,” Ph.D. Dissertation, Department of Aerospace Engineering and Mechanics, University of Minnesota, Minneapolis, MN, Jan. 1997; Dr. Pilon worked as a Research Associate, Department of Aerospace Engineering, Pennsylvania State University, University Park, PA (under the direction of Professor P. J. Morris).  He is currently with Lockheed Martin (Skunk Works) at Palmdale, CA and he is a Lockheed Technical Fellow.
+- 6.      Spyropoulos, J. [co-advised with Dr. Douglas, Dept. of Mathematics, Purdue University], “On the Development of Efficient Parallel Algorithms for the Navier Stokes Equations,” Ph.D. Dissertation, School of Aeronautics and Astronautics, Purdue University, W. Lafayette, IN, May 1999.  Dr. Spyropoulos currently works in the Propulsion and Power Research & Engineering group at the Naval Air Warfare Center Aircraft Division at Patuxent River, MD.
+- 7.      Koutsavdis, E. K. [co-advised with Dr. Blaisdell, School of Aeronautics and Astronautics, Purdue University], “On the Development of Accurate Computational Aeroacoustic Methodologies for Jet Noise Prediction,” Ph.D. Dissertation, School of Aeronautics and Astronautics, Purdue University, W. Lafayette, IN, Aug. 2000. Dr. Koutsavdis currently works at Dell, Austin, TX.
+- 8.      Kim, H. [co-advised with Dr. Williams, School of Aeronautics and Astronautics, Purdue University], “Blade Vortex Interactions - An Interdisciplinary Approach,” Ph.D. Dissertation, School of Aeronautics and Astronautics, Purdue University, W. Lafayette, IN, August 2001. Dr. Kim worked as a Research Associate, Department of Aerospace Engineering, Pennsylvania State University, University Park, PA (under the direction of Professor P. J. Morris). He is now a Professor in Yonsei University.
+- 9.      Ekici, K. [advisor], “The Use of Newton’s Method in Three-Dimensional Unsteady CFD Navier Stokes Solvers,” Ph.D. Dissertation, School of Aeronautics and Astronautics, Purdue University, W. Lafayette, IN, August 2001, Publications:  Refereed Conference Articles [60], [63]; Refereed Journal Articles [39], [41].  Dr. Ekici worked as a Research Associate, Department of Mechanical Engineering and Material Science, Duke University, Durham, NC (under the direction of Professor K. Hall). He is currently a Professor at the University of Tennessee;
+- recipient of NSF Career Award 2011
+- 10.      Uzun, A. [co-advised with Dr. Blaisdell, School of Aeronautics and Astronautics, Purdue University], “3-D Large Eddy Simulation for Jet Aeroacoustics” Ph.D. Dissertation, School of Aeronautics and Astronautics, Purdue University, W. Lafayette, IN, December 2003. After several years at Florida State University, Dr. Uzun joined NASA Langley in July 2015.
+- 11.      Namgoong, H. [co-advised with Dr. Crossley, School of Aeronautics and Astronautics, Purdue University], “Airfoil Optimization for Morphing Aircraft,” Ph.D. Dissertation, School of Aeronautics and Astronautics, Purdue University, W. Lafayette, IN, December 2005. Dr. Namgoong works for Rolls-Royce, Derby, UK.
+- 12.      Garrison, L., [co-advised with Dr. Blaisdell, School of Aeronautics and Astronautics, Purdue University] “Computational Fluid Dynamics Analysis of Jets with Internal Flow Mixers,” Ph.D. Dissertation, School of Aeronautics and Astronautics, Purdue University, W. Lafayette, IN, May 2006. Dr. Garrison works for Rolls-Royce, Indianapolis, IN.
+- 13.      Lew, P-T [co-advised with Dr. Blaisdell, School of Aeronautics and Astronautics, Purdue University]  “A Study of Sound Generation from Turbulent Heated Round Jets Using 3-D Large Eddy Simulation,” Ph.D. Dissertation, School of Aeronautics and Astronautics, Purdue University, W. Lafayette, IN, May 2009. After working as a postdoctoral research associate working with Professor Mongeau at MaGill University, Montreal, Canada, Dr. Lew joined Exa corporation, Boston MA.
+- 14.      Lo. S-C. [co-advised with Dr. Blaisdell, School of Aeronautics and Astronautics, Purdue University] “Numerical Simulations of Supersonic Jet Flows” Ph.D. Dissertation, School of Aeronautics and Astronautics, Purdue University, W. Lafayette, IN, August 2010. After teaching at
+- National Pingtung University of Science and Technology
+- (NPUST) in Taiwan and a post doc at ERAU, Dr. Lo is now working at Intelligent Automation.
+- 15.      Lillard, R.  [co-advised with Dr. Blaisdell, School of Aeronautics and Astronautics, Purdue University]  “Turbulence Modeling for Shock Boundary Layer Interactions,” Ph.D. Dissertation, School of Aeronautics and Astronautics, Purdue University, W. Lafayette, IN, December 2011. Dr. Lillard is the Deputy Chief of the Applied Aeroscience and CFD Brunch at NASA Johnson, Houston, TX.
+- 16.      Martha C. [co-advised with Dr. Blaisdell, School of Aeronautics and Astronautics, Purdue University] Ph.D. Dissertation, “Towards High Fidelity Subsonic Jet Noise Prediction Using Petascale Supercomputers,” School of Aeronautics and Astronautics, Purdue University, W. Lafayette, IN, May 2013. Dr. Martha is currently working at Intel.
+- 17.      Aikens K., [co-advised with Dr. Blaisdell, School of Aeronautics and Astronautics, Purdue University] “High Fidelity Large Eddy Simulation for Supersonic Jet Noise Prediction,” PhD Dissertation, School of Aeronautics and Astronautics, Purdue University, W. Lafayette, IN, August 2014. Dr. Aikens is currently an Assistant Professor at Houghton College, Houghton, NY.
+- 18.      Kube-McDowell, M. [co-advised with Dr. Blaisdell, School of Aeronautics and Astronautics, Purdue University] “” Ph.D. Dissertation, School of Aeronautics and Astronautics, Purdue University, W. Lafayette, IN, December 2014. Dr. Kube-McDowell currently works at Sikorsky.
+- 19.Dhamankar N., [co-advised with Dr. Blaisdell, School of Aeronautics and Astronautics, Purdue University] “” School of Aeronautics and Astronautics, Purdue University, W. Lafayette, IN, May 2016. Dr. Dhamankar currently works at Intel.
+- 20.Swift, H., [co-advised with Dr. Blaisdell, School of Aeronautics and Astronautics, Purdue University] “Implementing and Testing a Panel-Based Method for Modeling Acoustic Scattering from CFD Input” PhD Dissertation, School of Aeronautics and Astronautics, Purdue University, W. Lafayette, IN, August 2016. Dr. Swift works at Argonne National Lab.
+- 21.Oliver, B. [co-advised with Dr. Blaisdell, School of Aeronautics and Astronautics, Purdue University] ”Development of Inverse Methods for Reconstruction of Flight Environments on Ablators" Ph.D. Dissertation, School of Aeronautics and Astronautics, Purdue University, W. Lafayette, IN, December 2016. Dr. Oliver works for NASA Johnson, Houston, TX.
+- 22. Coderoni M., “A Computational Analysis of the Aerodynamics and Aerocoustics of Jets with Fluidic Ingestion,” Department of Aerospace Engineering, Embry-Riddle Aeronautical University, Daytona Beach, FL, August 2018.
+- Dr. Coderoni currently works for ANSYS/Fluent.
+- 23. Marques Goncalves, M., [co-advised with Dr. Golubev] "Aeroacoustic Studies with applications to Jets and Rotors", Department of Aerospace Engineering, Embry-Riddle Aeronautical University, Daytona Beach, FL, May 2025 [Expected]..
+- Master’s Theses/Projects
+- 1.    Xue, Y. [advisor], “Numerical Simulation of Acoustic Sources in Unsteady Transonic Flow,” Master of Science Thesis, Department of Mechanical & Aerospace Engineering, Syracuse University, Syracuse, NY, Dec. 1989.  Dr. Xue transferred to the University of Minnesota where he completed his Ph.D. Dissertation under the direction of Dr. Lyrintzis.
+- 2.    Lee, J. [advisor], “Some Acoustic Problems in Unsteady Transonic Flow,” Master of Science Thesis, Department of Aerospace Engineering & Mechanics, University of Minnesota, Minneapolis, MN, June 1992.  Dr. Lee transferred to Rensselaer Polytechnic Institute, Troy, NY, and he has completed his Ph.D. Dissertation (March 1996) under the direction of Dr. Hajela; he is currently a Professor at the Department of Mechanical Design and Production Engineering at Yonsei University, Seoul, Korea.
+- 3.    Wissink, A. M. [co-advised with Dr. Chronopoulos Dept. of Computer Science University of Minnesota], “The Use of Iterative Methods in Transonic Flow Calculations,” Master of Science Thesis, Department of Aerospace Engineering & Mechanics, University of Minnesota, Minneapolis, MN, Nov. 1993.  Mr. Wissink has completed his Ph.D. studies at the University of Minnesota under the direction of Dr. Lyrintzis.
+- 4.    Liu, G. [co-advised with Dr. Michalopoulos Dept. of Civil and Mineral Engineering, University of Minnesota], “Development and Comparative Evaluation of High-Order Models,” Master of Science Thesis, Department of Civil and Mineral Engineering, University of Minnesota, Minneapolis, MN, May 1994. Mr. Liu has completed his Ph.D. Dissertation at the University of Minnesota under the direction of Dr. Michalopoulos and Dr. Lyrintzis.
+- 5.    Pilon, A. [advisor], “A Data-Parallel Total Variation Diminishing Method for Sonic Boom Calculations,” Master of Science Thesis, Department of Aerospace Engineering & Mechanics, University of Minnesota, Minneapolis, MN, June 1994.  Mr. Pilon has completed his Ph.D. studies at the University of Minnesota under the direction of Dr. Lyrintzis.
+- 6.    Koutsavdis, E. K. [advisor], “An Investigation of Kirchhoff Methodologies for Computational Aeroacoustics,” Master of Science Thesis, School of Aeronautics and Astronautics, Purdue University, W. Lafayette, IN, Feb. 1997.  Mr. Koutsavdis is currently working for his Ph.D. degree at Purdue University under the direction of Dr. Lyrintzis. Mr. Koutsavdis has completed his Ph.D. degree under the direction of Drs Lyrintzis and Blaisdell.
+- 7.    Jones, B. [co-advised with Dr. W. Crossley, School of Aeronautics and Astronautics, Purdue University], “Parallel Computation for Genetic Algorithm-Based Airfoil Design,” Master of Science Thesis, School of Aeronautics and Astronautics, Purdue University, W. Lafayette, IN, Dec. 1998.  Mr. Jones is currently working with Lockheed-Martin at Fort Worth, TX.
+- 8.    Garrison, L. [co-advised with Dr. Blaisdell, School of Aeronautics and Astronautics, Purdue University], “Jet Noise Models for Forced Mixer Noise Predictions,” Master of Science Thesis, School of Aeronautics and Astronautics, Purdue University, W. Lafayette, IN, Dec. 2003.  Mr. Garrison has completed his PhD degree under the direction of Drs Lyrintzis and Blaisdell.
+- 9.    Lew, P. [co-advised with Dr. Blaisdell, School of Aeronautics and Astronautics, Purdue University], “Aeroacoustics and Turbulence Simulations of Exhaust Nozzles with Mixing Devices,” Master of Science Thesis, School of Aeronautics and Astronautics, Purdue University, W. Lafayette, IN, May 2004. Mr. Lew has completed his PhD degree under the direction of Drs Lyrintzis and Blaisdell.
+- 10.    Wright, C. [co-advised with Dr. Blaisdell, School of Aeronautics and Astronautics, Purdue University], “Investigating Correlations between Reynolds Averaged Flow Fields and Noise from Forced Mixed Jets,” Master of Science Thesis, School of Aeronautics and Astronautics, Purdue University, W. Lafayette, IN, May 2004. Mr. Wright is now working with L-3 Coleman Aerospace, Huntsville, AL.
+- 11.    Pan, F., “The Use of Surface Integral Methods in Computational Jet Aeroacoustics,” [advisor] Master of Science Thesis, School of Aeronautics and Astronautics, Purdue University, W. Lafayette, IN, December 2004. Mr. Pan is currently working at UTRC.
+- 12.    Oliver, B. [co-advised with Dr. Blaisdell, School of Aeronautics and Astronautics, Purdue University] “Evaluation of 2-D High-Speed Turbulent Boundary Layer and Shock Boundary Layer Interaction Computations with the OVERFLOW code,” Master of Science Thesis, School of Aeronautics and Astronautics, Purdue University, W. Lafayette, IN, Aug. 2006. Mr. Oliver is now at NASA Johnson, Houston, TX and has completed his PhD degree under the direction of Drs Lyrintzis and Blaisdell.
+- 13.    Kube-MacDowell M., [co-advised with Dr. Blaisdell, School of Aeronautics and Astronautics, Purdue University] “Parametric Study of the Generation of Shocks in Near-Critical Turbofan Nozzles,” Master of Science Thesis, School of Aeronautics and Astronautics, Purdue University, W. Lafayette, IN, December 2008. Mr. Kube-McDowell, is now working for his PhD degree under the direction of Drs Lyrintzis and Blaisdell.
+- 14.    Thirumurthy D. [co-advised with Dr. Blaisdell, School of Aeronautics and Astronautics, Purdue University] “Design and Analysis of Noise Suppression Exhaust Nozzle Systems,” Master of Science Thesis, School of Aeronautics and Astronautics, Purdue University, W. Lafayette, IN, May 2010. Mr. Thirumurthy is now working for Rolls-Royce Energy Systems, Mount Vernon, OH.
+- 15.    Martha C. [co-advised with Dr. Blaisdell, School of Aeronautics and Astronautics, Purdue University] “Large Eddy Simulations of 2-D and 3-D Spatially Developing Mixing Layers,” Master of Science Thesis, School of Aeronautics and Astronautics, Purdue University, W. Lafayette, IN, May 2010. Mr. Martha has completed his PhD degree under the direction of Drs Lyrintzis and Blaisdell.
+- 16.    Gross N. [co-advised with Dr. Blaisdell, School of Aeronautics and Astronautics, Purdue University] “Assessment of Turbulence Model and Corrections with Applications to the Orion Launch Abort System,” School of Aeronautics and Astronautics, Purdue University, W. Lafayette, IN, May 2010. Mr. Gross is now working for United Launch Alliance (Denver, CO).
+- 17.    Louis M. [co-advised with Dr. Blaisdell, School of Aeronautics and Astronautics, Purdue University] “Validation of Characteristic Boundary Conditions Implemented in Computational Aeroacoustics Large Eddy Simulations of Wall Bounded Flows,” School of Aeronautics and Astronautics, Purdue University, W. Lafayette, IN, December 2011. Refereed Journal Articles [56], [58], [64], Refereed Conference Articles [94], [97]. [101], [103]. Mr. Louis is now working at Bell Helicopters.
+- 18.    Dhamankar N., [co-advised with Dr. Blaisdell, School of Aeronautics and Astronautics, Purdue University] “Validation of Nozzle Inflow Boundary Implemented in a Large Eddy Simulation Code,” School of Aeronautics and Astronautics, Purdue University, W. Lafayette, IN, December 2012, Refereed Conference Article [106]. Mr. Dhamankar has completed his PhD degree under the direction of Drs Lyrintzis and Blaisdell.
+- 19.    Desai Y., [co-advised with Dr. Golubev and Dr. Mankbadi, Department of Aerospace Engineering, Embry-Riddle Aeronautical University] “Large Eddy Simulation of a Supersonic Jet Impinging on a Flat Plate,” Department of Aerospace Engineering, Embry-Riddle Aeronautical University, Daytona Beach, FL, August 2013.  Mr Desai works for CD-Adapco.
+- 20.       Guenthoer B., [co-advised with Dr. Golubev and Dr. Mankbadi, Department of Aerospace Engineering, Embry-Riddle Aeronautical University] “Acoustics of a Supersonic Jet Impinging on a Flat Plate,” Department of Aerospace Engineering, Embry-Riddle Aeronautical University, Daytona Beach, FL, December 2013.
+- Master’s Projects
+- 1.   Weidmann, A. [advisor], “A Comparison Between Small Disturbance Theory and Panel Methods for a Potential Flow Around an Airfoil,” Master of Engineering Project, Department Mechanical and Aerospace Engineering, Cornell University, Ithaca, NY, Aug. 1989.  Mr. Weidmann is currently working in the German industry.
+- 2.   Kao, M.-C. [advisor], “The Use of Upwind Methods for a Shock Tube,” Master of Science Project, Department of Aerospace Engineering & Mechanics, University of Minnesota, Minneapolis, MN, Jan. 1992.  Mr. Kao continued his studies for his Ph.D. degree at another University.
+- 3.   Golly, T. [advisor], “Characteristics of Hypersonic Minimum Drag Bodies,” Master of Science Project, Department of Aerospace Engineering & Mechanics, University of Minnesota, Minneapolis, MN, April 1993.  Mr. Golly is currently working for Control Data at Minneapolis, MN.
+- 4.   Tatineti P., [co-advised with Dr. Blaisdell, School of Aeronautics and Astronautics, Purdue University] “Fan Noise Design for the Supersonic Business Jet,” Master of Science Project, School of Aeronautics and Astronautics, Purdue University, W. Lafayette, IN, May 2009. Mr. Tatineti is now working for Boeing Co. Seattle WA.
+- 5. Zhang X. [co-advised with Dr. Blaisdell, School of Aeronautics and Astronautics, Purdue University], “Multi-Block Large Eddy Simulation for Jet Aeroacoustics,” Master of Science Project, School of Aeronautics and Astronautics, Purdue University, W. Lafayette, IN, Dec. 2010, Refereed Journal Articles [44], Refereed Conference Articles [73].
+- 6. Aikens K., [co-advised with Dr. Blaisdell, School of Aeronautics and Astronautics, Purdue University] “Supersonic Jet Noise Predictions,” Master of Science Project, School of Aeronautics and Astronautics, Purdue University, W. Lafayette, IN, Dec. 2010 Mr. Aikens is now working for his PhD degree under the direction of Drs Lyrintzis and Blaisdell.
+- 7.  Ng B. [co-advised with Dr. Blaisdell, School of Aeronautics and Astronautics, Purdue University] “Acoustic Scattering in the Time Domain,” Master of Science Project, School of Aeronautics and Astronautics, Purdue University, W. Lafayette, IN, June 2011.
+- Undergraduate Theses/Projects Directed
+- 1.  Farmer, J. D., “On the Design for Maximum Lift Airfoils, Honor’s Thesis, Department of Aerospace Engineering & Mechanics, University of Minnesota, Minneapolis, MN, April 1991; also MSI undergraduate Internship, Jan. 1991-May 1991.  Mr. Farmer went to the Massachusetts Institute of Technology, Boston, MA, where he completed his Master of Science degree.  He is currently working for the Air Force.
+- 2.  Romero, J. and Yi, S., “Sonic Boom Generation and Propagation Prediction Methods,” Independent Project, Department of Aerospace Engineering & Mechanics, University of Minnesota, Minneapolis, MN, April 1991.
+- 3.  Wissink, A. M., “Efficient Transonic Flow Calculations,” Honor’s Thesis, Department of Aerospace Engineering & Mechanics, University of Minnesota, Minneapolis, MN, Aug. 1991; also MSI undergraduate Internship, Jan. 1991-Aug. 1991.  Mr. Wissink continued for graduate studies at the University of Minnesota; he received his M.S. and Ph.D. degrees at the University of Minnesota under the direction of Dr. Lyrintzis.
+- 4.  Olejniczak, J., “High-Lift Airfoil Design in Subcritical Flow,” Honor’s Thesis, Department of Aerospace Engineering & Mechanics, University of Minnesota, Minneapolis, MN, June 1992; also MSI undergraduate Internship, June 1991-Aug. 1992.   Mr. Olejniczak continued for graduate studies at the University of Minnesota, Minneapolis, MN.  He completed his M.S. and Ph.D. degrees under the direction of Dr. Candler and he is now working at NASA Ames.
+- 5.  Ke, K., “Comparison of the Characteristics of Conventional Wings and Forward Swept Wings,” Undergraduate Research Opportunities Program (UROP), University of Minnesota, Minneapolis, MN, June 1991.  Mr. Ke continued for graduate studies at Stanford University, Stanford, CA, and after receiving his M.S. degree, he began working in the Silicon Valley area.
+- 6.  Oelke, M., “Optimal Hydrofoil Design for a Human Powered Water Craft,” Undergraduate Research Opportunities Program (UROP), University of Minnesota, Minneapolis, MN, Jan. 1992.  Mr. Oelke continued for graduate studies at the University of Minnesota and received his M.S. degree.  He is currently working for Northwest Airlines.
+- 7.  Kilaras, M., “On the Reduction of Rotorcraft Impulsive Noise,” Honor’s Thesis, Department of Aerospace Engineering & Mechanics, University of Minnesota, Minneapolis, MN, June 1994; also MSI undergraduate Internship, Sept. 93-June 1994.  Publications:  Refereed Conference Articles [23], [25].
+- 8.  Hamlin, L., “Development of Two-Dimensional Airfoil Codes for a MATLAB Environment,” Independent Project, School of Aeronautics and Astronautics, Purdue University, W. Lafayette, IN, Dec. 1996.  Ms. Hamlin currently works at Hughes Aircraft Co., Long Beach, CA.
+- 9. Jameson, J., “A Study of Rotorcraft Blade-Tip Shape Noise Characteristics,” Independent Project, School of Aeronautics and Astronautics, Purdue University, W. Lafayette, IN, Sept. 1997. Mr. Jameson obtained his Ph.D. from Stanford University.
+- 10. Vardaxis G. [co-advised with Professor Blaisdell] SURF student “Computer Program Development and Evaluation of the Parallel Performance for Jet Noise Simulation,” Summer 2010.
+- Funded Research
+- Internal
+- University
+- of Minnesota
+- [1]  Graduate School of the University of Minnesota, Grant in-Aid-of Research, Artistry and Scholarship,
+- Study of Transonic Blade-Vortex Interactions in Three-Dimensions
+- , Principal Investigator, 1/1/90-6/30/90, $5,400; 7/1/90-6/30/91, $9,200.
+- [2]  Graduate School Faculty Summer Research Fellowship, University of Minnesota,
+- Study of Transonic Blade-Vortex Interactions in Three-Dimensions
+- , Summer 1991, $4,500.
+- [3]  Graduate School of the University of Minnesota, Grant in-Aid-of Research, Artistry and Scholarship,
+- On the Design for a Maximum Lift Airfoil
+- , Principal Investigator, 7/1/91-6/30/92, $11,000.
+- [4]  Undergraduate Research Opportunities Program (UROP), University of Minnesota,
+- Comparison of the Characteristics of Conventional Wings and Forward Swept Wings
+- , Principal Investigator, 9/1/90-5/15/90, $1,000.
+- [5]  Minnesota Supercomputing Institute Undergraduate Internships, University of Minnesota, advisor for J. Farmer, J. Olejniczak, A. Wissink, and M. Kilaras, 1/1/91-8/30/94, $32,750.
+- [6]  Undergraduate Research Opportunities Program (UROP), University of Minnesota,
+- Optimal Hydrofoil Design for a Human Powered Water Craft
+- , Principal Investigator, 1/1/91-9/15/91, $1,000.
+- Purdue University
+- [7]    Purdue Research Foundation Research Grant,
+- Rotorcraft Aeroacoustics Using Kirchhoff’s Method Coupled with a Navier-Stokes CFD Code
+- , Principal Investigator, 8/15/95-8/14/97, $22,492.
+- [8]    Purdue Research Foundation Summer Faculty Grant,
+- An Improved Kirchhoff Method for Rotorcraft Impulsive Noise
+- , Principal Investigator, Summer 1997, $5,000.
+- [9]    Purdue University,
+- Faculty Program of Study in a Second Disciplin
+- e, 8/15/97-5/15/98, $7,000.
+- [10]    Purdue Research Foundation Research Grant,
+- Efficient Parallel Computing Methods for Rotorcraft Aerodynamics
+- , Principal Investigator, 8/1/98-7/31/00, $25,027.
+- [11]    Purdue Research Foundation,
+- Computational Science and Engineering Fellowship
+- , Advisor (with G. Blaisdell) for Ali Uzun, 8/01/00-7/31/01, $11,892.
+- [12]    Purdue Research Foundation Research Grant,
+- Methods for Innovative Airfoil and Rotor Design to Reduce Noise
+- , Principal Investigator (with W. Crossley), 1/1/01-12/31/02, $25,292.
+- [13]    Purdue Research Foundation, 2001/2002 Special Initiatives Fellowship/ Assistantship Program,
+- Collaboration with University of Southampton on Jet Noise Reduction
+- , Principal Investigator 8/1/01-7/31/02, $13,812.
+- [14]    Academic Reinvestment Program,
+- Computational Science and Engineering Educational Program
+- , Co-Principal Investigator (with E. Houstis, PI, et al.) $50,000/year (recurring).
+- [15]    Purdue Research Foundation Research Grant,
+- Aeroacoustics of Turbulence Simulations of Exhaust Nozzles with Mixing Devices
+- , Principal Investigator (with G. Blaisdell), 1/1/04-12/31/05, $26,526.
+- [16]  Purdue Research Foundation Research Grant (Special Incentive Research Grant (SIRG),
+- An Efficient Simulation Methodology for Jet Noise Due to Forced Mixers
+- ,  Co-Principal Investigator (with G. Blaisdell, PI, and J. Rice), 6/1/04-5/31/06, $25,878.
+- [17]  Purdue Research Foundation Research Grant (Special Incentive Research Grant (SIRG), Co-Principal Investigator (with G. Blaisdell, PI, and A. Shame), 6/1/06-5/31/07, $12,000.
+- External
+- University of Minnesota
+- [1]  National Aeronautics and Space Administration, Ames Research Center,
+- Transonic Blade-Vortex Interactions, a Parametric Study
+- , Principal Investigator, 6/1/89-9/1/89, (NASA/NAG 2-588, $6,696).
+- [2]  National Aeronautics and Space Administration, Ames Research Center,
+- A Parametric Study of Transonic Blade-Vortex Interactions
+- , Principal Investigator, 7/1/90-6/30/91, (NASA/NAG 2-646, $10,850).
+- [3]  Center for Transportation Studies,
+- Development of Advanced Traffic Flow Models and Implementation in Parallel Processing (Phase I)
+- , Principal Investigator (with P. G. Michalopoulos and A. T. Chronopoulos), 8/1/91-7/31/92 ($50,000).
+- [4]  Center for Transportation Studies,
+- Development of Advanced Traffic Flow Models and Implementation in Parallel Processing (Phase II)
+- , Principal Investigator, 7/1/92-6/30/93 ($50,000).
+- [5]  Minnesota Department of Transportation,
+- Enhancements of the KRONOS Simulation Package and Database for Geometric Design Planning, Operations and Traffic Management in Freeway Networks/Corridors
+- , Participant (with P. G. Michalopoulos and E. Kwon), 12/1/92-12/31/93 ($115,000).
+- [6]  NASA Graduate Student Researchers Program, High Performance Computing and Communications, Ames Research Center,
+- The Use of Parallel Iterative Methods for Full Potential Rotor Codes
+- , Principal Investigator (advisor for A. Wissink), 7/1/93-6/30/96 ($66,000).
+- [7]  NASA Lewis Research Center, ICOMP,
+- The Use of Kirchhoff’s Method in Jet Aeroacoustics
+- , Principal Investigator (with R. R. Mankbadi), summer visit support (6/93-7/93, $7,500).
+- [8]  Minnesota Department of Transportation,
+- Development of Advanced Traffic Flow Models and Implementation in Parallel Processing (Phase III)
+- , Principal Investigator, 9/15/93-9/15/94 ($88,820).
+- Purdue University
+- [9]    NASA Langley Research Center,
+- The Use of Kirchhoff’s Method in Jet Aeroacoustics
+- , Principal Investigator, 3/1/94-7/15/97 (NASA/NAG 1-1605 & 1-1660, $150,000; reduced to $90,000 due to NASA’s budgetary problems).
+- [10]    Sikorsky Aircraft,
+- Kirchhoff Acoustic Methodology Implementation and Validation for Rotorcraft Aeroacoustics
+- , Principal Investigator, 9/1/94-12/31/94 ($31,000).
+- [11]    Sikorsky Aircraft,
+- Kirchhoff Acoustic Methodology Implementation and Validation for TiltRotor Aeroacoustics Codes (TRAC)
+- , Principal Investigator, 1/1/95-3/31/97 ($40,000).
+- [12]    NASA Langley Research Center,
+- A Study of Rotorcraft Blade-Tip Shape Nose Characteristics
+- , Principal Investigator, 1/1/97-5/15/97 ($25,000).
+- [13]    ARO,
+- An Extended Kirchhoff Method for Rotorcraft Impulsive Noise
+- , Principal Investigator, 5/1/97-11/30/97 ($20,000).
+- [14]    NASA Glenn Research Center,
+- On the Development of Supersonic Jet Noise Prediction Methodology
+- , Principal Investigator (with G. A. Blaisdell) 11/1/97-10/31/01 ($104,186).
+- [15]    NASA Glenn Research Center, ICOMP,
+- On the Development of Boundary Conditions for Computational Aeroacoustics
+- , Principal Investigator (with R. R. Mankbadi) Summer 1999, ($12,000).
+- [16]    21st Century Research and Technology Fund,
+- Development of Low Jet Noise Aircraft Engines
+- , Principal Investigator (with G. Blaisdell, L. Mongeau, and J. Bolton) 3/1/01-12/31/03, ($1,053,531 plus $1,387,727 cost-share & leverage; the award was augmented by a Rolls-Royce Scholarship valued approximately to $70,000 for 2 years and $300,000 NASA’s cost share for experimental efforts).
+- [17]    ARO DURIP Program,
+- LINUX Cluster for High-Performance Parallel Computing
+- , co-Principal Investigator (with S. Heister, PI, G. Blaisdell, and W. Crossley), 4/1/01-12/31/05, ($148,730)
+- [18]  Department of Education GAANN (Graduate Assistance in Areas of National Need) Program
+- Interdisciplinary Fellowship Program for Computational Science & Engineering
+- , co-Principal Investigator (with T. Downar, PI, R. Eigenman, S. King, and J. Mathur), 8/1/01-7/31/04 ($491,400 + $163,800 cost share).
+- [19]  Ohio Aerospace Institute (Aeroacoustics Research Consortium)
+- Integral Techniques for Jet Aeroacoustics
+- , Principal Investigator, 11/1/02-10/31/03 ($20,000).
+- [20]  Ohio Aerospace Institute (Aeroacoustics Research Consortium)
+- Understanding the Prediction of Lobed Mixer Noise
+- Principal Investigator (with G. Blaisdell) 5/1/04-12/30/06 ($40,000)
+- [21]  NASA Johnson Space Center “Turbulence and Heat Transfer Calculations Boundary Layer Flows for Space Shuttle Applications,” co-PI (with G. A. Blaisdell, PI) 8/1/04-7/30/13 ($753,954).
+- [22]  Department of Education GAANN (Graduate Assistance in Areas of National Need) Program
+- Fellowship Program for Aeronautics and Astronautics
+- , Principal Investigator (with A. Grandt, K. Howell, J. Longuski, and J. Sullivan), 8/1/06-7/31/10 ($557,548 + $206,293 cost share)
+- [23]  Rolls Royce , “Supersonic Business Jet Applications,” (with S. Heister, PI, G. Blaisdell, W. Crossley, C. Merkle, and J. Sullivan) 8/1/2006-5/31/2011, $4,000,000 (Lyrintzis’ share $186,000/year).
+- [24] Navy/SSTR with CRAFT Tech Phase I and Phase II, “Large Eddy Simulation of Hot Supersonic Jets for Aeroacoustics,” 8/1/2009-12/32/2012, $265,000, PI (co-PI: G. Blaisdell).
+- [24] Department of Education GAANN (Graduate Assistance in Areas of National Need) “An Interdisciplinary Fellowship Program For Computational Sciences and Engineering,'' PI, (Co-PIs: R. Eigenmann, M. Grisbkov, S. Kais, J. Mathur, A. Pothen, and R. Skeel), 8/1/2009—7/31/2012, ($771,768 plus $305,532 cost share).
+- [26] National Science Foundation (NSF) “ Realistic Simulation of Jet Engine Noise Using Petaflop Computing” Co-PI (PI: Blaisdell, co-PI: Z. Li) Aug. 8/1/2009-7/31/2014 $1,260,000.
+- [27] Navy/SBIR with CRAFT Tech, Phase I and Phase II “Aeroacoustics of High-Speed Jet Impingement” 1/1/2011-12/31/2013, $173,477, PI (co-PI: G. Blaisdell).
+- Embry-Riddle Aeronautical University
+- [28] ULA  Large eddy Simulations of Liftoff Noise Prediction And Optimum Impinging Angle7/1/2013-12/10/2013, $40,000, PI (co-PI, with  R. Mankbadi, PI and V. Golubev, co-PI)
+- [29]  FCAAP (Florida Center for Advanced Aeropropulsion) - subcontract “Simulation of Impinging Jets” 1/1/2015-12/31/2015, $10,000.                                                                                                                                                    [30] Department of Education GAANN (Graduate Assistance in Areas of National Need) Program
+- Fellowship Program for Aerospace Engineering
+- , Principal Investigator (with M. Al-Haik, W. Engblom, T. Henderson, G. Leishman), 10/1/18-9/30/22 ($651,174 + $350,000 cost share)
+- [31] Department of Education GAANN (Graduate Assistance in Areas of National Need) Program
+- Fellowship Program for Aerospace Engineering
+- , Principal Investigator (with M. Al-Haik, W. Engblom, T. Henderson, G. Leishman), 10/1/21-9/30/24 ($841,275 + $439,667 cost share)
+- [32]  NASA ULI “Safe, Low-Noise Operation of UAM in Urban Canyons via Integration of Gust Outcomes and Trim Optimization” (subcontract to University of Boston), (co-PI, V. Golubev, PI  R. Mankbadi, co-PI), 9/1/23-8/31/26, ($1.4 million, Lyrintzis’ share $467,000)
+- Total Career External Funding
+- :       $12,500,000
+- Supercomputer Support
+- Significant supercomputer time was obtained from different national organizations to support Dr. Lyrintzis research activities.  In most cases supercomputer time was allocated after a competitive proposal review process.
+- SERVICE
+- Conferences Organized
+- AIAA/CEAS
+- Chair for numerous sessions in AIAA and CEAS conferences (1995-present)
+- Co-Organizer and Session Chairman for the CEAS 6
+- Workshop “From CFD to CAA”, Nov. 2002, Athens Greece.
+- Co-Organizer and session Chair for the 10
+- AIAA/CEAS Aeroacoustics Conference, Manchester, Great Britain, May 2004.
+- Organizer and session Chair for the 23
+- AIAA/CEAS Aeroacoustics Conference Denver, CO, June 2017.
+- ASME
+- Co-organizer and Session Chairman of Forum in
+- Computational Aero- and Hydro-acoustics
+- for Fluids Engineering Division Summer Meeting, Washington, DC, June 1993.
+- Organizer and Session Chairman of Forum in
+- Computational Aeroacoustics
+- for Fluids Engineering Division Summer Meeting, Hilton Head, SC, Aug. 1995.
+- Organizer and Session Chairman of Forum in
+- Computational Aeroacoustics
+- for Fluids Engineering Division Summer Meeting, San Diego, CA, July 1996.
+- Co-organizer for ASME International Congress on Fluid Dynamics & Propulsion, Cairo, Egypt, Dec. 1996.
+- Organizer of Acoustics and Aeroacoustics sessions for the AHS 51st Annual Forum, May 1995.
+- Chairman of Aeroacoustics Session for the AHS 51st Annual Forum, May 1995.
+- NASA
+- Member of Scientific Committee for the 4
+- CAA Benchmark Workshop, Cleveland, OH, Oct. 2003.
+- Membership in Professional Societies
+- AIAA (American Institute of Aeronautics and Astronautics)
+- Fellow
+- ASME (American Society of Mechanical Engineers)
+- Fellow
+- Royal Aeronautical Society (RAeS)
+- Fellow
+- AHS (American Helicopter Society)
+- ADCA (Aerospace Department Chair Association-Chair 2015-17)
+- ASEE (American Society for Engineering Education)
+- Technical Chamber of Greece
+- Greek Society of Professional Mechanical & Electrical Engineers
+- Sigma Xi, the Scientific Research Society
+- Associate Editor
+- AIAA Journal
+- (2009-15)
+- International Journal of Aeroacoustics
+- (2009- 2015)
+- Technical Reviewer
+- NSF, ARO, NASA (proposal review);
+- AIAA Journal, AIAA Journal of Aircraft, AHS Journal, ASME Journal of Fluids Engineering, International Journal of Aeroacoustics, Journal of Sound and Vibration, IMACS Journal of Computational Acoustics
+- Journal of Acoustical Society of America, IEEE Transactions on Vehicular Technology
+- (Journal paper review).
+- Technical Committees
+- AIAA Aeroacoustics Committee (1994-97, 2001-24); Vice Chair (2005-07) Chair (2007-09), Awards Subcommittee (member 1994-96, Chair 1996-97, 2016-19), Aeroacoustics Conference Subcommittee (2001-04, 2018-21)
+- AIAA Higher Education Committee (2017-now) – organized and participated in several panels on Aerospace Education at AIAA SciTech meetings; member of committee on updating ABET guidelines for Aerospace Engineering (2021-now)
+- AIAA Fellow selection committee (2023)
+- ADCA (Aerospace Department Chairs Association, 2012-24; Chair 2015-17)
+- AHS/VFS Acoustics Committee (1993-96, 2023-now)
+- ASME Coordinating Group on Computational Fluid Dynamics (1991-1997)
+- Honors and Awards
+- AIAA Aeroacoustics Award (2025)
+- AIAA
+- Sustained Service Award
+- (Jan. 2024)
+- RAeS Fellow (Jan. 2024)
+- AIAA Fellow
+- (Feb. 2022)
+- AIAA Cape Canaveral Section
+- Outstanding Member Award, 2015
+- Purdue University, School of Aeronautics & Astronautics
+- CT Sun Research Award, 2010.
+- AIAA Region III Best Paper Award
+- , April 2010 [Martha, C*., Blaisdell, and Lyrintzis, A., "Large Eddy Simulations of 2-D and 3-D Spatially Developing Mixing Layers," also presented at the  49th AIAA Aerospace Science Meeting, Orlando, FL, Jan. 2011].
+- Purdue University, College of Engineering Leadership Award
+- , April 2007.
+- Purdue University Faculty Scholar
+- , Fall 2004.
+- ASME Fellow
+- (March 2003).
+- Purdue University, School of Aeronautics and Astronautics Gustafson Teaching Award,
+- Fall 2002
+- American Helicopter Society, Howard Hughes Award
+- (given in recognition of outstanding improvement in fundamental helicopter technology), NASA Tiltrotor Aeroacoustics Code (TRAC) system development team (A. Lyrintzis was a member of the team), June 2002.
+- NASA Group Achievement Award
+- Tiltrotor Aeroacoustics Code (TRAC) system development team (A. Lyrintzis was a member of the team), July 2002.
+- Boeing Welliver Fellow
+- (Summer 1998)
+- AIAA Associate Fellow
+- (September 1996)
+- American Helicopter Society, Best paper in Acoustics Sessions
+- of 51st Annual Forum (1995).  [Strawn, R. C., Biswas, R., and Lyrintzis, A. S., "Computation of Helicopter Blade-Vortex Interaction Noise with Kirchhoff Methods," Proceedings of the 51st AHS Annual Forum, Fort Worth, TX, May 1995, Vol. I, pp. 495-508.]
+- G. Vollmer
+- (1983-84,-85) and
+- R. Purcell
+- (1986) Scholarships, awarded to qualified international students from Cornell University.
+- A. Onassis Fellowship
+- [Greece] (1982-1984).
+- Technical Chamber of Greece Prize
+- for ranking first in Mechanical Engineering (1981).
+- National (Greek) Scholarship Foundation (IKY) Honorary Scholarship for outstanding performance
+- (1977-81).

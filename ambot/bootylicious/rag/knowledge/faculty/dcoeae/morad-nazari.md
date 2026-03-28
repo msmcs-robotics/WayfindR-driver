@@ -1,0 +1,157 @@
+# Morad Nazari
+
+**Department:** Aerospace Engineering
+**Email:** Morad.Nazari@erau.edu
+**Profile:** https://faculty.erau.edu/Morad.Nazari
+
+## Education
+
+- Ph.D. - Doctor of Philosophy in Aerospace Engineering,
+
+## Areas of Expertise
+
+- geometric mechanics; spacecraft guidance, navigation, and control; constrained motion analysis on nonlinear manifolds; astrodynamics and spaceflight; stability and control of time-varying / time-delayed / fractional-order systems; nonlinear dynamics; and perturbation analysis
+- The views expressed on faculty and external web pages are those of the author and do not necessarily represent those of Embry-Riddle Aeronautical University.
+- Morad Nazari - Dynamics and Control Systems Laboratory
+- Experimental Testbed for the Validation of Autonomous ISAM/OSAM Systems
+- Flexible Body Control Using Fiber Optic Sensors, Florida Space Grant Consortium
+- Reconfigurable Guidance and Control Systems for Emerging On-Orbit Servicing, Assembly and Manufacturing (OSAM) Space Vehicles
+- Investigate Detect and Avoid Track Classification and Filtering
+- Initial Development of Cooperative Aerial and Ground Vehicles Experimental Testbed
+- (Javier S. Robinson, Javier Robinson, Morad Nazari)
+- Beyond: Undergraduate Research Journal
+- (2026)
+- Reconfigurable Guidance and Control Systems for Emerging On-Orbit Servicing, Assembly, and Manufacturing (OSAM) Space Vehicles
+- (Morad Nazari, K. Merve Dogan)
+- Faculty Research Projects
+- (2023)
+- Investigate Detect and Avoid Track Classification and Filtering
+- (Richard Prazenica, Troy Henderson, Morad Nazari, Tyler Spence, Houbing Song)
+- Faculty Research Projects
+- (2023)
+- Book Chapters
+- [B1] E. A. Butcher, A. Dabiri, and M. Nazari, Stability and Control of Fractional Periodic Time-Delayed Systems, invited chapter in Advances in Delays and Dynamics, Time Delay Systems, Part of the Advances in Delays and Dynamics book series (ADVSDD, volume 7), pp 107-125, Springer, 2017.
+- [B2] E. A. Butcher, O. Bobrenkov, M. Nazari, and S. Torkamani, Estimation and Control in Time-Delayed Dynamical Systems using the Chebyshev Spectral Continuous Time Approximation and Reduced Liapunov-Floquet Transformation, invited chapter in Recent Advances in Analysis and Control of Time-delayed Dynamical Systems, ed. J.-Q. Sun and Q. Ding, World Scientific / Higher Education Press, Beijing 2013.
+- Journal Articles
+- [J22] B. S. McCann and M. Nazari, Analysis of the Impact of Orbit-Attitude Coupling at Higher-Degree Potential Models on Spacecraft Dynamics, The Journal of the Astronautical Sciences, in press.
+- [J21] H. Razmjooei, G. Palli, and M. Nazari, Disturbance observer-based nonlinear feedback control for position tracking of electro-hydraulic systems in a finite time,  European Journal of Control, in press.
+- [J20] G. Mangiacapra, M. M. Wittal, E. Capello, and M. Nazari, Unscented Kalman Filter and Control in TSE(3) with Applications to Spacecraft Dynamics, Nonlinear Dynamics, 108 (3): 2127-2146,  doi: 10.1007/s11071-022-07293-x
+- [J19] B. McCann and M. Nazari, Control and maintenance of fully-constrained and underconstrained rigid body motion on Lie groups and their tangent bundles,  Journal of Geometric Mechanics, Special Issue, American Institute of Mathematical Sciences, 14(1): 29-55, 2022, doi: 10.3934/jgm.2022002
+- [J18] M. W. Memon, M. Nazari, D. Seo, E. A. Butcher, Fuel Efficiency of Fully- and Under-Constrained Coulomb Formations in Slightly Elliptic Reference Orbits, IEEE Transactions on Aerospace and Electronic Systems, 57(6): 4171-4187, 2021, doi: 10.1109/TAES.2021.3090920
+- [J17] M. Nazari, E. A. Butcher, and A. K. Sanyal, Fractional feedback control of spacecraft attitude dynamics using rotation matrices and exponential coordinates, Journal of Guidance, Control, and Dynamics, 41(10): 2185-2198, 2018, doi: 10.2514/1.G002956
+- [J16] E. Samiei, M. Nazari, E. A. Butcher, and A. K. Sanyal, Robust stochastic stabilization of attitude motion, International Journal of Dynamics and Control, 7(2): 619-635, 2019, doi: 10.1007/s40435-018-0456-5
+- [J15] A. Dabiri, E. A. Butcher, M. Poursina, and M. Nazari, Optimal Periodic-gain Fractional Delayed State Feedback Control for Linear Fractional Periodic Time-delayed Systems, IEEE Transactions on Automatic Control, 63(4): 989-1002, 2017
+- [J14] A. Dabiri, E. A. Butcher, and M. Nazari, Coefficient of Restitution in Fractional Viscoelastic Compliant Impacts using Fractional Chebyshev Collocation, Journal of Sound and Vibration, 388: 230–244, 2017, http://dx.doi.org/10.1016/j.jsv.2016.10.013
+- [J13] M. Nazari, E. A. Butcher, and W. Anthony, Earth-Moon L1 Libration Point Orbit Continuous Stationkeeping Control using Time-Varying LQR and Backstepping, International Journal of Dynamics and Control, 2016, doi: 10.1007/s40435-016-0256-8
+- [J12] M. Nazari, E. A. Butcher, T. Yucelen, and A. K. Sanyal, Decentralized Consensus Control of a Rigid Body Spacecraft Formation in Orbit with Communication Delay, AIAA Journal of Guidance, Control, and Dynamics, 39(4): 838-851, doi: 10.2514/1.G001396
+- [J11] E. A. Butcher, A. Dabiri, and M. Nazari, Transition Curve Analysis of Linear Fractional Periodic Time-Delayed Systems via Explicit Harmonic Balance Method, Journal of Computational and Nonlinear Dynamics, 11(4), 2016, doi: 10.1115/1.4031840
+- [J10] A. Mesbahi, M. Haeri, M. Nazari, and E. A. Butcher, Fractional Delayed Damped Mathieu Equation, International Journal of Control, International Journal of Control, 88(3), 2015, doi: 10.1080/00207179.2014.971430
+- [J9] M. Nazari and E. A. Butcher, Fuel efficient periodic gain control strategies for spacecraft relative motion in elliptic chief orbits, International Journal of Dynamics and Control, International Journal of Dynamics and Control, 4(1): 104-122, 2014, doi: 10.1007/s40435-014-0126-1
+- [J8] M. Nazari, R. Wauson, T. Critz, E. A. Butcher, and D. J. Scheeres, Observer-Based Body-Frame Hovering Control Over a Tumbling Asteroid, Acta Astronautica, 102, 2014, pp. 124–139, doi: 10.1016/j.actaastro.2014.05.016
+- [J7] M. Nazari, E. A. Butcher, and O. A. Bobrenkov, Optimal feedback control strategies for periodic delayed systems, International Journal of Dynamics and Control, 2(1), 2014, pp. 102–118, doi: 10.1007/s40435-013-0053-6
+- [J6] M. Nazari and E. A. Butcher, Stability and Hopf Bifurcation Analysis of Delayed Feedback Spin Stabilization of a Rigid Spacecraft, Nonlinear Dynamics, 74(3), 2013, pp. 801–817, doi: 10.1007/s11071-013-1006-5
+- [J5] M. Nazari and E. A. Butcher, On the Stability and Bifurcation Analysis of Dual-Spin Spacecraft, Acta Astronautica, 93, 2014, pp. 162–175, doi: 10.1016/j.actaastro.2013.07.010
+- [J4] M. Nazari, E. A. Butcher, and H. Schaub, Spacecraft Attitude Stabilization using Nonlinear Delayed Multi-Actuator Control and Inverse Dynamics, AIAA Journal of Guidance, Control, and Dynamics, 36(5), 2013, pp. 1440–1452, doi: 10.2514/1.58249
+- [J3] O. A.Bobrenkov, M. Nazari, and E. A. Butcher, On the Analysis of Periodic Delay Differential Equations with Discontinuous Distributed Delays, Journal of Computational and Nonlinear Dynamics, 7(3), 2012, doi: 031010.1-031010.12
+- [J2] M. Sari, M. Nazari, and E. A. Butcher, Effects of Damaged Boundaries on the Free Vibration of Kirchhoff Plates: Comparison of Perturbation and Spectral Collocation Solutions, Journal of Computational and Nonlinear Dynamics, 7(1), 2012, doi: 011011.1-011011.11
+- [J1] F. Bakhtiari-Nejad and M. Nazari, Nonlinear vibration analysis of isotropic cantilever plate with viscoelastic laminate, Nonlinear Dynamics, 56(4): 325–356, 2009, doi: 10.1007/s11071-008-9401-z.
+- Conference Papers
+- [C49]  M. Nazari, D. Canales, B. S. McCann,  E. A. Butcher, and K. C. Howell, Full N-Body Problem in the Geometric Mechanics Framework and its Reduction to Circular Restricted Three-Body Problem, AAS/AIAA Astrodynamics Specialist Conference, Big Sky, MT, August 13-17, 2022.
+- [C48] B. S. McCann and M. Nazari,  Multibody Dynamics on SE(3)$^n$ with Applications to Optical System Formation, AAS/AIAA Astrodynamics Specialist Conference, Big Sky, MT, August 13-17, 2022.
+- [C47] B. S. McCann, H. Gunter V., M. Nazari, and T. Henderson, Generalized Formalism for Variable-Mass-Property Spacecraft Dynamics Utilizing Rigid Body Motion on Lie Groups,  AAS/AIAA Astrodynamics Specialist Conference, Big Sky, MT, August 13-17, 2022.
+- [C46] M. M. Wittal, J. Benavides, B. S. McCann, and M. Nazari, Ambiguity Remediation in Space Launch Vehicles with Parameter Uncertainties: A comparison between special Euclidean group and dual quaternions, AAS/AIAA Astrodynamics Specialist Conference, Big Sky, MT, August 13-17, 2022.
+- [C45] J. M. Rocha Belmonte Jr, B. S. McCann, M. Nazari, and T. Yucelen, Formalism and Control of Multiagent Systems with Constraint-Changing Scenarios without the use of Lagrange Multipliers, AIAA SciTech 2022 Forum, 1835, San Diego, CA, 2022.
+- [C44] B. S. McCann and M. Nazari, Extension of Udwadia-Kalaba Constrained Motion Analysis to Inequality Constraints with Applications to Trajectory Maintenance, AAS/AIAA Astrodynamics Specialist Conference, AAS 21-748, Big Sky - Virtual, 2021
+- [C43] B. S. McCann and M. Nazari,  Gravitational Orbit-Attitude Perturbations for Any Degree and Order Potential Models, AAS/AIAA Astrodynamics Specialist Conference, AAS 21-749, Big Sky - Virtual, 2021
+- [C42] B. S. McCann and M. Nazari,  Conjugate Gradient Algorithm for Constrained Optimization on the Special Euclidean Group, SIAM Conference on Applications of Dynamical Systems (DS21), Virtual, May 23-27, 2021
+- [C41] B. S. McCann, W. T. Stackhouse, and M. Nazari, Advancement of the Udwadia-Kalaba Approach for Rigid Body Constrained Motion Analysis in Geometric Mechanics, AIAA Scitech 2021 Forum, 2021
+- [C40] B. S. McCann and M. Nazari, Utilizing Topology Data to Facilitate Geometric Control of a Spacecraft During Lunar Landing, AIAA Scitech, 2021 Forum, 2021
+- [C39] M. M. Wittal, G. Mangiacapra, A. Appakonam, M. Nazari, and E. Capello, Stochastic Spacecraft Navigation and Control in Lie Group SE(3) Around Small Irregular Bodies, AAS/AIAA Astrodynamics Specialist Conference, AAS-20, 2020
+- [C38] H. Patel, T. A. Henderson, and M. Nazari, Application of Udwadia-Kalaba Formulation to Three-Body Problem, AAS/AIAA Astrodynamics Specialist Conference, 11-15, 2020
+- [C37] H. Patel, H. Cho, M. Nazari, and T. A. Henderson, Application of Udwadia-Kalaba Formulation to the Planar Elliptical Restricted Three-Body Problem, AAS/AIAA Astrodynamics Specialist Conference, AAS, 20-654, 2020
+- [C36] W. T. Stackhouse, M. Nazari, T. Henderson, R. J. Prazenica, Adaptive control design using the Udwadia-Kalaba formulation for hovering over an asteroid with unknown gravitational parameters, AIAA Scitech 2020 Forum, 0843, 2020
+- [C35] W Stackhouse, M Nazari, T. Henderson, and T. Yucelen, Spacecraft Asteroid Hovering Using Udwadia-Kalaba Formulation with Time-Varying Coefficients, AAS/AIAA Astrodynamics Specialist Conference, AAS 19-641, 2019
+- [C34] M. W. Memon, M. Nazari, D. Seo, and R. Prazenica, Constrained Motion Analysis and Nonlinear Optimal Tracking Control of Two-Craft Coulomb Formation in Elliptic Chief Orbits, AAS/AIAA Astrodynamics Specialist Conference, AAS 19-706, Portland, ME, 2019
+- [C33] D. Seo and M. Nazari, Rigid Body Adaptive Stabilization on the Tangent Bundle of the Lie Groups, AIAA Guidance, Navigation, and Control Conference, San Diego, CA, January 7-11, 2019, doi: 10.2514/6.2019-0653
+- [C32] M. Maadani, E. A. Butcher, M. Nazari, and Tansel Yucelen, Decentralized Consensus Control of Rigid Bodies Using Exponential Coordinates, AIAA Guidance, Navigation, and Control Conference, San Diego, CA, January 7-11, 2019, doi: 10.2514/6.2019-1161
+- [C31] A. Dabiri, E. A. Butcher, and M. Nazari, Minimal Phase-Variable Canonical State-Space Realizations and Initializations for Linear Time-Invariant Multi-term Fractional Differential Equations, American Control Conference (ACC), Milwaukee, WI, June 27-29, 2018
+- [C30] M. Nazari, M. Maadani, E. A. Butcher, and T. Yucelen, Morse-Lyapunov-Based Control of Rigid Body Motion on TSE(3) via Backstepping, AIAA Guidance, Navigation, and Control Conference, Kissimmee, FL, January 8-12, 2018
+- [C29] M. Nazari, E. A. Butcher, and A. K. Sanyal, Fractional Control of Rigid Body Attitude Dynamics Using Exponential Coordinates, AIAA Guidance, Navigation, and Control Conference, Kissimmee, FL, January 8-12, 2018
+- [C28] E. Arabi, S. B. Sarsilmaz, T. Yucelen, M. Maadani, E. A. Butcher, and M. Nazari, Adaptive Control of a Rigid Body Vehicle on Exponential Coordinates with Guaranteed Performance, AIAA Guidance, Navigation, and Control Conference, Kissimmee, FL, January 8-12, 2018
+- [C27] A. Dabiri, M. Nazari, and E. A. Butcher, Adaptive Neural-Fuzzy Inference System To Control Dynamical Systems with Fractional Order Dampers, American Control Conference (ACC), Seattle, WA, May 24-26, 2017
+- [C26] A. Dabiri, M. Nazari, and E. A. Butcher, Chaos analysis and control in fractional-order systems using fractional Chebyshev collocation method, International Mechanical Engineering Congress & Exposition (IMECE), Paper No. IMECE2016-67909, Phoenix, AZ, November 11-17, 2016
+- [C25] A. Dabiri, M. Nazari, and E. A. Butcher, Linguistic Fuzzy Logic Control of Double Inverted Pendulum with Destabilizing Fractional Dampers, International Mechanical Engineering Congress & Exposition (IMECE), Paper No. IMECE2016-67979, Phoenix, AZ, November 11-17, 2016
+- [C24] E. A. Butcher, M. Nazari, A. Dabiri, and A.K. Sanyal, Fractional PID Control of Spacecraft Attitude Dynamics using Rotation Matrices, 67th International Astronautical Congress, Guadalajara, Mexico, 26-30 September 2016
+- [C23] A. Dabiri, E. A. Butcher, and M. Nazari, Modeling One-Dimensional Fractional Impact Using Basic Fractional Viscoelastic Models, Proceedings of the ASME 2016 International Design Engineering Technical Conferences & Computers and Information in Engineering Conference (IDETC/CIE), August 21-26, 2016, Charlotte, NC, 2016
+- (Best paper award)
+- [C22] A. Dabiri, M. Nazari, and E. A. Butcher, The Spectral Parameter Estimation Method for Parameter Identification of Linear Fractional Order Systems, American Control Conference (ACC), Boston, MA, July 6-8, 2016
+- [C21] A. Dabiri, M. Nazari, and E. A. Butcher, Optimal Fractional State Feedback Control for Linear Fractional Periodic Time-Delayed Systems, American Control Conference (ACC), Boston, MA, July 6-8, 2016
+- [C20] A. Dabiri, M. Nazari, and E. A. Butcher, Explicit Harmonic Balance Method for Transition Curve Analysis of Linear Fractional Periodic Time-Delayed Systems, 12th IFAC Workshop on Time Delay Systems, Ann Arbor, MI, 2015
+- [C19] E. A. Butcher and M. Nazari, Decentralized Relative Position and Attitude Consensus Control of a Spacecraft Formation with Communication Delay, 25th AAS/AIAA Space Flight Mechanics Meeting, Williamsburg, VA, 2015
+- [C18] M. Nazari, W. Anthony, and E. A. Butcher, Continuous Control Strategies for Halo Orbit Stationkeeping Based on Techniques for Time Periodic Systems, 24th AAS/AIAA Space Flight Mechanics Meeting, San Diego, CA, August 4-7, 2014
+- [C17] E.A. Butcher and M. Nazari, Approximate Transition Boundaries in the Fractional Delayed Mathieu Equation, 8th European Nonlinear Dynamics Conference, Vienna, Austria, July 6-14, 2014
+- (invited talk)
+- [C16] E.A. Butcher and M. Nazari, Optimal Control of Spacecraft Motion in Time-Periodic Astrodynamic Systems, 8th European Nonlinear Dynamics Conference, Vienna, Austria, July 6-14, 2014
+- (invited talk)
+- [C15] M. Nazari, R. Wauson, T. Critz, E. A. Butcher, and D. J. Scheeres, Observer-Based Body-Frame Hovering Control Over a Tumbling Asteroid, AAS/AIAA Astrodynamics Specialist Conference, Hilton Head Island, South Carolina, August 11-15, 2013
+- [C14] M. Nazari, A. Mesbahi, and E. A. Butcher, On Control of Spacecraft Relative Motion in the Case of an Elliptic Keplerian Chief, AAS/AIAA Astrodynamics Specialist Conference, Hilton Head Island, South Carolina, August 11-15, 2013
+- (Best session presentation)
+- [C13] M. Nazari, O. A. Bobrenkov, and E. A. Butcher, Feedback Control of Periodic Delayed Systems, ASME 2013 International Design Engineering Technical Conferences (IDETC) and Computers and Information, Oregon, Portland, August 4-7, 2013
+- [C12] S. Torkamani, M. Nazari, E. Samiei, and E. A. Butcher, Observer-Based Delayed Feedback Attitude Control for Single- and Multi-Actuator Maneuvers, American Control Conference (ACC), Washington DC, June 17-19, 2013
+- (Best session presentation)
+- [C11] M. Nazari, E. A. Butcher, and C. D. Hall, On the Stability Investigation of Single- and Dual-Spin Spacecraft, AIAA Guidance, Navigation, and Control Conference, Minnesota, Minneapolis, August 13-16, 2012
+- [C10] A. Larsen, T. Critz, W. Anthony, M. Nazari, M. Ziabakhsh-Deilami, E. A. Butcher, G. Born, and J. McMahon, Optimal Transfers with Guidance to the Earth-Moon L1 and L3 Libration Points using Invariant Manifolds: A Preliminary Study, AIAA/AAS Astrodynamics Specialist Conference, Minnesota, Minneapolis, August 13-16, 2012
+- [C9] M. Nazari, E. Samiei, E. A. Butcher, and H. Schaub. Attitude Stabilization Using Nonlinear Delayed Actuator Control With an Inverse Dynamics Approach, AAS/AIAA Space flight Mechanics Meeting, Charleston, SC, Paper No. 12-237, South Carolina, Charleston, January 29 - February 2, 2012
+- [C8] E. Samiei, M. Nazari, E. A. Butcher, and H. Schaub, Delayed Feedback Control of Rigid Body Attitude using Neural Networks and Lyapunov-Krasovskii Functionals, AAS/AIAA Space flight Mechanics Meeting, Charleston, SC, Paper No. 12-168, South Carolina, Charleston. January 29 - February 2, 2012
+- [C7] O. A. Bobrenkov, M. Nazari, and E.A. Butcher, On the Analysis of Periodic Delay Differential Equations with Discontinuous Distributed Delays, proceedings of 8th International Conference on Multibody Systems, Nonlinear Dynamics, and Control, District of Columbia, Washington, August 28-31, 2011
+- [C6] M. Sari, M. Nazari, and E. A. Butcher, Free Vibration Analysis of Kirshhoff Plates with Damaged Boundaries by the Chebyshev Collocation and Perturbation Methods, Proceedings of ASME Conference on Smart Materials, Adaptive Structures and Intelligent Systems, Pennsylvania, Philadelphia, September 28 - October 1, 2010
+- [C5] F. Bakhtiari-Nejad and M. Nazari, Nonlinear vibration analysis of rectangular plate with viscoelastic laminate, 15th International Congress on Sound and Vibration (ICSV15), Daejeon, South Korea, Korea (South), Daejeon, July 6-10, 2008
+- [C4] M. Nazari and F. Bakhtiari-Nejad, Vibration analysis of Rectangular plates, 6th annual International Conference on Mechanical Engineering (ISME), University of Shahid Bahonar, Iran, Kerman, July 1-4, 2008
+- [C3] M. Nazari and F. Bakhtiari-Nejad, Transverse vibration analysis of plates with at least two sequent free edges-Part II: Nonlinear analysis, 7th International Conference of Aerospace Science and Technology, Sharif University of Technology, Iran, Tehran, February 1-4, 2008
+- [C2] M. Nazari and F. Bakhtiari-Nejad, Transverse vibration analysis of plates with at least two sequent free edges-Part I: Linear analysis, 7th International Conference of Aerospace Science and Technology, Sharif University of Technology, Iran, Tehran, February 1-4, 2008
+- [C1] M. Nazari, Rollover analysis of vehicles with two axles (in Persian), 5th annual International Conference on Mechanical Engineering (ISME), Amirkabir University of Technology, Iran, Tehran, July 1-4, 2007
+-  (August 2017 - present) Assistant Professor, Department of Aerospace Engineering, Embry-Riddle Aeronautical University
+-  (January 2016 - June 2017 & January 2014 - December 2014) Postdoctoral Research Associate and Lecturer, Aerospace and Mechanical Engineering Department, University of Arizona
+- ASME, Member (2012 - present)
+- AIAA, Member (2012 - present)
+- SIAM, Member (2013 - present)
+- Alpha Chi National College Honor Scholarship Society, Member (2012 - lifetime)
+- (2016-2018) Recognized as excellent reviewer for the Journal of Guidance, Control, and Dynamics (JGCD) for two successive years: Oct. 1, 2015 - Sept. 30, 2016, and during 2017
+- (2016)
+- Best paper award, ASME/IDETC conference, Charlotte, NC (with A. Dabiri and E. A. Butcher)
+- (2013)
+- Outstanding graduate award, New Mexico State University
+- (2013)
+- Merit-based enhancement fellowship award, New Mexico State University
+- (2005)
+- Ranked 1st nationwide in the national graduate school entrance exam on Applied Mechanics
+- (among more than 5000 participants nationwide), Tehran, Iran
+- (2000)
+- Top 0.1% rank in the national university entrance exam, Tehran, Iran
+## Courses
+
+- CEAE 796A
+- Coop Ed Aerospace Engineering
+- CEAE 897
+- Coop Ed Aerospace Engineering
+- CEAE 896
+- Coop Ed Aerospace Engineering
+- AE 800
+- Dissertation
+- AERO 654
+- Geo Mech & Ctrl of Rigid Body
+- AE 426
+- Spacecraft Attitude Dynamics
+- AE 700
+- Thesis
+- Other courses taught at ERAU:
+- AE 654/695I:  Geometric Mechanics and Controls of Rigid Bodies
+- AE 527: Modern Control
+- Courses taught at institutes other than ERAU:
+- Engineering Dynamics
+- Mechanical Vibrations
+- Modeling and Control of Engineering Systems
+- Orbital Mechanics and Space Flight
+
+---
+*Scraped from faculty.erau.edu on 2026-03-28 09:57*

@@ -1,0 +1,486 @@
+# Vladimir Golubev
+
+**Department:** Aerospace Engineering
+**Email:** golubd1b@erau.edu
+**Profile:** https://faculty.erau.edu/Vladimir.Golubev
+
+## Education
+
+- Ph.D. - Doctor of Philosophy in Aerospace Engineering,
+- M.S. - Master of Science in Aerospace Engineering,
+
+## Areas of Expertise
+
+- Computational Fluid Dynamics, Computational Aeroacoustics, Unsteady Fluid-Structure Interactions, High Performance Computing, Micro Air Vehicles, Advanced Propulsion Systems, Flow Control, Multidisciplinary Optimization, Financial Engineering, Computational Bioengineering
+- Aeroelastic Gust-Airfoil Interaction Numerical Studies
+- Large Eddy Simulations of Liftoff Noise Reduction
+- Self-Sustained Flow-Acoustic Interactions in Airfoil Transitional Boundary Layers
+- Synthetic Jet-Based Robust MAV Flight Controller
+- Wake Vortex Safety Analysis in the Context of UAS Integration in the NAS
+- Journal Publications
+- Golubev, V.V., and Atassi, H.M., (1996), "Sound Propagation in an Annular Duct with Mean Potential Swirling Flow",
+- Journal of Sound and Vibration
+- , Vol. 198, No. 5, pp. 601-616.
+- Golubev, V.V., and Atassi, H.M., (1997), "Sound Propagation in Swirling Flows",
+- International Journal of Acoustics and Vibration
+- , Vol. 2, No. 3, pp. 115-122.
+- Golubev,V.V. , and Atassi,H.M., (1998), "Acoustic-Vorticity Waves in Swirling Flows",
+- Journal of Sound and Vibration
+- , Vol. 209, No. 2, pp. 203-222.
+- Golubev,V.V., and Atassi, H.M., (2000), "Unsteady Swirling Flows in Annular Cascades. Part I. Evolution of Incident Disturbances",
+- AIAA Journal
+- , Vol. 38, No.7, pp.1142-1149.
+- Golubev,V.V.,andAtassi, H.M., (2000), "Unsteady Swirling Flows in Annular Cascades. Part II. Aerodynamic Blade Response",
+- AIAA Journal
+- , Vol. 38, No.7, pp.1150-1158.
+- Golubev, V.V.,Mankbadi, R.R., and Hixon, R., (2005), “Space-Time Mapping Analysis of Airfoil Nonlinear Interaction with Unsteady Inviscid Flow,”
+- AIAA Journal,
+- Vol. 43, No.10, pp. 2147-2156.
+- Hixon, R., Golubev, V.V., Mankbadi, R.R., Scott, J.R., Sawyer, S., and Nallasamy, M., (2006) “Application of a Nonlinear Computational Aeroacoustics Code to the Gust-Airfoil Problem,”
+- AIAA Journal
+- , Vol. 44, No.2, pp. 323-328, 2006.
+- Idahosa, U., Golubev, V.V., and Balabanov, V.O., (2008) “An Automated Optimal Design of  a Fan Blade Using an Integrated CFD/MDO Computer Environment,”
+- Engineering Applications of Computational Fluid Mechanics
+- , Vol. 2, No.2, pp. 141-154.
+- Guzhva, V.S., Beltsova, K., and Golubev, V.V., (2010) “Market Undervaluation of Risky Convertible Offerings: Evidence from the Airline Industry,”
+- Journal of Economics and Finance
+- , Volume 34,pp. 30-45, January 2010.
+- Golubev, V.V., and Visbal, M.R., (2012) “Modeling MAV Response in Gusty Urban Environment,”
+- International Journal of Micro Air Vehicles
+- , Vol.4, pp. 79-92.
+- Golubev, V.V., and Nakhla, H. (2012) “Modeling Synthetic Jets for Low-Re Airfoil Unsteady Flow Control,”
+- International Journal of Emerging Multidisciplinary Fluid Sciences
+- , Vol. 3, pp. 145-158.
+- Golubev, V.V., Nguyen, L., Mankbadi, R.R., Roger, M. and Visbal, M.R., (2014) “On Flow-Acoustic Resonant Interactions in Transitional Airfoils,”
+- International Journal of Aeroacoustics
+- , Vol. 13, pp. 1-38.
+- Ramos Pedroza, N., MacKunis, W., Golubev, V.V., (2014) “Robust Nonlinear Regulation of Limit Cycle Oscillations in UAVs Using Synthetic Jet Actuators,”
+- Robotics
+- , Vol. 3, pp. 330-348.
+- Mankbadi, R., Golubev, V., Sansone, M., Sewell, C., Nguyen. L., (2015) “Effect of a Synthetic Jet Actuator on Airfoil Trailing Edge Noise,”
+- International Journal of Aeroacoustics
+- , Vol. 14, pp. 553-568.
+- Kazarin, P., Provalov, A., Golubev, V., Borener, S., Hufty, D., Crook, I., Suchkov, A., (2016), “Terminal-Zone Wake Vortex Safety Assessment in the Context of UAS Integration in the NAS,”
+- Transportation Research Procedia,
+- Vol 14, pp. 1364-1373.
+- Mankbadi, R., Lo, S-C, Lyrintzis, A., Golubev, V., Dewan, Y, Kurbatskii, K., (2016) “Hybrid LES-RANS Simulations of a Jet Impinging on a Flat Plate,”
+- International Journal of Aeroacoustics
+- , Vol. 15, pp. 535-553.
+- Ramos Pedroza, N., MacKunis, W., Golubev, V.V., (2017) “A Robust Nonlinear Output Feedback Control Method for Limit Cycle Oscillation Suppression Using Synthetic Jet Actuators,”
+- Aerospace Science and Technology
+- , Vol. 64, pp. 16-23.
+- L Nguyen, VV Golubev, MR Visbal, (2017) “Numerical Study of Transitional SD7003 Airfoil Interacting with Canonical Upstream Flow Disturbances
+- ,” AIAA Journal
+- , Vol.56, No.1, pp. 158-181.
+- S Gudmundsson, V Golubev, S Drakunov, C Reinholtz (2019) “Bio-Inspired Methodologies for Energy Conservation and Harvesting Flight-Path Modeling for Unmanned Aerial System”,
+- Journal of Aerospace Information Systems
+- , Vol.16, No.7, pp. 1-7.
+- S Karpuk, S Gudmundsson, V Golubev (2019) “Feasibility Study of a Multi-Purpose Aircraft Concept with a Leading-Edge Embedded Cross-Flow Fan”,
+- Unmanned Systems
+- , doi: 10.1142/S2301385020500028.
+- Yakhina, G., Roger, M., Moreau, S., Nguyen, L, and Golubev, V.V., (2020), Experimental and Analytical Investigation of the Tonal Trailing-Edge Noise Radiated by Low Reynolds Number Aerofoils,”
+- Acoustics
+- (2), 293-329;
+- https://doi.org/10.3390/acoustics2020018
+- Kidambi, K.B., MacKunis, W., Drakunov, S., Golubev, V.V., (2020) “Sliding Mode Estimation Method for Fluid Flow Fields Using a Differential Inclusions-Based Analysis,”
+- International Journal of Control
+- , DOI: 10.1080/00207179.2020.1713403.
+- Kidambi, K.B., MacKunis, W., Drakunov, S., Golubev, V.V., (2020) “Sliding Mode Estimation and Closed-Loop Active Flow Control Under Actuator Uncertainty,”
+- International Journal of Robust and Nonlinear Control
+- https://doi.org/10.1002/rnc.5129
+- Winkler, J., Golubev, V., Mankbadi, R., (2020) “Addressing Noise Challenges in UAM Market,”
+- Aerospace America
+- , 12, 26.
+- Khoury, A.M., Divo, E., Golubev, V.V., Kassab, A.J., (2021) “Meshless Modeling of Coupled Transdermal Pharmacokinetics with Analytical Validation,”
+- Engineering Analysis with Boundary Elements
+- , 122, 62-74.
+- Mankbadi, R.R., Afari, S.O., Golubev, V.V. (2021) “High-Fidelity Simulations of Noise Generation in a Propeller-Driven Unmanned Aerial Vehicle,”
+- AIAA Journal
+- , 59:3, pp. 1020–1039, https://doi.org/10.2514/1.J059117.
+- Golubev, V.V. (2021) “Recent Advances in Acoustics of Transitional Airfoils with Feedback-Loop Interactions: a Review,”
+- Appl. Sci.
+- , 11(3), 1057,
+- https://doi.org/10.3390/app11031057
+- Nguyen, L., Golubev, V., Mankbadi, R., Yakhina, G., Roger, M. (2021) “Numerical Investigation of Tonal Trailing-Edge Noise Radiated by Low Reynolds Number Airfoils,”
+- Appl. Sci.
+- 11(5), 2257, https://doi.org/10.3390/app11052257.
+- Refereed Conference Articles
+- Golubev, V.V., and Atassi, H.M.,(1995), "Acoustic and Evanescent Modes in an Annular Duct with Swirling Flows",
+- FED-Vol.219
+- , Proceedings of the ASME FED Meeting, pp.95-100.
+- Golubev, V.V. , and Atassi, H.M.,(1995), "Aerodynamic and Acoustic Response of a Blade Row in Unsteady Swirling Flow",
+- AIAA Paper 95-027
+- , Proceedings of the 1
+- Joint CEAS/AIAA Aeroacoustic Conference, Munich, 12-15 June 1995, pp. 167-176.
+- Golubev, V.V., and Atassi, H.M.,(1996), "Sound Propagation in Swirling Flows",
+- Proceedings of the 4
+- International Congress on Sound and Vibration
+- , 24-27 June 1996, St. Petersburg, Russia, pp. 161-169.
+- Golubev, V.V., and Atassi,H.M.,(1997), "Acoustic-Vorticity Modes in an Annular Duct with Mean Vortical Swirling Flow",
+- AIAA Paper 97-1695
+- , Proceedings of the  Third Joint CEAS/AIAA Aeroacoustic  Conference, Atlanta, 12-15 May 1997.
+- Golubev, V.V., and Atassi, H.M.,(1997), "Interaction of Acoustic-Vorticity Waves with an Annular Cascade in a Swirling Flow",
+- AIAA Paper 97-1635
+- , Proceedings of the 3
+- Joint CEAS/AIAA Aeroacoustic  Conference, Atlanta, 12-15 May 1997.
+- Golubev, V.V. , Lipatov, A.I., and Atassi, H.M.,(1997), "3-D Unsteady Effects in Annular Cascades with Swirl and Comparison with 2-D Strip Theory",
+- AIAA Paper 97-1634
+- , Proceedings of the 3
+- Joint CEAS/AIAA Aeroacoustic  Conference, Atlanta, 12-15 May 1997.
+- Atassi, H.M., and Golubev, V.V., (1998), "Evolution of Disturbances in Annular Swirling Flows",
+- FEDSM 98-4879
+- Proceedings  of the Symposium on Advances in Numerical Modeling of Aerodynamics and Hydrodynamics in Turbomachinery
+- , ASME FED Meeting, 21-25 June 1998, Washington, D.C.
+- Golubev, V.V., and Atassi, H.M., (1998), "Gust Response of Unloaded Annular Cascades in Mean Swirling Flow",
+- FEDSM 98-4878
+- Proceedings  of  the Symposium on Advances in Numerical Modeling of Aerodynamics and Hydrodynamics in Turbomachinery
+- , ASME FED Meeting, 21-25 June 1998, Washington, D.C.
+- Golubev, V.V., and Atassi, H.M., (1998), "Unsteady Forces on Annular Cascade Blades in Subsonic Flow with Swirl", in T.H. Fransson (ed), “
+- Unsteady Aerodynamics and Aeroelasticity of Turbomachines
+- ”, Kluwer Academic Publishers, (
+- Proceedings  of  the 8th International Symposium on Unsteady Aerodynamics and Aeroelasticity of Turbomachines
+- , 14-18 September 1997, Stockholm, Sweden), pp.147-164.
+- Atassi, H.M.,and Golubev, V.V., (1998), "Unsteady Disturbances in Swirling Turbomachinery Flows", in T.H. Fransson (ed), “
+- Unsteady Aerodynamics and Aeroelasticity of Turbomachines
+- ”, Kluwer Academic Publishers, (
+- Proceedings  of  the 8th International Symposium on Unsteady Aerodynamics and Aeroelasticity of Turbomachines
+- , 14-18 September 1997, Stockholm, Sweden), pp.131-146.
+- Golubev, V.V., and Atassi, H.M.,(1998), “Numerical Implementation of Inflow/Outflow Conditions for Time-Harmonic Turbomachinery Flows”,
+- NCA-Vol.2
+- , Proceedings of ASME Noise Control and Acoustics Division, pp. 397-404.
+- Golubev, V.V. , Atassi,H.M., and Ali, A., (1999), “Effect of Swirling Flow on Sound Radiated from a Fan Subject to a Gust”,
+- AIAA Paper 99-1844
+- , Proceedings of the 5
+- AIAA/CEAS Aeroacoustics Conference and Exhibit, 10-12 May, Bellevue, WA, pp.287-295.
+- Golubev, V.V., (2000), “Pre-Surge Unsteady Flow Phenomena in a Two-Stage Centrifugal Compressor with Vaneless Diffuser”,
+- Proceedings of  the 9th International Symposium on Unsteady Aerodynamics, Aeroacoustics  and Aeroelasticity of Turbomachines
+- , Lyon, France, September 4-8.
+- Golubev, V.V.  (2001), "Experimental Investigation of Rotating Instabilites in a Two-Stage Centrifugal Compressor with Vaneless Diffuser”,
+- ASME Paper IMECE2001/FED-24038
+- , Forum on Industrial Compressors, IMECE 2001, New York, November 2001.
+- Golubev, V.V. ,Mankbadi, R.R.,  and Dahl, M.D., (2002),“Prediction of the Acoustic Field Associated with Instability Wave Source Model for a Compressible Jet,”
+- AIAA Paper 2002-2455
+- AIAA/CEAS Aeroacoustics Conference, Breckenridge, June 2002.
+- Crivellini, A., Golubev, V.V., Mankbadi, R.R., Scott, J.R., Hixon, R., and Povinelli, L.A.,(2002), ”Nonlinear Analysis of Airfoil High-Intensity Gust Response Using a High-Order Prefactored Compact Code,”
+- AIAA Paper 2002-2535
+- AIAA/CEAS Aeroacoustics Conference, Breckenridge, June 2002
+- Golubev, V.V., Prieto, A.F., Mankbadi, R.R., Dahl, M.D., and Hixon, R., (2003), “Sound Radiated by a Wave-Like Structure in a Compressible Jet,”
+- AIAA Paper 2003-1063
+- , 41
+- Aerospace Sciences Meeting, Reno, 2003.
+- Golubev,V.V., and Rohde, A., (2003), “Application of Space-Time Mapping Analysis Method to Unsteady Nonlinear Gust-Airfoil Interaction Problem,”
+- AIAA Paper 2003-3693
+- , AIAA CFD Meeting, Orlando, June 2003.
+- Rhode, A., Golubev, V.V., and Lessiau, C., (2003), “Direct Simulation of Sound Generated by Viscous Flow Over a Cylinder Using a TVD Method,”
+- AIAA Paper 2003-3239
+- AIAA/CEAS Aeroacoustics Conference, Hilton Head, NC, 2003
+- Golubev, V.V., Mankbadi, R.R., and Dahl, M.D., (2003), “Comparison of Several Approaches to Predict Noise Associated with Jet Acoustic Source Models,”
+- AIAA Paper 2003-3283
+- AIAA/CEAS Aeroacoustics Conference, Hilton Head, NC, 2003
+- Golubev,V.V.,(2004), “Review of Two Numerical Approaches to Predict Nonlinear Airfoil Response to High-Amplitude Incident Gust,”
+- IMECE 2004-61407,
+- ASME International Mechanical Engineering Congress and Exposition, Anaheim, November 2004.
+- Golubev,V.V., Mankbadi,R.R., and Scott, J.R., (2004), “Numerical Inviscid Analysis of Nonlinear Airfoil Response to Impinging High-Intensity High-Frequency Gust,”
+- AIAA Paper 2004-3002
+- , 10
+- CEAS/AIAA Aeroacoustics Conference, Manchester, May 2004.
+- Golubev,V.V.andMankbadi,R.R., (2004), “STMA Study of Airfoil Nonlinear Interaction with Unsteady Flow,”
+- AIAA Paper 2004-3003,
+- CEAS/AIAA Aeroacoustics Conference, Manchester, May 2004.
+- Idahosa, U., and Golubev, V.V., (2005) “On Noise Control in Turbomachinery Using an Automated Multidisciplinary Design Optimization System,”
+- IMECE 2005-81789
+- , ASME International Mechanical Engineering Congress and Exposition, Orlando, November 2005.
+- Idahosa, U., Golubev,V.V., andBalabanov, V.O., (2005) “Application of Distributed Automated MDO Environment to Aero/Acoustic Shape Optimization of a Fan Blade,”
+- AIAA Paper 2005-2907,
+- AIAA/CEAS Aeroacoustics Conference, Monterey, May 2005.
+- Golubev, V.V., Mankbadi, R.R., Visbal, M.R., Scott, J.R., and Hixon, R.,(2006) “A Parametric Study of Nonlinear Gust-Airfoil Interaction,”
+- AIAA Paper
+- 2006-2426, 12
+- AIAA/CEAS Aeroacoustics Conference, Boston, May 2006.
+- Golubev, V.V., and Mankbadi, R.R., (2006) “Numerical Modeling of Nonlinear Airfoil Response to Unsteady High-Amplitude Upstream Flow Disturbances, ”
+- Proceedings of the 6
+- International Conference on Mathematical Problems in Engineering and Aerospace Sciences
+- , Budapest, Hungary, June 2006.
+- Idahosa, U., Golubev, V.V., and Balabanov, V.O., (2006) “An Automated Optimal Design of a Fan Blade Using an Integrated CFD/MDO Environment,”
+- AIAA Paper
+- 2006-6944, 11
+- AIAA/ISSMO MDO Conference, September 2006.
+- Guzhva, V.S., Beltsova, K.P., and Golubev, V.V., (2007) “Market Undervaluation of Risky Convertible Offerings: A Case of Airline Convertible Stocks,”
+- Proceedings of the 34
+- Annual AEF Meeting
+- , February 2007.
+- Golubev, V.V., Houston, M.J., Mankbadi, R.R., Visbal, M.R., and Hixon, R., (2007) “Numerical Simulation of Unsteady Response of an Oscillating Airfoil Subject to a High-Intensity Gust,”
+- AIAA Paper
+- 2007-3513, 13
+- Joint AIAA/CEAS Aeroacoustics Conference, Rome, May 2007.
+- Golubev, V.V., Houston, M.J., Golubev, N.V., and Visbal, M.R., (2008) “Investigations of Nonlinear Unsteady Aerodynamic and Aeroacoustic Responses of Oscillating Airfoils in Non-Uniform Flow,”
+- AIAA Paper
+- 2008-0033, 46
+- AIAA Aerospace Sciences Meeting and Exhibit, Reno, January 2008.
+- Golubev, V.V., Dreyer, B.D., and Visbal, M.R., (2008), “Coupled Nonlinear Aeroelastic and Aeroacoustic Response of an Airfoil to Upstream Vortical Flow Disturbances,”
+- AIAA Paper
+- 2008-3047, 14
+- Joint AIAA/CEAS Aerocoustics Conference, Vancouver, May 2008.
+- Golubev, V.V., Dreyer, B.D., Visbal, M.R., and Golubev, N.V., (2009) “High-Accuracy Viscous Simulation of Gust Interaction with Stationary and Pitching Wing Sections,”
+- AIAA Paper
+- 2009-0011, 47
+- AIAA Aerospace Sciences Meeting and Exhibit, Orlando, January 2009.
+- Mankbadi, M.R., andGolubev, V.V., (2009) “Modeling of Acoustic Streaming for Micro Air Vehicle Propulsion and Flow Control,”
+- AIAA Paper
+- 2009-0284, 47
+- AIAA Aerospace Sciences Meeting and Exhibit, Orlando, January 2009.
+- Golubev, V.V., Dreyer, B.D., Hollenshade, T.M. and Visbal, M.R., (2009), “High-Accuracy Viscous Analysis of Unsteady Flexible Airfoil Response to Impinging Gust,”
+- AIAA Paper
+- 2009-3271, 15
+- Joint AIAA/CEAS Aerocoustics Conference, Miami, May 2009.
+- Golubev, V.V. and Mankbadi, R.R., (2009) “High-Fidelity Viscous Analysis of MAV Wing Nonlinear Aeroelastic Interaction with Non-Uniform Unsteady Flow,”
+- Proceedings of COBEM’2009
+- , 20
+- International Congress of Mechanical Engineering, Gramado, November 2009.
+- Golubev, V.V., Dreyer, B.D., Hollenshade, T.M. and Visbal, M.R., (2009), “High-Accuracy Viscous Simulation of Gust-Airfoil Nonlinear Aeroelastic Interaction,”
+- AIAA Paper
+- 2009-4200, 39
+- AIAA Fluid Dynamics Conference, San Antonio, June 2009.
+- Golubev, V.V., Hollenshade, T.M., Nguyen, L., and Visbal, M.R., (2010), “Parametric Viscous Analysis of Gust Interaction with SD7003 Airfoil,”
+- AIAA Paper
+- 2010-928, 48
+- AIAA Aerospace Sciences Meeting and Exhibit, Orlando, January 2010.
+- Surti, T., Fossum, N., Mankbadi, M., Nakhla, H., and Golubev, V., (2010), “Navier-Stokes Simulations of Acoustic Streaming for Flow Control and Micropropulsion,”
+- AIAA Paper
+- 2010-1008, 48
+- AIAA Aerospace Sciences Meeting and Exhibit, Orlando, January 2010.
+- Golubev, V.V., Nguyen, L., and Visbal, M.R., (2010), “High-Accuracy Low-Re Simulations of Airfoil-Gust and Airfoil-Vortex Interactions,” AIAA Paper 2010-4868, 40
+- AIAA Fluid Dynamics Conference, Chicago, June 2010.
+- Golubev, V.V., (2010), “On Unsteady Response of MAV Wing in Gusty Urban Environment,” Proceedings of  4
+- International Conference on Fluid Mechanics and Fluid Power, Chennai, December 2010.
+- Golubev, V.V., and Visbal, M.R., (2010) “Unsteady Viscous Analysis Of Low-Re Gust-Airfoil Interaction,” Proceedings of V European Conference on Computational Fluid Dynamics ECCOMAS’10, J. C. F. Pereira and A. Sequeira (Eds), Lisbon, Portugal, June 2010.
+- Golubev, V.V., Nguyen, L., and Visbal, M.R., (2010), “High-Fidelity Viscous Simulations of Airfoil Noise Radiation in Nonuniform Unsteady Flow,” AIAA 2010-3761, 16th AIAA/CEAS Aeroacoustics Conference, Stockholm, Sweden, June 2010.
+- Golubev, V.V., Brodnick, J., Nguyen, L., and Visbal, M.R., (2011), “A New Approach to Modeling Airfoil Interaction with Upstream Turbulence,” AIAA Paper 2011-3899, 41
+- AIAA Fluid Dynamics Conference, Honolulu, June 2011.
+- Golubev, V.V., Nguyen, L., Roger, M., and Visbal, M.R., (2011), “On Interaction of Airfoil Leading and Trailing Edge Noise Sources in Turbulent Flow,”
+- AIAA Paper
+- 2011-2859, 17
+- AIAA/CEAS Aeroacoustics Conference, Portland, June 2011.
+- Golubev, V.V., Nguyen, L., and Visbal, M.R., (2011), “High-Fidelity Simulations of Transitional Airfoil Interaction with Upstream Vortical Structure,”
+- AIAA Paper
+- 2011-394, 49
+- AIAA Aerospace Sciences Meeting and Exhibit, Orlando, January 2011.
+- Bhatt, Y., Shaw, R., Dipan, A., and Golubev, V.V., (2011), “Numerical Simulations and Performance Comparison of Air-Blast and Pressure Jet Atomizers,”
+- AIAA Paper
+- 2011-277, 49
+- AIAA Aerospace Sciences Meeting and Exhibit, Orlando, January 2011.
+- Nakhla, H., Bourlier, A., Nguyen, L., Bhatt, S., Brodnick, J., and Golubev, V.,, (2011), “High-Accuracy Simulations of Synthetic Jets for Low-Re Flow Control,”
+- AIAA Paper
+- 2011-469, 49
+- AIAA Aerospace Sciences Meeting and Exhibit, Orlando, January 2011.
+- Golubev, V.V., Sewell, C., Nguyen, L., Mankbadi, R.R.,  (2012), “Effect of Synethic-Jet Actuation on Airfoil Acoustic Radiation,”
+- FEDSM2012-72462
+- , Proceedings of ASME 2012 Fluids Engineering Summer Meeting, Puerto Rico, July 2012.
+- Golubev, V.V., Mankbadi, R.R., (2012), “High-Fidelity Modeling of Synthetic Jet Actuators for Flow and Noise Control,” Proceedings of 9
+- International Conference on Heat Transfer, Fluid Mechanics, and Thermodynamics, Malta, July 2012.
+- Golubev, V.V., Brodnick, J., Nguyen, L., and Visbal, M.R., (2012), “High-Fidelity Simulations of Airfoil Interaction with Upstream Turbulence,”
+- AIAA Paper
+- 2012-3071, 42
+- AIAA Fluid Dynamics Conference, New Orleans, June 2012.
+- Nguyen, L., Golubev, V.V., and Visbal, M.R., (2012), “High-Fidlity Simulations of Transitional Airfoil Interacting with Canonical Upstream Flow Disturbances,”
+- AIAA Paper
+- 2012-2696, 42
+- AIAA Fluid Dynamics Conference, New Orleans, June 2012.
+- Golubev, V.V., Nguyen, L., Roger, M., and Visbal, M.R., (2012), “High-Accuracy Simulations of Flow-Acoustics Resonant Interactions in Airfoil Transitional Boundary Layers,”
+- AIAA Paper
+- 2012-2136, 18
+- AIAA/CEAS Aeroacoustics Conference, Colorado Springs, June 2012.
+- Nagappan, N., Golubev, V.V., Nakla, H., and Habashi, W.G., (2013), “On Icing Control Using Thermally Activated Synthetic Jets,”
+- AIAA Paper
+- 2013-0093, 51
+- AIAA Aerospace Sciences Meeting and Exhibit, Grapevine, TX, January 2013.
+- Nagappan, N., Golubev, V.V., and Habashi, W.G., (2013), “Numerical Modeling of Anti-Icing Using an Array of Heated Synthetic Jets,”
+- Proceeding of 21
+- CFD Canada Conference,
+- Sherbrooke, QC, May 2013.
+- Golubev, V.V., Nguyen, L, Mankbadi, R.R., Roger, M., and Visbal, M.R., (2013), “Acoustic Feedback-Loop Interactions in Transitional Airfoils
+- ,” AIAA Paper 2013-2111
+- , 19
+- AIAA/CEAS Aeroacoustics Conference, Berlin, Germany, May 2013.
+- Golubev, V.V., Nguyen, L., and Mankbadi, R.R., (2013), “Flow Separation Effects on Self-Sustained Flow-Acoustic Interactions in Transitional Airfoils,”
+- Proceedings of ERCOFTAC International Symposium “Unsteady Separation in Fluid-Structure Interaction,”
+- Mykonos, Greece, June 2013.
+- Nagappan, N., Golubev, V.V., and Habashi, W.G., (2013), “Parametric Analysis of Icing Control Using Synthetic Jet Actuators,”
+- AIAA Paper 2013-2453
+- , 21
+- AIAA Computational Fluid Dynamics Conference, San Diego, June 2013.
+- Golubev, V.V., Nguyen, L., Mankbadi, R.R., Roger, M., Dudley, J., and Visbal, M.R., (2013), “On Self-Sustained Flow-Acoustic Resonant Interactions in Airfoil Transitional Boundary Layers,”
+- AIAA Paper 2013-2619
+- , 44
+- AIAA Fluid Dynamics Conference, San Diego, June 2013.
+- Dewan, Y., Golubev, V.V., Lyrintzis, A.S., Mankbadi, R.R., Kurbatskii, K.A., and Osman, E., (2013), “Detached Eddy Simulations of Supersonic Jets Impinging on Flat Plates,”
+- AIAA Paper 2013-3097
+- , 44
+- AIAA Fluid Dynamics Conference, San Diego, June 2013.
+- Bhatt, S., Gondaliya, R., Golubev, V.V., Wang, X., and Tang, Y, (2014), “Design, Modeling and Testing of Synthetic Jet Actuators for Micro Air Vehicle Flight Control,”
+- AIAA Paper 2014-1144,
+- 52nd AIAA Aerospace Sciences Meeting, National Harbour, MD, January 2014.
+- Nguyen, L., Golubev, V.V., Mankbadi, R.R., Roger, M., Pasiliao, C., and Visbal, M.R., (2014), “Effect of Upstream Turbulence on Flow-Acoustic Resonance Interactions in Transitional Airfoils,”
+- AIAA Paper 2014-3303
+- , 20
+- AIAA/CEAS Aeroacoustics Conference, AIAA Aviation and Aeronautics Forum and Exposition 2014, Atlanta, June 2014.
+- Kurbatski, K., Guenthoer, B., Golubev, V.V., Lyrintzis, A., and Mankbadi, R.R., (2014), “Numerical Prediction of an Acoustic Field of a Supersonic Jet Impinging on a Plate at Different Inclination Angles,”
+- AIAA Paper 2014-3308
+- , 20
+- AIAA/CEAS Aeroacoustics Conference, AIAA Aviation and Aeronautics Forum and Exposition 2014, Atlanta, June 2014.
+- Golubev, V.V., Nguyen, L., Counts, M., Guenthoer, B., Ramos-Pedroza, N., and MacKunis, W., (2014), “Robust Nonlinear Control of Airfoil Gust-Induced Limit Cycle Oscillations Using Synthetic Jet Actuators,”
+- AIAA Paper 2014-2936
+- AIAA Flow Control Conference, AIAA Aviation and Aeronautics Forum and Exposition 2014, Atlanta, June 2014.
+- Ramos-Pedroza,N., MacKunis, W., Guenthoer, B.F., Golubev, V.V., Curtis, J.W., (2014) “Lyapunov-Based Adaptive Regulation of Limit Cycle Oscillations in Aircraft Wings Using Synthetic Jet Actuators,”
+- Proceedings of IFAC 2014 World Congress
+- , Capetown, South Africa, August 2014.
+- Golubev, V.V. and MacKunis, W., (2014) “On UAV Robust Nonlinear Control in Presence of Parametric Uncertainties,”
+- ICAS 2014-0731
+- Congress of the International Council of the Aeronautical Sciences
+- , St. Petersburg, Russia, September 2014.
+- Golubev, V.V., Nguyen, L., MacKunis W., Ramos Pedroza, N., (2014) “SJA-Based Robust Nonlinear Control of Airfoil Gust-Induced LCO,”
+- IMECE 2014-38215
+- , Proceedings of the ASME 2014 International Mechanical Engineering Congress & Exposition, Montreal, Canada, November 2014.
+- Golubev, V.V., Mankbadi, R., Roger, M., (2014), “Analysis and Control of Flow-Acoustic Feedback-Loop Interactions in Transitional Airfoils,”
+- Proceedings of INTER-NOISE 2014
+- , Melbourne, Australia, November 2014.
+- Nguyen, L., Golubev, V.V., MacKunis, W., Ramos-Pedroza, N., and Pasiliao, C., (2015), “High-Accuracy Simulations of Robust LCO Control Using Synthetic Jet Actuators,”
+- AIAA Paper 2015-0809
+- , 53rd AIAA Aerospace Sciences Meeting, Orlando, FL, January 2015.
+- Golubev, V. V, Sansone, M., Nguyen, L., Mankbadi, R., R., (2015) “Numerical Study of Synthetic-Jet Actuation Effect on Leading and Trailing Edge Noise,”
+- AIAA Paper 2015-0010
+- , 53rd AIAA Aerospace Sciences Meeting, Orlando, FL, January 2015.
+- Golubev, V.V., Nguyen, L, and Mankbadi, R.R., (2015), “High-Fidelity Studies of Unsteady Aerodynamics, Acoustics and Flow Control for Airfoils in Transitional Flow Regimes,”
+- Proceedings of 1
+- Pan-American Congress on Computational Mechanics
+- PANACM
+- , Buenos Aires, April 2015.
+- Yakhina, G., Roger, M., Nguyen, L., and Golubev, V.V., (2015), “Parametric Investigations of Tonal Trailing-Edge Noise Generation by Moderate Reynolds Number Airfoils. Part I – Experimental Studies,”
+- AIAA Paper 2015-2527
+- , 15
+- AIAA Aviation Technology, Integration and Operation Conference, Dallas, June 2015.
+- Golubev, V. V., Nguyen, L., Hiner, W., Sansone, M., Salehian, S., Mankbadi, R. R., Yakhina, G., and Roger, M., (2015), “Parametric Investigations of Tonal Trailing-Edge Noise Generation by Moderate Reynolds Number Airfoils. Part II – Numerical Studies,”
+- AIAA Paper 2015-2528
+- , 15
+- AIAA Aviation Technology, Integration and Operation Conference, Dallas, June 2015.
+- Golubev, V.V., Kazarin, P., MacKunis, W., Borener, S., Hufty, D., Suchkov, A., Fraga, R., (2015), “Analysis of Safety Implications for SJA-Based Robust UAS Flight Control Technology,” 34
+- Digital Avionics Systems Conference, Prague, September 2015.
+- Ramos-Pedroza, N., MacKunis, W., Golubev, V.V, (2015), “A New Method of Synthetic Jet Actuator-based LCO Suppression Using an Output Feedback Control Strategy,” International Conference on Control, Automation and Systems (ICCAS), South Korea, October 2015.
+- Nguyen, L., Golubev, V., Mankbadi, R., Roger, M., Visbal, M., (2016), “Effect of Freejet Upstream Flow Conditions on Flow-Acoustic Resonant Interactions in Transitional Airfoils,”
+- AIAA Paper 2016
+- 0052,
+- 54th AIAA Aerospace Sciences Meeting, 4-8 January, 2016, San Diego, CA.
+- Golubev, V., Hayden, J., Nguyen, L., Salehian, S., Mankbadi, R., Pasiliao C., Visbal, M., (2016), “Effect of Flow-Acoustic Resonant Interactions on Aerodynamics Response of Transitional Airfoils,”
+- AIAA Paper 2016-0759,
+- 54th AIAA Aerospace Sciences Meeting, 4-8 January, 2016, San Diego, CA.
+- Kazarina, M., Nguyen, L., Golubev, V., Borener, S., Hufty, D., Pasiliao C., Visbal, M., (2016), “Effects of 3D Time-Harmonic Gust and Turbulence on Unsteady Aerodynamic Responses of Loaded Low-Speed Airfoils,”
+- AIAA Paper 2016-1355,
+- 54th AIAA Aerospace Sciences Meeting, 4-8 January, 2016, San Diego, CA.
+- Salehian, S., Nguyen, L., Golubev, V., Mankbadi, R., (2016) “Comparison of Far-Field Acoustic Prediction Techniques in Application to Tonal Noise Radiation of Transitional Airfoils,”
+- AIAA Paper 2016-2849,
+- 22nd AIAA/CEAS Aeroacoustics Conference, 30 May-1 June, 2016, Lyon, France.
+- Sansone, M., Nguyen, L., Golubev, V., Mankbadi, R., (2016) “A Numerical Study of Synthetic-Jet Actuation Effect on Airfoil Trailing Edge Noise,”
+- AIAA Paper 2016-2918,
+- 22nd AIAA/CEAS Aeroacoustics Conference, 30 May-1 June, 2016, Lyon, France.
+- Nguyen, L., Golubev, V., Mankbadi, R., Yakhina, G., Roger, M., Visbal, M., (2016) “A Summary of High-Fidelity Numerical Studies of Flow Acoustic Resonant Interactions in Transitional Airfoils,”
+- AIAA Paper 2016-3030,
+- 22nd AIAA/CEAS Aeroacoustics Conference, 30 May-1 June, 2016, Lyon, France.
+- Yakhina, G., Roger, M., Kholodov, P.,Nguyen, L., Golubev, V., (2016) “An Integrated Study of Laminar Separation Bubble Effect on Tonal Noise Generation in Transitional Airfoils,”
+- AIAA Paper 2016-3022,
+- 22nd AIAA/CEAS Aeroacoustics Conference, 30 May-1 June, 2016, Lyon, France.
+- Krishnappa, S., Jogi, N., Nguyen, L., Gudmundsson, S., MacKunis, W., Golubev, V., (2016) “Towards Experimental Validation of Robust Control of Gust-Induced Airfoil Limit Cycle Oscillations Using Synthetic Jet Actuators,”
+- AIAA Paper 2016-4262
+- , 46
+- AIAA Fluid Dynamics Conference, 13-17 June, 2016, Washington, DC.
+- Gudmundsson, S., Golubev, V., Drakunov, S., Reinholtz, C., (2016) “Bio-Inspired Opportunistic Approaches in Energy-Conserving/Harnessing Flight-Path Modeling for UAS,”
+- AIAA Paper 2016-3676
+- , AIAA Modeling and Simulation Technologies Conference, 13-17 June, 2016, Washington, DC.
+- Pagadala, P., Reed, M., Besson, E., Golubev, V., Uddanti, N., (2016) “Modeling SJA-based UAV Flight Control in Extraterrestrial Conditions,”
+- AIAA Paper 2016-3375
+- , AIAA Modeling and Simulation Technologies Conference, 13-17 June, 2016, Washington, DC.
+- Kazarin, P., Golubev, V., Provalov, A., Borener, S., Hufty, D., (2016) “A Variable-Fidelity Approach to Wake Safety Analysis in the Context of UAS Integration in the NAS,”
+- AIAA Paper 2016-3452
+- , 16
+- AIAA Aviation Technology, Integration, and Operations Conference, 13-17 June, 2016, Washington, DC.
+- Kazarin, P., Golubev, V., MacKunis, W., Borener, S., Hufty, D., (2016) “Robust SJA-Based Nonlinear Trajectory Tracking Control Using Unmanned Aircraft LPV Model,”
+- AIAA Paper 2016-3884
+- , 34
+- AIAA Applied Aerodynamics Conference, 13-17 June, 2016, Washington, DC.
+- Golubev, V., Kazarin, P., MacKunis, W., Borener, S., Hufty, D., (2016) “On Safety Assessment of Novel Approach to Robust UAV Flight Control in Gusty Environments,”
+- ICAS 2016-0413
+- Congress of the International Council of the Aeronautical Sciences
+- , Daejeon, S. Korea, September 2016.
+- Golubev, V.V., Nguyen, L., Mankbadi, R.R., (2017) “On LSB Dynamics and Vortical-Acoustic Feedback-Loop Interactions in Boundary Layers of Transitional Airfoils,”
+- Proceedings of IACAS Conference
+- , March 2017, Tel Aviv/Haifa, Israel.
+- Golubev, V.V., Kazarin, P., MacKunis, W., (2017) “An Integrated Study of UAV Wake Vortex Safety Analysis and Control,”
+- Proceedings of IACAS Conference
+- , March 2017, Tel Aviv/Haifa, Israel.
+- Nguyen, L., Golubev, V.V., Visbal, M.R., Mankbadi, R.R., Yakhina, G., Roger, M., Pasiliao, C.L., Visbal, M.R., (2017) “On Ladder-Type Structure of Acoustic Tones Radiated by Transitional Airfoils,”
+- AIAA Paper 2017-3001
+- , AIAA Aviation Forum, 4-9 June, 2017, Denver, CO.
+- Kazarina, M.V., Parikh, S., Nguyen, L., Golubev, V.V., Visbal, M.R., (2017) “A Volume-Force Synthetic Turbulence Approach for Modeling Unsteady Fluid-Structure Interactions,”
+- AIAA Paper 2017-3296
+- , AIAA Aviation Forum, 4-9 June, 2017, Denver, CO.
+- Kazarin, P.S., MacKunis, W., Moreno, C., Golubev, V.V., (2017) “Robust Nonlinear Tracking Control for Unmanned Aircraft with Virtual Control Surfaces,”
+- AIAA Paper 2017-3730
+- , AIAA Aviation Forum, 4-9 June, 2017, Denver, CO.
+- Gudmundsson, S., Golubev, V., Reinholtz, C., Drakunov, S., (2017) “A Biomimetic Energy-Conserving/Harvesting Trajectory Planning for sUAV,”
+- AIAA Paper 2017-3889
+- , AIAA Aviation Forum, 4-9 June, 2017, Denver, CO.
+- Kazarin, P.S., Golubev, V.V., (2017) “On Effects of Ground Surface Conditions on Aircraft Wake Vortex Evolution,”
+- AIAA Paper 2017-4368
+- , AIAA Aviation Forum, 4-9 June, 2017, Denver, CO.
+- Kazarin, P.S., Golubev, V.V., (2017) “Comparison of Probabilistic Approaches for Predicting the Cone of Uncertainty in Aircraft Wake Vortex Evolution”
+- AIAA Paper 2017-4369
+- , AIAA Aviation Forum, 4-9 June, 2017, Denver, CO.
+- S Karpuk, P Kazarin, S Gudmundsson, VV Golubev, (2018) “Preliminary Feasibility Study of a Multi-Purpose Aircraft Concept with a Leading-Edge Embedded Cross-Flow Fan”
+- AIAA Paper
+- 2018-1744, 2018 AIAA Aerospace Sciences Meeting, 8–12 January 2018, Kissimmee, Florida
+- S Salehian, K Kourbatski, VV Golubev, RR Mankbadi (2018) “Numerical Aspects of Rocket Lift-off Noise with Launch-Pad Aqueous Injection”, AIAA Paper 2018-0519, 8–12 January 2018, Kissimmee, Florida
+- P Kazarin, VV Golubev (2018)  “High-fidelity simulations of terminal-zone heterogeneous terrain effects on aircraft wake vortex evolution”, AIAA Paper 2018-1279, 2018 AIAA Aerospace Sciences Meeting, 8–12 January 2018, Kissimmee, Florida
+- P Bouche, VV Golubev (2018) “A Model-Based STEM-Focused Interactive Virtual Reality Toolkit for K-12 Students,” Proceeding of 2018 ASEE Southeastern Section Conference, 4-6 March 2018, Daytona Beach, Florida
+- J Lewis, RR Mankbadi, VV Golubev, LD Nguyen, S Salehian (2018)  “A Validation of High-Order Compact ILES Code for Trailing-Edge Noise at High Reynolds Numbers”, AIAA Paper 2018-3128, 2018 AIAA/CEAS Aeroacoustics Conference, June 25-29, 2018, Atlanta, Georgia
+- Kazarin, P.S., Golubev, V.V., (2018) “New Results in Wake Vortex Evolution, Interaction and Control,”
+- AIP Conference Proceedings
+- 2018
+- 2046
+- , ICNAAP, Yerevan, July 2018.
+- Golubev, V.V., Kazarin, P, Moreno, C., MacKunis, W., (2018) “On Wake Vortex Safety Analysis and Control for UAV,”
+- ICAS 2018-0254
+- Congress of the International Council of the Aeronautical Sciences
+- , Belo Horizonte, Brazil, September 2018.
+- MAQQ Mazumder, VV Golubev, S Gudmundsson (2019) “Parametric Study of Aerodynamic Performance of an Airfoil with Active Circulation Control using Leading Edge Embedded Cross-Flow Fan”, AIAA Paper 2019-0577, AIAA Scitech 2019 Forum, 7-11 January 2019, San Diego, California
+- M Kazarina, VV Golubev (2019) “On 3D effects in Gust-Airfoil and Turbulence-Airfoil Interaction Responses”, AIAA Paper 2019-0901, AIAA Scitech 2019 Forum, 7-11 January 2019, San Diego, California
+- F Colomb, S Karpuk, M Kazarina, VV Golubev, RR Mankbadi (2019) “On Acoustic Signature of a Conceptual Airfoil Design with Leading-Edge Embedded Cross-Flow Fan”, AIAA Paper 2019-2761, 25th AIAA/CEAS Aeroacoustics Conference, 20-23 May 2019, Delft, The Netherlands
+- S Afari, RR Mankbadi, VV Golubev (2019) “Towards High-fidelity Analysis of Noise Radiation and Control of Propeller-driven UAV”, AIAA Paper 2019-2632, 25th AIAA/CEAS Aeroacoustics Conference, 20-23 May 2019, Delft, The Netherlands
+- Bystrov A.V., Golubev V., Zagumennov F., Varyukhin A., Merzlikin V., (2019), “Development Of Hybrid Power Management Unit for Unmanned Aerial Vehicles,”
+- Proc. of IEEE International Conference on Architecture, Construction, Environment and Hydraulics
+- (IEEE ICACEH 2019), Xiamen, Fujian, China, 20 - 22 Dec 2019, IEEE Xplore Digital Library, 2020, 9042078, pp. 141-144. DOI: 10.1109/ICACEH48424.2019.9042078.
+- W. MacKunis, V. Golubev, K. Kidambi, R Mankbadi, O. Stalnov (2020) “Towards Efficient 2-DOF LCO Control Using a Closed-Loop Nonlinear Active Flow Control Technique”, AIAA Paper 2020-1492, AIAA SciTech Forum, 6-10 January 2020, Orlando, https://doi.org/10.2514/6.2020-1492
+- R. Mankbadi, S Afari, V Golubev (2020) “Simulations of Broadband Noise of a Small UAV Propeller”, AIAA Paper 2020-1493, AIAA SciTech Forum, 6-10 January 2020, Orlando, https://doi.org/10.2514/6.2020-1493
+- M Kazarina, VV Golubev (2020) “Time-Harmonic 2D and 3D Gust-Airfoil Interactions: Comparison of Numerical Predictions with Analytical Models”, AIAA Paper 2020-0098, AIAA Scitech Forum, 6-10 January 2020, Orlando, https://doi.org/10.2514/6.2020-0089
+- Joseph, G., Golubev V.V., Gudmundsson, S., (2020) “Towards Development of a Dynamic-Soaring, Morphing-Wing UAV,”
+- AIAA Paper 2020-2766
+- , AIAA Aviation Forum (virtual event), June 2020, https://doi.org/10.2514/6.2020-2766
+- Joseph, G., Adamski, J., Golubev V.V., Gudmundsson, S., (2021) “Towards Development of a Dynamic-Soaring, Morphing-Wing UAV: Flight Simulations,”
+- AIAA Paper 2021-0408
+- , AIAA SciTech (virtual event), January 2022, https://doi.org/10.2514/6.2021-0408
+- NASA and Air Force Summer Fellow
+- AIAA Associate Fellow
+- Fulbright Scholar
+- Propulsion and Aerodynamics Computational Laboratory
+## Courses
+
+- AE 800
+- Dissertation
+- AERO 536
+- Rotorcraft Aerodynamics
+- AE 700
+- Thesis
+- AE301 - Incompressible Aerodynamics
+- AE516 - Computational Fluid Dynamics
+- AE610 - Advanced Gas Turbine Engines
+
+---
+*Scraped from faculty.erau.edu on 2026-03-28 09:57*

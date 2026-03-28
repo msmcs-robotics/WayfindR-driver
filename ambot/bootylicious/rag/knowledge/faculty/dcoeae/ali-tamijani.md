@@ -1,0 +1,148 @@
+# Ali Tamijani
+
+**Department:** Aerospace Engineering
+**Email:** Ali.Tamijani@erau.edu
+**Profile:** https://faculty.erau.edu/Ali.Tamijani
+
+## Education
+
+- Ph.D. - Doctor of Philosophy in Engineering Mechanics,
+
+## Areas of Expertise
+
+- Topology Optimization
+- Multi-disciplinary Design Optimization
+- Computational Structural Mechanics
+- Multifunctional Structures
+- Additive Manufacturing
+- Aeroelastic Analysis
+- Reliability Analysis
+
+## Courses
+
+- AERO 418
+- Aerospace Structures II
+- AERO 612
+- Anlys Arcft Plate & Shell Strc
+- Plates and Shells (AE 612) – Graduate
+- Gulfstream Aerospace Corporation
+- Aerospace Engineering Department, Embry-Riddle Aeronautical University
+- Worldwide, Embry-Riddle Aeronautical University
+- Aeroelasticity (AE 618) – Graduate
+- Aerospace Engineering Department, Embry-Riddle Aeronautical University
+- Structural Optimization (AE 525) – Graduate
+- Aerospace Engineering Department, Embry-Riddle Aeronautical University
+- Mechanical Engineering Department, Embry-Riddle Aeronautical University
+- Worldwide, Embry-Riddle Aeronautical University
+- Mechanics of Structures: Variational and Computational Methods (AE 542) - Graduate
+- Aerospace Engineering Department, Embry-Riddle Aeronautical University
+- Aerospace Structures I  (AE 318) - Undergraduate
+- Aerospace Engineering Department, Embry-Riddle Aeronautical University
+- Aerospace Structures II  (AE 418) - Undergraduate
+- Aerospace Engineering Department, Embry-Riddle Aeronautical University
+- Articles in Refereed Journals
+- Wang, Z., &
+- Tamijani, A. Y.
+- , “Computational Synthesis of Large-Scale Three-dimensional Heterogeneous Lattice Structures,” Aerospace Science and Technology, January 2022, 120, 107258, https://doi.org/10.1016/j.ast.2021.107258
+- Tamijani, A. Y.
+- , “Stress and stiffness-based topology optimization of two-material thermal structures,” Computers and Structures, 2021, 256, 106641, https://doi.org/10.1016/j.compstruc.2021.106641
+- Fernandes, R. R., &
+- Tamijani, A. Y.
+- , “Design optimization of lattice structures with stress constraints,” Materials & Design, 2021, 110026, https://doi.org/10.1016/j.matdes.2021.110026
+- Fernandes, R. R., van de Werken, N., Koirala, P., Yap, T.,
+- Tamijani, A. Y.
+- , & Tehrani, M., “Experimental Investigation of Additively Manufactured Continuous Fiber Reinforced Composite Parts with Optimized Topology and Fiber Paths,” Additive Manufacturing, 2021, 102056, https://doi.org/10.1016/j.addma.2021.102056
+- Fernandes, R.,
+- Tamijani, A. Y.
+- , and Al-Haik M., “Mechanical characterization of additively manufactured fiber-reinforced composites,” Aerospace Science and Technology, 2021, 113, 106653, https://doi.org/10.1016/j.ast.2021.106653
+- Gharibi, K., and
+- Tamijani, A. Y
+- ., “Load-Path-Based Topology Optimization of Two-Dimensional Continuum Structures,” AIAA Journal, 2021, 1-10. https://doi.org/10.2514/1.J059642
+- Alacoque, L, Watkins R. T., and
+- Tamijani A. Y.
+- , “Stress-Based and Robust Topology Optimization for Thermoelastic Multi-Material Periodic Microstructures,” Computer Methods in Applied Mechanics and Engineering, 2021, 379, 113749, https://doi.org/10.1016/j.cma.2021.113749
+- Tamijani, A. Y.
+- , Velasco, P. S., and Alacoque, L., “Topological and Morphological Design of Additively-Manufacturable Spatially-Varying Periodic Cellular Solids,” Materials and Design, 2020, 196, 109155. https://doi.org/10.1016/j.matdes.2020.109155
+- Papapetrou, V. S., Patel, C., and
+- Tamijani, A. Y.
+- , “Stiffness-Based Optimization Framework for the Topology and Fiber Paths of Continuous Fiber Composites,” Composites Part B: Engineering, 2020, 183, 107681. https://doi.org/10.1016/j.compositesb.2019.107681
+- Nematollahi, A., Hurley, J., Khanboluki, P., van de Werken, N.,
+- Tamijani, A. Y.
+- , and Tehrani, M., “Design considerations and modeling of fiber reinforced 3D printed parts,” Composites Part B, 2019, 160, 684-692. https://doi.org/10.1016/j.compositesb.2018.12.094
+- Tamijani, A. Y.
+- , Hurley, J., and Gharibi, K., “Determination of load paths in plates and shells,” Thin-Walled Structures, 2018, 127, 646-653. https://doi.org/10.1016/j.tws.2018.02.031
+- Papapetrou, V. S.,
+- Tamijani, A. Y.
+- , Brown, J., and Kim, D., “Design Optimization of Hybrid FRP/RC Bridge,” Applied Composite Materials, 2018, 1-22. https://doi.org/10.1007/s10443-018-9691-3
+- Tamijani, A. Y.
+- , Gharibi, K., Kobayashi, M. H., and Kolonay, R. M., “Load Paths Visualization In Plane Elasticity Using Load Function Method,” International Journal of Solids and Structures, 2018, 135, 99-109. https://doi.org/10.1016/j.ijsolstr.2017.11.013
+- Tamijani, A. Y.
+- , Mulani, S., and Kapania, R. K., “A Multilevel Framework for Decomposition-Based Reliability Optimization,” Advances in Aircraft and Spacecraft Science, 2017, 4 (4), 467-486. https://doi.org/10.12989/aas.2017.4.4.467
+- Fernandes, R. and
+- Tamijani, A. Y.
+- , “Flutter Analysis of Laminated Curvilinear-Stiffened Plates,” AIAA Journal, 2017, 55 (3), 998-1011. https://doi.org/10.2514/1.J055021
+- Papapetrou, V.,
+- Tamijani, A. Y.
+- , and Kim, D., “Preliminary Wing Study of General Aviation Aircraft with Stitched Composite Panels,” Journal of Aircraft, 2017, 54, Special Section on Cranked Arrow Wing Aerodynamics Project International II/F-16XL, 704-715. https://doi.org/10.2514/1.C033884
+- Tamijani, A. Y.
+- , Mulani, S., and Kapania, R. K., “A Framework Combining Meshfree Analysis and Adaptive Kriging for Optimization of Stiffened Panels,” Structural and Multidisciplinary Optimization, 2014, 49 (4), 577-594. https://doi.org/10.1007/s00158-013-0993-7
+- Tamijani, A. Y.
+- and Kapania, R. K., “A Chebyshev Ritz Approach to Buckling and Vibration of Curvilinearly-Stiffened Plate,” AIAA Journal, 2012, 50 (5), 1007-1018. https://doi.org/10.2514/1.J050042
+- Tamijani, A. Y.
+- and Kapania, R. K., “Vibration Analysis of Curvilinearly-Stiffened Functionally Graded Plate Using Element Free Galerkin Method,” Mechanics of Advanced Materials and Structures, 2012, 19,100-108. https://doi.org/10.1080/15376494.2011.572240
+- Tamijani, A. Y.
+- and Kapania, R. K., “Random Response Analysis of Curvilinearly-Stiffened Plate Using Element Free Galerkin Method,” Journal of Aircraft, 2011, 48 (6), 1856-1863. https://doi.org/10.2514/1.C031132
+- Tamijani, A. Y.
+- and Kapania, R. K., “Buckling and Static Analysis of Curvilinearly Stiffened Plates Using Meshfree Method,” AIAA Journal, 2010, 48 (12), 2739-2751. https://doi.org/10.2514/1.43917
+- Tamijani, A. Y.
+- and Kapania, R. K., “Vibration of Plate with Curvilinear Stiffeners Using Meshfree Method,” AIAA Journal, 2010, 48 (8), 1569-1581. https://doi.org/10.2514/1.43082
+- Tamijani, A. Y.
+- , McQuigg, T. and Kapania, R. K., “Free Vibration Analysis of Curvilinearly-Stiffened Plates and Experimental Validation,” Journal of Aircraft, 2010, 47 (1), 192-200. https://doi.org/10.2514/1.44613
+- Mirzaeifar, R., Bahai, H., Aryana, F., and
+- Tamijani, A. Y.
+- , “Optimization of the Dynamic Characteristics of Composite Plates Using an Inverse Approach,” Journal of Composite Material, 2007, 41 (26), 3091-3108 (Journal of Composite Materials most frequently read articles, 2008). https://doi.org/10.1177/0021998307082178
+- Aryana, F., Bahai, H., Mirzaeifar, R., and
+- Tamijani, A. Y.
+- , “Modification of Dynamic Characteristics of FGM Plates with Integrated Piezoelectric Layers Using First- and Second-order Approximations,” International Journal for Numerical Methods in Engineering, 2006, 70 (12), 1409-1429. https://doi.org/10.1002/nme.1927
+- Academic Advising
+- Current Postdoc/Graduate Supervision
+- Postdoc
+- Zhelong He, Stress-based Optimization of 3D Printed Continuous Fiber Composites, Fall 2020-present
+- Kaela N. Barrett, Thesis Title: Design and Additive Manufacturing of Robust Thermoelastic Metamaterial Structures, Expected Graduation: Spring 2024.
+- Zhichao Wang, Thesis Title: 3D strength-based optimization of lattice structures, Expected Graduation: Spring 2022.
+- Ferrand, Jesus, Thesis Title: Design and fabrication of 3D coated continuous fiber composite structures, Expected Graduation: Spring 2025.
+- Benyang Hu (MSc), Thesis Title: Level Set Optimization of 3D Printed Continuous Fiber Composites, Expected Graduation: Spring 2022.
+- Past Postdoc/Graduate Supervision
+- Postdoc
+- Kaveh Gharibi, Load-path based Topology Optimization, 12/1/18-8/1/19.
+- Rossana Fernandes, Thesis Title: Design, Analysis and Experimental Evaluation of 3D Printed Variable Stiffness Structures, Summer 2021.
+- Kaveh Gharibi, Thesis Title: Investigation of Load-path based Topology Optimization, Fall 2018, Recipient of 2018 Outstanding PhD Student.
+- Vasileios Papapetrou, Thesis Title: Design Optimization and Computational Analysis of Advanced Composite Structures, Fall 2018
+- Lee Alacoque, Thesis Title: Topology Optimization and Analysis of Thermal and Mechanical Metamaterials, Summer 2020.
+- Shajayra Patricia Velasco, Thesis Title: Macroscale Projection and Manufacturability of Oriented Homogenized Microstructures, Spring 2020.
+- Aryslan Malik, Thesis Title: Experimental and Computational Aeroelastic Analysis of A 3D Printed Wing Structure, Spring 2019.
+- Joel Hurley, Thesis Title: Design of Variable-Stiffness Composite Structures, Summer 2017, Recipient of 2016 Outstanding Graduate Student.
+- Rossana Fernandes, Thesis Title: Vibration Analysis of Arbitrary Shaped Composite Structures, Spring 2016, Recipient of 2015 Outstanding Graduate Student.
+- Scott Morrison, Thesis Title: Landing Gear Door Design Optimization using Response Surface Modeling, Fall 2015.
+- Senior Member-AIAA: American Institute of Aeronautics and Astronautics
+- Member-ASME; American Society of Mechanical Engineers
+- University Outstanding Researcher of the Year Award,
+- Embry-Riddle Aeronautical University, 2020
+- National Science Foundation CAREER Award,
+- 2019
+- NASA JPL Faculty Research Program Award,
+- 2019
+- College of Engineering Outstanding Researcher of the Year Award
+- Embry-Riddle Aeronautical University, 2019
+- Air Force Office of Scientific Research Young Investigator Program (YIP) Award,
+- 2017
+- Air Force Faculty Fellowship Award,
+- 2014, 2015, and 2016
+- Editorial Board of The Journal of Aerospace Science and Technology,
+- 2014-Present
+- Liviu Librescu Scholarship
+- , Engineering Mechanics Department, Virginia Tech, 2011.
+- Manual Stein Scholarship
+- , Engineering Mechanics Department, Virginia Tech, 2009.
+- Davenport Graduate Fellowship
+- , Graduate school, Virginia Tech, 2007.

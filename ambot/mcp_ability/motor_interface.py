@@ -2,10 +2,12 @@
 Motor Interface — Abstraction layer between MCP tools and hardware.
 
 Provides thread-safe motor control with simulation mode and auto-stop safety.
+Supports both Jetson (JetsonL298N) and RPi (DifferentialDrive) platforms.
 """
 
 import time
 import logging
+import platform
 import threading
 from dataclasses import dataclass, field
 from typing import Optional
@@ -66,12 +68,28 @@ class MotorInterface:
     # ------------------------------------------------------------------
 
     def _init_hardware(self):
-        """Import and create the real DifferentialDrive from locomotion."""
+        """Import and create the appropriate motor driver for the current platform."""
+        # Try Jetson first (aarch64 with Jetson.GPIO or gpiod)
+        if platform.machine() == "aarch64":
+            try:
+                from locomotion.jetson_motors.driver import JetsonL298N
+                jetson_driver = JetsonL298N(simulate=False)
+                if not jetson_driver.simulate:
+                    # Wrap JetsonL298N to provide drive(left, right) interface
+                    self._robot = _JetsonDriveAdapter(jetson_driver)
+                    logger.info("Jetson motor driver initialized (backend=%s)", jetson_driver.backend)
+                    return
+                else:
+                    logger.info("JetsonL298N fell back to simulate, trying RPi driver...")
+            except Exception as exc:
+                logger.debug("Jetson motor driver not available: %s", exc)
+
+        # Fall back to RPi DifferentialDrive
         try:
             from locomotion.rpi_motors.factory import create_robot
             from locomotion.rpi_motors.drivers import DriverType
             self._robot = create_robot(driver_type=DriverType.L298N)
-            logger.info("Hardware motor driver initialized (L298N)")
+            logger.info("RPi motor driver initialized (L298N)")
         except Exception as exc:
             logger.error("Failed to init hardware motors: %s — falling back to simulate", exc)
             self.simulate = True
@@ -213,3 +231,20 @@ class MotorInterface:
         if self._robot:
             self._robot.cleanup()
             logger.info("Hardware motor driver cleaned up")
+
+
+class _JetsonDriveAdapter:
+    """Adapts JetsonL298N (motor_a/motor_b) to the drive(left, right) interface."""
+
+    def __init__(self, driver):
+        self._driver = driver
+
+    def drive(self, left_speed: int, right_speed: int):
+        self._driver.motor_a(left_speed)
+        self._driver.motor_b(right_speed)
+
+    def stop(self):
+        self._driver.stop()
+
+    def cleanup(self):
+        self._driver.cleanup()

@@ -1,0 +1,336 @@
+# Richard Prazenica
+
+**Department:** Aerospace Engineering
+**Email:** Richard.Prazenica@erau.edu
+**Profile:** https://faculty.erau.edu/Richard.Prazenica
+
+## Education
+
+- Ph.D. - Doctor of Philosophy in Aerospace Engineering,
+- M.S. - Master of Science in Aerospace Engineering,
+- B.S. - Bachelor of Science in Mechanical Engineering and Applied Mechanics,
+
+## Areas of Expertise
+
+- Telerobotic Perception During Asteroid and Mars Regolith Operations Sensor Research and Development
+- UAV Flight Control with Macrofiber Composite Actuators
+- Free-Flying Unmanned Robotic Spacecraft for Asteroid Resource Prospecting and Characterization Phase II
+- Investigate Detect and Avoid Track Classification and Filtering
+- Journal Papers
+- [J-20] Tiwari, Madhur, Prazenica, Richard, and Henderson, Troy, “Direct Adaptive Control of a Spacecraft with Coupled Orbit-Attitude Dynamics Near Asteroids,”
+- Acta Astronautica
+- , Vol. 202, January 2023, pp. 197-213.             https://doi.org/10.1016/j.actaastro.2022.10.014
+- [J-19]   Wilson, Elias and Prazenica, Richard, “Fixed Structure Policy-Based Model Predictive Control,”
+- Journal of Guidance, Control, and Dynamics
+- , published online August 4, 2022.  https://doi.org/10.2514/1.G006846
+- [J-18]   Malik, Aryslan, Lischuk, Yevgeniy, Henderson, Troy, and Prazenica, Richard, “A Deep Reinforcement-Learning Approach for Inverse Kinematics Solution of a High Degree of Freedom Robotic Manipulator,”
+- Robotics
+- , Vol. 11, No. 44, April 2022.  https://doi.org/10.3390/robotics11020044
+- [J-17]   Tiwari, Madhur, Coyle, Eric, and Prazenica, Richard, “Direct-Adaptive Nonlinear MPC for Spacecraft Near Asteroids,”
+- Aerospace
+- , Vol. 9, No. 159, March 2022.  https://doi.org/10.3390/aerospace9030159
+- [J-16]   Malik, Aryslan, Henderson, Troy, and Prazenica, Richard, “Multi-Objective Swarm Intelligence Trajectory Generation for a 7 Degree of Freedom Robotic Manipulator,” Robotics, Vol. 10, No.127 , November 2021. https://doi.org/10.3390/robotics10040127
+- [J-15]   Islam Sabique, Parr, Scott, Prazenica, Richard, Liu, Dahai, and Namilae, Sirish,  “Predictive Modelling of Fuel Shortages during Hurricane Evacuation: An Epidemiological Approach,”
+- IET Intelligent Transport Systems
+- , Vol. 15, No. 8, August 2021, pp. 1064 - 1075.  https://doi.org/10.1049/itr2.12083
+- [J-14]   Islam Sabique, Namilae, Sirish, Prazenica, Richard, and Liu, Dahai, “Fuel Shortages during Hurricanes: Epidemiological Modeling and Optimal Control,”
+- PLOS ONE
+- , Vol. 15, No. 4, April 2020.  https://doi.org/10.1371/journal.pone.0229957
+- [J-13]   Prabhakar, Nirmit, *Painter, David, Prazenica, Richard J., and Balas, Mark J., “Trajectory-Driven Adaptive Control of Autonomous UAVs with Disturbance Accommodation,”
+- AIAA
+- Journal of Guidance, Control, and Dynamics
+- , Vol. 41, No. 9, September 2018. https://doi.org/10.2514/1.G003341
+- [J-12]   Azizi, Boutros, Prazenica, Richard J., and Kim, Daewon, “Finite Element Modeling of Macro-Fiber Composite Actuators for Wing De-Icing,”
+- International Journal of Control and Automation
+- , Vol. 10, No. 5, May 2017, pp. 283 – 304.  https://dx.doi.org/10.14257/ijca.2017.10.5.26
+- [J-11]   Snyder, Mark G., Qu, Zhihua, Hull, Richard, and Prazenica, Richard J., “Quad-Segment Polynomial Trajectory Guidance for Impact-Time Control of Precision-Munition Strike,”
+- IEEE Transactions on Aerospace and Electronic Systems
+- , Vol. 52, No. 6, December 2016, pp. 3008 – 3023.  https://doi.org/10.1109/TAES.2016.140420
+- [J-10]  Sinclair, A.J., Prazenica, R.J., and Jeffcoat, D.E., “Optimal and Feedback Path Planning for Cooperative Attack,”
+- AIAA Journal of Guidance, Control, and Dynamics
+- , Vol. 31, No. 6, November – December 2008, pp. 1708 – 1715.  https://doi.org/10.2514/1.35599
+- [J-9]   Prazenica, R.J., Kurdila, A.J., and Vignola, J.F., “Spatial Filtering and Proper Orthogonal Decomposition of Scanning Laser Doppler Vibrometry Data for the Nondestructive Evaluation of Frescoes,”
+- Journal of Sound and Vibration
+- , Vol. 304, No. 3 – 5, July 2007, pp. 735 – 751.  https://doi.org/10.1016/j.jsv.2007.03.027
+- [J-8]   Webb, T.P., Prazenica, R.J., Kurdila, A.J., and Lind, R., “Vision-Based State Estimation for Autonomous Micro Air Vehicles,”
+- AIAA
+- Journal of Guidance, Control, and Dynamics
+- , Vol. 30, No. 3, May – June 2007, pp. 816 – 826.  https://doi.org/10.2514/1.22398
+- [J-7]   Prazenica, R.J., Reisenthel, P.H., Kurdila, A.J., and Brenner, M.J., “Volterra Kernel Extrapolation for Modeling Aeroelastic Systems at Novel Flight Conditions,”
+- AIAA
+- Journal of Aircraft
+- , Vol. 44, No. 1, January – February 2007, pp. 149 – 162.  https://doi.org/10.2514/1.22764
+- [J-6]   Prazenica, R.J. and Kurdila, A.J., “Multiwavelet Constructions and Volterra Kernel Identification,”
+- Nonlinear Dynamics
+- , Vol. 43, No. 3, February 2006, pp. 277 – 310.  https://doi.org/10.1007/s11071-006-8323-x
+- [J-5]   Lind, R., Prazenica, R.J., Brenner, M.J., and Baldelli, D.H., “Identifying Parameter-Dependent Volterra Kernels to Predict Aeroelastic Instabilities,"
+- AIAA Journal
+- , Vol. 43, No. 12, December 2005, pp. 2496 – 2502. https://doi.org/10.2514/1.12042
+- [J-4]  Lind, R., Prazenica, R.J., and Brenner, M.J., “Estimating Nonlinearity Using Volterra Kernels in Feedback with Linear Models,”
+- Nonlinear Dynamics
+- , Vol. 39, No. 1, January 2005, pp. 3 – 23.  https://doi.org/10.1007/s11071-005-1906-0
+- [J-3]   Prazenica, R.J. and Kurdila, A.J., “Volterra Kernel Identification Using Triangular Wavelets,”
+- Journal of Vibration and Control
+- , Vol. 10, No. 4, April 2004, pp. 597 – 622.  https://doi.org/10.1177%2F1077546304038269
+- [J-2]   Prazenica, R.J., Lind, R., and Kurdila, A.J., “Uncertainty Estimation from Volterra Kernels for Robust Flutter Analysis,”
+- AIAA
+- Journal of Guidance, Control, and Dynamics
+- , Vol. 26, No. 2, March – April 2003, pp.331 – 339.  https://doi.org/10.2514/2.5050
+- [J-1]   Kurdila, A.J., Prazenica, R.J., Rediniotis, O., and Strganac, T., “Multiresolution Methods for Reduced-Order Models for Dynamical Systems,”
+- AIAA
+- Journal of Guidance, Control, and Dynamics
+- , Vol. 24, No. 2, March – April 2001, pp. 193 – 200.  https://doi.org/10.2514/2.4707
+- Book Chapters
+- [B-3]    Sinclair, A.J., Prazenica, R., and Jeffcoat, D.E., “Simultaneous Localization and Planning for Cooperative Air Munitions,” in
+- Advances in Cooperative Control and Optimization
+- , M.J. Hirsch, P.M. Pardalos, R. Murphey, and D. Grundel (Eds.), Lecture Notes in Control and Information Sciences Series, Vol. 369, Springer, 2007, pp. 81 – 93 (originally presented at the
+- 7th International Conference on Cooperative Control and Optimization
+- , February 2007).
+- [B-2]    Brenner, M.J., Kukreja, S., and Prazenica, R.J., “Signal-Adaptive Aeroelastic Flight Data Analysis with HHT,” in
+- Wavelet Analysis and Applications
+- , Q. Tao, M.I. Vai, and Y. Xu (Eds.), Applied and Numerical Harmonic Analysis Series, Springer (Birkhauser), 2007, pp. 321 – 362 (originally presented at the
+- International Conference on Wavelet Analysis and Its Applications
+- , November 2005).
+- [B-1]    Kurdila, A.J., Wang, W., Feng, Y., and Prazenica, R.J., “Shape Optimization for Piezoelectric Actuators,” in
+- Robust Optimization – Directed Design
+- , A.J. Kurdila, P.M. Pardalos, and M. Zabarankin (Eds.), Nonconvex Optimization and Its Applications Series, Vol. 81, Springer, 2006, pp. 117 – 134 (originally presented at the
+- RODD Conference
+- , April 2004).
+- Conference Papers
+- [C-69]  *Downs, Patrick and Prazenica, Richard J. “Adaptive Control of a Flexible Wing for Flutter Suppression and Disturbance Rejection,”
+- AIAA SciTech Conference
+- , AIAA 2023-0130, invited paper, January 2023.  https://doi.org/10.2514/6.2023-0130
+- [C-68]  *Zelina, John, *Aly, Islam, Dogan, K. Merve, and Prazenica, Richard J., “Adaptive Stabilization of Multi-Rotor Systems with Actuator Limits and Transient Mass Distribution,”
+- AIAA SciTech Conference
+- , AIAA 2023-2507, invited paper, January 2023
+- https://doi.org/10.2514/6.2023-2507
+- [C‐67] *Wilson, Elias and Prazenica, Richard, “Fixed Structure Policy Based Model Predictive Control,”
+- AIAA SciTech Conference
+- , invited paper, AIAA 2022-1378, January 2022.
+- https://doi.org/10.2514/6.2022-1378
+- [C‐66] *Zelina, John, Dogan, K. Merve, Prazenica, Richard, and Henderson, Troy, “Adaptive Control for Time Varying Systems with Actuator Dynamics and Sensor Noise,”
+- AIAA SciTech Conference
+- invited paper, AIAA 2022-2029, January 2022.  https://doi.org/10.2514/6.2022-2029
+- [C‐65] *Downs, Patrick and Prazenica, Richard, “Adaptive Control of a Wing Planform for Flutter Suppression and Ride Quality Improvement,”
+- AIAA SciTech Conference
+- , AIAA 2022-1729, January 2022.  https://doi.org/10.2514/6.2022-1729
+- [C‐64] *Hays, Christopher, *Tiwari, Madhur, Henderson, Troy, and Prazenica, Richard, “A Geometric
+- Mechanics Approach to Direct Adaptive Model Predictive Control,”
+- AIAA SciTech Conference
+- AIAA 2022-2380, January 2022.  https://doi.org/10.2514/6.2022-2380
+- [C‐63] *Malik, Aryslan, Lischuk, Yevgeniy, Henderson, Troy, and Prazenica, Richard, “Generating Constant Screw Axis Trajectories with Quintic Time Scaling for End‐Effector Using Artificial Neural Network and Machine Learning,”
+- IEEE Conference on Control Technology and
+- Applications
+- , August 2021, pp. 1128-1134.   doi: 10.1109/CCTA48906.2021.9658657
+- [C-62]  *Downs, Patrick S., Greiner, Glenn P., and Prazenica, Richard J., “State-Space Aeroelastic Model Development for Preliminary Design and Flutter Estimation,”
+- AIAA Aviation Conference
+- , AIAA 2021-2439, August 2021.  https://doi.org/10.2514/6.2021-2439
+- [C-61]  *Tiwari, Madhur, Zuehlke, David, Henderson, Troy, and Prazenica, Richard, “Autonomous Spacecraft Obstacle Avoidance and Trajectory Tracking in Dense Debris Field,”
+- 31st AAS/AIAA Space Flight Mechanics Meeting
+- , virtual, February 2021.
+- [C-60] *Malik, Aryslan, Henderson, Troy, and Prazenica, Richard, “Trajectory Generation for a Multibody Robotic System using the Product of Exponentials Formulation,”
+- AIAA SciTech Conference
+- , AIAA 2021-2016, January 2021.   https://doi.org/10.2514/6.2021‐2016
+- [C-59]  *Wilson, Elias and Prazenica, Richard, “Autonomous Autorotation of a Multirotor Vehicle Using Output Feedback Model Predictive Control with Online Learning,” invited paper,
+- AIAA SciTech Conference
+- , AIAA 2021-0379, January 2021.  https://doi.org/10.2514/6.2021-0379
+- [C-58]  *Zelina, John, Prazenica, Richard, and Henderson, Troy, “Adaptive Control for Nonlinear Time-Varying Rotational Systems,”
+- AIAA SciTech Conference
+- , AIAA 2021-1120, January 2021.
+- https://doi.org/10.2514/6.2021-1120
+- [C-57]  *Malik, Aryslan, Henderson, Troy, and Prazenica, Richard, “Using Products of Exponentials to Define (Draw) Orbits and More
+- AAS/AIAA Astrodynamics Specialist Conference
+- , AAS 20-469, August 2020.
+- [C-56]  *Tiwari, Madhur, Henderson, Troy, and Prazenica, Richard, “Spacecraft Body-Frame Hovering over an Asteroid using a Direct Adaptive Control Strategy,”
+- AAS/AIAA Astrodynamics Specialist Conference
+- , AAS 20-450, August 2020.
+- [C-55]  *Myhre, Nicodemus, Prazenica, Richard J., Balas, Mark, and Gnanamanickam, Ebenezer P., “A Model Reduction Method Using Resolvent Modes to Preserve Forcing Sensitivity,”
+- AIAA Aviation Conference
+- , AIAA 2020-3060, June 2020. https://doi.org/10.2514/6.2020-3060
+- [C-54]  *Wilson, Elias and Prazenica, Richard, “Autonomous Autorotation of Tilt Rotor Aircraft Using
+- Nonlinear Model Predictive Control,”
+- AIAA SciTech Conference
+- , AIAA 2020-1488, Orlando, FL, January 2020.  https://doi.org/10.2514/6.2020-1488
+- [C-53]  *Tiwari, Madhur, Prazenica, Richard, and Henderson, Troy, “Tracking a Reference Orbit Around Asteroids with Unknown Gravitational Parameters Using a Nonlinear Adaptive Controller,”
+- AIAA Guidance, Navigation, and Control Conference
+- , AIAA 2020-0226, Orlando, FL, January 2020.   https://doi.org/10.2514/6.2020-0226
+- [C-52] *Stackhouse, Wesley, Nazari, Morad, Henderson, Troy, and Prazenica, Richard, “Adaptive Control Design Using the Udwadia-Kalaba Formulation for Hovering Over an Asteroid with Unknown Gravitational Parameters,”
+- AIAA SciTech Conference
+- , AIAA 2020-0843, Orlando, FL, January 2020. https://doi.org/10.2514/6.2020-0843
+- [C-51]  *Memon, M. Wasif, Nazari, Morad, Seo, Dongeon, and Prazenica, Richard, “Constrained Motion Analysis and Nonlinear Optimal Tracking Control of Two-Craft Coulomb Formation in Elliptic Chief Orbits,”
+- AAS/AIAA Astrodynamics Specialist Conference
+- , AAS 19-706, Portland, OR, August 2019.
+- [C-50]  *Prabhakar, Nirmit, *Tiwari, Madhar, Henderson, Troy, and Prazenica, Richard, “Application of Direct Adaptive Control to Autonomous Satellite Docking,”
+- AIAA Science and Technology Forum and Exposition
+- , AIAA 2019-1520, San Diego, CA, January 2019.
+- https://doi.org/10.2514/6.2019-1520
+- [C-49] *Prabhakar, Nirmit, Prazenica, Richard J., and Balas, Mark J., “Analysis of Stability Margins w.r.t Aircraft Dynamics and Augmenting Handling Qualities of an Aircraft with Direct Adaptive Controller,”
+- AIAA Guidance, Navigation, and Control Conference
+- , AIAA 2019-1921, San Diego, CA, January 2019.  https://doi.org/10.2514/6.2019-1921
+- [C-48]  *Zuehlke, David, *Prabhakar, Nirmit, *Clark, Matthew, Henderson, Troy, and Prazenica, Richard, “Vision-Based Object Detection and Proportional Navigation for UAS Collision Avoidance,” invited paper,
+- AIAA InfoTech Conference
+- , AIAA 2019-0960, San Diego, CA, January 2019. https://doi.org/10.2514/6.2019-0960
+- [C-47] *Vergara, Pedro, *Tiwari, Madhar, Prazenica, Richard, Troy Henderson, Troy, “Multiresolution-Based 3-D Terrain Estimation Algorithms for Complex Urban Environments,” invited paper,
+- AIAA InfoTech Conference
+- , AIAA 2019-1194, San Diego, CA, January 2019.
+- https://doi.org/10.2514/6.2019-1194
+- [C-46]  *Myhre, Nicodemus, *Chavez, Andres, *Clark, Matthew, and Prazenica, Richard J.,  “Vision-Based State Estimation Using Tracked Landmarks,”
+- AIAA Guidance, Navigation, and Control Conference
+- , AIAA 2018-2014, Kissimmee, FL, January 2018.
+- https://doi.org/10.2514/6.2018-2104
+- [C-45] *Chavez, Andres, *Myhre, Nicodemus, and Prazenica, Richard J., “Vision-Based State Estimation for Asteroid Exploration,”
+- AIAA SPACE Conference
+- , AIAA 2017-5108, Orlando, FL, September 2017.
+- [C-44] *Clark, Matthew and Prazenica, Richard J., “Proportional Navigation Based Guidance Laws for UAV Obstacle Avoidance in Complex Urban Environments,” invited paper,
+- AIAA InfoTech Conference
+- , AIAA 2017-0672, Grapevine, TX, January 2017.
+- [C-43] *Painter, David, *Prabhakar, Nirmit, Prazenica, Richard J., and Balas, Mark, “Trajectory-Driven Adaptive Control of Autonomous UAVs with Disturbance Accommodation,”
+- AIAA Guidance, Navigation, and Control Conference
+- , AIAA 2017-1523, Grapevine, TX, January 2017.
+- [C-42] *Chavez, Andres, *L'Heureux, Dalton, *Prabhakar, Nirmit, *Clark, Matthew, *Law, Wai-Leuk, Prazenica, Richard J., “Homography-Based State Estimation for Autonomous UAV Landing,”
+- AIAA InfoTech Conference
+- , AIAA 2017-0673, Grapevine, TX, January 2017.
+- [C-41]  *Perez, A., Moncayo, H., Prazenica, R., *Kern, Z., Zacny, K., Mueller, R., Ebert, T., and DuPuis
+- M., “Free-Flying Robotic System for Interplanetary Prospecting and In Situ Resource Utilization,”
+- ASCE Earth and Space Conference
+- , Orlando, FL, April 2016.
+- [C-40]  Prazenica, R., *Kern, Z., *John, T., Moncayo, H., Zacny, K., Mueller, R., Ebert, T., and Dupuis, M., “Vision-Aided Navigation for a Free-Flying Unmanned Robotic System to Support Interplanetary Bodies Prospecting and Characterization Missions,”
+- AIAA Guidance, Navigation, and Control Conference
+- , AIAA 2016-0888, San Diego, CA, January 2016.
+- [C-39]  *Prabhakar, N., Prazenica, R., Gudmundsson, S., and Balas, M., “Transient Dynamic Analysis and Control of a Morphing UAV,”
+- AIAA Guidance, Navigation, and Control Conference
+- , AIAA 2016-0893, San Diego, CA, January 2016.
+- [C-38]  *Perez-Rocha, A. Moncayo, H., Prazenica, R., Zacny, K., Mueller, R., Dupuis, M., and Ebert, T., “Control Laws Development for a Free-Flying Unmanned Robotic System to Support Interplanetary Bodies Prospecting and Characterization Missions,”
+- AIAA Guidance, Navigation, and Control Conference
+- , 2016-0884, San Diego, CA, January 2016.
+- [C-37]  *Clark, M. and Prazenica, R., “Vision-Based Proportional Navigation for UAS Collision Avoidance,”
+- AIAA InfoTech Conference
+- , AIAA 2016-1986, San Diego, CA, January 2016.
+- [C-36]  Moncayo, H., Prazenica, R., and Zacny, K., “Free-Flyer Robotic Spacecraft for Exploration and In-Situ Resource Utilization of Interplanetary Bodies,” invited paper,
+- 5th International Workshop on Lunar Surface Applications
+- , April 2015.
+- [C-35]  *Prabhakar, N., Prazenica, R., and Gudmundsson, S., “Dynamic Analysis of a Variable-Sweep, Variable-Span Morphing UAV,”
+- IEEE Aerospace Conference
+- , Big Sky, MT, March 2015.
+- [C-34]  *Clark, M., *Kern, Z., and Prazenica, R., “A Vision-Based Proportional Navigation Guidance Law for UAS Sense and Avoid,”
+- AIAA Guidance, Navigation, and Control Conference
+- , AIAA 2015-0074, Kissimmee, FL, January 2015.
+- [C-33]  Anderson, R., Moncayo, H., Prazenica, R., Mirmirani, M., *Noriega, A., *Burnett, B., *Gehlot, V., and *Kern, Z., “Development of a Surrogate Autonomous Aircraft for Entry in the NASA Airspace Operation Challenge,”
+- AIAA Infotech Conference
+- , AIAA 2015-0485, Kissimmee, FL, January 2015.
+- [C-32]  *Chan, M., Moncayo, H., *Perez, A., Prazenica, R., Kim, D., and *Azizi, B., “Development and Flight Testing of an Unmanned Aerial System with Macro-Fiber Composite Actuators,”
+- AIAA Infotech Conference
+- , AIAA 2015-1455, Kissimmee, FL, January 2015.
+- [C-31]  Snyder, M., Prazenica, R., and Hull, R., “A New Impact Time Control Guidance Law for Precise Time-on-Target Missile Strike,”
+- AIAA Guidance, Navigation, and Control Conference
+- , AIAA 2015-0613, Kissimmee, FL, January 2015.
+- [C-30]  Prazenica, Richard J., “Model Predictive Control of a Nonlinear Aeroelastic System using Reduced-Order Volterra Models,”
+- AIAA Atmospheric Flight Mechanics Conference
+- , AIAA 2014-2188, Atlanta, GA, June 2014.
+- [C-29]  Prazenica, R.J., Kim, D., and Moncayo, H., “Design, Characterization, and Testing of Macro-Fiber Composite Actuators for Integration on a Fixed-Wing UAV,”
+- SPIE Smart Structures and Materials + Nondestructive Evaluation and Health Monitoring Conference
+- , March 2014.
+- [C-28]  Prazenica, R.J., Hielsberg, M., Sharpley, R.C., and Kurdila, A.J., “3-D Implicit Terrain Mapping and Path Planning for Autonomous MAV Flight in Urban Environments,”
+- AIAA Guidance, Navigation, and Control Conference
+- , AIAA 2013-4792, Boston, MA, August 2013.
+- [C-27]  Prazenica, R.J., Kurdila, A.J., and Sharpley, R.C.,  “Receding Horizon Control for MAVs with Vision-Based State and Obstacle Estimation,”  invited paper,
+- AIAA Guidance, Navigation, and Control Conference
+- , AIAA 2007-6830, Hilton Head, SC, August 2007.
+- [C-26]  Sinclair, A.J., Prazenica, R., and Jeffcoat, D.E., “Simultaneous Localization and Planning for Cooperative Air Munitions,”
+- 7th International Conference on Cooperative Control and Optimization
+- , Gainesville, FL, February 2007.
+- [C-25]  Prazenica, R.J., Kurdila, A.J., Sharpley, R., and Evers, J., “Vision-Based Geometry Estimation and Receding Horizon Path Planning for Small UAVs Operating in Urban Environments,” invited paper in the special session on Vision-Based Control of Autonomous Aerial Vehicles,
+- American Control Conference
+- , Minneapolis, MN, June 2006.
+- [C-24]  Brenner, M.J., Kukreja, S., and Prazenica, R.J., “Signal-Adaptive Aeroelastic Flight Data Analysis with HHT,”
+- International Conference on Wavelet Analysis and Its Applications
+- , Macau SAR, China, November 2005.
+- [C-23]  Prazenica, R.J., Kurdila, A.J., Sharpley, R., and Evers, J., “Multiresolution and Adaptive Path Planning for Maneuver of Micro-Air-Vehicles in Urban Environments,”  invited paper in the special session on Vision-Based Control,
+- AIAA Guidance, Navigation, and Control Conference
+- , AIAA 2005-6004, San Francisco, CA, August 2005.
+- [C-22]  Prazenica, R.J., Kurdila, A.J., Ke, Q., and Kanade, T., “Vision-Based Kalman Filtering for Aircraft State Estimation and Structure from Motion,”  invited paper in the special session on Vision-Based Control,
+- AIAA Guidance, Navigation, and Control Conference
+- , AIAA 2005-6003, San Francisco, CA, August 2005.
+- [C-21]  Brenner, M.J. and Prazenica, R.J., “Aeroelastic Flight Data Analysis with the Hilbert-Huang Algorithm,”
+- AIAA Guidance, Navigation, and Control Conference
+- , AIAA 2005-5917, San Francisco, CA, August 2005.
+- [C-20]  Causey, R., Lind, R., and Prazenica, R.J., “Effects of Camera Uncertainty on Vision-Based Feedback,”
+- AIAA Guidance, Navigation, and Control Conference
+- , AIAA 2005-6097, San Francisco, CA, August 2005.
+- [C-19]  Watkins, A., Prazenica, R.J., Kurdila, A.J., and Wiens, G., “RHC for Vision-Based Navigation of a Wheeled Mobile Robot in an Urban Environment,”
+- AIAA Guidance, Navigation, and Control Conference
+- , AIAA 2005-6094, San Francisco, CA, August 2005.
+- [C-18]  Webb, T., Prazenica, R.J., Kurdila, A.J., and Lind, R., “Vision-Based State Estimation for Uninhabited Aerial Vehicles,”
+- AIAA Guidance, Navigation, and Control Conference
+- , AIAA 2005-5869, San Francisco, CA, August 2005.
+- [C-17]  Kurdila, A.J, Prazenica, R.J., and Vignola, J.F., “Shape Optimization of PZT Actuators and Laser Doppler Vibrometry Experimentation,”
+- AIAA Structures, Structural Dynamics, and Materials Conference
+- , AIAA 2005-1963, Austin, TX, April 2005.
+- [C-16]  Kurdila, A., Lesieutre, G., Zhang, X., and Prazenica, C., and Niezrecki, C., “Averaging Analysis of State-Switched Piezoelectric Structural Systems,”
+- SPIE International Symposium on Smart Structures and Nondestructive Evaluation
+- , San Diego, CA, March 2005.
+- [C-15]  Prazenica, R.J., Kurdila, A.J., and Vignola, J.F., “Temporal and Spatial Filtering Techniques for Scanning Laser Doppler Vibrometry in Delamination Detection in Frescoes”,
+- International Modal Analysis Conference
+- , Orlando, FL, February 2005.
+- [C-14]  Silva, W.A., Hajj, M.R., and Prazenica, R.J., “Recent Applications of the Volterra Theory to Aeroelastic Phenomena,”
+- International Modal Analysis
+- Conference
+- , Orlando, FL, February 2005.
+- [C-13]  Kurdila, A., Nechyba, M., Prazenica, R., Dahmen, W., Binev, P., DeVore, R., and Sharpley, R., “Vision-Based Control of Micro-Air-Vehicles:  Progress and Problems in Estimation,” invited paper,
+- IEEE Conference on Decision and Control
+- , Paradise Island, December 2004.
+- [C-12]  Webb, T.P., Prazenica, R.J., Kurdila, A.J., and Lind, R., “Vision-Based State Estimation for Autonomous Micro Air Vehicles,”
+- AIAA Guidance, Navigation, and Control Conference
+- , AIAA-2004-5349, Providence, RI, August 2004.
+- [C-11]  Kurdila, A.J., Wang, W., Feng, Y., and Prazenica, R.J., “Shape Optimization for Piezoelectric Actuators – Dynamic Case,”
+- AIAA Structures, Structural Dynamics, and Materials Conference
+- , AIAA 2004-1721, Palm Springs, CA, April 2004.
+- [C-10]  Kurdila, A.J., Prazenica, R.J., Vignola, J., Ellingston, D., Adams, G., Marchetti, B., Agnani, A., Esposito, E., and Tomasini, E, “Scanning Laser Doppler Vibrometry for Delamination Detection in Frescoes,”
+- AIAA Structures, Structural Dynamics, and Materials Conference
+- , AIAA 2004-1539, Palm Springs, CA, April 2004.
+- [C-9]    Lind, R., Prazenica, R.J., Brenner, M.J., and Baldelli, D.H., "Identifying Parameter-Dependent Volterra Kernels to Predict Aeroelastic Instabilities,"
+- AIAA Structures, Structural Dynamics, and Materials Conference
+- , AIAA 2004-1517, Palm Springs, CA, April 2004.
+- [C-8]    Prazenica, R.J., Reisenthel, P.H., Kurdila, A.J., and Brenner, M.J., “Volterra Kernel Identification and Extrapolation for the F/A-18 Active Aeroelastic Wing,”
+- AIAA Structures, Structural Dynamics, and Materials Conference
+- , AIAA 2004-1939, Palm Springs, CA, April 2004.
+- [C-7]    Prazenica, R.J., Brenner, M.J., and Lind, R., “Nonlinear Volterra Kernel Identification for the F/A-18 Active Aeroelastic Wing,”
+- International Forum for Aeroelasticity and Structural Dynamics
+- , Amsterdam, June 2003.
+- [C-6]    Brenner, M.J. and Prazenica, R.J., “Aeroservoelastic Model Validation and Test Data Analysis of the F/A-18 Active Aeroelastic Wing,”
+- International Forum for Aeroelasticity and Structural Dynamics
+- , Amsterdam, June 2003.
+- [C-5]    Lind, R., Prazenica, R.J., and Brenner, M.J., “Estimating Nonlinearity Using Volterra Kernels in Feedback with Linear Models,”
+- AIAA Structures, Structural Dynamics, and Materials Conference
+- , AIAA 2003-1406, Williamsburg, VA, April 2003.
+- [C-4]    Prazenica, R.J., Lind, R., and Kurdila, A.J., “Uncertainty Estimation from Volterra Kernels for Robust Flutter Analysis,”
+- AIAA Structures, Structural Dynamics, and Materials Conference
+- , AIAA 2002-1650, Denver, CO, April 2002.
+- [C-3]    Silva, W.A., Beran, P.S., Cesnik, C.E.S., Guendel, R.E., Kurdila, A., Prazenica, R.J., Librescu, L., Marzocca, P., and Raveh, D., "Reduced Order Modelling:  Cooperative Research and Development at the NASA Langley Research Centre,"
+- International Forum for Aeroelasticity and Structural Dynamics
+- , Madrid, 2001.
+- [C-2]    Prazenica, R., Kurdila, A., Strganac, T., and Silva, W., “Multiresolution Methods for Representation of Volterra Series and Dynamical Systems,”
+- 41st AIAA Structures, Structural Dynamics, and Materials Conference
+- , AIAA 2000-1754, Atlanta, GA, April 2000.
+- [C-1]    Kurdila, A., Prazenica, R., Rediniotis, O., and Strganac, T., “Multiresolution Methods for Reduced-Order Models for Dynamical Systems,”
+- 40th AIAA Structures, Structural Dynamics, and Materials Conference
+- , AIAA 99-1293, St. Louis, MO, April 1999.
+- Flight Dynamics and Control Research Laboratory
+- Advanced Dynamics and Control Laboratory
+## Courses
+
+- AE 800
+- Dissertation
+- AE 432
+- Flight Dynamics and Control
+- AERO 432
+- Flight Dynamics and Control
+- AE 527
+- Modern Control Systems
+- ME 527
+- Modern Control Systems
+- AERO 633
+- Optimal Control
+
+---
+*Scraped from faculty.erau.edu on 2026-03-28 09:57*

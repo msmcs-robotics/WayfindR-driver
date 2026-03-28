@@ -429,18 +429,25 @@ run_jetson_tests() {
                 "pgrep -a -f 'web_control/run.py' || echo 'Dashboard not running'"
             ;;
         chat-start)
-            # Start chat app on Jetson
+            # Start chat app on Jetson + set up SSH tunnel
             log_info "Starting chat app on Jetson..."
             ssh -o ConnectTimeout=15 "$JETSON_TARGET" \
                 "pkill -f 'chat_app.main:app' 2>/dev/null; sleep 1; cd $JETSON_DEST && RAG_API_URL=http://localhost:8000 OLLAMA_URL=http://localhost:11434 DB_HOST=172.18.0.3 nohup python3 -m uvicorn chat_app.main:app --host 0.0.0.0 --port 5050 > /tmp/chat_app.log 2>&1 &"
             sleep 2
-            log_info "Chat app starting at http://$JETSON_HOST:5050/"
-            log_info "SSH tunnel: ssh -f -N -L 5050:localhost:5050 jetson"
+            # Auto-setup SSH tunnel (kill existing, start new)
+            pkill -f 'ssh.*5050.*jetson' 2>/dev/null
+            sleep 0.5
+            ssh -f -N -L 5050:localhost:5050 jetson 2>/dev/null && \
+                log_info "SSH tunnel active: http://localhost:5050" || \
+                log_warn "SSH tunnel failed — manually run: ssh -f -N -L 5050:localhost:5050 jetson"
+            log_info "Chat app at http://localhost:5050 (via tunnel)"
+            log_info "Or on Jetson browser: http://localhost:5050"
             ;;
         chat-stop)
-            log_info "Stopping chat app..."
+            log_info "Stopping chat app + SSH tunnel..."
             ssh -o ConnectTimeout=15 "$JETSON_TARGET" \
                 "pkill -f 'chat_app.main:app' || echo 'Not running'"
+            pkill -f 'ssh.*5050.*jetson' 2>/dev/null
             ;;
         chat-status)
             ssh -o ConnectTimeout=15 "$JETSON_TARGET" \
@@ -455,12 +462,50 @@ run_jetson_tests() {
             ssh -o ConnectTimeout=15 "$JETSON_TARGET" \
                 "tail -20 /tmp/chat_app.log"
             ;;
+        chat-tunnel)
+            # Set up SSH tunnel only (app already running)
+            pkill -f 'ssh.*5050.*jetson' 2>/dev/null
+            sleep 0.5
+            ssh -f -N -L 5050:localhost:5050 jetson 2>/dev/null && \
+                log_info "SSH tunnel active: http://localhost:5050" || \
+                log_warn "SSH tunnel failed"
+            ;;
+        watch-ingest-start)
+            # Start knowledge file watcher on Jetson (background)
+            log_info "Starting knowledge file watcher on Jetson..."
+            ssh -o ConnectTimeout=15 "$JETSON_TARGET" \
+                "pkill -f 'watch_and_ingest.py' 2>/dev/null; sleep 1; cd $JETSON_DEST && nohup python3 bootylicious/rag/watch_and_ingest.py --log /tmp/ambot-watch-ingest.log > /dev/null 2>&1 &"
+            sleep 1
+            ssh -o ConnectTimeout=15 "$JETSON_TARGET" \
+                "pgrep -f 'watch_and_ingest.py' > /dev/null && echo 'Watcher started (PID '$(pgrep -f watch_and_ingest.py)')' || echo 'ERROR: watcher failed to start'"
+            log_info "Logs: ssh jetson 'tail -f /tmp/ambot-watch-ingest.log'"
+            ;;
+        watch-ingest-stop)
+            log_info "Stopping knowledge file watcher..."
+            ssh -o ConnectTimeout=15 "$JETSON_TARGET" \
+                "pkill -f 'watch_and_ingest.py' && echo 'Watcher stopped' || echo 'Not running'"
+            ;;
+        watch-ingest-status)
+            ssh -o ConnectTimeout=15 "$JETSON_TARGET" \
+                "pgrep -a -f 'watch_and_ingest.py' || echo 'Watcher not running'"
+            ;;
+        watch-ingest-logs)
+            ssh -o ConnectTimeout=15 "$JETSON_TARGET" \
+                "tail -30 /tmp/ambot-watch-ingest.log 2>/dev/null || echo 'No log file yet'"
+            ;;
+        watch-ingest-once)
+            # Run a single ingestion via the watcher script and exit
+            log_info "Running one-shot ingestion..."
+            ssh -o ConnectTimeout=120 "$JETSON_TARGET" \
+                "cd $JETSON_DEST && python3 bootylicious/rag/watch_and_ingest.py --once"
+            ;;
         *)
             log_warn "Unknown Jetson test type: $test_type"
             log_info "RAG tests:  rag, rag-test, rag-health, rag-status, rag-docs, rag-logs"
             log_info "RAG ops:    rag-ingest, rag-ingest-bg"
             log_info "Web tests:  web-setup, web-start, web-stop, web-status"
-            log_info "Chat app:   chat-start, chat-stop, chat-status, chat-health, chat-logs"
+            log_info "Chat app:   chat-start, chat-stop, chat-status, chat-health, chat-logs, chat-tunnel"
+            log_info "Watcher:    watch-ingest-start, watch-ingest-stop, watch-ingest-status, watch-ingest-logs, watch-ingest-once"
             ;;
     esac
 }
@@ -507,6 +552,12 @@ print_help() {
     echo "  rag-logs      Show recent API logs"
     echo "  rag-ingest    Run RAG ingestion (foreground, waits)"
     echo "  rag-ingest-bg Run RAG ingestion in background"
+    echo ""
+    echo "  watch-ingest-start   Start knowledge file watcher (background)"
+    echo "  watch-ingest-stop    Stop the file watcher"
+    echo "  watch-ingest-status  Check if watcher is running"
+    echo "  watch-ingest-logs    Show watcher log tail"
+    echo "  watch-ingest-once    One-shot ingestion via watcher script"
     echo ""
     echo "Examples:"
     echo "  $0 rpi                              # Deploy all to RPi"
@@ -557,6 +608,8 @@ print_summary() {
         echo "  Setup dashboard:  $0 jetson --test=web-setup"
         echo "  Start dashboard:  $0 jetson --test=web-start"
         echo "  Stop dashboard:   $0 jetson --test=web-stop"
+        echo "  File watcher:     $0 jetson --test=watch-ingest-start"
+        echo "  Stop watcher:     $0 jetson --test=watch-ingest-stop"
     fi
     echo ""
 }

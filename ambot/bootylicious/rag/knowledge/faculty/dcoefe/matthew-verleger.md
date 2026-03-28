@@ -1,0 +1,429 @@
+# Matthew Verleger
+
+**Department:** Engineering Fundamentals
+**Email:** verlegem@erau.edu
+**Profile:** https://faculty.erau.edu/Matthew.Verleger
+
+## Education
+
+- Ph.D. - Doctor of Philosophy in Engineering Education,
+- M.S. - Master of Science in Engineering: Agricultural and Biological Engineering and Biological and Food Process Engineering,
+- B.S. - Bachelor of Science in Computer Engineering,
+
+## Areas of Expertise
+
+- Engineering Education, Software Development
+- The views expressed on faculty and external web pages are those of the author and do not necessarily represent those of Embry-Riddle Aeronautical University.
+- Access Dr. Verleger's Course Evaluations
+- Developing Artifact Peer Review Assignment Methodologies to Maximize the Value of Peer Review for Students
+- Platform for Investigating Concept Networks on the Instrumentality of Knowledge (PICNIK)
+- Researching How You Teach Holistic Modeling (RHYTHM)
+- How iLEARN Modular Scaff olding Supports Student Outcomes and Accessibility in a First-Year Graphical Communication Course
+- (Matthew Verleger)
+- Pure Portfolio
+- (2025)
+- Designing Transformative Engineering Education Projects Towards National Science Foundation Funding Success
+- (Matthew Verleger)
+- Pure Portfolio
+- (2024)
+- Deadline Flexibility and the Effects on Assignment Resubmission Rates and Course Performance
+- (Matthew Verleger)
+- Pure Portfolio
+- (2023)
+- Student Awareness of Models in First-Year Engineering Courses
+- (Matthew Verleger)
+- Pure Portfolio
+- (2023)
+- Workshop
+- (Matthew Verleger)
+- Pure Portfolio
+- (2023)
+- Education and Qualification for Control and Automation
+- (Matthew Verleger)
+- Pure Portfolio
+- (2023)
+- Developing a Program to Assist in Qualitative Data Analysis
+- (Matthew Verleger)
+- Pure Portfolio
+- (2022)
+- An Undergraduate Research Experience in Unmanned Aircraft Systems (UAS) Cybersecurity - Outcomes and Lessons Learned
+- (Matthew Verleger, Richard Stansbury)
+- Pure Portfolio
+- (2022)
+- Work in Progress
+- (Matthew Verleger, Richard Stansbury, Philip Craiger)
+- Pure Portfolio
+- (2021)
+- Types of Models Identified by First-Year Engineering Students
+- (Matthew Verleger)
+- Pure Portfolio
+- (2021)
+- Comparing students' solutions to an open-ended problem in an introductory programming course with and without explicit modeling interventions
+- (Matthew Verleger)
+- Pure Portfolio
+- (2020)
+- Change in student understanding of modeling during first year engineering courses
+- (Matthew Verleger)
+- Pure Portfolio
+- (2020)
+- Infographic: Career Readiness Challenge (CRC) Summary
+- (Melanie Canfield, Leroy Long III, James J. Pembridge, Matthew Verleger Dr., Matthew Verleger)
+- (2020)
+- Impact of a modeling intervention in an introductory programming course
+- (Matthew Verleger)
+- Pure Portfolio
+- (2019)
+- A Pilot Study Integrating an AI-driven Chatbot in an Introductory Programming Course
+- (Matthew Verleger)
+- Pure Portfolio
+- (2018)
+- Developing reviewer profiles using analysis of prior authorship
+- (Matthew Verleger)
+- Pure Portfolio
+- (2018)
+- Developing Reviewer Profiles Using Analysis of Prior Authorship
+- (Matthew Verleger)
+- Pure Portfolio
+- (2018)
+- Zui Quan pedagogy: The art of risk taking in the classroom
+- (Matthew Verleger)
+- Pure Portfolio
+- (2017)
+- Board # 147 : Go With Your Gut! – Using Low-Time-Investment Evaluations of Student Work for Identifying High versus Low Quality Responses
+- (Matthew Verleger)
+- Pure Portfolio
+- (2017)
+- Go with your gut! - Using low-time-investment evaluations of student work for identifying high versus low quality responses
+- (Matthew Verleger)
+- Pure Portfolio
+- (2017)
+- Small Wins - Big Impact: Narratives from Behind the Scenes
+- (Kelsey Joy Rodgers, James J. Pembridge, Leroy L. Long III, Leroy Long III, Matthew A. Verleger, Heidi Steinhauer)
+- (2017)
+- Small Wins - Big Impact: Narratives from Behind the Scenes
+- (Matthew Verleger)
+- Pure Portfolio
+- (2017)
+- Selecting Effective Examples to Train Students for Peer Review of Open‐Ended Problem Solutions
+- (Matthew Verleger Dr., Matthew Verleger, Kelsey J. Rodgers Dr., Kelsey J. Rodgers, Heidi Diefes-Dux)
+- (2016)
+- Selecting Effective Examples to Train Students for Peer Review of Open‐Ended Problem Solutions
+- (Matthew Verleger)
+- Pure Portfolio
+- (2016)
+- Just Five More Minutes: The Relationship Between Timed and Untimed Performance on an Introductory Programming Exam
+- (Matthew Verleger)
+- Pure Portfolio
+- (2016)
+- The Doctorate Journey: Mapping Perceptions of the Ph.D. Process
+- (Matthew Verleger)
+- Pure Portfolio
+- (2016)
+- The doctorate journey
+- (Matthew Verleger)
+- Pure Portfolio
+- (2016)
+- Implementation and Evaluation of a Second Language Acquisition-Based Programming Course
+- (Christina Frederick, Christina M. Frederick, Lulu Sun, Caroline Liron, Matthew A. Verleger, Matthew Verleger, Rachel Cunningham, Paula S. Espejo)
+- (2016)
+- Implementation and Evaluation of a Second Language Acquisition-Based Programming Course
+- (Christina Frederick, Lulu Sun, Matthew Verleger)
+- Pure Portfolio
+- (2016)
+- What the Heck is that?! Adaptation of evidence-based instructional practices
+- (Matthew Verleger)
+- Pure Portfolio
+- (2015)
+- Pilot study on applying natural language processing techniques to classify student responses to open-ended problems to improve peer review assignments
+- (Matthew Verleger)
+- Pure Portfolio
+- (2015)
+- PILOT STUDY ON APPLYING NATURAL LANGUAGE PROCESSING TECHNIQUES TO CLASSIFY STUDENT RESPONSES TO OPEN-ENDED PROBLEMS TO IMPROVE PEER REVIEW ASSIGNMENTS
+- (Matthew Verleger)
+- Pure Portfolio
+- (2015)
+- Pilot study on applying natural language processing techniques to classify student responses to open-ended problems to improve peer review assignments
+- (Matthew Verleger)
+- Pure Portfolio
+- (2015)
+- Using Natural Language Processing Tools to Classify Student Responses to Open-Ended Engineering Problems in Large Classes
+- (Matthew Verleger)
+- Pure Portfolio
+- (2014)
+- The PEER collaborative
+- (Matthew Verleger)
+- Pure Portfolio
+- (2014)
+- Development of a multiple-choice MATLAB theory and syntax exam
+- (Matthew Verleger)
+- Pure Portfolio
+- (2013)
+- Testing the flipped classroom with model-eliciting activities and video lectures in a mid-level undergraduate engineering course
+- (Matthew Verleger)
+- Pure Portfolio
+- (2013)
+- The lord of PhD: Fellowship of the dissertation - A guide to surviving the pursuit of a PhD
+- (Matthew Verleger)
+- Pure Portfolio
+- (2013)
+- First-Year Math and Physics Courses and their Role in Predicting Academic Success in Subsequent Courses
+- (Matthew Verleger)
+- Pure Portfolio
+- (2013)
+- The Flipped Classroom: A Survey of the Research
+- (Matthew Verleger)
+- Pure Portfolio
+- (2013)
+- A Teaching Assistant Training Protocol for Improving Feedback on Open- Ended Engineering Problems in Large Classes
+- (Matthew Verleger)
+- Pure Portfolio
+- (2013)
+- Feedback effects: Comparing the change resulting from peer and TA feedback to student solutions of Model-Eliciting Activities
+- (Matthew Verleger)
+- Pure Portfolio
+- (2012)
+- Multidiscipline interactions in STEM: Analysis by artifact
+- (Matthew Verleger)
+- Pure Portfolio
+- (2011)
+- Work in progress — Using multiple methods to investigate the role of feedback in open-ended activities
+- (Matthew Verleger)
+- Pure Portfolio
+- (2011)
+- Work in progress — Using the levenshtein distance to examine changes to teams' model-eliciting activity solutions throughout a semester
+- (Matthew Verleger)
+- Pure Portfolio
+- (2011)
+- Challenges to Informed Peer Review Matching Algorithms
+- (Matthew Verleger, Heidi Diefes-Dux, Matthew W. Ohland, Mary Besterfield-Sacre, Sean Brophy)
+- (2010)
+- Challenges to Informed Peer Review Matching Algorithms
+- (Matthew Verleger)
+- Pure Portfolio
+- (2010)
+- Facilitating teaching and research on open-ended problem solving through the development of a dynamic computer tool
+- (Matthew Verleger)
+- Pure Portfolio
+- (2010)
+- ASEE Student Members’ Needs Analysis: Implications For The ASEE Student Constituent Committee
+- (Matthew Verleger)
+- Pure Portfolio
+- (2010)
+- ASEE student members' needs analysis
+- (Matthew Verleger)
+- Pure Portfolio
+- (2010)
+- Student reflections on peer reviewing solutions to Model-Eliciting Activities
+- (Matthew Verleger)
+- Pure Portfolio
+- (2009)
+- Multidimensional Tool For Assessing Student Team Solutions To Model Eliciting Activities
+- (Matthew Verleger)
+- Pure Portfolio
+- (2009)
+- Insights Into The Process Of Providing Feedback To Students On Open Ended Problems
+- (Matthew Verleger)
+- Pure Portfolio
+- (2009)
+- Education and Qualification for Control and Automation
+- (Matthew Verleger)
+- Pure Portfolio
+- (2009)
+- Insights into the process of providing feedback to students on open-ended problems
+- (Matthew Verleger)
+- Pure Portfolio
+- (2009)
+- Multi-dimensional tool for assessing student team solutions to model-eliciting activities
+- (Matthew Verleger)
+- Pure Portfolio
+- (2009)
+- Impact of feedback and revision on student team solutions to model-eliciting activities
+- (Matthew Verleger)
+- Pure Portfolio
+- (2008)
+- An engineering teaching assistant orientation program: Guidelines, reactions, and lessons learned from a one day intensive training program
+- (Matthew Verleger)
+- Pure Portfolio
+- (2007)
+- Training Of Teaching Assistants On Technology Driven Lesson Development
+- (Matthew Verleger)
+- Pure Portfolio
+- (2007)
+- Training of teaching assistants on technology driven lesson development
+- (Matthew Verleger)
+- Pure Portfolio
+- (2007)
+- Workshop Guided Peer Feedback for Improved Student Team Responses to Open-Ended Engineering Problems
+- (Matthew Verleger)
+- Pure Portfolio
+- (2006)
+- Kevin Bacon, Tactical Warfare, And Protein Networks An Interactive Online Quantitative Cellular Biology Learning Module
+- (Matthew Verleger)
+- Pure Portfolio
+- (2006)
+- Workshop guided peer feedback for improved student team responses to open-ended engineering problems
+- (Matthew Verleger)
+- Pure Portfolio
+- (2006)
+- Kevin Bacon, tactical warfare, and protein networks - An interactive online quantitative cellular biology learning module
+- (Matthew Verleger)
+- Pure Portfolio
+- (2006)
+- An online bioengineering learning module: gene regulation
+- (Matthew Verleger)
+- Pure Portfolio
+- (2005)
+- Drag The Green Ion An Interactive Online Quantitative Cellular Biology Learning Module
+- (Matthew Verleger)
+- Pure Portfolio
+- (2005)
+- An online bioengineering learning module
+- (Matthew Verleger)
+- Pure Portfolio
+- (2005)
+- Drag the green ion - An interactive online quantitative cellular biology learning module
+- (Matthew Verleger)
+- Pure Portfolio
+- (2005)
+- PEER REVIEWED JOURNAL ARTICLES
+- Verleger, M.
+- , Rodgers, K. J., Diefes-Dux, H. A.. 2016. Selecting Effective Samples to Train Students for Artifact Peer Review.
+- Journal of Engineering Education
+- 105 (4):585–604. DOI 10.1002/jee. 20148 – Honorable Mention Recipient of 2017 William Elgin Wickenden Award
+- Verleger, M.
+- , H. Diefes-Dux, M. Ohland, M. Besterfield-Sacre, and S. Brophy. 2010. Challenges to Informed Peer Review Matching Algorithms.
+- Journal of Engineering Education
+- 99 (4):397-408. DOI: 10.1002/j.2168-9830.2010.tb01070.x
+- BOOK CHAPTERS
+- Pasik-Duncan, B., &
+- Verleger, M.
+- (2009). Education and Qualification. In S. Y. Nof (Ed.),
+- Springer Handbook of Automation
+- : Springer.
+- CONFERENCE PUBLICATIONS & PRESENTATIONS
+- Verleger, M.,
+- (2017) Go With Your Gut! – Using Low-Time-Investment Evaluations of Student Work for Identifying High versus Low Quality Responses, ASEE National Conference Proceedings, Columbus, OH.
+- Verleger, M.
+- , (2016) Just 5 More Minutes – The Relationship Between Timed and Untimed Performance on an Introductory Programming Exam, ASEE National Conference Proceedings, New Orleans, LA.
+- Cutler, S., Pembridge, J.,
+- Verleger, M.
+- (2016) The Doctorate Journey: Mapping perceptions of the PhD process, ASEE National Conference Proceedings, New Orleans, LA.
+- Pembridge, J.J., Cutler, S.,
+- Verleger, M.
+- , Jordan, K., (2015) “Zui Quan Pedagogy: The Art of Risk Taking in the Classroom”. ASEE National Conference Proceedings. Seattle, WA.
+- Verleger, M.
+- , (2015) “Pilot Study on Applying Natural Language Processing to Classify Student Responses to Open-Ended Problems”. ASEE National Conference Proceedings. Seattle, WA.
+- Verleger, M.
+- , (2014) “Using Natural Language Processing Tools to Classify Student Responses to Open-Ended Engineering Problems in Large Classes”. ASEE National Conference Proceedings, Indianapolis, IN.
+- PEER Collaborative (13 authors) (2014) “The PEER Collaborative: Supporting engineering education research faculty with near-peer mentoring unconference workshops”. ASEE National Conference Proceedings, Indianapolis, IN.
+- Verleger, M.
+- , (2013) “Work-In-Progress – Development of a Multiple- Choice MATLAB Theory and Syntax Exam”. Frontiers in Education Conference Proceedings, Oklahoma City, OK.
+- Cutler, S., Pembridge, J.J.,
+- Verleger, M.
+- , Thomas, L., (2013) “The Lord of PhD: Fellowship of the Dissertation; A guide to surviving the pursuit of a PhD”. Frontiers in Education Conference Proceedings, Oklahoma City, OK. – Helen Plants Award Winner
+- Bishop, J.,
+- Verleger, M.
+- , (2013) "Testing the Flipped Classroom with Model-Eliciting Activities and Video Lectures in a Mid-Level Undergraduate Engineering Course". Frontiers in Education Conference Proceedings, Oklahoma City, OK.
+- Bishop, J.,
+- Verleger, M
+- ., (2013) “The Flipped Classroom: A Survey of the Research”. ASEE National Conference Proceedings, Atlanta, GA.
+- Verleger, M.,
+- Diefes-Dux, H., (2013) “A Teaching Assistant Training Protocol for Improving Feedback on Open-Ended Engineering Problems in Large Classes”. ASEE National Conference Proceedings, Atlanta, GA.
+- Pembridge, J.,
+- Verleger, M.,
+- (2013) “First-Year Math and Physics Courses and their Role in Predicting Graduation”. ASEE National Conference Proceedings, Atlanta, GA.”. ASEE National Conference Proceedings, Atlanta, GA. (In Review)
+- Bishop, J.,
+- Verleger, M.,
+- (2012) “Feedback Effects: Comparing the Change Resulting from Peer and TA Feedback to Student Solutions of Model-Eliciting Activities”. Frontiers in Education (FIE) Conference, Seattle, WA.
+- Bishop, J.,
+- Verleger, M.
+- , (2011) “Work In Progress – Using the Levenshtein Distance to Examine Changes to Teams’ Model-Eliciting Activity Solutions throughout a Semester”. Frontiers in Education (FIE) Conference, Rapid City, SD.
+- Schreuders, P.,
+- Verleger, M.
+- , (2011) “Multidiscipline Interactions in STEM: Analysis by Artifact”. Frontiers in Education (FIE) Conference, Rapid City, SD.
+- Cardella, M., Diefes-Dux, H.,
+- Verleger, M.
+- , Fry, A., Carnes, M., (2011) “Work-in-Progress: Using Multiple Methods to Investigate the Role of Feedback in Open-Ended Activities”. Frontiers in Education (FIE) Conference, Rapid City, SD.
+- Verleger, M.
+- , Diefes-Dux, H., (2010) “Facilitating Teaching and Research on Open-Ended Problem Solving Through the Development of a Dynamic Computer Tool”. ASEE National Conference Proceedings, Louisville, KY.
+- Torres, A., Bumblauskas, D., &
+- Verleger, M.
+- (2010) “ASEE Student Members’ Needs Analysis: Implications for the ASEE Student Constituent Committee”. ASEE National Conference Proceedings, Louisville, KY. (Best Student Paper – Graduate Studies Division)
+- Diefes-Dux, H.,
+- Verleger, M.
+- , (2009) “Student Reflections on Peer Reviewing Solutions to Model-Eliciting Activities”. Frontiers in Education (FIE) Conference, San Antonio, TX.
+- Diefes-Dux, H.,
+- Verleger, M.
+- , Zawojewski, J., & Hjalmarson, M., (2009) “Multi-Dimensional Tool for Assessing Student Team Solutions to Model-Eliciting Activities”. ASEE National Conference Proceedings, Austin, TX.
+- Cardella, M., Diefes-Dux, H., Oliver, A.,
+- Verleger, M.
+- , (2009) “Insights Into the Process of Providing Feedback to Students On Open-Ended Problems”. ASEE National Conference Proceedings, Austin, TX.
+- Verleger, M.
+- , Diefes-Dux, H. (2008) “Impact of Feedback and Revision on Student Team Solutions to Model-Eliciting Activities”. ASEE National Conference Proceedings, Pittsburgh, PA.
+- Verleger, M.
+- , Velasquez, J., and Jurich, J. (2008) “A Teaching Assistant Orientation Program: Preparing Today’s Graduate Students to be Tomorrow’s Teachers”. Center for the Integration of Research, Teaching, and Learning (CIRTL) Forum 2008, Madison, WI. (Poster Presentation)
+- Verleger, M.
+- , Velasquez, J. (2007) “An Engineering Teaching Assistant Orientation Program: Guidelines, Reactions, and Lessons Learned from a One Day Intensive Training Program”. Frontiers in Education (FIE) Conference, Milwaukee, WI.
+- Velasquez, J.,
+- Verleger, M.
+- (2007) “Training of Teaching Assistants on Technology Driven Lesson Development”. ASEE National Conference Proceedings, Honolulu, HI.
+- Diefes-Dux, H., Zawojewski, J.,
+- Verleger, M.
+- , Moore, T., and Oware, E. (2006) “Guided Peer Feedback for Improved Student Team Responses to Open-Ended Engineering Problems”. Frontiers in Education (FIE) Conference, San Diego, CA.
+- Verleger, M.
+- , Diefes-Dux, H.A., and Rickus, J. (2006) “Kevin Bacon, Tactical Warfare, and Protein Networks - An Interactive Online Quantitative Cellular Biology Learning Module”. ASEE National Conference Proceedings, Chicago, IL.
+- Verleger, M.
+- , Diefes-Dux, H.A., Rickus, J., and Schaffer, S. (2005) “An Online Bioengineering Learning Module: Gene Regulation”. Frontiers in Education (FIE) Conference, Indianapolis, IN.
+- Mong, C. J., Huang, W., Ottenbreit, A., and
+- Verleger, M.
+- (2005) “Development of a Diagnostic Interactive Instructional System for Autonomous Learning”. National Educational Computing Conference (NECC), Philadelphia, PA. (Poster Presentation)
+- Verleger, M.
+- , Diefes-Dux, H.A., Rickus, J., and Schaffer, S. (2005) “Drag the Green Ion - An Interactive Online Quantitative Cellular Biology Learning Module”. ASEE National Conference Proceedings, Portland, OR.
+- Verleger, M.
+- , Diefes-Dux, H.A., Rickus, J., and Schaffer, S. (2005) “An Online Bioengineering Learning Module: Phylogenetic Relationships”. ASEE Illinois/Indiana Section Meeting, Dekalb, IL.
+- Verleger, M.
+- , Diefes-Dux, H.A., Rickus, J., and Schaffer, S. (2005) “Interactive Online Cellular Biology Learning Modules - Their Design, Their Use, & Their Effectiveness,” Teaching and Learning with Technology Conference, West Lafayette, IN.
+- REFEREED WORKSHOPS/SPECIAL SESSIONS
+- Cutler, S. L., Pembridge, J.J.,
+- Verleger, M.
+- (2017)
+- Zui Quan Pedagogy: The Art of Risk Taking in the Classroom
+- . 46th ASEE/IEEE Frontiers in Education Conference. Indianapolis, IN.
+- Cutler, S.L., Pembridge, J.J.,
+- Verleger, M
+- , Thomas, L.D. (2013)
+- The Lord of PhD: Fellowship of the Dissertation; A guide to the Engineering Education PhD
+- . 42nd ASEE/IEEE Frontiers in Education Conference. Oklahoma City, OK.
+- Pembridge, J.J.,
+- Verleger, M.
+- , Cutler, S. L. (2015)
+- Zui Quan Pedagogy: The Art of Risk Taking in the Classroom
+- . ASEE Annual Conference. Seattle WA.
+- Certifications
+- Certified CATIA V5 Associate – Part Design - Dassault Systemes - 3/2018
+- Certified CATIA V5 Associate – Assembly Design - Dassault Systemes - 3/2018
+- CATIA V5 Mechanical Designer Specialist - Dassault Systemes - 3/2018
+- Memberships
+- American Society for Engineering Education
+- First-Year Engineering Division
+- Educational Research and Methods Division
+- Engineering Design Graphics Division
+- Counsel on Undergraduate Research
+- William Elgin Wickenden Award – Honorable Mention - Journal of Engineering Education - 2017
+- Helen Plants Award, ASEE/IEEE Frontiers in Education - IEEE/ASEE - 2013
+- Best Paper Award, First-Year Programs Division - ASEE - 2013
+- Frontiers in Education New Faculty Fellow - IEEE/ASEE - 2011
+- Best Student Paper Award, Graduate Studies Division - ASEE - 2010
+- Apprentice Faculty Grant, Education Research and Methods Division - ASEE - 2009
+## Courses
+
+- EGR101 - Introduction to Engineering Design
+- EGR115 - Introduction to MATLAB Programming
+- EGR120 - Introduction to Graphical Communication
+- ME700A - Introduction to Research Methods
+- (At a prior university)
+- Numerical Methods
+- Visual Basic Programming
+
+---
+*Scraped from faculty.erau.edu on 2026-03-28 09:57*

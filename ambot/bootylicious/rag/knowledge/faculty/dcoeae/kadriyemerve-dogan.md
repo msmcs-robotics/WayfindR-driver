@@ -1,0 +1,168 @@
+# KadriyeMerve Dogan
+
+**Department:** Aerospace Engineering
+**Email:** KadriyeMerve.Dogan@erau.edu
+**Profile:** https://faculty.erau.edu/KadriyeMerve.Dogan
+
+## Education
+
+- Ph.D. - Doctor of Philosophy in Mechanical Engineering,
+
+## Areas of Expertise
+
+- ​Adaptive Control, Robust Control, Distributed Control, Robotics, Autonomous Vehicles and Multiagent Systems
+- The views expressed on faculty and external web pages are those of the author and do not necessarily represent those of Embry-Riddle Aeronautical University.
+- FAST Research Group Webpage
+- FAST Lab
+- NASA ULI SALA4 Project
+- Experimental Testbed for the Validation of Autonomous ISAM/OSAM Systems
+- Vision and Wireless-Based Surveying for Intelligent OSAM Navigation (VISION)
+- Reconfigurable Guidance and Control Systems for Emerging On-Orbit Servicing, Assembly and Manufacturing (OSAM) Space Vehicles
+- Journal Papers:
+- 2024 [20] N. Sisson† and K. M. Dogan, “Low-Frequency Learning for a Discrete Uncertain System,”IEEE Control Systems Letters with American Control Conference (Denver, Colorado) option.
+- 2024 [19] I. A. Aly†, A. Kurttisi† & K. M. Dogan, “On the Stability Verification of Adaptive Uncertain and Coupled Dynamical Discrete-Time Systems,” International Journal of Adaptive Control and Signal Processing.
+- 2024 [18] K. M. Dogan, E. Tatlicioglu, E. Zergeroglu & K. Cetin, “Observer based Output Feedback Repetitive Learning Control of Robotic Manipulators,” IET Control Theory & Applications.
+- 2024 [17] A. Kurttisi†, K. M. Dogan & B. Gruenwald, “A Novel Distributed Adaptive Controller for Multi-Agent Systems with Double-Integrator Dynamics: A Hedging-Based Approach,” Special Issue Networked Robotics and Control Systems, MDPI, Electronics.
+- 2024 [16] I. A. Aly†, A. Kurttisi†, & K. M. Dogan, “Coordination of Multi-Agent Systems in the Presence of Unknown Heterogeneous Actuation Efficiency and Coupled Dynamics: Distributed Approaches,” International Journal of Systems Science.
+- 2024 [15] A. T. Koru, A. Ramirez, S. B. Sarsilmaz, R. Sipahi, T. Yucelen & K. M. Dogan, “Containment Control of Multi-Human Multi-Agent Systems Under Time Delays,” IEEE Transactions on Systems, Man and Cybernetics: Systems.
+- 2024 [14] I. A. Aly & K. M. Dogan, “Discrete-Time Adaptive Control for Uncertain Scalar Multiagent Systems with Coupled Dynamics: A Lyapunov-Based Approach,” Special Issue Networked Robotics and Control Systems, MDPI, Electronics.
+- 2023 [13] I. A. Aly, K. M. Dogan, T. Yucelen & J. A. Muse, “Distributed Adaptive Control Architectures for Uncertain Multiagent System in the Presence of Coupled Dynamics,” International Journal of Control.
+- 2023 [12] M. Deniz, K. M. Dogan, and T. Yucelen, “A distributed adaptive architecture with nonlinear reference model for safe finite-time control of uncertain multiagent systems,” International Journal of Systems Science.
+- 2022 [11] K. M. Dogan, A. Kurttisi, T. Yucelen, and A. T. Koru, “A Projection Operator-Based Discrete-Time Adaptive Architecture for Control of Uncertain Dynamical Systems with Actuator Dynamics,” IEEE Control Systems Letters.
+- 2021 [10] S. Ristevski, K. M. Dogan, T. Yucelen & J. A. Muse, “Output Feedback Adaptive Control of Uncertain Dynamical Systems with Actuator Dynamics,” Journal of Guidance, Control, and Dynamics.
+- 2021 [9] K. M. Dogan, T. Yucelen & J. A. Muse, “Adaptive Control Systems with Unstructured Uncertainty and Unmodeled Dynamics: A Relaxed Stability Tradeoff,” International Journal of Control.
+- 2021 [8] K. M. Dogan, T. Yucelen & J. A. Muse, “An Asymptotic Decoupling Approach for Adaptive Control with Unmeasurable Coupled Dynamics,” International Journal of Adaptive Control and Signal Processing.
+- 2020 [7] K. M. Dogan, T. Yucelen, W. M. Haddad & J. A. Muse, “Improving Transient Performance of Discrete-time Model Reference Adaptive Control Architectures,” International Journal of Adaptive Control and Signal Processing.
+- 2019 [6] B. C. Gruenwald, T. Yucelen, K. M. Dogan & J. A. Muse, “Expanded Reference Models for Adaptive Control of Uncertain Systems with Actuator Dynamics,” Journal of Guidance, Control, and Dynamics.
+- 2019 [5] T. Yucelen, B. C. Gruenwald, K. M. Dogan, A. Chakravarthy, & A. Menon, “Adaptive Control of Coupled Dynamical Systems: A Mixed State and Output Feedback Framework with Stability and Performance Guarantees,” International Journal of Control.
+- 2019 [4] K. M. Dogan, B. C. Gruenwald, T. Yucelen & J. A. Muse, “Adaptive Architectures for Control of Uncertain Dynamical Systems with Actuator and Unmodeled Dynamics,” International Journal of Robust and Nonlinear Control.
+- 2019 [3] K. M. Dogan, B. C. Gruenwald, T. Yucelen, J. A. Muse & E. A. Butcher, “Distributed Adaptive Control and Stability Verification for Linear Multiagent Systems with Heterogeneous Actuator Dynamics and System Uncertainties,” International Journal of Control.
+- 2018 [2] K. M. Dogan, B. C. Gruenwald, T. Yucelen & J. A. Muse, “Relaxing the Stability Limit of Adaptive Control Systems in the Presence of Unmodeled Dynamics,” International Journal of Control.
+- 2017 [1] K. M. Dogan, E. Tatlicioglu, E. Zergeroglu & K. Cetin, “Learning Control of Robot Manipulators in Task Space,” Asian Journal of Control.
+- Conference Papers:
+- Accepted [78] N. Sisson† & K. M. Dogan, “Low-Frequency Learning for a Discrete Uncertain System with Actuator Dynamics,” 2025 Conference on Decision and Control, Rio de Janeiro, Brazil.
+- Accepted [77] P. F. Balaguer, K. Vernyi†, R. Bevilacqua, & K. M. Dogan, “Development of Adaptive Control and Center-of-Mass Estimation Laws with Concurrent Learning Modifications for a 3-degree-of-freedom Spacecraft Testbed”, 76th International Astronautical Congress, Sydney, Australia.
+- Accepted [76] A. Aly†, N. Sisson† & K. Merve Dogan, “Discrete-Time Distributed Adaptive Control of Uncertain High-Order Multiagent Systems in the Presence of Coupled Dynamics,” 2025 23rd European Control Conference (ECC), Thessaloniki, Greece.
+- Accepted [75] A. Kurttisi†, E. Sarioglu†, K. M. Dogan & B. Gruenwald “Distributed Adaptive Control Method via Command Governor Mechanism for Uncertain Second-Order Multi-Agent Systems,” 2025 23rd European Control Conference (ECC), Thessaloniki, Greece.
+- Accepted [74] E. Sarioglu†, A. Kurttisi†, and K. M. Dogan, “Safe Set-theoretic Model Reference Adaptive Control with Concurrent Learning,” American Control Conference (Denver, Colorado).
+- Accepted [73] N. Sisson† and K. M. Dogan, “Low-Frequency Learning for a Discrete Uncertain System,” IEEE Control Systems Letters with American Control Conference (Denver, Colorado) option.
+- 2025 [72] I. Saka, S. Unver, E. Selim, E. Tatlicioglu, E. Zergeroglu & K. M. Dogan “A Robust Observer Based End-Effector Trajectory Tracking Control of Collaborative Robotic Manipulators Actuated by Brushless DC Motors,” in Scitech 2025 Forum, AIAA, Orlando, FL, 2025.
+- 2025 [71] A. Bray† & K. M. Dogan “Model Reference Adaptive Control for Faster Convergence of Uncertain Nonlinear Systems with Nonlinear Reference Systems,” in Scitech 2025 Forum, AIAA, Orlando, FL, 2025.
+- 2025 [70] B. Saulo† & K. M. Dogan “On Stability Limits of Helicopter Slung-Load Operations: Comparative Analysis of Standard, Hedging, and Expanded Reference Models,” in Scitech 2025 Forum, AIAA, Orlando, FL, 2025.
+- 2025 [69] K. Vernyi†, K. M. Dogan & M. Nazari “Adaptive Control of Variable Speed Control Moment Gyroscopes Considering Actuator Dynamics,” in Scitech 2025 Forum, AIAA, Orlando, FL, 2025.
+- 2025 [68] E. Sarioglu†, A. Kurttisi† & K. M. Dogan “Experimental Results on Distributed Adaptive Control of Mobile Robots to Perform Cooperative Behaviors,” in Scitech 2025 Forum, AIAA, Orlando, FL, 2025.
+- 2025 [67] N. Sisson† & K. M. Dogan “Discrete Adaptive Control Allocation for Uncertain Over-Actuated Systems,” in Scitech 2025 Forum, AIAA, Orlando, FL, 2025.
+- 2024 [66] N. Sisson†, E. Sarioglu†, K. M. Dogan & B. Gruenwald “Generalized Discrete Adaptive Control Allocation for Over-Actuated Systems,” 2024 Conference on Decision and Control, Milan, Italy.
+- 2024 [65] T. Vongkunghae† & K. Merve Dogan, “Stabilizing an Uncertain Modular Robotic System in the Presence of Coupled Dynamics through Distributed Adaptive Control,” 2024 Conference on Decision and Control, Milan, Italy.
+- 2024 [64] K. Vernyi†, A. Bray†, M. Stanko†, E. Sarioglu† & K. M. Dogan “Human-in-the-Loop Adaptive Control Allocation and Sliding Mode Control for Uncertain Systems,” 5th IFAC Workshop on Cyber-Physical Human Systems, December 12-13, 2024, Antalya, Turkiye.
+- 2024 [63] E. Sarioglu†, K. Vernyi† & K. M. Dogan “Human-in-the-loop Adaptive Control Allocation for Uncertain Systems with Unknown Effector Degradation,” 5th IFAC Workshop on Cyber-Physical Human Systems, December 12-13, 2024, Antalya, Turkiye
+- 2024 [62] E. Sarioglu and K. Merve Dogan, “Adaptive Control Allocation for Uncertain Systems with Unknown Effector Degradation,” American Control Conference, Toronto, Canada.
+- 2024 [61] A. Kurttisi, K. M. Dogan, E. Sarioglu, & M. Deniz, “Command Governor Mechanism for Uncertain Multi-agent Systems with Actuator Dynamics,” American Control Conference,
+- Toronto, Canada.
+- 2024 [60] T. Vongkunghae, I. A. Aly & K. M. Dogan, “Model Reference Adaptive Control for an Uncertain Modular Robotic System Subject to Unknown Physical Interconnections,” in Scitech 2024 Forum, AIAA, Orlando, FL, 2024.
+- 2024 [59] A. Kurttisi, E. Sarioglu & K. M. Dogan, “Formation Control of Uncertain Multi-agent Systems with Non-Identical Actuation Capacities,” in Scitech 2024 Forum, AIAA, Orlando, FL, 2024.
+- 2023 [58]  I. A. Aly, and K. Merve Dogan, “Discrete-Time Adaptive Control Algorithm for Coordination of Multiagent Systems in the Presence of Coupled Dynamics,” IEEE/RSJ International Conference on Intelligent Robots, Detroit, Michigan.
+- 2023 [57] I. A. Aly, A. Kurttisi, and K. Merve Dogan, “Discrete-Time Model Reference Adaptive Control of Uncertain Dynamical Systems in the Presence of Coupled Dynamics,” IEEE Conference on Control Technology and Applications, Bridgetown, Barbados.
+- 2023 [56] M. Deniz, K. Merve Dogan, T. Yucelen, and Y. Wan, “Quantifiable Convergence Time in Stabilization of Uncertain Dynamical Systems with a Sliding Mode Adaptive Control Architecture,” IEEE American Control Conference, San Diego, CA. 2023
+- 2023 [55] I. A. Aly, A. Kurttisi, and K. Merve Dogan, “An Observer-Based Distributed Adaptive Control for Assigning Different Positions to the Agents in the Presence of Uncertainties and Coupled Dynamics,” IEEE American Control Conference, San Diego, CA. 7/17 2023
+- 2023 [54] A. Kurttisi, E. Sarioglu & K. M. Dogan, “Experimental Results on Composing Cooperative Behaviors in Networked Mobile Robots through Learning and Guidance Commands,” in Scitech 2023 Forum, AIAA, National Harbor, MD, 2023. 2023
+- 2023 [53] J. Zelina, I. A. Aly, K. M. Dogan & R. Prazenica, “Adaptive Stabilization of MultiRotor Systems with Actuator Limits and Transient Mass Distribution,” in Scitech 2023 Forum, AIAA, National Harbor, MD, 2023. 2023
+- 2023 [52] C. Rowan and K. M. Dogan, “Model-Based Systems Engineering (MBSE) in the Evaluation of Handling Qualities,” in Scitech 2023 Forum, AIAA, National Harbor, MD, 2023. 2023
+- 2023 [51] A. Kurttisi, S. M. Perera, and K. M. Dogan, “An Efficient Algorithm to Determine Polynomial Trajectories and Adaptive Control of a Quadcopter,” in Scitech 2023 Forum, AIAA, National Harbor, MD, 2023. 2023
+- 2023 [50] M. Leomanni, F. Ferrante, N. Cartocci, G. Costante, M. L. Fravolini, K. M. Dogan, and T. Yucelen “Robust Output Feedback Control of a Quadrotor UAV for Autonomous Visionbased Target Tracking,” in Scitech 2023 Forum, AIAA, National Harbor, MD, 2023. 2023
+- 2023 [49] A. Kurttisi, K. M. Dogan, and A. T. Koru, “Adaptive Control for Multirotor Attitude Control in the Presence of Actuation Delay and Unknown Actuator Efficiency,” in Scitech 2023 Forum, AIAA, National Harbor, MD, 2023. 2023
+- 2023 [48] I. A. Aly, S. Comeaux, K. M. Dogan, E. Tatlicioglu, and E. Zergeroglu, “On Adaptive Control of Robotic Manipulators with Actuator Deficiencies,” in Scitech 2023 Forum, AIAA, National Harbor, MD, 2023. 2023
+- 2023 [47] I. A. Aly, S. Comeaux, and K. M. Dogan, “Distributed Adaptive Control of Multiagent System with State and Control Dependent Coupled Dynamics,” in Scitech 2023 Forum, AIAA, National Harbor, MD, 2023.
+- 2022 [46] A. Kurttisi, I. A. Aly, and K. M. Dogan, “Coordination of Uncertain Multiagent Systems with Non-Identical Actuation Capacities,” IEEE Conference on Decision and Control (Cancun, Mexico).
+- 2022 [45] K. M. Dogan, A. Kurttisi, T. Yucelen, and A. T. Koru, “A Projection Operator-Based Discrete-Time Adaptive Architecture for Control of Uncertain Dynamical Systems with Actuator Dynamics,” IEEE Control Systems Letters with IEEE Conference on Decision and Control (Cancun, Mexico) option.
+- 2022 [44] K. M. Dogan, T. Yucelen, Islam A. Aly & J. A. Muse, “Further Results on Multiagent Distributed Adaptive Control Systems with Unmeasurable Coupled Dynamics,” in American Control Conference, Atlanta, Georgia, 2022.
+- 2022 [43]  J. Zelina, K. M. Dogan, R. Prazenica & T. Henderson, “Adaptive Control for Time Varying Systems with Actuator Dynamics and Sensor Noise,” in Scitech 2022 Forum, AIAA, San Diego, California.
+- 2022 [42] N. Cartocci, A. Monarca, G. Costante, M. L. Fravolini, K. M. Dogan & T. Yucelen, “Linear Control of a Nonlinear Aerospace System via Extended Dynamic Mode Decomposition,” in Scitech 2022 Forum, AIAA, San Diego, California.
+- 2022 [41] S. Ristevski, A. T. Koru, K. M. Dogan, T. Yucelen & J. A. Muse, “Experimental Results of a Model Reference Adaptive Control Architecture in the Presence of Unmodeled Dynamics,” in Scitech 2022 Forum, AIAA, San Diego, California.
+- 2022 [40] I. A. Aly & K. M. Dogan, “Uncertain Multiagent System in the Presence of Coupled Dynamics: An Asymptotic Convergence,” in Scitech 2022 Forum, AIAA, San Diego, California.
+- 2021 [39] K. M. Dogan & T. Yucelen, “Distributed Adaptive Control for Uncertain Multiagent Systems with User-Assigned Laplacian Matrix Nullspaces,” in  IEEE Conference on Control Technology and Applications (CCTA), San Diego, California (virtual).
+- 2021 [38] K. M. Dogan, T. Yucelen & J. A. Muse,  “On Scheduling Actuator Data Transmission in Discrete-Time Networked Adaptive Systems,” in  American Control Conference, New Orleans, Louisiana (virtual).
+- 2021 [37] M. Fravolini, N. Cartocci, T. Yucelen & K. M. Dogan, “A Safe Learning Adaptive Neuro Controller for Uncertain Aircraft Dynamics,” in AIAA Guidance, Navigation, and Control Conference, Nashville, TN (virtual).
+- 2021 [36] K. M. Dogan, T. Yucelen & J. A. Muse, “Stability Verification for Uncertain Multiagent Systems in the Presence of Heterogeneous Coupled and Actuator Dynamics,” in AIAA Guidance, Navigation, and Control Conference, Nashville, TN (virtual).
+- 2020 [35] K. M. Dogan, T. Yucelen & J. A. Muse, “Further Results on Performance Guarantees in Adaptive Control of Uncertain Systems with Unmodeled Dynamics,” ASME Dynamic Systems and Control Conference, Pittsburgh, Pennsylvania (virtual).
+- 2020 [34] K. M. Dogan, T. Yucelen & J. A. Muse, “Adaptive Control with Unmeasurable Coupled Dynamics: An Asymptotic Decoupling Approach,” in American Control Conference, Denver, Colorado.
+- 2020 [33] K. M. Dogan, T. Yucelen, S. Ristevski & J. A. Muse, “Distributed Adaptive Control of Uncertain Multiagent Systems with Coupled Dynamics,” in American Control Conference, Denver, Colorado.
+- 2020 [32] S. Ristevki, K. M. Dogan, T. Yucelen & J. A. Muse, “A New Event-Triggering Approach for Scheduling Guidance Data Transmissions in Networked Control Systems,” in American Control Conference, Denver, Colorado.
+- 2020 [31] K. M. Dogan, T. Yucelen & J. A. Muse, “Performance Guarantees in Adaptive Control of Uncertain Systems with Unmodeled Dynamics,” in AIAA Guidance, Navigation, and Control Conference, Orlando, FL.
+- 2020 [30] K. M. Dogan, S. Ristevski, T. Yucelen & J. A. Muse, “On Suppressing the Effect of Measurement Noise in Model Reference Adaptive Control,” in AIAA Guidance, Navigation, and Control Conference, Orlando, FL.
+- 2020 [29] A. T. Koru, E. Arabi, K. M. Dogan, T. Yucelen, R. Sipahi & Y. Yildiz, “Set-Theoretic Model Reference Adaptive Control for Performance Guarantees in Human-in-the-Loop Systems; A Pilot Study,” AIAA Guidance, Navigation, and Control Conference, Orlando, FL.
+- 2020 [28] K. Cespedes, K. M. Dogan, E. Yildirim, T. Yucelen, B. C. Gruenwald & A. Chakravarthy, “Experimental Results of a Model Reference Adaptive Control Approach on an Interconnected Uncertain Dynamical System,” AIAA Intelligent Systems Conference, Orlando, FL.
+- 2020 [27] S. Ristevski, K. M. Dogan, T. Yucelen & J. A. Muse, “Output Feedback Model Reference Adaptive Control in the Presence of Actuator Dynamics,” AIAA Guidance, Navigation, and Control Conference, Orlando, FL.
+- 2020 [26] M. Fravolini, K. M. Dogan & T. Yucelen, “Quantification of Tolerable Parametric and Dynamic Uncertainty for Robust Model Reference Adaptive Control Systems,” AIAA Guidance, Navigation, and Control Conference, Orlando, FL.
+- 2019 [25] S. Ristevski, K. M. Dogan, T. Yucelen & J. A. Muse, “Transient Performance Improvement in Reduced-order Model Reference Adaptive Control Systems,” IFAC Workshop on Adaptive and Learning Systems, Winchester, United Kingdom.
+- 2019 [24] K. M. Dogan, T. Yucelen & J. A. Muse, “Hedging Approach for Scheduling Actuator Data Transmission in Networked Adaptive Control Systems,” IFAC Workshop on Adaptive and Learning Systems, Winchester, United Kingdom.
+- 2019 [23] K. M. Dogan, T. Yucelen & J. A. Muse, “Adaptive Control of Dynamical Systems with Unstructured Uncertainty and Unmodeled Dynamics,” in American Control Conference, Philadelphia, Pennsylvania.
+- 2019 [22] K. M. Dogan, T. Yucelen, B. C. Gruenwald & J. A. Muse, “Further Results on Model Reference Adaptive Control in the Presence of Actuator and Unmodeled Dynamics,” in American Control Conference, Philadelphia, Pennsylvania.
+- 2019 [21] B. C. Gruenwald, T. Yucelen, K. M. Dogan & J. A. Muse, “On Adaptive Control of Uncertain Dynamical Systems in the Presence of Actuator Dynamics and Amplitude Saturation Limits,” in American Control Conference, Philadelphia, Pennsylvania.
+- 2019 [20] A. T. Koru, T. Yucelen, R. Sipahi, A. Ramirez & K. M. Dogan, “Stability of Human-in the-Loop Multiagent Systems with Time Delays,” in American Control Conference, Philadelphia, Pennsylvania.
+- 2019 [19] K. M. Dogan, T. Yucelen, E. Yildirim & J. A. Muse, “Experimental Results of a Model Reference Adaptive Control Law on an Uncertain System with Unmodeled Dynamics,” in AIAA Guidance, Navigation, and Control Conference, San Diego, California.
+- 2018 [18] K. M. Dogan, T. Yucelen, B. C. Gruenwald & J. A. Muse, “Stability Conditions for Adaptive Control of Uncertain Dynamical Systems with Actuator and Unmodeled Dynamics,” in American Control Conference, Milwaukee, Wisconsin.
+- 2018 [17] K. M. Dogan, B. C. Gruenwald, T. Yucelen, J. A. Muse & E. A. Butcher, “Stable Distributed Adaptive Systems for Control of Linear Multiagent Systems in the Presence of Heterogeneous Actuator Dynamics and Unknown Parameters,” in American Control Conference, Milwaukee, Wisconsin.
+- 2018 [16] B. C. Gruenwald, T. Yucelen, K. M. Dogan & J. A. Muse, “An Adaptive Architecture for Control of Uncertain Dynamical Systems with Unknown Actuator Bandwidths,” IFAC Workshop on Networked and Autonomous Air and Space Systems, Santa Fe, New Mexico.
+- 2018 [15] K. M. Dogan, B. C. Gruenwald, T. Yucelen & J. A. Muse, “Robustness of an Adaptive Control Law to Uncertain Input Dynamics,” in AIAA Guidance, Navigation, and Control Conference, Kissimmee, Florida.
+- 2018 [14] K. M. Dogan, B. C. Gruenwald, T. Yucelen & J. A. Muse, “A Generalization of Fundamental Stability Limit of Model Reference Adaptive Controllers in the Presence of a Class of Nonlinear Unmodeled Dynamics,” in AIAA Guidance, Navigation, and Control Conference, Kissimmee, Florida.
+- 2018 [13] B. C. Gruenwald, T. Yucelen, K. M. Dogan & J. A. Muse, “A New Adaptive Control Architecture for Uncertain Dynamical Systems with Actuator Dynamics: Beyond Pseudo-Control Hedging,” in AIAA Guidance, Navigation, and Control Conference, Kissimmee, Florida.
+- 2018 [12] B. C. Gruenwald, T. Yucelen, K. M. Dogan & J. A. Muse, “Computing the Stability Limits of Pole-Zero Actuator Dynamics on Adaptive Control Laws for Aerospace Applications,” in AIAA Guidance, Navigation, and Control Conference, Kissimmee, Florida.
+- 2017 [11] B. C. Gruenwald, K. M. Dogan, T. Yucelen & J. A. Muse, “A Model Reference Adaptive Control Framework for Uncertain Dynamical Systems with High-Order Actuator Dynamics and Unknown Actuator Outputs,” ASME Dynamic Systems and Control Conference, Tysons, Virginia.
+- 2017 [10] J. D. Peterson, G. D. L. Torre, T. Yucelen, D. Tran, K. M. Dogan & D. McNely, “Resilient Control of Linear Time-Invariant Networked Multiagent Systems,” ASME Dynamic Systems and Control Conference, Tysons, Virginia.
+- 2017 [9] K. M. Dogan, B. C. Gruenwald, T. Yucelen, J. A. Muse & E. A. Butcher, “Distributed Adaptive Control of Networked Multiagent Systems with Heterogeneous Actuator Dynamics,” in American Control Conference, Seattle, Washington.
+- 2017 [8] K. M. Dogan, T. Yucelen, B. C. Gruenwald & J. A. Muse„ “On the Stability of Adaptive Control Systems in the presence of Control and State Dependent Unmodeled Dynamics,” in AIAA Guidance, Navigation, and Control Conference, Grapevine, Texas.
+- 2017 [7] K. M. Dogan, K. Rajagopal, & S.N. Balakrishnan “Cost Detectability and Stability of Multiple Model–based Adaptive Controllers Using Data–Driven Control Theory,” in AIAA Guidance, Navigation, and Control Conference, Grapevine, Texas.
+- 2016 [6] K. M. Dogan, T. Yucelen, B. C. Gruenwald & J. A. Muse, “On Model Reference Adaptive Control for Uncertain Dynamical Systems with Unmodeled Dynamics,” in IEEE Conference on Decision and Control, Las Vegas, Nevada.
+- 2016 [5] M. L. Fravolini, T. Yucelen, B. C. Gruenwald, M. Dogan & M. R. Napolitano, “Comparison of Robust and Probabilistic LMI-based Design of Adaptive Flight Controllers with Uncertain Input Dynamics,” in AIAA Guidance, Navigation, and Control Conference, San Diego, California, USA.
+- 2015 [4] K. M. Dogan, E. Tatlicioglu & E. Zergeroglu, “Operational/Task Space Learning Control of Robot Manipulators with Dynamical Uncertainties,” Multi-Conference on Systems and Control, Sydney, Australia.
+- 2015 [3] K. M. Dogan, E. Tatlicioglu, E. Zergeroglu & K. Cetin, “Lyapunov Based Output Feedback Learning Control of Robot Manipulators,” American Control Conference, Chicago IL, USA.
+- 2015 [2] K. M. Dogan, M. Deniz, M. I. C. Dede & E. Tatlicioglu, “Compensating for Variable Time Delays in the Communication Line of Bilateral Direct Teleoperation and Model-Mediation Techniques,” National Conference on Automatic Control, Denizli, Turkey (in Turkish).
+- 2014 [1] M. Deniz, K. M. Dogan, E. Tatlicioglu & A. Bayrak, “Design and Implementation of Robust Control for TRMS,” National Conference on Automatic Control, Kocaeli, Turkey (in Turkish).
+- Member:
+- American Institute of Aeronautics and Astronautics (AIAA)
+- Institute of Electrical and Electronics Engineers (IEEE)
+- Technical Committee (TC):
+- AIAA Intelligent Systems TC
+- IEEE TC Aerospace Control
+- IEEE TC Intelligent Control
+- Aerospace Control and Guidance Systems Committee
+- Associate Editor:
+- Associate Editor for the Invited Sessions Track at AIAA SciTech, 2022
+- Associate Editor for the IEEE International Conference on Systems, Man and Cybernetics, 2022
+- Associate Editor for the IEEE International Conference on Systems, Man and Cybernetics, 2021
+- [2025] Recipient of the National Aeronautics and Space Administration University Leadership Initiative Round 8 Award (August 2025)
+- [2024] Recipient of the Florida Space Grant Consortium (FSGC) grant of the National Aeronautics and Space Administration (July 2024).
+- [2024] Recipient of the NSF fund for the Fellows program at the 2024 IFAC Workshop on Cyber-Physical-Human Systems (May 2024)
+- [2024] Recipient for the 2024 COE – Innovation Stimulus Proposal Call: Space and Hypersonics Edition grant
+- through ERAU (April 2024)
+- [2023] Recipient for the AF STTR Phase 1 grant through ControlX (May 2023).
+- [2023] Recipient for the AF SBIR Phase 2 grant through ControlX (March 2023).
+- [2023] Recipient for the FAA Phase 2 grant (February 2023).
+- [2022] Recipient of the 2022 Dave Ward Memorial Lecture Award from the Aerospace Control and Guidance Systems Committee (ACGSC).
+- [2022] Recipient for the SpaceWERX Phase I STTR grant through Modularity Space (August 2022).
+- [2022] Recipient for the SpaceWERX Phase I STTR grant through ControlX (July 2022).
+- [2022] Recipient of the Faculty Innovative Research in Science and Technology (FIRST) Supplemental Program Award of the ERAU.
+- [2021] Recipient for the 2021 AIAA Journal of Guidance, Control, and Dynamics, Excellent Reviewer.
+- [2021] Recipient for the 2021 Florida Space Grant Consortium (FSGC) Grant of the National Aeronautics and Space Administration.
+- [2021] Recipient for the 2021 Faculty Innovative Research in Science and Technology (FIRST) Program Award of the ERAU.
+- [2020] Recipient for the 2020 Outstanding Dissertation Award, USF.
+- [2019] Student best paper award; Adaptive and Learning Control Systems, IFAC, Winchester, UK.
+- [2019] “Learning control of robot manipulators in task space,” co-authored by K. M. Dogan, E. Tatlicioglu, E. Zergeroglu, and K. Cetin is listed in the Top 20Most Read Papers; Asian Journal of Control.
+- [2019] Best session presentation; in AIAA Guidance, Navigation, and Control Conference, 2019, San Diego, California.
+## Courses
+
+- AE 627
+- Adaptive Control
+- AE 800
+- Dissertation
+- AERO 432
+- Flight Dynamics and Control
+- AERO 523
+- Linear Systems
+- AE 700
+- Thesis
+- AE432 – Flight Dynamics and Control
+
+---
+*Scraped from faculty.erau.edu on 2026-03-28 09:56*

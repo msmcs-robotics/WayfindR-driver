@@ -1,0 +1,238 @@
+# Subhradeep Roy
+
+**Department:** Mechanical Engineering
+**Email:** roys5@erau.edu
+**Profile:** https://faculty.erau.edu/Subhradeep.Roy
+
+## Education
+
+- Ph.D. - Doctor of Philosophy in Engineering Mechanics,
+
+## Areas of Expertise
+
+- Agent-based Modeling, Causal Inference for Time Series, Complex Systems Modeling
+- The views expressed on faculty and external web pages are those of the author and do not necessarily represent those of Embry-Riddle Aeronautical University.
+- Complex Dynamical Systems Laboratory
+- Lab: S Building, Room: 119
+
+## Courses
+
+- ME 800
+- Dissertation
+- ES 204
+- Dynamics
+- MECH 400
+- Mechanical Vibrations
+- ME595GG: Modeling Complex Systems (created new graduate-level course)
+- ME400: Vibrations and Acoustics
+- ES204: Dynamics
+- ES201: Statics
+- The Role of Sensory Cues in Collective Dynamics
+- (Subhradeep Roy)
+- Pure Portfolio
+- (2025)
+- Determining critical vehicle connectivity in connected autonomous vehicles using information theory
+- (Subhradeep Roy)
+- Pure Portfolio
+- (2024)
+- Validating a data-driven framework for vehicular traffic modeling
+- (Subhradeep Roy)
+- Pure Portfolio
+- (2024)
+- Using information theory to detect model structure with application in vehicular traffic systems
+- (Subhradeep Roy)
+- Pure Portfolio
+- (2023)
+- How Does the Fusion of Sensory Information From Audition and Vision Impact Collective Behavior?
+- (Subhradeep Roy)
+- Pure Portfolio
+- (2021)
+- A general metric for the similarity of both stochastic and deterministic system dynamics
+- (Subhradeep Roy)
+- Pure Portfolio
+- (2021)
+- Quantifying interactions among car drivers using information theory
+- (Subhradeep Roy)
+- Pure Portfolio
+- (2020)
+- The effect of simultaneous auditory and visual sensing cues in a two-dimensional vicsek model
+- (Subhradeep Roy)
+- Pure Portfolio
+- (2020)
+- Effect of visual and auditory sensing cues on collective behavior in vicsek models
+- (Subhradeep Roy)
+- Pure Portfolio
+- (2019)
+- Extracting interactions between flying bat pairs using model-free methods
+- (Subhradeep Roy)
+- Pure Portfolio
+- (2019)
+- Comparing brain connectivity metrics
+- (Subhradeep Roy)
+- Pure Portfolio
+- (2018)
+- Detecting causality using symmetry transformations
+- (Subhradeep Roy)
+- Pure Portfolio
+- (2018)
+- Differentiation of collective behavior based on automated discovery of dynamical kinds
+- (Subhradeep Roy)
+- Pure Portfolio
+- (2018)
+- Interactional dynamics of same-sex marriage legislation in the United States
+- (Subhradeep Roy)
+- Pure Portfolio
+- (2017)
+- Diffusion mediated coagulation and fragmentation based study of domain formation in lipid bilayer membrane
+- (Subhradeep Roy)
+- Pure Portfolio
+- (2017)
+- Closed-loop control of the frequency response of the virtual brain model
+- (Subhradeep Roy)
+- Pure Portfolio
+- (2017)
+- On the Effect of Collaborative and Antagonistic Interactions on Synchronization and Consensus in Networks of Conspecific Agents
+- (Subhradeep Roy)
+- Pure Portfolio
+- (2016)
+- Leader-follower consensus and synchronization in numerosity-constrained networks with dynamic leadership
+- (Subhradeep Roy)
+- Pure Portfolio
+- (2016)
+- Consensus of conspecific agents via collaborative and antagonistic interactions
+- (Subhradeep Roy)
+- Pure Portfolio
+- (2015)
+- Numerical simulation of the unsteady wake behind an airfoil
+- (Subhradeep Roy)
+- Pure Portfolio
+- (1989)
+- Finite‐element models of viscoelasticity and diffusion in adhesively bonded joints
+- (Subhradeep Roy)
+- Pure Portfolio
+- (1988)
+- Nonlinear viscoelastic finite element analysis of adhesive joints
+- (Subhradeep Roy)
+- Pure Portfolio
+- (1988)
+- Non-linear analysis of adhesively bonded joints
+- (Subhradeep Roy)
+- Pure Portfolio
+- (1988)
+- Effect of moisture diffusion on stress distributions in adhesive joints
+- (Subhradeep Roy)
+- Pure Portfolio
+- (1988)
+- Journal Publications:
+- Ramlall, P. and
+- Roy, S
+- ., 2025. A Data-Driven Framework for Modeling Car-Following Behavior Using Conditional Transfer Entropy and Dynamic Mode Decomposition.
+- Applied Sciences
+- (17), 9700.
+- Ramlall, P., Jones, E., and
+- Roy, S.
+- , 2025. Development of a Networked Multi-Participant Driving Simulator with Synchronized EEG and Telemetry for Traffic Research.
+- Systems
+- (7), 564.
+- Ramlall, P. and
+- Roy, S.
+- , 2025
+- The role of sensory cues in collective dynamics: a study of three-dimensional Vicsek models,
+- Applied Sciences
+- , 15(3), 1556
+- Lane, D. and
+- Roy, S.
+- , 2024. Validating a data-driven framework for vehicular traffic modeling,
+- Journal of Physics: Complexity
+- , 5(2), 025008
+- Roy, S.
+- Lemus, J., 2021. How does the fusion of sensory information from audition and vision impact collective behavior?,
+- Frontiers in Applied Mathematics and Statistics
+- , p.67.
+- Shea-Blymyer, C.,
+- Roy, S.
+- and Jantzen, B., 2021. A General Metric for the Similarity of Both Stochastic and Deterministic System Dynamics.
+- Entropy
+- (9), p.1191.
+- Roy, S.
+- , 2020. Quantifying interactions among car drivers using information theory.
+- Chaos
+- (11), p.113125.
+- Roy, S.
+- , Shirazi, M.J., Jantzen, B. and Abaid, N., 2019. Effect of visual and auditory sensing cues on collective behavior in Vicsek models.
+- Physical Review E
+- (6), p.062415.
+- Roy, S.
+- , Howes, K., Müller, R., Butail, S. and Abaid, N., 2019. Extracting interactions between flying bat pairs using model-free methods.
+- Entropy
+- (1), p.42.
+- Beauchene, C.,
+- Roy, S.
+- , Moran, R., Leonessa, A. and Abaid, N., 2018. Comparing brain connectivity metrics: A didactic tutorial with a toy model and experimental data.
+- Journal of Neural Engineering
+- (5), p.056031.
+- Roy, S.
+- and Jantzen, B., 2018. Detecting causality using symmetry transformations.
+- Chaos
+- (7), p.075305.
+- Roy, S.
+- and Abaid, N., 2017. Interactional dynamics of same-sex marriage legislation in the United States.
+- Royal Society Open Science
+- (6), p.170130.
+- Rao, L.,
+- Roy, S.
+- and Das, S.L., 2017. Diffusion mediated coagulation and fragmentation based study of domain formation in lipid bilayer membrane.
+- Physica B: Condensed Matter
+- , pp.74-83.
+- Roy, S.
+- and Abaid, N., 2016. On the effect of collaborative and antagonistic interactions on synchronization and consensus in networks of conspecific agents.
+- IEEE Transactions on Automatic Control
+- (12), pp.4063-4068.
+- Roy, S.
+- and Abaid, N., 2016. Leader-follower consensus and synchronization in numerosity-constrained networks with dynamic leadership.
+- Chaos
+- (11), p.116309.
+- Peer-reviewed Conference Publications:
+- Ramlall, P., and
+- Roy, S.
+- 2024, Determining critical vehicle connectivity in connected autonomous vehicles using information theory,
+- Modeling, Estimation, and Control Conference
+- IFAC-PapersOnLine
+- , Volume
+- , Issue 28, Pages 995-1000
+- Lane, D. and
+- Roy, S.
+- , 2023, Using information theory to detect model structure with application in vehicular traffic systems,
+- Modeling, Estimation, and Control Conference
+- , IFAC-PapersOnLine, Volume 56, Issue 3, Pages 367-372
+- Lemus, J. and Roy, S., 2020. The Effect of Simultaneous Auditory and Visual Sensing Cues in a Two-Dimensional Vicsek Model. In American Society of Mechanical Engineers (ASME)
+- Dynamic Systems and Control Conference
+- (Vol. 84287, p. V002T30A005).
+- Hashimoto, A., Roy, S., Shea-Blymyer, Jantzen, B., C., Abaid, N. 2018, September. Differentiation of Collective Behavior Based on Automated Discovery of Dynamical Kinds. In American Society of Mechanical Engineers (ASME)
+- Dynamic Systems and Control Conference
+- (Vol. 51913, p. V003T30A008).
+- Beauchene, C., Roy, S., Simon, J.,  Leonessa, A.,and Abaid, N., 2017, October. Closed-Loop Control of the Frequency Response of the Virtual Brain Model. In American Society of Mechanical Engineers (ASME)
+- Dynamic Systems and Control Conference
+- (Vol. 58271, p. V001T37A001). American Society of Mechanical Engineers.
+- Roy, S. and Abaid, N., 2016, Data-based method for extracting navigational leadership between two bats
+- Proceedings of XXIV International Congress of Theoretical and Applied Mechanics
+- (ICTAM )
+- Roy, S. and Abaid, N., 2015, October. Consensus of conspecific agents via collaborative and antagonistic interactions. In American Society of Mechanical Engineers (ASME)
+- Dynamic Systems and Control Conference
+- (Vol. 57267, p. V003T37A004). American Society of Mechanical Engineers.
+- Roy, S. and Abaid, N., 2015. Leader-follower consensus modeling representative democracy
+- International Conference of Control, Dynamic Systems, and Robotics (CDSR), Paper No. 156
+- 2025 ASME Rising Star
+- NSF CAREER Award 2023
+- Nominated for the 2022-2023 ERAU COE Outstanding Teaching Award
+- Invited speaker at the NSF-funded workshop hosted by UC Irvine’s Center for Integrative
+- Movement Sciences.
+- Future Technology Leader Award - Engineers’ Council of San Fernando Valley
+- Research, Scholarship and Creative Award, CSUN
+- Invited speaker at Exemplars in Engineering Research, Department of Research, The
+- California State University, Office of the Chancellor
+- Manuel Stein Scholarship (Department of Biomedical Engineering & Mechanics, Virginia Tech)
+- Virginia Tech Graduate Student Assembly Travel Award
+- Conference Travel Award (ASME Dynamic Systems and Control Conference)
+- Pratt Presidential Graduate Fellowship, (Engineering Science & Mechanics Program, Virginia Tech)
+- Complex Dynamical Systems Laboratory

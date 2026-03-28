@@ -126,8 +126,8 @@ def _extract_location_ref(message: str, location_mgr: LocationManager) -> str:
 
     # Extract text after location prepositions
     for pattern in [
-        r"(?:to|about|at|in|visit|see)\s+(?:the\s+)?(.{3,50?)(?:\?|$|\.)",
-        r"(?:where is|find)\s+(?:the\s+)?(.{3,50?})(?:\?|$|\.)",
+        r"(?:to|about|at|in|visit|see)\s+(?:the\s+)?(.{3,50}?)(?:\?|$|\.)",
+        r"(?:where is|find)\s+(?:the\s+)?(.{3,50}?)(?:\?|$|\.)",
     ]:
         m = re.search(pattern, message)
         if m:

@@ -1,6 +1,6 @@
 # Ambot - Roadmap
 
-> Last updated: 2026-03-24
+> Last updated: 2026-03-28
 
 ## Overview
 
@@ -139,8 +139,8 @@ This roadmap tracks project-level features and milestones. For immediate tasks, 
 **CUDA Version Policy**: JetPack R36.4.4 = CUDA 12.6. DO NOT install additional CUDA versions.
 
 ### Visual System (Person Detection)
-- [ ] Connect USB camera to Jetson
-- [ ] Test basic camera feed capture
+- [x] Connect USB camera to Jetson — DONE (Session 22, EMEET S600 at /dev/video0) -- 2026-03-28
+- [x] Test basic camera feed capture — DONE (Session 22, 640x480 29FPS) -- 2026-03-28
 - [ ] Implement person/face detection (OpenCV or similar)
 - [ ] Create trigger logic: detected person -> initiate conversation
 - [ ] Test detection reliability and false positive rate
@@ -231,9 +231,20 @@ This roadmap tracks project-level features and milestones. For immediate tasks, 
 - [x] Dark theme CSS (ported from PI_API), offline socket.io.min.js
 - [x] HardwareManager with graceful degradation
 - [x] All endpoints verified in simulation mode
+- [x] Dashboard motor controls wired to Jetson motor driver (auto-detect platform) -- 2026-03-28
+- [x] Chat smart auto-scroll (pauses on scroll-up, resumes at bottom) -- 2026-03-28
+- [ ] Test dashboard motor control with real hardware (awaiting batteries)
 - [ ] Deploy to RPi and test with real hardware
 - [ ] Test motor control over WiFi from laptop browser
 - [ ] Test camera MJPEG + LiDAR polar plot with real sensor data
+
+### Jetson Sensor Verification -- 2026-03-28
+- [x] Camera verified on Jetson (EMEET S600, 640x480, 29 FPS, face detection ready) -- 2026-03-28
+- [x] LiDAR verified on Jetson (LD19, 350 pts/scan, 10 Hz, pathfinder driver works) -- 2026-03-28
+- [x] Jetson.GPIO confirmed driving pins (gpioinfo: output active-high [used]) -- 2026-03-28
+- [x] Jetson browser crash fully fixed — firefox-esr as default, GNOME dock patched (Session 23) -- 2026-03-28
+- [x] Added __init__.py to locomotion/ and bootylicious/ for proper package structure (Session 23) -- 2026-03-28
+- [ ] Physical motor test (GPIO confirmed, awaiting fresh batteries)
 
 #### Wandering Behavior Philosophy (Pre-SLAM)
 
@@ -260,6 +271,15 @@ This creates the illusion of purposeful exploration without needing SLAM, odomet
 
 > **Updated 2026-02-12**: No inter-device communication. All components run on a single platform (Jetson or RPi). Integration is in-process, not over the network.
 
+### MCP Ability Server -- Session 22
+- [x] MCP ability server created (FastMCP, 6 tools) -- 2026-03-28
+- [x] Ollama tool-calling bridge tested end-to-end on Jetson -- 2026-03-28
+- [x] Chat CLI for LLM-controlled motors (`mcp_ability/chat.py`) -- 2026-03-28
+- [x] MCP motor_interface.py updated with Jetson platform auto-detection (Session 23) -- 2026-03-28
+- [x] _JetsonDriveAdapter bridges JetsonL298N to drive(left, right) interface (Session 23) -- 2026-03-28
+- [ ] Test MCP motor control with real hardware
+
+### Integration Tasks
 - [ ] Integrate pathfinder + locomotion + bootylicious on single platform
 - [ ] Test end-to-end: person detected -> conversation + navigation (all on one device)
 - [ ] Demo 3 (`wandering_demo_3.py`): LLM-driven behavior selection
@@ -270,6 +290,12 @@ This creates the illusion of purposeful exploration without needing SLAM, odomet
 ## Milestone 5: Future Vision (Long-Term)
 
 > These are aspirational goals for the full robot system. Not blockers for initial release.
+
+### Jetson GPIO Notes
+- Jetson.GPIO works on original DTB (BOARD mode)
+- DT overlay approach doesn't work on JetPack 6 (OVERLAYS not supported)
+- gpiod fallback available but pin mapping was initially wrong
+- Correct mapping: ALL pins on gpiochip0 (tegra234-gpio)
 
 ### Advanced LLM Capabilities
 - [ ] Scale to 8-12B parameter LLM on Jetson Orin Nano
@@ -441,6 +467,11 @@ This creates the illusion of purposeful exploration without needing SLAM, odomet
 - [x] Content cleaner (`cleaner.py`) — post-scrape footer/nav/table removal, 27% junk cleaned
 - [x] Scope documentation (`online_scraper/scope.md`)
 - [x] RAG knowledge workflow docs (`docs/rag-knowledge-workflow.md`)
+- [x] 152 faculty profiles scraped from faculty.erau.edu (5 departments) -- 2026-03-28
+- [x] Faculty files restructured for better RAG chunking (per-person paragraphs) -- 2026-03-28
+- [x] Faculty-research cross-reference created (30 faculty linked to projects) -- 2026-03-28
+- [x] Modular scraper with `update_knowledge.sh` pipeline -- 2026-03-28
+- [ ] Re-ingest knowledge base with restructured data
 - [ ] Copy cleaned output to `bootylicious/rag/knowledge/` and ingest on Jetson
 - [ ] Re-scrape at depth 5 for broader coverage (currently depth 2 = 49 pages)
 

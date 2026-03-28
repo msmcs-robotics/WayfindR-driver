@@ -20,3 +20,6 @@
 **/test_run/
 **/slam_test_*/
 **/.claude/
+
+# Scraper staging/output (scraped content goes to /tmp staging dirs)
+**/online_scraper/output/

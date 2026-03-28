@@ -1,6 +1,6 @@
 # Ambot - Todo & Roadmap
 
-> Last updated: 2026-03-26 (Session 22)
+> Last updated: 2026-03-28 (Session 23)
 
 ---
 
@@ -63,10 +63,10 @@ _Start here when resuming work_
 
 1. **Wire L298N to Jetson GPIO** — See `locomotion/docs/l298n-jetson-pinout-guide.md` for pinout
 2. **Test motor control on Jetson** — Run `locomotion/jetson_motors/test_motors.py --simulate` then `--test`
-3. **Install FastMCP on Jetson** — `pip3 install fastmcp` (dry-run confirmed clean)
-4. **Test MCP ability server** — `python3 mcp_ability/run.py --simulate` on Jetson
+3. ~~**Install FastMCP on Jetson**~~ — Already installed (Session 23)
+4. ~~**Test MCP ability server**~~ — MCP motor_interface tested in simulate mode on Jetson (Session 23)
 5. **Integrate MCP with Ollama** — LLM sends "move forward" → MCP tool → motors spin
-6. **Fix LiDAR permissions** — Re-login for `dialout` group to take effect
+6. ~~**Fix LiDAR permissions**~~ — dialout group already configured, /dev/ttyUSB0 accessible (Session 23). Need `pip3 install pyserial` when ready.
 
 ### Jetson Sensors (verified Session 22)
 - [x] Camera (EMEET S600): WORKING on Jetson — `/dev/video0`, 640x480
@@ -75,8 +75,8 @@ _Start here when resuming work_
 - [ ] L298N motors: NOT YET WIRED — waiting on physical hookup
 
 ### RAG Knowledge Restructuring
-7. **Restructure faculty.md** — Add degree details, education, research areas for better RAG answers
-8. **Modify scraper output** — Change scraper to output to temp folder for review before ingestion
+7. ~~**Restructure faculty.md**~~ — Already done (Session 22): 152 individual files across 5 departments
+8. ~~**Modify scraper output**~~ — Centralized staging defaults in scrape_config.py, cleaner.py updated (Session 23)
 9. **Scrape detailed faculty pages** — Individual professor profiles from ERAU website
 10. **Re-ingest knowledge base** — After restructuring
 
@@ -168,6 +168,9 @@ _Priority queue for immediate work_
 - [x] Pytest frontend test suite (62 tests, all passing in simulation mode)
 - [x] SSH port forwarding verified (localhost:5123 → jetson:5000)
 - [x] Browser crash root cause identified (snap-confine capability issue on Tegra kernel)
+- [x] Browser crash FIXED (Session 23) — firefox-esr set as default, GNOME dock updated, snap desktop entries patched
+- [x] MCP motor_interface.py updated with Jetson platform detection + JetsonL298N adapter (Session 23)
+- [x] FastMCP verified installed on Jetson (Session 23)
 - [x] deploy.sh: added `rag-ingest`, `rag-ingest-bg` commands for background ingestion
 
 ### Integration
@@ -198,6 +201,52 @@ _Lower priority, do when time permits_
 - [ ] Voice interaction (STT/TTS via Android device)
 
 ## Recently Completed
+
+_Session 23 - 2026-03-28_
+
+- [x] **Browser crash fixed on Jetson** — Root cause: snap-confine `cap_dac_override` capability missing on Tegra kernel
+  - Installed `policycoreutils` (provides `matchpathcon`) — snap still broken (kernel-level issue)
+  - Set `firefox-esr` (v140.8.0 deb) as default browser via `update-alternatives` and `xdg-settings`
+  - Updated GNOME favorites dock: replaced `firefox_firefox.desktop` with `firefox-esr.desktop`
+  - Patched snap Firefox/Chromium `.desktop` entries to launch `firefox-esr` instead
+  - Redirected `/usr/bin/firefox` to call `firefox-esr` (backed up original)
+  - Refreshed desktop database, set xdg MIME defaults for HTTP/HTTPS
+- [x] **MCP Jetson motor integration** — `motor_interface.py` now auto-detects platform
+  - On aarch64 (Jetson): tries `JetsonL298N` driver first, falls back to RPi driver
+  - `_JetsonDriveAdapter` bridges `motor_a()`/`motor_b()` to `drive(left, right)` interface
+  - Both Jetson and RPi paths converge to same `MotorInterface.drive()` API
+- [x] **FastMCP verified on Jetson** — Already installed, no action needed
+- [x] **Jetson health audit** — All services healthy (3 Docker containers, Ollama, RAG API)
+  - Memory: 4.9G/7.4G used (tight but stable with `OLLAMA_MAX_LOADED_MODELS=1`)
+  - 262 knowledge markdown files in RAG knowledge base
+  - Chat app running (uvicorn on port 5050)
+- [x] **Location data review** — 24 locations across 4 buildings, real ERAU data, parser robust
+- [x] **Query classification bug fixed** — `startswith` caused "hi where is the lab" → casual (wrong)
+  - Split casual matching into exact vs prefix tiers
+  - Added out-of-scope detection ("what time is it" → casual)
+  - Added capability questions ("help", "what can you do" → casual)
+  - 19 test cases written and passing (`chat_app/test_classify.py`)
+- [x] **Regex bug fixed** in `mcp_tools.py` — `.{3,50?}` → `.{3,50}?` (lazy quantifier placement)
+- [x] **Location data expanded** — 6 new labs (NEAR, WiDE, BID4R, etc.), 3 new buildings (AXFAB, IC Flyer, Student Village)
+- [x] **Dean's Office floor corrected** — was floor 2, actually floor 3 room 300
+- [x] **MCP confirmation flow reviewed** — solid, handles ambiguous matches correctly
+- [x] **Condensation logic reviewed** — sound, one minor issue (token budget doesn't include system prompt/RAG context)
+- [x] **install-jetson.sh updated** — GPIO section added (libgpiod, Jetson.GPIO, gpio group)
+- [x] **Scraper staging centralized** — cleaner.py now uses scrape_config.py defaults
+- [x] **Codebase audited** — 89 files clean, 26 modules import OK, no TODO/FIXME markers
+- [x] **Missing __init__.py added** — `locomotion/` and `bootylicious/`
+- [x] **LiDAR dialout verified** — already configured, just needs pyserial installed
+- [x] **Chat app restarted** on Jetson with all fixes (health: all green)
+- [x] **MCP-Ollama tool-calling verified on Jetson** — 4/4 tests passed
+  - "Move forward at 50% speed" → `move_forward(speed=50)` → motors simulated → confirmed
+  - Full pipeline: user → Ollama LLM → tool_call → MotorInterface → result → LLM response
+  - ~4-5s per inference on Jetson with llama3.2:3b
+- [x] **LiDAR confirmed working on Jetson** — pyserial 3.5 installed, LD19 streaming 200+ bytes, 6 packet headers found
+- [x] **Auto re-ingestion watcher** (`watch_and_ingest.py`) — file watcher with debouncing, retry, health check
+  - deploy.sh: `watch-ingest-start/stop/status/logs/once` commands added
+  - stdlib-only, no pip dependencies, nohup-friendly
+- [x] **Knowledge base re-ingested** with expanded location data
+- [x] **All code synced to Jetson** — imports verified, classification tests passed
 
 _Session 22 - 2026-03-26_
 

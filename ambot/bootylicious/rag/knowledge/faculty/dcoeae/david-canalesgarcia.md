@@ -1,0 +1,325 @@
+# David CanalesGarcia
+
+**Department:** Aerospace Engineering
+**Email:** David.CanalesGarcia@erau.edu
+**Profile:** https://faculty.erau.edu/David.CanalesGarcia
+
+## Education
+
+- Ph.D. - Doctor of Philosophy in Aeronautics and Astronautics,
+
+## Areas of Expertise
+
+- Astrodynamics
+- Orbit Determination
+- Mission Planning
+- Telecommunications
+- Signal Processing
+- Astronomy
+- Space Systems Design and Modeling
+- The views expressed on faculty and external web pages are those of the author and do not necessarily represent those of Embry-Riddle Aeronautical University.
+- Space Trajectories and Applications Research Group
+- Research Gate
+- Google Scholar
+
+## Courses
+
+- AE 695M
+- Computational Astrodynamics
+- AE 800
+- Dissertation
+- AERO 531
+- Orbital Mechanics
+- AERO 426
+- Spacecraft Attitude Dynamics
+- AE 700
+- Thesis
+- AE426 – Spacecraft Attitude Dynamics
+- Journal Papers
+- 2024
+- (J15)
+- Canales, D.
+- , Howell K.;
+- Understanding Flow around Planetary Moons via Finite-Time Lyapunov Exponent Maps
+- ; Celestial Mechanics and Dynamical Astronomy (Q1 IF: 1.7), September 2024.
+- (J14)
+- F. Criscola
+- D. Canales
+- , D. Mortari;
+- Application of the Theory of Functional Connections on the Perturbed Lambert's Problem
+- ; Celestial Mechanics and Dynamical Astronomy (Q1 IF: 1.7), August 2024.
+- (J13)
+- Baker-McEvilly, B.
+- , Bhadauria, S.,
+- Canales, D.
+- ; Frueh, C.;
+- A comprehensive review on Cislunar expansion and space domain awareness
+- ; Progress in Aerospace Sciences (Q1 IF: 9.6), July 2024. DOI:10.1016/j.paerosci.2024.101019
+- (J12) McCann, B.;
+- Anderson, A.
+- ; Nazari, M.;
+- Canales, D.
+- Circular Restricted Full Three-Body Problem with Rigid-Body Spacecraft Dynamics in Binary Asteroid Systems
+- ; Celestial Mechanics and Dynamical Astronomy (Q1 IF: 1.7); January 2024; DOI: 10.1007/s10569-024-10180-9
+- 2023
+- (J11)
+- Anderson, A.
+- ; McCann, B.;
+- Canales, D.
+- ; Nazari, M.;
+- Utilizing the Geometric Mechanics Framework to Predict Attitude in a Full Ephemeris Model of the Cislunar Region
+- ; CNSNS; August 2023; DOI: 10.1016/j.cnsns.2023.107726
+- (J10) Richichi, A.; Fors, O.;
+- Canales, D.
+- Patel, K.
+- ; Mendoza, L.; Bevilacqua, R.; Eikenberry, S.; Gomez, J.M.;
+- Lunar Occultation Events From the Earth-Moon Equilateral Lagrangian Point: Simulations and Scientific Potential
+- Monthly Notices of the Royal Astronomical Society; August 2023; DOI: 0.1093/mnras/stad3473
+- (J9)
+- Canales, D.
+- ; Perera, S.; Kurttisi, A.;
+- Baker-McEvilly, B.
+- A Low Complexity Algorithm to Determine Motion in Multi-Body Environments; The Journal of Astronautical Sciences
+- ; October 2023; DOI: 10.1007/s40295-023-00416-5
+- (J8)
+- Canales, D.
+- ; Howell C., K.; Fantino, E.;
+- Gilliam, A.
+- Incorporation of trajectory behaviors in the vicinities of different planetary moons using Finite-Time Lyapunov Exponent Maps
+- ; Journal of Guidance, Control and Dynamics; July 2023; DOI: 10.2514/1.G007195
+- (J7)
+- Patel, K.
+- ; Mendoza, L.;
+- Canales, D.
+- ; Bevilacqua, R.; Eikenberry, S.; Fors, O.; Gomez, J. M.; Richichi, A.;
+- Controlled Short-Period Orbits around Earth-Moon Equilateral Libration Points for Lunar Occultations
+- ; Acta Astronautica; July 2023;  DOI: 10.1016/j.actaastro.2023.07.015
+- (J6) Nazari, M.;
+- Canales, D.
+- ; Mc Cann, B.; Butcher, E.; Howell C., K.;
+- Framework for the Full N-Body Problem in SE(3) and its Reduction to the Circular Restricted Full Three-Body Problem
+- ; Celestial Mechanics and Dynamical Astronomy; June 2023; DOI: 10.1007/s10569-023-10156-1
+- (J5) Salvador-Sole, E.; Manrique, A.;
+- Canales, D.
+- ; Botella, I.;
+- Accurate Analytic Mass-Scale Relations for Dark Matter Haloes of all Masses and Redshifts
+- ; Monthly Notices of the Royal Astronomical Society, February 2023; DOI: 10.48550/arXiv.2303.0332
+- 2022
+- (J4)
+- Canales, D.
+- ; Howell C., K.; Fantino, E.
+- A versatile moon-to-moon transfer design method for applications involving libration point orbits
+- ; Acta Astronautica, June 2022; DOI:10.1016/j.actaastro.2022.06.010
+- Before ERAU
+- (J3)
+- Canales, D.
+- ; Gupta, M.; Park, B.; Howell C., K.;
+- A Transfer Trajectory Framework for the Exploration of Phobos and Deimos Leveraging Resonant Orbits
+- Acta Astronautica, February 2022; DOI:10.1016/j.actaastro.2022.02.001
+- (J2) Salvador-Solé, E.; Manrique, A.;
+- Canales, D.
+- ; Botella, I.;
+- An Accurate Comprehensive Approach to Substructure: III. Masses and Formation Times of the Host Haloes
+- Monthly Notices of the Royal Astronomical Society, February 2022; DOI:10.1093/mnras/stac067
+- (J1)
+- Canales, D.
+- ; Howell C., K.; Fantino, E.;
+- Transfer design between neighborhoods of planetary moons in the circular restricted three-body problem
+- ; Celestial Mechanics and Dynamical Astronomy; Vol. 133, Number 36, July 2021, pp. 36; July 2021; https://doi.org/10.1007/s10569-021-10031-x
+- Conference Papers
+- 2024 AAS/AIAA Astrodynamics Specialist Conference, August 2024, Broomfield, Colorado
+- (C31)
+- E. Martinez-Samaniego
+- , M. Aros, L. Bader,
+- J. Schmitt
+- L. Auerback
+- J. Anderson
+- , K. Cooks,
+- Canales
+- , B. S. Chaparro, D. Guzzetti; (AAS 24-254)
+- A Human-Centric Comparative Analysis of
+- Trajectory Design Methods for Multi-Body Dynamics.
+- (C30)
+- A. Anderson
+- , H. Gunter,
+- D. Canales
+- , M. Nazari; (AAS 24-214)
+- Attitude Prediction in a Near
+- Rectilinear Halo Orbit Using a Full Higher-Fidelity Ephemeris Model.
+- (C29)
+- S. G. Jo
+- , A. Sinha,
+- M. Palomo
+- , J. Graebner,
+- A. Anderson
+- J. Schmitt
+- D. Canales
+- , R. Beeson;
+- (AAS 24-226)
+- Global Analysis of Optimal Trajectories from Earth-Moon 9:2 Near Rectilinear Halo
+- Orbit to Low-Lunar Orbits.
+- (C28)
+- S. G. Jo
+- V. Patel
+- , D. Seo,
+- D. Canales
+- ; (AAS 24-173)
+- Spacecraft Rendezvous and Proximity
+- Operation Control in the Cislunar Region.
+- The 16th International Conference on Advances in Satellite and Space Communications (SPACOMM 2024), May 2024, Barcelona, Spain
+- (C27) Singla, A.;
+- Criscola, F.
+- Canales, D.
+- ; Calveras, A.; Fraire, J. A.; Ruiz-de-Azua, J. A.;
+- Integrating Satellite Constellation and Mobile Operations for Non-Terrestrial Networks: Preliminary Results of Dynamic Scheduling
+- 4th International Conference on Space Situational Awareness, May 2024, Daytona Beach, Florida
+- (C26)
+- Jo, S.
+- Canales, D.
+- Analysis of Non-Linear Orbit Determination in the Cislunar Region using the Linearized State Transition Matrix
+- 2024 SciTech Conference, January 2024, Orlando, Florida
+- (C25)
+- Anderson, J.
+- ; Materne, L.; Cooks, K.; Aros, M.; Huggins, J.;
+- Geliga-Torres, J.
+- Kuykendall, K.
+- Canales, D.
+- ; Chaparro, B.;
+- Immersive Framework for Designing Trajectories Using Augmented Reality
+- (C24)
+- Criscola, F.
+- Hudson, Z.
+- ; Singla, A.; Calveras, A.; Ruiz-de-Azua, J.A.;
+- Canales, D.
+- Enhancing Efficiency and Autonomy in 5G-IoT Satellite Constellation Management
+- (C23)
+- Baker-McEvilly, B.
+- ; Bhadauria Jr., S.; Rose, J.;
+- Canales, D.
+- ; Frueh, C.; Cho, H.;
+- Performance of Observational Spacecraft Across Orbit Families for Space Domain Awareness in the Cislunar Realm
+- (C22)
+- Patel, K.
+- Ramirez, L.
+- Canales, D.
+- ; Rojas, E.;
+- Unmanned Aerial Vehicles Detection Using Acoustics and Quantum Signal Processing
+- 74th International Astronautical Congress (IAC), October 2023, Baku, Azerbaijan
+- (C21) Canales, D.; Fantino, E.; Howell, K.; Flores, R.;
+- Design of Optimal Spatial Low-Energy Trajectories to Near-Earth Objects
+- 2023 AAS/AIAA Astrodynamics Specialist Meeting, August 2023, Big Sky, Montana
+- (C20) Zambrano, L.;
+- Criscola, F.
+- Canales D.
+- ; Bevilacqua, R.; Eikenberry, S.; Fors, O.;  Gómez Cama, J.; Richichi, A.; (Preprint)
+- AAS 23-334 Feedback Control Methods on Short-Period Orbits of the Earth-Moon Equilateral Libration Points
+- (C19) McCann, B.;
+- Anderson, A.
+- ; Nazari, M.;
+- Canales, D.
+- ; (Preprint)
+- AAS 23-315 Local Stability of Equilibria in the Circular-Restricted Full Three Body Problem
+- (C18) McCann, B.;
+- Anderson, A.
+- ; Nazari, M.;
+- Canales, D.
+- ; Beeson, R.; (Preprint)
+- AAS 23-318 On-Manifold Pose Optimization on SE(3) for Spacecraft Coverage Maximization
+- (C17)
+- Criscola, F.
+- Hudson, Z.
+- Canales, D.
+- ; Mortari, D.;
+- Solution of the Perturbed Lambert's Problem Using the Theory of Functional Connections
+- 33rd AAS/AIAA Spaceflight Mechanics Meeting, January 2023, Austin, Texas
+- (C16)
+- Doroba, S.
+- ; Kale, R.;
+- Canales, D.
+- ; Cho, H.; Eikenberry, S.; Fors, O.; Gomez, J. M.; Richichi, A.;
+- Leveraging the Moon and Stable Libration Point Orbits Around L4/L5 to Observe the Solar Corona
+- (C15) McCann, B.;
+- Anderson, A.
+- ; Nazari, M.;
+- Canales, D.
+- Rigid-Body Spacecraft Dynamics Analysis in a Binary System Using Formulation in Lie Groups
+- (C14)
+- Anderson, A.
+- ; McCann, B.;
+- Canales, D.
+- ; Nazari, M.;
+- Orbit and Attitude Coupling in the Full Higher-Fidelity Ephemeris Model within the Context of the Geometric Mechanics Framework
+- (C13)
+- Anderson, J.
+- Anderson, A.
+- ; Zuehlke, D.;
+- Canales, D.
+- ; Lovell, T.;
+- Resident Space Object Identification in Arbitrary Unresolved Space Images
+- (C12)
+- Baker-McEvilly, B.
+- Doroba, S.
+- Gilliam, A.
+- Criscola, F.
+- Canales, D.
+- ; Frueh, C.; and Henderson, T.;
+- A Review on Hot-spot Areas within the Cislunar Region and upon the Moon Surface, and Methods to Gather Passive Information from these Regions
+- (C11)
+- Canales, D.
+- ; Perera, S.; Kurttis, A.;
+- Baker-McEvilly, B.
+- ; Henderson, T.;
+- A Low-Complexity Algorithm to Determine Motion in the Circular Restricted Three-body Problem
+- (C10) Mortari, D.;
+- Criscola, F.
+- Canales, D.
+- Perturbed Lambert Problem Using the Theory of Functional Connections
+- (C9)
+- Criscola, F.
+- ; Singla, A.; Ponce, E.; Calveras, A.; Ruiz-de-Azua, J.;
+- Canales, D.
+- Development of a Simulator for Coverage Planning of a 6G/IoT Constellation
+- (C8) Singla, A.;
+- Criscola, F.
+- ; Ponce, E.;
+- Canales, D.
+- ; Calveras, A.; Ruiz-de-Azua, J.;
+- Towards 6G Non-Terrestrial Networks - An Autonomous Constellation Management Engine
+- 2022 AAS/AIAA Astrodynamics Specialist Conference, August 2022, Charlotte, North Carolina
+- (C7) Nazari, M.;
+- Canales, D.
+- ; McCann, B.; Butcher, E. A.; Howell C., K.;
+- Full N-Body Problem in the Geometric Mechanics Framework and its Reduction to Circular Restricted Three-Body Problem
+- (C6) Malik, A.;
+- Canales, D.
+- ; Yow, T.; Posada, D.; Hays, C., W.; Zuehlke, D.; Henderson, T.;
+- Computation of Relative Orbital Motion Using Product of Exponentials Mapping
+- Before ERAU
+- (C5)
+- Canales, D.
+- ; Howell C., K.; Fantino, E.
+- Leveraging Finite Time Lyapunov Exponent Maps to Design Tours Incorporating Three Moons
+- ASCEND 2021, Las Vegas; November 2021
+- (C4)
+- Canales, D.
+- ; Howell C., K.;
+- Fantino, E.;
+- Using Finite-Time Lyapunov Exponent Maps for Planetary Moon-Tour Design
+- AAS/AIAA Astrodynamics Specialist Conference, Big Sky, Montana; August 2021
+- (C3)
+- Canales, D.
+- ; Gupta, M.; Park, B.; Howell C., K.;
+- Exploration of Deimos and Phobos leveraging Resonant Orbits
+- 31st AAS/AIAA Spaceflight Mechanics Meeting, Charlotte, North Carolina; February 2021
+- (C2)
+- Canales, D.
+- ; Howell C., K.;
+- Fantino, E.;
+- Moon-to-Moon Transfer Methodology for Multi-Moon Systems in the Coupled Spatial Circular Restricted Three-Body Problem
+- AIAA Astrodynamics Specialist Conference; Lake Tahoe, California; August 2020
+- (C1) Salvador-Solé, E.; Manrique, A;
+- Canales, D.
+- Galaxy Formation and Reionization
+- ; Frontier Research in Astrophysics; 2018
+-  AIAA Space Systems Technical Committee
+- AIAA Astrodynamics Technical Committee

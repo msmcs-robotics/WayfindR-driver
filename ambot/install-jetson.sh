@@ -11,6 +11,7 @@
 #   sudo ./install-jetson.sh --docker     # Docker only
 #   sudo ./install-jetson.sh --ollama     # Ollama only
 #   sudo ./install-jetson.sh --pip        # Python pip only
+#   sudo ./install-jetson.sh --gpio       # GPIO/motor control deps only
 #   sudo ./install-jetson.sh --model      # Pull LLM model only
 #   sudo ./install-jetson.sh --rag        # Start RAG Docker stack only
 #   sudo ./install-jetson.sh --cuda       # CUDA verification & PATH fix
@@ -154,6 +155,64 @@ install_pip() {
         result_fail "pip"
         return 1
     fi
+}
+
+# =============================================================================
+# GPIO / Motor Control Dependencies
+# =============================================================================
+install_gpio() {
+    log_step "Installing GPIO / Motor Control Dependencies"
+
+    # --- apt packages: python3-libgpiod, libgpiod-dev ---
+    local apt_needed=()
+    if dpkg -l python3-libgpiod &>/dev/null; then
+        log_info "python3-libgpiod already installed"
+    else
+        apt_needed+=("python3-libgpiod")
+    fi
+
+    if dpkg -l libgpiod-dev &>/dev/null; then
+        log_info "libgpiod-dev already installed"
+    else
+        apt_needed+=("libgpiod-dev")
+    fi
+
+    if [ ${#apt_needed[@]} -gt 0 ]; then
+        log_info "Installing apt packages: ${apt_needed[*]}..."
+        apt-get update -qq
+        apt-get install -y "${apt_needed[@]}"
+        log_success "Installed: ${apt_needed[*]}"
+    else
+        log_info "All GPIO apt packages already present"
+    fi
+
+    # --- pip: Jetson.GPIO ---
+    if python3 -c "import Jetson.GPIO" &>/dev/null; then
+        log_info "Jetson.GPIO already installed"
+    else
+        log_info "Installing Jetson.GPIO via pip3..."
+        pip3 install Jetson.GPIO
+        if python3 -c "import Jetson.GPIO" &>/dev/null; then
+            log_success "Jetson.GPIO installed"
+        else
+            log_fail "Jetson.GPIO installation failed"
+            result_fail "GPIO (Jetson.GPIO pip install failed)"
+            return 1
+        fi
+    fi
+
+    # --- gpio group membership ---
+    REAL_USER="${SUDO_USER:-$USER}"
+    if groups "$REAL_USER" 2>/dev/null | grep -qw gpio; then
+        log_info "User $REAL_USER already in gpio group"
+    else
+        usermod -aG gpio "$REAL_USER"
+        log_warn "Added $REAL_USER to gpio group"
+        log_warn "IMPORTANT: You must log out and back in (or run 'newgrp gpio') for this to take effect!"
+    fi
+
+    log_success "GPIO / motor control dependencies ready"
+    result_ok "GPIO (libgpiod + Jetson.GPIO)"
 }
 
 # =============================================================================
@@ -453,6 +512,7 @@ main() {
     local do_model=false
     local do_rag=false
     local do_cuda=false
+    local do_gpio=false
 
     for arg in "$@"; do
         case $arg in
@@ -460,6 +520,7 @@ main() {
             --inventory) do_inventory=true; do_all=false ;;
             --docker)    do_docker=true; do_all=false ;;
             --pip)       do_pip=true; do_all=false ;;
+            --gpio)      do_gpio=true; do_all=false ;;
             --ollama)    do_ollama=true; do_all=false ;;
             --model)     do_model=true; do_all=false ;;
             --rag)       do_rag=true; do_all=false ;;
@@ -472,6 +533,7 @@ main() {
                 echo "  --inventory  Detailed system inventory"
                 echo "  --docker     Verify/install Docker"
                 echo "  --pip        Install Python pip"
+                echo "  --gpio       Install GPIO/motor control dependencies"
                 echo "  --ollama     Install Ollama LLM server"
                 echo "  --model      Pull LLM model (default: llama3.2:3b)"
                 echo "  --rag        Start RAG Docker stack"
@@ -507,6 +569,10 @@ main() {
     # Full install or selective
     if [ "$do_all" = true ] || [ "$do_pip" = true ]; then
         install_pip
+    fi
+
+    if [ "$do_all" = true ] || [ "$do_gpio" = true ]; then
+        install_gpio
     fi
 
     if [ "$do_all" = true ] || [ "$do_docker" = true ]; then

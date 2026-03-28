@@ -1,0 +1,433 @@
+# Lulu Sun
+
+**Department:** Engineering Fundamentals
+**Email:** Lulu.Sun@erau.edu
+**Profile:** https://faculty.erau.edu/Lulu.Sun
+
+## Education
+
+- Ph.D. - Doctor of Philosophy in Mechanical Engineering,
+
+## Areas of Expertise
+
+- Gamified learning
+- Flipped classroom
+- Entrepreneurial mindset
+- The views expressed on faculty and external web pages are those of the author and do not necessarily represent those of Embry-Riddle Aeronautical University.
+- Applying Second Language Acquisition to Facilitate a Blended Learning of Programming Languages
+- ERAU Scholarly Commons
+- FAA project: Virtual Training Delivery
+- National Training Aircraft Symposium Tackles Pilot Shortage and Critical Aviation Industry Issues
+- Applying Second Language Acquisition to Facilitate a Blended Learning of Programming Languages
+- Board 385
+- (Lulu Sun)
+- Pure Portfolio
+- (2024)
+- Comparing Weekly Reflection Surveys and a Midterm Survey: Insights on Formative Feedback in Graphical Communication Education
+- (Lulu Sun, Chad Rohrbacher)
+- (2023)
+- Comparing Weekly Reflection Surveys and a Midterm Survey: Insights on Formative Feedback in Graphical Communication Education
+- (Lulu Sun)
+- Pure Portfolio
+- (2023)
+- What do we learn from formative feedback? A comparison of weekly reflection surveys to a midterm survey in a graphical communication course
+- (Lulu Sun)
+- Pure Portfolio
+- (2023)
+- Vision and Olfactory-Based Wildfire Monitoring with Uncrewed Aircraft Systems
+- (Kevin A. Adkins, Lulu Sun)
+- Pure Portfolio
+- (2023)
+- Student Reflections Encourage Self-Regulated Learning and Faculty Just-In-Time Teaching
+- (Lulu Sun)
+- Pure Portfolio
+- (2022)
+- Development of a Laboratory Platform for UAV Cybersecurity Education
+- (Lulu Sun)
+- Pure Portfolio
+- (2021)
+- Work in Progress
+- (Lulu Sun)
+- Pure Portfolio
+- (2021)
+- Enhancing learning of engineering graphics through gamification
+- (Lulu Sun)
+- Pure Portfolio
+- (2020)
+- Instilling an Entrepreneurial Mindset in a New Generation of  First-Year Engineering Students Through a Graphics Course Project
+- (Lulu Sun, Leroy Long III)
+- (2019)
+- Instilling an Entrepreneurial Mindset in a New Generation of First-Year Engineering Students Through a Graphics Course Project
+- (Lulu Sun)
+- Pure Portfolio
+- (2019)
+- Sustainable design
+- (Lulu Sun)
+- Pure Portfolio
+- (2018)
+- Session 1:  Virtual Reality/Augmented Reality/Mixed Reality in Aviation Training
+- (Michael E. Wiggins Ed.D., Michael Wiggins, Lori Brown FRAeS, Lori Brown, Lulu Sun Ph.D., Lulu Sun, Stephanie G. Fussell)
+- National Training Aircraft Symposium (NTAS)
+- (2018)
+- Exploring the Best Practices of Virtual Training Delivery for the Prospective Air Traffic Controllers
+- (Lulu Sun, Mark Marchese, Arnie Selnick, Gregory McGuirk, Haley Dennis)
+- National Training Aircraft Symposium (NTAS)
+- (2018)
+- Exploring the Best Practices of Virtual Training Delivery for the Prospective Air Traffic Controllers
+- (Lulu Sun)
+- Pure Portfolio
+- (2018)
+- Motivating students to learn a programming language
+- (Lulu Sun, Christina Frederick)
+- Pure Portfolio
+- (2018)
+- Motivating Students to Learn a Programming Language: Applying a Second Language Acquisition Approach in a Blended Learning Environment
+- (Lulu Sun, Christina Frederick, Caroline Liron, Li Ding, Lei Gu, Andrew Calvin Griggs II, Paula Sanjuan Espejo)
+- (2018)
+- Motivating Students to Learn a Programming Language: Applying a Second Language Acquisition Approach in a Blended Learning Environment
+- (Lulu Sun, Christina Frederick)
+- Pure Portfolio
+- (2018)
+- T1-F: Motivating Student's Programming Language Study by Applying Second Language Acquisition
+- (Lei Gu, Lulu Sun)
+- ASEE Southeastern Section Conference
+- (2018)
+- Welcome A: Site Coordinator’s Welcome & Acknowledgements
+- (Lulu Sun)
+- ASEE Southeastern Section Conference
+- (2018)
+- Welcome C from Lulu Sun
+- (Lulu Sun)
+- ASEE Southeastern Section Conference
+- (2018)
+- Workshop 4:  Get Rid of Your Students’ Fear and Intimidation of Learning a Programming Language By Applying Second Language Acquisition in a Blended Learning Environment
+- (Lulu Sun, Christina Frederick, Christina M. Frederick, Caroline Liron, Li Ding, Lei Gu)
+- ASEE Southeastern Section Conference
+- (2018)
+- Workshop 4: Get Rid of Your Students’ Fear and Intimidation of Learning a Programming Language By Applying Second Language Acquisition in a Blended Learning Environment
+- (Lulu Sun, Christina Frederick)
+- Pure Portfolio
+- (2018)
+- Entrepreneurial Mindset: Integrating Creative Thinking and Innovation into a Graphical Communications Course
+- (L. L. Long, Leroy Long III, L. Sun, Lulu Sun)
+- ASEE EDGD Midyear Conference
+- (2018)
+- Entrepreneurial Mindset: Integrating Creative Thinking and Innovation into a Graphical Communications Course
+- (Lulu Sun)
+- Pure Portfolio
+- (2018)
+- Lulu Sun
+- (Lulu Sun)
+- ASEE SE Bios
+- (2018)
+- Entrepreneurial Mindset: Integrating Creative Thinking and Innovation into a Graphical Communications Course
+- (Leroy Long III, Lulu Sun)
+- (2018)
+- Entrepreneurial Mindset: Integrating Creative Thinking and Innovation into a Graphical Communications Course
+- (Lulu Sun)
+- Pure Portfolio
+- (2018)
+- Evaluating Student Perceptions and Learning Outcomes: Differences Between SLA-aBLe and Non-SLA-aBLe Introductory Programming Courses
+- (Christina M. Frederick, Matthew B. Pierce, Matt B. Pierce, Andrew Griggs, Lulu Sun)
+- (2017)
+- Evaluating Student Perceptions and Learning Outcomes: Differences Between SLA-aBLe and Non-SLA-aBLe Introductory Programming Courses
+- (Christina Frederick, Lulu Sun)
+- Pure Portfolio
+- (2017)
+- Get rid of your students' fear and intimidation of learning a programming language
+- (Christina Frederick, Lulu Sun)
+- Pure Portfolio
+- (2017)
+- Work in progress
+- (Christina Frederick, Lulu Sun)
+- Pure Portfolio
+- (2017)
+- The application of second language acquisition to programming language study
+- (Lulu Sun, Christina Frederick)
+- Pure Portfolio
+- (2017)
+- Work in Progress: Using Second Language Acquisition Techniques to Teach Programming - Results from a Two-Year Project
+- (Christina Frederick, Lulu Sun)
+- (2017)
+- The Application of Second Language Acquisition to Programming Language Study
+- (Lulu Sun, Christina Frederick, Li Ding, Rebecca Rohmeyer)
+- (2017)
+- Get Rid of Your Student's Fear and Intimidation of learning a Programming Language
+- (Christina Frederick, Matt B. Pierce, Andrew Calvin Griggs, Lulu Sun, Li Ding)
+- (2017)
+- A Human Factors Perspective on Learning Programming Languages using a Second Language Acquisition Approach
+- (Rebecca Rohmeyer, Paula Sanjuan Espejo, Lulu Sun, Christina Frederick)
+- (2017)
+- Get Rid of Your Student's Fear and Intimidation of learning a Programming Language
+- (Christina Frederick, Lulu Sun)
+- Pure Portfolio
+- (2017)
+- Fire Spread in Chaparral: Comparison of Data with Flame-Mass Loss Relationships
+- (Lulu Sun)
+- Pure Portfolio
+- (2017)
+- Evaluating Student Perceptions and Learning Outcomes: Differences Between SLA-aBLe and Non-SLAaBLe Introductory Programming Courses
+- (Lulu Sun, Christina Frederick)
+- Pure Portfolio
+- (2017)
+- Teaching Programming Language as a Second Language
+- (Lulu Sun, Christina Frederick)
+- Pure Portfolio
+- (2017)
+- The Application of Second Language Acquisition to Programming Language Study
+- (Lulu Sun, Christina Frederick)
+- Pure Portfolio
+- (2017)
+- A Human Factors Perspective on Learning Programming Languages using a Second Language Acquisition Approach
+- (Lulu Sun, Christina Frederick)
+- Pure Portfolio
+- (2017)
+- Can we teach a programming language as a second language?
+- (Lulu Sun, Christina Frederick)
+- Pure Portfolio
+- (2016)
+- Can We Teach a Programming Language as a Second Language?
+- (Lulu Sun, Christina Frederick, Christina M. Frederick, Paula Sanjuan Espejo, Rachel Cunningham)
+- (2016)
+- Can We Teach a Programming Language as a Second Language?
+- (Lulu Sun, Christina Frederick)
+- Pure Portfolio
+- (2016)
+- A Pilot Study of Flipped Classroom Design in Engineering Courses
+- (Sun, Lulu, Ph.D., Chen, Hongyun, Ph.D,, Pang, Shuo, Ph.D.)
+- CTLE - Innovations in Teaching and Learning Week
+- (2016)
+- A Second Language Acquisition Approach to Learning Programming Languages
+- (Rachel Cunningham, Paula Sanjuan Espejo, Christina Frederick, Christina M. Frederick, Lulu Sun, Li Ding)
+- (2016)
+- A Pilot Study of Flipped Classroom Design in Engineering Courses
+- (Lulu Sun Ph.D., Lulu Sun, Hongyun Chen Ph.D,, Shuo Pang Ph.D.)
+- Innovations in Teaching and Learning Week
+- (2016)
+- A Second Language Acquisition Approach to Learning Programming Languages
+- (Christina Frederick, Lulu Sun)
+- Pure Portfolio
+- (2016)
+- Flipping the Classroom to Engage Students in a Graphical Communications Course
+- (Lulu Sun)
+- ASEE EDGD Midyear Conference
+- (2016)
+- Students' Perception of the Flipped Classroom in Graphical Communications
+- (Lulu Sun)
+- (2016)
+- Implementation and Evaluation of a Second Language Acquisition-Based Programming Course
+- (Christina Frederick, Christina M. Frederick, Lulu Sun, Caroline Liron, Matthew A. Verleger, Matthew Verleger, Rachel Cunningham, Paula S. Espejo)
+- (2016)
+- Students' Perception of the Flipped Classroom in Graphical Communications
+- (Lulu Sun)
+- Pure Portfolio
+- (2016)
+- Flipping the Classroom to Engage Students in a Graphical Communications Course
+- (Lulu Sun)
+- Pure Portfolio
+- (2016)
+- Can we teach a programming language as a second language?
+- (Lulu Sun, Christina Frederick)
+- Pure Portfolio
+- (2016)
+- Implementation and Evaluation of a Second Language Acquisition-Based Programming Course
+- (Christina Frederick, Lulu Sun, Matthew Verleger)
+- Pure Portfolio
+- (2016)
+- Work-in-Progress: Enhancing Conceptual Understanding by Using a Real-Time Online Class Response System in Engineering Courses
+- (Lulu Sun, Yan Tang)
+- (2015)
+- Applying Second Language Acquisition to Facilitate a Blended Learning of Programming Languages
+- (Lulu Sun, Christina Frederick, Christina M. Frederick)
+- (2015)
+- Applying Second Language Acquisition to Facilitate a Blended Learning of Programming Languages
+- (Lulu Sun, Christina Frederick)
+- Pure Portfolio
+- (2015)
+- Work-in-Progress: Enhancing Conceptual Understanding by Using a Real-Time Online Class Response System in Engineering Courses
+- (Lulu Sun)
+- Pure Portfolio
+- (2015)
+- The Use of a Real Time Online Class Response System to Enhance Classroom Learning
+- (Lulu Sun)
+- (2014)
+- The Use of a Real Time Online Class Response System to Enhance Classroom Learning
+- (Lulu Sun)
+- Pure Portfolio
+- (2014)
+- Incorporating Active Learning into the Graphical Communications Course
+- (Lulu Sun)
+- (2014)
+- Supplemental Multimedia Online Learning Tool (SMOLT) in Engineering Education
+- (Lulu Sun, Cassandra Gribbins, Ian T. Ferguson)
+- (2014)
+- Incorporating Active Learning into the Graphical Communications Course
+- (Lulu Sun)
+- Pure Portfolio
+- (2014)
+- Book Review: Supplemental Multimedia Online Learning Tool (SMOLT) in Engineering Education
+- (Lulu Sun)
+- Pure Portfolio
+- (2014)
+- Using Multimedia Online Learning Tools to Supplement the Classroom Instruction
+- (Cassandra Gribbins, Lulu Sun)
+- (2014)
+- Using Multimedia Online Learning Tools to Supplement the Classroom Instruction
+- (Lulu Sun)
+- Pure Portfolio
+- (2014)
+- Inquiry-Guided Learning (IGL) in Graphical Communications Course
+- (Lulu Sun, Christopher Grant)
+- (2013)
+- Inquiry-Guided Learning (IGL) in Graphical Communications Course
+- (Lulu Sun)
+- Pure Portfolio
+- (2013)
+- Hybrid Course Design: Leading a New Direction in Learning Programming Languages
+- (Lulu Sun, Matthew Kindy, Caroline Cecile Marcelle Liron, Caroline Liron, Christopher Grant, Shirley Waterhouse)
+- (2012)
+- Hybrid Course Design: Leading a New Direction in Learning Programming Languages
+- (Lulu Sun)
+- Pure Portfolio
+- (2012)
+- Teaching Higher on Bloom's Taxonomy: Experience in Introduction to Graphical Communications Course
+- (Lulu Sun, Christopher Grant)
+- (2012)
+- Teaching Higher on Bloom's Taxonomy: Experience in Introduction to Graphical Communications Course
+- (Lulu Sun)
+- Pure Portfolio
+- (2012)
+- Open-Ended Project Learning Experience in Graphical Communication
+- (Lulu Sun, Christopher Grant)
+- (2012)
+- Hybrid course design
+- (Lulu Sun)
+- Pure Portfolio
+- (2012)
+- Open-Ended Project Learning Experience in Graphical Communication
+- (Lulu Sun)
+- Pure Portfolio
+- (2012)
+- The Path of Innovation: from Traditional Classroom to Hybrid Experience
+- (Lulu Sun, Matthew Kindy, Caroline Liron)
+- (2011)
+- The Path of Innovation: from Traditional Classroom to Hybrid Experience
+- (Lulu Sun)
+- Pure Portfolio
+- (2011)
+- Numerical Simulation of Marina Storage Fires Using Measured Composite Fire and Thermal Properties
+- (Lulu Sun, Aixi Zhou, Andrew Valente)
+- (2010)
+- Numerical Simulation of Marina Storage Fires Using Measured Composite Fire and Thermal Properties
+- (Lulu Sun)
+- Pure Portfolio
+- (2010)
+- Experimental Investigation of the Velocity Field in Buoyant Diffusion Flames Using PIV and TPIV Algorithm
+- (Lulu Sun, Xiangyang Zhou, Shankar Mahalingam, David R. Weise)
+- (2006)
+- Experimental Investigation of the Velocity Field in Buoyant Diffusion Flames Using PIV and TPIV Algorithm
+- (Lulu Sun)
+- Pure Portfolio
+- (2006)
+- Numerical Simulation of Live Chaparral Fire Behavior Using FIRETEC
+- (Lulu Sun, Xiangyang Zhou, Shankar Mahalingam, Jesse Canfield, Rodman Linn)
+- (2005)
+- Numerical Simulation of Live Chaparral Fire Behavior Using FIRETEC
+- (Lulu Sun)
+- Pure Portfolio
+- (2005)
+- Fire Behavior of Some Southern California Live Chaparral Fuels
+- (Lulu Sun, Xiangyang Zhou, Shankar Mahalingam, David R. Weise)
+- (2003)
+- Fire Behavior of Some Southern California Live Chaparral Fuels
+- (Lulu Sun)
+- Pure Portfolio
+- (2003)
+- IR-Based Estimation of Velocities Above Flames Spreading over Different Fuels
+- (Lulu Sun, Xiangyang Zhou, David R. Weise, Shankar Mahalingam)
+- (2002)
+- IR-Based Estimation of Velocities Above Flames Spreading over Different Fuels
+- (Lulu Sun)
+- Pure Portfolio
+- (2002)
+- Journal Articles
+- 1. Weise, D., Fletcher, T., Cole W., Mahalingam S., Zhou, X., Sun, L., Li, J., “Fire behavior in chaparral - evaluating flame models with laboratory data”, Combustion and Flame, Vol 191, pp. 500-512, 2018
+- 2. Sun, L., “Sustainable Design: Integrate the Creative Thinking and Innovation into Graphical Communications”, Engineering Design Graphics Journal, (Accepted)
+- 3. Sun, L., Frederick, C., Espejo, P. S., & Cunningham, R. M., “Can We Teach a Programming Language as a Second Language?”, Computer in Education Journal, Vol 7., No. 3, pp105, 2016
+- 4. Sun, L., Kindy, M., Liron, C., “A Prototype Hybrid Design to Introduction to Computing for Engineers Course,” International Journal of Electronics, Computing and Engineering Education, Vol.2 No.2, pp.39-43, 2011
+- 5. Sun, L., Zhou, X., Mahalingam, S., and Weise, D., "Comparison of burning characteristics of live and dead chaparral fuels”," Combustion and Flame, 144, pp. 349-359, 2006
+- 6. Weise, D., Zhou, X., Sun, L., and Mahalingam, S., "Fire Spread in Chaparral – ‘Go or No-Go’," International Journal of Wildland Fire, 14, pp. 99-106, 2005
+- 7. Zhou, X., Sun, L., Weise, D., and S. Mahalingam, "Thermal particle image velocity estimation for fire plume flow," Combustion Science and Technology, 175 (7), pp. 1293-1316, 2003
+- Conference Articles
+- 1. Long, L.L. III & Sun, L., “Entrepreneurial Mindset: Integrating Creative Thinking and Innovation into a Graphical Communications Course”, ASEE Engineering Design Graphics Division – 72nd Midyear Conference, Jamaica, January 4-7, 2018.
+- 2. Weise, D., Fletcher, T., Mahalingam S., Zhou X., and Sun, L., “Fire Spread in Chaparral: Comparison of Data with Flame-Mass Loss Relationships”, Eighth International Symposium on Scale Modeling (ISSM-8) Portland, Oregon, USA, Sept 12-14, 2017.
+- 3. Frederick, C., Pierce, M., Griggs, A., Sun, L., & Ding, L. “Get Rid of Your Student's Fear and Intimidation of learning a Programming Language”, the 9th First Year Engineering Experience (FYEE) Conference, Daytona Beach, FL, August 6-8, 2017.
+- 4. Pierece, M., Griggs, A., Sun, L., Frederick, C. “Evaluating Student Perceptions and Learning Outcomes: Differences Between SLA-aBLe and Non-SLA-aBLe Introductory Programming Courses”, ISERD -211th International Conference on Recent Innovations in Engineering and Technology (ICRIET), Osaka, Japan, July 8-9, 2017.
+- 5. Sun, L., & Frederick, C. “Teaching Programming Language as a Second Language”, 7th International Conference on Engineering and Applied Sciences, July 4-6, 2017, Hong Kong.
+- 6. Frederick, C., Sun, L., “Work in Progress: Using Second Language Acquisition Techniques to Teach Programming - Results from a Two-Year Project”, ASEE Annual Conference, Columbus, OH, June 24-28, 2017.
+- 7. Sun, L., Frederick, C., Ding, L., & Rohmeyer, R. “The Application of Second Language Acquisition to Programming Language Study”, ASEE Annual Conference, Columbus, OH, June 24-28, 2017.
+- 8. Sun, L., “Students’ Perception of the Flipped Classroom in Graphical Communications”, ASEE Engineering Design Graphics Division – 71st Midyear Conference, Nashua, NH, October 16-18, 2016.
+- 9. Sun, L., Frederick, C., Espejo, P. S., & Cunningham, R. M., “Can We Teach a Programming Language as a Second Language?”, ASEE Annual Conference, New Orleans, LA, June 26-29, 2016.
+- 10. Frederick, C., Sun, L., Liron, C., Verleger, M. Cunningham, R.M., & Espejo, P. S., “Implementation and Evaluation of a Second Language Acquisition – Based Programming Course”, ASEE Annual Conference, New Orleans, LA, June 26-29, 2016.
+- 11. Cunningham, R. Sanjuan E. P., Frederick, C., Sun, L. & Ding, L. “A Second Language Acquisition Approach to Learning Programming Languages”, ASEE SE Section Annual Conference, Tuscaloosa, AL, March 13-15, 2016.
+- 12. Sun, L. “Flipping the Classroom to Engage Students in a Graphical Communications Course”, ASEE Engineering Design Graphics Division – 70th Midyear Conference, Daytona Beach, FL, January 24-26, 2016.
+- 13. Sun, L. Frederick, Tina. “Applying Second Language Acquisition to Facilitate a Blended Learning of Programming Languages”, ASEE Annual Conference, Seattle, WA, June 14-17, 2015.
+- 14. Sun, L., Tang, Yan. “Work-in-Progress: Enhancing Conceptual Understanding by Using a Real-time Online Class Response System in Engineering Courses,” ASEE Annual Conference, Seattle, WA, June 14-17, 2015.
+- 15. Sun, L., “The Use of a Real Time Online Class Response System to Enhance Classroom Learning,” ASEE Engineering Design Graphics Division – 69th Midyear Conference, Normal, IL, October 12-14, 2014. (2013-2014 Media Showcase Award)
+- 16. Sun, L., Gribbins, S. C., Setzer, S., and Ferguson, I., “Supplemental Multimedia Online Learning Tool (SMOLT) in Engineering Education,” ASEE Section Annual Conference, Macon, GA, March 30-April 1, 2014.
+- 17. Sun, L., “Incorporating Active Learning into the Graphical Communications Course,” ASEE Annual Conference, Indianapolis, Indiana, June 15 - 18, 2014.
+- 18. Gribbins, S. C., Sun, L., “Supplemental Multimedia Online Learning Tools (SMOLT) in Graphical Communications Course,” ASEE Section Annual Conference, Macon, GA, March 30-April 1, 2014.
+- 19. Sun, L., Steinhauer, Heidi., “Using Multimedia Online Learning Tools to Supplement the Classroom Instruction,” ASEE Engineering Design Graphics Division - 68th Midyear Conference, Worcester, MA, October 20-22, 2013 (2013-2014 Media Showcase Award)
+- 20. Sun, L., Grant, C., “Inquiry-Guided Learning (IGL) in Graphical Communications Course,” ASEE Annual Conference, Atlanta, GA, June 23-26, 2013 (2013 The Chair’s Award)
+- 21. Sun, L., Kindy, M., Liron, C., “Hybrid Course Design: Leading a New Direction in Learning Programming Languages,” ASEE Annual Conference, San Antonio, TX, June 10-13, 2012
+- 22. Sun, L., Grant, C., “Teaching Higher on Bloom’s Taxonomy: Experience in Introduction to Graphical Communication Course,” ASEE SE Section Annual Conference, Starkville, MS, April 1-3, 2012
+- 23. Sun, L., Grant, C., “Open-ended Project Learning Experience in Graphical Communication,” 66th Annual Mid-Year Technical Conference, Galveston, TX, January 21-24, 2012
+- 24. Sun, L., Kindy, M., Liron, C., “The Path of Innovation: from Traditional Classroom to Hybrid Experience,” ASEE SE Section Annual Conference, Charleston, SC, April 10-12, 2011
+- 25. Sun, L., Zhou, A., Valente, A., “Numerical Simulation of Marina Storage Fires Using Measured Composite Fire and Thermal Properties,” SAMPE Fall Technical Conference 2010, Salt Lake City, UT, October 11-14, 2010
+- 26. Sun, L., Zhou, A., Valente, A., “Marina Storage Fire Modeling Using Measured Composite Fire and Thermal Properties,” SFPE 2010 Annual Meeting: Professional Development Conference and Exposition, New Orleans, LA, October 3-8, 2010
+- 27. Weise, D. R., Fletcher,T, Smith, S., Mahalingam, S., Zhou, X. and Sun, L., “Correlation of mass loss rate and flame height for live fuels,” 10th Biennial Australasian Bushfire Conference 2006, Brisbane, Australia, June 6-9, 2006
+- 28. Sun, L., Zhou, X, Mahalingam.S, and Weise, D. R. “Experimental Investigation of the Velocity Field in Buoyant Diffusion Flames Using PIV and TPIV Algorithm,” 8th International Symposium on Fire Safety Science, Beijing, China September 18-23, 2005
+- 29. Sun, L., Zhou, X, Mahalingam.S, Canfield, J. and Linn, R. “Numerical simulation of live chaparral fire behavior using FIRETEC,” 4th Joint Meeting of the U.S. Sections of the Combustion Institute, Philadelphia, PA, March 20-23, 2005
+- 30. Sun, L., Zhou, X., Mahalingam, S. and Weise, D. R. “Fire Behavior of Some Southern California Live Chaparral Fuels,” 3rd Joint Meeting of the U.S. Sections of The Combustion Institute, Chicago, Illinois, March 16-19, 2003
+- 31. Sun, L., Zhou, X, Mahalingam.S, and Weise, D. R. “Experimental Study on Fire Behavior of Live Chparral Fuel,” 5th Symposium on Fire and Forest Meteorology Joint With 2nd International Wildland Fire Ecology and Fire Management Congress, Orlando, Florida, November 16-20, 2003
+- 32. Sun, L., Zhou, X, Weise, D. R. and Mahalingam.S, “IR-Based Estimation of Velocities Above Flames Spreading over Different Fuels,” Spring WSS/CI meeting of The Combustion Institute, San Diego, CA, March 25-26, 2002
+- Poster Presentation
+- 33. Sun, L. “Best Practices and Methods of Virtual Training Delivery for Air Traffic Controllers”, FAA Quarterly meeting, Philadelphia, PA, 2018
+- 34. Sun, L. “Can we motivate students’ programming language learning by applying second language acquisition in a blended learning environment?”, poster presented at NSF EEC grantees conference, Arlington, VA, October 29-31, 2017.
+- 35. Sun, L. “Best Practices and Methods for Virtual Training Delivery”, poster presented at the Center of Excellence for Technical Training and Human Performance Year 1 Meeting 4 in Washington, D.C. on June 13-15, 2017.
+- 36. Sun, L. Chen, H., and Pang, S., “A Pilot Study of Flipped Classroom Design in Engineering Courses”, CTLE Innovations in Teaching and Learning Week, 2016
+- 37. Sun, L. “Enhancing Conceptual Understanding by Using a Real-time Online Class Response System in Engineering Courses”, CTLE Innovations in Teaching and Learning Week, 2015
+- 38. Sun, L. “Inquiry-Guided Learning (IGL) in Graphical Communications Course”, CTLE Poster Sessions, 2013
+- Invited Talks
+- 39. “Interactive Lectures with Poll Everywhere”, CTLE workshop, 2014
+- 40. “NSF STEM Education Grant Writing workshop”, CTLE workshop, 2014
+- 41. “Inquiry-Guided Learning (IGL) in Graphical Communications Course”, CTLE workshop, 2014
+- 42. “3D CAD Software-CATIA for Engineering Design”, Invited talk at Harbin Engineering University, 2013
+- 43. “Experimental and Theoretical Investigation of Fire Behavior in Live Fuels”, University of Science and Technology of China, Hefei, Anhui, China, May, 2007
+- 44. “Experimental and Theoretical Investigation of Fire Behavior in Live Fuels”, Heilongjiang Forest Research Institute, Harbin, Heilongjiang, China, July, 2007
+- Second language acquisition in programming languages
+- ​Hybrid course delivery
+- Apply the pedagogy and technology to engineering education
+- Extensive experience in fire related laboratory work
+- Knowledge of PIV and its application in thermal-fluid field.CFD, FDS
+- Publications in peer-reviewed journals including Combustion and Flame, Combustion Science and Technology, and Journal of Wildland Fire.
+- American Society for Engineering Education
+- 2014 The Media Showcase Award by ASEE EDGD
+- 2013 The Media Showcase Award by ASEE EDGD
+- 2013 The Chair's Award by ASEE EDGD
+- November 2018: Dr. Sun presented her poster” Best Practices and Best Methods of Virtual Training Delivery for Air Traffic Controllers” at the Interservice/Industry Training, Simulation and Education Conference(I/ITSEC) in Orlando, Florida.
+- August 2018: Dr. Sun presented “Exploring the Best Practices of Virtual Training Delivery for the Prospective Air Traffic Controller” at 31st National Training Aircraft Symposium (NTAS) in Daytona Beach, Florida on August 13th, 2018.
+- August 2018: Dr. Sun’ funded research, "Practices And Methods For Virtual Training Delivery” was on FAA weekly newsletter
+- June 2018: Dr. Sun is an incoming Engineering Design Graphics Division (EDGD) chair.
+- April 2018: Dr. Sun’ research paper was accepted by 2018 ASEE Annual conference & exposition, which will be on June 24-27, 2018 at Salt Lake City in Utah.
+- March 2018: Dr. Sun, as ASEE SE conference site coordinator, successfully organized 2018 ASEE SE conference with over 200 attendees on ERAU campus in Daytona Beach, FL. Her research group also hosted a workshop on Sunday to introduce how to use Second Language Acquisition to facilitate programming language learning.
+- January 2018: Dr. Sun presented her research paper at 72nd ASEE EDGD Midyear Conference in Jamaica.
+## Courses
+
+- EGR101 Introduction to Engineering
+- EGR115 Introduction to Computing for Engineers
+- EGR120 Graphical Communications
+- ES305 Thermodynamics
+
+---
+*Scraped from faculty.erau.edu on 2026-03-28 09:57*

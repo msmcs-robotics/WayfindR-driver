@@ -1,0 +1,547 @@
+# Riccardo Bevilacqua
+
+**Department:** Aerospace Engineering
+**Email:** bevilacr@erau.edu
+**Profile:** https://faculty.erau.edu/Riccardo.Bevilacqua
+
+## Education
+
+- Ph.D. - Doctor of Philosophy in Mathematical Methods and Models,
+
+## Areas of Expertise
+
+- Novel Space Science Test via Adaptive Control and Integral Concurrent Learning Leveraging On-Orbit CubeSat Structural Identification
+- GNC Efforts in Support of the University of Floridas Research for the NASA Instrument Incubator
+- CubeSats Hosting Flexible Appendages for On-Orbit Testing of Advanced Control Algorithms
+- A Machine Learning Based Transfer to Predict Warhead In-Flight Behavior from Static Arena Test Data
+- Spaceplane Atmospheric Control and Fluid Dynamics
+- Attitude control and online estimation of unknown mass properties for captured debris with a flexible spacecraft
+- (Riccardo Bevilacqua)
+- Pure Portfolio
+- (2025)
+- Optimal drag-based collision avoidance
+- (Riccardo Bevilacqua)
+- Pure Portfolio
+- (2025)
+- Machine learning-based quasi-optimal feedback control for a propellantless re-entry
+- (Riccardo Bevilacqua)
+- Pure Portfolio
+- (2025)
+- A deep neural network framework with Analytic Continuation for predicting hypervelocity fragment flyout from satellite explosions
+- (Riccardo Bevilacqua)
+- Pure Portfolio
+- (2025)
+- GRATTIS
+- (Riccardo Bevilacqua)
+- Pure Portfolio
+- (2025)
+- Modeling and Estimation of Continuous Flexible Structure Using Theory of Functional Connections
+- (Riccardo Bevilacqua)
+- Pure Portfolio
+- (2024)
+- Future in-orbit servicing operations in the space traffic management context
+- (Riccardo Bevilacqua)
+- Pure Portfolio
+- (2024)
+- State space modeling and estimation of flexible structure using the theory of functional connections
+- (Riccardo Bevilacqua)
+- Pure Portfolio
+- (2024)
+- Drag-based analytical optimal de-orbiting guidance from low earth orbit via Deep Neural Networks
+- (Riccardo Bevilacqua)
+- Pure Portfolio
+- (2024)
+- Stable Optimal Feedback Control for Landers Based on Machine Learning
+- (Riccardo Bevilacqua)
+- Pure Portfolio
+- (2024)
+- Onboard estimation of unknown dynamics of flexible spacecraft
+- (Riccardo Bevilacqua)
+- Pure Portfolio
+- (2024)
+- Optimizing aerogravity-assisted maneuvers at high atmospheric altitude above Venus, Earth, and Mars to control heliocentric orbits
+- (Riccardo Bevilacqua)
+- Pure Portfolio
+- (2024)
+- Lunar occultations events from the Earth-Moon equilateral Lagrangian point
+- (Riccardo Bevilacqua)
+- Pure Portfolio
+- (2024)
+- Machine Learning to Improve Two-Line Element Analysis Utilizing Analytic Continuation Propagated Fragments
+- (Riccardo Bevilacqua)
+- Pure Portfolio
+- (2024)
+- Optimization of Aero-gravity assisted maneuvers for spaceplanes at high atmospheric flight on Earth
+- (Riccardo Bevilacqua)
+- Pure Portfolio
+- (2024)
+- Dual quaternion-based dynamics and control for gravity recovery missions
+- (Riccardo Bevilacqua)
+- Pure Portfolio
+- (2023)
+- Six-degree-of-freedom Optimal Feedback Control of Pinpoint Landing using Deep Neural Networks
+- (Riccardo Bevilacqua)
+- Pure Portfolio
+- (2023)
+- Stereoscopic-Based Mass Properties Estimation for Warhead Fragments
+- (Riccardo Bevilacqua)
+- Pure Portfolio
+- (2023)
+- Modeling and Estimation of a Continuous Flexible Structure using the Theory of Functional Connections
+- (Riccardo Bevilacqua)
+- Math Department Colloquium Series
+- (2023)
+- Modeling and Estimation of a Continuous Flexible Structure using the Theory of Functional Connections
+- (Riccardo Bevilacqua)
+- Pure Portfolio
+- (2023)
+- Stability of Deep Neural Networks for Feedback-Optimal Pinpoint Landings
+- (Riccardo Bevilacqua)
+- Pure Portfolio
+- (2023)
+- State Space Modeling and Estimation of Flexible Structure Using the Theory of Functional Connections
+- (Riccardo Bevilacqua)
+- Pure Portfolio
+- (2023)
+- Using Machine Learning to Predict Hypervelocity Fragment Propagation of Space Debris Collisions
+- (Riccardo Bevilacqua)
+- Pure Portfolio
+- (2023)
+- Neural network based feedback optimal control for pinpoint landers under disturbances
+- (Riccardo Bevilacqua)
+- Pure Portfolio
+- (2023)
+- Controlled short-period orbits around Earth-Moon equilateral libration points for Lunar Occultations
+- (Riccardo Bevilacqua)
+- Pure Portfolio
+- (2023)
+- A Machine Learning Based Transfer to Predict Warhead In-Flight Behavior from Static Arena Test Data
+- (Riccardo Bevilacqua)
+- Faculty Research Projects
+- (2023)
+- Novel Space Science Test via Adaptive Control and Integral Concurrent Learning Leveraging On-Orbit CubeSat Structural Identification
+- (Riccardo Bevilacqua)
+- Faculty Research Projects
+- (2023)
+- GNC Efforts in Support of the University of Florida's Research for the NASA Instrument Incubator
+- (Riccardo Bevilacqua)
+- Faculty Research Projects
+- (2023)
+- CubeSats Hosting Flexible Appendages for On-Orbit Testing of Advanced Control Algorithms
+- (Riccardo Bevilacqua)
+- Faculty Research Projects
+- (2023)
+- CubeSats Hosting Flexible Appendages for On-Orbit Testing of Advanced Control Algorithms
+- (Riccardo Bevilacqua)
+- Pure Portfolio
+- (2023)
+- GNC Efforts in Support of the University of Florida's Research for the NASA Instrument Incubator
+- (Riccardo Bevilacqua)
+- Pure Portfolio
+- (2023)
+- A Machine Learning Based Transfer to Predict Warhead In-Flight Behavior from Static Arena Test Data
+- (Riccardo Bevilacqua)
+- Pure Portfolio
+- (2023)
+- Novel Space Science Test via Adaptive Control and Integral Concurrent Learning Leveraging On-Orbit CubeSat Structural Identification
+- (Riccardo Bevilacqua)
+- Pure Portfolio
+- (2023)
+- Predicting Dynamic Fragmentation Characteristics from High-Impact Energy Events Utilizing Terrestrial Static Arena Test Data and Machine Learning
+- (Riccardo Bevilacqua)
+- Pure Portfolio
+- (2023)
+- Time Optimal Drag-Based Targeted De-Orbiting for Low Earth Orbit
+- (Riccardo Bevilacqua)
+- Pure Portfolio
+- (2023)
+- Metric to evaluate distribution shift from behavioral cloning for fuel-optimal landing policies
+- (Riccardo Bevilacqua)
+- Pure Portfolio
+- (2023)
+- Dual Quaternion Relative Dynamics for Gravity Recovery Missions
+- (Riccardo Bevilacqua)
+- Pure Portfolio
+- (2023)
+- Solar Sailing Adaptive Control Using Integral Concurrent Learning for Solar Flux Estimation
+- (Riccardo Bevilacqua)
+- Pure Portfolio
+- (2023)
+- Experimental validation of inertia parameters and attitude estimation of uncooperative space targets using solid state LIDAR
+- (Riccardo Bevilacqua)
+- Pure Portfolio
+- (2023)
+- Feedback Control Methods on Short-Period Orbits Of the Earth-Moon Equilateral Libration Points
+- (David Canales Garcia, Riccardo Bevilacqua)
+- Pure Portfolio
+- (2023)
+- Online Estimation of Unknown Parameters for Flexible Spacecraft subject to Measurements Noise
+- (Riccardo Bevilacqua)
+- Pure Portfolio
+- (2023)
+- Stability of Deep Neural Networks for Feedback-Optimal Pinpoint Landings
+- (Riccardo Bevilacqua)
+- Pure Portfolio
+- (2023)
+- Using Machine Learning to Predict Hypervelocity Fragment Propagation of Space Debris Collisions
+- (Riccardo Bevilacqua)
+- Pure Portfolio
+- (2023)
+- Machine Learning Based Guidance for Optimal Spacecraft De-Orbiting
+- (Riccardo Bevilacqua)
+- Pure Portfolio
+- (2023)
+- State Space Modeling and Estimation of Flexible Structure Using the Theory of Functional Connections
+- (Riccardo Bevilacqua)
+- Pure Portfolio
+- (2023)
+- Estimation of Uncooperative Satellite Inertia Parameters for Space Debris Removal Using Particle Swarm Optimization
+- (Riccardo Bevilacqua)
+- Pure Portfolio
+- (2023)
+- A simplified gravitational reference sensor for satellite geodesy
+- (Riccardo Bevilacqua)
+- Pure Portfolio
+- (2022)
+- Experimental validation of inertia parameters and attitude estimation of uncooperative space targets using solid state LIDAR
+- (Riccardo Bevilacqua)
+- Pure Portfolio
+- (2022)
+- Precise re-entry and landing of propellantless spacecraft
+- (Riccardo Bevilacqua)
+- Pure Portfolio
+- (2021)
+- Roto-translational control of spacecraft in low earth orbit using environmental forces and torques
+- (Riccardo Bevilacqua)
+- Pure Portfolio
+- (2021)
+- Adaptive control for differential drag-based rendezvous maneuvers with an unknown target
+- (Riccardo Bevilacqua)
+- Pure Portfolio
+- (2021)
+- Aerodynamic and gravity gradient based attitude control for CubeSats in the presence of environmental and spacecraft uncertainties
+- (Riccardo Bevilacqua)
+- Pure Portfolio
+- (2021)
+- A MACHINE LEARNING SOLUTION TO OPTIMAL LANDING SITE SELECTION AND LANDER CONTROL
+- (Riccardo Bevilacqua)
+- Pure Portfolio
+- (2021)
+- Transfer function to predict warhead fragmentation in-flight behavior from static data
+- (Riccardo Bevilacqua)
+- Pure Portfolio
+- (2021)
+- Geostationary debris mitigation using minimum time solar sail trajectories with eclipse constraints
+- (Riccardo Bevilacqua)
+- Pure Portfolio
+- (2021)
+- Cubesat adaptive attitude control with uncertain drag coefficient and atmospheric density
+- (Riccardo Bevilacqua)
+- Pure Portfolio
+- (2021)
+- Differential drag-based multiple spacecraft maneuvering and on-line parameter estimation using integral concurrent learning
+- (Riccardo Bevilacqua)
+- Pure Portfolio
+- (2020)
+- Approximate optimal orbit transfer of non-cooperative debris
+- (Riccardo Bevilacqua)
+- Pure Portfolio
+- (2020)
+- Passive thermal coating observatory operating in low-earth orbit (Patcool) – cubesat design to test passive thermal coatings in space
+- (Riccardo Bevilacqua)
+- Pure Portfolio
+- (2020)
+- Spacecraft collision avoidance using aerodynamic drag
+- (Riccardo Bevilacqua)
+- Pure Portfolio
+- (2020)
+- Spacecraft attitude regulation in low earth orbit using natural torques
+- (Riccardo Bevilacqua)
+- Pure Portfolio
+- (2019)
+- An optimized analytical solution for geostationary debris removal using solar sails
+- (Riccardo Bevilacqua)
+- Pure Portfolio
+- (2019)
+- Hardware and GNC solutions for controlled spacecraft re-entry using aerodynamic drag
+- (Riccardo Bevilacqua)
+- Pure Portfolio
+- (2019)
+- Spacecraft formation flying reconfiguration with extended and impulsive maneuvers
+- (Riccardo Bevilacqua)
+- Pure Portfolio
+- (2019)
+- High fidelity model for the atmospheric re-entry of CubeSats equipped with the Drag De-Orbit Device
+- (Riccardo Bevilacqua)
+- Pure Portfolio
+- (2019)
+- Special issue on Space Situational Awareness from the 1                         <sup>st</sup>                          International Academy of Astronautics Conference on Space Situational Awareness or ICSSA 2017
+- (Riccardo Bevilacqua)
+- Pure Portfolio
+- (2019)
+- Safety analysis for shallow controlled re-entries through reduced order modeling and inputs’ statistics method
+- (Riccardo Bevilacqua)
+- Pure Portfolio
+- (2019)
+- Guidance, navigation, and control solutions for spacecraft re-entry point targeting using aerodynamic drag
+- (Riccardo Bevilacqua)
+- Pure Portfolio
+- (2019)
+- Minimum-fuel control strategy for spacecraft formation reconfiguration via finite-time maneuvers
+- (Riccardo Bevilacqua)
+- Pure Portfolio
+- (2019)
+- Drag deorbit device
+- (Riccardo Bevilacqua)
+- Pure Portfolio
+- (2019)
+- Satellite formation flying
+- (Riccardo Bevilacqua)
+- Pure Portfolio
+- (2019)
+- Relative maneuvering for multiple spacecraft via differential drag using LQR and constrained least squares
+- (Riccardo Bevilacqua)
+- Pure Portfolio
+- (2019)
+- Avoiding collisions in space via aerodynamically-induced along-track orbit variations
+- (Riccardo Bevilacqua)
+- Pure Portfolio
+- (2019)
+- Continuous maneuvers for spacecraft formation flying reconfiguration using relative orbit elements
+- (Riccardo Bevilacqua)
+- Pure Portfolio
+- (2018)
+- Hardware and GNC solutions for controlled spacecraft re-entry using aerodynamic drag
+- (Riccardo Bevilacqua)
+- Pure Portfolio
+- (2018)
+- Optimal continuous maneuvers for satellite formation reconfiguration in j2-perturbed orbits
+- (Riccardo Bevilacqua)
+- Pure Portfolio
+- (2018)
+- TugSat
+- (Riccardo Bevilacqua)
+- Pure Portfolio
+- (2018)
+- Constellation design for Mars navigation using Small Satellites
+- (Riccardo Bevilacqua)
+- Pure Portfolio
+- (2018)
+- Survey on guidance navigation and control requirements for spacecraft formation-flying missions
+- (Riccardo Bevilacqua)
+- Pure Portfolio
+- (2018)
+- Drag De-Orbit Device (D3) mission for validation of controlled spacecraft re-entry using aerodynamic drag
+- (Riccardo Bevilacqua)
+- Pure Portfolio
+- (2018)
+- The Constellation for Mars Position Acquisition using Small Satellites
+- (Riccardo Bevilacqua)
+- Pure Portfolio
+- (2018)
+- Guidance solutions for spacecraft planar rephasing and rendezvous using input shaping
+- (Riccardo Bevilacqua)
+- Pure Portfolio
+- (2018)
+- Hammerstein–Wiener based reduced-order model for vortex-induced non-linear fluid–structure interaction
+- (Riccardo Bevilacqua)
+- Pure Portfolio
+- (2017)
+- Guidance solutions for spacecraft planar rephasing and rendezvous using input shaping control
+- (Riccardo Bevilacqua)
+- Pure Portfolio
+- (2017)
+- Spacecraft de-orbit point targeting using aerodynamic drag
+- (Riccardo Bevilacqua)
+- Pure Portfolio
+- (2017)
+- Spacecraft deorbit point targeting using aerodynamic drag
+- (Riccardo Bevilacqua)
+- Pure Portfolio
+- (2017)
+- Stereovision-based pose and inertia estimation of unknown and uncooperative space objects
+- (Riccardo Bevilacqua)
+- Pure Portfolio
+- (2017)
+- Spacecraft relative guidance via spatio-temporal resolution in atmospheric density forecasting
+- (Riccardo Bevilacqua)
+- Pure Portfolio
+- (2016)
+- Suboptimal LQR-based spacecraft full motion control
+- (Riccardo Bevilacqua)
+- Pure Portfolio
+- (2016)
+- Solar radiation pressure applications on geostationary satellites
+- (Riccardo Bevilacqua)
+- Pure Portfolio
+- (2016)
+- Rendezvous via differential drag with uncertainties in the drag model
+- (Riccardo Bevilacqua)
+- Pure Portfolio
+- (2016)
+- Spacecraft rendezvous by differential drag under uncertainties
+- (Riccardo Bevilacqua)
+- Pure Portfolio
+- (2016)
+- Spatial resolution in density prediction for differential drag maneuvering guidance
+- (Riccardo Bevilacqua)
+- Pure Portfolio
+- (2016)
+- Differential drag-based reference trajectories for spacecraft relative maneuvering using density forecast
+- (Riccardo Bevilacqua)
+- Pure Portfolio
+- (2016)
+- Neural Network based calibration of atmospheric density models
+- (Riccardo Bevilacqua)
+- Pure Portfolio
+- (2015)
+- Differential-drag-based roto-translational control for propellant-less spacecraft
+- (Riccardo Bevilacqua)
+- Pure Portfolio
+- (2015)
+- Guidance and control for spacecraft planar re-phasing via input-shaping and differential drag
+- (Riccardo Bevilacqua)
+- Pure Portfolio
+- (2015)
+- Differential-drag-based roto-translational control for propellant-less spacecraft
+- (Riccardo Bevilacqua)
+- Pure Portfolio
+- (2015)
+- A six-degree-of-freedom hardware-in-the-loop simulator for small spacecraft
+- (Riccardo Bevilacqua)
+- Pure Portfolio
+- (2014)
+- Lyapunov-based adaptive feedback for spacecraft planar relative maneuvering via differential drag
+- (Riccardo Bevilacqua)
+- Pure Portfolio
+- (2014)
+- Analytical guidance for spacecraft relative motion under constant thrust using relative orbit elements
+- (Riccardo Bevilacqua)
+- Pure Portfolio
+- (2014)
+- Guidance and control for spacecraft planar re-phasing via input-shaping and differential drag
+- (Riccardo Bevilacqua)
+- Pure Portfolio
+- (2014)
+- Analytical guidance solutions for spacecraft planar rephasing via input shaping
+- (Riccardo Bevilacqua)
+- Pure Portfolio
+- (2014)
+- Data-based hybrid reduced order modeling for vortex-induced nonlinear fluid-structure interaction at low Reynolds numbers
+- (Riccardo Bevilacqua)
+- Pure Portfolio
+- (2014)
+- The near earth object (NEO) scout spacecraft
+- (Riccardo Bevilacqua)
+- Pure Portfolio
+- (2014)
+- Orbit-centered atmospheric density prediction using artificial neural networks
+- (Riccardo Bevilacqua)
+- Pure Portfolio
+- (2014)
+- Spacecraft attitude determination system using nano-optical devices and linux software libraries
+- (Riccardo Bevilacqua)
+- Pure Portfolio
+- (2013)
+- Spacecraft maneuvering via atmospheric differential drag using an adaptive Lyapunov controller
+- (Riccardo Bevilacqua)
+- Pure Portfolio
+- (2013)
+- Analytical guidance for spacecraft relative motion under constant thrust using Relative Orbit Elements
+- (Riccardo Bevilacqua)
+- Pure Portfolio
+- (2013)
+- Differential drag spacecraft rendezvous using an adaptive Lyapunov control strategy
+- (Riccardo Bevilacqua)
+- Pure Portfolio
+- (2013)
+- Operational capabilities of a six degrees of freedom spacecraft simulator
+- (Riccardo Bevilacqua)
+- Pure Portfolio
+- (2013)
+- Differential drag spacecraft rendezvous using an Adaptive Lyapunov Control strategy
+- (Riccardo Bevilacqua)
+- Pure Portfolio
+- (2012)
+- Development and experimentation of LQR/APF guidance and control for autonomous proximity maneuvers of multiple spacecraft
+- (Riccardo Bevilacqua)
+- Pure Portfolio
+- (2011)
+- Lyapunov-based spacecraft rendezvous maneuvers using differential drag
+- (Riccardo Bevilacqua)
+- Pure Portfolio
+- (2011)
+- Guidance navigation and control for autonomous multiple spacecraft assembly
+- (Riccardo Bevilacqua)
+- Pure Portfolio
+- (2011)
+- Advances on a 6 degrees of freedom testbed for autonomous satellites operations
+- (Riccardo Bevilacqua)
+- Pure Portfolio
+- (2011)
+- Failure-robust thruster commanding for space vehicles control
+- (Riccardo Bevilacqua)
+- Pure Portfolio
+- (2010)
+- Decoupled-natural-dynamics model for the relative motion of two spacecraft without and with J2 perturbation
+- (Riccardo Bevilacqua)
+- Pure Portfolio
+- (2010)
+- Lyapunov-based thrusters' selection for spacecraft control
+- (Riccardo Bevilacqua)
+- Pure Portfolio
+- (2010)
+- Multiple spacecraft rendezvous maneuvers by differential drag and low thrust engines
+- (Riccardo Bevilacqua)
+- Pure Portfolio
+- (2010)
+- Spacecraft proximity navigation and autonomous assembly based on augmented state estimation
+- (Riccardo Bevilacqua)
+- Pure Portfolio
+- (2010)
+- Ad hoc wireless networking and shared computation for autonomous multirobot systems
+- (Riccardo Bevilacqua)
+- Pure Portfolio
+- (2009)
+- Online generation of quasi-optimal spacecraft rendezvous trajectories
+- (Riccardo Bevilacqua)
+- Pure Portfolio
+- (2009)
+- Laboratory experimentation of multiple spacecraft autonomous assembly
+- (Riccardo Bevilacqua)
+- Pure Portfolio
+- (2009)
+- Rendezvous maneuvers of multiple spacecraft using differential drag under J<sub>2</sub> perturbation
+- (Riccardo Bevilacqua)
+- Pure Portfolio
+- (2008)
+- Quasi-optimal control for path constrained relative spacecraft maneuvers based on dynamic programming
+- (Riccardo Bevilacqua)
+- Pure Portfolio
+- (2008)
+- Special inclinations allowing minimal drift orbits for formation flying satellites
+- (Riccardo Bevilacqua)
+- Pure Portfolio
+- (2008)
+- Rendezvous maneuvers of multiple spacecraft using differential drag under J<sub>2</sub> perturbation
+- (Riccardo Bevilacqua)
+- Pure Portfolio
+- (2008)
+- Fuel-optimal spacecraft rendezvous with hybrid on-off continuous and impulsive thrust
+- (Riccardo Bevilacqua)
+- Pure Portfolio
+- (2007)
+- Periodic relative motion of formation flying satellites
+- (Riccardo Bevilacqua)
+- Pure Portfolio
+- (2006)
+- Advanced Autonomous Multiple Spacecraft Laboratory (ADAMUS)
+## Courses
+
+- AE 800
+- Dissertation
+- AE 700
+- Thesis
+
+---
+*Scraped from faculty.erau.edu on 2026-03-28 09:56*

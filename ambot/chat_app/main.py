@@ -102,12 +102,54 @@ def _estimate_messages_tokens(messages: list[dict]) -> int:
 
 
 # ── Query Classification ────────────────────────────────────────
-_CASUAL_PATTERNS = {
+# Exact-match casual phrases (greeting, acknowledgment, farewell).
+# These only match when the ENTIRE query is the pattern (after stripping
+# trailing punctuation), NOT when the pattern is a prefix of a longer query.
+_CASUAL_EXACT = {
     "hello", "hi", "hey", "greetings", "good morning", "good afternoon",
     "good evening", "thanks", "thank you", "bye", "goodbye", "see you",
     "ok", "okay", "sure", "yes", "no", "cool", "nice", "great",
     "how are you", "what's up", "sup", "yo",
     "lol", "haha", "hmm", "wow",
+    "help", "what can you do", "what do you do",
+}
+
+# Casual phrases that are also valid as prefixes of short messages
+# (e.g. "hi there", "hey!", "thanks a lot").  Matched only when the
+# total query is short enough that it's clearly still casual.
+_CASUAL_PREFIXES = {
+    "hi", "hey", "hello", "thanks", "thank you", "bye", "goodbye",
+    "good morning", "good afternoon", "good evening",
+}
+_CASUAL_PREFIX_MAX_WORDS = 4  # "good morning how are you" = 5 words → still casual
+
+# Out-of-scope question patterns: questions a campus robot can't answer.
+_OUT_OF_SCOPE_PREFIXES = (
+    "what time", "what day", "what date", "what year",
+    "how's the weather", "hows the weather", "what's the weather",
+    "whats the weather",
+)
+
+# Follow-up cues: when conversation history exists and the query is short,
+# these indicate the user wants more on the current topic (no new RAG search).
+_FOLLOWUP_CUES = {
+    "more", "why", "elaborate", "explain that", "what about",
+    "how so", "really", "interesting", "go on", "continue",
+    "and", "also", "what else", "tell me more", "can you explain",
+}
+
+_DOMAIN_KEYWORDS = {
+    "program", "degree", "lab", "faculty", "professor", "department",
+    "course", "class", "major", "minor", "accreditation", "research",
+    "club", "student", "campus", "erau", "embry", "riddle",
+    "eecs", "engineering", "computer science", "electrical",
+    "robotics", "ambot", "robot", "lidar", "sensor", "jetson",
+    "rag", "knowledge", "document",
+}
+
+_QUESTION_STARTERS = {
+    "what", "where", "which", "how", "who", "when", "does", "is there",
+    "tell me about", "explain", "describe", "list", "show me",
 }
 
 
@@ -119,45 +161,55 @@ def classify_query(question: str, has_history: bool = False) -> str:
     lower = question.lower().strip().rstrip("?!.")
     words = lower.split()
 
-    # Check casual patterns FIRST (regardless of length)
-    for pattern in _CASUAL_PATTERNS:
-        if lower == pattern or lower.startswith(pattern):
-            return "casual"
-
-    # Follow-up detection: short referential queries use conversation context
-    _FOLLOWUP_WORDS = {"more", "why", "elaborate", "explain that", "what about",
-                       "how so", "really", "interesting", "go on", "continue",
-                       "and", "also", "what else", "tell me more"}
-    if has_history and len(words) <= 5:
-        if any(w in lower for w in _FOLLOWUP_WORDS):
-            return "casual"  # Use conversation context, skip RAG
-
-    # Very short messages (1-2 words) without RAG keywords are casual
-    if len(words) <= 2:
+    if not words:
         return "casual"
 
-    # Check for domain-specific RAG indicators (nouns, not question words)
-    _DOMAIN_KEYWORDS = {
-        "program", "degree", "lab", "faculty", "professor", "department",
-        "course", "class", "major", "minor", "accreditation", "research",
-        "club", "student", "campus", "erau", "embry", "riddle",
-        "eecs", "engineering", "computer science", "electrical",
-        "robotics", "ambot", "robot", "lidar", "sensor", "jetson",
-        "rag", "knowledge", "document",
-    }
+    # 1. Exact casual match (entire query after punctuation strip)
+    if lower in _CASUAL_EXACT:
+        return "casual"
+
+    # 2. Casual prefix match — only when the total query is short.
+    #    Prevents "hi where is the lab" from being classified as casual.
+    if len(words) <= _CASUAL_PREFIX_MAX_WORDS:
+        for prefix in _CASUAL_PREFIXES:
+            if lower == prefix or lower.startswith(prefix + " "):
+                # Make sure the remaining words aren't domain keywords
+                remainder = lower[len(prefix):].strip()
+                remainder_words = remainder.split() if remainder else []
+                has_domain = any(kw in remainder for kw in _DOMAIN_KEYWORDS)
+                if not has_domain:
+                    return "casual"
+
+    # 3. Out-of-scope questions the robot can't answer
+    for prefix in _OUT_OF_SCOPE_PREFIXES:
+        if lower.startswith(prefix):
+            return "casual"
+
+    # 4. Follow-up detection: short referential queries use conversation context
+    if has_history and len(words) <= 5:
+        if any(cue in lower for cue in _FOLLOWUP_CUES):
+            return "casual"  # Use conversation context, skip RAG
+
+    # 5. Very short messages (1-2 words) without domain keywords are casual
+    if len(words) <= 2:
+        # Still check for domain keywords even in short queries
+        for keyword in _DOMAIN_KEYWORDS:
+            if keyword in lower:
+                return "rag"
+        return "casual"
+
+    # 6. Domain keyword check — any mention of a known topic triggers RAG
     for keyword in _DOMAIN_KEYWORDS:
         if keyword in lower:
             return "rag"
 
-    # Question words + enough length suggest a knowledge question
-    _QUESTION_STARTERS = {"what", "where", "which", "how", "who", "when", "does", "is there",
-                          "tell me about", "explain", "describe", "list", "show me"}
+    # 7. Question words + enough length suggest a knowledge question
     if len(words) > 4:
         for starter in _QUESTION_STARTERS:
             if lower.startswith(starter):
                 return "rag"
 
-    # Questions (ending with ?) with 5+ words likely need lookup
+    # 8. Questions (ending with ?) with 5+ words likely need lookup
     if question.strip().endswith("?") and len(words) > 4:
         return "rag"
 

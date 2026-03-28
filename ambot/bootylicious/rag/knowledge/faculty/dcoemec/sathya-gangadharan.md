@@ -1,0 +1,717 @@
+# Sathya Gangadharan
+
+**Department:** Mechanical Engineering
+**Email:** sathya@erau.edu
+**Profile:** https://faculty.erau.edu/Sathya.Gangadharan
+
+## Education
+
+- Ph.D. - Doctor of Philosophy in Aerospace Engineering,
+- M.S. - Master of Science in Engineering,
+
+## Areas of Expertise
+
+- Composite Wind Turbine Blade
+- Fuel Slosh
+- Blue Origin’s Suborbital Research: MESSI/McXIMUS
+- Blue Origin’s Suborbital Research: CRExIM
+- NASA/ZeroG Microgravity Research
+- Rocketry as Testing Platforms for Payloads
+- NASA’s Embry-Riddle High-Altitude Science Experiment Rig (ERHASER)
+- 2024     Johann, L., Lemonwala, M., and
+- Gangadharan, S.N.,
+- A Conceptual Investigation of a Magnetorheological Fluid for Propellant Slosh Damping,
+- Florida Fluids Symposium III
+- , Embry-Riddle Aeronautical University, May 10, 2024.
+- 2024     Duraisamy, V., Llanos, P., Dikici, B., Crosby, K., and
+- Gangadharan, S.N.,
+- Advancements in Slosh Control for Liquid-Propellant Spaceflight: The Magneto-Active Propellant Management Device (MAPMD) System,
+- ASME ICEME Conference,
+- Portland, Oregon, November 17-21, 2024 (submitted).
+- 2024     Lemonwala, M.,
+- Gangadharan, S.N.,
+- An Investigation of the Magneto-Active Propellant Slosh Control Mechanism for Cylindrical Tanks Using an Adaptive Magnetorheological Fluid Interface,
+- ASGSR Conference,
+- December 3-4, San Juan, Puerto Rico, 2024 (submitted).
+- 2023     Llanos, P.J.,
+- Gangadharan, S.N.,
+- and Crosby K., Experimental Environmental Profiles and Sloshing Dynamics Aboard Zero-G Aircraft,
+- AIAA SciTech Conference
+- , Orlando, January 8-12, 2023.
+- 2023     Antalec, E., Jones, Thomas, Belekewicz, C., Llanos, P., Crosby, K., Berhane, B., and
+- Gangadharan, S.N,
+- Conceptual Development of the Magneto-Active Slosh Control System for Spacecraft and Launch Vehicles,
+- ASGSR Conference,
+- November 14-18, Washington D.C., 2023.
+- 2022     Duraisamy, V., Llanos, B., Dikici, B., Crosby, K., and
+- Gangadharan, S.N.,
+- Multi-Phase CFD Simulation of MAPMD Slosh Mitigation Device in Microgravity Using Parabolic Flight Test Data.
+- American Society for Gravitational and Space Research (ASGSR) Conference,
+- poster presentation, Nov 9-12, 2022, Houston, Texas.
+- 2022     Llanos, P.J., Amberkar, N., Duraisamy, Nafziger, J., Dikici, B.,
+- Gangadharan, S.N.,
+- and Sanmiguel, P.G., Qualification and Validation Ground Tests for a Multiple Payload Aboard Miura 1 Rocket,
+- AIAA ASCEND
+- (Accelerating Space Commerce, Exploration and New Discovery) Conference Presentation, Las Vegas, Oct 24-26, 2022.
+- 2022     Duraisamy, V., Llanos, P., Dikici, B., Crosby, K., and
+- Gangadharan, S.N.,
+- Benchmarking a Multi-Phase Fluid Model of a Slosh Mitigation Device in Microgravity Utilizing Parabolic Flight Test Data,
+- ASME Conference,
+- Columbus, Ohio, Oct 30-Nov 3, 2022.
+- 2021     Llanos, P. J., Andrijauskaite, K., Duraisamy, V. V.,
+- Gangadharan, S.N.,
+- Morris, J., and Wargovich, M., Microgravity Effect on Murine T-cells Exposed to Suborbital Flight Aboard Blue Origin’s New Shepard Vehicle,
+- bioRxiv,
+- 2021.
+- 2020      Amberkar, N., Duraisamy, V. V., Mastroliberti, M., Munasinghe, M., Maupin, G., Llanos, P. J., and
+- Gangadharan, S. N
+- . (2020). Suborbital Payload Testing Aboard Level 3 Rocket Research Platform,
+- AIAA SciTech Conference
+- (p. 0070), 2020.
+- 2019     Lee, J.,
+- Gangadharan, S.N.,
+- and Bowers, M., I-Corps: Removal of Biofouling using Controlled Cavitation for Underwater Sensors, Final Presentation,
+- NSF I-Corps Teams Summer Cohort
+- , DMV node, Sept. 2019.
+- 2019     Vairamani, M., Crosby, K. M., LLanos, P.,
+- Gangadharan, S. N.,
+- & Nagendra, S. (2019). Magneto-Active Slosh Control System Using Free Floating Membrane for Cylindrical Propellant Tanks,
+- AIAA SciTech Conference
+- (p. 2177), 2019.
+- 2019      Llanos, P. J., Andrijauskaite, K., Duraisamy, V. V., Pastrana, F., Seedhouse, E. L.,
+- Gangadharan, S.N.,
+- and Rico, M., Challenges of ERAU’s First Suborbital Flight Aboard Blue Origin’s New Shepard M7 for the Cell Research Experiment In Microgravity (CRExIM).
+- Gravitational and Space Research
+- , Gravitational and Space Research, GSR 58, 1-12, DOI: 10.2478/gsr-2019-0001, 2019.
+- 2019     Skuhersky, M., Go, T., Kirk, D. R., Wilde, M., Duraisamy, V. V., Kor, C.,
+- Gangadharan. S.N.,
+- and Somanath, N., Comparison of Propellant Settling Approaches for On-Orbit Propellant Depots During Propellant Transfer Maneuvers,
+- AIAA SciTech Conference
+- (p. 1371), 2019.
+- 2019     Llanos, P., Haley, R.,
+- Gangadharan, S. N.,
+- Duraisamy, V. V., Maupin, G., and Stockton, C., Educating the Space Scientists at Embry-Riddle through Design, Build and Fly Rocketry Experience,
+- AIAA SciTech Conference,
+- (p. 0612), 2019
+- 2019     Vairamani, M., Duraisamy, V. V., Kulkarni, M. D.,
+- Gangadharan, S. N.,
+- Kirk, D. R., Wilde, M., and Somanath, N. (2018). Stability Analysis of a Novel On-Orbit Propellant Storage and Transfer System,
+- Space Flight Mechanics Meeting
+- (p. 0210), 2018
+- 2018      Llanos, P., Rukhaiyar, A., Nadeau, J., Nunno, N., Andrijauskaite, K.,
+- Gangadharan, S.N.,
+- "Educational Experiences and Lessons Learned in the Multidisciplinary Design, Fabrication, Integration and Flight Testing of Embry-Riddle High Altitude Science Engineering Rig (ERHASER) Payload aboard NASA's WB-57 Aircraft",
+- American Society for Engineering and Education Southeastern Conference
+- , ASEE-SE18, 136, March 4-8, Daytona Beach, 2018.
+- 2017     Duraisamy, V. V., Pastrana, F., Topolski, C., Andrijauskaite, K.,
+- Gangadharan, S. N.,
+- and Llanos, P. J., Design, Development and Testing of a Suborbital Nanolab Research Experiment in Microgravity,
+- AIAA SPACE and Astronautics Forum and Exposition
+- (p. 5361), 2017
+- 2017     Nazario, V., Sundaraju, P., Ramirez, J.,
+- Gangadharan, S.N.,
+- Kirk, D., Wilde, M, and Nagendra, S., Mass Gauging and Validation of a Novel In-Space Propellant Storage and Transfer using CFD,
+- AIAA Space Forum,
+- Orlando, Florida, January ar2017.
+- 2016
+- Gangadharan, S.N.,
+- and Kirk, D., On-Orbit Propellant Storage and Transfer System,
+- National Sub-Orbital Flight Researchers Conference
+- , February 2016.
+- 2016     Paul. L., Sivasubramanian, B., Das, S., and
+- Gangadharan, S.N.,
+- Active Damping of Fuel Slosh Using a Hybrid Magneto-Active Propellant Management Device,
+- AIAA SciTech Conference, 54
+- AIAA Aerospace Sciences Meeting
+- , San Diego, California, January 2016. (in Proceedings).
+- 2015      Sivasubramanian, B., Paul, Leander, Krishnappa, S., and
+- Gangadharan, S.N.,
+- A Hybrid Magneto-active Propellant Management Device for Active Slosh Damping in Spacecraft
+- , AIAA SciTech Conference, 56
+- Structures, Structural Dynamics and Materials (SDM) Conference, Orlando, Florida, January  2015 (in Proceedings)
+- 2015      Sagban, M., and
+- Gangadharan, S.N.,
+- A Multi-Objective Hydrodynamic Design Optimization of a Centrifugal Pump, AIAA SciTech Conference 56
+- Structures, Structural Dynamics and Materials (SDM) Conference, Orlando, Florida, January  2015 (in Proceedings)
+- 2015      Santhanam, V., Ricklick, M., Kim, D, W., and
+- Gangadharan, S.N.,
+- A Computational Approach to Slosh Damping With Floating Magnetoactive Micro-baffles, AIAA SciTech Conference 56
+- Structures, Structural Dynamics and Materials (SDM) Conference, Orlando, Florida, Maryland, January  2015 (in Proceedings)
+- 2015      Paul, L.,  Sivasubramanian, B., Pinto, J., and
+- Gangadharan, S.N.,
+- Passive Damping of Fuel Slosh Using a Suspended Pendulum, AIAA SciTech Conference 56
+- Structures, Structural Dynamics and Materials (SDM) Conference, National Harbor, Maryland, January  2015 (in Proceedings)
+- 2014      Sathyanarayan, D., et al. and
+- Gangadharan, S.N.,
+- CFD-Guided Experimental Investigation of Corneal Biomechanics in Microgravity, BMES Conference in San Antonio in October 2014, Poster Presentation (Peer Reviewed)
+- 2014      Silvernail, N., Sathyanarayan, D.,
+- Gangadharan, S.N.,
+- An Investigation to Advance the Technology Readiness Level of  the Centaur Derived On-orbit Propellant Storage and Transfer,
+- AIAA SciTech 2014 Conference, National Harbor, Maryland, January 2014.
+- 2014      Santhanam, V., Kim, D., and
+- Gangadharan, S.N.,
+- Slosh Damping with Floating Electroactive Microbaffles,
+- AIAA SciTech 2014 Conference, National Harbor, Maryland, January 2014.
+- 2014      Peddu, A., Mehta, T., Sathyanarayan, P., and
+- Gangadharan, S.N.,
+- An Investigation into Baffles and Asperities on Slosh Behavior in Propellant Tanks of Spacecraft and Launch Vehicles,
+- AIAA SciTech 2014 Conference, National Harbor, Maryland, January 2014.
+- 2013      Lenahen, B., Desai, M., and
+- Gangadharan, S.N.,
+- A Computational and Experimental Analysis of Spacecraft Propellant Tanks Implemented with Flexible Diaphragms,
+- AIAA 54
+- Structures, Structural Dynamics and Materials (SDM) Conference, Boston, Massachusetts, April 2013.
+- 2012      Lenahen, B., Bernier, A.,
+- Gangadharan, S.N.,
+- Sudermann, J., and Marsell, B.,
+- A Computational Investigation for Determining the Natural Frequencies and Damping Effects of Diaphragm-Implemented Spacecraft Propellant Tanks,
+- AIAA 53
+- Structures, Structural Dynamics and Materials (SDM) Conference, Honolulu, Hawaii, April 2012.
+- 2012      Leuva, D.,
+- Gangadharan, S.N.,
+- Wilson, P., and Kutter, B.,
+- A CFD Study of Cryogenic LH
+- Tank Ullage Pressurization
+- , AIAA 53
+- Structures, Structural Dynamics and Materials (SDM) Conference.  Honolulu, Hawaii, April 2012.
+- 2012      Silvernail, N., Leuva, D.,
+- Gangadharan, S.N.,
+- Wilson, P., and Kutter, B.,
+- An Investigation to Determine Rotational Stability of On-Orbit Propellant Storage and Transfer Systems Undergoing Operational Fuel Transfer Scenarios,
+- AIAA 53
+- Structures, Structural Dynamics and Materials (SDM) Conference. Honolulu, Hawaii, April 2012.
+- 2011      Lee, J.W., Gangadharan, S.N., and Mirmirani, M.,
+- Design
+- Optimization of Hybrid Laminated Composite Structures Subjected to Stress Concentration,
+- AIAA 52
+- Structures, Structural Dynamics and Materials (SDM) Conference
+- , Denver, Colorado, USA, April 4-7, 2011.
+- 2011      Silvernail, N., Lenahen, B., Gangadharan, S.,
+- Sub-Surface Inertial Wave Excitation in Liquid Propellants and Its Effects on Fuel Tanks of Spin-Stabilized Spacecraft,
+- AIAA 52
+- Structures, Structural Dynamics, and Materials Conference
+- , Denver, Colorado, April, 2011.
+- 2011      Silvernail, N., Sances, D., Morehead, R., Gangadharan, S.,
+- Investigation to Determine Resonant Behavior from Propellant Slosh in Spinning On-Orbit Propellant Storage and Transfer Systems
+- AIAA 52
+- Structures, Structural Dynamics, and Materials Conference
+- , Denver, Colorado, April, 2011.
+- 2011      Lenahen, B., Sances, D., Gangadharan, S.N.,
+- Accurately Correlating Experimental and Computational Spacecraft Fuel Slosh Models Using Diaphragm-Implemented Propellant Tanks,
+- 34th Annual AAS Guidance and Control Conference
+- , Breckenridge, Colorado, February 4-9, 2011.
+- 2010      Metla, C., Lee, J.W., Shah, N., Patel, J., Lenahen, B., and
+- Gangadharan, S.N.
+- Design Optimization of Hybrid Laminated Composite Structures Subjected to Stress Concentration
+- AIAA 51
+- Structures, Structural Dynamics and Materials (SDM) Conference
+- , In Proceedings, March, 2010.
+- 2010      Lee, J.W., Shah, N., Patel, J.,  Mirmirani, M., Gangadharan, S.N., and Nagendra, S.,
+- Design Optimization of Hybrid Composite Laminate Using SCF
+- ICCE-18 Conference Abstract
+- , May, 2010.
+- 2010      Gangadharan, S.N., Lee, J.W., Metla, C., Nikolaidis, E., Nagendra, S.,
+- Manufacturing Cost Estimation for Stamped Sheet Metal Parts and Components
+- Tutorial Book, Ford Motor Company
+- , August, 2010.
+- 2010      Lee, J.W., Mirmirani, M., Gangadharan, S.N.,
+- Design Optimization of Hybrid Composite Laminate Using SCF
+- ICCE-18 Conference
+- , Anchorage, Alaska, USA, July, 2010.
+- 2010      Sances, D., Gangadharan, S.N., Sudermann, J., Marsell, B.,
+- CFD Modeling of Fluid-Structure Interaction in Spacecraft Propellant Tanks with Diaphragms
+- 51st AIAA/ASME/ASCE/AHS/ASC Structures, Structural Dynamics, and Materials Conference
+- , Orlando, Florida, USA, April, 2010.
+- 2010      Sances, D., Gibson, J., Neumann, S., Thompson, B., Gangadharan, S.N., Smith, T., Schlee, K.,
+- Modeling of Free-Surface Fuel Slosh in Microgravity for Off-Axis Spacecraft Propellant Tanks,
+- AIAA Modeling and Simulation Technologies (MST) Conference
+- , Chicago, Illinois, USA, August, 2010.
+- 2010      Silvernail, N., Sances, D.,
+- Gangadharan, S.N
+- Model of Spacecraft Fuel Slosh with Diaphragms in Microgravity,
+- AIAA Modeling and Simulation Technologies (MST) Conference
+- , Chicago, Illinois, USA, August, 2010.
+- 2009      Taylor, A.M., Khatri, R., Dhainaut, J. M., Gangadharan, S.N., Subramanian, C., and Abdelkhalik, O.,
+- Hybrid Control System for Spacecraft Antenna Boom, ASME Paper # IMECE2009-11303,
+- ASME International Mechanical Engineering Congress and Exposition,
+- Lake Buena Vista, Florida, USA, November 13-19, 2009.
+- 2009      Afifi, H., Nikolaidis, E., Afifi, E., and Gangadharan, S.N.,
+- A Combined Approximation Based MATLAB Code for Dynamic Re-Analysis of Aerospace Structures, ASME Paper # IMECE2009-12922,
+- ASME International Mechanical Engineering Congress and Exposition,
+- Lake Buena Vista, Florida, USA, November 13-19, 2009.
+- 2009      Sances D., Gibson, J., Neumann, S., Thompson, B.,
+- Gangadharan, S
+- ., Smith, T., Schlee, K.,
+- Modeling of Free-Surface Fuel Slosh in Microgravity for Off-Axis Spacecraft Propellant Tanks
+- AIAA Modeling and Simulation Technologies (MST) Conference,
+- Chicago, Illinois, August, 2009.
+- 2009      Silvernail, N., Sances,
+- D., Gangadharan
+- , S.,
+- Model of Spacecraft Fuel Slosh with Diaphragms in Microgravity
+- AIAA Modeling and Simulation Technologies (MST) Conference,
+- Chicago, Illinois, August, 2009.  2009.
+- 2009      Marselle, B.,
+- Gangadharan, S.N.,
+- Chatman, Y., Sudermann, J.E., and Ristow, J.,
+- Using CFD Techniques to Predict Slosh Force Frequency and Damping Rate
+- AIAA/SME/ASCE/AHS/ASC 50
+- Structures, Structural Dynamics and Materials (SDM) Conference,
+- Palm Springs, California, May 2009
+- 2009      Marsell, B.,
+- Gangadharan, S. N.,
+- Chatman, Y., Sudermann, J., Schlee, K., and  Ristow, J.,
+- A CFD Approach to Modeling Spacecraft Fuel Slosh
+- in proceedings,
+- AIAA  Aerospace Sciences Conference,
+- Orlando, Florida,  January 05-08, 2009.
+- 2008      Chatman, Y.,
+- Gangadharan, S.N.,
+- Marselle, B., Ristow, J.A., Sudermann, J.E.,  and Schlee, K.
+- Mechanical Analog Approach to Parameter Estimation of Lateral Spacecraft Fuel Slosh
+- AIAA/ASME/ASCE/AHS/ASC 49
+- Structures, Structural Dynamics and Materials (SDM) Conference,
+- Chicago, Illinois, April 2008
+- 2008      Chatman, Y.,
+- Gangadharan, S.N.,
+- Marselle, B., Ristow, J.A., Sudermann, J.E.,  and Schlee, K, Modeling, Simulation and Parameter Estimation of Lateral Spacecraft Fuel Slosh,
+- . World Multi-Conference on Systemics, Cybernetics and Informatics,
+- Orlando, Florida, July 2008.
+- 2007      Yadira, C., Schlee, K.,
+- Ganagadharan, S.N.,
+- Ristow, J., Sudermann, J., Walker, C., and Hubert, C., Modeling and
+- Parameter Estimation of Spacecraft Fuel Slosh Using Pendulum Analogs
+- , in proceedings,
+- AIAA/ASME/ASCE/AHS/ASC 48th. Structures, Structural Dynamics and Materials (SDM) Conference,
+- Honolulu, Hawaii,  April 23-26,  2007.
+- 2007      Yadira, C., Schlee, K.,
+- Ganagadharan, S.N.,
+- Ristow, J., Sudermann, J., Walker, C., and Hubert, C.,
+- Modeling and Parameter Estimation of Spacecraft Fuel Slosh With Diaphragms Using Pendulum Analogs
+- Annual American Astronomical Society (AAS) Guidance and Control Conference,
+- (paper# AAS-07-004),  Rocky Mountain Section, Breckenridge, Colorado, February 3-7, 2007.
+- 2007      Dhainaut, J-M., Desmond, M., Gangadharan, S.N., and Subramanian, C., Measuring Aero-elastic Wing Characteristics Using Micro-sensor Systems (MEMS), 45
+- AIAA Aerospace Sciences Conference, January 2007.
+- 2007      Yadira, C., Schlee, K., Ganagadharan, S.N., Ristow, J., Sudermann, J., Walker, C., and Hubert, C., Modeling and
+- Parameter Estimation of Spacecraft Fuel Slosh Using Pendulum Analogs
+- AIAA/ASME/ASCE/AHS/ASC 48th. Structures, Structural Dynamics and Materials (SDM) Conference,
+- Honolulu, Hawaii,  April 23-26,  2007.
+- 2007      Yadira, C., Schlee, K., Ganagadharan, S.N., Ristow, J., Sudermann, J., Walker, C., and Hubert, C.,
+- Modeling and Parameter Estimation of Spacecraft Fuel Slosh With Diaphragms Using Pendulum Analogs
+- Annual American Astronomical Society (AAS) Guidance and Control Conference,
+- (paper# AAS-07-004),
+- Rocky Mountain Section, Breckenridge, Colorado, February 3-7, 2007.
+- 2006      Schlee, K., Ganagadharan, S.N., Ristow, J., Sudermann, J., Walker, C., and Hubert, C., Modeling and
+- Parameter Estimation of Spacecraft Fuel Slosh Using Pendulum Analogs
+- AIAA/ASME/ASCE/AHS/ASC 47th. Structures, Structural Dynamics and Materials (SDM) Conference,
+- In proceedings, New Port, Rhode Island, April,  2006.
+- 2006      Majoros, A.E., Jackson, P.R., Vincenzi, D.A., and Gangadharan, S.N.,
+- The Use of Augmented Reality in Development of Models for Aviation Technical Communication
+- Journal of Aviation and Aerospace Education & Research (JAAER),
+- September 2006.
+- 2006      Valimont, R.B., Gangadharan, S.N., Vincenzi, D.A., and Majoros, A.E.,
+- The Effectiveness of Augmented Reality as a Facilitator of Information Acquisition in Aviation Maintenance Applications
+- Journal of Aviation and Aerospace Education & Research (JAAER),
+- December 2006.
+- 2006      Schlee, K., Ganagadharan, S.N., Ristow, J., Sudermann, J., Walker, C., and Hubert, C.,
+- Modeling and Parameter Estimation of Spacecraft Fuel Slosh
+- . Annual AAS Guidance and Control Conference,
+- (Paper# AAS-06-027), American Astronautical Society, Rocky Mountain Section, Breckenridge, Colorado, February 4-8, 2006.
+- 2005      Schlee, K., Ganagadharan, S.N., Ristow, J., Sudermann, J., Walker, C., and Hubert, C.,
+- Modeling and Parameter Estimation of Spacecraft Fuel Slosh Mode
+- Winter Simulation Conference,
+- In proceedings, Orlando, Florida,  December  12-15, 2005.
+- 2005      Schlee, K., Ganagadharan, S.N., Ristow, J., Sudermann, J., Walker, C., and Hubert, C.,
+- Advanced Method to Estimate Fuel Slosh Simulation Parameters
+- AIAA/ASME/SAE/ASEE 41
+- Joint Propulsion Systems Conference,
+- Tucson, Arizona, In-Proceedings, July 10-13, 2005.
+- 2005      Macchiarella, N.D., Gangadharan, S. N., Liu, D., Augmented Reality as a Training Medium for Aviation/Aerospace Applications,
+- . Human Factors and Ergonomics Systems Conference, NASA/AIAA/AAS/NIA Space Exploration Conference,
+- September  26-30, Orlando, Florida, 2005.
+- 2005      Schlee, K., Sudermann, J., Walker, C., Gangadharan, S. N., and Ristow, J.,
+- Modeling Resonance in Spacecraft Fuel Slosh Using Pendulum Analogs
+- . NASA/AIAA/AAS/NIA Space Exploration Conference,
+- In proceedings, Orlando, Florida,  January 30-February 01, 2005.
+- 2004      Subramanian, C.S., Ostrem, T.M., and Gangadharan, S.N.,
+- Noncontact Measurement of Marine Bio-Fouling  Roughness
+- Marine Technology Journal
+- ,  Vol. 41, No. 2, April 2004.
+- 2004      Gangadharan, S.N., Sudermann, J., Marlowe, A.,
+- Parameter Estimation of Spacecraft Nutation Growth Model
+- AIAA/ASME/ASCE/AHS/ASC 45th. Structures, Structural Dynamics and Materials (SDM) Conference
+- , Palm Springs, California, In-Proceedings, April 19-22, 2004.
+- 2004      Shutto, C., Vincenzi, D.A., Hall, S., and Gangadharan, S.N.,
+- The Effects of Viewing Medium on Depth Perception in Human Performance of a Tele-robotic Manipulation Task,
+- Proceedings of the
+- . Human Performance, Situation Awareness and Automation Conference,
+- pp. 544-549, Daytona Beach, Florida March 22-25, 2004.
+- 2004      Shutto, C., Vincenzi, D.A., Hall, S., and Gangadharan, S.N.,
+- Human Performance of a Tele-robotic Manipulation Task as a Function of Viewing Distance in Monoscopic and Stereoscopic Viewing Conditions,
+- Proceedings of the
+- . Human Performance, Situation Awareness and Automation Conference,
+- pp. 562-568, Daytona Beach, Florida March 22-25, 2004.
+- 2004      Subramanian, C.S., Shinjo, N., and Gangadharan, S.N.,
+- A Study of Hydrodynamic Characteristics of Boundary Layer with Algae Roughness
+- Marine Technology Journal,
+- Vol. 41, No.2.,  April 2004.
+- 2004      Shutto, C., Vincenzi, D.A., Hall, S., and Gangadharan, S.N.,
+- Human Performance of a Tele-robotic Manipulation Task as a Function of Viewing Distance in Monoscopic and Stereoscopic Viewing Conditions,
+- Proceedings of the
+- . Human Performance, Situation Awareness and Automation Conference,
+- pp. 544-549, Daytona Beach, Florida March 22-25, 2004.
+- 2003      Jha, A., Nikolaidis, E., and Gangadharan, S.N.,
+- Cyclostationary Random Vibration of a Ship Propeller,
+- Journal of Ship Research (JSR),
+- Vol. 47, No. 4., December 2003.
+- 2003      Vincenzi, D.A., Valimont, B., Macchiarella, N.D., Opalenik, C., Gangadharan, S.N., and Majoros, A.E.,
+- The Effectiveness of Cognitive Elaboration Using Augmented Reality as a Training and Learning Paradigm,
+- Human Factors and Ergonomics Society (HFES) Conference
+- and publication in Proceedings, Denver, Colorado, October 13-17, 2003. (submitted).
+- 2002      Subramanian, C.S., Shinjo, N., and Gangadharan, S.N.,
+- A Study of Hydrodynamic Characteristics of Boundary Layer with Biofilm Roughness
+- , ASME  Fluids Engineering Division Summer Meeting (FEDSM ’02)
+- , in CD-ROM (FEDSM2002-31071), Montreal, Quebec, Canada, July 14-18, 2002.
+- Marine Technology Journal
+- (under review), 2003.
+- 2002      Majoros, A.E., Gangadharan, S.N., Vincenzi, D.A., and Jackson, P.R.,
+- Models of Aviation Technical Communication With Augmented Reality,
+- Aviation Communications Conference
+- , (In Proceedings), sponsored by Embry-Riddle, Phoenix, Arizona, March 3-5, 2002.
+- 2002      Eslami, H., Park, E.S., and Gangadharan, S. N.,
+- Nonlinear Analysis of Unsymmetrical Composite Laminates Using Large Deflection First-Order Shear Deformation Theory with Arbitrary Angle of Orientation,
+- AIAA/ASME/ASCE/AHS/ASC 43rd. Structures, Structural Dynamics and Materials (SDM) Conference
+- , (in CD-ROM), Denver, April 2002.
+- 2002      Valimont, B., Gangadharan, S.N., Vincenzi, D.A., and Majoros, A.E.,
+- The Effectiveness of Augmented Reality as a Facilitator of Information Acquisition
+- , in CD-ROM,
+- . Digital Avionics Systems Conference
+- , Irvine, California, October 27-31, 2002.
+- 2001      Subramanian, C.S., Ostrem, T.M., and Gangadharan, S.N.,
+- A New Technique for Characterization of Biofilm Roughness
+- ASME Fluids Engineering Division Summer Meeting (FEDSM ’01),
+- in CD ROM (FEDSM2001-18033), New Orleans, Louisiana, June 2001.
+- Marine Technology Journal
+- (under review), 2003.
+- 2001      Gangadharan, S.N., Schultz, M., Collino, B., Clark, A., Wimberly, C.R.,
+- Experimental Investigation of
+- Enteromorpha
+- clathrata
+- Biofouling on Lifting Surfaces of Marine Vehicles
+- Marine Technology Journal
+- , Vol. 38, No. 1, pp.31-50,  January 2001.
+- 2000      Jha, A., Niklaidis, E., Gangadharan, S.N.,
+- Vibration of Dynamic Systems Under Cyclostationary Excitation,
+- AIAA Journal
+- ,  Vol. 38, No. 12, pp. 2284 - 2291, December 2000.
+- 2000      Ho, K., Nagendra, S., Gangadharan, S.N., and Eslami, H.,
+- Multidisciplinary Design Optimization of Composite Panels With Geometric Cut-Outs Subjected to Combined Mechanical, Thermal and Acoustic Loading
+- AIAA/ASME/ASCE/AHS/ASC 41
+- . Structures, Structural Dynamics and Materials (SDM) Conference,
+- Atlanta, Georgia, April 2000.
+- 2000      Senocak, I., Shyy, W., and Gangadharan, S.N.,
+- Computational Investigation of the Water Tunnel Tests
+- 3rd. International Conference on Nonlinear Problems in Aviation and Aerospace
+- , Vol. 2, pp. 593-598, May 2000.
+- 2000      Senocak, I., Shyy, W., Siddarth, T., and Gangadharan, S.N.,
+- Evaluation of
+- Laminar-Turbulent Transition and Near-Wall Effects”
+- 3rd. Int. Conf. on Nonlinear Problems in Aviation and Aerospace
+- , Vol. 1, pp. 285-302, ERAU,  May 2000.
+- Journal of  Heat Transfer
+- , 1999.
+- Jha, A., Nikolaidis, E., and Gangadharan, S.,
+- Design of Systems subjected to Cyclostationary Forces
+- International Society of Science and Applied Technology (ISSAT)
+- Conference Presentation and publication in Proceedings, August 11-13, 1999, Las Vegas, Nevada.
+- 1999      He, H., Senocak, I., Shyy, W., Thakur, S., and Gangadharan, S.,
+- Evaluation of Laminar-Turbulent Transition and Near-Wall Turbulence Treatment
+- Journal of Heat Transfer
+- , 1999.
+- 1999      Jha, A., Nikolaidis, E., and Gangadharan, S.,
+- Vibration of Systems under Cyclostationary Excitation
+- ASCE Engineering Mechanics Division
+- , Conference Presentation and Publication in the Proceedings, June 13-16, Baltimore, MD, 1999.
+- 1998      Gangadharan, S.N., Nikolaidis, E., Lee, K., and Haftka, R.T.,
+- Antioptimization for Comparison of Alternative Structural Models and for Damage Detection
+- AIAA Journal,
+- July 1999.
+- 1997      Gangadharan, S.N., Tesfaye, E.,
+- C-DAM: Role of Embry-Riddle Students in Industrial Development Through Co-operative Efforts of the Academe, Industry and the Government
+- International Conference on Agile Manufacturing
+- , Lafayette, Louisiana, February 23-25, 1997.
+- International Journal of Advanced Manufacturing Systems (IJAMS Journal).
+- 1997      Gangadharan, S.N., Nagendra, S., Fiocca, Y. I.,
+- Response Surface Based Laminate Stacking Sequence Optimization Under Stability Constraints
+- AIAA/ASME/ASCE/AHS/ASC 38th.  Structures, Structural Dynamics and Materials (SDM) Conference,
+- Orlando, Florida, April 7-10, In Proceedings, AIAA paper No. 97-1236, CP973, Vol. 3, pp. 2381-2389, 1997.
+- 1996      Gangadharan, S.N., Wimberly, C.R., Clark, A., Collino, B
+- ., Design, Construction and Operation of a Cost Effective Water Tunnel at Harbor Branch Oceanographic Institution
+- ,  SNAME South-East Section Meeting
+- , Fort Pierce, Florida, October 11, 1996.
+- 1996      Collino, B., Gangadharan, S.N., Wimberly, C.R.,
+- An Application of Partial Differential Equations and Boundary Value Problems in Computational Fluid Dynamic Modeling
+- First International Conference on Problems in Aviation and Aerospace,
+- (In Proceedings) Daytona Beach, Florida, May 9-11, pp. 141-150, 1996.
+- 1995      Gangadharan, S.N., Haftka, R.T.,
+- Variable-Complexity,-Modeling Structural Optimization Using Response Surface Methodology
+- , 36th Structures, Structural Dynamics and Materials (SDM) Conference,
+- (In Proceedings), New Orleans, Louisiana, April 10-14, 1995.
+- 1994      Gangadharan, S.N., Wimberly, R.C.,
+- Experimental Investigation of Antioptimization: A Non-Destructive Methodology for Detecting Damages in Aircraft Structures
+- Journal of Modeling, Measurement and Control,
+- Vol. 62, No. 2. pp. 15-28, August 1995, and presented at the
+- International Conference on Information Processing Methodologies and Applications,
+- New Orleans, Louisiana, November 9-11, 1994.
+- 1994      Gangadharan, S.N.,
+- Finite Element Modeling of Pipe Joint Sections due to Eccentric Loading
+- Journal of Modeling, Measurement and Control,
+- Vol. 62, No. 2, pp. 29-38, August 1995; Presented at
+- the International Conference on Information Processing Methodologies and Applications,
+- New Orleans, Louisiana, November 9-11, 1994.
+- 1993      Gangadharan, S.N., Haftka, R.T., and Nikolaidis, E.,
+- The Use of Antioptimization to Compare Alternative Structural Models
+- AIAA/ASNIE/ASCE/AHS/ASC 34th.  Structures, Structural Dynamics and Materials (SDM) Conference,
+- (in Proceedings) La Jolla, California, April 19-21, Proceedings, pages 534-543, 1993.
+- 1993      Gangadharan, S.N., and Kozlov, M.,
+- Elaboration of Theoretical-Experimental Methods for Determination of Variable Residual Stresses and Areas of Possible Damages in Structures
+- AMSE International Conference,
+- (In Proceedings), Orlando, October 25-27, Vol. 1, pp. 131-142, 1993.
+- 1992      Gangadharan, S.N
+- ., Modeling of Flexible Joint Behavior on Welded Structures
+- Journal of Modeling, Measurement and Control,
+- Vol. 46, No. 1, pp. 19-32, February 1992.
+- 1992      Holt, J., Gangadharan, S.N., Clark, A.M., and Sambandam, S.,
+- Comparative Study of Nozzle Thrust for the Jet Propulsion of a Shallow Water Aqua-cultural Research Craft
+- , Proceedings
+- of International Multi-Conference on Signal, Data and Systems,
+- (In Proceedings) Chicago, September 2-4, 1992.
+- 1991      Gangadharan, S.N
+- ., Modeling of Flexible Joint Behavior on Welded Structures
+- , Proceedings of
+- International Conference on Modeling and Simulation
+- , Vol.. 1, pp. 85-88, October 28-31, 1991, New Orleans, Louisiana. (Session Chairman).
+- 1991      Gangadharan, S.N., Nikolaidis, E., and Haftka, R.T.,
+- Probabilistic System Identification of Two Flexible Joint Models,
+- AIAA Journal,
+- Vol. 29, No. 8, pp. 1319-1326, August 1991.
+- 1990      Gangadharan, S.N., Haftka, R.T., and Nikolaidis, E.,
+- An Easily Implemented Static Condensation Method for Structural Sensitivity Analysis
+- Communications in Applied Numerical Methods
+- (U.K.), pp. 161-171, Vol. 6, No. 3, April 1990.
+- 1990      Gangadharan, S.N., Nikolaidis, E., and Haftka, R.T.,
+- Probabilistic System Identification of a Complex Flexible Joint Model
+- Proceedings of International Modeling and Simulation Conference,
+- Vol. 2, pp. 165-181, October 29-31, 1990, Greensboro, North Carolina.(Chairman).
+- 1990      Gangadharan, S.N., Haftka, R.T., and Nikolaidis, E.,
+- An Alternate Static Condensation Method for Sensitivity Analysis of Structures
+- Proceedings of Canadian Society of Mechanical Engineers (CSME), Mechanical Engineering Forum 1990,
+- pp. 139-143, Vol. 4, June 3-8, 1990, Canada.
+- 1990      Gangadharan, S.N., Nikolaidis, E., and Haftka, R.T.,
+- Probabilistic System Identification of a Simple Flexible Joint Model
+- , Proceedings of
+- AIAA/ASME/ASCE/AHS/ASC 31st.  Structures, Structural Dynamics and Materials (SDM) Conference,
+- Vol. 4, pp. 1134-1141, April 2-4, 1990, San Diego, CA.
+- 1989      Gangadharan, S.N., and Krein, H.L.,
+- ROVS: Experimental Results on Jet Propulsion and Feasible Design Concept With Tilting Type Nozzles
+- SNAME, South-East Section Meeting,
+- Jacksonville, Florida, February 27, 1989.
+- 1989       Gangadharan, S.N., and Krein, H.L.,
+- Jet Propelled Remote Operated Underwater Vehicle Guided by Tilting Nozzles
+- , Marine Technology, Journal of SNAME,
+- pp. 131-144, Vol. 26, No.2, April 1989.
+- I have taught 41 different courses (at undergraduate and graduate levels) at Embry-Riddle and have created and developed six new graduate courses in Mechanical Engineering. I have always put students first. I interact with students providing guidance and mentorship and sharing my years of experience as a faculty member, innovator and entrepreneur, to help them succeed in the aerospace field. I have always brought real-world experiences into my lectures. This is my teaching’s strong point. I typically have had industry projects while at ERAU and have been able to weave that experience with what I do in my courses. I am very focused on hands-on experiences for our students. That is why I created a unique minor in CAD/CAM with three new undergraduate courses and six new graduate courses in Manufacturing.
+- I went out of my way to successfully handle all the engineering aspects of the Engineering Physics program (including leading the ABET 2000 process for the EP program) for two years. The senior Engineering Physics students appreciated my dedication and hard work through a Senior Class Design Award in 1999. I helped to cover Professor Ollerich’s senior-level Systems Dynamics class and volunteered to teach the Fluid Mechanics course in 1997.
+- Over the years, I have helped the Aerospace Engineering Department by teaching several courses, often with short notice. I am a dedicated and committed teacher who maintains high standards and expects the same of my students. This fact was acknowledged by former ERAU President Dr. Steven Sliwa, who awarded me the President’s Innovation Award in 1991 and the Faculty Appreciation Award in 1995. When I taught Engineering Physics Senior Design several times, our ERAU student team was awarded first place in the 1998 and 1999 AIAA National Team Space Design Competitions.
+- I have taught more than 60 independent study topic three-credit hour courses for both graduate and undergraduate students. Again, I look back, and I am proud of my record teaching 41 different science- and engineering-related courses over a period of 34 years at Embry-Riddle. I am proud to say that one of my best students, Ms. Monica Fredrickson from the Aerospace Engineering program (currently at Boeing, Seattle) has taken seven different courses with me during her stay at Embry-Riddle. She also received the Best Undergraduate Student Award at her Convocation. I am proud to see so many of my students have risen to the top in their careers — the ultimate test of student success. A good example is my graduate student Brandon Marcell, who I advised for his M.S. thesis in Aerospace Engineering, who is now the Branch Chief at NASA KSC for the Expendable Launch Vehicles Division.
+- Areas of Interest: Parameter Estimation; Modeling and Design Optimization; Structures and Structural Dynamics; Fluid-Structure Interaction.
+- NASA Faculty Fellow: Awarded prestigious NASA Summer Faculty Fellowship (2003, 2004 and 2005).
+- Professional Awards: Presidents Innovation Award, Embry-Riddle Aeronautical University, 2000.
+- Senior Design Class Award, Embry-Riddle Aeronautical University, 1999.
+- AIAA National Team Space Design Competition Award, 1st Place, 1999.
+- Leadership Award, Living-Learning Program, Housing Board, ERAU, 1999.
+- AIAA National Team Space Design Competition Award, 3rd Place, 1998.
+- Presidents Innovation Award, Embry-Riddle Aeronautical University, 1997.
+- Faculty Appreciation Award, 1994.
+- Presidents Innovation Award, Embry-Riddle Aeronautical University, 1991
+- Editor: International Journal of Advanced Manufacturing Systems (IJAMS)
+- Journal Reviewer: International Journal of Solids and Structures, Stanford University.
+- American Institute of Aeronautics and Astronautics (AIAA) Journal.
+- American Society of Engineering Education (ASEE)
+- Professional Societies: Associate Fellow, American Institute of Aeronautics and Astronautics (AIAA) Chair, AIAA National Design Committee of SAC.
+- Member, AIAA National Student Activities Committee (SAC)
+- Senior Member, Soc. of Naval Arch. and Marine Engineers (SNAME)
+- Member, Society of Manufacturing Engineers (SME)
+- Consulting Experience: 18 years of consulting experience on a wide variety of engineering projects with local manufacturing industries. Worked on design/analysis/testing/manufacturing and prototype strain gage testing of engineering products.
+- Research/Professional Funding:
+- (i) Investigator, Advanced Aerospace Manufacturing Project, NSF ATE Grant Proposal, $882,509, submitted to National Science Foundation (NSF), Summer 2008. (under review)
+- (ii) Co-PI, Creating and Fostering an Ethical Climate Based on Sustainability, submitted to NSF, $290,870 (under review)
+- (iii) P.I., Florida Space Grant Consortium ( FSGC), Comparison of Active and Passive Control of Space Vehicle Antenna Boom, in collaboration with NASA Kennedy Space Center, $24,819, awarded in August 2008.
+- (iv) P.I., A CFD Approach to Fuel Slosh Parameter Estimation, NASA Grant # NNX08AV55H, $30,000, awarded in August 2008.
+- (iii) P.I., FSGC Grant, Project FuSSION, a NASA Microgravity project, $3000, February 2008.
+- (iv) P.I., Mathworks Grant, Project FuSSION, a NASA Microgravity project, $5000, March 2008.
+- (v) P.I., NASA Grant, Modeling and Parameter Estimation of Lateral Fuel Slosh Parameters, $ 37,317, January 2007.
+- (vi) P.I., NASA Grant, Modeling and Parameter Estimation of Lateral Fuel Slosh Parameters, $30,000, August 2007.
+- (vii) PI, Florida Space Grant Consortium (FSGC), Modeling and Parameter Estimation of Spacecraft Fuel Slosh, in collaboration with NASA Kennedy Space Center, $15,000, December 2006.
+- (viii) PI, NASA Grant, Simulation Tool for Spacecraft Lateral Fuel Slosh Prediction, $24,000, August 2006.
+- (ix) P.I., NASA Grant, Optimization Techniques for Determining Modeling Parameters from Test Data for Use in NASA/SwRI Nutation Time Constant Fluid Slosh Model, $24,000, August 2005.
+- (x) P.I., Florida Space Grant Consortium (FSGC), Modeling of Fuel Slosh Effects Within Spinning Spacecraft, in collaboration with NASA Kennedy Space Center, $14,789, June 2004.
+- (xi) Co-P.I., with Dr. Dan Macchiarella, ERAU Seed-Money Grant, $18,997 Establishment of a Reality-X Simulation Lab, January 2005.
+- (xii) PI, National Science Foundation (NSF) Follow-on Research Grant Characterization and Detachment of Enteromorpha clathrata Biofouling on Lifting Surfaces of Marine Vehicles by Controlled Cavitation at the amount $652,453 for 3 years (2003-2006), submitted to NSF/EPA Partnership Program in collaboration with five research institutions, February 2003.
+- (xiii) PI, National Science Foundation (NSF) Research Grant, Characterizing Modeling Errors in Isotropic and Composite Plates by Combining Antioptimization with Experiments, at the amount $328,323 for 3 years (2003-2006), submitted to NSF, January 2003.
+- (xiv) Co-PI with Dr. Dennis Vincenzi of Human Factors Department (ERAU), National Science Foundation (NSF) Research Grant, Modeling of Effects of Augmented Reality (AR) on Human Cognition and Perception through Composite Scenes, at the amount $400,000 for 3 years, to be submitted to NSF, May 2003.
+- (xv) PI, National Science Foundation (NSF) Research Grant Investigation of the Adhesion of Enteromorpha clathrata and the Consequent Impact on Cavitation and Dynamic Performance Characteristics and Control of Hydrofoil and Underwater Lifting Surfaces at the amount $252,453 for 3 years (1995-1997). Awarded the 3-year follow-on grant (1998-2001) at the amount $304,553 in Fall 1998; Awarded the REU supplement ($5,460) Spring 1999 and Fall 2000.
+- NSF Final Reports (2002 and 1997); NSF Yearly Report (1998 and 1999).
+- (xvi) Research Initiation Grant, SME, Augmented Reality Applications to Human Factors in Manufacturing Training Environment, $14,997 for one year, 2001-2002.
+- (xvii) Research Initiation Grant, FSGC, Effectiveness of Augmented Reality Training Paradigms for Space and Spaceport related Activities, $19,976 for one year, 2001-2002.
+- (xviii) PI, Diversified Engineering Services, $4,000, Summer 1999.
+- (xix) Summer project from Harbor Branch Oceanographic Research Institution on Development o Jet Propulsion System for Shallow Water Research Vessel at the amount $2800 (June-July, 1991).
+- (xx) Southern Regional Educational Board, Travel Grant, at the amount $750.
+- (xxi) Summer 1992 project from Harbor Branch Oceanographic Research Institution on Modeling and Hydrodynamic Analysis at amount $5500 (April-June, 1992).
+- (xxii) Awarded $3,000 from ERAU Annual Fund for implementation of CAD/CAM Program.
+- (xxiii) C-DAM: My efforts led to securing $100,000 as seed money grant toward capital equipment for developing the various activities of C-DAM. Worked on several funded Automation/Design/Research Projects with Industries: John Crane Belfab ($15,550); Florida Production Engineering ($6,000); Aluma Shield Industries ($4,000); Boston Whaler ($10,000).
+- (xxiv) Society of Automotive Engineers Formulae Race Car Competition Project: Crane Technologies Group sponsored $15,000 toward the project with in-house matching of $5000 from Embry-Riddle.
+- (xxv) Professional Development Grant (Embry-Riddle):
+- * $6500 for incorporating Design and Manufacturing Concepts in curriculum [Year 1].
+- * $5500 for incorporating state-of-the-art concepts in Robotics and Concurrent Eng. and developing working relationships with faculty and C-DAM Industries [Year 2].
+- * $4500 for training in state-of-the-art skills in Design and Space Systems Engineering.
+- * $1500 for ABET2000.
+- (xxvi) "Link Foundation" grant of $9,000 awarded by Harbor Branch Oceanographic Institution: Simulation of the Flow Characteristics on Hydrofoil Surfaces to support my graduate research assistant during summer 1996.
+- (xxvii) Donation of 3 Industrial Robots, HOMAC Manufacturing Co, $30,000 each.
+- Extracurricular Activities:
+- 1. Faculty Advisor, NASA Student Microgravity Program, Spring 2006.
+- 2. Faculty Advisor, Sigma Beta Rho Fraternity, ERAU, 2004-present.
+- 3. Faculty Advisor, Students Chapter of Unmanned Vehicles Systems Society, 1996-2001.
+- 4. Faculty Advisor, SAE Formula Race Car Student Team, 2000- 2001.
+- 5. Faculty Advisor, Indo-American Students Association, ERAU, August 1990 - 1994.
+- 6. Faculty Advisor, Society of Physics Students, 1993-1994.
+- Committees (Served/Serving as):
+- Promotion & Tenure Committee (College of Engineering)
+- Scholarly Activities Committee (College of Engineering)
+- Member, University Research Committee (served as Chair for two years)
+- Chair, University Planning Committee
+- Member, M.S.Theses (Aerospace Engineering and Human Factors & Systems Dept.) Committees.
+- Served in numerous committees at the departmental level.
+- Short Courses: Aircraft Composite Structures, UCLA, California, Fall 2002.
+- Aircraft Design and Sizing, UCLA, California, Fall 2001
+- Aircraft Performance and Design, Mojave, California, Spring 2000.
+- Payload Processing and Integration, Cocoa Beach, Florida, Spring 1999.
+- Launch Vehicle and Orbit Mechanics, Pasadena, California, December 8-10, 1997.
+- Space Systems Design and Engineering, Washington, D.C., September 21 - 23, 1993.
+- Management of a Technical Person in a Leadership Role, Spring 1995.
+- Taguchi's Design of Experiments, Quality Engineering and Robust Design Concepts, Detroit, November 10-12, 1996.
+- Avoiding Conflict and Conflict Resolution, one-day seminar, Jacksonville, February 1997
+- Training in finite element analysis software INERTIA, Indianapolis, 1991
+- Training in Computational Fluid Dynamics Software, FLUENT, Summer 1997.
+- Ground Systems Engineering and Design, Washington, D.C., Spring 1998.
+- Transition to Supervision, ERAU, September 1998.
+- Relationship Skills Development, ERAU, September 1998.
+- How to be a Better Communicator, Career Track Inc. Seminar, June 1998.
+- NASA Microgravity Program: Involved in advising students in the NASA microgravity projects. Advised four student projects and helped them to successfully fly their microgravity experiments aboard the NASA KC-135 aircraft.
+- ABET2000: As a Program Chair, I am responsible for the ABET2000 accreditation process for the Engineering Physics Program during academic year 1998-1999.
+- Post-Doctoral Fellow: Supported a post-doctoral fellow Dr. Michael Schultz at Harbor Branch Oceanographic Institution on the NSF research project on Biofouling of Hydrofoils.
+- CONSORTIUM FOR DESIGN, AUTOMATION AND MANUFACTURING (C-DAM):
+- Executive Director: Established a new University-Industry Partnership called Consortium for Design, Automation and Manufacturing (C-DAM) through a joint partnership between Volusia Manufacturers Association (VMA) and Embry-Riddle Aeronautical University.
+- C-DAM Publications/Articles: Written several articles on C-DAM University-Industry Partnership in local and national newspapers and magazines.
+- C-DAM Articles include:
+- * ASEE Prism Magazine, Editor Vicky Hendley, Nuts and Bolts of Successful University-Industry Partnerships, January 1997.
+- * Gangadharan, S.N., Manufacturing Matters, Halifax Magazine, Volusia County, Nov  Dec 1996.
+- Student-Industry Projects: Guided/supervised the graduate/undergraduate students and served as a project advisor in the following list of student-industry projects:
+- (1) "Plant Layout Optimization", Boston Whaler.
+- (2) "Automation of the Diaphragm Production System", John Crane Belfab.
+- (3) "Material Handling Analysis of Molds and Hulls", Boston Whaler.
+- (4) "Design of Pin Guide Wires for Bowling Lanes", Bellair Lanes, Inc.
+- (5) 'Finite Element Analysis of Composite Boat Hulls", Boston Whaler.
+- (6) "Pro/ENGINEER's Opportunity Cost and Financial Return", Crane Cams.
+- (7) "Instrumentation and Testing of Molded Foam", Boston Whaler.
+- (8) "Material Layout Optimization", Boston Whaler.
+- (9) 'Automation of the Diaphragm Production System", John Crane Belfab.
+- (10) "Design of a Robot Painting Facility", Florida Production Engineering.
+- (11) Productivity Improvement Strategies Through Automation", Aluma Shield Industries.
+- (12) "Design of a Flexible Pipe Joint Section Assembly Device", Microflex, Inc.
+- (13) "Design Instrumentation and Testing of Composite Boat Hulls and Manufacturing Processes", Boston Whaler.
+- (14) "Investigation of the Structural Integrity of a Hydraulic Press", VOTRAN.
+- (15) "Conceptual design of a Relay Switch for Amtrak Railways", ENTECH Corp.
+- (16) "Design and Testing of an Automatic Wire Feeding Attachment to a Brazing Machine", CyberTech International.
+- (17) "Testing of an Automatic Spray Painting System", Florida Production Engineering.
+- (18) "Plant Layout Optimization for Camshaft Production", Crane Technologies Group.
+- (19) "Video to AutoCAD", Daytona Plastix.
+- (19) "Experimentation of Foam Characteristics to Manufacture Small Boat Parts", Boston Whaler.
+- (21) "Testing of Composite Material Characteristics", Boston Whaler.
+- (22) "Design and Analysis of Cable Connectors for High Voltage Power Transmission Lines', Homac
+- Manufacturing Co.
+- (23) "Windows Environment for Video to AutoCAD", Daytona Plastix.
+- (24) "Detailed Design of a Relay Switch for Amtrak Railways", En TECH Corp.
+- (25) "Plant Layout optimization Using MODSIM Software", Crane Cams.
+- (26) "Testing for Redesign of a Cable Connector Module", Homac Manufacturing Company.
+- (27) "Conceptual Design of a Robotic Arm for Hazardous Environment", NASA (KSC).
+- (28) "Finite Element Analysis of Boat Hull Truss Canopy", Boston Whaler.
+- (29) "Testing of Composite Boat Parts", Boston Whaler.
+- (30) "Concepts on Shear Tie Foam Methods to Improve Hull Design and Manufacture", Boston Whaler.
+- (31) "Developing Edge Detecting and Smoothing Algorithms", Daytona Plastics.
+- (32) "Redesign of a Microswitch Assembly for Amtrak Railways", ENTECH Corp.
+- (33) "Developing a Relational Database", Boston Whaler.
+- (34) "Design of a Dispensing Pump Assembly Unit for Medical Applications", Precision Dispenser.
+- (35) "3D Sculpture: Feasibility Study", Entrepreneur Project.
+- (36) "Modeling Based on Concurrent Engineering Methodology", Homac Mfg. Co.
+- (37) "Comparison of Extruded and Casting Rocker Arm Assembly", Crane Technologies Group, Inc.
+- (38) Quality Improvements in the Diaphragm Bellow Production Process", John Crane Belfab.
+- (39) "Applying Concurrent Engineering and Design of Experiments to Software Development Process", Environmental Tectonics Inc.
+- (40) "Quality Loss Analysis and Design of a Hub Cap Assembly", Florida Production Engineering.
+## Courses
+
+- ES 204
+- Dynamics
+- ESCI 204
+- Dynamics
+- MECH 309
+- Fluid Dynamics
+- ME 700
+- Graduate Thesis
+- ES 305
+- Thermodynamics
+- ACET311: Aircraft Drafting and Design
+- ACET314: Aircraft Structures
+- ACET402: Instrumentation (Lecture and Lab)
+- ACET404: A/C Composites (Lecture and Lab)
+- ACET405: Aircraft Internal Combustion Engines
+- ACET406: System Dynamics
+- ACET407: Aircraft Engines and Gas Turbines
+- ACET410: Applied Structural Dynamics
+- AE201: Aerospace Vehicles
+- AE307: Incompressible Aerodynamics
+- AE308:  Compressible Aerodynamics
+- AE314: Experimental Aerodynamics
+- AE318: Aircraft Structures
+- AE408: Turbine and Rocket Engines
+- EP394: Space Systems Engineering I (Orbital Mechanics)
+- EP396: Introduction to Design I
+- EP397: Introduction to Design II
+- EP450: Space Systems Engineering II (Spacecraft Subsystems)
+- EP496: Senior Design Project I on Space Mission Analysis and Design (Fall Semester)
+- EP497: Senior Design Project II in Space Mission Analysis and Design (Spring Semester)
+- ES201: Statics
+- ES204: Dynamics
+- ES206: Fluid Mechanics
+- ES305: Thermodynamics
+- ES309: Fluid Dynamics
+- ES403: Engineering Heat Transfer
+- MET201: Statics and Dynamics
+- MET212: Applied Hydraulics
+- MFE330: Introduction to CAD/CAM
+- MFE492: Robotics and Computer-Integrated Manufacturing
+- MFE493: Concurrent Engineering
+- PS103: Technical Physics I
+- PS104: Technical Physics II
+- PS150: Engineering Physics I with Lab
+- PS160: Engineering Physics II with Lab
+- Courses Developed:
+- ME525/AE525: Structural Design Optimization
+- ME595E/AE595E: Reduced Gravity (Experimental Course)
+- ME612: Computer Integrated Manufacturing
+- ME428/ME506: Design for Manufacturing and Assembly
+- ME614: Multidisciplinary Design Optimization
+- ME/SysE595E: Lean Manufacturing (Experimental Course)
+
+---
+*Scraped from faculty.erau.edu on 2026-03-28 09:57*

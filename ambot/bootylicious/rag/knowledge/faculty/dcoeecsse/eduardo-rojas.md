@@ -1,0 +1,163 @@
+# Eduardo Rojas
+
+**Department:** Electrical Engineering and Computer Science
+**Email:** Eduardo.Rojas@erau.edu
+**Profile:** https://faculty.erau.edu/Eduardo.Rojas
+
+## Education
+
+- Ph.D. - Doctor of Philosophy in Electrical Engineering,
+- M.S. - Master of Science in Electrical Engineering,
+
+## Areas of Expertise
+
+- RF and Microwave Circuits, Additive Manufacturing (3D-Printing), Antennas, Monolithic Microwave Integrated Circuits (MMIC), Material science for high-frequency circuits.
+- The views expressed on faculty and external web pages are those of the author and do not necessarily represent those of Embry-Riddle Aeronautical University.
+- Wireless Devices and Electromagnetics Laboratory (WiDE Lab) www.wide-lab.com
+- Google Scholar Site
+
+## Courses
+
+- EE 595G
+- Antenna Theory Space & Av Apps
+- EE 495G
+- Antenna Theory Space & Av Apps
+- EE 800
+- Dissertation
+- EE 340
+- Electric and Magnetic Fields
+- EE 690
+- Graduate Project
+- ELEC 430
+- Intro Radio Frequency Circuits
+- ELEC 430L
+- Radio Frequency Circuits Lab
+- Patents:
+- Apertured Waveguides for Electromagnetic Wave Transmission, U.S. Patent No. 10,396,422. Patent awarded August 27, 2019.
+- RFID Tags for On- and Off-Metal Applications (continuation), U.S. Patent No. 10,289,945. Patent awarded December 5
+- , 2017.
+- Three-Dimensionals RFID Tags, U.S. Patent No. 10,038,248. Patent awarded July 31st, 2018.
+- RFID Tags for On- and Off-Metal Applications, U.S. Patent No. 9,836,685. Patent awarded December 5
+- , 2017.
+- Journal Publications
+- Clayton Neff,
+- Eduardo A. Rojas-Nastrucci
+- , Justin Nussbaum, Darrell Griffin, Thomas M. Weller, and Nathan B. Crane, "
+- Thermal and Vapor Smoothing of Thermoplastic for Reduced Surface Roughness of Additive Manufactured RF Electronics
+- ," accepted in IEEE Transactions on Components, Packaging and Manufacturing Technology, 2019.
+- R. A. Ramirez,
+- E. A. Rojas-Nastrucci
+- and T. M. Weller, "
+- Laser-Assisted Additive Manufacturing of mm-Wave Lumped Passive Elements
+- ," in IEEE Transactions on Microwave Theory and Techniques, vol. 66, no. 12, pp. 5462-5471, Dec. 2018.
+- E. A. Rojas-Nastrucci
+- , J. Nussbaum, T. M. Weller and N. B. Crane, “Ka-Band Characterization of Binder Jetting for 3D-Printing of Metallic Rectangular Waveguide Circuits and Antennas," in IEEE Transactions on Microwave Theory and Techniques, vol. 65, no. 9, pp. 3099-3108, Sept. 2017.
+- E. A. Rojas-Nastrucci
+- , Harvey Tsang, Paul Deffenabugh, T. M. Weller, Ramiro A. Ramirez, D. Hawatmeh, and Kenneth Church, “Characterization and Modeling of K-Band Coplanar Waveguide Digitally Manufactured using Pulsed Picosecond Laser Machining of Thick-Film Conductive Paste,” in IEEE Transactions on Microwave Theory and Techniques, vol. 65, no. 9, pp. 3180-3187, Sept. 2017.
+- E. A. Rojas-Nastrucci
+- , A. D. Snider and T. M. Weller, "Propagation Characteristics and Modeling of Meshed Ground Coplanar Waveguide," in IEEE Transactions on Microwave Theory and Techniques, vol. 64, no. 11, pp. 3460-3468, Nov. 2016.
+- J. Castro,
+- E. A. Rojas-Nastrucci
+- , A. Ross, T. M. Weller and J. Wang, "
+- Fabrication, Modeling, and Application of Ceramic-Thermoplastic Composites for Fused Deposition Modeling of Microwave Components,
+- " in IEEE Transactions on Microwave Theory and Techniques, vol. 65, no. 6, pp. 2073-2084, June 2017.
+- Thomas P. Ketterl, Yaniel Vega, Nicholas C. Arnal, John W. I. Stratton,
+- Eduardo A. Rojas-Nastrucci
+- , María F. Córdoba-Erazo, Mohamed M. Abdin, Casey W. Perkowski, Paul I. Deffenbaugh, Kenneth H. Church, and Thomas M. Weller, "A 2.45 GHz Phased Array Antenna Unit Cell Fabricated Using 3-D Multi-Layer Direct Digital Manufacturing," in IEEE Transactions on Microwave Theory and Techniques, vol. 63, no. 12, pp. 4382-4394, Dec. 2015.
+- R. A. Ramirez,
+- E. A. Rojas-Nastrucci
+- and T. M. Weller, "UHF RFID Tags for On-/Off-Metal Applications Fabricated Using Additive Manufacturing," in IEEE Antennas and Wireless Propagation Letters, vol. 16, no. , pp. 1635-1638, 2017.
+- Juan Castro,
+- Eduardo Rojas
+- , Thomas Weller, and Jing Wang, “High-Permittivity and Low-Loss Electromagnetic Composites Based on Co-fired Ba
+- 0.55
+- 0.45
+- or MgCaTiO
+- Microfillers for Additive Manufacturing and Their Application to 3-D Printed K-Band Antennas”, in Journal of Microelectronics and Electronic Packaging 2016 13:3, 102-112.
+- Conference Papers
+- Carlos R. Mejias-Morillo, and
+- Eduardo A. Rojas-Nastrucci
+- Z-Meandering Miniaturized Patch Antenna Using Additive Manufacturing
+- ,” 2020 IEEE Radio and Wireless Symposium (RWS), San Antonio, TX, 2020.
+- C. R. Mejias-Morillo, A. Gbaguidi, D. W. Kim, S. Namilae and
+- E. A. Rojas-Nastrucci
+- UHF RFID-based Additively Manufactured Passive Wireless Sensor for Detecting Micrometeoroid and Orbital Debris Impacts,
+- " 2019 IEEE International Conference on Wireless for Space and Extreme Environments (WiSEE), Ottawa, ON, Canada, 2019, pp. 41-47.
+- Eduardo Rojas-Nastrucci
+- , Ramiro Ramirez, Derar Hawatmeh, Di Lan, Jing Wang and Thomas Weller, “
+- Laser Enhanced Direct Print Additive Manufacturing for Mm-Wave Components and Packaging
+- ,” ICEAA 2017, Verona, Italy, September 2017.
+- J. Castro, E. Rojas, T. Weller and J. Wang, “High-k and Low-loss Electromagnetic Composites for Direct Digital Manufacturing of mmWave Devices,” accepted to 2017 Antennas and Propagation Symposium, January 2017
+- Eduardo A. Rojas-Nastrucci
+- , Justin Nussbaum, Thomas M. Weller, and Nathan B. Crane,
+- “Metallic 3D Printed Ka-Band Pyramidal Horn using Binder Jetting”
+- , IEEE MTT-S 2016 Latin America Microwave Conference (LAMC 2016).
+- E. A. Rojas-Nastrucci
+- , J. Nussbaum, T. M. Weller and N. B. Crane, "
+- Meshed rectangular waveguide for high power, low loss and reduced weight applications
+- ," 2016 IEEE MTT-S International Microwave Symposium (IMS), San Francisco, CA, 2016, pp. 1-4.
+- J. Castro,
+- E. Rojas
+- , A. Ross, T. Weller and J. Wang, "
+- High-k and low-loss thermoplastic composites for Fused Deposition Modeling and their application to 3D-printed Ku-band antennas
+- ," 2016 IEEE MTT-S International Microwave Symposium (IMS), San Francisco, CA, 2016, pp. 1-4..
+- D. Hawatmeh,
+- E. Rojas-Nastrucci
+- , and T. Weller. “
+- A Multi-Material 3D Printing Approach for Conformal Microwave Antennas
+- ”. 2016 International Workshop on Antenna Technology. March 2016.
+- Vera-Lopez, A.L.;
+- Rojas-Nastrucci, E.A
+- .; Cordoba-Erazo, M.; Weller, T.; Papapolymerou, J., "
+- Ka-band characterization and RF design of Acrynolitrile Butadiene Styrene (ABS),
+- " in 2015 IEEE MTT-S International Microwave Symposium (IMS), vol., no., pp.1-4, 17-22 May 2015
+- Jonathon O‘Brien, Maria Cordoba Erazo,
+- Eduardo Rojas
+- , Juan Castro, Mohamed Abdin, Jing Wang, Gokhan Mumcu, Kenneth Church, Paul Deffenabugh, Thomas Weller. “
+- Miniaturization of Microwave Components and Antennas Using 3D Manufacturing
+- ”. 9 th European Conference on Antennas and Propagation (EuCAP 2015). Lisbon, Portugal, April 2015.
+- Rojas-Nastrucci, E.A
+- .; Weller, T.; Lopez Aida, V.; Fan Cai; Papapolymerou, J., "
+- A study on 3D-printed coplanar waveguide with meshed and finite ground planes
+- ," Wireless and Microwave Technology Conference (WAMICON), 2014 IEEE 15th Annual , vol., no., pp.1,3, 6-6 June 2014.
+- Eduardo A. Rojas-Nastrucci
+- , Ramiro A. Ramirez, Sean T. Murphy, Mike Newton and Thomas M. Weller. “
+- A Direct Digital Manufactured RFID System Applied to Teaching Antenna Theory to Pre-College Students
+- ”. International Symposium on Microelectronics (IMAPS 2015) Oct 2015, Vol. 2015.
+- Juan Castro,
+- Eduardo Rojas
+- , Thomas Weller and Jing Wang, "
+- High-k and Low-Loss Polymer Composites with Co-Fired Nd and Mg-Ca Titanates for 3D RF and Microwave Printed Devices: Fabrication and Characterization
+- " 2015 IEEE 16th Annual Wireless and Microwave Technology Conference (WAMICON), April 2015.
+- Juan Castro,
+- Eduardo Rojas
+- , Thomas Weller and Jing Wang. “
+- Engineered Nanocomposites for Additive Manufacturing of Microwave Electronics
+- ”. International Symposium on Microelectronics (IMAPS 2015) Oct 2015, Vol. 2015.
+- Ramiro A. Ramirez,
+- Eduardo A. Rojas-Nastrucci
+- , Thomas M. Weller, "
+- 3D Tag with Improved Read Range for UHF RFID Applications using Additive Manufacturing
+- " 2015 IEEE 16th Annual Wireless and Microwave Technology Conference (WAMICON), April 2015.
+- M. F. Córdoba-Erazo,
+- E. A. Rojas-Nastrucci
+- and T. Weller, “
+- Simultaneous RF electrical conductivity and topography mapping of smooth and rough conductive traces using microwave microscopy to identify localized variations
+- ”. 2015 IEEE 16th Annual Wireless and Microwave Technology Conference (WAMICON), Cocoa Beach, FL, 2015
+- Jonathan M. O'Brien,
+- Eduardo Rojas
+- and Thomas M. Weller. “
+- A Switched-Line Phase Shifter Fabricated with Additive Manufacturing
+- ”. International Symposium on Microelectronics (IMAPS 2013) Jan 2013, Vol. 2013, No. 1.
+- María F. Córdoba-Erazo,
+- Eduardo A. Rojas-Nastrucci
+- and Thomas Weller. "
+- Measurement of Electrical Conductivity of Direct Digital Printed Conductive Traces Using Near-Field Microwave Microscopy
+- " International Symposium on Microelectronics (IMAPS 2014), San Diego, CA, October 2014.
+- Kenneth Church, Xudong Chen, Paul Deffenbaugh, Casey Perkowski, Sam LeBlanc, Eduardo Rojas, Thomas Weller, “
+- Turning Printed Circuit Boards into Printed Circuit Structures using 3D Printing
+- ,” 2014 SMTA Conference, August 2014.
+- 2019 National Science Foundation CAREER Award
+- WiDE Laboratory
+- Radar and Microwaves Laboratory
+- Circuits, Sensor and Instrumentation Laboratory

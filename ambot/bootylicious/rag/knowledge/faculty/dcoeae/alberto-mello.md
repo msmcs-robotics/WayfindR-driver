@@ -1,0 +1,154 @@
+# Alberto Mello
+
+**Department:** Aerospace Engineering
+**Profile:** https://faculty.erau.edu/Alberto.Mello
+
+## Education
+
+- Ph.D. - Doctor of Philosophy in Aerospace Engineering,
+
+## Areas of Expertise
+
+- Mechanics of Solids, Structures and Materials
+- Physics of fatigue crack initiation
+- Microscale plastic strain accumulation
+- Fracture Mechanics
+- Experimental mechanics
+- Mechanics of adhesion and interfacial fracture
+- Structural Analysis and Aeronautical Fatigue
+- Damage Tolerance Analysis
+- Aircraft fatigue life extension
+- The views expressed on faculty and external web pages are those of the author and do not necessarily represent those of Embry-Riddle Aeronautical University.
+- Structural Integrity and Damage Assessment Team (SIDAT)
+- Seaplane design analysis: Focus on structure factor optimization
+- Behavior of superalloys subjected to fatigue loads under high temperature
+- Influence of cold expansion and aggressive  environment on crack growth in aluminum alloy
+- REU Site: Exploring Aerospace Research at the Intersection of Mechanics, Materials Science, and Aerospace Physiology
+- Damage Control Measures in Composites: Focus on Damage Tolerance of Aerospace Structures
+- Bird Strike - The Effect of the Leading Edge Radius on the Behavior of the Bird Upon Impact
+- Behavior of Super Alloys Subjected to Fatigue Loads Under High Temperature
+- (Alberto Mello Jr.)
+- Faculty Research Projects
+- (2023)
+- Bird Strike: The Effect of the Leading-Edge Radius on the behavior of the Bird Upon Impact
+- (Alberto Mello Jr., James J. Pembridge)
+- Faculty Research Projects
+- (2023)
+- Influence of Cold Expansion and Aggressive Environment on Crack Growth in Aluminum Alloy
+- (Alberto Mello Jr.)
+- Faculty Research Projects
+- (2023)
+- REU Site: Exploring Aerospace Research at the Intersection of Mechanics, Materials Science and Aerospace Physiology
+- (Alberto Mello Jr., Foram Madiyar)
+- Faculty Research Projects
+- (2023)
+- Seaplane Design Analysis: Focus on Structure Factor Optimization
+- (Alberto Mello Jr.)
+- Faculty Research Projects
+- (2023)
+- The Effect of Pre-Thermal and -Load Conditions on IN-718 High Temperature Fatigue Life
+- (Paulina De La Torre, Alberto Mello)
+- (2022)
+- Influence of Cold Expansion and Aggressive  Environment on Crack Growth in AA2024-T3
+- (Ken Shishino, Christopher Leirer, Alberto Mello)
+- (2022)
+- Stress Intensity Factor - Simple Solution for a Complex Problem
+- (Hamid A. Ghassri, Hamid Ghassri, Alberto Mello)
+- Beyond: Undergraduate Research Journal
+- (2021)
+- James Harris, Sirish Namilae, Alberto W Mello. ZnO Modified Carbon Fiber-Matrix Interfacial Evaluation via Nanoscale Digital Image Correlation and Nanoindentation. Materials Today Communications. Oct. 2024. https://doi.org/10.1016/j.mtcomm.2024.110661.
+- Kais Jribi; Boutros Azizi, Alberto W Mello. In-Situ Detection of Delamination Reinitiation in Carbon Fiber Reinforced Polymers Post Barely Visible Impact Damage. Heliyon Journal. Sept. 2024. https://doi.org/10.1016/j.heliyon.2024.e37782.
+- Kais Jribi; Boutros Azizi, Alberto W Mello. Delamination in CFRP: Experimental Approach. 48th International Conference and Expo on Advanced Ceramics and Composites (ICACC-S1-024-2024). Jan 2024. https://ceramics.org/wp-content/uploads/2024/01/12.15.ICACC24_Abstracts-3-1.pdf.
+- Samarth Motagi, James Harris, Alberto W Mello, Sirish Namilae. A Self-Excitation Point Process Model for Quantifying Nanoparticle Agglomeration. The Philosophical Magazine. Dec. 2023. https://doi.org/10.1080/14786435.2024.2374530.
+- Kais Jribi; Boutros Azizi, Alberto W Mello. CRFP Mechanical Properties – Stated Values vs Experimental Data. ASME Journal of Engineering Materials and Technology. Oct. 2024. https://doi.org/10.1115/1.4065655.
+- Soham S Bahulekar, Alberto W. Mello. Effect of Spray Rails on Takeoff Performance of Amphibian Aircraft. World Journal of Engineering and Technology, 12, 117-140. doi: 10.4236/wjet.2024.121008. Feb. 2024.
+- Kais Jribi; Boutros Azizi, Alberto W Mello. Delamination in CFRP: Experimental Approach. 48th International Conference and Expo on Advanced Ceramics and Composites ((ICACC-S1-024-2024). Jan 2024. https://ceramics.org/wp-content/uploads/2024/01/12.15.ICACC24_Abstracts-3-1.pdf.
+- Xinyu Yang, Kyle B Collins, Alberto W Mello. Mission-Specific Preliminary Design and Weight Optimization for High-Speed Vertical Takeoff and Landing (HSVTOL) Aircraft. AIAA SciTech Forum. Jan 2024. http://arc.aiaa.org|DOI:10.2514/6.2024-1474.
+- Alexandru Lopazan, Alberto W. Mello. Dual-System Activation of Ni-Base Superalloy under High Strain and High Temperature. Open Journal of Applied Sciences, 13, 2320-2328. https://doi.org/10.4236/ojapps.2023.1312181. Dec. 2023.
+- Kais Jribi, Boutros Azizi, Alberto W Mello. Delamination Re-initiation from a BVID in CFRP. Submitted to the ASME 2023 International Mechanical Engineering Congress and Exposition (IMECE2023-119994).
+- Kais Jribi, Jonathan H Gosse, Douglas J Neill, Alberto W Mello. Damage Control Measures in Composites: BVID Damage Progression. ASME Aerospace Structures, Structural Dynamics, and Materials Conference. SSDM 2023. Oct 2023. https://doi.org/10.1115/SSDM2023-100771.
+- Kais Jribi; Jonathan H Gosse; Douglas J Neill; Alberto W Mello. Barely Visible Impact Damage in Composites: Progression and Control Measures. 47th International Conference and Expo on Advanced Ceramics and Composites (ICACC-S1-049-2023). Jan 2023. https://ceramics.org/wp-content/uploads/2023/01/ICACC23_conference-guide_web_1_12.pdf
+- Paulina E. De La Torre, Alberto W. Mello. The Effect of Pre-Thermal and -Load Conditions on IN-718 High Temperature Fatigue Life. Open Journal of Applied Sciences, 12, 406-419. doi:10.4236/ojapps.2022.123028. Mar. 2022.
+- Ken Shishino, Christopher Leirer, Alberto W. Mello. Influence of cold expansion and aggressive environment on crack growth in AA2024-T3. AIAA Journal, 1-14. https://doi.org/10.2514/1.J061090. Mar. 2022.
+- Hamid A. Ghassri, Alberto W. Mello. Stress Intensity Factor - Simple Solution for a Complex Problem. Beyond Research Journal.  Vol. 5 , Article 1, https://commons.erau.edu/beyond/vol5/iss1/1. Nov. 2021.
+- John Rotella, Alberto W. Mello, Ajey Venkataraman, Mark Hardy, Michael Sangid. Dwell-fatigue of Ni-based superalloys with serrated and planar grain boundary morphologies: the role of the γ' phase on strain accumulation and cavitation. Journal of Metallurgical and Materials Transactions A. https://doi.org/10.1007/s11661-021-06454-8. Sept. 2021.
+- Ritwik Bandyopadhyay, Alberto W. Mello, Kartik Kapoor, Michael P. Reinhold, Thomas F Broderick, Michael D. Sangid. On the crack initiation and heterogeneous deformation of Ti-6Al-4V during high cycle fatigue at high R ratios. Journal of the Mechanics and Physics of Solids. https://doi.org/ 10.1016/j.jmps.2019.04.017. Aug. 2019.
+- Andrea Nicolas, Alberto W. Mello, Yiwei Sun, David R. Johnson, Michael D. Sangid. Reconstruction methods and analysis of subsurface uncertainty for anisotropic microstructures. Journal of Materials Science and Engineering A. https://doi.org/10.1016/j.msea.2019.05.089. May 2019.
+- Andrea Nicolas, Alberto W. Mello, Michael D. Sangid. Relationships between microstructure and micromechanical stresses on local pitting during galvanic corrosion in AA7050. Corrosion Science. https://doi.org/10.1016/j.corsci.2019.03.016. Mar. 2019.
+- Alberto W. Mello, Andrea Nicolas, Michael Sangid. A fatigue deformation map to quantify the degree of mesoscopic cube slip at elevated temperatures. Presented at TMS 2019 Annual Meeting & Exhibition 1 (86). Mar 2019. www.tms.org.
+- Andrea Nicolas, Alberto W. Mello, Michael Sangid. The effect of localized stresses and heterogeneous strains on galvanic corrosion in AA7050. Presented at TMS 2019 Annual Meeting & Exhibition 1 (209). Mar. 2019. www.tms.org.
+- Andrea Nicolas, Alberto Mello, Michael Sangid. The effect of strain localization on galvanic corrosion pitting in AA7050. CORROSION. https://doi.org/10.5006/2729. Aug. 2018.
+- Alberto W. Mello, Todd Book, Andrea Nicolas; Samuel E. Otto; Christopher J. Gilpin, Michael D Sangid. Distortion Correction Protocol for Digital Image Correlation after Scanning Electron Microscopy: Emphasis on long duration and ex-situ experiments. Experimental Mechanics. DOI 10.1007/s11340-017-0303-1. Jun 2017.
+- Alberto W. Mello, Andrea Nicolas, Michael D Sangid. Investigation of Elevated Temperature Fatigue in Ni-Based Superalloys – Role of Slip System Activation. Conference and Exposition on Experimental and Applied Mechanics – SEM Annual 2017. Jun. 2017.
+- Alberto W. Mello, Andrea Nicolas, Michael D Sangid. Fatigue strain mapping via digital image correlation for Ni-based superalloys: the role of thermal activation on cube slip. Materials Science & Engineering A 695 (2017) 332–341. http://dx.doi.org/10.1016/j.msea.2017.04.002. Apr. 2017.
+- A. W. Mello, A. Nicolas, R. A. Lebensohn, M. D. Sangid. Effect of microstructure on strain localization in a 7050 Aluminum alloy: comparison of experiments and modeling for various textures. Materials Science and Engineering: A, April 2016. Vol 661, pages 187–197.
+- Alberto W Mello, Andrea Nicolas, Michael D Sangid. Relationship between Galvanic Corrosion and Local Plastic Deformation during Fatigue of Al Alloys. Presented at TMS 2016 Annual Meeting & Exhibition 1 (145). Feb 2016.
+- www.tms.org
+- Andrea Nicolas, Alberto W Mello, Michael D. Sangid. Evaluation of Strain Localizations on AA-7050 Using CP-FFT and EBSD. Presented at TMS 2016 Annual Meeting & Exhibition 1 (145). Feb 2016.
+- www.tms.org
+- Alberto W Mello, Andrea Nicolas, Ricardo Lebensohn, Michael Sangid. Relationship between Galvanic Corrosion and Local Plastic Deformation - AA7050-T7451. Presented at Aircraft Structural Integrity Program – ASIP. Dec 2015.
+- Cannon, A.H., Hochhalter, J.D., Mello, A.W., Bomarito, G.F., Sangid, M.D., 2015. MicroStamping for Improved Speckle Patterns to Enable Digital Image Correlation. 2015 Microscopy and Microanalysis Conference, August 4, 2015, Portland, Oregon. ID: 0546-000769.
+- A W S Mello Junior, P I P Oliveira, D F V Mattos. Brazilian Air Force Alternative Individual Aircraft Tracking (IAT) for Increasing Reliability of NDI. USAF Aircraft Structural Integrity Program Conference. ASIP 2012.
+- De Almeida, Fabio A; Guerra, Eduardo Bento ; D'Oliveira, Flávio Araripe ; Mello, Alberto Walter . Constrained Linear Quadratic Tracker for Optimal Performance Flight. Journal of Guidance, Control, and Dynamics (Print), v. 35, p. 1911-1919, 2012.
+- Mello Junior, Alberto W. S.; GARCIA, Abílio Neves ; Ribeiro, Fabrício N. ; Mattos, Daniel Ferreira V. . Brazilian Air Force aircraft structural integrity program: an overview. Journal of Aerospace Technology and Management, v. 1, p. 107-111, 2009.
+- Mattos, Daniel Ferreira V.; Mello Junior, Alberto W. S. ; Ribeiro, Fabrício N. . F-5M DTA program. Journal of Aerospace Technology and Management, v. 1, p. 113-120, 2009.
+- Mello Jr, Alberto W. S.  Mattos, Daniel Ferreira V. Reliability prediction for structures under cyclic loads and recurring inspections. Journal of Aerospace Technology and Management, v. 1, p. 201-209, 2009.
+- A N Garcia, A W S Mello Jr. On the MSD Assessment of Real Aircraft Fuselage Panels. International Committee on Aeronautical Fatigue and Structural Integrity. ICAF 2008
+- Mello Junior, A. W. S.  Liechti, Kenneth M.  The Effect of Self-Assembled Monolayers on Interfacial Fracture. Journal of Applied Mechanics, v. 73, p. 860, 2006.
+- Mello Junior, A. W. S.; Carneiro, Sergio Henrique da Silva; Ciliato, Giovanni Dias ; Garcia, Abílio Neves . Overview of the Life Extension Programs Developed at CTA for the Brazilian Air Force Fleet. In: International Conference on Aeronautical Fatigue, 2005, Hamburgo, 2005.
+- Mello Junior, A. W. S ; Carneiro, Sergio Henrique da Silva ; Santos, Cesar Demetrio ; Ciliato, Giovanni Dias ; Garcia, Abílio Neves ; Ferreira, Nayara Nunes ; Pereira, Stephanie Christini Gomes . Load Spectrum Evaluation for FAB T-25 DTA Program. In: International Congress of Mechanical Engineering, 2005, Ouro Preto, 2005.
+- Mello Junior, A. W. S.; Liechti, Kenneth M. Self-Assembled Monolayers and Mode-Mix Dependent Traction-Separation Laws for Intrinsic Fracture Toughness. In: International Conference on Fracture (ICF 05), 2005, Turin, 2005.
+- Mello, A. W.; Liechti, K. M. A piezoelectric biaxial loading device for interfacial fracture experiments. Experimental Mechanics, v. 44, p. 495-501, 2004.
+- Mello Junior, A. W. S.; Carneiro, Sergio Henrique da Silva ; Santos, Cesar Demetrio ; Garcia, Abílio Neves ; Ciliato, Giovanni Dias . Brazilian Air Force Training Aircraft DTA Program: An Overview. In: Aircraft Structural Integrity Program, 2004, Memphis, 2004.
+- Mello Junior, A. W. S.; Brandão, Maurício Pazini. Application of a Multi-Parameter Yield Zone Model for Crack Growth Predictions. Applied Mechanics in the Americas, Rio de Janeiro, BRASIL, v. 07, p. 745-748, 1999.
+- Mello Junior, A. W. S; Brandão, Maurício Pazini. Aplicação de Modelo de Crescimento de Trinca de Múltiplos Parâmetros na Determinação da Vida Econômica e do Intervalo entre Inspeções de Estruturas Aeronáuticas. In: Simpósio de Pesquisa Operacional e Logística da Marinha, 1998, Rio de Janeiro, 1998.
+- Mello Junior, A. W. S; Brandão, Maurício Pazini. Aplicação de Modelo de Crescimento de Trinca de Múltiplos Parâmetros na Determinação da Vida Econômica e do Intervalo entre Inspeções de Estruturas Aeronáuticas. In: Simpósio de Pesquisa Operacional e Logística da Marinha, 1998, Rio de Janeiro, 1998.
+- EMBRY-RIDDLE Aeronautical University – Aerospace Department
+- Aug. 2018 – Present: Associate Professor
+- Purdue University – School of Aeronautics and Astronautics
+- Aug. 2016 – Jul. 2018: Visiting Professor
+- Jul. 2014 – Jul 2016: Postdoctoral Research Fellow
+- Aeronautical Institute of Technology – ITA (Brazil)
+- Feb. 2004 – May 2014: Research Professor
+- Universidade Paulista – UNIP (Brazil)
+- Feb. 2004 – Dec 2006: Professor
+- Institute of Aeronautics and Space – IAE (Brazil)
+- Sept. 2011 – March 2014: Head of the Space Projects Branch, VLS-1 Manager
+- Feb. 2004 – Sept. 2011: Aeronautical System Division Head, F-5M and T-25 SLEP Manager
+- Aug. 1996 – Dec. 1999: Head of the Fatigue Section, AT-26 SLEP Manager
+- University of Texas at Austin - UT
+- Aug. 2001 – Dec. 2003: Aerospace Department Teacher Assistant
+- Brazilian Air Force Depot at São Paulo – PAMASP (Brazil)
+- Jan. 1990 – Jul. 1996: F-5 fleet Manager and Maintenance Engineer
+- Associate Fellow of the American Institute of Aeronautics and Astronautics (AIAA)
+- Member of the Mineral, Metals and Materials Society (TMS)
+- Member of the American Society of Mechanical Engineers (ASME)
+- Reviewer for the 17th International Congress of Mechanical Engineering - 2003
+- Ad-hoc Editor of Journal of Aerospace Technology and Management - 2009-2013
+- Member of the Judging Committee for the “Marechal-do-Ar Casemiro Montenegro Filho” award, offered by the Bureau of Strategic Affairs – Presidency of the Republic of Brazil - 2012-2013
+- Santos Dumont Medal of Honor for high standard achievement, Brazilian Air Command
+- Nominated Professor of the Year by the Aeronautical Institute of Technology (ITA) – Aeronautical Engineering Department
+- Grant awards:
+- Structural analysis and life extension for the AT-26 trainer fleet - General Command of Support (Brazil)
+- Implementation of damage tolerance philosophy to the T-25 trainer fleet - General Command of Support (Brazil). (PI: 100%).
+- Damage tolerance analysis update for the F-5M fleet  - General Command of Aerospace Technology (Brazil). (PI: 100%).
+- Development and integration of electronic network, first and second stages of the Satellite Launcher VLS-1 - Brazilian Space Agency. (PI: 100%).
+- Role of precipitates in heterogeneous slip of Ni-based superalloys (Co-PI: 50%)  - The University of Birmingham.
+- Failure Analysis – SEAMAX, M-22, SN 156 attachment lug (PI: 100%).
+- REU Site: Exploring Aerospace Research at the Intersection of Mechanics, Materials Science, and Aerospace Physiology. (Co-PI: 50%).
+- Characterization Laboratory
+## Courses
+
+- AERO 615
+- Adv Top Fatigue & Damage Tol
+- AE 421
+- Aircraft Detail Design
+- AERO 421
+- Aircraft Detail Design
+- AE 418 - Aerospace Structures II
+- AE 499 - Special Topic in Aerospace Engineering
+- AE 699 - Special Topic in Aerospace Engineering (Grad)
+- AE 695L - Advanced Topics in Fatigue and Damage Tolerance
+
+---
+*Scraped from faculty.erau.edu on 2026-03-28 09:57*

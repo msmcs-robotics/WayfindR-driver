@@ -1,20 +1,21 @@
 #!/bin/bash
 # ============================================================================
-# AMBOT Jetson Motor Control Setup Script
+# AMBOT Jetson Setup Script (comprehensive, idempotent)
 #
-# Idempotent — safe to run multiple times. Checks before installing.
-#
-# Sets up:
-#   1. System groups (dialout, gpio, i2c, video)
-#   2. Python packages (pyserial, ollama, fastmcp)
-#   3. GPIO permissions and udev rules
-#   4. LiDAR serial port access
-#   5. Jetson.GPIO verification
+# Installs ALL dependencies for the AMBOT project on Jetson Orin Nano:
+#   1. System apt packages (GTK modules, tkinter, GUI libs, dev tools)
+#   2. System groups (dialout, gpio, i2c, video)
+#   3. Python packages (pyserial, ollama, fastmcp, gpiod, httpx)
+#   4. GPIO permissions and udev rules
+#   5. LiDAR serial port access
+#   6. Camera + sensor verification
+#   7. Ollama + Docker verification
 #
 # Usage:
 #   ./setup-jetson-motors.sh              # Full setup
 #   ./setup-jetson-motors.sh --check      # Check only, don't install
 #   ./setup-jetson-motors.sh --pip-only   # Only install Python packages
+#   ./setup-jetson-motors.sh --apt-only   # Only install apt packages
 #   ./setup-jetson-motors.sh --groups-only  # Only fix group memberships
 # ============================================================================
 
@@ -24,6 +25,7 @@ USER_NAME="${SUDO_USER:-$(whoami)}"
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 CHECK_ONLY=false
 PIP_ONLY=false
+APT_ONLY=false
 GROUPS_ONLY=false
 
 # Parse args
@@ -31,9 +33,10 @@ for arg in "$@"; do
     case "$arg" in
         --check) CHECK_ONLY=true ;;
         --pip-only) PIP_ONLY=true ;;
+        --apt-only) APT_ONLY=true ;;
         --groups-only) GROUPS_ONLY=true ;;
         --help|-h)
-            echo "Usage: $0 [--check|--pip-only|--groups-only]"
+            echo "Usage: $0 [--check|--pip-only|--apt-only|--groups-only]"
             exit 0
             ;;
     esac
@@ -106,15 +109,68 @@ install_pip_package() {
 # ── Main ───────────────────────────────────────────────────
 
 echo "============================================"
-echo "  AMBOT Jetson Motor Control Setup"
+echo "  AMBOT Jetson Setup (comprehensive)"
 echo "============================================"
 echo "  User: $USER_NAME"
 echo "  Mode: $($CHECK_ONLY && echo 'CHECK ONLY' || echo 'INSTALL')"
 echo ""
 
+# ── 0. System APT Packages ───────────────────────────────
+
+if ! $PIP_ONLY && ! $GROUPS_ONLY; then
+    echo "── System APT Packages ──"
+
+    # All apt packages needed for AMBOT on Jetson
+    APT_PACKAGES=(
+        # GUI / GTK (face tracker, LiDAR GUI)
+        "libcanberra-gtk-module"
+        "libcanberra-gtk3-module"
+        "python3-tk"
+        "python3-pil.imagetk"
+        # NOTE: Do NOT install opencv-data from apt — it conflicts with NVIDIA's
+        # OpenCV 4.8.0 (libopencv). Cascade files are at /usr/share/opencv4/haarcascades/
+        # Serial / I2C tools
+        "python3-serial"
+        "i2c-tools"
+        # Device tree tools (for pinmux overlays)
+        "device-tree-compiler"
+        # GPIO tools
+        "gpiod"
+        "libgpiod-dev"
+        # General utilities
+        "busybox"
+        "curl"
+    )
+
+    missing=()
+    for pkg in "${APT_PACKAGES[@]}"; do
+        if dpkg -s "$pkg" &>/dev/null; then
+            ok "$pkg"
+        else
+            fail "$pkg NOT installed"
+            missing+=("$pkg")
+        fi
+    done
+
+    if [ ${#missing[@]} -gt 0 ]; then
+        if $CHECK_ONLY; then
+            warn "Missing ${#missing[@]} packages (--check mode, not installing)"
+        else
+            info "Installing ${#missing[@]} packages: ${missing[*]}"
+            sudo apt update -qq 2>/dev/null
+            sudo apt install -y "${missing[@]}" 2>&1 | tail -3
+            ok "APT packages installed"
+        fi
+    else
+        ok "All APT packages present"
+    fi
+
+    echo ""
+fi
+
 # ── 1. System Groups ──────────────────────────────────────
 
-if ! $PIP_ONLY; then
+if ! $PIP_ONLY && ! $APT_ONLY; then
     echo "── System Groups ──"
     add_group gpio
     add_group dialout
@@ -125,7 +181,7 @@ fi
 
 # ── 2. Python Packages ───────────────────────────────────
 
-if ! $GROUPS_ONLY; then
+if ! $GROUPS_ONLY && ! $APT_ONLY; then
     echo "── Python Packages ──"
 
     # pyserial (for LiDAR LD19)
@@ -137,20 +193,24 @@ if ! $GROUPS_ONLY; then
     # FastMCP (for MCP ability server)
     install_pip_package fastmcp fastmcp
 
+    # gpiod (libgpiod Python bindings — fallback motor driver)
+    install_pip_package gpiod gpiod
+
+    # httpx (for chat app async HTTP)
+    install_pip_package httpx httpx
+
     # requests (for RAG API proxy)
-    if python3 -c "import requests" 2>/dev/null; then
-        ok "requests already installed"
-    elif ! $CHECK_ONLY; then
-        pip3 install --user requests 2>&1 | tail -1
-        ok "requests installed"
-    fi
+    install_pip_package requests requests
+
+    # uvicorn (for chat app server)
+    install_pip_package uvicorn uvicorn
 
     echo ""
 fi
 
 # ── 3. GPIO Verification ─────────────────────────────────
 
-if ! $PIP_ONLY; then
+if ! $PIP_ONLY && ! $APT_ONLY; then
     echo "── GPIO Verification ──"
 
     # Check Jetson.GPIO
@@ -193,7 +253,7 @@ fi
 
 # ── 4. Serial Port (LiDAR) ───────────────────────────────
 
-if ! $PIP_ONLY; then
+if ! $PIP_ONLY && ! $APT_ONLY; then
     echo "── Serial Port (LiDAR) ──"
 
     if [ -c /dev/ttyUSB0 ]; then
@@ -221,7 +281,7 @@ fi
 
 # ── 5. Camera ─────────────────────────────────────────────
 
-if ! $PIP_ONLY; then
+if ! $PIP_ONLY && ! $APT_ONLY; then
     echo "── Camera ──"
 
     if [ -c /dev/video0 ]; then
@@ -246,7 +306,7 @@ fi
 
 # ── 6. Ollama ─────────────────────────────────────────────
 
-if ! $GROUPS_ONLY; then
+if ! $GROUPS_ONLY && ! $APT_ONLY; then
     echo "── Ollama ──"
 
     if command -v ollama &>/dev/null; then

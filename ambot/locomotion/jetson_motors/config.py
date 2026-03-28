@@ -1,18 +1,18 @@
 """
 Pin Configuration for L298N on Jetson Orin Nano
 
-Uses gpiod (libgpiod v2) chip:line mapping instead of BOARD pin numbers.
-Jetson.GPIO is broken on JetPack 6.x (R36.4.4) — GPIO.output() silently
-fails to drive pins, while gpioset/gpiod work correctly.
+Two backends supported:
+  1. Jetson.GPIO (preferred) — uses BOARD pin numbers, works on original DTB
+  2. gpiod / libgpiod v2 (fallback) — uses gpiochip0:line mapping
 
-Pin mapping (BOARD → gpiochip:line), confirmed via gpioinfo:
+Pin mapping derived from Jetson.GPIO gpio_pin_data.py JETSON_ORIN_NX_PIN_DEFS:
 
-  BOARD 32 (ENA) → gpiochip1, line 9  (PBB.01) — PWM pin
-  BOARD 29 (IN1) → gpiochip0, line 144 (PAC.06)
-  BOARD 31 (IN2) → gpiochip1, line 15 (PCC.03)
-  BOARD 33 (ENB) → gpiochip0, line 105 (PQ.05) — PWM pin
-  BOARD  7 (IN3) → gpiochip1, line 12 (PCC.00)
-  BOARD 13 (IN4) → gpiochip0, line 43 (PH.00)
+  BOARD  7 (IN3) -> gpiochip0, line 144 (PAC.06)
+  BOARD 13 (IN4) -> gpiochip0, line 122 (PY.00)
+  BOARD 29 (IN1) -> gpiochip0, line 105 (PQ.05)
+  BOARD 31 (IN2) -> gpiochip0, line 106 (PQ.06)
+  BOARD 32 (ENA) -> gpiochip0, line 41  (PG.06) — PWM pin
+  BOARD 33 (ENB) -> gpiochip0, line 43  (PH.00) — PWM pin
 
 Power:
   L298N VCC  -> external 12V supply (NOT from Jetson)
@@ -20,17 +20,30 @@ Power:
   L298N 5V   -> leave disconnected (Jetson has its own 5V rail)
 """
 
-# L298N -> Jetson Orin Nano pin mapping (gpiochip:line)
-# Each pin is a tuple: (chip_path, line_offset)
-JETSON_L298N_CONFIG = {
-    'ENA': ('/dev/gpiochip1', 9),    # Motor A enable (BOARD 32, PBB.01)
-    'IN1': ('/dev/gpiochip0', 144),  # Motor A direction (BOARD 29, PAC.06)
-    'IN2': ('/dev/gpiochip1', 15),   # Motor A direction (BOARD 31, PCC.03)
-    'ENB': ('/dev/gpiochip0', 105),  # Motor B enable (BOARD 33, PQ.05)
-    'IN3': ('/dev/gpiochip1', 12),   # Motor B direction (BOARD 7, PCC.00)
-    'IN4': ('/dev/gpiochip0', 43),   # Motor B direction (BOARD 13, PH.00)
+# BOARD pin numbers for Jetson.GPIO (preferred backend)
+JETSON_L298N_BOARD_PINS = {
+    'ENA': 32,   # Motor A enable (PG.06, PWM)
+    'IN1': 29,   # Motor A direction (PQ.05)
+    'IN2': 31,   # Motor A direction (PQ.06)
+    'ENB': 33,   # Motor B enable (PH.00, PWM)
+    'IN3': 7,    # Motor B direction (PAC.06)
+    'IN4': 13,   # Motor B direction (PY.00)
 }
 
-# PWM not available via gpiod — ENA/ENB use HIGH/LOW (full speed on/off).
-# For variable speed, use sysfs PWM or Jetson's hardware PWM via /sys/class/pwm/.
-PWM_FREQ = 1000  # Hz — retained for API compatibility (currently unused)
+# gpiod chip:line mapping (fallback backend)
+# All 40-pin header pins are on gpiochip0 (tegra234-gpio)
+JETSON_L298N_GPIOD = {
+    'ENA': ('/dev/gpiochip0', 41),   # BOARD 32, PG.06
+    'IN1': ('/dev/gpiochip0', 105),  # BOARD 29, PQ.05
+    'IN2': ('/dev/gpiochip0', 106),  # BOARD 31, PQ.06
+    'ENB': ('/dev/gpiochip0', 43),   # BOARD 33, PH.00
+    'IN3': ('/dev/gpiochip0', 144),  # BOARD  7, PAC.06
+    'IN4': ('/dev/gpiochip0', 122),  # BOARD 13, PY.00
+}
+
+# Legacy alias — points to gpiod config for backward compatibility
+JETSON_L298N_CONFIG = JETSON_L298N_GPIOD
+
+# PWM frequency — used by Jetson.GPIO backend for hardware PWM on ENA/ENB.
+# gpiod backend ignores this (ENA/ENB are HIGH/LOW only).
+PWM_FREQ = 1000  # Hz

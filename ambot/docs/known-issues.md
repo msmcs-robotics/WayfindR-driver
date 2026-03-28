@@ -1,6 +1,6 @@
 # Ambot - Known Issues & Troubleshooting
 
-> Last updated: 2026-02-24 (Session 18-19)
+> Last updated: 2026-03-28 (Session 23)
 
 ---
 
@@ -66,63 +66,100 @@ cd ~/ambot && source venv/bin/activate && bash scripts/kill-hardware.sh
 
 ---
 
-### Jetson: Firefox & Chromium Crash on Launch
+### Jetson: Firefox & Chromium Crash on Launch (FULLY FIXED - Session 23)
 
-**Symptom**: Firefox and Chromium crash immediately when opened from the Jetson desktop as the non-root user (`georgejetson`). The browser window appears briefly then closes, or doesn't appear at all.
+**Symptom**: Clicking Firefox or Chromium from the GNOME dock/app menu does nothing — browser window never appears. Both snap-packaged browsers are completely broken.
 
-**Status**: FIXED (Session 20). Installed Firefox ESR from Mozilla PPA (bypasses broken Snap).
+**Status**: **FULLY FIXED** (Session 23). Firefox ESR installed, all desktop integration fixed.
 
-**Root cause**: `snap-confine` capability failure on JetPack/Tegra kernel.
+**Root cause**: Two-layer failure:
 
-The Jetson's JetPack R36.4.4 kernel (`5.15.148-tegra`) does **not** have AppArmor compiled in (`CONFIG_SECURITY_APPARMOR` not set). The `snap-confine` binary (from `snapd` deb package v2.67.1) requires `cap_dac_override` capability, which either isn't granted or the kernel doesn't fully support POSIX capabilities for snap confinement.
+1. **snap-confine capability failure** — JetPack R36.4.4 kernel (`5.15.148-tegra`) does NOT have AppArmor compiled in. The `snap-confine` binary requires `cap_dac_override` capability, which the Tegra kernel doesn't fully support for snap confinement. Installing `policycoreutils` (provides `matchpathcon`) was attempted but did NOT resolve the issue — this is a kernel-level limitation.
+
+2. **GNOME dock pointed to broken snap** — The favorites dock had `firefox_firefox.desktop` pinned, which calls `/snap/bin/firefox`. Even after installing firefox-esr, clicking the dock icon still tried the broken snap version.
 
 **Error** (from `firefox --no-remote 2>&1`):
 ```
-snap-confine is packaged without necessary permissions and cannot continue;
+WARNING: cannot create user data directory: failed to verify SELinux context
+snap-confine is packaged without necessary permissions and cannot continue
 required permitted capability cap_dac_override not found in current capabilities:
-=: Function not implemented
+  =: Function not implemented
 ```
 
-**Investigation performed** (Session 19):
+**Why snap is unfixable on Jetson**: The Tegra kernel was compiled without `CONFIG_SECURITY_APPARMOR`. Snap requires either AppArmor or proper POSIX capabilities for confinement. Neither is available. `setcap cap_dac_override+ep` on snap-confine doesn't work because the kernel's capabilities implementation is non-standard for the snap runtime. This is a JetPack/NVIDIA limitation — **snap browsers will never work on this kernel**.
+
+**Complete fix** (Session 23 — apply all steps):
 ```bash
-# Confirmed snap-confine lacks capabilities
-getcap /usr/lib/snapd/snap-confine
-# (empty — no capabilities set)
-
-# Confirmed kernel lacks AppArmor
-ssh jetson "grep CONFIG_SECURITY_APPARMOR /boot/config-* 2>/dev/null"
-# CONFIG_SECURITY_APPARMOR is not set
-
-# snapd version mismatch
-dpkg -l snapd | grep snapd  # deb: 2.67.1
-snap version                 # snapd: 2.73
-
-# Attempted fix: setcap (did NOT resolve the issue)
-sudo setcap cap_dac_override+ep /usr/lib/snapd/snap-confine
-# Capability was set but error persists — kernel may not support it properly
-```
-
-**Note**: User reports browsers may have been installed via APT, not Snap. Check with:
-```bash
-which firefox && dpkg -l firefox 2>/dev/null   # APT-installed?
-snap list firefox 2>/dev/null                    # Snap-installed?
-```
-
-**Fix applied** (Session 20):
-```bash
-# Install Firefox ESR from Mozilla PPA (bypasses broken Snap)
+# Step 1: Install Firefox ESR (deb package, bypasses snap entirely)
 sudo add-apt-repository -y ppa:mozillateam/ppa
 sudo apt update
 sudo apt install -y firefox-esr
 
-# Set as default browser
+# Step 2: Set firefox-esr as default browser
+sudo update-alternatives --install /usr/bin/x-www-browser x-www-browser /usr/bin/firefox-esr 200
 sudo update-alternatives --set x-www-browser /usr/bin/firefox-esr
 sudo update-alternatives --set gnome-www-browser /usr/bin/firefox-esr
+xdg-settings set default-web-browser firefox-esr.desktop
+xdg-mime default firefox-esr.desktop text/html
+xdg-mime default firefox-esr.desktop x-scheme-handler/http
+xdg-mime default firefox-esr.desktop x-scheme-handler/https
+
+# Step 3: Redirect /usr/bin/firefox to firefox-esr
+sudo cp /usr/bin/firefox /usr/bin/firefox.snap-original  # backup
+sudo tee /usr/bin/firefox > /dev/null << 'EOF'
+#!/bin/bash
+exec /usr/bin/firefox-esr "$@"
+EOF
+sudo chmod +x /usr/bin/firefox
+
+# Step 4: Update GNOME favorites dock (replace snap entry)
+# Run this as the desktop user (georgejetson), not root:
+gsettings set org.gnome.shell favorite-apps \
+  "['firefox-esr.desktop', 'org.gnome.Nautilus.desktop', 'snap-store_ubuntu-software.desktop', 'yelp.desktop']"
+
+# Step 5: Patch snap desktop entries (so any remaining references work)
+sudo sed -i 's|Exec=/snap/bin/firefox|Exec=/usr/bin/firefox-esr|g' \
+  /var/lib/snapd/desktop/applications/firefox_firefox.desktop
+sudo sed -i 's|Icon=/snap/firefox/current/default256.png|Icon=firefox-esr|g' \
+  /var/lib/snapd/desktop/applications/firefox_firefox.desktop
+
+# Step 6: Refresh desktop database
+sudo update-desktop-database /usr/share/applications/
+sudo update-desktop-database /var/lib/snapd/desktop/applications/
+
+# Step 7: Verify
+firefox --version   # Should show: Mozilla Firefox 140.8.0esr
+xdg-settings get default-web-browser  # Should show: firefox-esr.desktop
 ```
 
-Firefox ESR 140.8.0 now works. The Snap `firefox` package is still installed but broken — use `firefox-esr` instead.
+**If GNOME dock icon doesn't update**: Press `Alt+F2`, type `r`, press Enter to restart GNOME Shell.
 
-**Alternative**: Use SSH port forwarding to access web applications from the dev machine's browser:
+**Investigation commands** (for diagnosing if this recurs):
+```bash
+# Check what's in the GNOME favorites dock
+gsettings get org.gnome.shell favorite-apps
+
+# Check which firefox binary runs
+which firefox && file $(which firefox)
+firefox --version
+
+# Check what desktop entries exist
+find /usr/share/applications /var/lib/snapd/desktop/applications \
+  -name '*firefox*' -o -name '*chrom*' 2>/dev/null
+
+# Check snap status
+snap list firefox 2>/dev/null
+snap list chromium 2>/dev/null
+
+# Test firefox-esr headless (works even over SSH)
+timeout 5 firefox-esr --headless --screenshot /tmp/test.png about:blank 2>&1
+ls -la /tmp/test.png  # Should exist if browser works
+
+# Check if snap-confine has capabilities (it won't on Tegra)
+getcap /usr/lib/snapd/snap-confine
+```
+
+**Alternative**: Use SSH port forwarding to access Jetson web apps from the dev machine's browser:
 ```bash
 ssh -f -N -L 5123:localhost:5000 jetson
 # Then open http://localhost:5123 in local browser
@@ -215,9 +252,12 @@ ssh -f -N -L 5123:localhost:5000 jetson
 # Then open: http://localhost:5123
 # To kill the tunnel later: pkill -f 'ssh.*5123.*jetson'
 
-# Check browser crash logs
-ssh jetson "firefox --no-remote 2>&1 | head -20"
-ssh jetson "chromium-browser --disable-gpu --no-sandbox 2>&1 | head -20"
+# Check browser (should be firefox-esr)
+ssh jetson "firefox --version"
+ssh jetson "gsettings get org.gnome.shell favorite-apps"
+
+# If browser breaks again, re-run the fix script:
+# scp /tmp/fix-jetson-browser-gui2.sh jetson:/tmp/ && ssh jetson 'bash /tmp/fix-jetson-browser-gui2.sh'
 ```
 
 ---

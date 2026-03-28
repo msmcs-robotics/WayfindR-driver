@@ -1,0 +1,301 @@
+# Birce Dikici
+
+**Department:** Mechanical Engineering
+**Email:** dikicib@erau.edu
+**Profile:** https://faculty.erau.edu/Birce.Dikici
+
+## Education
+
+- Ph.D. - Doctor of Philosophy in Mechanical Engineering,
+- M.S. - Master of Science in Mechanical Engineering,
+
+## Areas of Expertise
+
+- Aluminum Nanoparticle Combustion, Composites, Experimental Fluid Dynamics, Biomass Materials
+- The views expressed on faculty and external web pages are those of the author and do not necessarily represent those of Embry-Riddle Aeronautical University.
+- GoogleScholar
+- Boiling Heat Transfer Enhancement with Surfactants and Structured Surfaces
+- Effect of Surfactant Viscosity on Nucleate Pool Boiling
+- Investigation of Thermal Conductivity in Biomass Products
+- Investigation of Heat, Shade and Tilt Angle on Solar Panels
+- Natural Fiber Reinforced Polymer (NFRP) Composites
+- WIND TURBINE PERFORMANCE
+- (Birce Dikici)
+- Pure Portfolio
+- (2022)
+- CHARACTERIZATION METHODS FOR BIOMASS MATERIALS AND OPTIMIZING HEAT TRANSFER BY USING GENETIC ALGORITHMS
+- (Birce Dikici, Eduardo Divo)
+- Pure Portfolio
+- (2022)
+- Viscosity and natural evaporation studies
+- (Birce Dikici)
+- Pure Portfolio
+- (2021)
+- UNDERGRADUATE RESEARCH WITH ENTREPRENEURAL APPROACH
+- (Birce Dikici)
+- Pure Portfolio
+- (2021)
+- Thermal conductivity study of biomass reinforced polymer composites
+- (Birce Dikici)
+- Pure Portfolio
+- (2020)
+- Ballerina
+- (Dikici, Birce, Ph.D)
+- President's Art Exhibit
+- (2019)
+- Mystic Forest
+- (Dikici, Birce, Ph.D)
+- President's Art Exhibit
+- (2019)
+- Processing of agricultural biomass for producing reinforced polymer composites
+- (Birce Dikici)
+- Pure Portfolio
+- (2019)
+- Study of surface tension and natural evaporation of aqueous surfactant solutions
+- (Birce Dikici)
+- Pure Portfolio
+- (2018)
+- Investigation of thermal conductivity variation of biomass products with moisture
+- (Birce Dikici)
+- Pure Portfolio
+- (2017)
+- Determination of Aqueous Surfactant Solution Surface Tensions with a Surface Tensiometer
+- (Esteves, Remelisa, Dikici, Birce, Ph.D, Lehman, Matthew, Mazumder, Qayyum, Onukwuba, Nonso)
+- Beyond: Undergraduate Research Journal
+- (2016)
+- Determination of Surfactant Solution Viscosities with a Rotational Viscometer
+- (Esteves, Remelisa, Onukwuba, Nonso, Dikici, Birce, Ph.D)
+- Beyond: Undergraduate Research Journal
+- (2016)
+- Comparisons of aqueous surfactant solutions for nucleate pool boiling
+- (Birce Dikici)
+- Pure Portfolio
+- (2016)
+- Pool boiling heat transfer enhancement with structured surfaces
+- (Birce Dikici)
+- Pure Portfolio
+- (2016)
+- Effect of power characteristics on solar panels
+- (Birce Dikici)
+- Pure Portfolio
+- (2016)
+- Pool boiling enhancement with environmentally friendly surfactant additives
+- (Birce Dikici, Marc Compere)
+- Pure Portfolio
+- (2014)
+- Nucleate Pool Boiling Enhancement Experiments for Heat Transfer Laboratory
+- (Birce Dikici, Marc Compere)
+- Pure Portfolio
+- (2013)
+- Detonation models of fast combustion waves in nanoscale Al-MoO<sub>3</sub> bulk powder media
+- (Birce Dikici)
+- Pure Portfolio
+- (2013)
+- Analysis of the influence of nanometric aluminium particle vaporisation on flame propagation in bulk powder media
+- (Birce Dikici)
+- Pure Portfolio
+- (2012)
+- Deflagration analysis of aluminum droplet combustion
+- (Birce Dikici)
+- Pure Portfolio
+- (2012)
+- Toward design of the pre-stressed nano- and microscale aluminum particles covered by oxide shell
+- (Birce Dikici)
+- Pure Portfolio
+- (2011)
+- A Solar-Powered Direct Steam Generation Boiler for an Educational Desktop Rankine Cycle
+- (Marc Compere, Birce Dikici)
+- Pure Portfolio
+- (2011)
+- Reaction dynamics of aluminum-viton<sup>®</sup>-acetone droplets
+- (Birce Dikici)
+- Pure Portfolio
+- (2011)
+- The effect of pre-heating on flame propagation in nanocomposite thermites
+- (Birce Dikici)
+- Pure Portfolio
+- (2010)
+- Analysis of the influence of nanometric aluminum particle vaporization on flame propagation in bulk powder media
+- (Birce Dikici)
+- Pure Portfolio
+- (2010)
+- The effects of perfluoroalkyl carboxylic acid coating of al particles to flame propagation
+- (Birce Dikici)
+- Pure Portfolio
+- (2010)
+- Influence of aluminum passivation on the reaction mechanism
+- (Birce Dikici)
+- Pure Portfolio
+- (2009)
+- The effect of pre-heating on flame propagation in nanocomposite thermites
+- (Birce Dikici)
+- Pure Portfolio
+- (2009)
+- The influence of aluminum passivation on the reaction mechanism
+- (Birce Dikici)
+- Pure Portfolio
+- (2009)
+- Melt dispersion versus diffusive oxidation mechanism for aluminum nanoparticles: Critical experiments and controlling parameters
+- (Birce Dikici)
+- Pure Portfolio
+- (2008)
+- Journal papers
+- [J-13] Dikici, B.; Saad, H.A.K.; Zhao, B. Evaluating Flow Characteristics of Ground and Cut Biomass for Industrial Applications.
+- Powders
+- 2024,
+- 3 (3)
+- , 437-459. https://doi.org/10.3390/powders3030024
+- [J-12] Dikici B., Al-Sukaini B.Q.A.,
+- “Comparisons of Structured Surface Floors for Pool Boiling Enhancement at Low Heat Fluxes: Hands-On Learning Setup for Heat Transfer Classroom”
+- , World Journal of Engineering and Technology, May 2023, vol: 11, No: 2, 303-318, [DOI:10.4236/wjet.2023.112022]
+- [J-11] Dikici B. and Al-Sukaini B.Q.A,
+- “Evaluations of Surfactant Solutions for Nucleate Pool Boiling at Low Heat Fluxes”
+- , Current Analysis on Chemistry, 1:2018, pp 20-26,
+- [J-10] Esteves R., Dikici B., Lehman M., Onukwuba N., Mazumder, Q.,
+- “Determination of Aqueous Surfactant Solution Surface Tensions with a Surface Tensiometer”
+- , Beyond: Undergraduate Research Journal, Vol:1, Article:4, January 2016, pp 27-35
+- [J-9] Esteves R., Onukwuba N., Dikici B.,
+- "Determination of Surfactant Solution Viscosities with a Rotational Viscometer"
+- , Beyond: Undergraduate Research Journal, Vol:1, Article:2, January 2016, pp 12-19.
+- [J-8] Dikici B. Eno E., and Compere M.,
+- “Pool Boiling Enhancement with Environmentally friendly Surfactant additives”
+- , Journal of Thermal Analysis and Calorimetry, Vol:116, Number:3, pp 1387-1394, [DOI 10.1007/s10973-013-3634-x]
+- [J-7] Shaw, Pantoya, and Dikici B.,
+- “Detonation Models of Fast Combustion Waves in Nanoscale Al-MoO
+- Bulk Powder Media”
+- , Combustion Theory and Modelling,  iFirst 2012, 1-15, [DOI:10.1080/13647830.2012.721898]
+- [J-6] Dikici B., Pantoya M.L.,and Shaw B.D.,
+- “Analysis of the Influence of Nanometric Aluminum Particle Vaporisation on Flame Propagation in Bulk Powder Media”
+- ,  Combustion Theory and Modelling, iFirst 2011 ,pp 1-17,  [DOI: 10.1080/13647830.2011.636840]
+- [J-5] Datta S., Dikici B., and Pantoya M.L., Ekwaro-Osire S.,
+- “Reaction Dynamics of Aluminum-Viton ®- Acetone Droplets”
+- , Journal of Propulsion and Power, Vol.27, No.2, March-April 2011, pp396-401, [DOI:10.2514/1.50408]
+- [J-4] Levitas V.I., Dikici B., and Pantoya M.L.,
+- “Toward Design of the Pre-Stressed Nano- and Microscale Aluminum Particles Covered by Oxide Shell”
+- , Combustion and Flame. Vol 158, (2011) 1413-1417, [https://doi.org/10.1016/j.combustflame.2010.12.002]
+- [J-3] Dikici B., Pantoya M.L., Levitas V.I.,
+- “The Effect of Pre-heating on Flame Propagation in Nanocomposite Thermites”
+- , Combustion and Flame, Vol.157, (2010),  Issue:8, pp1581-1588,  [DOI:10.1016/j.combustflame.2010.04.014]
+- [J-2] Dikici B., Dean S.W., Pantoya M.L., Levitas, V.I., and Jouet R.J.,
+- “Influence of Aluminum Passivation on the Reaction Mechanism: Flame Propagation Studies’’
+- , Energy&Fuels 2009, Vol.23, pp.4231-4235, [DOI:10.1021/ef801116X].
+- [J-1] Levitas, V.I., Pantoya M.L., and Dikici B.
+- “Melt Dispersion versus Diffusive Oxidation
+- Mechanism for Aluminum Nanoparticles: Critical experiments and controlling parameters.”
+- , Applied Physics Letters, Vol.92, 011921 (2008), [DOI:10.1063/1.2824392].
+- Conference papers
+- [C-27] Dikici B., Saad, H.A.K., Zhao B.,
+- “Particle Morphology and Flow Characteristics of Biomass for Aerospace and Industrial Material Development”
+- , CAMX The Composites and Advanced Materials Expo, Sept 8-11, 2025, Orlando, FL.
+- [C-26] Alnatsheh A. and Dikici B.,
+- “Formulation and Properties of Agar-based Biopolymer Blends for Packaging Applications”
+- , Paper no: SSDM2025-152308, ASME 2025 Aerospace Structures, Structural Dynamics, and Materials Conference, (SSDM), May 5-7, 2025, Houston, TX.
+- [C-25] Dikici B., Al-Sukaini B., Kaminis A., and Stirnweis D.,
+- “Enhancing Heat Transfer and Evaporation Control Through Bubble Dynamics and Surfactants”
+- , Paper no: TFEC-2025-56238, ASTFE 10
+- Thermal and Fluids Engineering Conference (TFEC), March 9-12, 2025, Washington, DC.
+- [C-24] Dikici B.,
+- “Applying a Structured Problem-Solving Approach to Improve Dynamics, Fluid Dynamics, and Thermodynamics Education”,
+- Paper no: TFEC-2025-56237, ASTFE 10
+- Thermal and Fluids Engineering Conference (TFEC), March 9-12, 2025, Washington, DC.
+- [C-23] Llanos P., Amberkar N., Duraisamy V.V., Nafziger J., Dikici B., Gangadharan S., Sanmiguel Pablo G., “Qualification and Validation Ground Tests for a Multiple Payload aboard Miura 1 rocket”, ASCEND 2022, 24-26 October 2022, Las Vegas, NV, Paper number: AIAA 2022-4211, https://arc.aiaa.org/doi/10.2514/6.2022-4211
+- [C-22] Dikici B., Chacko J.
+- “Wind Turbine Performance: Hands-on Projects for Clean Energy Systems Course”
+- Thermal and Fluids Engineering Conference (TFEC), May 15-18, 2022, Las Vegas, NV, Paper number: TFEC-2022-40883
+- [C-21] Saad H.A.K., Dikici B., Villarroel G., Divo E.,
+- “Characterization methods for Biomass Materials and Optimizing Heat Transfer by Using Genetic Algorithms”
+- Thermal and Fluids Engineering Conference (TFEC), May 15-18, 2022, Las Vegas, NV, Paper number: TFEC-2022-40794
+- [C-20] Dikici B.,
+- “Undergraduate Research with Entrepreneurial Approach: Creating New Insulation Materials Using Biomass Fibers
+- ”, Proceedings of ASME Intl., Mech. Eng. Congress & Exposition Virtual Conference, November 1-5, 2021, Paper number: IMECE2021-70718
+- [C-19] Dikici B., Kaminis A., Stirnweis D., Stollenwerk L., and Jiang Q.,
+- “Viscosity and Natural Evaporation Studies: Aqueous Solutions of Surfactants and Hydrotopes”
+- , ASME SHTC Virtual Conference, June 16-18, 2021, Paper number: SHTC 2021-63951
+- [C-18] Dikici B., Motagi S., Kantamani P., Ayyagari S., Al-Haik M., “Thermal Conductivity Study of Biomass Reinforced Polymer Composites”, Proceedings of SHTC Summer Heat Transfer Conference, July 12-15, 2020, Rosen Shingle Creek, Orlando, FL, Paper number: SHTC 2020-13009
+- [C-17] Dikici B., Motagi S., Kantamani P., Ayyagari S., Villarroel G., Al-Haik M.,
+- “Processing of Agricultural Biomass for Producing Reinforced Polymer composites”
+- , ASME Power Conference and Nuclear Forum, July 14-18, 2019, Salt Lake City, UT, Paper no: Power2019-1873
+- [C-16] Dikici B., Lehman J. M.,
+- “Study of Surface Tension and Natural Evaporation of Aqueous Surfactant Solutions”
+- , ASME Power & Energy Conference, June 24-28, 2018, Lake Buena Vista, FL, Paper no: PowerEnergy2018-7281
+- [C-15] Dikici B., Narasimha P.R.B., and Kamdar S.D.., “Investigation of Thermal Conductivity Variation of Biomass Products with Moisture”, ASME International Conference on Power Engineering (ICOPE), June 26-30, 2017, Charlotte, NC., Paper no: PowerEnergy2017-3195.
+- [C-14] Dikici B., and Al-Sukaini B.Q.A.,
+- “Pool Boiling Heat Transfer Enhancement with Structured Surfaces”
+- , ASME 2016 Power and Energy Conference and Exhibition, June 26-30, 2016, Charlotte, NC., Paper no: PowerEnergy2016-59364
+- [C-13] Dikici B. and Al-Sukaini B.Q.A,
+- “Comparisons of Aqueous Surfactant Solutions for Nucleate Pool Boiling”
+- , ASME 2016 Power and Energy Conference and Exhibition, June 26-30, 2016, Charlotte, NC., Paper no: PowerEnergy2016-59351
+- [C-12] Dikici B. and Jalandoni J.,
+- “Effect of Power Characteristics on Solar Panels: Hands-on Projects for Clean Energy Systems Class”
+- , ASME 2016 10
+- International Conference on Energy Sustainability, June 26-30, 2016, Charlotte, NC., Paper no: PowerEnergy2016-59384
+- [C-11] Dikici B., Eno E., Compere M.,
+- “Nucleate Pool Boiling Enhancement Experiments for Heat Transfer Laboratory”
+- , ASME 2013 International Mechanical Engineering Congress & Exposition, November 15-21, 2013, San Diego, CA., Paper no: IMECE2013-63860
+- [C-10] Dikici B., Eno E.,
+- “Environmentally Friendly Surfactant Additives for Nucleate Pool Boiling Enhancement”
+- , 41
+- Annual Conference of the North American Thermal Analysis Society 2013, August 4-7, 2013, Bowling Green, KY.
+- [C-9] Dikici B., Pantoya M.,
+- “Deflagration Analysis of Aluminum Droplet Combustion”, ASME 2012 Summer Heat Transfer Conference
+- , July 8-12, 2012, Puerto Rico, USA, Paper No: HT2012-58553
+- [C-8] Toro X., Compere M., Van Wie B., Dikici B.,
+- “A Solar-powered Direct Steam Generation Boiler for an Educational Desktop Rankine Cycle”
+- , ASME International Mechanical Engineering Congress & Exposition, IMECE 2011, November 11-17, 2011, Denver, CO., Paper No: IMECE2011/MECH-63699
+- [C-7] Shaw B.D., Dikici B., Pantoya M.L.
+- “Models for Fast Combustion Waves in Nanocomposites Thermite Powders”
+- , 23rd International Colloquium on the Dynamics of Explosions and Reactive Systems (ICDERS), University of California, Irvine, July 24-29, 2011.Proceeding number: 43.
+- [C-6] Datta S., Pantoya M.L., Dikici B., Ekwaro S.,
+- “Reaction Dynamics and Probability Study of Aluminum-Viton-Acetone Droplets”
+- , 46
+- AIAA/ASME/SAE/ASEE Joint Propulsion Conference & Exhibit, July 25-28, 2010, Nashville TN., Paper No: AIAA 2010-6899
+- [C-5] Dikici B., Pantoya M.L., and Shaw B.D.
+- “Analysis of the Influence of Nanometric Aluminum  Particle Vaporization on Flame Propagation in Bulk Powder Media”
+- , 48th AIAA Aerospace Sciences Meeting Including the New Horizons Forum and Aerospace Exposition, January 4-7 2010, Orlando, FL.,  Paper No: AIAA-2010-1598
+- [C-4] Dikici B., Pantoya M.L., Jouet, R.J.,
+- “The Effects of Perfluoroalkyl Carboxylic Acid Coating of Al Particles to Flame Propagation”
+- , 2009 ASME International Mechanical Engineering Congress and Exposition, November 13-19, 2009, Lake Buena Vista, FL., Paper no: IMECE 2009-10078
+- [C-3] Dikici B., Pantoya M.L.,
+- “The influence of Aluminum Passivation on the Reaction Mechanism: Flame Propagation Studies”
+- , 37
+- Annual Conference of the North American Thermal Analysis Society 2009, September 19-23, 2009, Lubbock, Texas.
+- [C-2] Dikici B., Dean S.W, Pantoya M.L.,Levitas V., and Jouet R.J.,
+- “The influence of Aluminum Passivation on the Reaction Mechanism:Flame Propagation Studies”
+- , 45
+- AIAA/ASME/SAE/ASEE Joint Propulsion Conference & Exhibit, 2-5 August 2009, Denver, CO., Paper number: AIAA 2009-5188
+- [C-1] Dikici B., Pantoya M.L.,
+- “The Effect of Pre-heating on Flame Propagation in Nanocomposite Thermites”
+- , 47
+- AIAA Aerospace Sciences Meeting Including the New Horizons Forum and Aerospace Exposition, 5-8 January 2009, Orlando, FL., Paper No: AIAA-2009-1626
+- Member, American Society of Mechanical Engineers (ASME)
+- Advisor, Embry-Riddle Aeronautical University (ERAU) ASME Student Section
+- Recipient of the ERAU Mechanical Engineering Outstanding Teacher Award, February 2024.
+- Recipient of the ASME Student Section Achievement Award, July 2024
+- Recipient of the ASME Student Section Achievement Award, April 2025
+## Courses
+
+- ME 800
+- Dissertation
+- ESCI 204
+- Dynamics
+- ES 320
+- Engineering Materials Science
+- ESCI 320
+- Engineering Materials Science
+- ES 309
+- Fluid Dynamics
+- AERO 508
+- Intermediate Heat Transfer
+- ME 316
+- Thermodynamics II
+- ES 204 Dynamics
+- ES 305 Thermodynamics
+- ES 309 Fluid Dynamics
+- ES 320 Engineering Materials Science
+- ME 316 Thermodynamics II
+- ME 500 Clean Energy Systems
+- ME 499 Special Topics in Mechanical Engineering
+- ME 599 Special Topics in Mechanical Engineering
+
+---
+*Scraped from faculty.erau.edu on 2026-03-28 09:57*

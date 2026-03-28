@@ -19,3 +19,21 @@ The central hub for student life on campus. Contains dining options, meeting roo
 - **floor**: 1
 
 The main visitor and admissions center for prospective students and campus visitors. Provides campus tours, admissions information, and a starting point for exploring ERAU.
+
+## IC Flyer Athletic Complex
+- **also known as**: IC Flyer, ICI Center, Athletics Building
+- **floor**: 1
+
+The main athletic and recreation facility on campus. Houses the gymnasium, fitness center, pool, and athletic department offices. Home to ERAU Eagles sporting events and intramural activities.
+
+## Alex Friedlander Aviation Building
+- **also known as**: AXFAB, Aviation Building, Friedlander Building
+- **floor**: 1
+
+Houses aviation-related programs, flight training administration, and aviation maintenance science facilities. One of the primary buildings supporting ERAU's aeronautical science and aviation programs.
+
+## Student Village
+- **also known as**: Dorms, Residence Halls, Student Housing, On-Campus Housing
+- **floor**: 1
+
+The on-campus residential area for students. Includes multiple residence halls providing housing, community spaces, and residential life programming for undergraduate students.

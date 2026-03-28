@@ -1,0 +1,376 @@
+# Marc Compere
+
+**Department:** Mechanical Engineering
+**Email:** comperem@erau.edu
+**Profile:** https://faculty.erau.edu/Marc.Compere
+
+## Education
+
+- Ph.D. - Doctor of Philosophy in Mechanical Engineering,
+
+## Areas of Expertise
+
+- physical systems modeling, dynamics, nonlinear controls
+- instrumentation, sensing, computing, data acquisition, wireless telemetry
+- sustainable design, solar power system design, off-grid water purification, sustainability
+- The views expressed on faculty and external web pages are those of the author and do not necessarily represent those of Embry-Riddle Aeronautical University.
+- personal page
+- Mobility Virtual Environment (MoVE) Description Open Source Software (OSS) project
+- Open Source Software: Mobility Virtual Environment (MoVE)
+- Google Scholar page
+
+## Courses
+
+- ME 620
+- Advanced Vehicle Dynamics
+- ME 800
+- Dissertation
+- ME 700
+- Graduate Thesis
+- ME 314
+- Instrmntn & Data Acqstn Lab
+- ME 313
+- Instrmntn & Data Acquisition
+- ESCI 324L
+- Measurements and Instr Lab
+- ESCI 324
+- Measurements and Instrument
+- MECH 399
+- ST in Mechanical Engineering
+- MECH 445
+- Sustainable Design
+- Mechanical Engineering Undergrad and Grad Courses:
+- ES201 - Engineering Statics
+- ES204 - Dynamics
+- ME303 - Vehicle Dynamics
+- ME313 / ME314 - Instrumentation and Data Acquisition and Lab
+- ME325 Modeling and Simulation of Complex Engineering Systems
+- ME414 / 434 - Senior Design and Lab
+- ME445 Sustainable Design
+- ME508 - Hybrid and Electric Vehicles
+- ME595 - Practicum in Water Purification
+- ME620 - Advanced Vehicle Dynamics
+- And:
+- HON350 - Honors Seminar III, Global Water
+- The mobility virtual environment (MoVE)
+- (Marc Compere, Kevin A. Adkins)
+- Pure Portfolio
+- (2024)
+- Multi-Modal Atmospheric Data Collection using Low-Cost Particulate Matter Sensors
+- (Kevin A. Adkins, Marc Compere)
+- Pure Portfolio
+- (2024)
+- Go with the Flow
+- (Marc Compere, Kevin A. Adkins)
+- Pure Portfolio
+- (2023)
+- Hyper-Local Weather Predictions with the Enhanced General Urban Area Microclimate Predictions Tool
+- (Kevin A. Adkins, William Becker, Sricharan Ayyalasomayajula, Steven Lavenstein, Kleoniki Vlachou, David Miller, Marc Compere, Avinash Muthu Krishnan, Nickolas Macchiarella)
+- (2023)
+- Hyper-Local Weather Predictions with the Enhanced General Urban Area Microclimate Predictions Tool
+- (Kevin A. Adkins, Marc Compere, Nickolas Macchiarella)
+- Pure Portfolio
+- (2023)
+- The use of Low-Cost Particulate Matter Sensors and Their Future use with Unmanned Aircrafts
+- (Andres Munevar, Marwa El-Sayed, Kevin A. Adkins, Kevin Adkins, Marc Compere, Leah G. Smith, David A. Benning, Erik Liebergall, Gabriel M. Alkire)
+- Student Research Symposium (SRS)
+- (2022)
+- A Microcosm of Sustainable Practices: Honors Program and Project Haiti Partnership with Derbyshire Community Garden
+- (Geoffrey Kain, Marcy Smith, Marc Compere, Grace Robertson)
+- Sustainability Conference
+- (2022)
+- Low-cost Particulate Matter Sensors and Their Future Use with Unmanned Vehicles
+- (Andres Munevar, Marwa M. El-Sayed, Kevin Adkins Ph.D., FRAeS, Kevin A. Adkins, Kevin Adkins, Marc Compere)
+- Student Research Symposium (SRS)
+- (2021)
+- Air corridors
+- (Marc Compere)
+- Pure Portfolio
+- (2021)
+- Real-Time Urban Observations for Aviation
+- (Kevin A. Adkins, Marc Compere)
+- Pure Portfolio
+- (2021)
+- Real-Time Urban Weather Observations for Urban Air Mobility
+- (Kevin A. Adkins, Marc Compere)
+- Pure Portfolio
+- (2020)
+- Real Time Data Downlink Device for Live Telemetry from Instrumented Vehicles
+- (Avinash Muthu Krishnan, Kevin A. Adkins Dr, Kevin Adkins, Marc D. Compere Dr, Marc Compere)
+- Student Research Symposium (SRS)
+- (2020)
+- Low-cost Sensors on Unmanned Aerial Vehicles: an Advancement in Air Quality Measurement
+- (Jasper H. Bowles, Jasper Bowles, Avinash Muthu Krishnan, Marc D. Compere, Marc Compere, Marwa M.H. El-Sayed, Kevin A. Adkins, Kevin Adkins)
+- Student Research Symposium (SRS)
+- (2020)
+- Adaptable Clean Energy Laboratory
+- (Joao Marcelo Rocha Belmonte, Marc D. Compere, Marc Compere)
+- Sustainability Conference
+- (2020)
+- Residential Thermal Storage and Cooling
+- (Joao Marcelo Rocha Belmonte, Jacob Anderson, Andrew Clarke, Daphne Forester, Bianca Hardtke, Josh Hartman, Marc D. Compere, Marc Compere)
+- Sustainability Conference
+- (2020)
+- Real-Time Urban Weather Observations for Urban Air Mobility
+- (Kevin A. Adkins, Kevin Adkins, Mustafa Akbas, Marc Compere)
+- International Journal of Aviation, Aeronautics, and Aerospace
+- (2020)
+- A case study on visual-inertial odometry using supervised, semi-supervised and unsupervised learning methods
+- (Marc Compere)
+- Pure Portfolio
+- (2019)
+- A Mobility Virtual Environment for Testing Multi-Vehicle Scenarios
+- (Marc Compere, Kevin A. Adkins, Patrick Currier)
+- Pure Portfolio
+- (2019)
+- Move
+- (Marc Compere)
+- Pure Portfolio
+- (2019)
+- A quaternion-based sliding mode observer for gyro-bias estimation and attitude reconstruction
+- (Marc Compere, Sergey V. Drakunov)
+- Pure Portfolio
+- (2019)
+- Estimating Pacejka (PAC2002) tire coefficients for pneumatic tires on soft soils with application to Baja Sae vehicles
+- (Marc Compere)
+- Pure Portfolio
+- (2019)
+- Monocular visual inertial odometry (VIO) dataset collection with a self-calibrating platform for inertial measurement unit (IMU)
+- (Marc Compere)
+- Pure Portfolio
+- (2019)
+- MoVE: A Mobility Virtual Environment for Testing Multi-Vehicle Scenarios
+- (Marc Compere, Kevin A. Adkins, Patrick Currier)
+- Pure Portfolio
+- (2019)
+- Formula SAE
+- (Sandra Boetcher Ph.D., Sandra Boetcher, Marc Compere Ph.D., Marc Compere, Birce Dikici Ph.D., Rafael Rodriguez Ph.D.)
+- Innovation Week
+- (2018)
+- Solar-powered Water Purification and Community Development in Haiti's Artibonite Valley
+- (Hunt, Rachel, Kain, Geoffrey, Noto, Joe, Prine, Jon, Compere, Marc)
+- Discovery Day - Daytona Beach
+- (2018)
+- Off-grid solar powered water purification and community development in Haiti's Artibonite valley, the heart of Haiti's cholera epidemic
+- (Geoffrey Kain, Marc Compere)
+- Pure Portfolio
+- (2017)
+- Portable Water Purification System
+- (Marc Compere, Yan Tang, Shavin Pinto, Yung Wong)
+- (2016)
+- Portable Water Purification System
+- (Marc Compere)
+- Pure Portfolio
+- (2016)
+- A design to improve Selective Catalytic Reduction for diesel engines
+- (Marc Compere)
+- Pure Portfolio
+- (2016)
+- Battery Thermal Management for Hybrid Electric Vehicles Using a Phase-Change Material Cold Plate
+- (Sandra Boetcher, Marc Compere, Domenic Barsotti, William Townsend Hyatt, Brian Neal Harries)
+- (2016)
+- Battery Thermal Management for Hybrid Electric Vehicles Using a Phase-Change Material Cold Plate
+- (Sandra Boetcher, Marc Compere)
+- Pure Portfolio
+- (2016)
+- Design and Commissioning of a Community Scale Solar Powered Membrane-Based Water Purification System in Haiti
+- (Shavin Pinto, Yung Wong, Kyle Fennesy, Yan Tang, Marc Compere)
+- (2016)
+- Improving 0-60 mph launching performance of a series hybrid vehicle
+- (Marc Compere, Patrick Currier)
+- Pure Portfolio
+- (2016)
+- Design and Commissioning of a Community Scale Solar Powered Membrane-Based Water Purification System in Haiti
+- (Marc Compere)
+- Pure Portfolio
+- (2016)
+- Parameter Estimation for Model Validation of an Energy Storage System During Operation in a Series Hybrid Electric Vehicle
+- (Marc Compere, Patrick Currier)
+- Pure Portfolio
+- (2015)
+- Diesel Emission Test Stand for Advanced SCR Control
+- (Marc Compere)
+- Pure Portfolio
+- (2015)
+- Phase-Change Material to Thermally Regulate Photovoltaic Panels to Improve Solar to Electric Efficiency
+- (Marc Compere, Sandra Boetcher)
+- Pure Portfolio
+- (2015)
+- The EPA P3 Program: an Opportunity for Growing Student Entrepreneurs
+- (Marc Compere, Yan Tang, Yung Wong)
+- (2015)
+- The EPA P3 Program: an Opportunity for Growing Student Entrepreneurs
+- (Marc Compere)
+- Pure Portfolio
+- (2015)
+- The EPA P3 program
+- (Marc Compere)
+- Pure Portfolio
+- (2015)
+- Parameter estimation for model validation of an energy storage system during operation in a series hybrid electric vehicle
+- (Marc Compere, Patrick Currier)
+- Pure Portfolio
+- (2015)
+- Representing the Water-Energy Nexus With Decision Matrices
+- (Marc Compere)
+- Pure Portfolio
+- (2014)
+- Pool boiling enhancement with environmentally friendly surfactant additives
+- (Birce Dikici, Marc Compere)
+- Pure Portfolio
+- (2014)
+- Plug-In Hybrid Electric Vehicle Architecture Comparison for Strong Hybridization of A Mid-Size Sedan as Part of EcoCAR2: Plugging Into the Future
+- (Marc Compere)
+- Pure Portfolio
+- (2014)
+- Community development through a sustainable micro-business selling clean water
+- (Marc Compere)
+- Pure Portfolio
+- (2014)
+- Nucleate Pool Boiling Enhancement Experiments for Heat Transfer Laboratory
+- (Birce Dikici, Marc Compere)
+- Pure Portfolio
+- (2013)
+- Sensorless Selective Catalytic Reduction Using Artificial Neural Networks for Emissions Prediction With Fuzzy Logic Control
+- (Marc Compere)
+- Pure Portfolio
+- (2013)
+- Battery thermal management for hybrid electric vehicles using a phase-change material cold plate
+- (Sandra Boetcher, Marc Compere)
+- Pure Portfolio
+- (2013)
+- Project Haiti 2012: Providing an Experiential Learning Experience Through the Design and Delivery of a Water Purifier in Haiti
+- (Yung Wong, Johnathon Camp, Shavin Pinto, Kyle Fennesy, Marc Compere, Yan Tang)
+- (2013)
+- Project Haiti 2012: Providing an Experiential Learning Experience Through the Design and Delivery of a Water Purifier in Haiti
+- (Marc Compere)
+- Pure Portfolio
+- (2013)
+- A Fluid Flow Characterization Device for an Educational Desktop Learning Module
+- (Marc Compere)
+- Pure Portfolio
+- (2012)
+- Preliminary Design of a Bio-Diesel Plug-in Hybrid Electric Vehicle as part of EcoCAR 2: Plugging-in to The Future
+- (Marc Compere)
+- Pure Portfolio
+- (2012)
+- Multi-Disciplinary Hands-On Desktop Learning Modules and Modern Pedagogies
+- (Bernard J. Van Wie, David B. Thiessen, Marc Compere, Ximena Toro, Jennifer C. Adam, et al.)
+- (2012)
+- High Tech High Touch: Lessons Learned from Project Haiti 2011
+- (Yan Tang, Marc Compere, Yung Lun Wong, Jared Anthony Coleman, Matthew Charles Selkirk)
+- (2012)
+- Multi-Disciplinary Hands-On Desktop Learning Modules and Modern Pedagogies
+- (Marc Compere)
+- Pure Portfolio
+- (2012)
+- High Tech High Touch: Lessons Learned from Project Haiti 2011
+- (Marc Compere)
+- Pure Portfolio
+- (2012)
+- High tech high touch
+- (Marc Compere)
+- Pure Portfolio
+- (2012)
+- Multi-disciplinary hands-on Desktop Learning Modules and modern pedagogies
+- (Marc Compere)
+- Pure Portfolio
+- (2012)
+- Multi-Disciplinary Project-Based Paradigm That Uses Hands-On Desktop Learning Modules and modern Learning Pedagogies
+- (William David Schlecht, Bernard J. Wie, Paul B. Golter, Robert F. Richards, Marc Compere, et al.)
+- (2011)
+- Multi-Disciplinary Project-Based Paradigm That Uses Hands-On Desktop Learning Modules and modern Learning Pedagogies
+- (Marc Compere)
+- Pure Portfolio
+- (2011)
+- A Solar-Powered Direct Steam Generation Boiler for an Educational Desktop Rankine Cycle
+- (Marc Compere, Birce Dikici)
+- Pure Portfolio
+- (2011)
+- Multi-disciplinary project-based paradigm that uses hands-on desktop learning modules and modern learning pedagogies
+- (Marc Compere)
+- Pure Portfolio
+- (2011)
+- Control System Design and Optimization Using LabVIEW for a Plug in Hybrid Electric Vehicle as Part of EcoCar: The NeXt Competition
+- (Marc Compere)
+- Pure Portfolio
+- (2011)
+- Progression Over the Years: The EcoEagles Student-Designed Biodiesel Plug-In Hybrid Electric Vehicle
+- (Marc Compere)
+- Pure Portfolio
+- (2011)
+- Internet Enabled Remote Driving of a Combat Hybrid Electric Power System for Duty Cycle Measurement
+- (Jarrett Goodell, Marc Compere, Wilford Smith, Mark Brudnak, Mike Pozolo, et al.)
+- (2007)
+- Internet Enabled Remote Driving of a Combat Hybrid Electric Power System for Duty Cycle Measurement
+- (Marc Compere)
+- Pure Portfolio
+- (2007)
+- Soldier/Hardware-in-the-loop Simulation-based Combat Vehicle Duty Cycle Measurement: Duty Cycle Experiment 2
+- (Mark Brudnak, Mike Pozolo, Victor Paul, Syed Mohammad, Marc Compere, et al.)
+- (2007)
+- Soldier/Hardware-in-the-loop Simulation-based Combat Vehicle Duty Cycle Measurement: Duty Cycle Experiment 2
+- (Marc Compere)
+- Pure Portfolio
+- (2007)
+- Robust Control Techniques Enabling Duty Cycle Experiments Utilizing a 6-DOF Crewstation Motion Base, a Full Scale Combat Hybrid Electric Power System, and Long Distance Internet Communications
+- (Marc Compere, Jarrett Goodell, Miguel Simon, Wilford Smith, Mark Brudnak)
+- (2006)
+- Robust Control Techniques Enabling Duty Cycle Experiments Utilizing a 6-DOF Crewstation Motion Base, a Full Scale Combat Hybrid Electric Power System, and Long Distance Internet Communications
+- (Marc Compere)
+- Pure Portfolio
+- (2006)
+- Hybrid Electric Power and Energy Laboratory Hardware-in-the-Loop and Vehicle Model Implementation
+- (Marc Compere)
+- Pure Portfolio
+- (2006)
+- Robust control techniques enabling duty cycle experiments utilizing a 6-dof crewstation motion base, a full scale combat hybrid electric power system, and long distance internet communications
+- (Marc Compere)
+- Pure Portfolio
+- (2006)
+- Soldier/hardware-in-the-loop simulation-based combat vehicle duty cycle measurement
+- (Marc Compere)
+- Pure Portfolio
+- (2006)
+- Robust control techniques for state tracking in the presence of variable time delays
+- (Marc Compere)
+- Pure Portfolio
+- (2006)
+- Robust Control Techniques for State Tracking in the Presence of Variable Time Delays
+- (Jarrett Goodell, Marc Compere, Miguel Simon, Wilford Smith, Ronnie Wright, Mark Brudnak)
+- (2005)
+- Robust Control Techniques for State Tracking in the Presence of Variable Time Delays
+- (Marc Compere)
+- Pure Portfolio
+- (2005)
+- Simulation of Engineering Systems Described by High-Index DAE and Discontinuous ODE Using Single Step Methods
+- (Marc Compere)
+- (2001)
+- Simulation of Engineering Systems Described by High-Index DAE and Discontinuous ODE Using Single Step Methods
+- (Marc Compere)
+- Pure Portfolio
+- (2001)
+- Combined dae and sliding mode control methods for simulation of constrained mechanical systems
+- (Marc Compere)
+- Pure Portfolio
+- (2000)
+- SDIRK4: Octave function to solve stiff system of first order ODEs
+- (Marc Compere)
+- Pure Portfolio
+- (2000)
+- Designing flexible manipulators with the lowest natural frequency nearly independent of position
+- (Marc Compere)
+- Pure Portfolio
+- (1999)
+- A configuration and analysis for damping oscillations in flexible robotic arms using passive elements
+- (Marc Compere)
+- Pure Portfolio
+- (1996)
+- Measurements of dynamic Young's modulus and damping in single crystals of a nickel-based superalloy as a function of temperature
+- (Marc Compere)
+- Pure Portfolio
+- (1993)
+- 5 Years at Science Applications International Corporation (SAIC), now Leidos, in the Defense sector
+- ASME member since 1991
+- IEEE member since 2019
+- Energy Systems Laboratory

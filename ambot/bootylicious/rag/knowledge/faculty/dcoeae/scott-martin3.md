@@ -1,0 +1,367 @@
+# Scott Martin3
+
+**Department:** Aerospace Engineering
+**Email:** Scott.Martin3@erau.edu
+**Profile:** https://faculty.erau.edu/Scott.Martin3
+
+## Education
+
+- Ph.D. - Doctor of Philosophy in Mechanical Engineering,
+- M.S. - Master of Science in Aeronautics and Astronautics,
+- B.S. - Bachelor of Science in Aeronautics and Astronautics,
+
+## Areas of Expertise
+
+- Combustion, energy conversion, emissions, CFD, gas turbines, scramjets, rockets, exhaust plumes.
+- Fundamental Experimental and Numerical Combustion Study of H2 Containing Fuels for Gas Turbines
+- Human Factors Awareness Training for FAA Aviation Safety Specialists Within Aircraft Certification and FAA Flight Standards
+- Modeling Plume Afterburning Shutdown With a Double-Conditioned CMC
+- Fundamental Experimental and Numerical Combustion Study of H2 Containing Fuels for Gas Turbines
+- (Scott Martin)
+- Faculty Research Projects
+- (2023)
+- REFEREED PAPERS
+- Stiehl, B., Morales, A., Genova, T., Otero, M.,
+- Martin
+- , S., Yoon, C. and Ahmed, K., Controlling Pollutant Emissions in a High-Pressure Combustor with Fuel-Diluent Blending,” Fuel 317, 2022, Article in Press.
+- Genova, T., Otero, M., Morales, A. J., Stiehl, B.,
+- Martin
+- , S. M. and Ahmed, K. A.,
+- Preheating and Premixing Effects on NOx Emissions in a High-Pressure Axially Staged Combustor,”
+- Combustion and Flame
+- , 235, January 2022.
+- Otero, M., Genova, T., Stiehl, B., Morales, A. J.,
+- Martin
+- , S. M. and Ahmed, K. A.,
+- The Influence of Pressure on Flame-Flow Characteristics of a Reacting Jet in Crossflow,”
+- Journal of Energy
+- Resources Technology
+- , Vol. 144/5, May 2022, 052301-1.
+- Stiehl, B., Otero, M., Genova, T.,
+- Martin
+- , S. and Ahmed, K.,
+- Fuel Stratification Influence on NOx Emission in a Premixed Axial Reacting Jet-in-Crossflow at High Pressure,”
+- Journal of Energy Resources Technology
+- , Vol. 143/12, December 2021, 122303-1.
+- Stiehl, B., Genova, T., Otero, M.,
+- Martin
+- , S. and Ahmed, K.,
+- The Effect of Pressure on NOx Entitlement and Reaction Timescales in a Premixed Axial Jet-in-Crossflow,”
+- Journal of Energy Resources Technology
+- , Vol. 143/11, November 2021, 112306-1, doi:10.1115/1.4049609.
+- Stiehl, B., Otero, M., Genova, T., Worbington, T., Reyes, J.,
+- Martin
+- , S., Velez, C. and Ahmed, K.,
+- Simulation of Premixed and Partially Premixed Jet-in-Crossflow Flames at High-Pressure,”
+- Journal for Engineering of Gas Turbines and Power
+- , Vol. 143, March 2021, 031001-1 doi:10.1115/1.4049703.
+- Genova, T., Otero, M., Reyes, J.,
+- Martin
+- , S. and Ahmed, K., “Partial Premixing Effects on the Reacting Jet of a High Pressure Axial Staged Combustor,”
+- Journal for Engineering of Gas Turbines and Power
+- , Vol. 143, March 2021, 0310006-1, doi:10.1115/1.4049700.
+- Manikantachari
+- K. R. V., Rahman, R. K.,
+- Martin
+- , S. M., Velez, C. and Vasu, S. S., “Influence of Equation-of-States on Supercritical CO2 Combustion Mixtures,”
+- Journal of Energy Resources Technology
+- , Vol. 143, 062106-1, 2021.
+- Manikantachari
+- K. R. V.,
+- Martin
+- , S. M., Rahman, R. K., Velez, C. and Vasu, S. S., “A General Study of Counterflow Diffusion Flames for Supercritical CO2 Combustion,”
+- Journal for Engineering of Gas Turbines and Power
+- , Vol. 141, No. 12, 2019.
+- Vesely. L., Manikantachari
+- K. R. V., Vasu, S., Kapat, J., Dostal, V., and
+- Martin
+- , S., “Effect of Impurities on Compressor and Cooler in Supercritical CO
+- Cycles,”
+- Journal of Energy Resources Technology
+- , Vol. 141, 01203-1, 2019.
+- Manikantachari
+- K. R. V., Vesely. L.,
+- Martin
+- , S. M., Bobren-Diaz, J. O., Vasu, S. S., “Reduced Chemical Kinetic Mechanisms for Oxy/Methane Supercritical CO2 Combustor Simulations,”
+- Journal of Energy Resources Technology
+- , Vol. 140, 092202-1, 2018.
+- Manikantachari
+- K. R. V.,
+- Martin
+- , S. M., Bobren-Diaz, J. O., Vasu, S. S., “Thermal and Transport Properties for the Simulation of Direct-Fired sCO
+- Combustor,”
+- Journal for Engineering of Gas Turbines and Power
+- , Vol. 139, No. 121505-1, 2017.
+- Velez, C. A.,
+- Martin
+- , S. M., and Vasu, S. S., "Reacting Unsteady Reynolds-Averaged Navier-Stokes with the Tabulated Premixed Conditional Moment Closure Method,”
+- Journal of Propulsion and Powe
+- r, Vol. 33, No. 3, 2017, DOI: 10.2514/1.B35741.
+- Velez, C.,
+- Martin
+- , S., Jemcov, A. and Vasu, S. S., “LES of an Enclosed Turbulent Reacting Methane Jet with the Tabulated Premixed CMC Method,”
+- Journal for Engineering of Gas Turbines and Power
+- , Vol. 138, No. 10, 2016.
+- Donini, A.,
+- Martin
+- . S. M., Bastiaans, R. J. M., van Oijen. J. A. and de Goey, L.P.H., “Application of Flamelet Generated manifolds Approach With heat Loss Inclusion to a Turbulent High-Pressure Premixed Confined Jet Flame,” Conference Proceedings,
+- ERCOFTAC Series, Vol. 20
+- (2015) pp. 519-524 Published by Springer Netherland.
+- Therkelsen, P. L., Littlejohn, D., Cheng, R. K., Portillo, J. E. and
+- Martin
+- , S. M., “Self-induced Unstable Behaviors of CH4 and H2/CH4 Flames in a Model Combustor with a Low-Swirl Injector,”
+- Combustion and Flame
+- , Vol. 160, No. 2, pg 307-321, 2013.
+- Bastiaans, R. J. M.,
+- Martin
+- , S. M., Pitsch, H., van Oijen, J. A. and de Goey, L. P. H., “Flamelet Analysis of Turbulent Combustion,”
+- Lecture Notes in Computer Science
+- , Springer-Verlag publishers, Vol. 3516, pg 64-71, 2005.
+- Bastiaans, R. J. M., van Oijen, J. A.,
+- Martin
+- , S. M., de Goey, L. P. H. and Pitsch, H., “Direct Numerical Simulation of Premixed Turbulent Combustion of a Lean Spherical Flame with a Flamelet Generated Manifold,”
+- Annual Research Briefs
+- , Center for Turbulence Research, Stanford University, pg 257-268, 2004.
+- Bilger, R. W., Kim, S. H. and
+- Martin
+- , S. M., “DNS of Turbulent Premixed Flames with a Marker Field and Application to RANS and LES,”
+- Proceedings of the Summer Program
+- , Center for Turbulence Research, Stanford University, pg 255-267, 2004.
+- Martin
+- , S. M., Kramlich, J. C., Kosaly, G. and Riley, J. J., “The Premixed Conditional Moment Closure Method Applied to Idealized Lean Premixed Gas Turbine Combustors,” Transactions of the ASME,
+- Journal of Engineering for Gas Turbines and Power
+- , Vol. 125, pg 895-900, Oct., 2003.
+- PRESENTED PAPERS
+- Kumar, G., Manikantachari, K. R. V., Drennan, S., Vasu. S. S. and
+- Martin
+- , S. M., “Study of the Effect of CO Addition in a Direct Fired Oxy-Fuel Combustor for sCO2 Power Cycles using Direct Detailed Chemistry and Adaptive Mesh Refinement,” to be presented at the 7
+- International Supercritical CO
+- Power Cycles Symposium 20-25 February 2022, San Antonio, TX.
+- Stiehl, B., A., Otero, M., Genova, T., Newmyer, M., Ahmed, K.,
+- Martin
+- , S.,
+- Turbulent Combustion Modeling of a Staged Gas Turbine using Commercial CFD Code,” August 2021 AIAA Propulsion and Energy, Denver, CO.
+- Martin
+- , S. M., and Jacobsohn, G., “Simulation of Reacting Jet in Vitiated Crossflow at 5 Atmospheres using Adaptive Mesh Refinement,” August 2021 AIAA Propulsion and Energy, Denver, CO.
+- Genova, T., Otero, M., Fortin, M., Tonarely, M., Stiehl, B., Reyes, J., and Ahmed, K. and
+- Martin
+- , S., “Emissions and Flame Characteristics of a High-Pressure Reacting Jet-in-Crossflow,” January 6-10, 2021 AIAA SciTech Forum, Orlando, FL.
+- Otero, M., Genova, T., Tonarely, M., Fortin, M., Stiehl, B., Reyes, J., Ahmed, K.
+- Martin
+- , S., and Velez, C., “Effects of Dilution on Reacting Jet in Crossflow Flame Characteristics at High Pressure,” January 6-10, 2021, AIAA SciTech Forum, Orlando, FL.
+- Stiehl, B., A., Otero, M., Genova, T., Ahmed, K.,
+- Martin
+- , S.,
+- Numerical Simulation of an Axial Reacting Jet-in-Crossflow at Elevated Pressure,“ January 6-10, 2021 AIAA SciTech Forum, Orlando, FL.
+- Manikantachari, K. R. V.,
+- Martin
+- , S. M., Hitch, B., and Vasu. S. S., “Effect of Unity Lewis Number Assumption in Premixed and Non-Premixed Combustion Simulations,” January 6-10, 2021 AIAA SciTech Forum, Orlando, FL.
+- Manikantachari, K. R. V.,
+- Martin
+- , S. M., and Vasu. S. S., “Effect of Impurities in the Re-cycled CO
+- Stream on a Supercritical CO
+- Combustor,” January 6-10, 2021 AIAA SciTech Forum, Orlando, FL.
+- Genova, T., Otero, M., Reyes, J., Ahmed, K., and
+- Martin
+- , S., “Partial Premixing Effects on the Reacting Jet of a High Pressure Axial Staged Combustor,” Turbo Expo 2020, Turbomachinery Technical Conference and Exposition GT2020, September 21-25, 2020, virtual.
+- Stiehl, B., Otero, M., Genova, T., Worbington, T., Reyes, J., Ahmed, K.,
+- Martin
+- , S., and Velez C.
+- Simulation of Premixed and Partially Premixed Jet-In-Crossflow Flames at High-Pressure,” Turbo Expo 2020, Turbomachinery Technical Conference and Exposition GT2020, September 21-25, 2020, virtual.
+- Manikantachari, K. R. V.,
+- Martin
+- , S. M., Rahman, R. K., L., Velez, C., and Vasu. S. S., “Influence of Equation-of-States on Supercritical CO2 Combustion,” Turbo Expo 2020, Turbomachinery Technical Conference and Exposition GT2020, September 21-25, 2020, virtual.
+- Stiehl, B., Genova, T., Otero, M, Reyes, J., Ahmed, K.,
+- Martin
+- , S., “NO
+- Emission of an Axial-Staged Combustor at High-Pressure,” AIAA Propulsion & Energy Forum, virtual, August 24-26, 2020.
+- Otero, M, Stiehl, B., Genova, T., Ahmed, K.,
+- Martin
+- , S., “Premixed Reacting Jet Flow Behavior in an Axially Staged Model Combustor at Elevated Pressure,” AIAA Propulsion & Energy Forum, virtual, August 24-26, 2020.
+- Genova, T., Stiehl, B., Otero, M, Ahmed, K.,
+- Martin
+- , S., “Experimental and Numerical Investigation of a High-Pressure Reacting Jet-in-Crossflow,” AIAA Propulsion & Energy Forum, virtual, August 24-26, 2020.
+- Martin
+- , S. M., and Hitch, B. D., “Turbulence-Kinetics Interaction Effects on Liquid Fuel Scramjet Kinetic Mechanisms,” 23
+- AIAA International Space Planes and Hypersonic Systems and technologies Conference, March 10-12, 2020.
+- Martin
+- , S. M., and Hitch, B. D., “The Effects of Turbulence-Kinetics Interactions on Reducing Chemical Mechanisms,” January 6-10, 2020 AIAA SciTech Forum, Orlando, FL.
+- Genova, T., Otero, M., Reyes, J., and Ahmed, K.,
+- Martin
+- , S., and Velez, C., “High-Pressure Reacting Characteristics of Axial Stage Combustion,” January 6-10, 2020 AIAA SciTech Forum, Orlando, FL.
+- Otero, M., Genova, T., Reyes, J., Ahmed, K.
+- Martin
+- , S., and Velez, C., “Investigation of Pressure Effects on Reacting Jet in Vitiated Crossflow,” January 6-10, 2020 AIAA SciTech Forum, Orlando, FL.
+- Stiehl, B., Worbington, T., Woodard, A., Ahmed, K., Velez C., and
+- Martin
+- , S.,
+- Numerical Simulation of an Axial-Staged Combustor at High Pressure,“ January 6-10, 2020 AIAA SciTech Forum, Orlando, FL.
+- Manikantachari, K. R. V.,
+- Martin
+- , S. M., and Vasu. S. S., “Assessment of Equation-of-State for Supercritical H2-O2 Combustion System,” January 6-10, 2020 AIAA SciTech Forum, Orlando, FL.
+- Martin
+- , S., “Reduced Kinetic Mechanisms for Methane-Oxygen Rockets to Mars,” Proceedings of the 70
+- International Astronautical Congress, Washington D.C., IAC-19-C4.10.15, 2019.
+- Genova, T., Otero, M., Stiehl, B., Reyes, J., Ahmed, K., and
+- Martin
+- , S., “Exploration of a Reacting Jet-in-Crossflow in a High-Pressure Axial Stage Combustor,” AIAA Propulsion & Energy Forum, Indianapolis, IN, August 19-22, 2019.
+- Otero, M., Genova, T., Reyes, J., Stiehl, B., Ahmed, K., and
+- Martin
+- , S., “Characteristics of a Reacting Jet-in-Crossflow at Elevated Pressures,” AIAA Propulsion & Energy Forum, Indianapolis, IN, August 19-22, 2019.
+- Vesely, L., Dostal, V., Kapat, J., S., Vasu, S. S., and
+- Martin
+- , S., “Techno-Economic Evaluation of the Effect of Impurities on the Performance of Supercritical CO2 Cycles,” Proceedings of the ASME Turbo Expo 2019, Phoenix, AZ, GT2019-90704.
+- Manikantachari, K. R. V.,
+- Martin
+- , S. M., Rahman, R. K., L., Velez, C., and Vasu. S. S., “A General Study of Counterflow Diffusion Flames for Supercritical Mixture,” Proceedings of the ASME Turbo Expo 2019, Phoenix, AZ, GT2019-90332.
+- Genova, T., Chin, H., Otero, M., Ahmed, K.,
+- Martin
+- , S., and Vasu, S., “Design and Development of an Axial Staged Combustor,” Proceedings of the ASME Turbo Expo 2019, Phoenix, AZ, GT2019-91116.
+- Stiehl, B., Worbington, T., Miegel, A.,
+- Martin
+- , S., and Ahmed, K., “Combustion and Emission Characteristics of a Lean Axial-Stage Combustor,” Proceedings of the ASME Turbo Expo 2019, Phoenix, AZ, GT2019-91796.
+- Bobren-Diaz, J.,
+- Martin
+- , S. M., Manikantachari, K. R. V., and Vasu, S. S., “Large Eddy Simulation of Turbulent Reacting Flow Using Premixed Conditional Moment Closure,” presented at the AIAA SciTech meeting, January 7-11, 2019, San Diego, CA.
+- Manikantachari, K. R. V., Vesely, L.,
+- Martin
+- , S. M., Bobren-Diaz, J., and Vasu, S. S., “A Counter-Flow Diffusion Flame Study of the Supercritical CO2 Combustion,” presented at the AIAA SciTech meeting, January 7-11, 2019, San Diego, CA.
+- Manikantachari, K. R. V., Vesely, L.,
+- Martin
+- , S., Bobren-Diaz, J., and Vasu, S. S., “A Strategy of Mixture Preparation for Methane Direct-Fired CO
+- Combustors,” Proceedings of the ASME Turbo Expo 2018, Oslo, Norway, GT2018-75557.
+- Manikantachari, K. R. V., Vesely, L.,
+- Martin
+- , S., Bobren-Diaz, J., and Vasu, S. S., “A Strategy of Reactant Mixing in Methane Direct-Fired sCO
+- Combustors,” Proceedings of the ASME Turbo Expo 2018, Oslo, Norway, GT2018-75547.
+- Vesely, L., Dostal, V., Manikantachari, K. R. V., Vasu, S. S.,
+- Martin
+- , S., and Kapat, J., S., “Effect of Mixtures on Compressor and Cooler in Supercritical Carbon Dioxide Cycles,” Proceedings of the ASME Turbo Expo 2018, Oslo, Norway, GT2018-75568.
+- Manikantachari, K. R. V.,
+- Martin
+- , S. M., Veseley, L., Bobren-Diaz, J., and Vasu. S. S., “The Simulation of sCO2 combustion Phenomenon by Conditional Moment Closure Method,” presented at the Supercritical CO
+- Power Cycles Symposium, March 27-29, 2018, Pittsburgh, PA.
+- Vasu. S. S., Masunov, A.,
+- Martin
+- , S. M., and Kapat, J. S., “Recent Progress in the Development of a Validated Chemical Kinetic Model for Ox-fuel/sCO
+- Combustors,” presented at the Supercritical CO2 Power Cycles Symposium, March 27-29, 2018, Pittsburgh, PA.
+- Vesely, L., Manikantachari, K. R. V.,
+- Martin
+- , S., Bobren-Diaz, J., and Vasu, S. S., “The Mixture Composition Influences on Direct-Fired Supercritical CO
+- Combustor and Cycle Performance,”  presented at the AIAA SciTech meeting, January 8-12, 2018, Orlando, FL.
+- Bobren-Diaz, J.,
+- Martin
+- , S., Manikantachari, K. R. V., and Vasu, S. S., “Premixed Conditional Moment Closure Applied to Volvo Bluff Body Stabilized Flame Experiment,” presented at the AIAA SciTech meeting, January 8-12, 2018, Orlando, FL.
+- Manikantachari, K. R. V., Vesely, L.,
+- Martin
+- , S., Bobren-Diaz, J., and Vasu, S. S., “A Study on Design Optimization or Direct-Fired sCO
+- Combustors,” presented at the AIAA SciTech meeting, January 8-12, 2018, Orlando, FL.
+- Martin
+- , S. M., Hitch, B., Bobren-Diaz, J., and Vasu, S. S., “Using the Conditional Moment Closure Method to Assess the Effects of Turbulence on Chemical Kinetics,” presented at the JANNAF Interagency Propulsion Committee meeting, December 6, 2017, Newport News, VA.
+- Bobren-Diaz, J. O.,
+- Martin
+- , S. M., Hitch, B., Manikantachari, K.R.V. and Vasu, S. S., “Assessment of dodecane turbulent-chemistry interactions using computational fluid dynamics,” AIAA Propulsion & Energy Forum, Atlanta, GA, July 10-12, 2017.  DOI: 10.2514/6.2017-5081.
+- Bobren-Diaz, J. O.,
+- Martin
+- , S. M., Hitch, B., Manikantachari, K.R.V. and Vasu, S. S., “Assessment of Detailed and Reduced JetSurF 2.0 Mechanisms Using Conditional Moment Closure Method,” AIAA Propulsion & Energy Forum, Atlanta, GA, July 10-12, 2017.
+- Submitted to the AIAA Journal
+- .  DOI: 10.2514/6.2017-4854.
+- Manikantachari, K. R. V,
+- Martin
+- , S. M., Bobren-Diaz, J. O. and Vasu, S. S., “The Influence of Elevated Pressures on Methane Combustion in N
+- and CO
+- Dilutions,” AIAA Propulsion & Energy Forum, Atlanta, GA, July 10-12, 2017.
+- Manikantachari
+- K. R. V.,
+- Martin
+- , S. M., Bobren-Diaz, J. O., Vasu, S. S., “Thermal and Transport Properties for the Simulation of Direct-Fired sCO
+- Combustor,” Proceedings of the ASME Turbo Expo 2017,GT2017-63311.
+- Manikantachari, K. R. V, Martin, S. M., Vasu, S. S. and Bobren-Diaz, J. O., ‘The Impact of Pressure on Methane Combustion in CO2 Dilution’, 10th U. S. National Combustion Meeting, April 23-26, 2017, College Park, Maryland.
+- Marwa, M,
+- Martin
+- , S. M., Martos, B, and Anderson, R., "Analytical Forms of the Range Performance of Hybrid and Electric Turboprop Aircraft, for Design Optimization Studies", 55th AIAA Aerospace Sciences Meeting, AIAA SciTech Forum, (AIAA 2017-0211).
+- http://dx.doi.org/10.2514/6.2017-0211
+- Vasu, S. S., Pryor, O. M., Kapat, J. S., Mansunov, A. and
+- Martin
+- , S. M., Developing a Validated Chemical Kinetics Model for sCO
+- Combustion and Implementation in CFD,” The 5th International Symposium - Supercritical CO2 Power Cycles, March 28-31, 2016, San Antonio, TX.
+- Velez, C.,
+- Martin
+- , S., Jemcov, A. and Vasu, S. S., “Large Eddy Simulation of an Enclosed Turbulent Reacting Methane Jet with the Tabulated Premixed CMC Method,” Proceedings of the ASME Turbo Expo 2015, GT2015-43788.
+- Velez, C.,
+- Martin
+- , S. and Vasu, S. S., “Unsteady RANS Simulation of an Enclosed, Turbulent Reacting Methane Jet with the Tabulated Premixed CMC Method,” 53rd AIAA Aerospace Sciences Meeting, AIAA SciTech Forum, AIAA (2015-0419).
+- http://dx.doi.org/10.2514/6.2015-0419
+- Martin
+- , S., Jemcov, A. and de Ruijter, B., Modeling an Enclosed, “Turbulent Reacting Methane Jet with the Premixed Conditional Moment Closure Method,” Proceedings of the ASME Turbo Expo 2013, GT2013-95092.
+- Donini, A.,
+- Martin
+- , S. M., Bastiaans, R. J. M., van Oijen, J. A. and de Goey, L. P. H., “Numerical Simulations of a Premixed Confined Jet Flame Using the Flamelet Generated Manifold Approach with heat Loss Inclusion,” Proceedings of the ASME Turbo Expo 2013, GT2013-94363.
+- Donini, A.,
+- Martin
+- , S. M., Bastiaans, R. J. M., van Oijen, J. A. and de Goey, L. P. H., “High Pressure Jet Flame Numerical Analysis of CO Emissions by Means of the Flamelet Generated Manifolds Technique,” AIP Conference Proceedings 1558, 136 (2013);
+- doi: 10.1063/1.4825439
+- Lietz, C., Donde, P., Raman, V. and
+- Martin
+- , S, “Large Eddy Simulation/Eulerian Probability Density Function Approach for Simulating Hydrogen-Enriched Gas Turbine Combustors,” Proceedings of the ASME Turbo Expo 2012, GT2012-68369.
+- Periagaram, K., Noble, D. R., Seitzman, J. M., Lieuwen, T.,
+- Martin
+- , S. M. and Portillo, J. E., “Measurement of Flame Characteristics of a Low Swirl Burner at High Pressures and Velocities,” 49th AIAA Aerospace Sciences Meeting including the New Horizons Forum and Aerospace Exposition, Aerospace Sciences Meetings, (2011-234).
+- http://dx.doi.org/10.2514/6.2011-234
+- Therkelsen, P. L., Littlejohn, D., Cheng, R. K., Portillo, J. E. and
+- Martin
+- , S. M., “Effect of Combustor Inlet Geometry on Acoustic Signature and Flow Field Behavior of the Low Swirl Injector,” Proceedings of the ASME Turbo Expo 2010, GT2010-23498.
+- Martin
+- , S. M., “The Premixed Conditional Moment Closure Model,” presented at the 4
+- International Workshop on CMC and ULFM, Heidelberg, Germany, August 12, 2006.
+- Martin
+- , S. M., “A Comparison of Turbulent Premixed Combustion Models,” presented at the Eastern States Section: The Combustion Institute Fall Technical Meeting, Orlando, FL, November 13-16, 2005.
+- Martin
+- , S. M., “An Improved Conditional Moment Closure Model,” presented at the Third Joint Meeting of the U.S. Sections of the Combustion Institute, Chicago, IL, paper No. E21, March 16-19, 2003.
+- Martin
+- , S. M., Kramlich, J. C., Kosaly, G. and Riley, J. J., “The Premixed Conditional Moment Closure Method Applied to Idealized Lean Premixed Gas Turbine Combustors,” Proceedings of the ASME Turbo Expo 2002, GT-2002-30094.
+- Martin
+- , S. M., “The Premixed Conditional Moment Closure Method,” presented at the Central States Section: The Combustion Institute Spring Technical Meeting, Knoxville, TN, April 7-9, 2002.
+- Martin
+- , S. M., Kramlich, J. C., Kosaly, G. and Riley, J. J., “The Conditional Moment Closure Method for Premixed Turbulent Combustion,” presented at the Eastern States Section: The Combustion Institute Fall Technical Meeting, Hilton Head, SC, December 3-5, 2001.
+- Nicol, D. G., Rutar, T.,
+- Martin
+- , S. M., Malte, P. C., and Pratt, D. T., “Chemical Reactor Modeling Applied to the Production of Pollutant Emission in LP Combustors,” AIAA Joint Propulsion Conference, Seattle, WA, paper No. A97-36055, July 6-9, 1997.
+- Rutar, T.,
+- Martin
+- , S. M., Nicol, D. G., Malte, P. C., and Pratt, D. T., “An Engineering Modeling Study of NOx Dependency on Incomplete Premixing at Gas Turbine Engine Conditions,” presented at the Western States Section: The Combustion Institute Fall technical Meeting, Sandia National Laboratory, CA, paper No. 97S-038, April, 1997.
+- Rutar, T.,
+- Martin
+- , S. M., Nicol, D. G., Malte, P. C., and Pratt, D. T., “Effects of Incomplete Premixing on NOx Formation at Temperature and Pressure Conditions of LP Combustion Turbines,” Proceedings of the ASME Turbo Expo 1997, 97-GT-335.
+- Research Engineer and Flight Test Pilot, 3/13 – 8/22
+- Eagle Flight Research Center, Embry-Riddle Aeronautical University, Daytona Beach, FL.
+- Combustion Scientist, 10/05 - 3/13.
+- Gas Turbine Combustor Group, Siemens Power Generation, Orlando, FL.
+- Adjunct Professor with Courtesy Appointment to Faculty, 8/08 -12/12.
+- Mechanical, Materials and Aerospace Engineering Department, University of Central Florida, Orlando, FL.
+- Product Design Engineer, 8/00 - 3/04.
+- Thermal Aerodynamics Systems Engineering, Ford Motor Company, Dearborn, MI.
+- Staff Engineer, 9/90 -10/94.
+- The Boeing Company, Seattle, Washington.
+- Military Officer, 9/86 - 5/90.
+- United States Marine Corps.
+- AIAA, ASME, SAE
+## Courses
+
+- AERO 512
+- Combustion I
+- AE 800
+- Dissertation
+- AERO 700
+- Graduate Thesis
+- AERO 441
+- Rocket Prop Prelim Design
+- AE 451
+- Rocket Propulsion Detail Desig
+- AE 550
+- Thermo: Class & Mod Persp
+- AE 700
+- Thesis
+
+---
+*Scraped from faculty.erau.edu on 2026-03-28 09:57*

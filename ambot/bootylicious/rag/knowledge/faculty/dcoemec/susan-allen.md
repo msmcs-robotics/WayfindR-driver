@@ -1,0 +1,968 @@
+# Susan Allen
+
+**Department:** Mechanical Engineering
+**Email:** Susan.Allen@erau.edu
+**Profile:** https://faculty.erau.edu/Susan.Allen
+
+## Education
+
+- Ph.D. - Doctor of Philosophy in Chemistry,
+
+## Areas of Expertise
+
+- Laser sensor development, laser removal and analysis of surface contaminants and particles, laser processing of materials including deposition and micromachining, laser and other spectroscopy, light interactions with materials and other applications of lasers and LEDs.
+
+## Courses
+
+- General Chemistry, Introduction to Lasers and Applications,  How to Present Scientific Research, Honors General Chemistry, Instrumentation, Electricity and Magnetism
+- Laser Machining and Related Control For Additive Manufacturing
+- (Eduardo Antonio Rojas, Susan Davis Allen)
+- (2023)
+- Stimulated Raman Adiabatic Passage in Sodium Vapor with Picosecond Laser Pulses
+- (Susan D. Allen)
+- Pure Portfolio
+- (2017)
+- Fluid Dynamics: How Water Explodes
+- (Susan D. Allen)
+- Pure Portfolio
+- (2016)
+- Photodissociation of Bulk Nitrobenzene at 250, 266, and 280 Nm Using a Picosecond Laser
+- (Susan D. Allen)
+- Pure Portfolio
+- (2015)
+- Differential Spectral Imaging of the CN Violet Band in Laser-Induced Plasmas on TNT Simulant Molecules
+- (J. Merten, M. Jones, S. Hoke, S. Allen, Susan D. Allen)
+- (2014)
+- Standoff Methods for the Detection of Threat Agents: A Review of Several Promising Laser-Based Techniques
+- (J. Bruce Johnson, Susan D. Allen, Jonathan Merten, Lewis Johnson, Daniel Pinkham, Scott W. Reeve)
+- (2014)
+- Carbon Swan Spectra Measurements Following Breakdown of Nitro Compound Explosive Simulants
+- (Susan D. Allen)
+- Pure Portfolio
+- (2014)
+- Differential Spectral Imaging of the CN Violet Band in Laser-Induced Plasmas on TNT Simulant Molecules
+- (Susan D. Allen)
+- Pure Portfolio
+- (2014)
+- Standoff Methods for the Detection of Threat Agents: A Review of Several Promising Laser-Based Techniques
+- (Susan D. Allen)
+- Pure Portfolio
+- (2014)
+- Fluorescence Excitation Spectra of Photo-Fragmented Nitrobenzene Using a Picosecond Laser: Potential Evidence for NO Produced by Two Distinct Channels
+- (Susan D. Allen)
+- Pure Portfolio
+- (2013)
+- Measuring the Quenching of NO Fluorescence Produced from the Excitation of Photo-Fragmented Nitrobenzene Using a Picosecond Laser
+- (Susan D. Allen)
+- Pure Portfolio
+- (2013)
+- Spatiotemporal Evolution of Plasma Molecular Emission Following Laser Ablation of Explosive Analogs
+- (Susan D. Allen)
+- Pure Portfolio
+- (2013)
+- Tunable Picosecond Spectroscopy for Detection of Nitric Oxide
+- (Susan D. Allen)
+- Pure Portfolio
+- (2013)
+- Susan Davis Allen
+- (Susan D. Allen)
+- Pure Portfolio
+- (2013)
+- Measurement and Analysis of C₂ Swan Spectra Following Breakdown of Nitro Compound Simulants
+- (Susan D. Allen)
+- Pure Portfolio
+- (2012)
+- Wavelength Dependence of the Production of NO from Photodissociated C/sub 6/H/sub 5/NO/sub 2/
+- (Susan D. Allen)
+- Pure Portfolio
+- (2012)
+- Tunable Picosecond Spectroscopy for Detection of NO
+- (Susan D. Allen)
+- Pure Portfolio
+- (2012)
+- Temporal Evolution of the LIBS Spectra of a Representative Nitro Compound
+- (Susan D. Allen)
+- Pure Portfolio
+- (2012)
+- Multi-Color Cavity Ringdown Based Detection Method and Apparatus
+- (Scott W. Reeve, Susan Davis Allen, Susan D. Allen)
+- Mechanical Engineering - Daytona Beach
+- (2012)
+- Multi-Color Cavity Ringdown Based Detection Method and Apparatus
+- (Susan D. Allen)
+- Pure Portfolio
+- (2012)
+- Fluorescence Emission and Excitation Spectra of Photo-Fragmented Nitrobenezene
+- (Susan D. Allen)
+- Pure Portfolio
+- (2012)
+- Computational Analysis of Population Transfer Via STIRAP in a Sodium Vapor
+- (Susan D. Allen)
+- Pure Portfolio
+- (2012)
+- Picosecond Rotationally Resolved Stimulated Emission Pumping Spectroscopy of Nitric Oxide
+- (Susan D. Allen)
+- Pure Portfolio
+- (2012)
+- Shock Wave Studies of Nanosecond Laser-Induced Optical Breakdown in Ablative Plume and Delayed Explosive Boiling
+- (Susan D. Allen)
+- Pure Portfolio
+- (2011)
+- STIRAP on Sodium Vapor with Picosecond Pulses: Calculations and Experiment
+- (Susan D. Allen)
+- Pure Portfolio
+- (2011)
+- Time Resolved Detection of Native Molecular Emissions and Recombination Using Femtosecond Laser Induced Breakdown Spectroscopy from Organic Compounds
+- (Susan D. Allen)
+- Pure Portfolio
+- (2011)
+- Dynamics of Laser-Induced Surface Phase Explosion in Silicon
+- (Susan D. Allen)
+- Pure Portfolio
+- (2011)
+- Disinfection of B. Subtilis Cells in Suspension using Ultraviolet Light Emitting Diodes (LEDS) in the Presence of TiO2
+- (Susan D. Allen)
+- Pure Portfolio
+- (2011)
+- Reversible Control of Third-Order Optical Nonlinearity of DNA Decorated Carbon Nanotube Hybrids
+- (Susan D. Allen)
+- Pure Portfolio
+- (2010)
+- Errata: Optical Power Limiting and Nonlinear Absorption Effects of Polymer Functionalized Carbon Nanotube Thin Films
+- (Susan D. Allen)
+- Pure Portfolio
+- (2010)
+- The Accidental Scientist: Career Path or Random Walk
+- (Susan D. Allen)
+- Pure Portfolio
+- (2010)
+- Laser Cleaning of Nanodirt: The Evolution of a Research Project
+- (Susan D. Allen)
+- Pure Portfolio
+- (2010)
+- Body Limb Movement Limiter
+- (Susan Davis Allen, Susan D. Allen)
+- Mechanical Engineering - Daytona Beach
+- (2010)
+- Body Limb Movement Limiter
+- (Susan D. Allen)
+- Pure Portfolio
+- (2010)
+- Multi-Color Cavity Ringdown Based Detection Method and Apparatus
+- (Scott Reeve, Scott W. Reeve, Susan Allen, Susan D. Allen)
+- Mechanical Engineering - Daytona Beach
+- (2010)
+- Multi-Color Cavity Ringdown Based Detection Method and Apparatus
+- (Susan D. Allen)
+- Pure Portfolio
+- (2010)
+- Optical Power Limiting and Nonlinear Absorption Effects of Polymer Functionalized Carbon Nanotube Thin Films
+- (Susan D. Allen)
+- Pure Portfolio
+- (2010)
+- Optical Detection of Special Nuclear Materials: An Alternative Approach for Standoff and Remote Sensing
+- (Susan D. Allen)
+- Pure Portfolio
+- (2010)
+- STIRAP on Sodium Gas as a Function of Argon Buffer Gas Pressure
+- (Susan D. Allen)
+- Pure Portfolio
+- (2010)
+- STIRAP on sodium gas as a function of argon buffer gas pressure
+- (Susan D. Allen)
+- Pure Portfolio
+- (2010)
+- Influence of Polymer Structures on Optical Power Limiting Performance of Single-Walled Carbon Nanotubes
+- (Susan D. Allen)
+- Pure Portfolio
+- (2009)
+- Efficiency of STIRAP as a Function of Buffer Gas Pressure: Sodium in Argon
+- (Susan D. Allen)
+- Pure Portfolio
+- (2009)
+- Picosecond Multiphoton STIRAP Detection of Gas Phase Species: A Test With Sodium
+- (Susan D. Allen)
+- Pure Portfolio
+- (2009)
+- Picosecond multiphoton STIRAP detection of gas phase species
+- (Susan D. Allen)
+- Pure Portfolio
+- (2009)
+- Body Limb Movement Limiter
+- (Susan Davis Allen, Susan D. Allen)
+- Mechanical Engineering - Daytona Beach
+- (2008)
+- Body Limb Movement Limiter
+- (Susan D. Allen)
+- Pure Portfolio
+- (2008)
+- LIBS Plasma Enhancement for Standoff Detection Applications
+- (Susan D. Allen)
+- Pure Portfolio
+- (2008)
+- Gas-Phase Transport and Redeposition of Nano- and Micro-Particulates During Laser Cleaning From Solid Substrates
+- (Susan D. Allen)
+- Pure Portfolio
+- (2008)
+- LIBS plasma enhancement for standoff detection applications
+- (Susan D. Allen)
+- Pure Portfolio
+- (2008)
+- Apparatus for Removal of Minute Particles from a Surface Using Thermophoresis to Prevent Particle Redeposition
+- (Susan Davis Allen, Susan D. Allen)
+- Mechanical Engineering - Daytona Beach
+- (2007)
+- Apparatus for Removal of Minute Particles from a Surface Using Thermophoresis to Prevent Particle Redeposition
+- (Susan D. Allen)
+- Pure Portfolio
+- (2007)
+- Enhancement of Nd: YAG LIBS Emission of a Remote Target Using a Simultaneous CO/sub 2/ Laser Pulse
+- (Dennis K. Killinger, Susan D. Allen, Robert D. Waterbury, Chris Stefano, Edwin L. Dottery)
+- (2007)
+- Enhancement of Nd: YAG LIBS Emission of a Remote Target Using a Simultaneous CO/sub 2/ Laser Pulse
+- (Susan D. Allen)
+- Pure Portfolio
+- (2007)
+- A Molecular Dynamics Study of Laser-Assisted Cleaning: Energy Transfer Medium-Containment Particle Interaction
+- (Susan D. Allen)
+- Pure Portfolio
+- (2007)
+- A molecular dynamics study of laser-assisted cleaning
+- (Susan D. Allen)
+- Pure Portfolio
+- (2007)
+- Nanosecond Near-Spinodal Homogeneous Boiling of Water Superheated by Pulsed CO/sub 2/ Laser
+- (Sergey I. Kudryashov, S. I. Kudryashov, Kevin Lyon, Susan D. Allen)
+- Mechanical Engineering - Daytona Beach
+- (2007)
+- Nanosecond Near-Spinodal Homogeneous Boiling of Water Superheated by Pulsed CO/sub 2/ Laser
+- (Susan D. Allen)
+- Pure Portfolio
+- (2007)
+- Nanosecond-Laser Plasma-Assisted Ultradeep Microdrilling of Optically Opaque and Transparent Solids
+- (Susan D. Allen)
+- Pure Portfolio
+- (2007)
+- Near-Field Thermal Radiative Transfer and Thermoacoustic Effects from Vapor Plumes Produced by Pulsed CO/sub 2 /Laser Ablation of Bulk Water
+- (S. I. Kudryashov, Sergey I. Kudryashov, Kevin Lyon, S. D. Allen, Susan D. Allen)
+- Mechanical Engineering - Daytona Beach
+- (2006)
+- Near-Field Thermal Radiative Transfer and Thermoacoustic Effects from Vapor Plumes Produced by Pulsed CO/sub 2 /Laser Ablation of Bulk Water
+- (Susan D. Allen)
+- Pure Portfolio
+- (2006)
+- Submicrosecond Dynamics of Water Explosive Boiling and Lift-Off from Laser-Heated Silicon Surfaces
+- (S. I. Kudryashov, Sergey I. Kudryashov, S. D. Allen, Susan D. Allen)
+- Mechanical Engineering - Daytona Beach
+- (2006)
+- Submicrosecond Dynamics of Water Explosive Boiling and Lift-Off from Laser-Heated Silicon Surfaces
+- (Susan D. Allen)
+- Pure Portfolio
+- (2006)
+- Laser Ablation of Optically Thin Absorbing Liquid Layer Predeposited onto a Transparent Solid Substrate
+- (S. I. Kudryashov, Sergey I. Kudryashov, K. Lyon, Kevin Lyon, S. D. Shukla, D. Murry, S. D. Allen, Susan D. Allen)
+- Mechanical Engineering - Daytona Beach
+- (2006)
+- Experimental and Theoretical Studies of Laser Cleaning Mechanisms for Submicrometer Particulates on Si Surfaces
+- (Susan D. Allen)
+- Pure Portfolio
+- (2006)
+- Laser Ablation of Optically Thin Absorbing Liquid Layer Predeposited onto a Transparent Solid Substrate
+- (Susan D. Allen)
+- Pure Portfolio
+- (2006)
+- Advanced Dry and Steam Laser Cleaning of Opaque and Transparent Critical Substrates
+- (Susan D. Allen)
+- Pure Portfolio
+- (2006)
+- Laser-Induced Cavitation and Explosive Boiling in Superheated Liquids: A New GHz Probe
+- (Susan D. Allen)
+- Pure Portfolio
+- (2006)
+- Parametric Generation of Multimegahertz Acoustic Oscillations in Laser-Generated Multibubble System in Bulk Water
+- (Sergey I. Kudryashov, S. I. Kudryashov, Kevin Lyon, K. Lyon, Susan D. Allen)
+- Mechanical Engineering - Daytona Beach
+- (2006)
+- Parametric Generation of Multimegahertz Acoustic Oscillations in Laser-Generated Multibubble System in Bulk Water
+- (Susan D. Allen)
+- Pure Portfolio
+- (2006)
+- Laser Cleaning of Model Sub-Micrometer Particulate Contaminants From Si Surfaces
+- (Susan D. Allen)
+- Pure Portfolio
+- (2006)
+- Photoacoustic Study of Relaxation Dynamics in Multibubble Systems in Laser-Superheated Water
+- (Susan D. Allen)
+- Pure Portfolio
+- (2006)
+- Pulsed Selective Laser Removal of Nano- and Micro-Particles
+- (Susan D. Allen)
+- Pure Portfolio
+- (2006)
+- Photoacoustic Monitoring of Steam Bubble Cavitation in Water Supertheated by TEA CO/sub 2/ Laser
+- (Susan D. Allen)
+- Pure Portfolio
+- (2006)
+- Photoacoustics of Individual Live Cells and Particles
+- (Susan D. Allen)
+- Pure Portfolio
+- (2006)
+- New Advances and Steam Laser Cleaning of Opaque and Transparent Critical Substrates: With IR-Lasers to New Laser Cleaning Mechanism
+- (Susan D. Allen)
+- Pure Portfolio
+- (2006)
+- Dry and Wet Laser Catapulting and Ablation of Cells and Bacteria by Nanosecond CO/sub 2/ Laser
+- (Susan D. Allen)
+- Pure Portfolio
+- (2006)
+- Ultra-Deep Plasma-Assisted Drilling of Solids by High-Power Nanosecond Lasers: Experimental Studies
+- (Susan D. Allen)
+- Pure Portfolio
+- (2006)
+- Pulsed-Laser Cleaning of Sub- and Micron-Size Contaminant Particles from Optical Surfaces: Cleaning Versus Ablation and Damage
+- (Susan D. Allen)
+- Pure Portfolio
+- (2006)
+- Laser-induced cavitation and explosive boiling in superheated liquids
+- (Susan D. Allen)
+- Pure Portfolio
+- (2006)
+- Laser cleaning of nano- to microcontaminants from critical silicon surfaces
+- (Susan D. Allen)
+- Pure Portfolio
+- (2006)
+- Ultra-deep plasma-assisted drilling of solids by high-power nanosecond lasers
+- (Susan D. Allen)
+- Pure Portfolio
+- (2006)
+- Dry and wet laser catapulting and ablation of cells and bacteria by nanosecond CO <sub>2</sub> laser
+- (Susan D. Allen)
+- Pure Portfolio
+- (2006)
+- Pulsed selective laser removal of nano- and micro-particles
+- (Susan D. Allen)
+- Pure Portfolio
+- (2006)
+- Advanced dry and steam laser cleaning of opaque and transparent critical substrates
+- (Susan D. Allen)
+- Pure Portfolio
+- (2006)
+- Ambient atmosphere effect on dry laser cleaning efficiencies for sub-micron particles on critical surfaces
+- (Susan D. Allen)
+- Pure Portfolio
+- (2006)
+- Photoacoustic monitoring of steam bubble cavitation in water superheated by TEA CO<sub>2</sub> laser
+- (Susan D. Allen)
+- Pure Portfolio
+- (2006)
+- New advances and steam laser cleaning of opaque and transparent critical substrates
+- (Susan D. Allen)
+- Pure Portfolio
+- (2006)
+- Photoacoustics of individual live cells and particles
+- (Susan D. Allen)
+- Pure Portfolio
+- (2006)
+- Nanoscale Laser-Induced Spallation in SiO/sub 2/ Films Containing Gold Nanoparticles
+- (Susan D. Allen)
+- Pure Portfolio
+- (2006)
+- Laser Cleaning of Nano- and Microcontaminants From Critical Silicon Surfaces
+- (Susan D. Allen)
+- Pure Portfolio
+- (2005)
+- Pulsed laser cleaning of sub- And micron-size contaminant particles from optical surfaces
+- (Susan D. Allen)
+- Pure Portfolio
+- (2005)
+- Viscous drag force effect on transportation of sub-micron particle contaminants during dry and steam laser cleaning
+- (Susan D. Allen)
+- Pure Portfolio
+- (2005)
+- Laser micro-structuring of silicon in dry and wet environments
+- (Susan D. Allen)
+- Pure Portfolio
+- (2005)
+- New mechanism of ultra-deep drilling of solids by high-power lasers
+- (Susan D. Allen)
+- Pure Portfolio
+- (2005)
+- Ambient atmosphere effect on dry laser cleaning efficiencies for sub-micron particles on critical surfaces
+- (Susan D. Allen)
+- Pure Portfolio
+- (2005)
+- Ambient atmosphere effect on dry laser cleaning efficiencies for sub-micron particles on critical surfaces
+- (Susan D. Allen)
+- Pure Portfolio
+- (2005)
+- Plume Optical Transmission Studies of a Thin 2-Propanol Layer Lifting Off From a Laser-Heated Si Substrate
+- (Susan D. Allen)
+- Pure Portfolio
+- (2004)
+- Method and Apparatus for Removal of Minute Particles from a Surface Using Thermophoresis to Prevent Particle Redeposition
+- (Susan Davis Allen, Susan D. Allen)
+- Mechanical Engineering - Daytona Beach
+- (2004)
+- Method and Apparatus for Removal of Minute Particles from a Surface Using Thermophoresis to Prevent Particle Redeposition
+- (Susan D. Allen)
+- Pure Portfolio
+- (2004)
+- Analysis of Adsorbed Contaminants of CaF/sub 2/ Surfaces by Infrared Laser Induced Desorption
+- (JinMei Fu, Yamini Surapaneni, Susan D. Allen)
+- Mechanical Engineering - Daytona Beach
+- (2004)
+- Analysis of Adsorbed Contaminants of CaF/sub 2/ Surfaces by Infrared Laser Induced Desorption
+- (Susan D. Allen)
+- Pure Portfolio
+- (2004)
+- Laser-Assisted Fabrication of NMR Resonators
+- (William W. Brey, Susan D. Allen)
+- Mechanical Engineering - Daytona Beach
+- (2004)
+- Laser-Assisted Fabrication of NMR Resonators
+- (Susan D. Allen)
+- Pure Portfolio
+- (2004)
+- Photoacoustic Study of Explosive Boiling of a 2-Propanol Layer of Variable Thickness on a KrF Excimer Laser-Assisted Si Substrate
+- (Susan D. Allen)
+- Pure Portfolio
+- (2004)
+- Laser Induced Desorption Time of Flight Mass Spectrometer Analysis of Adsorbed Contaminants on Vacuum Ultraviolet Lithography Optic Materials
+- (Susan D. Allen, Yamini Surpaneni)
+- (2004)
+- Laser Induced Desorption Time of Flight Mass Spectrometer Analysis of Adsorbed Contaminants on Vacuum Ultraviolet Lithography Optic Materials
+- (Susan D. Allen)
+- Pure Portfolio
+- (2004)
+- Fast measurements with a slow detector
+- (Susan D. Allen)
+- Pure Portfolio
+- (2004)
+- Nanosecond laser-induced explosive boiling studied by photoacoustic and plume transmission techniques
+- (Susan D. Allen)
+- Pure Portfolio
+- (2004)
+- Modeling Laser-Assisted Particle Removal Using Molecular Dynamics
+- (Susan D. Allen)
+- Pure Portfolio
+- (2003)
+- Optical Transmission Measurements of Explosive Boiling and Liftoff of a Layer of Micron-Scale Water Droplets from a KrF Laser-Heated Si Substrate
+- (Sergey I. Kudryashov, Susan D. Allen)
+- Mechanical Engineering - Daytona Beach
+- (2003)
+- Optical Transmission Measurements of Explosive Boiling and Liftoff of a Layer of Micron-Scale Water Droplets from a KrF Laser-Heated Si Substrate
+- (Susan D. Allen)
+- Pure Portfolio
+- (2003)
+- Analysis of contaminants on CaF<sub>2</sub> surfaces by infrared laser induced desorption
+- (Susan D. Allen)
+- Pure Portfolio
+- (2003)
+- Analysis of contaminants on CaF<sub>2</sub> surfaces by infrared laser induced desorption
+- (Susan D. Allen)
+- Pure Portfolio
+- (2003)
+- Surface analysis by laser induced desorption time-of-flight mass spectrometry
+- (Susan D. Allen)
+- Pure Portfolio
+- (2003)
+- Photoacoustic Study of KrF Laser Heating of Si: Implications for Laser Particle Removal
+- (Sergey I. Kudryashov, S. I. Kudryashov, Susan D. Allen)
+- Mechanical Engineering - Daytona Beach
+- (2002)
+- Photoacoustic Study of KrF Laser Heating of Si: Implications for Laser Particle Removal
+- (Susan D. Allen)
+- Pure Portfolio
+- (2002)
+- Removal Versus Ablation in KrF Dry Laser Cleaning of Polystyrene Particles from Silicon
+- (Sergey I. Kudryashov, S. I. Kudryashov, Susan D. Allen)
+- Mechanical Engineering - Daytona Beach
+- (2002)
+- Removal Versus Ablation in KrF Dry Laser Cleaning of Polystyrene Particles from Silicon
+- (Susan D. Allen)
+- Pure Portfolio
+- (2002)
+- Rapid Prototyping of Micropatterned Substrates Using Conventional Laser Printers
+- (Susan D. Allen)
+- Pure Portfolio
+- (2002)
+- Real-Time Monitoring of Laser Photochemical Reactions of Polyvinylchloride
+- (Susan D. Allen)
+- Pure Portfolio
+- (2000)
+- Laser Enhanced Electroless Plating of Micron-Scale Copper Wires
+- (Susan D. Allen)
+- Pure Portfolio
+- (2000)
+- New infrared stereolithography
+- (Susan D. Allen)
+- Pure Portfolio
+- (2000)
+- Pulse CO/sub 2/ Laser Drilling of Green Alumina Ceramic
+- (Susan D. Allen)
+- Pure Portfolio
+- (1999)
+- New Technique of Stereolithography to Local Curing in Thermosensitive Resins Using CO(2) Laser
+- (A. L.J. Munhoz, P. R.S. Wagner, M. C.F. Ierardi, A. E. Kiel, M. A.F. Scarparo, S. D. Allen, Susan D. Allen)
+- (1998)
+- New Technique of Stereolithography to Local Curing in Thermosensitive Resins Using CO(2) Laser
+- (Susan D. Allen)
+- Pure Portfolio
+- (1998)
+- Experimental and theoretical study of local curing on thermosetting resins using CO<sub>2</sub> laser
+- (Susan D. Allen)
+- Pure Portfolio
+- (1998)
+- New technique of stereolithography to local curing in thermosensitive resins using CO<sub>2</sub> laser
+- (Susan D. Allen)
+- Pure Portfolio
+- (1998)
+- Laser Assisted Particle Removal 'Dry' Cleaning of Critical Surfaces
+- (Susan D. Allen)
+- Pure Portfolio
+- (1997)
+- Excimer laser machining and metallization of vias in aluminum nitride
+- (Susan D. Allen)
+- Pure Portfolio
+- (1997)
+- Noncontact single-fiber-optic proximity sensor using a laser-fabricated tap
+- (Susan D. Allen)
+- Pure Portfolio
+- (1997)
+- Study of resin based materials using CO<sub>2</sub> laser stereolithography
+- (Susan D. Allen)
+- Pure Portfolio
+- (1997)
+- Excimer laser ablation of aluminum nitride
+- (Susan D. Allen)
+- Pure Portfolio
+- (1997)
+- Method for Producing Conductive or Insulating Feedthroughs in a Substrate
+- (Janet K. Lumpp, Susan D. Allen)
+- Mechanical Engineering - Daytona Beach
+- (1996)
+- Method for Producing Conductive or Insulating Feedthroughs in a Substrate
+- (Susan D. Allen)
+- Pure Portfolio
+- (1996)
+- Mechanisms of carbon dioxide laser stereolithography in epoxy-based materials
+- (Susan D. Allen)
+- Pure Portfolio
+- (1996)
+- Mechanisms of carbon dioxide laser stereolithography
+- (Susan D. Allen)
+- Pure Portfolio
+- (1996)
+- Apparatus and Method of Fabricating Directional Fiber Optic Taps, Sensors and Other Devices with Variable Angle Output
+- (Susan D. Allen, Changhun Lee)
+- Mechanical Engineering - Daytona Beach
+- (1996)
+- Apparatus and Method of Fabricating Directional Fiber Optic Taps, Sensors and Other Devices with Variable Angle Output
+- (Susan D. Allen)
+- Pure Portfolio
+- (1996)
+- Laser direct write deposition of copper and silver conductor lines from solution
+- (Susan D. Allen)
+- Pure Portfolio
+- (1996)
+- Laser direct writing of aluminum conductor lines from a liquid phase precursor
+- (Susan D. Allen)
+- Pure Portfolio
+- (1996)
+- Real-time optical monitoring of tungsten nucleation during laser induced pyrolytic CVD
+- (Susan D. Allen)
+- Pure Portfolio
+- (1996)
+- Mechanism of ArF Laser Induced Photolytic Deposition of W from WF6 on Etched Si and Unetched Si
+- (Susan D. Allen)
+- Pure Portfolio
+- (1995)
+- Real-Time Optical Monitoring of Tungsten Nucleation During Laser Induced Pyrolytic Cvd
+- (Susan D. Allen)
+- Pure Portfolio
+- (1995)
+- Laser Direct Writing of Aluminum Conductor Lines from a Liquid Phase Precursor
+- (Susan D. Allen)
+- Pure Portfolio
+- (1995)
+- Fluence dependence of excimer laser ablation of AIN
+- (Susan D. Allen)
+- Pure Portfolio
+- (1994)
+- Laser-assisted particle removal from silicon surfaces
+- (Susan D. Allen)
+- Pure Portfolio
+- (1993)
+- Fluence Dependence of Excimer Laser Ablation of Ain
+- (Susan D. Allen)
+- Pure Portfolio
+- (1993)
+- Shock wave analysis of laser assisted particle removal
+- (Susan D. Allen)
+- Pure Portfolio
+- (1993)
+- CO<sub>2</sub> laser assisted particle removal threshold measurements
+- (Susan D. Allen)
+- Pure Portfolio
+- (1992)
+- Design and performance optimization of fiber optic adaptive filters
+- (Susan D. Allen)
+- Pure Portfolio
+- (1991)
+- High deposition rate laser direct writing of Al on Si
+- (Susan D. Allen)
+- Pure Portfolio
+- (1991)
+- Design of adaptive optical equalizers for fiber optic communication systems
+- (Susan D. Allen)
+- Pure Portfolio
+- (1991)
+- Laser fabricated fiber optical taps for interconnects and optical data processing devices
+- (Susan D. Allen)
+- Pure Portfolio
+- (1991)
+- Thermally driven laser chemical processing
+- (Susan D. Allen)
+- Pure Portfolio
+- (1991)
+- Laser-assisted micron scale particle removal
+- (Susan D. Allen)
+- Pure Portfolio
+- (1991)
+- Threshold measurements in laser-assisted particle removal (Invited Paper)
+- (Susan D. Allen)
+- Pure Portfolio
+- (1991)
+- Selected Area Processing
+- (Susan D. Allen)
+- Pure Portfolio
+- (1991)
+- Laser-fabricated fiber-optic taps
+- (Susan D. Allen)
+- Pure Portfolio
+- (1990)
+- Arithmetic fourier-transform calculation using fiber-optical parallel processors
+- (Susan D. Allen)
+- Pure Portfolio
+- (1990)
+- Directional crystallization of polyethylene oxide by laser irradiation
+- (Susan D. Allen)
+- Pure Portfolio
+- (1990)
+- Laser annealing of polyetheretherketone (PEEK)
+- (Susan D. Allen)
+- Pure Portfolio
+- (1989)
+- Laser irradiation of polyethylene oxide
+- (Susan D. Allen)
+- Pure Portfolio
+- (1989)
+- The arithmetic fourier transform calculation using fiber optical parallel processors
+- (Susan D. Allen)
+- Pure Portfolio
+- (1989)
+- Steady-state temperature profiles in thermally thin substrates induced by arbitrarily shaped laser beams
+- (Susan D. Allen)
+- Pure Portfolio
+- (1989)
+- Carbon dioxide and excimer laser ablation of parylene
+- (Susan D. Allen)
+- Pure Portfolio
+- (1989)
+- Emission spectroscopy of plasmas generated in CO<sub>2</sub> laser etching of fused silica
+- (Susan D. Allen)
+- Pure Portfolio
+- (1989)
+- Emission spectroscopy of plasmas generated in CO<sub>2</sub> laser etching of glasses
+- (Susan D. Allen)
+- Pure Portfolio
+- (1989)
+- Optical interference effect in the laser chemical vapor deposition of SiC
+- (Susan D. Allen)
+- Pure Portfolio
+- (1987)
+- Summary abstract
+- (Susan D. Allen)
+- Pure Portfolio
+- (1987)
+- Infrared optical absorptivity and reflectivity of hot-pressed sic
+- (Susan D. Allen)
+- Pure Portfolio
+- (1987)
+- Experimental determination of laser heated surface temperature distributions
+- (Susan D. Allen)
+- Pure Portfolio
+- (1987)
+- NONLINEAR EFFECTS IN THERMAL LASER DEPOSITION AND ETCHING.
+- (Susan D. Allen)
+- Pure Portfolio
+- (1987)
+- DEFECT CHARACTERISTICS OF OPTICAL SURFACES USING PULSED LASER DAMAGE METHODS.
+- (Susan D. Allen)
+- Pure Portfolio
+- (1986)
+- Laser repair of transparent microfaults in ic photomasks
+- (Susan D. Allen)
+- Pure Portfolio
+- (1986)
+- Up Close
+- (Susan D. Allen)
+- Pure Portfolio
+- (1986)
+- Etching of SiO/sub 2/ with CO/sub 2/ and CO/sub 2/ + Ar/super +/ Lasers
+- (Susan D. Allen)
+- Pure Portfolio
+- (1986)
+- Transient nonlinear laser heating and deposition
+- (Susan D. Allen)
+- Pure Portfolio
+- (1986)
+- Growth of periodic structures in pyrolytic laser-deposited SiC
+- (Susan D. Allen)
+- Pure Portfolio
+- (1986)
+- Direct-Write Pyrolytic Laser Deposition
+- (Susan D. Allen)
+- Pure Portfolio
+- (1986)
+- Defect characteristics of optical surfaces using pulsed laser damage methods
+- (Susan D. Allen)
+- Pure Portfolio
+- (1985)
+- LASER-ASSISTED CHEMICAL ETCHING OF SiO//2.
+- (Susan D. Allen)
+- Pure Portfolio
+- (1985)
+- Real time measurement of deposition initiation and rate in laser chemical vapor deposition
+- (Susan D. Allen)
+- Pure Portfolio
+- (1985)
+- COMPOUND LASER CHEMICAL VAPOR DEPOSITION
+- (Susan D. Allen)
+- Pure Portfolio
+- (1985)
+- Metal deposition by laser driven Pyrolysis of solid organometallic films
+- (Susan D. Allen)
+- Pure Portfolio
+- (1984)
+- Optical and thermal effects in laser chemical vapor deposition
+- (Susan D. Allen)
+- Pure Portfolio
+- (1984)
+- Laser Chemical Vapor Deposition (LCVD)
+- (Susan D. Allen)
+- Pure Portfolio
+- (1984)
+- LIMITING AND ENHANCEMENT EFFECTS IN LASER CHEMICAL VAPOR DEPOSITION.
+- (Susan D. Allen)
+- Pure Portfolio
+- (1984)
+- DEPOSITION, MICROSTRUCTURE AND PROPERTIES OF LCVD SiC FILMS.
+- (Susan D. Allen)
+- Pure Portfolio
+- (1984)
+- EXPERIMENTAL AND THEORETICAL STUDIES IN THE TIME EVOLUTION OF LASER CHEMICAL VAPOR DEPOSITION.
+- (Susan D. Allen)
+- Pure Portfolio
+- (1984)
+- LASER CHEMICAL VAPOR DEPOSITION USING CONTINUOUS WAVE AND PULSED LASERS.
+- (Susan D. Allen)
+- Pure Portfolio
+- (1984)
+- CONTAMINANT AND DEFECT ANALYSIS OF OPTICAL SURFACES BY INFRARED LASER-STIMULATED DESORPTION.
+- (Susan D. Allen)
+- Pure Portfolio
+- (1984)
+- Contaminant and defect analysis of optical surfaces by infrared laser induced desorption
+- (Susan D. Allen)
+- Pure Portfolio
+- (1984)
+- LASER DESORPTION ANALYSIS OF H//2O AND OTHER CONTAMINANTS FROM OPTICAL SURFACES.
+- (Susan D. Allen)
+- Pure Portfolio
+- (1983)
+- DIRECT WRITING USING LASER CHEMICAL VAPOR DEPOSITION.
+- (Susan D. Allen)
+- Pure Portfolio
+- (1983)
+- Laser chemical vapor deposition of selected area Fe and W films
+- (Susan D. Allen)
+- Pure Portfolio
+- (1983)
+- Spot size effects in laser chemical vapor deposition
+- (Susan D. Allen)
+- Pure Portfolio
+- (1983)
+- Laser Desorption Analysis of H<sub>2</sub>O and Other Contaminants from Optical Surfaces
+- (Susan D. Allen)
+- Pure Portfolio
+- (1983)
+- Limiting and Enhancement Effects in Laser Chemical Vapor Deposition
+- (Susan D. Allen)
+- Pure Portfolio
+- (1983)
+- SPOT SIZE EFFECTS IN LASER CHEMICAL VAPOR DEPOSITION.
+- (Susan D. Allen)
+- Pure Portfolio
+- (1983)
+- Laser chemical vapor deposition using cw and pulsed lasers
+- (Susan D. Allen)
+- Pure Portfolio
+- (1982)
+- Comparison of pulsed Nd:YAG and pulsed CO<sub>2</sub> lasers for hole drilling in printed circuit-board materials
+- (Susan D. Allen)
+- Pure Portfolio
+- (1982)
+- Laser CVD using a CO<sub>2</sub> TEA laser
+- (Susan D. Allen)
+- Pure Portfolio
+- (1982)
+- Infrared laser-induced desorption of H<sub>2</sub>O and hydrocarbons from optical surfaces
+- (Susan D. Allen)
+- Pure Portfolio
+- (1982)
+- Laser chemical vapor deposition
+- (Susan D. Allen)
+- Pure Portfolio
+- (1981)
+- LASER CHEMICAL VAPOR DEPOSITION.
+- (Susan D. Allen)
+- Pure Portfolio
+- (1981)
+- Laser chemical vapor deposition−applications in materials processing
+- (Susan D. Allen)
+- Pure Portfolio
+- (1980)
+- Laser chemical vapor deposition of titanium carbide
+- (Susan D. Allen)
+- Pure Portfolio
+- (1980)
+- 7.2 Laser Chemical Vapor Deposition of Metals and Insulators
+- (Susan D. Allen)
+- Pure Portfolio
+- (1979)
+- 18.3 Transient Response of Bistable Optical Switches
+- (Susan D. Allen)
+- Pure Portfolio
+- (1979)
+- 13.4 Loss Mechanisms in LiNbO<sub>3</sub> Waveguides
+- (Susan D. Allen)
+- Pure Portfolio
+- (1979)
+- Calorimetric measurement of LiNbO<sub>3</sub> waveguide absorption losses
+- (Susan D. Allen)
+- Pure Portfolio
+- (1979)
+- Nature of the 0.111-eV acceptor level in indium-doped silicon
+- (Susan D. Allen)
+- Pure Portfolio
+- (1979)
+- Transient response of hybrid bistable optical devices
+- (Susan D. Allen)
+- Pure Portfolio
+- (1979)
+- BISTABLE OPTICAL DEVICES FOR INTEGRATED OPTICS AND FIBER OPTICS APPLICATIONS.
+- (Susan D. Allen)
+- Pure Portfolio
+- (1979)
+- Multimode integrated optical bistable switch
+- (Susan D. Allen)
+- Pure Portfolio
+- (1978)
+- Bistable optical devices for integrated optics and fiber optics applications
+- (Susan D. Allen)
+- Pure Portfolio
+- (1978)
+- Bistable optical devices for integrated optics and fiber optics applications
+- (Susan D. Allen)
+- Pure Portfolio
+- (1978)
+- Optical absorption in KCI and NaCI at infrared laser wavelengths
+- (Susan D. Allen)
+- Pure Portfolio
+- (1978)
+- Incoherent mirrorless bistable optical devices
+- (Susan D. Allen)
+- Pure Portfolio
+- (1978)
+- Bulk and surface calorimetric measurements at CO wavelengths
+- (Susan D. Allen)
+- Pure Portfolio
+- (1977)
+- The near vacuum UV magnetic circular dichroism of ethylene in the gas phase
+- (Susan D. Allen)
+- Pure Portfolio
+- (1977)
+- Photoelastic modulator for the 0.55-13-µm range
+- (Susan D. Allen)
+- Pure Portfolio
+- (1976)
+- IMPROVEMENTS IN THE BREAKDOWN THRESHOLD IN ALKALI HALIDES AT 10. 6 mu m.
+- (Susan D. Allen)
+- Pure Portfolio
+- (1975)
+- The magnetic circular dichroism spectrum of benzene and toluene and the magnetic moment of the <sup>1</sup>E<sub>1u</sub> state
+- (Susan D. Allen)
+- Pure Portfolio
+- (1975)
+- The circular dichroism spectrum of S(+)-sec-butyl benzene
+- (Susan D. Allen)
+- Pure Portfolio
+- (1974)
+- Circular dichroism spectrum of a saturated hydrocarbon, (-)(3S:5S)-2,2,3,5-tetramethylheptane
+- (Susan D. Allen)
+- Pure Portfolio
+- (1974)
+- PULSED CO<sub>2</sub> LASER DAMAGE STUDIES OF RAP GROWN KCl.
+- (Susan D. Allen)
+- Pure Portfolio
+- (1974)
+- Circular dichroism of an optically active benzene chromophore-1-methylindan
+- (Susan D. Allen)
+- Pure Portfolio
+- (1973)
+- Circular dichroism of an optically active benzene chromophore-1-methylindan
+- (Susan D. Allen)
+- Pure Portfolio
+- (1970)
+- The measurement of circular dichroism in the vacuum ultraviolet
+- (Susan D. Allen)
+- Pure Portfolio
+- (1970)
+- Embry-Riddle Aeronautical University; Nov 2012-present
+- Arkansas State University; Nov 2002-Oct 2012
+- Florida State University; Jul 1996-Oct 2002
+- Tulane University;; Aug 1992-Jun 1996
+- University of Iowa; Aug 1987-Jul 1992
+- University of Southern California; Aug 1987-Jul 1988
+- Hughes Research Laboratories; Feb 1973-July 1977
+- American Society for Engineering Education
+- American Institute of Aeronautics and Astronautics
+- American Physical Society
+- American Chemical Society; Kendall Award Committee (1988-90)
+- Society of Women Engineers - Faculty Advisor, Univ of Iowa Chapter (1988-92)
+- Optical Society of America, Technical Group Chair (1989-92), Education Council (1991‑94)
+- The Association of Women in Science - Founding Member ‑ E. Iowa Chapter (1991)
+- WEPAN - Women in Engineering ProActive Network
+- IEEE - Institute of Electrical and Electronic Engineers (Senior Member)
+- Sigma Xi – President FSU Chapter (2002)
+- Bohemische Physikalische Gesellschaft
+- American Association of University Women
+- SPIE ‑ International Society for Optical Engineering - Fellow (2010)
+- American Vacuum Society, Trustee (Chair-1988), Board of Directors (1982-84)
+- President’s Committee for the National Medal of Science (2007-09)
+- Fellow of SPIE – International Society for Optical Engineering (2010)
+- International Women’s Forum (2003- ) - international organization of influential women
+- NSF - multiple advisory boards, committees, review panels and site visit teams.
+- National Academy of Sciences - Naval Studies Board (1996-97)
+- Oak Ridge Associated Universities - Board of Directors, Foundation Trustee (Chair 1995-99)
+- Association of Graduate Schools (AAU) - Executive Committee (1993-96), Vice President and President-elect (1996)
+- National Association of State Universities and Land Grant Colleges (NASULGC) - Comm on Research Policy and Graduate Education Executive Comm (1998-99); Council of Academic Affairs Executive Comm (2005-07)
+- Selected Patents
+- Apparatus and method of fabricating directional fiber optic taps, sensors and other devices with variable angle output (with C. H. Lee), U. S. Serial No. 5,500,913  (3/96).
+- Method for producing conductive or insulating feedthroughs in a substrate (with J. K. Lumpp), U. S. Serial No. 5,564,956 (12/96).
+- Method for making radiofrequency NMR detector microcoils (with W. Brey) U. S. Serial No. 6,751,847 (6/04)
+- Apparatus for removal of minute particles from a surface using thermophoresis to prevent particle redeposition, U. S. Serial No. 7,297,895 (11/07).
+- Body limb movement limiter apparatus U.S. Serial No. 7,789,844 (9/10)
+- Multi-color cavity ringdown based detection method and apparatus, Reeve, S. and Allen, S., U.S. Serial No. 8,237,927 (8/7/12); CIP 12/848,816 (8/10
+- Advanced Laser Processing and Sensors Laboratory

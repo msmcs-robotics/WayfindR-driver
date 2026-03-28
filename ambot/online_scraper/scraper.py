@@ -13,7 +13,9 @@ Usage:
     python3 scraper.py --delay 2.0              # Seconds between requests
     python3 scraper.py --base-url https://daytonabeach.erau.edu/college-engineering/
 
-Outputs one .md file per page in the output/ directory.
+Outputs one .md file per page to a staging directory (default: /tmp/erau-scrape-staging).
+Files should be reviewed before ingestion into the RAG knowledge base.
+Use update_knowledge.sh for the full scrape -> clean -> review -> apply pipeline.
 """
 
 from __future__ import annotations
@@ -33,6 +35,26 @@ from urllib.parse import urljoin, urlparse
 from urllib.request import Request, urlopen
 from urllib.error import URLError, HTTPError
 
+# Import shared config (defaults, user agent, staging dirs)
+try:
+    from scrape_config import (
+        COLLEGE_BASE_URL,
+        GENERAL_STAGING_DIR,
+        DEFAULT_CRAWL_DELAY_SECONDS,
+        DEFAULT_REQUEST_TIMEOUT,
+        USER_AGENT,
+    )
+except ImportError:
+    # Fallback if run standalone outside the online_scraper directory
+    COLLEGE_BASE_URL = "https://daytonabeach.erau.edu/college-engineering/"
+    GENERAL_STAGING_DIR = "/tmp/erau-scrape-staging"
+    DEFAULT_CRAWL_DELAY_SECONDS = 1.5
+    DEFAULT_REQUEST_TIMEOUT = 15
+    USER_AGENT = (
+        "Mozilla/5.0 (compatible; AMBOT-Scraper/1.0; "
+        "educational research project; +https://github.com/msmcs-robotics/WayfindR-driver)"
+    )
+
 logging.basicConfig(
     level=logging.INFO,
     format="%(asctime)s [%(levelname)s] %(message)s",
@@ -40,16 +62,12 @@ logging.basicConfig(
 )
 log = logging.getLogger(__name__)
 
-# Default configuration
-DEFAULT_BASE_URL = "https://daytonabeach.erau.edu/college-engineering/"
-DEFAULT_OUTPUT_DIR = "/tmp/erau-scrape-staging"
-DEFAULT_DELAY = 1.5  # seconds between requests (be polite)
-DEFAULT_TIMEOUT = 15  # seconds per request
+# Default configuration (sourced from scrape_config.py where possible)
+DEFAULT_BASE_URL = COLLEGE_BASE_URL
+DEFAULT_OUTPUT_DIR = GENERAL_STAGING_DIR
+DEFAULT_DELAY = DEFAULT_CRAWL_DELAY_SECONDS
+DEFAULT_TIMEOUT = DEFAULT_REQUEST_TIMEOUT
 DEFAULT_MAX_DEPTH = 5
-USER_AGENT = (
-    "Mozilla/5.0 (compatible; AMBOT-Scraper/1.0; "
-    "educational research project; +https://github.com/msmcs-robotics/WayfindR-driver)"
-)
 
 # Skip patterns — URLs matching these are never fetched
 SKIP_PATTERNS = [
@@ -488,6 +506,11 @@ Examples:
     if not args.list_only and stats.pages_saved > 0:
         print(f"\n  Output: {args.output}/")
         print(f"  Files:  {stats.pages_saved} markdown files")
+        print(f"\n  Next steps:")
+        print(f"    1. Review files in {args.output}/")
+        print(f"    2. Run cleaner.py --input {args.output}")
+        print(f"    3. Copy approved files to the knowledge base")
+        print(f"  Or use: ./update_knowledge.sh --apply  (full pipeline)")
 
     return 0 if stats.pages_errored < stats.pages_fetched else 1
 

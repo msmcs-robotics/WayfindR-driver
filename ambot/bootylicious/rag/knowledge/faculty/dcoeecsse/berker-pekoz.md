@@ -1,0 +1,173 @@
+# Berker Pekoz
+
+**Department:** Electrical Engineering and Computer Science
+**Email:** Berker.Pekoz@erau.edu
+**Profile:** https://faculty.erau.edu/Berker.Pekoz
+
+## Education
+
+- Ph.D. - Doctor of Philosophy in Electrical Engineering,
+- M.S. - Master of Science in Electrical Engineering,
+
+## Areas of Expertise
+
+- design, verification and testing of secure explainable AI-driven resilient cyber-physical systems for compute, sensing, communication, localization, positioning, navigation and timing in non-terrestrial networks
+- The views expressed on faculty and external web pages are those of the author and do not necessarily represent those of Embry-Riddle Aeronautical University.
+- Web Of Science
+- Google Scholar
+- ResearchGate
+- LinkedIn
+- ORCiD
+- Scopus
+- ScholarGPS
+- Loop
+- dblp
+- IEEE
+- Semantic Scholar
+- OpenAlex
+- TechRxiv
+- arXiv
+
+## Courses
+
+- ELEC 307
+- Avionics I
+- CS 529
+- Computer Security
+- CS 800
+- Dissertation
+- EE 690
+- Graduate Project
+- CEC 690
+- Graduate Project
+- CS 700
+- Graduate Thesis
+- CEC 450
+- Real-Time Embedded Systems
+- CS 399
+- Special Topics In Comp Science
+- CS 527
+- Sys Exploit and Penetrtion Tst
+- CS399/CS599 – Secure Wireless Sensor Networks
+- CS527 – System Exploitation and Penetration Testing
+- EE307 – Avionics I
+- EE327 – Electrical Engineering FUNdamentals
+- EE395E/EE595E – Introduction to Satellite Navigation Using Software Defined Radios
+- Selected Journal Articles
+- . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+- [J7] Y. Mustafa,
+- B. Peköz
+- , and S. Köse, “Reed-Muller error-correction code encoder for SFQ-to-CMOS interface circuits,” IEEE Trans. Appl. Supercond., vol. 36, pp. 1–6, 2026. doi:10.1109/TASC.2026.3664826.
+- [J6] M. Karabacak,
+- B. Peköz
+- , G. Mumcu, and H. Arslan, “Arraymetrics: Authentication through chaotic antenna array geometries,”
+- IEEE Commun. Lett.
+- , vol. 25, no. 6, pp. 1801–1804, Jun. 2021, issn: 2373-7891. doi: 10.1109/LCOMM.2021.3063049.
+- [J5]
+- B. Peköz
+- , M. Hafez, S. Köse, and H. Arslan, “Reducing precoder/channel mismatch and enhancing secrecy in practical MIMO systems using artificial signals,”
+- IEEE Commun. Lett.
+- , vol. 24, no. 6, pp. 1347–1350, Jun. 2020, issn: 2373-7891. doi: 10.1109/LCOMM.2020. 2978058.
+- [J4]
+- B. Peköz
+- , Z. E. Ankaralı, S. Köse, and H. Arslan, “Non-redundant OFDM receiver windowing for 5G frames & beyond,”
+- IEEE Trans. Veh. Technol.
+- , vol. 69, no. 1, pp. 676–684, Jan. 2020. doi: 10.1109/TVT.2019.2953233.
+- [J3]
+- B. Peköz
+- , S. Köse, and H. Arslan, “Extensionless adaptive transmitter and receiver windowing of beyond 5G frames,”
+- IEEE Trans. Veh. Technol.
+- , vol. 69, no. 2, pp. 1888–1902, Feb. 2020. doi: 10.1109/TVT.2019.2961915.
+- [J2] A. F. Demir,
+- B. Peköz
+- , S. Köse, and H. Arslan, “Innovative telecommunications training through flexible radio platforms,”
+- IEEE Commun. Mag.
+- , vol. 57, no. 11, pp. 27–33, Nov. 2019. doi: 10.1109/MCOM.001.1900245.
+- [J1] Z. E. Ankaralı,
+- B. Peköz
+- , and H. Arslan, “Flexible radio access beyond 5G: A future projection on waveform, numerology & frame design principles,”
+- IEEE Access
+- , vol. 5, no. 1, pp. 18 295–18 309, Mar. 2017, issn: 2169-3536. doi: 10.1109/ACCESS.2017.2684783.
+- Selected Proceedings and Presentations
+- . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+- [C10] C. Gaikwad, F. Senra, A. Lovell, H. Peng,
+- B. Pekoz
+- , and T. Yang, “Simulation results of spaceborne SSA using a comprehensive passive radar model,” in AIAA SCITECH 2026 Forum, Jan. 2026, p. 1074. doi: 10.2514/6.2026-1074.
+- [C9] K. Gharami, H. Aluvihare, S. S. Moni,
+- B. Peköz
+- , "Clone What You Can't Steal: Black-Box LLM Replication via Logit Leakage and Distillation," in
+- Proc. 7th IEEE Int. Conf. Trust, Privacy and Security in Intell. Syst. Appl. (IEEE TPS-ISA 2025)
+- Pittsburgh, PA, Nov. 2025, pp. 1-8.
+- [C8] A. S. Okatan, M. I. Akbaş, L. N. Kandel, and
+- B. Peköz
+- , "Seed-Induced Uniqueness in Transformer Models: Subspace Alignment Governs Subliminal Transfer," in
+- Proc. 2025 Cyber Awareness and Research Symp. (IEEE CARS 2025),
+- Grand Forks, ND, Oct. 2025, pp. 1-6. doi: 10.1109/CARS67163.2025.11337559.
+- [C7] A. S. Okatan, M. I. Akbaş, L. N. Kandel, and
+- B. Peköz
+- , "Keys in the weights: Transformer authentication using model-bound latent representations," in
+- Proc. 2025 Cyber Awareness and Research Symp. (IEEE CARS 2025),
+- Grand Forks, ND, Oct. 2025, pp. 1-6. doi: 10.1109/CARS67163.2025.11337776.
+- [C6] O. Maute, B. Roberts, and
+- B. Peköz
+- , “Radaround: A field-expedient direction finder for contested IoT sensing & EM situational awareness,” in Proc. 2025 IEEE Mil. Commun. Conf. (MILCOM), Los Angeles, CA: IEEE, Oct. 2025, pp. 1–6. doi: 10.1109/MILCOM64451. 2025.11310632.
+- [C5] Y. Mustafa,
+- B. Peköz
+- , and S. Köse, “Lightweight Error-Correction Code Encoders in Superconducting Electronic Systems,” in
+- Proc. IEEE Int. Syst.-on-Chip Conf. (SOCC)
+- , Dubai, UAE, Sep. 2025, pp. 1-5. doi: 10.1109/SOCC66126.2025.11235429
+- [C4] Y. Mustafa,
+- B. Peköz
+- , and S. Köse, "
+- Lightweight Error-Correction Code Encoder for Single Flux Quantum (SFQ)-to-CMOS Interface Circuits," in
+- Proc. 17th European Conf. Appl. Supercond. (EUCAS2025)
+- , Porto, PT, Sep. 2025. doi: 10.13140/RG.2.2.22275.98083
+- [C3] Panelist, “R&D activities on acceleration of interworking between terrestrial and non-terrestrial networks for beyond 5G-based society,” Workshop at the
+- 26th Int. Symp. Wireless Pers. Multimedia Commun. (WPMC2023)
+- , Tampa, FL, Nov. 21, 2023.
+- [C2]
+- B. Peköz
+- , S. Köse, and H. Arslan, “Adaptive windowing of insufficient CP for joint minimization of ISI and ACI beyond 5G,” in
+- Proc. 2017 IEEE 28th Annu. Int. Symp. Personal, Indoor, and Mobile Radio Commun.
+- , Montreal, QC: IEEE, Oct. 2017, pp. 1–5. doi: 10.1109/PIMRC.2017.8292389.
+- [C1] M. Elkourdi,
+- B. Peköz
+- , E. Güvenkaya, and H. Arslan, “Waveform design principles for 5G and beyond,” in
+- Proc. 2016 IEEE 17th Annu. Wireless and Microwave Technol. Conf.
+- , Clearwater, FL: IEEE, Apr. 2016, pp. 1–6. doi: 10.1109/WAMICON.2016.7483859.
+- Patents
+- . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+- [P7]
+- B. Pekoz
+- , S. Kose, and H. Arslan, “System and method for extensionless adaptive transmitter and receiver windowing,” U.S. Patent 11,050,449, Jun. 29, 2021.
+- [P6]
+- B. Pekoz
+- , Z. E. Ankaralı, S. Kose, and H. Arslan, “OFDM reception under high adjacent channel interference while preserving frame structure,” U.S. Patent 10,547,489, Jan. 28, 2020.
+- [P5]
+- B. Pekoz
+- , M. Hafez, S. Kose, and H. Arslan, “Using artificial signals to maximize capacity and secrecy of multiple-input multiple-output (MIMO) communication,” U.S. Patent 10,644,771, May 5, 2020.
+- [P4]
+- B. Pekoz
+- , M. Hafez, S. Kose, and H. Arslan, “Using artificial signals to maximize capacity and secrecy of multiple-input multiple-output (MIMO) communication,” U.S. Patent 10,516,452, Dec. 24, 2019.
+- [P3]
+- B. Pekoz
+- , S. Kose, and H. Arslan, “Combined minimization of intersymbol interference (ISI) and adjacent channel interference (ACI),” U.S. Patent 10,476,705, Nov. 12, 2019.
+- [P2]
+- B. Pekoz
+- , S. Kose, and H. Arslan, “Combined minimization of intersymbol interference (ISI) and adjacent channel interference (ACI),” U.S. Patent 10,348,530, Jul. 9, 2019.
+- [P1]
+- B. Pekoz
+- , S. Kose, and H. Arslan, “Network-aware adjacent channel interference rejection and out of band emission suppression,” U.S. Patent 10,511,338, Dec. 17, 2019.
+- Book Chapters
+- . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+- [B1]
+- B. Peköz
+- , S. Köse, and H. Arslan, “Flexibility through hybrid waveforms,” in
+- Flexible and Cognitive Radio Access Technologies for 5G and Beyond
+- , H. Arslan and E. Başar, Eds., Institution of Engineering and Technology, Oct. 22, 2020, ch. 4, pp. 99–142, isbn: 9781839530807. doi: 10.1049/pbte092e_ch4.
+- Scientific Advisor @ Kenyi Technologies, Inc. (2025-ongoing)
+- Senior Communication Systems Engineer & Scientific Consultant @ CesiumAstro Space & Defense Systems (2023-2024)
+- Senior Wireless DSP/ASIC Systems Engineer @ Qualcomm Technologies, Inc. (2020-2023)
+- National Academy of Inventors
+- Tau Beta Pi
+- Consortium for Space Mobility and in-space servicing, assembly, and manufacturing (ISAM) capabilities (COSMIC) Academia caucus
