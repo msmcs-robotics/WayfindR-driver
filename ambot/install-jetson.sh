@@ -201,6 +201,21 @@ install_gpio() {
         fi
     fi
 
+    # --- pip: pyserial (for LiDAR LD19 serial communication) ---
+    if python3 -c "import serial" &>/dev/null; then
+        log_info "pyserial already installed"
+    else
+        log_info "Installing pyserial via pip3..."
+        pip3 install pyserial
+        if python3 -c "import serial" &>/dev/null; then
+            log_success "pyserial installed"
+        else
+            log_fail "pyserial installation failed"
+            result_fail "GPIO (pyserial pip install failed)"
+            return 1
+        fi
+    fi
+
     # --- gpio group membership ---
     REAL_USER="${SUDO_USER:-$USER}"
     if groups "$REAL_USER" 2>/dev/null | grep -qw gpio; then

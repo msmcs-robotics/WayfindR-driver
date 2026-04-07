@@ -24,7 +24,8 @@ from fastapi.staticfiles import StaticFiles
 from chat_app.locations import LocationManager
 from chat_app.mcp_tools import (
     classify_location_intent, execute_check_location,
-    execute_move_to, execute_list_locations,
+    execute_move_to, execute_list_locations, execute_waypoint_route,
+    init_motors, cleanup_motors,
 )
 from chat_app import db
 
@@ -38,6 +39,9 @@ OLLAMA_MODEL = os.environ.get("OLLAMA_MODEL", "llama3.2:3b")
 OLLAMA_TIMEOUT = float(os.environ.get("OLLAMA_TIMEOUT", "120"))
 MAX_CONTEXT_TOKENS = int(os.environ.get("MAX_CONTEXT_TOKENS", "3200"))
 MAX_HISTORY_TURNS = int(os.environ.get("MAX_HISTORY_TURNS", "20"))
+# Reserve tokens for system prompt, RAG context injected into user message,
+# and the new user message itself — these are NOT counted in session["messages"].
+RESERVED_CONTEXT_TOKENS = 800
 
 SYSTEM_PROMPT = (
     "You are AMBOT, a helpful and friendly conversational robot assistant and tour guide at "
@@ -65,6 +69,28 @@ if _db_available:
     logger.info("PostgreSQL conversation persistence enabled")
 else:
     logger.info("PostgreSQL unavailable — using in-memory sessions only")
+
+# ── Motor Bridge Init ───────────────────────────────────────────
+# Set ENABLE_MOTORS=1 to activate hardware motor control from MCP tools.
+# Without it, move_to commands update state only (no physical movement).
+_enable_motors = os.environ.get("ENABLE_MOTORS", "0")
+if _enable_motors == "1":
+    _simulate_motors = False
+    logger.info("ENABLE_MOTORS=1 — initializing hardware motor bridge")
+elif _enable_motors == "sim":
+    _simulate_motors = True
+    logger.info("ENABLE_MOTORS=sim — initializing simulated motor bridge")
+else:
+    _simulate_motors = None  # sentinel: skip init entirely
+
+if _simulate_motors is not None:
+    _motors_ready = init_motors(simulate=_simulate_motors)
+    if _motors_ready:
+        logger.info("Motor bridge ready (simulate=%s)", _simulate_motors)
+    else:
+        logger.warning("Motor bridge init failed — move_to will use state-only simulation")
+else:
+    logger.info("Motors not enabled (set ENABLE_MOTORS=1 or ENABLE_MOTORS=sim)")
 
 # ── Session Store ────────────────────────────────────────────────
 # In-memory conversation history keyed by session_id
@@ -408,8 +434,31 @@ async def chat(request: Request):
         mcp_actions = []
         t_search_done = t_start
 
-        # ── MCP: Location intent handling ─────────────────────────
-        if loc_intent.intent == "execution" and loc_intent.matched_locations:
+        # ── MCP: Multi-stop waypoint route handling ─────────────
+        if loc_intent.intent == "multi_stop" and loc_intent.matched_locations:
+            # Plan the full route
+            stop_names = [m["name"] for m in loc_intent.matched_locations]
+            action = execute_waypoint_route(stop_names, location_mgr)
+            mcp_actions.append(action)
+            yield _sse("mcp_action", {
+                "tool": action.tool,
+                "text": action.display_text,
+                "result": action.result,
+            })
+
+            # Store waypoint queue in session for future stop-by-stop navigation
+            if action.result.get("success"):
+                session["waypoint_queue"] = {
+                    "stops": action.result["stops"],
+                    "current_index": 0,
+                    "total": action.result["stop_count"],
+                }
+                logger.info("Waypoint queue stored: %d stops — %s",
+                            len(action.result["stops"]),
+                            " -> ".join(s["name"] for s in action.result["stops"]))
+
+        # ── MCP: Single location intent handling ─────────────────
+        elif loc_intent.intent == "execution" and loc_intent.matched_locations:
             top_match = loc_intent.matched_locations[0]
 
             # Check if user is confirming a pending navigation
@@ -508,7 +557,10 @@ async def chat(request: Request):
 
         # Check if we need to condense history
         history_tokens = _estimate_messages_tokens(session["messages"])
-        if history_tokens > MAX_CONTEXT_TOKENS * 0.7:
+        # Budget accounts for system prompt + RAG context + new user message
+        # which are added to the Ollama request but not tracked in session history.
+        history_budget = MAX_CONTEXT_TOKENS - RESERVED_CONTEXT_TOKENS
+        if history_tokens > history_budget * 0.7:
             yield _sse("state", {"stage": "condensing",
                                   "message": "Condensing conversation history..."})
             await condense_history(session)
@@ -638,6 +690,12 @@ async def chat(request: Request):
 def _sse(event: str, data: dict) -> str:
     """Format a Server-Sent Event."""
     return f"event: {event}\ndata: {json.dumps(data)}\n\n"
+
+
+@app.on_event("shutdown")
+async def shutdown_event():
+    """Clean up motor resources on server shutdown."""
+    cleanup_motors()
 
 
 if __name__ == "__main__":

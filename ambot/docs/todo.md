@@ -65,12 +65,12 @@ _Start here when resuming work_
 2. **Test motor control on Jetson** — Run `locomotion/jetson_motors/test_motors.py --simulate` then `--test`
 3. ~~**Install FastMCP on Jetson**~~ — Already installed (Session 23)
 4. ~~**Test MCP ability server**~~ — MCP motor_interface tested in simulate mode on Jetson (Session 23)
-5. **Integrate MCP with Ollama** — LLM sends "move forward" → MCP tool → motors spin
-6. ~~**Fix LiDAR permissions**~~ — dialout group already configured, /dev/ttyUSB0 accessible (Session 23). Need `pip3 install pyserial` when ready.
+5. ~~**Integrate MCP with Ollama**~~ — MCP-Ollama tool-calling verified on Jetson, 4/4 tests passed (Session 23)
+6. ~~**Fix LiDAR permissions**~~ — dialout group configured, pyserial installed, LiDAR confirmed working on Jetson (Session 23)
 
 ### Jetson Sensors (verified Session 22)
 - [x] Camera (EMEET S600): WORKING on Jetson — `/dev/video0`, 640x480
-- [x] LiDAR (LD19): DETECTED — `/dev/ttyUSB0`, needs dialout group re-login
+- [x] LiDAR (LD19): WORKING — `/dev/ttyUSB0`, pyserial installed, dialout group configured
 - [x] GPIO PWM: VERIFIED — Pins 32, 33 tested OK for L298N
 - [ ] L298N motors: NOT YET WIRED — waiting on physical hookup
 
@@ -78,7 +78,7 @@ _Start here when resuming work_
 7. ~~**Restructure faculty.md**~~ — Already done (Session 22): 152 individual files across 5 departments
 8. ~~**Modify scraper output**~~ — Centralized staging defaults in scrape_config.py, cleaner.py updated (Session 23)
 9. **Scrape detailed faculty pages** — Individual professor profiles from ERAU website
-10. **Re-ingest knowledge base** — After restructuring
+10. ~~**Re-ingest knowledge base**~~ — Knowledge base re-ingested with expanded location data (Session 23)
 
 ### Raspberry Pi (DEPRIORITIZED — Jetson-first)
 - [ ] Deploy web_control to RPi (deferred)
